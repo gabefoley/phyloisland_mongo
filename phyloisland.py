@@ -1,14 +1,14 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask_pymongo import PyMongo
 from flask_uploads import UploadSet, configure_uploads, ALL
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 Bootstrap(app)
-app.config.from_pyfile('config.py')
+app.config.from_pyfile('mongoconfig.py')
 
 # Connect the database
-db = SQLAlchemy(app)
+db = PyMongo(app)
 
 # Add the Upload directory
 allfiles = UploadSet('all', ALL)
