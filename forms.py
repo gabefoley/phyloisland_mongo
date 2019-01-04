@@ -1,7 +1,14 @@
 from flask_wtf import FlaskForm
-from wtforms import FileField, StringField, SelectField, SelectMultipleField, BooleanField, SubmitField, validators
+from wtforms import FileField, StringField, SelectField, SelectMultipleField, BooleanField, PasswordField, SubmitField, validators
 from wtforms.fields.html5 import IntegerField
+from wtforms.validators import DataRequired
 
+
+class LoginForm(FlaskForm):
+    """Login form to access Phylo Island"""
+
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
 
 class UploadForm(FlaskForm):
     """
@@ -41,6 +48,11 @@ class SetupForm(FlaskForm):
 
 
 
-class GenomeOverviewSelctForm(FlaskForm):
+class GenomeOverviewSelectForm(FlaskForm):
     genome = SelectMultipleField('Genome', choices=[])
     submit = SubmitField("Submit")
+
+
+class SplodgeForm(FlaskForm):
+    name = StringField('name')
+    splodgeword = StringField('splodgeword')
