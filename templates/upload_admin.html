@@ -1,0 +1,111 @@
+{% extends 'admin/master.html' %}
+
+
+<script>
+    $(document).ready(function() {
+        //attach the click event to all <img> tag having class 'popos_img'
+        //here no need of any for loop
+        $('.upload_submit').click(function(){
+            $("#loading").show();
+        });
+    });
+</script>
+
+{% block body %}
+
+{#    <div id="loading">#}
+{##}
+{# <img src="/static/img/loading.gif" height=70" width="200">#}
+{##}
+{#    </div>#}
+
+    <div id="content">
+
+
+     <form method="POST"    enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+
+
+            <div class="form-group">
+
+{#            {% with messages = get_flashed_messages() %}#}
+{#                  {% if messages %}#}
+{#                    <ul>#}
+{#                    {% for message in messages %}#}
+{#                        <li>{{ message }} </li>#}
+{#                    {% endfor %}#}
+{#                    </ul>#}
+{#                  {% endif %}#}
+{#                {% endwith %}#}
+
+
+
+            <br>
+            {{ form.file.label }}
+            {{ form.file() }}
+
+              {% if form.file.errors %}
+                {% for error in form.file.errors %}
+                  <p class="error-message">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+
+            <br>
+
+{#                {{ form.input_text.label }}#}
+{#                {{ form.input_text() }}#}
+
+
+            {{ form.type.label }}
+            <br>
+                {{ form.type() }}
+
+                <br>
+                <br>
+            {{form.add_sequence.label }}
+            {{ form.add_sequence }}
+            <br>
+            <br>
+
+                {{form.add_genome.label }}
+                {{ form.add_genome }}
+
+
+
+                <br>
+                {{form.single_genome.label }}
+                {{ form.single_genome }}
+
+
+            <br>
+                {{form.genome_type.label }}
+                {{ form.genome_type }}
+
+                <br>
+
+                {{form.representative.label }}
+                {{ form.representative }}
+
+
+            <br>
+
+                {{form.assembly.label }}
+                {{ form.assembly }}
+
+                        <br>
+
+                {{form.genbank.label }}
+                {{ form.genbank }}
+
+
+
+
+            <br>
+            <br>
+            {{ form.upload_submit(class="btn-primary") }}
+            </div>
+ </form>
+
+</div>
+{% endblock %}

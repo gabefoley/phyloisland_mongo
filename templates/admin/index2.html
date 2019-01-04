@@ -1,0 +1,93 @@
+{% extends admin_base_template %}
+
+
+{% block title %}
+Phylo Island
+
+{% endblock %}
+{% block head %}
+    {{  super() }}
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<img style="max-width:40px; margin-top: -7px; margin-right:20px;" src="{{ url_for('static', filename='img/pi_small.png') }}">
+
+  <a class="navbar-brand" href="#">  Phylo Island</a>
+
+
+    <ul class="navbar-nav mr-auto">
+
+
+
+    </ul>
+
+	  	  <a role="presentation" data-toggle="modal" data-target="#loginModalCenter" href="#" style="margin-right:20px;"><span class="glyphicon glyphicon-log-in"></span> Login   </a>
+
+
+<!-- Modal -->
+<div class="modal fade" id="loginModalCenter" tabindex="-1" role="dialog" aria-labelledby="logineModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	  <a role="presentation" data-toggle="modal" data-target="#registerModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Register   </a>
+
+
+<!-- Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Register</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+{% endblock %}
+
+{% block brand %}
+{% endblock %}
+
+
+{% block body %}
+    {{ super() }}
+
+BODY
+{% endblock %}
+
+
+{% block tail %}
+    {{ super() }}
+
+tail
+{% endblock %}
