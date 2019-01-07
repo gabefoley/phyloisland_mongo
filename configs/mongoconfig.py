@@ -30,5 +30,5 @@ MAIL_USERNAME = 'phyloisland@gmail.com'
 MAIL_PASSWORD = 'phyloislandpass'
 
 
-SECRET_KEY = 'developmentkey'
+SECRET_KEY = 'developmentkey2020askyourselfimportantquestions'
 

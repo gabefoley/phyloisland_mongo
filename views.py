@@ -1,33 +1,19 @@
-from phyloisland import db, app , allfiles
+from phyloisland import app, allfiles
 import models
-from flask import Flask
-import users
 import forms
 import utilities
 import getGenomes
 import custom_filters
-from flask import render_template, flash, request, session, redirect, url_for
+from flask import render_template, flash, request, session
 from flask_login import login_user, logout_user, login_required, current_user
 from flask_admin import Admin, expose, AdminIndexView, BaseView
 from flask_admin.actions import action
-# from flask_admin.contrib.sqla import ModelView, filters
 from flask_admin.contrib.mongoengine import ModelView, filters
 from markupsafe import Markup
 import timeit
 import time
 import os
 from urllib.error import HTTPError
-import random
-
-usermodel = models.User()
-
-
-
-
-
-
-
-
 
 
 class UploadView(BaseView):
@@ -50,17 +36,12 @@ class UploadView(BaseView):
             seq_type = form.type.data
             add_seq = form.add_sequence.data
             add_genome = form.add_genome.data
-            # search_shotgun = form.search_shotgun.data
             single = form.single_genome.data
             genome_type=form.genome_type.data
             representative = form.representative.data
             assembly = form.assembly.data
             genbank = form.genbank.data
             failed_genomes = []
-
-            # # Create the initial seqRecords
-            # phyloisland.seqDict = {}
-            # phyloisland.unmappable = []
 
             try:
 
@@ -69,7 +50,7 @@ class UploadView(BaseView):
 
                     if not seq_records:
                         print("Couldn't find any sequences in the uploaded file.")
-                        flash("Couldn't find any sequences in the uploaded file.")
+                        flash("Couldn't find any sequences in the uploaded file.", category='error')
 
                     else:
                         if add_seq:
@@ -104,8 +85,6 @@ class UploadView(BaseView):
                         genome_results = getGenomes.add_genome2(species_name, destinations, single=single)
 
                         if genome_results and genome_results != "Fail":
-                            print ("GENOME RESULTS IS ")
-                            print (genome_results)
                             utilities.addGenome(genome_results)
                         else:
 
@@ -171,7 +150,7 @@ class UploadView(BaseView):
                         utilities.saveProfile(file)
 
             except HTTPError as error:
-                flash("There was a HTTP error. Please try again")
+                flash("There was a HTTP error. Please try again", category='error')
 
             seconds = timeit.default_timer() - start_time
             minutes, seconds = divmod(seconds, 60)
@@ -194,34 +173,29 @@ class SetupView(BaseView):
         form = forms.SetupForm()
         if request.method == "POST":
             if form.submit.data:
-                try:
-                    print (form.name.data)
-                    print (form.page_size.data)
-                    print (form.region_1_name.data)
+                # try:
+                    models.User.objects().get(username=str(current_user.username)).update(page_size = form.page_size.data)
+                    current = models.User.objects().get(username=str(current_user.username))
+                    print (current)
+                    print (current.email)
+                    current.update(upsert=True, set__thomas = 'ranker')
 
-                    user = models.User("gabe")
-                    setup_submission = models.User(form.name.data, int(form.page_size.data), form.region_1_name.data)
-
-                    print ('got here')
-                    db.session.add(setup_submission)
-                    print ('added')
-                    db.session.commit()
-                    print ('commit')
-                    flash ("User preferences updated")
+                    # models.User.objects().get(username=str(current_user.username)).update(upsert=True, thomas = 'ranker')
+                    flash ("User preferences updated", category='success')
                     return self.render('setup.html', form=form)
 
-
-                except Exception as e:
-                    print (e)
-                    flash ("Something went wrong")
-                    return self.render('setup.html', form=form)
+                # except Exception as e:
+                #     print (e)
+                #     flash ("Something went wrong", category='error')
+                #     return self.render('setup.html', form=form)
 
             else:
                 return self.render('setup.html', form=form)
 
         elif request.method == "GET":
             return self.render('setup.html', form=form)
-#
+
+
 class SequenceRecordsView(ModelView):
     create_modal = True
     edit_modal = True
@@ -231,150 +205,25 @@ class SequenceRecordsView(ModelView):
     # create_template = 'create.html'
     # edit_template = 'edit.html'
 
-    def _seqdescription_formatter(view, context, model, name):
 
-        if model.sequence:
-            return model.sequence[:15] + "..."
-        else:
-            return model.sequence
 
     column_formatters = {
-        'sequence': _seqdescription_formatter,
+        'sequence':custom_filters.seqdescription_formatter,
     }
-#
-#
-# class GenomeRecordsView(ModelView):
-#     column_list = (
-#         'name', 'species', 'strain', 'description', 'a1_ref', 'a2_ref', 'pore_ref', 'sequence', 'a1', 'a1_length',
-#         'a1_loc',
-#         'a2',
-#         'a2_length', 'a2_loc', 'overlap', 'distance', 'pore', 'pore_length', 'pore_loc', 'pore_within_a2',
-#         'chitinase', 'chitinase_length', 'chitinase_loc', 'chitinase_distance_from_a2', 'region1_ref', 'region2_ref',
-#         'region3_ref', 'region4_ref', 'region1', 'region1_length', 'region1_loc', 'region2',
-#         'region2_length', 'region2_loc', 'region3', 'region3_length', 'region3_loc', 'region4',
-#         'region4_length', 'region4_loc')
-#     column_searchable_list = ['name', 'species', 'a1', 'a2', 'overlap']
-#     create_modal = True
-#     edit_modal = True
-#     can_create = False
-#     can_view_details = True
-#     page_size = selected_page_size
-#
-#     def _a1description_formatter(view, context, model, name):
-#         # Format your string here e.g show first 20 characters
-#         # can return any valid HTML e.g. a link to another view to show the detail or a popup window
-#
-#         if model.a1:
-#             return model.a1[:15] + "..."
-#         else:
-#             return model.a1
-#
-#     def _a2description_formatter(view, context, model, name):
-#         # Format your string here e.g show first 20 characters
-#         # can return any valid HTML e.g. a link to another view to show the detail or a popup window
-#
-#         if model.a2:
-#             return model.a2[:15] + "..."
-#         else:
-#             return model.a2
-#
-#     def _chitinase_formatter(view, context, model, name):
-#         # Format your string here e.g show first 20 characters
-#         # can return any valid HTML e.g. a link to another view to show the detail or a popup window
-#
-#         if model.chitinase:
-#             return model.chitinase[:15] + "..."
-#         else:
-#             return model.chitinase
-#
-#     def _pore_formatter(view, context, model, name):
-#         # Format your string here e.g show first 20 characters
-#         # can return any valid HTML e.g. a link to another view to show the detail or a popup window
-#
-#         if model.pore:
-#             return model.pore[:15] + "..."
-#         else:
-#             return model.pore
-#
-#     def _region1description_formatter(view, context, model, name):
-#         # Format your string here e.g show first 20 characters
-#         # can return any valid HTML e.g. a link to another view to show the detail or a popup window
-#
-#         if model.region1:
-#             return model.region1[:15] + "..."
-#         else:
-#             return model.region1
-#
-#     def _region2description_formatter(view, context, model, name):
-#         # Format your string here e.g show first 20 characters
-#         # can return any valid HTML e.g. a link to another view to show the detail or a popup window
-#
-#         if model.region2:
-#             return model.region2[:15] + "..."
-#         else:
-#             return model.region2
-#
-#     def _region3description_formatter(view, context, model, name):
-#         # Format your string here e.g show first 20 characters
-#         # can return any valid HTML e.g. a link to another view to show the detail or a popup window
-#
-#         if model.region3:
-#             return model.region3[:15] + "..."
-#         else:
-#             return model.region3
-#
-#     def _region4description_formatter(view, context, model, name):
-#         # Format your string here e.g show first 20 characters
-#         # can return any valid HTML e.g. a link to another view to show the detail or a popup window
-#
-#         if model.region1:
-#             return model.region4[:15] + "..."
-#         else:
-#             return model.region4
-#
-#     def _seqdescription_formatter(view, context, model, name):
-#         # Format your string here e.g show first 20 characters
-#         # can return any valid HTML e.g. a link to another view to show the detail or a popup window
-#
-#
-#         if model.sequence:
-#             return model.sequence[:15] + "..."
-#         else:
-#             return model.sequence
-#
-#     column_formatters = {
-#         'a1': _a1description_formatter,
-#         'a2': _a2description_formatter,
-#         'pore': _pore_formatter,
-#         'chitinase': _chitinase_formatter,
-#         'region1': _region1description_formatter,
-#         'region2': _region2description_formatter,
-#         'region3': _region3description_formatter,
-#         'region4': _region4description_formatter,
-#
-#         'sequence': _seqdescription_formatter,
-#     }
-#
-#     column_filters = ('name',
-#                       'species',
-#                       'strain',
-#                       'description',
-#                       'a1',
-#                       'a2',
-#                       filters.FilterLike(models.GenomeRecords.overlap, 'Overlap',
-#                                          options=(('True', 'True'), ('False', 'False'))),
-#                       'sequence',
-#                       custom_filters.GetUniqueSpecies(
-#                           models.GenomeRecords.name, 'Get unique species'),
-#                       filters.IntGreaterFilter(models.GenomeRecords.distance, 'Distance greater than'),
-#                       filters.IntSmallerFilter(models.GenomeRecords.distance, 'Distance smaller than'),
-#                       filters.IntGreaterFilter(models.GenomeRecords.chitinase_distance_from_a2,
-#                                                'Chitinase to A2 distance greater than'),
-#                       filters.IntSmallerFilter(models.GenomeRecords.chitinase_distance_from_a2,
-#                                                'Chitinase to A2 distance smaller than')
-#
-#                       )
-#
+
+class GenomeRecordsView(ModelView):
+
+    create_modal = True
+    edit_modal = True
+    can_create = False
+    can_view_details = True
+    page_size = 2
+
+    column_formatters = {
+        'sequence': custom_filters.seqdescription_formatter,
+    }
+
+
 #
 # class ProfileView(ModelView):
 #     """
@@ -400,39 +249,8 @@ class SequenceRecordsView(ModelView):
 #     column_formatters = {
 #         'download': _download_formatter,
 #     }
-#
-#     @action('item1_set_A1_reference', 'Set this profile as the A1 reference profile')
-#     def item1_set_a1_reference(self, ids):
-#         utilities.setProfileAsReference(ids, "a1")
-#
-#     @action('item2_set_A2_reference', 'Set this profile as the A2 reference profile')
-#     def item1_set_a2_reference(self, ids):
-#         utilities.setProfileAsReference(ids, "a2")
-#
-#     @action('item2_set_pore_reference', 'Set this profile as the pore reference profile')
-#     def item1_set_pore_reference(self, ids):
-#         utilities.setProfileAsReference(ids, "pore")
-#
-#     @action('item2_set_chitinase_reference', 'Set this profile as the chitinase reference profile')
-#     def item1_set_chitinase_reference(self, ids):
-#         utilities.setProfileAsReference(ids, "chitinase")
-#
-#     @action('item2_set_region1_reference', 'Set this profile as the region 1 reference profile')
-#     def item1_set_region1_reference(self, ids):
-#         utilities.setProfileAsReference(ids, "region1")
-#
-#     @action('item2_set_region2_reference', 'Set this profile as the region 2 reference profile')
-#     def item1_set_region2_reference(self, ids):
-#         utilities.setProfileAsReference(ids, "region2")
-#
-#     @action('item2_set_region3_reference', 'Set this profile as the region 3 reference profile')
-#     def item1_set_region3_reference(self, ids):
-#         utilities.setProfileAsReference(ids, "region3")
-#
-#     @action('item2_set_region4_reference', 'Set this profile as the region 4 reference profile')
-#     def item1_set_region4_reference(self, ids):
-#         utilities.setProfileAsReference(ids, "region4")
-#
+
+
 class GenomeOverviewView(BaseView):
     @expose("/", methods=('GET', 'POST'))
 
@@ -450,14 +268,7 @@ class GenomeDetailView(BaseView):
     def genomedetail(self):
         return self.render('genomedetail.html')
 
-class BlockedView(BaseView):
-    @expose("/", methods=('GET', 'POST'))
 
-    def is_accessible(self):
-        return not current_user.is_authenticated
-
-    def inaccessible_callback(self, name, **kwargs):
-        return render_template('login.html', title='login', form=form)
 
 class MyAdminIndexView(AdminIndexView):
     def is_accessible(self):
@@ -474,87 +285,16 @@ class MyHomeView(AdminIndexView):
 
             return self.render('admin/index.html', form=form)
 
-# class SplodgeView(ModelView):
-#     column_list = ('name', 'splodgeword')
-#
-#     form = forms.SplodgeForm
-
-global passwordtochange
-global hopscotch
-passwordtochange = ['name', 'password']
-@app.route('/namechange/')
-def namechange():
-    passwordtochange = ['password']
-    hopscotch = False
-    return 'Changed?'
-
-
-@app.route('/namechangeback/')
-def namechangeback():
-    passwordtochange = ['name, password']
-    hopscotch = True
-    print
-
-    return 'Changed back?'
-
-hopscotch = True
-
-# class UserView(ModelView):
-#     @property
-#     def column_list(self):
-#         pass
-#     @property
-#     def _list_columns(self):
-#         return self.get_list_columns()
-#
-#     @_list_columns.setter
-#     def _list_columns(self, value):
-#         pass
-#
-#     def user(self):
-#         print('And now the password is ' + passwordtochange)
-#
-#
-#         return self.render('user.html')
-#
-#     # _handle_view called every request
-#     def _handle_view(self, name, **kwargs):
-#         print ('in the view')
-#         hopscotch = random.choice([True, False])
-#         print ('hopscotch is ' + str(hopscotch))
-#         if not hopscotch:
-#             print ('got to the false claim')
-#             # self._list_columns = ['name', 'password']
-#
-#             self._refresh_cache()
-#             # return super(UserView, self)._handle_view(name, **kwargs)
-#
-#         # re-scaffold views every request
-#         self._refresh_cache()
-#
-#         return super(UserView, self)._handle_view(name, **kwargs)
-#
-#     # _refresh_cache called once when view is added to admin interface
-#     def _refresh_cache(self):
-#         # do not _refresh_cache outside of a request context
-#         # if not hopscotch:
-#         #     # init members with empty tuples to avoid instantiation error
-#         #     self._list_columns = ()
-#         #     return
-#         self._list_columns = ['name', 'password']
-#
-#         super(UserView, self)._refresh_cache()
-
 
 class UserView(ModelView):
     create_modal = True
     edit_modal = True
     can_create = False
     can_view_details = True
+    column_list = ['name', 'password', 'thomas']
 
 
 class UserFormView(BaseView):
-
     @expose("/")
     def userform(self):
         form = forms.UserForm()
@@ -574,16 +314,11 @@ def error_encountered(e):
 admin = Admin(app, 'Phylo Island', base_template='layout.html', url='/', template_mode='bootstrap3')
 
 admin.add_view(UserView(model=models.User, endpoint='user'))
-
-
 admin.add_view(SetupView(name='Setup', endpoint='setup'))
 admin.add_view(UploadView(name='Upload', endpoint='upload_admin'))
-# admin.add_view(SequenceRecordsView(model=mongo.db.test, session=mongo.db.session, endpoint="sequence_records"))
-# admin.add_view(GenomeRecordsView(model=models.GenomeRecords, session=db.session, endpoint="genome_view"))
+admin.add_view(SequenceRecordsView(model=models.SequenceRecords, endpoint="sequence_records"))
+admin.add_view(GenomeRecordsView(model=models.GenomeRecords, endpoint="genome_records"))
 # admin.add_view(ProfileView(model=models.Profile, session=db.session, name='Profiles'))
 admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
 admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
-
-# admin.add_view(SplodgeView(mongo.db['splodge'], 'Splodge'))
-# admin.add_view(BlockedView(name='Blocked', endpoint='blocked'))
 

@@ -22,3 +22,11 @@
 #     user.save(result)
 #
 #     return 'Updated'
+
+
+# Example of how to iterate over results and get a single result
+# print('count is ' + str(models.User.objects().count()))
+# print(models.User.objects.filter())
+# print(models.User.objects().get(username=str(current_user.username)).email)
+# for user in models.User.objects(username=str(current_user.username)):
+#     print(user.email)

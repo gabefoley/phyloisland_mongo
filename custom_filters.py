@@ -1,6 +1,11 @@
 import phyloisland
 from flask_admin.contrib.sqla.filters import BaseSQLAFilter
 
+def seqdescription_formatter(view, context, model, name):
+    if model.sequence:
+        return model.sequence[:15] + "..."
+    else:
+        return model.sequence
 
 class GetUniqueSpecies(BaseSQLAFilter):
     def apply(self, query, value, alias="None"):

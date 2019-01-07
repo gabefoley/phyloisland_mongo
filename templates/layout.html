@@ -35,7 +35,11 @@
     	{% block brand %}
     	<h2 id="brand">{{ admin_view.name|capitalize }}</h2>
     	{% endblock %}
-    	{{ layout.messages() }}
+          <div class="container-fluid">
+              <br>
+
+          {% include 'flash.html' %}
+          </div>
 
 	{% set render_ctx = h.resolve_ctx() %}
 

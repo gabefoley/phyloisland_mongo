@@ -7,11 +7,11 @@ from flask_mongoengine.wtf import model_form
 
 # Create models
 
-class User(db.Document, UserMixin):
+class User(db.DynamicDocument, UserMixin):
     active = db.BooleanField(default=True)
 
     # User authentication information
-    username = db.StringField(default='')
+    username = db.StringField(default='', unique=True)
     email = db.StringField(max_length=30)
     password = db.StringField()
     email_confirmed_at = db.DateTimeField()
@@ -29,3 +29,20 @@ class User(db.Document, UserMixin):
 
 # Setup Flask-User and specify the User data-model
 user_manager = UserManager(app, db, User)
+
+class SequenceRecords(db.DynamicDocument):
+    name = db.StringField()
+    species = db.StringField()
+    description = db.StringField()
+    sequence = db.StringField()
+    references = db.ListField(db.StringField(), default=list)
+
+
+class GenomeRecords(db.DynamicDocument):
+    name = db.StringField()
+    species = db.StringField()
+    strain = db.StringField()
+    description = db.StringField()
+    sequence = db.StringField()
+    present = db.DictField()
+    references = db.ListField(db.StringField(), default=list)

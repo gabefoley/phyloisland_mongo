@@ -50,46 +50,21 @@ def addGenome(genome_results):
         current = genome_results[record]
         if type(current) == SeqRecord:
             name = current.id
-
             species = " ".join(current.annotations.get('organism').split()[0:2])
             strain = current.annotations['source']
             sequence = str(current.seq)
-
             description = current.description
-            a1 = current.annotations["A1"] if "A1" in current.annotations.keys() else ""
-            a1_length = None
-            a1_loc = current.annotations["A1_location"] if "A1_location" in current.annotations.keys() else ""
-            a2 = current.annotations["A2"] if "A2" in current.annotations.keys() else ""
-            a2_length = None
-            a2_loc = current.annotations["A2_location"] if "A2_location" in current.annotations.keys() else ""
-            overlap = current.annotations["Overlap"] if "Overlap" in current.annotations.keys() else ""
-            distance = ""
-
-            entry = models.GenomeRecords(name, species, strain, description, a1, a1_length, a1_loc, a2, a2_length,
-                                         a2_loc,
-                                         overlap, distance, sequence, 0, 0)
-            check = models.GenomeRecords.query.filter_by(name=name).first()
 
             # Check to see if the genome record already exists
-            if check:
+            if  models.GenomeRecords.objects(name=name):
                 print("The genome record - %s from species - %s already exists in the database" % (name, species))
-
                 continue
-            # # if region in current.annotations.keys():
-            #     #     continue
-            #     # else:
-            #     #     setattr(check, region.lower(), current.annotations[region] if region in current.annotations.keys() else "")
-            #     #     setattr(check, region.lower() + "_loc", current.annotations[region + "_location"] if region + "_location" in current.annotations.keys() else "")
-            #     #     servers.db.session.add(check)
 
             else:
                 print("Adding the genome record - %s from species - %s to the genome database" % (name, species))
 
-                seq_list = []
-                phyloisland.db.session.add(entry)
-                seq_list.append(current)
-                phyloisland.db.session.commit()
-
+                genome = models.GenomeRecords(name=name, species=species, strain=strain, description=description, sequence=sequence)
+                genome.save()
 
 def addSequence(seq_records):
     for record in seq_records.values():
@@ -113,7 +88,7 @@ def addSequence(seq_records):
 
 def setProfileAsReference(ids, region):
     if len(ids) > 1:
-        flash('Only select a single record')
+        flash('Only select a single record', category='error')
     else:
         query = models.Profile.query.filter(models.Profile.uid.in_(ids))
         for record in query.all():
@@ -136,4 +111,4 @@ def setProfileAsReference(ids, region):
             with open("tmp/" + region + "profile.hmm", 'w') as profile_path:
                 profile_path.write(record.profile.decode('utf-8'))
 
-            flash("The profile named %s has been set as the reference profile for %s" % (record.name, region))
+            flash("The profile named %s has been set as the reference profile for %s" % (record.name, region), category='success')

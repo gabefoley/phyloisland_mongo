@@ -18,9 +18,11 @@ class UploadForm(FlaskForm):
     file = FileField('Upload the file that contains the information we will map to the genome records.',
                      [validators.DataRequired()])
     input_text = StringField(u'Input text', [validators.optional()])
+    # type = SelectField('What type of file is this?', [validators.DataRequired()],
+    #                    choices=[("protein", "FASTA (amino acids)"), ("nucleotide", "FASTA (nucleotides)"),
+    #                             ("species", "Species list"), ("genome", "Genome ID list"), ("profile", "Profile")])
     type = SelectField('What type of file is this?', [validators.DataRequired()],
-                       choices=[("protein", "FASTA (amino acids)"), ("nucleotide", "FASTA (nucleotides)"),
-                                ("species", "Species list"), ("genome", "Genome ID list"), ("profile", "Profile")])
+                       choices=[("protein", "FASTA (amino acids)"), ("species", "Species list"),  ("profile", "Profile")])
     add_sequence = BooleanField("Add sequences to sequence database?", default="checked")
     add_genome = BooleanField("Search for genomic records?", default="checked")
     single_genome = BooleanField("Retrieve just a single record for each genome?", default="checked")
@@ -42,9 +44,7 @@ class UploadForm(FlaskForm):
     upload_submit = SubmitField("Upload file")
 
 class SetupForm(FlaskForm):
-    name = StringField(u'User name', [validators.optional()])
     page_size = IntegerField(u'Preferred page size', [validators.optional()])
-    region_1_name = StringField(u'Region 1 name', [validators.optional()])
     submit = SubmitField("Submit")
 
 
