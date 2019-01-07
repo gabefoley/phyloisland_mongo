@@ -1,22 +1,23 @@
-from werkzeug.security import check_password_hash
+from phyloisland import app, db
+from flask_user import UserMixin, UserManager
 
 
-class User():
-    def __init__(self, username):
-        self.username = username
+class User(db.Document, UserMixin):
+    active = db.BooleanField(default=True)
 
-    def is_authenticated(self):
-        return True
+    # User authentication information
+    username = db.StringField(default='')
+    email = db.StringField(max_length=30)
+    password = db.StringField()
+    email_confirmed_at = db.DateTimeField()
 
-    def is_active(self):
-        return True
+    # User information
+    first_name = db.StringField(default='')
+    last_name = db.StringField(default='')
 
-    def is_anonymous(self):
-        return False
+    # Relationships
+    roles = db.ListField(db.StringField(), default=[])
 
-    def get_id(self):
-        return self.username
 
-    @staticmethod
-    def validate_login(password_hash, password):
-        return check_password_hash(password_hash, password)
+# Setup Flask-User and specify the User data-model
+user_manager = UserManager(app, db, User)

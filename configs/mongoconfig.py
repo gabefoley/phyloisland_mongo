@@ -1,12 +1,34 @@
 # Names to use for our parameters
-MONGO_DBNAME = "phyloisland_mongo_2019"
+# MONGO_DBNAME = "phyloisland_mongo_2019"
+# MONGO_URI = 'mongodb://pi:abc123@localhost/' + MONGO_DBNAME
 
-DEBUG = True
-# MONGO_URI = 'mysql://pi:@localhost/' + bio_server_name
+MONGODB_DB = 'phyloisland_mongo_2019'
+MONGODB_HOST= 'localhost'
+MONGODB_USERNAME = 'pi'
+MONGODB_PASSWORD = 'abc123'
 
-MONGO_URI = 'mongodb://pi:abc123@localhost/' + MONGO_DBNAME
+
+# User / login configuration
+USER_APP_NAME = "Phylo Island" # Shown in email templates and page footers
+CSRF_ENABLED = True
+USER_ENABLE_EMAIL = True # Require email authentication?
+USER_ENABLE_USERNAME = True  # Enable username authentication
+USER_REQUIRE_RETYPE_PASSWORD = True  # Require retyping of password
+USER_ENABLE_CHANGE_PASSWORD = True
+USER_AFTER_REGISTER_ENDPOINT = 'user.login'
+USER_EMAIL_SENDER_EMAIL = 'phyloisland@gmail.com'
+USER_EMAIL_SENDER_NAME = 'Phylo Island'
 UPLOADS_ALL_DEST = 'static/uploads'
 UPLOADED_ALL_DEST = 'static/uploads'
+
+# Mail server configuration
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 587
+MAIL_USE_TLS = True
+MAIL_USE_SSL = False
+MAIL_USERNAME = 'phyloisland@gmail.com'
+MAIL_PASSWORD = 'phyloislandpass'
+
 
 SECRET_KEY = 'developmentkey'
 

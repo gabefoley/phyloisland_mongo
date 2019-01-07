@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import FileField, StringField, SelectField, SelectMultipleField, BooleanField, PasswordField, SubmitField, validators
 from wtforms.fields.html5 import IntegerField
 from wtforms.validators import DataRequired
+import models
 
 
 class LoginForm(FlaskForm):
@@ -53,6 +54,7 @@ class GenomeOverviewSelectForm(FlaskForm):
     submit = SubmitField("Submit")
 
 
-class SplodgeForm(FlaskForm):
-    name = StringField('name')
-    splodgeword = StringField('splodgeword')
+class UserForm(FlaskForm):
+    username = StringField()
+    password = StringField()
+    submit = SubmitField("Submit")

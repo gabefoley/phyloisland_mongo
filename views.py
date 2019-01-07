@@ -1,5 +1,6 @@
-from phyloisland import mongo, app, lm, allfiles
+from phyloisland import db, app , allfiles
 import models
+from flask import Flask
 import users
 import forms
 import utilities
@@ -9,12 +10,16 @@ from flask import render_template, flash, request, session, redirect, url_for
 from flask_login import login_user, logout_user, login_required, current_user
 from flask_admin import Admin, expose, AdminIndexView, BaseView
 from flask_admin.actions import action
-from flask_admin.contrib.sqla import ModelView, filters
+# from flask_admin.contrib.sqla import ModelView, filters
+from flask_admin.contrib.mongoengine import ModelView, filters
 from markupsafe import Markup
 import timeit
 import time
 import os
 from urllib.error import HTTPError
+import random
+
+usermodel = models.User()
 
 
 # @app.route('/dashboard/')
@@ -23,10 +28,7 @@ from urllib.error import HTTPError
 #     return render_template("dashboard.html")
 #
 #
-# @app.errorhandler(404)
-# def page_not_found(e):
-#     return render_template("404.html")
-#
+
 #
 # @app.errorhandler(500)
 # def error_encountered(e):
@@ -501,31 +503,18 @@ class SequenceRecordsView(ModelView):
 #     def item1_set_region4_reference(self, ids):
 #         utilities.setProfileAsReference(ids, "region4")
 #
-# class GenomeOverviewView(BaseView):
-#     @expose("/", methods=('GET', 'POST'))
-#
-#     def genomeoverview(self):
-#         form = forms.GenomeOverviewSelctForm()
-#         form.genome.choices = [(genome.name, genome.species) for genome in models.GenomeRecords.query.all()]
-#         return self.render('genomeoverview.html', form=form)
-#
-#
+class GenomeOverviewView(BaseView):
+    @expose("/", methods=('GET', 'POST'))
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = forms.LoginForm()
-    if request.method == 'POST' and form.validate_on_submit():
-        user = app.config['USERS_COLLECTION'].find_one({"_id": form.username.data})
-        if user and users.User.validate_login(user['password'], form.password.data):
-            user_obj = users.User(user['_id'])
-            login_user(user_obj)
-            flash("Logged in successfully!", category='success')
-            return redirect(request.args.get("next") or url_for("write"))
-        flash("Wrong username or password!", category='error')
-    return render_template('login.html', title='login', form=form)
+    def genomeoverview(self):
+        form = forms.GenomeOverviewSelectForm()
+        # form.genome.choices = [(genome.name, genome.species) for genome in models.GenomeRecords.query.all()]
+        return self.render('genomeoverview.html', form=form)
 
 
 class GenomeDetailView(BaseView):
+    @login_required
+
     @expose("/", methods=('GET', 'POST'))
 
     def genomedetail(self):
@@ -545,8 +534,6 @@ class MyAdminIndexView(AdminIndexView):
         return current_user.is_authenticated
 
 class MyHomeView(AdminIndexView):
-    print ('here')
-
     @expose("/")
     def index(self):
         if 'username' in session:
@@ -557,19 +544,108 @@ class MyHomeView(AdminIndexView):
 
             return self.render('admin/index.html', form=form)
 
-class SplodgeView(ModelView):
-    column_list = ('name', 'splodgeword')
+# class SplodgeView(ModelView):
+#     column_list = ('name', 'splodgeword')
+#
+#     form = forms.SplodgeForm
 
-    form = forms.SplodgeForm
+global passwordtochange
+global hopscotch
+passwordtochange = ['name', 'password']
+@app.route('/namechange/')
+def namechange():
+    passwordtochange = ['password']
+    hopscotch = False
+    return 'Changed?'
+
+
+@app.route('/namechangeback/')
+def namechangeback():
+    passwordtochange = ['name, password']
+    hopscotch = True
+    print
+
+    return 'Changed back?'
+
+hopscotch = True
+
+class UserView(ModelView):
+    @property
+    def column_list(self):
+        return ['password', 'name']
+
+    @property
+    def _list_columns(self):
+        return self.get_list_columns()
+
+    @_list_columns.setter
+    def _list_columns(self, value):
+        pass
+
+    def user(self):
+        print('And now the password is ' + passwordtochange)
+
+
+        return self.render('user.html')
+
+    # _handle_view called every request
+    def _handle_view(self, name, **kwargs):
+        print ('in the view')
+        hopscotch = random.choice([True, False])
+        print ('hopscotch is ' + str(hopscotch))
+        if not hopscotch:
+            print ('got to the false claim')
+            self._list_columns = ['name', 'password']
+
+            self._refresh_cache()
+            # return super(UserView, self)._handle_view(name, **kwargs)
+
+        # re-scaffold views every request
+        self._refresh_cache()
+
+        return super(UserView, self)._handle_view(name, **kwargs)
+
+    # _refresh_cache called once when view is added to admin interface
+    def _refresh_cache(self):
+        # do not _refresh_cache outside of a request context
+        # if not hopscotch:
+        #     # init members with empty tuples to avoid instantiation error
+        #     self._list_columns = ()
+        #     return
+        self._list_columns = ['name', 'password']
+
+        super(UserView, self)._refresh_cache()
+
+class UserFormView(BaseView):
+
+    @expose("/")
+    def userform(self):
+        form = forms.UserForm()
+        return self.render('user.html', form=form)
+
+@app.errorhandler(404)
+def page_not_found(e):
+        return render_template("404.html")
+
 
 # admin = Admin(app, index_view=MyHomeView(), base_template='layout.html', url='/', template_mode='bootstrap3')
 admin = Admin(app, 'Phylo Island', base_template='layout.html', url='/', template_mode='bootstrap3')
+uview = UserView(model= models.User, endpoint='user')
+admin.add_view(uview)
+
+# admin.add_view(UserView(model=models.User, endpoint='user'))
+
+
+admin.add_view(UserFormView(name='User Form', endpoint='userform'))
+
 # admin.add_view(UploadView(name='Upload', endpoint='upload_admin'))
 # admin.add_view(SetupView(name='Setup', endpoint='setup'))
 # admin.add_view(SequenceRecordsView(model=mongo.db.test, session=mongo.db.session, endpoint="sequence_records"))
 # admin.add_view(GenomeRecordsView(model=models.GenomeRecords, session=db.session, endpoint="genome_view"))
 # admin.add_view(ProfileView(model=models.Profile, session=db.session, name='Profiles'))
-# admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
-# admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
-admin.add_view(SplodgeView(mongo.db['splodge'], 'Splodge'))
+admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
+admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
+
+# admin.add_view(SplodgeView(mongo.db['splodge'], 'Splodge'))
 # admin.add_view(BlockedView(name='Blocked', endpoint='blocked'))
+

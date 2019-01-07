@@ -1,8 +1,10 @@
-{% extends "header.html" %}
+{% extends 'flask_user/_common_base.html' %}
 
-{% block body %}
+{% block content %}
 
-<p> Looks like this page doesn't exist. </p>
+<h1>{%trans%}404 Error{%endtrans%}</h1>
+
+<p> <h2> This page doesn't exist. </h2> </p>
 
 
 {% endblock %}

@@ -1,21 +1,26 @@
 from flask import Flask
-from flask_pymongo import PyMongo
+from flask_mongoengine import MongoEngine
 from flask_uploads import UploadSet, configure_uploads, ALL
-from flask_login import LoginManager
+from flask_user import login_required, UserManager
 from flask_bootstrap import Bootstrap
+from mongoengine import connect
+import configs.mongoconfig
+import users
 
 app = Flask(__name__)
 Bootstrap(app)
 app.config.from_pyfile('configs/mongoconfig.py')
 
 # Connect the database
-mongo = PyMongo(app)
+db = MongoEngine(app)
+connect(configs.mongoconfig.MONGODB_DB)
+
 
 
 # Setup the Login Manager
-lm = LoginManager()
-lm.init_app(app)
-lm.login_view = 'login'
+# lm = LoginManager()
+# lm.init_app(app)
+# lm.login_view = 'login'
 
 # Add the Upload directory
 allfiles = UploadSet('all', ALL)
