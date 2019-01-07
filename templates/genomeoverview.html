@@ -1,45 +1,102 @@
 {% extends 'admin/master.html' %}
 {% block head %}
+    {{ super() }}
+
             <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 
+
+            <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.nanogallery2.core.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='js/custom_nanogallery.js') }}"></script>
 
 
             <!-- nanogallery2 -->
             <link href="{{ url_for('static', filename='css/nanogallery2.css') }}" rel="stylesheet">
-	        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.nanogallery2.core.js') }}"></script>
 
 {% endblock %}
+
 {% block body %}
 
-    <html>
 
-        <body>
 
-              <h1>gallery made with nanogallery2</h1>
+
+
+              <h1></h1>
 
               <!-- ### position of the gallery ### -->
-              <div id="nanogallery2">gallery_made_with_nanogallery2</div>
+              <div id="my_nanogallery2"></div>
 
               <script>
                  jQuery(document).ready(function () {
 
-                    jQuery("#nanogallery2").nanogallery2( {
+                    jQuery("#my_nanogallery2").nanogallery2( {
                         <!-- ### gallery settings ### -->
                         thumbnailHeight:  150,
                         thumbnailWidth:   150,
                         itemsBaseURL:     'http://nanogallery2.nanostudio.org/samples/',
+                        galleryDisplayMode: 'moreButton',
 
                         <!-- ### gallery content ### -->
                         items: [
                             { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
                             { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
-                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' }
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+                                                        { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },                            { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
+                            { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
+                            { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' },
+
                           ]
                       });
                   });
               </script>
 
-          </body>
-      </html>
+
+
+
+<button type="button" id="btn_del">Delete selection</button>
+<button type="button" id="btn_select_mode">Switch selection mode on/off</button>
+
+
+
+
+{% endblock %}
+
+
+{% block tail_js %}
 
 {% endblock %}
