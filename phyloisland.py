@@ -1,11 +1,9 @@
 from flask import Flask
 from flask_mongoengine import MongoEngine
 from flask_uploads import UploadSet, configure_uploads, ALL
-from flask_user import login_required, UserManager
 from flask_bootstrap import Bootstrap
 from mongoengine import connect
 import configs.mongoconfig
-import users
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -26,8 +24,12 @@ connect(configs.mongoconfig.MONGODB_DB)
 allfiles = UploadSet('all', ALL)
 configure_uploads(app, allfiles)
 
+
+
+
 # Import views down here because we need to have already initialised
 from views import *
+
 
 if __name__ == "__main__":
     app.run(debug=True)
