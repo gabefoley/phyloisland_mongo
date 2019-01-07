@@ -77,3 +77,16 @@
 # #         self._list_columns = ['name', 'password']
 # #
 # #         super(UserView, self)._refresh_cache()
+
+# < div
+# id = "loading"
+# style = "visibility:hidden" >
+#
+# < img
+# src = "/static/img/loading.gif"
+# height = 70
+# " width="
+# 200
+# ">
+#
+# < / div >

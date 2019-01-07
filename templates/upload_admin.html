@@ -1,23 +1,18 @@
 {% extends 'admin/master.html' %}
 
 
-<script>
-    $(document).ready(function() {
-        //attach the click event to all <img> tag having class 'popos_img'
-        //here no need of any for loop
-        $('.upload_submit').click(function(){
-            $("#loading").show();
-        });
-    });
-</script>
+
+
+{% block head %}
+    {{ super() }}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
+{% endblock %}
 
 {% block body %}
 
-{#    <div id="loading">#}
-{##}
-{# <img src="/static/img/loading.gif" height=70" width="200">#}
-{##}
-{#    </div>#}
+
+
 
     <div id="content">
 
@@ -63,40 +58,40 @@
 
                 <br>
                 <br>
+                {{ form.add_sequence }}
             {{form.add_sequence.label }}
-            {{ form.add_sequence }}
             <br>
             <br>
-
-                {{form.add_genome.label }}
                 {{ form.add_genome }}
+
+                {{form.add_genome.label (class_="genome-search") }}
 
 
 
                 <br>
-                {{form.single_genome.label }}
-                {{ form.single_genome }}
+                {{ form.single_genome  }}
+                {{form.single_genome.label (class_="genome-search") }}
 
 
             <br>
-                {{form.genome_type.label }}
+                {{form.genome_type.label (class_= "genome-search") }}
+
                 {{ form.genome_type }}
 
                 <br>
-
-                {{form.representative.label }}
                 {{ form.representative }}
+
+                {{form.representative.label (class_="genome-search") }}
 
 
             <br>
-
-                {{form.assembly.label }}
                 {{ form.assembly }}
 
-                        <br>
-
-                {{form.genbank.label }}
+                {{form.assembly.label (class_="genome-search") }}
+                <br>
                 {{ form.genbank }}
+
+                {{form.genbank.label (class_="genome-search")  }}
 
 
 

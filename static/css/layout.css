@@ -25,6 +25,10 @@ h2 {
     margin-left: 0px;
 }
 
+/* Style disabled checkboxes */
+input[type=checkbox][disabled] + label {
+}
+
 #brand {
     display: inline;
 }
