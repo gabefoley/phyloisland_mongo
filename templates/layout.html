@@ -4,6 +4,7 @@
 {% block head_tail %}
   {{ super() }}
   <link href="{{ url_for('static', filename='css/layout.css') }}" rel="stylesheet">
+
 {% endblock %}
 
 
@@ -48,5 +49,10 @@
      </div>
   </div>
 </div>
+{% endblock %}
+
+
+
+{% block scripts %}
 {% endblock %}
 

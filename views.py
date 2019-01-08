@@ -46,6 +46,7 @@ class UploadView(BaseView):
             try:
 
                 if seq_type == "protein" or seq_type == "nucleotide":
+                    print ('here')
                     seq_records = utilities.read_fasta("static/uploads/" + filename)
 
                     if not seq_records:

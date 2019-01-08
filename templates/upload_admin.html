@@ -2,11 +2,11 @@
 
 
 
-
 {% block head %}
     {{ super() }}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
+        <link href="{{ url_for('static', filename='css/selectize.min.css') }}" rel="stylesheet">
+
+
 {% endblock %}
 
 {% block body %}
@@ -23,17 +23,6 @@
 
 
             <div class="form-group">
-
-{#            {% with messages = get_flashed_messages() %}#}
-{#                  {% if messages %}#}
-{#                    <ul>#}
-{#                    {% for message in messages %}#}
-{#                        <li>{{ message }} </li>#}
-{#                    {% endfor %}#}
-{#                    </ul>#}
-{#                  {% endif %}#}
-{#                {% endwith %}#}
-
 
 
             <br>
@@ -74,25 +63,10 @@
 
 
             <br>
+                <br>
                 {{form.genome_type.label (class_= "genome-search") }}
 
                 {{ form.genome_type }}
-
-                <br>
-                {{ form.representative }}
-
-                {{form.representative.label (class_="genome-search") }}
-
-
-            <br>
-                {{ form.assembly }}
-
-                {{form.assembly.label (class_="genome-search") }}
-                <br>
-                {{ form.genbank }}
-
-                {{form.genbank.label (class_="genome-search")  }}
-
 
 
 
@@ -103,4 +77,13 @@
  </form>
 
 </div>
+{% endblock %}
+
+{% block tail_js %}}
+    {{ super() }}
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/selectize.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
+
+
 {% endblock %}

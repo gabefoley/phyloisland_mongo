@@ -36,10 +36,10 @@ class UploadForm(FlaskForm):
     search_shotgun = BooleanField("Search for shotgun sequenced genomes if we can't find another "
                                   "genomic record?", default="checked")
     genome_type = SelectField('Which genome records should we return?', choices=[
-        ('reference genome','Retrieve RefSeq reference genome/s'),
-        ('representative genome', 'Retrieve RefSeq representative genome/s'),
-        ('assembly', 'Retrieve RefSeq assembly genome/s'),
-        ('genbank', 'Retrieve GenBank assembly genome/s')])
+        ('reference genome','RefSeq reference genome/s'),
+        ('representative genome', 'RefSeq representative genome/s'),
+        ('assembly', 'RefSeq assembly genome/s'),
+        ('genbank', 'GenBank assembly genome/s')])
 
     upload_submit = SubmitField("Upload file")
 

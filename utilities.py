@@ -13,6 +13,7 @@ def read_fasta(filename):
     :param filename:
     :return:
     """
+    print ('and now here')
     return SeqIO.to_dict(SeqIO.parse(filename, "fasta"))
 
 def readLinesFromFile(filepath):
@@ -41,10 +42,11 @@ def removeFile(*args):
         os.remove(arg)
 
 def addGenome(genome_results):
-
-    # print ("Here is where I would add a genome")
-
-    # print (genome_results)
+    """
+    Add a genome into the database
+    :param genome_results:
+    :return:
+    """
     for record in genome_results:
 
         current = genome_results[record]
@@ -66,25 +68,32 @@ def addGenome(genome_results):
                 genome = models.GenomeRecords(name=name, species=species, strain=strain, description=description, sequence=sequence)
                 genome.save()
 
+
 def addSequence(seq_records):
+    """
+    Add a sequence into the database
+    :param seq_records:
+    :return:
+    """
     for record in seq_records.values():
         seq_name = record.id
         seq_description = record.description.split(">")[0]
         seq_species = seq_description.split("[")[1].split("]")[0]
         seq_sequence = str(record.seq)
 
-        seq_entry = models.SequenceRecords(seq_name, seq_species, seq_description, seq_sequence, 0, 0)
-
         # Check if the sequence record already exists
-        seq_check = models.SequenceRecords.query.filter_by(name=seq_name).first()
-        if seq_check == None:
-            print('Adding sequence with ID - %s from species - %s to the sequence database' % (
-                seq_name, seq_species) + "\n")
-            phyloisland.db.session.add(seq_entry)
-            phyloisland.db.session.commit()
-        else:
+        if models.GenomeRecords.objects(name=seq_name):
             print('Sequence with ID - %s from species - %s already exists in the sequence database' % (
                 seq_name, seq_species) + "\n")
+
+
+        else:
+            print('Adding sequence with ID - %s from species - %s to the sequence database' % (
+                seq_name, seq_species) + "\n")
+
+            sequence = models.SequenceRecords(name=seq_name, species=seq_species, description=seq_description, sequence = seq_sequence)
+            sequence.save()
+
 
 def setProfileAsReference(ids, region):
     if len(ids) > 1:
