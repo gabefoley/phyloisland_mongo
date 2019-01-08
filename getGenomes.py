@@ -12,8 +12,6 @@ import utilities
 
 
 def read_genome(outpath, species_name):
-    print ("Reading in genome")
-
 
     # Collate all of the nucleotide records together to make the genome
     concatenated_genome = ""
@@ -118,8 +116,8 @@ def retrieve_genome(records, species_name, category, database):
                 print ("Genome dict is ")
                 print (genome_dict)
 
-                utilities.removeFile(outpath)
-                utilities.removeFile(filepath)
+                utilities.remove_file(outpath)
+                utilities.remove_file(filepath)
 
 
 
@@ -166,7 +164,7 @@ def get_record_list(summary, category, single):
     return ref_dict
 
 
-def add_genome2(species_name, categories, single):
+def add_genome(species_name, categories, single):
 
     for x in ["reference genome", "representative genome", "assembly"]:
         if x in categories:

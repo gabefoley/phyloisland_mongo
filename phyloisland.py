@@ -13,23 +13,12 @@ app.config.from_pyfile('configs/mongoconfig.py')
 db = MongoEngine(app)
 connect(configs.mongoconfig.MONGODB_DB)
 
-
-
-# Setup the Login Manager
-# lm = LoginManager()
-# lm.init_app(app)
-# lm.login_view = 'login'
-
 # Add the Upload directory
 allfiles = UploadSet('all', ALL)
 configure_uploads(app, allfiles)
 
-
-
-
 # Import views down here because we need to have already initialised
 from views import *
-
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -5,11 +5,9 @@ import utilities
 import getGenomes
 import custom_filters
 from flask import render_template, flash, request, session
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_required, current_user
 from flask_admin import Admin, expose, AdminIndexView, BaseView
-from flask_admin.actions import action
 from flask_admin.contrib.mongoengine import ModelView, filters
-from markupsafe import Markup
 import timeit
 import time
 import os
@@ -23,7 +21,6 @@ class UploadView(BaseView):
     """
 
     @expose("/", methods=('GET', 'POST'))
-
     def upload(self):
         form = forms.UploadForm()
 
@@ -46,7 +43,7 @@ class UploadView(BaseView):
             try:
 
                 if seq_type == "protein" or seq_type == "nucleotide":
-                    print ('here')
+                    print('here')
                     seq_records = utilities.read_fasta("static/uploads/" + filename)
 
                     if not seq_records:
@@ -58,19 +55,15 @@ class UploadView(BaseView):
                             utilities.addSequence(seq_records)
 
                         if add_genome:
-                            #TODO: Correct this call
+                            # TODO: Correct this call
                             getGenomes.add_genome(seq_records, seq_type)
-
-
-
 
                 elif seq_type == "species":
 
                     species_names = utilities.readLinesFromFile("static/uploads/" + filename)
-
                     for species_name in species_names:
 
-                        print ("Species name is ", species_name)
+                        print("Species name is ", species_name)
 
                         destinations = [genome_type]
 
@@ -81,31 +74,27 @@ class UploadView(BaseView):
                         if assembly and genome_type not in ["assembly", "genbank"]:
                             destinations.append("assembly")
 
-                        print ("Destinations is ", destinations)
+                        print("Destinations is ", destinations)
 
-                        genome_results = getGenomes.add_genome2(species_name, destinations, single=single)
+                        genome_results = getGenomes.add_genome(species_name, destinations, single=single)
 
                         if genome_results and genome_results != "Fail":
-                            utilities.addGenome(genome_results)
+                            utilities.add_genome(genome_results)
                         else:
 
                             # Couldn't find it in RefSeq, let's try genbank
                             if genbank:
                                 destinations = ["genbank"]
-                                genome_results = getGenomes.add_genome2(species_name, destinations, single=single)
+                                genome_results = getGenomes.add_genome(species_name, destinations, single=single)
 
                                 if genome_results and genome_results != "Fail":
-                                    print("GENOME RESULTS IS ")
-                                    print(genome_results)
-                                    utilities.addGenome(genome_results)
+
+                                    utilities.add_genome(genome_results)
                                 else:
                                     failed_genomes.append(species_name)
 
                             else:
                                 failed_genomes.append(species_name)
-
-
-
 
                 elif seq_type == "genome":
                     pass
@@ -137,7 +126,8 @@ class UploadView(BaseView):
                     #
                     #     elif genome_results != 'in_database' and not search_shotgun:
                     #         print(
-                    #             "\nWe didn't identify any genome records for %s. And we are not attempting to search for shotgun sequenced genomes \n" % (
+                    #             "\nWe didn't identify any genome records for %s. And we are not attempting to search
+                    # for shotgun sequenced genomes \n" % (
                     #                 name))
 
                 elif seq_type == "profile":
@@ -162,33 +152,29 @@ class UploadView(BaseView):
                                     for name, value in periods
                                     if value)
 
-            print('\nFINISHED GETTING RECORDS: Time taken was {} \n'.format( time_string))
+            print('\nFINISHED GETTING RECORDS: Time taken was {} \n'.format(time_string))
             if failed_genomes:
-                print ("List of failed genomes - ", failed_genomes)
+                print("List of failed genomes - ", failed_genomes)
         return self.render("upload_admin.html", form=form)
 
-class SetupView(BaseView):
-    @expose("/", methods=('GET', 'POST'))
 
+class SetupView(BaseView):
+
+    @expose("/", methods=('GET', 'POST'))
     def setup(self):
         form = forms.SetupForm()
         if request.method == "POST":
             if form.submit.data:
-                # try:
-                    models.User.objects().get(username=str(current_user.username)).update(page_size = form.page_size.data)
+                try:
+                    models.User.objects().get(username=str(current_user.username)).update(page_size=form.page_size.data)
                     current = models.User.objects().get(username=str(current_user.username))
-                    print (current)
-                    print (current.email)
-                    current.update(upsert=True, set__thomas = 'ranker')
-
-                    # models.User.objects().get(username=str(current_user.username)).update(upsert=True, thomas = 'ranker')
-                    flash ("User preferences updated", category='success')
+                    flash("User preferences updated", category='success')
                     return self.render('setup.html', form=form)
 
-                # except Exception as e:
-                #     print (e)
-                #     flash ("Something went wrong", category='error')
-                #     return self.render('setup.html', form=form)
+                except Exception as e:
+                    print(e)
+                    flash("Something went wrong", category='error')
+                    return self.render('setup.html', form=form)
 
             else:
                 return self.render('setup.html', form=form)
@@ -206,11 +192,10 @@ class SequenceRecordsView(ModelView):
     # create_template = 'create.html'
     # edit_template = 'edit.html'
 
-
-
     column_formatters = {
-        'sequence':custom_filters.seqdescription_formatter,
+        'sequence': custom_filters.seqdescription_formatter,
     }
+
 
 class GenomeRecordsView(ModelView):
 
@@ -230,7 +215,8 @@ class GenomeRecordsView(ModelView):
 #     """
 #     View of the Profile database for storing HMM Profiles """
 #     column_list = (
-#         'name', 'a1_profile_ref', 'a2_profile_ref', 'pore_profile_ref', 'chitinase_profile_ref', 'region1_profile_ref',
+#         'name', 'a1_profile_ref', 'a2_profile_ref', 'pore_profile_ref', 'chitinase_profile_ref',
+# 'region1_profile_ref',
 #         'region2_profile_ref',
 #         'region3_profile_ref', 'region4_profile_ref', 'download')
 #     form_columns = ('name', 'profile')
@@ -253,8 +239,8 @@ class GenomeRecordsView(ModelView):
 
 
 class GenomeOverviewView(BaseView):
-    @expose("/", methods=('GET', 'POST'))
 
+    @expose("/", methods=('GET', 'POST'))
     def genomeoverview(self):
         form = forms.GenomeOverviewSelectForm()
         # form.genome.choices = [(genome.name, genome.species) for genome in models.GenomeRecords.query.all()]
@@ -262,18 +248,17 @@ class GenomeOverviewView(BaseView):
 
 
 class GenomeDetailView(BaseView):
+
     @login_required
-
     @expose("/", methods=('GET', 'POST'))
-
     def genomedetail(self):
         return self.render('genomedetail.html')
-
 
 
 class MyAdminIndexView(AdminIndexView):
     def is_accessible(self):
         return current_user.is_authenticated
+
 
 class MyHomeView(AdminIndexView):
     @expose("/")
@@ -281,9 +266,7 @@ class MyHomeView(AdminIndexView):
         if 'username' in session:
             return 'You are logged in as ' + session['username']
         else:
-            print ('now here')
             form = forms.LoginForm()
-
             return self.render('admin/index.html', form=form)
 
 
@@ -296,22 +279,22 @@ class UserView(ModelView):
 
 
 class UserFormView(BaseView):
+
     @expose("/")
     def userform(self):
         form = forms.UserForm()
         return self.render('user.html', form=form)
 
+
 @app.errorhandler(404)
 def page_not_found(e):
         return render_template("404.html")
+
 
 @app.errorhandler(500)
 def error_encountered(e):
     return render_template("500.html", error=e)
 
-
-
-# admin = Admin(app, index_view=MyHomeView(), base_template='layout.html', url='/', template_mode='bootstrap3')
 admin = Admin(app, 'Phylo Island', base_template='layout.html', url='/', template_mode='bootstrap3')
 
 admin.add_view(UserView(model=models.User, endpoint='user'))
@@ -322,4 +305,3 @@ admin.add_view(GenomeRecordsView(model=models.GenomeRecords, endpoint="genome_re
 # admin.add_view(ProfileView(model=models.Profile, session=db.session, name='Profiles'))
 admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
 admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
-

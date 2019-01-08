@@ -2,7 +2,6 @@ from flask_wtf import FlaskForm
 from wtforms import FileField, StringField, SelectField, SelectMultipleField, BooleanField, PasswordField, SubmitField, validators
 from wtforms.fields.html5 import IntegerField
 from wtforms.validators import DataRequired
-import models
 
 
 class LoginForm(FlaskForm):
@@ -10,6 +9,7 @@ class LoginForm(FlaskForm):
 
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+
 
 class UploadForm(FlaskForm):
     """
@@ -43,18 +43,18 @@ class UploadForm(FlaskForm):
 
     upload_submit = SubmitField("Upload file")
 
+
 class SetupForm(FlaskForm):
+    """
+    Form for customising user preferences
+    """
     page_size = IntegerField(u'Preferred page size', [validators.optional()])
     submit = SubmitField("Submit")
 
 
-
 class GenomeOverviewSelectForm(FlaskForm):
+    """
+    Form for selecting which genomes to look at in the Genome Overview
+    """
     genome = SelectMultipleField('Genome', choices=[])
-    submit = SubmitField("Submit")
-
-
-class UserForm(FlaskForm):
-    username = StringField()
-    password = StringField()
     submit = SubmitField("Submit")

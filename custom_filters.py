@@ -1,11 +1,21 @@
 import phyloisland
 from flask_admin.contrib.sqla.filters import BaseSQLAFilter
 
+
 def seqdescription_formatter(view, context, model, name):
+    """
+    Format a sequence description so that you only visualise the start of a sequence
+    :param view:
+    :param context:
+    :param model:
+    :param name:
+    :return:
+    """
     if model.sequence:
         return model.sequence[:15] + "..."
     else:
         return model.sequence
+
 
 class GetUniqueSpecies(BaseSQLAFilter):
     def apply(self, query, value, alias="None"):
@@ -20,8 +30,7 @@ class GetUniqueSpecies(BaseSQLAFilter):
             else:
                 species_list.append(species)
                 id_list.append(record.id)
-        # print(species_list)
-        # print(id_list)
+
         return query.filter(self.get_column(alias).in_(id_list))
 
     def operation(self):

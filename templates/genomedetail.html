@@ -1,1 +1,55 @@
 {% extends 'admin/master.html' %}
+
+{% block head_tail %}
+  {{ super() }}
+        <script src="../../static/js/d3/d3.min.js"></script>
+    <script src="../../static/js/d3/d3-tip.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/tracks.css">
+
+
+
+{% endblock %}
+
+
+
+
+
+
+        {% block body %}
+
+
+
+            <br>
+            <br>
+            <div id="scrollable>">
+
+
+
+
+      <div id="circularchart"></div>
+
+                            <div id="demo-controls">
+
+      <div class="control-item"><input type="checkbox" name="showStrand" onchange="updateStrand(this); return false" checked>Show stranded track</div>
+
+
+    </div>
+
+            <div id="linearchart"></div>
+      <div id="brush"></div>
+
+
+
+    <input type="button" id="resizeButton" onClick="resizeLinearPlot(); return false;" value="Resize plot">
+            </div>
+
+{#    <script type="text/javascript" src="../../static/js/data.simple.js"></script>#}
+                <script type="text/javascript" src="../../static/js/circularplot.js"></script>
+    <script type="text/javascript" src="../../static/js/linearplot.js"></script>
+    <script type="text/javascript" src="../../static/js/linearbrush.js"></script>
+    <script type="text/javascript" src="../../static/js/lineardemo.js"></script>
+                <script type="text/javascript" src="../../static/js/circularsample.js"></script>
+
+
+        {% endblock %}
+

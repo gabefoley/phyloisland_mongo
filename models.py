@@ -1,13 +1,11 @@
 from phyloisland import app, db
 from flask_user import UserMixin, UserManager
 
-from flask_mongoengine import *
-from flask_mongoengine.wtf import model_form
-
-
-# Create models
 
 class User(db.DynamicDocument, UserMixin):
+    """
+    User model
+    """
     active = db.BooleanField(default=True)
 
     # User authentication information
@@ -23,14 +21,17 @@ class User(db.DynamicDocument, UserMixin):
     # Customisable information
     page_size = db.IntField()
 
-
     # Relationships
     roles = db.ListField(db.StringField(), default=[])
 
 # Setup Flask-User and specify the User data-model
 user_manager = UserManager(app, db, User)
 
+
 class SequenceRecords(db.DynamicDocument):
+    """
+    Class for storing Sequence records
+    """
     name = db.StringField()
     species = db.StringField()
     description = db.StringField()
@@ -39,6 +40,9 @@ class SequenceRecords(db.DynamicDocument):
 
 
 class GenomeRecords(db.DynamicDocument):
+    """
+    Class for storing Genome records
+    """
     name = db.StringField()
     species = db.StringField()
     strain = db.StringField()

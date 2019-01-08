@@ -11,10 +11,10 @@ def read_fasta(filename):
     """
     Read in a FASTA file
     :param filename:
-    :return:
+    :return: Dictionary object containing a SeqRecord
     """
-    print ('and now here')
     return SeqIO.to_dict(SeqIO.parse(filename, "fasta"))
+
 
 def readLinesFromFile(filepath):
     """
@@ -31,7 +31,8 @@ def readLinesFromFile(filepath):
                 content.add(line.strip())
     return content
 
-def removeFile(*args):
+
+def remove_file(*args):
     """
     Remove files in the list from the directory
 
@@ -41,11 +42,11 @@ def removeFile(*args):
     for arg in args:
         os.remove(arg)
 
-def addGenome(genome_results):
+
+def add_genome(genome_results):
     """
     Add a genome into the database
     :param genome_results:
-    :return:
     """
     for record in genome_results:
 
@@ -58,22 +59,23 @@ def addGenome(genome_results):
             description = current.description
 
             # Check to see if the genome record already exists
-            if  models.GenomeRecords.objects(name=name):
+            if models.GenomeRecords.objects(name=name):
                 print("The genome record - %s from species - %s already exists in the database" % (name, species))
                 continue
 
             else:
                 print("Adding the genome record - %s from species - %s to the genome database" % (name, species))
 
-                genome = models.GenomeRecords(name=name, species=species, strain=strain, description=description, sequence=sequence)
+                genome = models.GenomeRecords(name=name, species=species, strain=strain, description=description,
+                                              sequence=sequence)
                 genome.save()
+
 
 
 def addSequence(seq_records):
     """
     Add a sequence into the database
     :param seq_records:
-    :return:
     """
     for record in seq_records.values():
         seq_name = record.id
@@ -91,11 +93,19 @@ def addSequence(seq_records):
             print('Adding sequence with ID - %s from species - %s to the sequence database' % (
                 seq_name, seq_species) + "\n")
 
-            sequence = models.SequenceRecords(name=seq_name, species=seq_species, description=seq_description, sequence = seq_sequence)
+            sequence = models.SequenceRecords(name=seq_name, species=seq_species, description=seq_description,
+                                              sequence = seq_sequence)
             sequence.save()
 
 
+
 def setProfileAsReference(ids, region):
+    """
+
+    :param ids:
+    :param region:
+    :return:
+    """
     if len(ids) > 1:
         flash('Only select a single record', category='error')
     else:
@@ -104,7 +114,7 @@ def setProfileAsReference(ids, region):
             # Check for a previous reference profile
             old_profile_reference = eval("models.Profile.query.filter_by(" + region + "_profile_ref=1).first()")
 
-            if (old_profile_reference):
+            if old_profile_reference:
                 # Remove the previous reference profile
                 setattr(old_profile_reference, region + "_profile_ref", 0)
                 phyloisland.db.session.add(old_profile_reference)
