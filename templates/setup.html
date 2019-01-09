@@ -12,18 +12,26 @@
                 {{ form.page_size.label }}
                 {{ form.page_size }}
 
+                <br>
+                <br>
+
                 <div class="multi-field-wrapper">
                 <div class="multi-fields">
                 <div class="multi-field">
-                <input type="text" name="stuff[]">
+                    Reference name to add:
+                <input type="text" name="references">
                 <button type="button" class="remove-field">Remove</button>
+                    <br>
         </div>
       </div>
-    <button type="button" class="add-field">Add field</button>
+                    <br>
+    <button type="button" class="add-field">Add another reference name</button>
                     </div>
+                <br>
 
             {{ form.submit(class="btn-primary") }}
             </div>
+
  </form>
 
 </div>

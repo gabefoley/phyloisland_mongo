@@ -20,6 +20,7 @@ class User(db.DynamicDocument, UserMixin):
 
     # Customisable information
     page_size = db.IntField()
+    references = db.ListField(db.StringField(), default=[])
 
     # Relationships
     roles = db.ListField(db.StringField(), default=[])

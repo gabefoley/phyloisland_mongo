@@ -2,28 +2,48 @@
 
 {% block head_tail %}
   {{ super() }}
-        <script src="../../static/js/d3/d3.min.js"></script>
+
+    <script src="../../static/js/d3/d3.min.js"></script>
     <script src="../../static/js/d3/d3-tip.js"></script>
-        <link rel="stylesheet" type="text/css" href="/static/css/tracks.css">
+    <link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
 
 
 
 {% endblock %}
 
-
-
-
-
-
         {% block body %}
+<script>
+var tracks = [
+	      { trackName: "track1",
+		trackType: "stranded",
+		visible: true,
+		inner_radius: 130,
+		outer_radius: 185,
+		trackFeatures: "complex",
+		featureThreshold: 1040807,
+		mouseclick: 'islandPopup',
+		mouseover_callback: 'islandPopup',
+		mouseout_callback: 'islandPopupClear',
+		linear_mouseclick: 'linearPopup',
+		showLabels: true,
+		showTooltip: true,
+		linear_mouseclick: 'linearClick',
+		items: [
+                         {id: 1, start:1027919, end:1032311, name:"region1", strand: -2},
+                         {id: 2, start:1041107,end:1045847, name:"pop", strand: -2},
+                         {id: 3, start:1032476,end:1037282, name:"drop", strand: -2},
+                         {id: 4, start:1046036,end:1049426, name:"winks", strand: 2},
+                         {id: 5, start:1037408,end:1040807, name:"noon", strand: 1}
+			]
+	      }
 
+      ];
+</script>
 
 
             <br>
             <br>
             <div id="scrollable>">
-
-
 
 
       <div id="circularchart"></div>
@@ -42,8 +62,7 @@
 
     <input type="button" id="resizeButton" onClick="resizeLinearPlot(); return false;" value="Resize plot">
             </div>
-
-{#    <script type="text/javascript" src="../../static/js/data.simple.js"></script>#}
+<script type="text/javascript" src="../../static/js/data.simple.js"></script>
                 <script type="text/javascript" src="../../static/js/circularplot.js"></script>
     <script type="text/javascript" src="../../static/js/linearplot.js"></script>
     <script type="text/javascript" src="../../static/js/linearbrush.js"></script>

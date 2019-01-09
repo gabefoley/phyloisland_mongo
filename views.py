@@ -20,6 +20,7 @@ class UploadView(BaseView):
     View for uploading files
     """
 
+    @login_required
     @expose("/", methods=('GET', 'POST'))
     def upload(self):
         form = forms.UploadForm()
@@ -160,14 +161,21 @@ class UploadView(BaseView):
 
 class SetupView(BaseView):
 
+    @login_required
     @expose("/", methods=('GET', 'POST'))
     def setup(self):
         form = forms.SetupForm()
+        current = models.User.objects().get(username=str(current_user.username))
         if request.method == "POST":
             if form.submit.data:
                 try:
                     models.User.objects().get(username=str(current_user.username)).update(page_size=form.page_size.data)
-                    current = models.User.objects().get(username=str(current_user.username))
+                    print ('data')
+                    models.User.objects().get(username=str(current_user.username)).update(page_size=form.page_size.data)
+
+                    for reference in request.form.getlist('references'):
+                        models.User.objects().update(add_to_set__references=reference)
+
                     flash("User preferences updated", category='success')
                     return self.render('setup.html', form=form)
 
@@ -184,6 +192,8 @@ class SetupView(BaseView):
 
 
 class SequenceRecordsView(ModelView):
+
+
     create_modal = True
     edit_modal = True
     can_create = False
@@ -240,6 +250,7 @@ class GenomeRecordsView(ModelView):
 
 class GenomeOverviewView(BaseView):
 
+    @login_required
     @expose("/", methods=('GET', 'POST'))
     def genomeoverview(self):
         form = forms.GenomeOverviewSelectForm()
@@ -275,11 +286,12 @@ class UserView(ModelView):
     edit_modal = True
     can_create = False
     can_view_details = True
-    column_list = ['name', 'password', 'thomas']
+    # column_list = ['name', 'password', 'thomas']
 
 
 class UserFormView(BaseView):
 
+    @login_required
     @expose("/")
     def userform(self):
         form = forms.UserForm()
