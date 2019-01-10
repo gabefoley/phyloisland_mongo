@@ -4,14 +4,18 @@ import forms
 import utilities
 import getGenomes
 import custom_filters
-from flask import render_template, flash, request, session
+from flask import render_template, flash, request, session, send_file
 from flask_login import login_required, current_user
-from flask_admin import Admin, expose, AdminIndexView, BaseView
+from flask_admin import Admin, expose, BaseView
+from flask_admin.actions import action
 from flask_admin.contrib.mongoengine import ModelView, filters
+from markupsafe import Markup
 import timeit
 import time
 import os
 from urllib.error import HTTPError
+import random
+import io
 
 
 class UploadView(BaseView):
@@ -24,6 +28,7 @@ class UploadView(BaseView):
     @expose("/", methods=('GET', 'POST'))
     def upload(self):
         form = forms.UploadForm()
+        print ('is it validated - ', form.validate())
 
         if request.method == 'POST' and form.validate():
 
@@ -40,6 +45,8 @@ class UploadView(BaseView):
             assembly = form.assembly.data
             genbank = form.genbank.data
             failed_genomes = []
+
+            print ('seq type is ', seq_type)
 
             try:
 
@@ -132,6 +139,7 @@ class UploadView(BaseView):
                     #                 name))
 
                 elif seq_type == "profile":
+                    print ('it is a profile')
 
                     hmm_path = "static/uploads/" + filename
                     while not os.path.exists(hmm_path):
@@ -156,6 +164,10 @@ class UploadView(BaseView):
             print('\nFINISHED GETTING RECORDS: Time taken was {} \n'.format(time_string))
             if failed_genomes:
                 print("List of failed genomes - ", failed_genomes)
+
+        else:
+            print (form)
+
         return self.render("upload_admin.html", form=form)
 
 
@@ -166,6 +178,10 @@ class SetupView(BaseView):
     def setup(self):
         form = forms.SetupForm()
         current = models.User.objects().get(username=str(current_user.username))
+        prefs = {'page_size' : current.page_size, 'references' : current_user.references}
+
+
+
         if request.method == "POST":
             if form.submit.data:
                 try:
@@ -177,27 +193,28 @@ class SetupView(BaseView):
                         models.User.objects().update(add_to_set__references=reference)
 
                     flash("User preferences updated", category='success')
-                    return self.render('setup.html', form=form)
+                    return self.render('setup.html', form=form, prefs=prefs)
 
                 except Exception as e:
                     print(e)
                     flash("Something went wrong", category='error')
-                    return self.render('setup.html', form=form)
+                    return self.render('setup.html', form=form, prefs=prefs)
 
             else:
-                return self.render('setup.html', form=form)
+                return self.render('setup.html', form=form, prefs=prefs)
 
         elif request.method == "GET":
-            return self.render('setup.html', form=form)
+            return self.render('setup.html', form=form, prefs=prefs)
 
 
 class SequenceRecordsView(ModelView):
 
 
-    create_modal = True
     edit_modal = True
     can_create = False
     can_view_details = True
+    form_edit_rules = ('name', 'species', 'description', 'sequence')
+
     # list_template = 'list.html'
     # create_template = 'create.html'
     # edit_template = 'edit.html'
@@ -207,18 +224,48 @@ class SequenceRecordsView(ModelView):
     }
 
 
+
+
+
 class GenomeRecordsView(ModelView):
 
-    create_modal = True
-    edit_modal = True
-    can_create = False
-    can_view_details = True
-    page_size = 2
 
+    form_edit_rules = ('name', 'species', 'strain', 'description')
+
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def index_view(self):
+        print (session.get('page_size'))
+        current = models.User.objects().get(username=str(current_user.username))
+        print (current.page_size)
+        self.edit_modal = True
+        self.can_create = False
+        self.can_view_details = True
+
+        self.page_size = current.page_size
+
+        return super(ModelView, self).index_view()
+
+
+    def is_accessible(self):
+        if (not current_user.is_active or not
+        current_user.is_authenticated):
+            return False
+        return True
+
+
+        # print (current_user)
+    #
+    #
+    #
+    # create_modal = True
+    # edit_modal = True
+    # can_create = False
+    # can_view_details = True
+    #
     column_formatters = {
         'sequence': custom_filters.seqdescription_formatter,
     }
-
 
 #
 # class ProfileView(ModelView):
@@ -265,28 +312,40 @@ class GenomeDetailView(BaseView):
     def genomedetail(self):
         return self.render('genomedetail.html')
 
-
-class MyAdminIndexView(AdminIndexView):
-    def is_accessible(self):
-        return current_user.is_authenticated
-
-
-class MyHomeView(AdminIndexView):
-    @expose("/")
-    def index(self):
-        if 'username' in session:
-            return 'You are logged in as ' + session['username']
-        else:
-            form = forms.LoginForm()
-            return self.render('admin/index.html', form=form)
-
-
 class UserView(ModelView):
-    create_modal = True
-    edit_modal = True
-    can_create = False
-    can_view_details = True
-    # column_list = ['name', 'password', 'thomas']
+
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def index_view(self):
+        self.edit_modal = True
+        self.can_view_details = True
+
+        self.can_create = False
+        self.column_list = ['username']
+
+        choice = bool(random.getrandbits(1))
+        print ("Choice is ", choice)
+        if choice:
+            self.column_list = ['username']
+        else:
+            self.column_list = ['username', 'password']
+        return super(ModelView, self).index_view()
+
+
+    def is_accessible(self):
+        if (not current_user.is_active or not
+        current_user.is_authenticated):
+            return False
+        return True
+
+    @property
+    def _list_columns(self):
+        return self.get_list_columns()
+
+    @_list_columns.setter
+    def _list_columns(self, value):
+        pass
+
 
 
 class UserFormView(BaseView):
@@ -297,6 +356,51 @@ class UserFormView(BaseView):
         form = forms.UserForm()
         return self.render('user.html', form=form)
 
+class ProfileView(ModelView):
+    """
+    View of the Profile database for storing HMM Profiles """
+    column_list = (
+        'name', 'references', 'download')
+    form_columns = ('name', 'profile')
+
+    form_extra_fields = {'profile': models.BlobUploadField(
+        label='File',
+        allowed_extensions=['pdf', 'doc', 'docx', 'xls', 'xlsx', 'png', 'jpg', 'jpeg', 'gif', 'hmm', 'fa', 'fasta'],
+        size_field='size',
+        filename_field='filename',
+        mimetype_field='mimetype'
+    )}
+
+    def _download_formatter(self, context, model, name):
+
+        print (model.name)
+        print (name)
+
+        return Markup(
+            "<a href='{url}' target='_blank'>Download</a>".format(url=self.get_url('download_blob', id=model.name)))
+
+    column_formatters = {
+        'download': _download_formatter,
+    }
+
+class DocumentationView(BaseView):
+
+    @expose("/")
+    def documentation(self):
+        return self.render('documentation.html')
+
+@app.route("/<id>", methods=['GET'])
+def download_blob(id):
+    """
+    Route for downloading profiles from the Profile view
+    :param id: Profile to download
+    :return:
+    """
+    print (id)
+    profile = models.Profile.objects().get(name=id)
+    return send_file(
+        io.BytesIO(profile.profile),
+        attachment_filename=id + '.hmm')
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -314,6 +418,7 @@ admin.add_view(SetupView(name='Setup', endpoint='setup'))
 admin.add_view(UploadView(name='Upload', endpoint='upload_admin'))
 admin.add_view(SequenceRecordsView(model=models.SequenceRecords, endpoint="sequence_records"))
 admin.add_view(GenomeRecordsView(model=models.GenomeRecords, endpoint="genome_records"))
-# admin.add_view(ProfileView(model=models.Profile, session=db.session, name='Profiles'))
+admin.add_view(ProfileView(model=models.Profile, name='Profiles', endpoint='profiles'))
 admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
 admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
+admin.add_view(DocumentationView(name='Documentation & FAQ', endpoint='documentation'))

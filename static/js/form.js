@@ -14,11 +14,15 @@
                 $('#add_sequence').prop('disabled', true);
                 $('#add_sequence').prop('checked', false);
                 $("label[for='add_sequence']").css('color', '#ccc');
+                $('#genome_type')[0].selectize.enable();
+
             }
             else if ($(this).val() === 'profile') {
                 $("input[type='checkbox']").prop('disabled', true).prop('checked', false);
                 $('.genome-search').css('color', '#ccc');
                 $("label[for='add_sequence']").css('color', '#ccc');
+                $('#genome_type')[0].selectize.disable();
+
 
             }
 
@@ -26,6 +30,8 @@
                 $("input[type='checkbox']").prop('disabled', false).prop('checked', true);
                 $('.genome-search').css('color', 'black');
                 $("label[for='add_sequence']").css('color', 'black');
+                $('#genome_type')[0].selectize.enable();
+
 
 
             }
@@ -51,47 +57,47 @@
             create: true
         });
 
-$(function() {
-  var $wrapper = $('#wrapper');
+        $(function() {
+          var $wrapper = $('#wrapper');
 
 
 
-  // display scripts on the page
-  $('script', $wrapper).each(function() {
-    var code = this.text;
-    if (code && code.length) {
-      var lines = code.split('\n');
-      var indent = null;
+          // display scripts on the page
+          $('script', $wrapper).each(function() {
+            var code = this.text;
+            if (code && code.length) {
+              var lines = code.split('\n');
+              var indent = null;
 
-      for (var i = 0; i < lines.length; i++) {
-        if (/^[  ]*$/.test(lines[i])) continue;
-        if (!indent) {
-          var lineindent = lines[i].match(/^([  ]+)/);
-          if (!lineindent) break;
-          indent = lineindent[1];
-        }
-        lines[i] = lines[i].replace(new RegExp('^' + indent), '');
-      }
+              for (var i = 0; i < lines.length; i++) {
+                if (/^[  ]*$/.test(lines[i])) continue;
+                if (!indent) {
+                  var lineindent = lines[i].match(/^([  ]+)/);
+                  if (!lineindent) break;
+                  indent = lineindent[1];
+                }
+                lines[i] = lines[i].replace(new RegExp('^' + indent), '');
+              }
 
-      code = $.trim(lines.join('\n')).replace(/ /g, '    ');
-      var $pre = $('<pre>').addClass('js').text(code);
-      $pre.insertAfter(this);
-    }
-  });
+              code = $.trim(lines.join('\n')).replace(/ /g, '    ');
+              var $pre = $('<pre>').addClass('js').text(code);
+              $pre.insertAfter(this);
+            }
+          });
 
-  // show current input values
-  $('select.selectized,input.selectized', $wrapper).each(function() {
-    var $container = $('<div>').addClass('value').html('Current Value: ');
-    var $value = $('<span>').appendTo($container);
-    var $input = $(this);
-    var update = function(e) { $value.text(JSON.stringify($input.val())); };
+          // show current input values
+          $('select.selectized,input.selectized', $wrapper).each(function() {
+            var $container = $('<div>').addClass('value').html('Current Value: ');
+            var $value = $('<span>').appendTo($container);
+            var $input = $(this);
+            var update = function(e) { $value.text(JSON.stringify($input.val())); };
 
-    $(this).on('change', update);
-    update();
+            $(this).on('change', update);
+            update();
 
-    $container.insertAfter($input);
-  });
-});
+            $container.insertAfter($input);
+          });
+        });
 
 
 

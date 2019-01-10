@@ -10,7 +10,12 @@
             <div class="smallform">
 
                 {{ form.page_size.label }}
-                {{ form.page_size }}
+
+
+                {% set f = form.page_size.process_data(prefs['page_size']|string()) %}
+
+
+                {{ form.page_size() }}
 
                 <br>
                 <br>
@@ -31,6 +36,14 @@
 
             {{ form.submit(class="btn-primary") }}
             </div>
+         <br>
+
+         <div>
+             Current reference names are - <br>
+             {% for name in prefs['references'] %}
+                {{name}} <br>
+             {% endfor %}
+         </div>
 
  </form>
 

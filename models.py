@@ -1,5 +1,10 @@
 from phyloisland import app, db
 from flask_user import UserMixin, UserManager
+from wtforms import ValidationError, fields
+from wtforms.validators import required
+from wtforms.widgets import FileInput
+from werkzeug.datastructures import FileStorage
+from gettext import gettext
 
 
 class User(db.DynamicDocument, UserMixin):
@@ -51,3 +56,87 @@ class GenomeRecords(db.DynamicDocument):
     sequence = db.StringField()
     present = db.DictField()
     references = db.ListField(db.StringField(), default=list)
+
+# class BlobMixin(db.DynamicDocument):
+#     mimetype = db.StringField()
+#     filename = db.StringField()
+#     profile = db.BinaryField()
+#     size = db.IntField()
+
+
+
+# class BlobMixin(object):
+#     mimetype = db.Column(db.Unicode(length=255), nullable=False)
+#     filename = db.Column(db.Unicode(length=255), nullable=False)
+#     profile = db.Column(db.BLOB, nullable=False)
+#     size = db.Column(db.Integer, nullable=False)
+#
+#     def __init__(self, mimetype, filename, profile, size):
+#         self.mimetype = mimetype
+#         self.filename = filename
+#         self.profile = profile
+#         self.size = size
+
+class Profile(db.DynamicDocument):
+
+    name = db.StringField()
+    profile = db.BinaryField()
+    references = db.ListField(db.StringField(), default=list)
+
+
+class BlobUploadField(fields.StringField):
+    widget = FileInput()
+
+    def __init__(self, label=None, allowed_extensions=None, size_field=None, filename_field=None, mimetype_field=None,
+                 **kwargs):
+
+        self.allowed_extensions = allowed_extensions
+        self.size_field = size_field
+        self.filename_field = filename_field
+        self.mimetype_field = mimetype_field
+        validators = [required()]
+
+        super(BlobUploadField, self).__init__(label, validators, **kwargs)
+
+    def is_file_allowed(self, filename):
+        """
+            Check if file extension is allowed.
+
+            :param filename:
+                File name to check
+        """
+        if not self.allowed_extensions:
+            return True
+
+        return ('.' in filename and
+                filename.rsplit('.', 1)[1].lower() in
+                map(lambda x: x.lower(), self.allowed_extensions))
+
+    def _is_uploaded_file(self, data):
+        return (data and isinstance(data, FileStorage) and data.filename)
+
+    def pre_validate(self, form):
+        super(BlobUploadField, self).pre_validate(form)
+        if self._is_uploaded_file(self.data) and not self.is_file_allowed(self.data.filename):
+            raise ValidationError(gettext('Invalid file extension'))
+
+    def process_formdata(self, valuelist):
+        if valuelist:
+            data = valuelist[0]
+            self.data = data
+
+    def populate_obj(self, obj, name):
+
+        if self._is_uploaded_file(self.data):
+
+            _profile = self.data.read()
+            setattr(obj, name, _profile)
+
+            if self.size_field:
+                setattr(obj, self.size_field, len(_profile))
+
+            if self.filename_field:
+                setattr(obj, self.filename_field, self.data.filename)
+
+            if self.mimetype_field:
+                setattr(obj, self.mimetype_field, self.data.content_type)

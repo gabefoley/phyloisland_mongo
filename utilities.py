@@ -2,6 +2,7 @@ import phyloisland
 import models
 import os
 from flask import flash
+import random
 
 from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
@@ -97,7 +98,24 @@ def addSequence(seq_records):
                                               sequence = seq_sequence)
             sequence.save()
 
+def saveProfile(profile):
+    """
+    Save a profile into the database
+    :param profile: Profile to save
+    """
+    print ('in save profile')
+    name = randstring(5)
+    profileEntry = models.Profile(name, profile.read(), [])
+    profileEntry.save()
 
+
+    # print ('in save profile')
+    # name = randstring(5)
+    # blobMix = models.BlobMixin("application/octet-stream", name, profile.read(), '566666')
+    # profileEntry = models.Profile(name)
+    # profileEntry.set_blobMix(blobMix)
+    # phyloisland.db.session.add(profileEntry)
+    # phyloisland.db.session.commit()
 
 def setProfileAsReference(ids, region):
     """
@@ -131,3 +149,7 @@ def setProfileAsReference(ids, region):
                 profile_path.write(record.profile.decode('utf-8'))
 
             flash("The profile named %s has been set as the reference profile for %s" % (record.name, region), category='success')
+
+def randstring(length=10):
+    valid_letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    return ''.join((random.choice(valid_letters) for i in range(length)))

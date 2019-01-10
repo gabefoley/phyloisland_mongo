@@ -33,6 +33,14 @@ input[type=checkbox][disabled] + label {
     display: inline;
 }
 
+.multi-field{
+	font-weight: bold;
+}
+
+.remove-field{
+	font-weight: normal;
+}
+
 ul {
 	margin-top:15px;
 }

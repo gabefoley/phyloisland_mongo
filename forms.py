@@ -17,7 +17,7 @@ class UploadForm(FlaskForm):
     """
     file = FileField('Upload the file that contains the information we will map to the genome records.',
                      [validators.DataRequired()])
-    input_text = StringField(u'Input text', [validators.optional()])
+    # input_text = StringField(u'Input text', [validators.optional()])
     # type = SelectField('What type of file is this?', [validators.DataRequired()],
     #                    choices=[("protein", "FASTA (amino acids)"), ("nucleotide", "FASTA (nucleotides)"),
     #                             ("species", "Species list"), ("genome", "Genome ID list"), ("profile", "Profile")])
@@ -50,6 +50,9 @@ class SetupForm(FlaskForm):
     """
     page_size = IntegerField(u'Preferred page size', [validators.optional()])
     submit = SubmitField("Submit")
+
+# class DeleteReferenceForm(FlaskForm):
+
 
 
 class GenomeOverviewSelectForm(FlaskForm):
