@@ -9,7 +9,10 @@
 
 {% endblock %}
 
+
 {% block body %}
+
+
 
 
 
@@ -22,7 +25,7 @@
 
 
 
-            <div class="form-group">
+            <div class="upload-form">
 
 
             <br>
@@ -68,6 +71,21 @@
 
                 {{ form.genome_type }}
 
+                                <br>
+                {{form.representative.label (class_= "genome-search") }}
+
+                {{ form.representative }}
+
+                                                <br>
+                {{form.assembly.label (class_= "genome-search") }}
+
+                {{ form.assembly }}
+
+                                                <br>
+                {{form.genbank.label (class_= "genome-search") }}
+
+                {{ form.genbank }}
+
 
 
             <br>
@@ -77,13 +95,18 @@
  </form>
 
 </div>
+
 {% endblock %}
 
 {% block tail_js %}}
     {{ super() }}
-    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <!--<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
+
     <script type="text/javascript" src="{{ url_for('static', filename='js/selectize.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
+
+
 
 
 {% endblock %}

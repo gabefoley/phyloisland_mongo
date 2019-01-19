@@ -53,6 +53,12 @@ class SetupForm(FlaskForm):
 
 # class DeleteReferenceForm(FlaskForm):
 
+class DeleteForm(FlaskForm):
+    """
+    Form for deleting references
+    """
+    del_references = SelectField('Reference to delete')
+    submit = SubmitField("Delete reference")
 
 
 class GenomeOverviewSelectForm(FlaskForm):

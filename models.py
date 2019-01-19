@@ -80,8 +80,8 @@ class GenomeRecords(db.DynamicDocument):
 class Profile(db.DynamicDocument):
 
     name = db.StringField()
-    profile = db.BinaryField()
-    references = db.ListField(db.StringField(), default=list)
+    profile = db.FileField()
+    references = db.DictField(db.StringField(), default=list)
 
 
 class BlobUploadField(fields.StringField):

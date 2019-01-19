@@ -1,0 +1,108 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/A1_profile.hmm
+# target sequence database:        hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_forward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_forward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       align  [M=1131]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence       Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------       -----------
+          0 1513.7  13.6          0 1460.7   1.1    2.4  1  AUXQ01000298.1  Photorhabdus temperata subsp. temperata M1021
+
+
+Domain annotation for each sequence (and alignments):
+>> AUXQ01000298.1  Photorhabdus temperata subsp. temperata M1021 Contig298, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 1460.7   1.1         0         0      31    1130 .. 1414117 1415239 .. 1414095 1415240 .. 0.97
+
+  Alignments for each domain:
+  == domain 1  score: 1460.7 bits;  conditional E-value: 0
+           align      31 qsteslvdelkrlGyfsifdivkvskqrfikrhneslsGqaevifdkavsmanqlvqsyrqrslrdadteklakvasgaeklPdyss 117    
+                         ++ +sl+ +l +lGy+s+fdi++v+k+rf +rh++++sG+a  i+d+a+s+a+qlv+  r+++lrd ++ +l+++a+g+++lP y++
+  AUXQ01000298.1 1414117 EAENSLATQLINLGYQSVFDIIRVGKSRFLRRHKHQFSGHASEIYDRALSFATQLVHMQREQGLRDGESLRLKRIAEGKPELPSYTD 1414203
+                         55678999******************************************************************************* PP
+
+           align     118 lfpepwdnfckPdaiesLdsPaaYLleLYkfvkqlelDgtnqalkleqRRaDipeLlLdsdnlnkevsaleivndvLsesareyidq 204    
+                         lf+epwdnfc+P+a+e+L+sP++YLleLY f++q+elD+t++a  leqRR+D+ eL+Ld dn+++e++al+ivn+vLs sa++yid 
+  AUXQ01000298.1 1414204 LFSEPWDNFCRPGALEALNSPISYLLELYLFARQIELDSTEGATMLEQRRPDLAELMLDADNTYQELPALKIVNEVLSYSAANYIDL 1414290
+                         *************************************************************************************** PP
+
+           align     205 sgeaekpvnqvlGetrfPftlPyslatqqinkGlaekntelgtviqqvdqelpwstte...ekanqvllaytqlskeqielltekap 288    
+                         +++++kpvnqvlGetr+PftlP+sl+t qi++Gl +k+t+l+++iq++ +e+pw+ ++   +k+n++lla t lskeq++ll++++p
+  AUXQ01000298.1 1414291 TEDTGKPVNQVLGETRYPFTLPFSLPTTQITLGLEQKKTSLAKIIQALSTEIPWFSHNlpaNKQNNTLLAGTLLSKEQMALLSQPSP 1414377
+                         ******************************************************98762226799********************** PP
+
+           align     289 fsqnllsreelvksylsgstteilpekdlskhayivkqeenikGptkl....vensdeaydeievtCknkakktitvklrgenvlty 371    
+                         f+q  l+r+ l + ylsgstte+++++ ls h+yiv++++n++Gp++l    +e +++ ++ i+vtC+n++kk it+klrg++vl y
+  AUXQ01000298.1 1414378 FAQVHLTRPRLQAVYLSGSTTETVTDIVLSAHGYIVPKQDNVSGPDELtyseIEPAPDNHEFITVTCTNQDKKPITIKLRGKSVLSY 1414464
+                         ************************************************99888999999**************************** PP
+
+           align     372 qrikarlePfdnspPfsrqlkltyveednkdvnldeGPyfgeltiyaakpkeknsfltlkyrlaiakkgtsaeellpeaedffekny 458    
+                         qrikarl Pfd++pP++rql+l++++edn+ ++l  GPyfge++i  +k++ek+s ltl+yr+aia +++ +++l pea dff +ny
+  AUXQ01000298.1 1414465 QRIKARLLPFDDTPPYPRQLELSWHNEDNPGLDLAAGPYFGEIKIEVQKWSEKTSVLTLTYRFAIAGDDIDEDKLFPEAADFFLENY 1414551
+                         *************************************************************************************** PP
+
+           align     459 GlsaeesskLkellafgdqteskaeeveellssgdfapvvspnvlfsnpifsskqseeafpapyqyGavYinagqedavsivrtddg 545    
+                         G+ +++++kL+e+l+f++qt++++ee+e ++s gd++p+vspnv+f n+ifs+ qs+++fp+pyqyG+vY+n+  ++a++i ++ ++
+  AUXQ01000298.1 1414552 GITLQQRQKLEEILFFSEQTKGSVEELERAFSHGDYHPTVSPNVQFKNTIFSNGQSHATFPTPYQYGSVYLNSAHPEALGI-NKTRP 1414637
+                         *********************************************************************************.7778* PP
+
+           align     546 reltavsddrfdRlnRliRLqrwlelpyhqlDlLltsalkAe.eenldleinentlraLGlFrhlnkqykvsaeaFaallyqltpfa 631    
+                         r++ta+++ rfdRlnRl+RLqrw +lp+++lDlLltsa +Ae  +nl+l+in n lr LGlFr+ln++y+++aeaFaa++yq+tpf 
+  AUXQ01000298.1 1414638 RSMTAITEYRFDRLNRLLRLQRWTKLPHDKLDLLLTSAARAEgMDNLELNINYNSLRVLGLFRYLNNNYNLAAEAFAAFIYQITPFN 1414724
+                         *************************************************************************************** PP
+
+           align     632 vsnnvpflDqlFNqekLFdePlvlddeeFdytetkgddaktvkqLcagLgIsavtfqllaelveaalelesgkLvrsldvvSalYrL 718    
+                         +s+nvpf+Dq+FNq++LFd P+ ld++eFdyt+ +g+da+tvkq+cagLgIs++tfq+la++v +a++l++ +L+rsldv+Sa+YrL
+  AUXQ01000298.1 1414725 ISSNVPFFDQVFNQPQLFDIPMALDNSEFDYTARRGSDARTVKQICAGLGISSATFQILAQQVGSAFSLPEKRLMRSLDVISAFYRL 1414811
+                         *************************************************************************************** PP
+
+           align     719 vtiPrlfglsaedgliliniltkegky....Lakepal....teeksttekdlLdiilkleelaaWlrkskltpaklslllgktelp 797    
+                         v iPrlf l++e+g+i+++i +k++++    La+ p+l     + +stt+ d Ldiil++ee++aWl+++kltp++lsl++++++lp
+  AUXQ01000298.1 1414812 VMIPRLFKLTPEQGIIIVDIFSKTSGFnpllLAGAPRLsplgDDGESTTQIDSLDIILAMEEISAWLSQTKLTPEELSLFIQNQRLP 1414898
+                         **************************************9999999****************************************** PP
+
+           align     798 vvatdsevtlfkgiaqglsenvLseddfnraeiPkegidWldlLsllvdanGlvldiplewgktdeealkekikaiveeikidaddn 884    
+                         +vat+s+ ++f gi++ l+en+L+e+df+ +eiP++g  W+++Ls l++++Glv+ +pl+w ++dee+l++ i+aiv+ + + +dd+
+  AUXQ01000298.1 1414899 IVATESSADFFGGIVSALPENLLTEQDFQGPEIPDVG-GWIAKLSELITEDGLVKPLPLVWAQSDEEYLEKTITAIVDGLPSPPDDK 1414984
+                         *********************************9876.7************************************************ PP
+
+           align     885 viai..lvqlilqaktaQenllsssiaaeygverdlvpllLrWlgssvyqvLkkvl......dgtpetvadisdelleltysLliyt 963    
+                         ++++  l  +i q ktaQ+nl+s+++a+eygv+rd vpllLrW+gssv ++L++        +g + ++++isd+ll++ y+L+++ 
+  AUXQ01000298.1 1414985 QLTVtaLRLIIQQYKTAQDNLVSTAVAKEYGVSRDAVPLLLRWVGSSVTELLEMLNqqsrryNGRLLHAQQISDDLLQIAYNLAMNG 1415071
+                         **998777888899***************************************99888888899999******************** PP
+
+           align     964 qlikelklkkellllrltkPeWlglavekk....dssslsldeiyllsryqdllesakqnEdklleYlkfansseadkkeeednsek 1046   
+                         +lik+l+l+++ll+lrl++P Wl l+ ++     + ++l+l+ei+ lsry+ +++s+ + Edkl+eYl++an++  ++ ++ed++ +
+  AUXQ01000298.1 1415072 ALIKQLRLTPQLLFLRLAEPTWLSLSSPTVmepgQGAPLTLKEIFILSRYRHWVTSSLHTEDKLIEYLAYANNPPVKR-NDEDINLD 1415157
+                         *************************876543333889***********************************987655.556***** PP
+
+           align    1047 caellAeilgwdadeielavakleltpkrartleqiDwlrRlqqlsektglsvelllqaaaLtpnsdfelyqsvgEavlaaLka 1130   
+                         caellA+ilgwda+e+e+a+++++++  ra ++ qiDwlrR+q+ls++t+lsv++l +aaa+tp+s+f+++q+vgEav+aa k+
+  AUXQ01000298.1 1415158 CAELLADILGWDASEVEQACEQFTPA--RACNMGQIDWLRRIQALSQQTKLSVSPLREAAAITPSSSFDQIQHVGEAVIAATKS 1415239
+                         *********************99765..78**************************************************9775 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1131 nodes)
+Target sequences:                            1  (1866084 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 14.60u 0.18s 00:00:14.78 Elapsed: 00:00:14.95
+# Mc/sec: 141.17
+//
+[ok]

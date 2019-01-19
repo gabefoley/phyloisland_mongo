@@ -1,11 +1,18 @@
 import phyloisland
 import models
+import checkForFeature
 import os
 from flask import flash
 import random
+import time
+import subprocess
+import sys
+
 
 from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
+from Bio import AlignIO
+from Bio.Align.Applications import MuscleCommandline
 
 
 def read_fasta(filename):
@@ -85,8 +92,10 @@ def addSequence(seq_records):
         seq_sequence = str(record.seq)
 
         # Check if the sequence record already exists
-        if models.GenomeRecords.objects(name=seq_name):
+        if models.SequenceRecords.objects(name=seq_name):
             print('Sequence with ID - %s from species - %s already exists in the sequence database' % (
+                seq_name, seq_species) + "\n")
+            flash('Sequence with ID - %s from species - %s already exists in the sequence database' % (
                 seq_name, seq_species) + "\n")
 
 
@@ -98,15 +107,19 @@ def addSequence(seq_records):
                                               sequence = seq_sequence)
             sequence.save()
 
-def saveProfile(profile):
+def save_profile(profile):
     """
     Save a profile into the database
     :param profile: Profile to save
     """
     print ('in save profile')
     name = randstring(5)
-    profileEntry = models.Profile(name, profile.read(), [])
-    profileEntry.save()
+
+    # print (str(profile))
+    # print (profile)
+    print (profile.read())
+    profile_entry = models.Profile(name, profile, {})
+    profile_entry.save()
 
 
     # print ('in save profile')
@@ -117,38 +130,89 @@ def saveProfile(profile):
     # phyloisland.db.session.add(profileEntry)
     # phyloisland.db.session.commit()
 
-def setProfileAsReference(ids, region):
+def set_profile_as_reference(profile_ids, region):
     """
 
     :param ids:
     :param region:
     :return:
     """
-    if len(ids) > 1:
+    if len(profile_ids) > 1:
         flash('Only select a single record', category='error')
     else:
-        query = models.Profile.query.filter(models.Profile.uid.in_(ids))
-        for record in query.all():
-            # Check for a previous reference profile
-            old_profile_reference = eval("models.Profile.query.filter_by(" + region + "_profile_ref=1).first()")
 
-            if old_profile_reference:
-                # Remove the previous reference profile
-                setattr(old_profile_reference, region + "_profile_ref", 0)
-                phyloisland.db.session.add(old_profile_reference)
+        # Check for a previous Profile set as this reference
+        prev = models.Profile.objects(__raw__={"references.%s" % (region):{'$exists': True}})
 
-            # Set the new reference profile
-            setattr(record, region + "_profile_ref", 1)
+        print ('prev is - ', prev)
 
-            # Commit the changed record
-            phyloisland.db.session.add(record)
-            phyloisland.db.session.commit()
+        if prev:
+            print ('found prev')
+            prev.update(**{"unset__references__%s" % (region): "*"})
 
-            # Write the new profile to the tmp folder ready to be used
-            with open("tmp/" + region + "profile.hmm", 'w') as profile_path:
-                profile_path.write(record.profile.decode('utf-8'))
+        profile_id = profile_ids[0]
 
-            flash("The profile named %s has been set as the reference profile for %s" % (record.name, region), category='success')
+        curr = models.Profile.objects().get(id=profile_id)
+
+        # curr = models.Profile.objects(id=profile_id)
+
+
+        # curr.update(references= {region: "*"})
+
+        curr.update(**{"set__references__%s" % (region) : "*"})
+
+        curr.save()
+
+        print (curr.profile)
+
+        print ('*****')
+
+        print (curr.profile.read())
+
+
+        # Write the new profile to the tmp folder ready to be used
+        with open("tmp/" + region + "_profile.hmm", 'w') as profile_path:
+            profile_path.write(curr.profile.decode('utf-8'))
+
+        flash("The profile named %s has been set as the reference profile for %s" % (curr.name, region), category='success')
+
+def createProfile(align_list):
+
+    SeqIO.write(align_list, "tmp/align.fasta", "fasta")
+    muscle_cline = MuscleCommandline(input="tmp/align.fasta")
+    # result = subprocess.run(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True) )
+    child = subprocess.Popen(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                             universal_newlines=True, shell=(sys.platform != "win32"))
+    child.wait()
+
+    alignment = AlignIO.read(child.stdout, "fasta")
+    AlignIO.write(alignment, "tmp/align.aln", "fasta")
+    hmm_path = "tmp/profile3.hmm"
+
+    outfile = open(hmm_path, "w")
+    result = subprocess.call(["hmmbuild", hmm_path, "tmp/align.aln"], stdout=subprocess.PIPE)
+
+    while not os.path.exists(hmm_path):
+        time.sleep(1)
+
+    if os.path.isfile(hmm_path):
+        file = open(hmm_path, 'rb')
+
+        save_profile(file)
+        remove_file(hmm_path, "tmp/align.fasta", "tmp/align.aln")
+
+def check_with_profile(ids, region):
+    # Check if a reference profile for this region exists
+    profile_reference = models.Profile.objects(__raw__={"references.%s" % (region):{'$exists': True}})
+    if (profile_reference):
+        for profile in profile_reference:
+            print("Using the %s profile named %s to check for %s regions" % (region, profile.name, region))
+
+            eval(
+                'checkForFeature.get_feature_location_with_profile(ids, "hmm_outputs' + '", "' + profile.name + '", "' + region + '", "' + region + '_loc' + '","' + region + '")')
+    else:
+        flash("Please set a profile as the %s reference profile first" % (region), "error")
+
 
 def randstring(length=10):
     valid_letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'

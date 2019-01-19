@@ -1,9 +1,41 @@
 
     $(document).ready(function () {
+
+        console.log('loaded')
         //attach the click event to all <img> tag having class 'popos_img'
         //here no need of any for loop
-        $('.upload_submit').click(function () {
-            $("#loading").show();
+
+        $('#upload_form').on('submit', function(event) {
+
+            console.log ('submitting')
+            $.ajax({
+                data: {
+                    name : 'gabe',
+                    email : 'gabe@hotmail.com'
+                },
+                type : 'POST',
+                url : 'upload_admin/'
+            })
+        })
+        $('#upload_submit').click(function () {
+            console.log('hit submit')
+            var names = "gabe"
+
+            $.ajax({
+              type: "POST",
+              url: "{{ url_for('upload_admin') }}",
+              traditional: "true",
+              data: {name: 'gabe'},
+              dataType: "json",
+                success: function() {
+                console.log('worked');
+                      alert("some error" + XMLHttpRequest + textStatus + errorThrown + data + data.name);
+
+            },
+              error: function(XMLHttpRequest, textStatus, errorThrown) {
+                  alert("some error" + XMLHttpRequest + textStatus + errorThrown + data + data.name);
+              }
+          });
         });
 
         // Show / hide different parts of the form based on what type of file we're working with
@@ -57,6 +89,20 @@
             create: true
         });
 
+
+        $('#genome_type').selectize({
+            maxItems: null,
+            valueField: 'id',
+            labelField: 'title',
+            searchField: 'title',
+            plugins: ['drag_drop', 'remove_button'],
+            create: false,
+            highlight: true,
+
+
+        });
+
+
         $(function() {
           var $wrapper = $('#wrapper');
 
@@ -101,18 +147,6 @@
 
 
 
-        $('#genome_type').selectize({
-            maxItems: null,
-            valueField: 'id',
-            labelField: 'title',
-            searchField: 'title',
-            plugins: ['drag_drop', 'remove_button'],
-            create: false,
-            highlight: true,
-
-
-        });
-
 
 
         // Allow user to add another field
@@ -126,6 +160,8 @@
             $(this).parent('.multi-field').remove();
     });
 });
+
+
 
 
     });
