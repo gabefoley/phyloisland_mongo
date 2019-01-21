@@ -12,9 +12,25 @@
 {% endblock %}
 
         {% block body %}
+
+<div>
+         <form method="POST"    enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            <div class="smallform">
+
+                {{ form.genome.label }}
+
+                {{ form.genome }}
+                <br>
+                {{ form.submit(class="btn-primary") }}
+            </div>
+         </form>
+
+</div>
 <script>
 var tracks = [
-	      { trackName: "track1",
+	      { trackName: "track2",
 		trackType: "stranded",
 		visible: true,
 		inner_radius: 130,
@@ -28,41 +44,34 @@ var tracks = [
 		showLabels: true,
 		showTooltip: true,
 		linear_mouseclick: 'linearClick',
-		items: [
-                         {id: 1, start:1027919, end:1032311, name:"region1", strand: -2},
-                         {id: 2, start:1041107,end:1045847, name:"pop", strand: -2},
-                         {id: 3, start:1032476,end:1037282, name:"drop", strand: -2},
-                         {id: 4, start:1046036,end:1049426, name:"winks", strand: 2},
-                         {id: 5, start:1037408,end:1040807, name:"noon", strand: 1}
-			]
+              items : {{items | safe}}
 	      }
+              ];
+//		items: [
+//                         {id: 1, start:1027919, end:1032311, name:"region1", strand: -2},
+//                         {id: 2, start:1041107,end:1045847, name:"pop", strand: -2},
+//                         {id: 3, start:1032476,end:1037282, name:"drop", strand: -2},
+//                         {id: 4, start:1046036,end:1049426, name:"winks", strand: 2},
+//                         {id: 5, start:1037408,end:1040807, name:"noon", strand: 1}
+//			]
+//	      }
 
-      ];
 </script>
 
-
-            <br>
-            <br>
-            <div id="scrollable>">
-
-
-      <div id="circularchart"></div>
-
-                            <div id="demo-controls">
-
-      <div class="control-item"><input type="checkbox" name="showStrand" onchange="updateStrand(this); return false" checked>Show stranded track</div>
-
+<br>
+<br>
+<div id="scrollable>">
+    <div id="circularchart"></div>
+    <div id="demo-controls">
+        <div class="control-item"><input type="checkbox" name="showStrand" onchange="updateStrand(this); return false" checked>Show stranded track</div>
 
     </div>
-
-            <div id="linearchart"></div>
-      <div id="brush"></div>
-
-
+    <div id="linearchart"></div>
+    <div id="brush"></div>
 
     <input type="button" id="resizeButton" onClick="resizeLinearPlot(); return false;" value="Resize plot">
             </div>
-<script type="text/javascript" src="../../static/js/data.simple.js"></script>
+<!--<script type="text/javascript" src="../../static/js/data.simple.js"></script>-->
                 <script type="text/javascript" src="../../static/js/circularplot.js"></script>
     <script type="text/javascript" src="../../static/js/linearplot.js"></script>
     <script type="text/javascript" src="../../static/js/linearbrush.js"></script>

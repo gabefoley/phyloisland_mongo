@@ -213,6 +213,25 @@ def check_with_profile(ids, region):
     else:
         flash("Please set a profile as the %s reference profile first" % (region), "error")
 
+def get_genome_items(genome):
+    """
+    Format the items in a genome correctly for a Genome Detail view
+    :param self:
+    :return:
+    """
+
+    items = []
+
+    for count, hit in enumerate(genome.hits):
+        hit_details = dict()
+        hit_details['id'] = count
+        hit_details['start'] = hit.start
+        hit_details['end'] = hit.end
+        hit_details['name'] = hit.region
+        hit_details['strand'] = 1 if count % 2 == 0 else -1
+        items.append(hit_details)
+
+    return items
 
 def randstring(length=10):
     valid_letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'

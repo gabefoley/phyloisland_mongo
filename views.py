@@ -393,10 +393,38 @@ class GenomeOverviewView(BaseView):
 
 class GenomeDetailView(BaseView):
 
+
+
+
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def genomedetail(self):
-        return self.render('genomedetail.html')
+        form = forms.GenomeOverviewSelectForm()
+        form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in models.GenomeRecords.objects()]
+
+        if request.method == 'POST':
+
+            print ('form dot genome is', request.form.get('genome'))
+
+            genome = models.GenomeRecords.objects.get(id=request.form.get('genome'))
+
+            items = utilities.get_genome_items(genome)
+
+
+            return self.render('genomedetail.html', form=form, items=items)
+
+
+
+        else:
+            # Just get the first Genome Record in the database and return a Genome Detail of that
+            genome = models.GenomeRecords.objects()[0]
+
+            items = utilities.get_genome_items(genome)
+
+            return self.render('genomedetail.html', form=form, items=items)
+
+
+
 
 class UserView(ModelView):
 
