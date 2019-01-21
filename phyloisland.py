@@ -2,10 +2,12 @@ from flask import Flask
 from flask_mongoengine import MongoEngine
 from flask_uploads import UploadSet, configure_uploads, ALL
 from flask_bootstrap import Bootstrap
+from flask_jsglue import JSGlue
 from mongoengine import connect
 import configs.mongoconfig
 
 app = Flask(__name__)
+jsglue = JSGlue(app)
 Bootstrap(app)
 app.config.from_pyfile('configs/mongoconfig.py')
 

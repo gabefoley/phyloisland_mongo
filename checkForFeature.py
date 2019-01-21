@@ -35,8 +35,6 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
         # Get the nucleotide sequence of the genome
         nuc_seq = Bio.Seq.Seq(str(seq_record))
 
-
-
         outpath = reference + "/" + query.species + "/" + region + "/" + profile_name + "/"
         outpath = outpath.replace(" ", "_")
 
@@ -56,7 +54,6 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
                                                                "_") + "_" + random_id + strand + "_translated_genome.fasta"
                 hmmsearch_results = outpath + query.name.replace("/",
                                                                     "_") + "_" + random_id + strand + "_hmmsearch_results.fasta"
-
                 domScore = 100
 
                 cleaned_path = cleaned_path.replace(" ", "_")
@@ -100,6 +97,8 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
             if '.' not in infile:
                 all_reg.append(infile)
         hmmerout = []
+        print ('here is all reg')
+        print (all_reg)
         # add handler to HMMread for output paths
         for reg in all_reg:
             hmmerout.append(resultread.HMMread(reg, query))
@@ -113,14 +112,6 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
         curr.genome_overview.replace(genome_image)
 
         curr.save()
-
-
-
-        # print("Diagram has been written to %s directory" % (reference))
-        # print("Creating a Sequence file containing all %s region hits" % (region))
-        # # TODO Add better invariant for Shotgun Naming
-        # ToxinGraphicsMain.writeHmmToSeq(hmmerout, reference + "/" + species.replace(" ", "_"), seq_record, species)
-        # print("WIP Seq may not work")
 
 
 

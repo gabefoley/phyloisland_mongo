@@ -8,13 +8,231 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80f516d3-c517-404f-a767-02b4c1b5969a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/gabe.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_CIIXT_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_CIIXT_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_CIIXT_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_CIIXT_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_CIIXT_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_CIIXT_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_REUGZ_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_REUGZ_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_REUGZ_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_REUGZ_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_REUGZ_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_REUGZ_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_SKZUD_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_SKZUD_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_SKZUD_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_SOEFQ_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_SOEFQ_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_SOEFQ_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_ZAZFW_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_ZAZFW_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_ZAZFW_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_ZAZFW_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_ZAZFW_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/A1/CP009488.1_ZAZFW_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_CCKIG_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_MDAJL_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_RRFUT_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_TLLUJ_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_AABVC_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_AABVC_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_AABVC_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_AABVC_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_AABVC_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_AABVC_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_LLKVS_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_LLKVS_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_LLKVS_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_LLKVS_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_LLKVS_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_LLKVS_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_MGUXE_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_MGUXE_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_MGUXE_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_MGUXE_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_MGUXE_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_MGUXE_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_UGJPB_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_UMARN_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_UMARN_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_UMARN_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_UMARN_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_UMARN_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_UMARN_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_USYYM_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_USYYM_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_USYYM_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_USYYM_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_USYYM_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/A1/AUXQ01000298.1_USYYM_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_CZJKE_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_CZJKE_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_CZJKE_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_CZJKE_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_CZJKE_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_CZJKE_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_CZJKE_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_CZJKE_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_DNBAC_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_FFOLH_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_LDNJD_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_RQMUD_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_SCOZA_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WTZIR_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WTZIR_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WTZIR_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WTZIR_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WTZIR_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WTZIR_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WTZIR_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WTZIR_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WVDVL_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_WVDVL_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_YVYYS_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_YVYYS_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_YVYYS_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_YVYYS_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_YVYYS_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_YVYYS_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_YVYYS_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_YVYYS_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_ZOLKY_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_TJXLS_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/user_images/5c4525793a532f9bec45a671_Pseudomonas_rhizosphaerae.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/checkForFeature.py" afterPath="$PROJECT_DIR$/checkForFeature.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/custom_filters.py" afterPath="$PROJECT_DIR$/custom_filters.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/genome_overview.py" afterPath="$PROJECT_DIR$/genome_overview.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models.py" afterPath="$PROJECT_DIR$/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phyloisland.py" afterPath="$PROJECT_DIR$/phyloisland.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resultread.py" afterPath="$PROJECT_DIR$/resultread.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/custom_nanogallery.js" afterPath="$PROJECT_DIR$/static/js/custom_nanogallery.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/genomeoverview.html" afterPath="$PROJECT_DIR$/templates/genomeoverview.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/assembly_summary.txt" afterPath="$PROJECT_DIR$/tmp/assembly_summary.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utilities.py" afterPath="$PROJECT_DIR$/utilities.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views.py" afterPath="$PROJECT_DIR$/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,50 +245,18 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/phyloisland_2019$__init__.coverage" NAME="phyloisland Coverage Results" MODIFIED="1546499030720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/phyloisland_2019$dynamic.coverage" NAME="dynamic Coverage Results" MODIFIED="1546614231931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/phyloisland_2019$phyloisland.coverage" NAME="phyloisland Coverage Results" MODIFIED="1548047603304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/phyloisland_2019$phyloisland.coverage" NAME="phyloisland Coverage Results" MODIFIED="1548074000125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="380" column="0" lean-forward="true" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
+            <state relative-caret-position="118">
+              <caret line="593" column="0" lean-forward="true" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="genomeoverview.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/genomeoverview.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom_filters.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/custom_filters.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="checkForFeature.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/checkForFeature.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,32 +265,60 @@
       <file leaf-file-name="genome_overview.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/genome_overview.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+            <state relative-caret-position="405">
+              <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom_nanogallery.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/custom_nanogallery.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="genomeoverview.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/genomeoverview.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checkForFeature.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/checkForFeature.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="109" column="35" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="phyloisland.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phyloisland.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resultread.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resultread.py">
+      <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/upload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="130" column="48" lean-forward="false" selection-start-line="130" selection-start-column="48" selection-end-line="130" selection-end-column="48" />
-              <folding>
-                <element signature="e#91#100#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getGenomes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/getGenomes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="181" column="24" lean-forward="false" selection-start-line="181" selection-start-column="24" selection-end-line="181" selection-end-column="24" />
+            <state relative-caret-position="75">
+              <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -113,30 +327,28 @@
       <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="68">
               <caret line="25" column="18" lean-forward="false" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models.py">
+      <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="69" column="36" lean-forward="false" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/forms.py">
+      <file leaf-file-name="flask_user_layout.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/flask_user_layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="41" column="50" lean-forward="false" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+            <state relative-caret-position="136">
+              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,36 +367,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>savep</find>
-      <find>savepr</find>
-      <find>savepro</find>
-      <find>UPloadVie</find>
-      <find>find(</find>
-      <find>find</find>
-      <find>timeit</find>
-      <find>setup</find>
-      <find>set</find>
-      <find>set_profile</find>
-      <find>set_profile_</find>
-      <find>set_profile_as</find>
-      <find>in s</find>
-      <find>in save</find>
-      <find>in save pro</find>
-      <find>.get</find>
-      <find>check</find>
-      <find>****</find>
-      <find>U</find>
-      <find>Using the</find>
-      <find>of failed</find>
-      <find>addop</find>
-      <find>url</find>
-      <find>estinations is</find>
-      <find>formatt</find>
-      <find>ur</find>
-      <find>url_for</find>
-      <find>format</find>
-      <find>json</find>
+      <find>exist</find>
+      <find>exists</find>
+      <find>u</find>
+      <find>user_</find>
       <find>tag</find>
+      <find>a2</find>
+      <find>user_image</find>
+      <find>w</find>
+      <find>was click</find>
+      <find>G</find>
+      <find>GenomeRecor</find>
+      <find>GenomeRecord</find>
+      <find>hits</find>
+      <find>Creating</find>
+      <find>reg</find>
+      <find>genome_ov</find>
+      <find>GenomeOverviewView</find>
+      <find>url_for</find>
+      <find>%}</find>
+      <find>ajx</find>
+      <find>aj</find>
+      <find>aja</find>
+      <find>ajax</find>
+      <find>add</find>
+      <find>return</find>
+      <find>Genome</find>
+      <find>GenomeRe</find>
+      <find>GenomeReco</find>
+      <find>GenomeRecords</find>
+      <find>redirec</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -216,7 +428,6 @@
         <option value="$PROJECT_DIR$/templates/flask_user_layout.html" />
         <option value="$PROJECT_DIR$/templates/admin/master.html" />
         <option value="$PROJECT_DIR$/static/js/jquery.nanogallery2.core.js" />
-        <option value="$PROJECT_DIR$/static/js/custom_nanogallery.js" />
         <option value="$PROJECT_DIR$/users.py" />
         <option value="$PROJECT_DIR$/configs/mongoconfig.py" />
         <option value="$PROJECT_DIR$/templates/flash.html" />
@@ -226,7 +437,6 @@
         <option value="$PROJECT_DIR$/static/js/plugin.js" />
         <option value="$PROJECT_DIR$/static/css/selectize.min.css" />
         <option value="$PROJECT_DIR$/templates/admin/base.html" />
-        <option value="$PROJECT_DIR$/phyloisland.py" />
         <option value="$PROJECT_DIR$/templates/genomedetail.html" />
         <option value="$PROJECT_DIR$/templates/documentation.html" />
         <option value="$PROJECT_DIR$/static/css/layout.css" />
@@ -235,7 +445,6 @@
         <option value="$PROJECT_DIR$/example.py" />
         <option value="$PROJECT_DIR$/forms.py" />
         <option value="$PROJECT_DIR$/templates/setup.html" />
-        <option value="$PROJECT_DIR$/utilities.py" />
         <option value="$USER_HOME$/miniconda3/envs/phyloisland_2019/lib/python3.6/site-packages/flask_admin/model/base.py" />
         <option value="$PROJECT_DIR$/static/js/upload.js.py" />
         <option value="$PROJECT_DIR$/templates/layout.html" />
@@ -243,13 +452,16 @@
         <option value="$PROJECT_DIR$/templates/upload_admin.html" />
         <option value="$PROJECT_DIR$/getGenomes.py" />
         <option value="$PROJECT_DIR$/static/js/form.js" />
-        <option value="$PROJECT_DIR$/models.py" />
-        <option value="$PROJECT_DIR$/checkForFeature.py" />
         <option value="$PROJECT_DIR$/genome_overview.py" />
+        <option value="$PROJECT_DIR$/models.py" />
+        <option value="$PROJECT_DIR$/utilities.py" />
         <option value="$PROJECT_DIR$/custom_filters.py" />
+        <option value="$PROJECT_DIR$/checkForFeature.py" />
         <option value="$PROJECT_DIR$/resultread.py" />
-        <option value="$PROJECT_DIR$/templates/genomeoverview.html" />
+        <option value="$PROJECT_DIR$/phyloisland.py" />
+        <option value="$PROJECT_DIR$/static/js/custom_nanogallery.js" />
         <option value="$PROJECT_DIR$/views.py" />
+        <option value="$PROJECT_DIR$/templates/genomeoverview.html" />
       </list>
     </option>
   </component>
@@ -397,7 +609,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -671,23 +883,23 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47722772" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47722772" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20926517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18477103" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -727,22 +939,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/views.py</url>
-          <line>497</line>
+          <line>495</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/views.py</url>
-          <line>455</line>
+          <line>453</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/views.py</url>
-          <line>499</line>
+          <line>497</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/views.py</url>
-          <line>603</line>
+          <line>613</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -760,33 +972,22 @@
           <line>24</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/checkForFeature.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/resultread.py</url>
+          <line>162</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="27" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/src/plugins/drag_drop/plugin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="51" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/selectize.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7496" lean-forward="false" selection-start-line="0" selection-start-column="7496" selection-end-line="0" selection-end-column="7496" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/circularplot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -847,13 +1048,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/genomedetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="0" column="19" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -973,13 +1167,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/phyloisland_2019/lib/python3.6/site-packages/mongoengine/fields.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="1520" column="0" lean-forward="false" selection-start-line="1520" selection-start-column="0" selection-end-line="1520" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/miniconda3/envs/phyloisland_2019/lib/python3.6/site-packages/flask_admin/model/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
@@ -988,52 +1175,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/setup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="797">
-          <caret line="73" column="77" lean-forward="true" selection-start-line="73" selection-start-column="77" selection-end-line="73" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phyloisland.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/upload.js.py" />
-    <entry file="file://$PROJECT_DIR$/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1564">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/upload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/jquery-ui.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,24 +1187,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1112">
           <caret line="86" column="31" lean-forward="false" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="154" column="23" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
-          <folding>
-            <marker date="1547761312675" expanded="true" signature="4316:4434" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="18" lean-forward="false" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1075,81 +1203,176 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="41" column="50" lean-forward="false" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="69" column="36" lean-forward="false" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+        <state relative-caret-position="225">
+          <caret line="59" column="36" lean-forward="false" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/genome_overview.py">
+    <entry file="file://$USER_HOME$/miniconda3/envs/phyloisland_2019/lib/python3.6/site-packages/mongoengine/common.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/phyloisland_2019/lib/python3.6/site-packages/mongoengine/fields.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12570">
+          <caret line="850" column="0" lean-forward="false" selection-start-line="850" selection-start-column="0" selection-end-line="850" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resultread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="130" column="48" lean-forward="false" selection-start-line="130" selection-start-column="48" selection-end-line="130" selection-end-column="48" />
+        <state relative-caret-position="2520">
+          <caret line="168" column="0" lean-forward="false" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
           <folding>
-            <element signature="e#91#100#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/checkForFeature.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#91#100#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/custom_filters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+        <state relative-caret-position="540">
+          <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/genomeoverview.html">
+    <entry file="file://$PROJECT_DIR$/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="446">
+          <caret line="41" column="50" lean-forward="false" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="63" column="54" lean-forward="false" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
+          <folding>
+            <marker date="1548064285280" expanded="true" signature="4344:4462" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-199">
+          <caret line="26" column="25" lean-forward="true" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/setup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="73" column="77" lean-forward="true" selection-start-line="73" selection-start-column="77" selection-end-line="73" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/genomedetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="0" column="19" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/flask_user_layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="25" column="18" lean-forward="false" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phyloisland.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/custom_nanogallery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/checkForFeature.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="109" column="35" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="380" column="0" lean-forward="true" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
+        <state relative-caret-position="118">
+          <caret line="593" column="0" lean-forward="true" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/genome_overview.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/genomeoverview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

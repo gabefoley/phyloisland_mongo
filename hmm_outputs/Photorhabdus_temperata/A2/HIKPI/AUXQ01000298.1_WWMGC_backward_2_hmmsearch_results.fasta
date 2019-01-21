@@ -1,0 +1,97 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/A2_profile.hmm
+# target sequence database:        hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_backward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_backward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       align  [M=1020]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence       Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------       -----------
+   1.7e-201  657.6  55.9   1.2e-104  337.0   6.8    5.4  3  AUXQ01000298.1  Photorhabdus temperata subsp. temperata M1021
+
+
+Domain annotation for each sequence (and alignments):
+>> AUXQ01000298.1  Photorhabdus temperata subsp. temperata M1021 Contig298, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  337.0   6.8  1.2e-104  1.2e-104     244     556 .. 1228131 1228431 .. 1228124 1228445 .. 0.87
+   2 !  109.1   0.2   8.3e-36   8.3e-36     897    1020 .] 1241487 1241622 .. 1241483 1241622 .. 0.87
+   3 !  196.1   0.0   4.4e-62   4.4e-62     208     501 .. 1308350 1308619 .. 1308340 1308631 .. 0.90
+
+  Alignments for each domain:
+  == domain 1  score: 337.0 bits;  conditional E-value: 1.2e-104
+           align     244 epltgsasepidlnGangiYfWELFfhmPflvawRlnvEqryeeaerWlkylfnp..y.ededeqalkqgkpryWnsrPlidepkke 327    
+                          ++ ++++ep+d++Gan++YfWELF+++P+l+a+Rl +Eq+++ea+rWlky++np  y e+++ q         Wn+rPl+++++++
+  AUXQ01000298.1 1228131 VSVLSEHTEPMDFSGANSLYFWELFYYVPMLIAQRLLHEQNFDEANRWLKYIWNPsgYiENGQIQ------HYNWNVRPLLEDTSWN 1228211
+                         5677889************************************************4321333333......355************* PP
+
+           align     328 ysslieptDPDaiaasePihYrkaiFafyvknlidqgDmeYRklerdalteAkliYaqassLLGarPdlqlasqWqpltLedaskke 414    
+                          +  ++++DPDa+a+ +P+hY++a+F++++++l+d+gD++YR+lerd+l+eAk++Y qa++LLG++P+l  +s+W+ l+L da+++e
+  AUXQ01000298.1 1228212 DD-PLNSVDPDAVAQYDPMHYKVATFMRTLDLLLDRGDYAYRQLERDTLNEAKMWYMQALHLLGDKPHLLFSSEWNKLNLGDAANTE 1228297
+                         66.9********************************************************************************996 PP
+
+           align     415 nse.leelelqseslpllpvvsdktisaldndlFlkpvneellelwdklesRlyNLRhnltldGkelslpLydekidpkdLlkqryq 500    
+                         +++  ++++++ ++ +++p       ++ ++dlFl++vne +l++w+kle+Rly LRhnl++dG+ l+lp+y++++dpk+Ll+   +
+  AUXQ01000298.1 1228298 KQKeHSHAMAALRQGNVEP-------HNKPTDLFLPQVNEVMLSYWQKLEQRLYSLRHNLSIDGQLLHLPIYATPADPKALLS---A 1228374
+                         6652555555555554444.......346789**************************************************7...4 PP
+
+           align     501 rvvtarnaskana.kipnyRFeplleraksavetliqfGstllsllErkdsasleel 556    
+                         +v+ ++     ++  ++ +RF+ +le+a+ +v++l+qfGstl+ ++Er+d+++l+++
+  AUXQ01000298.1 1228375 AVANSQGGAALSQpFMSLWRFPHMLENARGMVSQLTQFGSTLQNIIERQDAEALKKI 1228431
+                         55555544444443799***********************************99886 PP
+
+  == domain 2  score: 109.1 bits;  conditional E-value: 8.3e-36
+           align     897 vrAkLsqgssstlakaDlktvekllkk.rekadtknvvrniranqqialStglnDsGlftLnfdDerfLPFEGtgveskwklefpek 982    
+                          +A+L+q+ssstl++aD+++v++l +   +++d +++v+n+ra+qq+alS+glnD+G f+L ++Der+L FEGtg+ skw+l+fp +
+  AUXQ01000298.1 1241487 CEATLAQTSSSTLLTADIHGVKYLNNSaDTEGDATHIVTNLRASQQVALSSGLNDAGSFELRLEDERYLSFEGTGAVSKWTLNFPRA 1241573
+                         579**********************997899*****************************************************864 PP
+
+           align     983 ..natdk.........kqlLesLsDiilhvrYTakdgssefskavkkll 1020   
+                           +++d          ++lL  ++D+ ++v+YTa dg+++f+ +vkk+l
+  AUXQ01000298.1 1241574 vdEHIDGntlkaddmqSSLLANMDDVLVQVHYTACDGGASFAGQVKKTL 1241622
+                         2222211223344455789999************************987 PP
+
+  == domain 3  score: 196.1 bits;  conditional E-value: 4.4e-62
+           align     208 stkaiRLntlfakeLiakasqsidkvLswdtqnikeepltgsasepidlnGangiYfWELFfhmPflvawRlnvEqryeeaerWlky 294    
+                          ++++RLn +f++eL+ +a++ +++v    tq    +pl+g+++ep++ + an +YfWELF+h P l+a+Rln E ry+ea+ Wl+ 
+  AUXQ01000298.1 1308350 DKRYVRLNSQFGQELVRIAQRDVNAVFLAATQDHPLPPLEGGDPEPLEQDAANLLYFWELFYHAPALIAYRLNAEGRYDEAQDWLHR 1308436
+                         6789*********************************************************************************** PP
+
+           align     295 lfnpyededeqalk.qgkpryWnsrPlidepkkey.sslieptDPDaiaasePihYrkaiFafyvknlidqgDmeYRklerdalteA 379    
+                         l +p+     ++l+  +k   W sr l  + +    ++++  +DPD++a+ +P +Yr+a+F+ yvknl+d+gD  YR+l+rd  + A
+  AUXQ01000298.1 1308437 LMDPF-----PTLEnGKKKAIWRSRLLEADFSYVAlDNAAGLADPDTLASVQPEFYRRAVFNAYVKNLMDKGDSHYRELSRDGFNSA 1308518
+                         ****9.....44442456799****99888766544789999********************************************* PP
+
+           align     380 kliYaqassLLGarPdlqlasqWqpltLedaskkenseleelelqseslpllpvvsdktisaldndlFlkpvneellelwdklesRl 466    
+                         +++Y  + +LLG++  l  a  W pl   +a ++                     +  + +  + ++F  p  +   +  +kl+ Rl
+  AUXQ01000298.1 1308519 HQCYLLVAHLLGTDFALARAPAWMPLPASQAVNE---------------------YTAAAAGRPGARFGLPRSQLHQSQVEKLQRRL 1308584
+                         **************************98888877.....................2222334566789999999999999******* PP
+
+           align     467 yNLRhnltldGkelslpLydekidpkdLlkqryqr 501    
+                         +NLR++ltldGk+l lpLyd++ dp  Ll +r  +
+  AUXQ01000298.1 1308585 FNLRNGLTLDGKPLDLPLYDPPTDPALLLAARTGG 1308619
+                         *****************************999765 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1020 nodes)
+Target sequences:                            1  (1866083 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 12.36u 0.29s 00:00:12.64 Elapsed: 00:00:12.75
+# Mc/sec: 149.29
+//
+[ok]

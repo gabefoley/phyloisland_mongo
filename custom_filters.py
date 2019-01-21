@@ -26,8 +26,15 @@ def hitdescription_formatter(view, context, model, name):
             if hit.region in hit_count:
                 hit_count[hit.region] += 1
             else:
-                hit_count[hit.region] = 0
+                hit_count[hit.region] = 1
+
+    print (model.name)
+    print (model.hits)
+
     for k, v in hit_count.items():
+        print ('chceking the chits')
+        print (k)
+        print (v)
         output_string += "%s:%s hits " % (k, v)
 
     return output_string

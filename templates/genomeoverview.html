@@ -1,3 +1,4 @@
+
 {% extends 'admin/master.html' %}
 {% block head %}
     {{ super() }}
@@ -10,6 +11,10 @@
             <script type="text/javascript" src="{{ url_for('static', filename='js/custom_nanogallery.js') }}"></script>
 
 
+            {{ JSGlue.include() }}
+
+
+
             <!-- nanogallery2 -->
             <link href="{{ url_for('static', filename='css/nanogallery2.css') }}" rel="stylesheet">
 
@@ -18,10 +23,29 @@
 {% block body %}
 
 
-              <h1></h1>
+              <h1>
+
+
+              </h1>
+
+                <button type="button" id="btn_del">Delete selection</button>
+                <button type="button" id="btn_select_mode">Switch selection mode on/off</button>
+
+                Search in title: <input id="ngy2search" type="text" value="demo">
+                 and in tags: <input id="ngy2search2" type="text" value="stones">
+                <button type="button" id="btnsearch2">Search</button>
+
+                Tag to add <input id="tag2add" type="text" value="">
+
+                    <button name="tagBtn" id="tagBtn" type="submit">Add tag</button>
+
 
               <!-- ### position of the gallery ### -->
-              <div id="my_nanogallery2"></div>
+              <div id="my_nanogallery2">
+
+
+              </div>
+
 
               <script>
                  //noinspection UnterminatedStatementJS
@@ -31,6 +55,7 @@
                         <!-- ### gallery settings ### -->
                         thumbnailHeight:  150,
                         thumbnailWidth:   150,
+                        thumbnailSelectable: true,
                         itemsBaseURL:     "{{ url_for('static', filename='user_images/') }}",
                         galleryDisplayMode: 'moreButton',
 
@@ -41,13 +66,12 @@
 
 
                   });
+
+
               </script>
 
 
 
-
-<button type="button" id="btn_del">Delete selection</button>
-<button type="button" id="btn_select_mode">Switch selection mode on/off</button>
 
 
 

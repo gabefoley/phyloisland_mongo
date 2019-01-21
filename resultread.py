@@ -85,7 +85,10 @@ def expandEndPosition(record, hit_end, strand):
 def HMMread(path, record=None, expand=False):
     print('here we are in hmmRead')
     hmm_dict = {}
-    i = 0
+
+    print (record.hits)
+
+    record.id
     for infile in glob.glob(path + '/*/*.fasta'):
         try:
             qresult = SearchIO.read(infile, 'hmmer3-text')
@@ -142,14 +145,25 @@ def HMMread(path, record=None, expand=False):
                         print ('id here is')
                         print (record.id)
 
-
                         curr = models.GenomeRecords.objects().get(id=record.id)
 
-                        hit = models.Hit(region=path.split("/")[-1], score = str(hsp.bitscore), start=str(start), end=str(end))
+                        new_reg = path.split("/")[-1]
+                        new_score =  str(hsp.bitscore)
+                        new_start = str(start)
+                        new_end = str(end)
 
-                        curr.hits.append(hit)
+                        hit = models.Hit(new_reg, new_score, new_start, new_end)
 
-                        curr.save()
+                        add = True
+                        for hit in record.hits:
+                            if hit.region == new_reg and hit.start == new_start and hit.end == new_end:
+                                print ("It already existed")
+                                add = False
+
+                        if add:
+
+                            curr.hits.append(hit)
+                            curr.save()
 
 
                     i += 1

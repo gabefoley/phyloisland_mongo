@@ -4,7 +4,7 @@ import forms
 import utilities
 import getGenomes
 import custom_filters
-from flask import render_template, flash, request, session, send_file, has_app_context
+from flask import render_template, flash, request, session, send_file, has_app_context, redirect
 from flask_login import login_required, current_user
 from flask_admin import Admin, expose, BaseView
 from flask_admin.actions import action
@@ -370,14 +370,12 @@ class GenomeOverviewView(BaseView):
         queries = models.GenomeRecords.objects()
         items = []
 
-        # items = json.dumps([dict(src=str(query.id) + "_" + query.species.replace(" ", "_") + ".png") for query in queries])
-
         for query in queries:
             query_details = {}
             query_details['src'] = str(query.id) + "_" + query.species.replace(" ", "_") + ".png"
             query_details['srct'] =  str(query.id) + "_" + query.species.replace(" ", "_") + ".png"
             query_details['title'] = str(query.name) + "\n" + query.species
-            # query_details['tags'] = ["tag", "another tag"]
+            query_details['tags'] = " ".join(tag for tag in query.tags)
 
 
 
@@ -576,18 +574,30 @@ def download_genome_overview(id):
         record.genome_overview,
         attachment_filename=id + '.png')
 
-@app.route("/<id>", methods=['GET'])
-def download_blob(id):
-    """
-    Route for downloading profiles from the Profile view
-    :param id: Profile to download
-    :return:
-    """
-    print (id)
-    profile = models.Profile.objects().get(name=id)
-    return send_file(
-        io.BytesIO(profile.profile),
-        attachment_filename=id + '.hmm')
+# @app.route("/<id>", methods=['GET'])
+# def download_blob(id):
+#     """
+#     Route for downloading profiles from the Profile view
+#     :param id: Profile to download
+#     :return:
+#     """
+#     print (id)
+#     profile = models.Profile.objects().get(name=id)
+#     return send_file(
+#         io.BytesIO(profile.profile),
+#         attachment_filename=id + '.hmm')
+
+@app.route("/genomeoverview/add_tag", methods=['GET', 'POST'])
+def add_tag():
+
+    for record in request.json['records']:
+
+        query = models.GenomeRecords.objects().get(id=record.split("/")[-1].split("_")[0])
+        query.tags.append(request.json['tag'])
+        query.save()
+
+    return redirect('genomeoverview')
+
 
 @app.errorhandler(404)
 def page_not_found(e):

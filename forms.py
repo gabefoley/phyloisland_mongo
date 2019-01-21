@@ -67,3 +67,10 @@ class GenomeOverviewSelectForm(FlaskForm):
     """
     genome = SelectMultipleField('Genome', choices=[])
     submit = SubmitField("Submit")
+
+class GenomeDiagramSelectForm(FlaskForm):
+    """
+    Form for selecting which genomes to look at in the Genome Diagram
+    """
+    genome = SelectMultipleField('Genome', choices=[])
+    submit = SubmitField("Submit")

@@ -27,7 +27,7 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
 
     gd_diagram = GenomeDiagram.Diagram(name)
     max_len = 0
-    output_path = "images/%s_%s%s.png" % (query_id, species, "_expanded" if expand else "")
+    output_path = "static/user_images/%s_%s%s.png" % (query_id, species, "_expanded" if expand else "")
 
     output_path = output_path.replace(" ", "_")
 

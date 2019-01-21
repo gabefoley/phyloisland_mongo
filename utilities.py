@@ -75,7 +75,7 @@ def add_genome(genome_results):
                 print("Adding the genome record - %s from species - %s to the genome database" % (name, species))
 
                 genome = models.GenomeRecords(name=name, species=species, strain=strain, description=description,
-                                              sequence=sequence)
+                                              sequence=sequence, tags = ['first', 'second'])
                 genome.save()
 
 
