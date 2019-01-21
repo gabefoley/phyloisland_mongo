@@ -11,6 +11,7 @@ from Bio import SeqIO
 import phyloisland
 import glob
 import resultread
+import genome_overview
 
 def get_feature_location_with_profile(ids, reference, profile_name, recordName, recordLocation, region):
     """
@@ -102,92 +103,25 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
         # add handler to HMMread for output paths
         for reg in all_reg:
             hmmerout.append(resultread.HMMread(reg, query))
-        # ToxinGraphicsMain.writeHMMToImage(hmmerout, reference + "/" + species.replace(" ", "_"), seq_record, species)
+
+            # Update the Genome Overview graphic and save it to the Genome Record
+
+        genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.species)
+
+        curr = models.GenomeRecords.objects().get(id=query.id)
+
+        curr.genome_overview.replace(genome_image)
+
+        curr.save()
+
+
+
         # print("Diagram has been written to %s directory" % (reference))
         # print("Creating a Sequence file containing all %s region hits" % (region))
         # # TODO Add better invariant for Shotgun Naming
         # ToxinGraphicsMain.writeHmmToSeq(hmmerout, reference + "/" + species.replace(" ", "_"), seq_record, species)
         # print("WIP Seq may not work")
 
-    # query = models.GenomeRecords.query.filter(models.GenomeRecords.uid.in_(ids))
-    # for record in query.all():
-    #     seq_record = servers.bio_db.lookup(primary_id=record.name)
-    #     species = record.name.replace(" ", "_")
-    #     species = species.replace(".", "_")
-    #
-    #     # Create a path to write the translated genomic sequence to
-    #     random_id = phyloisland.randstring(5)
-    #
-    #     # Get the nucleotide sequence of the genome
-    #     print("Building outpath")
-    #     nuc_seq = Bio.Seq.Seq(str(seq_record.seq).replace("b'", "").replace("'", ""))
-    #     outpath = reference + "/" + species + "/" + region + "/" + profile_name + "/"
-    #     outpath.replace(" ", "_")
-    #     # Check three forward reading frames
-    #     if not os.path.exists(outpath):
-    #         os.makedirs(outpath.replace(" ", "_"))
-    #
-    #     for forward in [True, False]:
-    #         for i in list(range(0, 3)):
-    #
-    #             strand = "_forward_" + str(i) if forward else "_backward_" + str(i)
-    #             sequence = nuc_seq[i:] if forward else nuc_seq.reverse_complement()[i:]
-    #
-    #             cleaned_path = outpath + seq_record.id.replace("/",
-    #                                                            "_") + "_" + random_id + strand + "_translated_genome.fasta"
-    #             hmmsearch_results = outpath + seq_record.id.replace("/",
-    #                                                                 "_") + "_" + random_id + strand + "_hmmsearch_results.fasta"
-    #
-    #             domScore = 100
-    #
-    #             cleaned_path = cleaned_path.replace(" ", "_")
-    #             hmmsearch_results = hmmsearch_results.replace(" ", "_")
-    #
-    #             # Translate the nucleotide genome sequence to a protein sequence
-    #             with open(cleaned_path, 'w') as handle:
-    #
-    #                 if seq_record.name == "<unknown name>":
-    #                     handle.write(">" + seq_record.id + " " + seq_record.annotations.get('organism') + "\n" + str(
-    #                         sequence.translate(stop_symbol="M")))
-    #                 else:
-    #
-    #                     handle.write(">" + seq_record.name + " " + seq_record.description + "\n" + str(
-    #                         sequence.translate(stop_symbol="M")))
-    #
-    #             print("Writing the %s sequence with the species %s to %s" % (
-    #             seq_record.id, seq_record.annotations.get('organism'), cleaned_path))
-    #
-    #             while not os.path.exists(cleaned_path):
-    #                 time.sleep(1)
-    #
-    #             if os.path.isfile(cleaned_path):
-    #                 stdoutdata = subprocess.getoutput("hmmsearch -o %s --domT %s %s %s" % (
-    #                 hmmsearch_results, domScore, 'tmp/' + region + "_profile.hmm", cleaned_path))
-    #
-    #                 print(stdoutdata)
-    #                 # result = subprocess.call(["hmmsearch -o %s %s %s" % (hmmsearch_results, reference, cleaned_path)])
-    #
-    #                 print("The results from the HMM search have been written to %s \n" % hmmsearch_results)
-    #                 # read_hmmer_results(hmmsearch_results)
-    #                 # result = subprocess.call(["hmmsearch", 'files/output.txt', reference, cleaned_path], stdout=subprocess.PIPE)
-    #                 # for x in result:
-    #                 #     print (x)
-    #     print("Creating a diagram of %s region hits" % (region))
-    #     # for regions in hmmer_outputs/organism add reg to all_reg
-    #     all_reg = []
-    #     for infile in glob.glob(os.path.join(reference + "/" + species + '/*')):
-    #         if '.' not in infile:
-    #             all_reg.append(infile)
-    #     hmmerout = []
-    #     # add handler to HMMread for output paths
-    #     for reg in all_reg:
-    #         hmmerout.append(resultread.HMMread(reg, record))
-    #     ToxinGraphicsMain.writeHMMToImage(hmmerout, reference + "/" + species.replace(" ", "_"), seq_record, species)
-    #     print("Diagram has been written to %s directory" % (reference))
-    #     print("Creating a Sequence file containing all %s region hits" % (region))
-    #     # TODO Add better invariant for Shotgun Naming
-    #     ToxinGraphicsMain.writeHmmToSeq(hmmerout, reference + "/" + species.replace(" ", "_"), seq_record, species)
-    #     print("WIP Seq may not work")
 
 
 # Function to be called when wanting to generate Genome Diagram and GenBank output

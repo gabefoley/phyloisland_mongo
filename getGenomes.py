@@ -172,12 +172,14 @@ def add_genome(species_name, categories, single):
             break
         else:
             database = "genbank"
+
             # Need to reinstate all the categories because GenBank can have these even if it doesn't have a RefSeq record
             categories = ["reference genome", "representative genome", "assembly", "genbank"]
             break
 
 
     try:
+        print ("Got here")
         # Add a v to the end of -Lrt to get verbose print outs to the console
         process = subprocess.Popen(
                 "rsync -Lrt --chmod=+rwx -p rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/assembly_summary.txt %s" % (

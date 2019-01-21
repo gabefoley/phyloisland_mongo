@@ -10,6 +10,7 @@ import glob
 from Bio import SearchIO
 from Bio.Seq import Seq
 import re
+import models
 
 
 def expandStartPostion(record, hit_start, strand):
@@ -110,6 +111,8 @@ def HMMread(path, record=None, expand=False):
                 try:
                     hsp = qresult[0][i]
 
+                    print (hsp)
+
                     if strand == "forward":
                         start = ((hsp.hit_start + 1) * 3) - correction - 1
                         end = ((hsp.hit_end + 1) * 3) - correction - 1
@@ -131,6 +134,20 @@ def HMMread(path, record=None, expand=False):
 
                     else:
                         hmm_dict[infile + "_" + str(i)] = str(start) + ':' + str(end)
+
+                        print ('id here is')
+                        print (record.id)
+
+
+                        curr = models.GenomeRecords.objects().get(id=record.id)
+
+                        hit = models.Hit(region=path.split("/")[-1], score = str(hsp.bitscore), start=str(start), end=str(end))
+
+                        curr.hits.append(hit)
+
+                        curr.save()
+
+
                     i += 1
                 except ValueError:
                     continue

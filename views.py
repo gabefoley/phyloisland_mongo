@@ -56,145 +56,145 @@ class UploadView(BaseView):
                 print (names)
                 # for name in names:
                 #     print (name)
-        #
-        #     start_time = timeit.default_timer()
-        #
-        #     # Get the information from the upload form
-        #     filename = allfiles.save(request.files['file'])
-        #     seq_type = form.type.data
-        #     add_seq = form.add_sequence.data
-        #     add_genome = form.add_genome.data
-        #     single = form.single_genome.data
-        #     genome_type=form.genome_type.data
-        #     representative = form.representative.data
-        #     assembly = form.assembly.data
-        #     genbank = form.genbank.data
-        #     failed_genomes = []
-        #
-        #     print ('seq type is ', seq_type)
-        #
-        #     try:
-        #
-        #         if seq_type == "protein" or seq_type == "nucleotide":
-        #             print('here')
-        #             seq_records = utilities.read_fasta("static/uploads/" + filename)
-        #
-        #             if not seq_records:
-        #                 print("Couldn't find any sequences in the uploaded file.")
-        #                 flash("Couldn't find any sequences in the uploaded file.", category='error')
-        #
-        #             else:
-        #                 if add_seq:
-        #                     utilities.addSequence(seq_records)
-        #
-        #                 if add_genome:
-        #                     # TODO: Correct this call
-        #                     getGenomes.add_genome(seq_records, seq_type)
-        #
-        #         elif seq_type == "species":
-        #
-        #             species_names = utilities.readLinesFromFile("static/uploads/" + filename)
-        #             for species_name in species_names:
-        #
-        #                 print("Species name is ", species_name)
-        #
-        #                 destinations = [genome_type]
-        #
-        #                 #TODO: Once the checkbox selection is dynamic we can just add freely here
-        #                 if representative and genome_type not in ["representative genome", "assembly", "genbank"]:
-        #                     destinations.append("representative genome")
-        #
-        #                 if assembly and genome_type not in ["assembly", "genbank"]:
-        #                     destinations.append("assembly")
-        #
-        #                 print("Destinations is ", destinations)
-        #
-        #                 genome_results = getGenomes.add_genome(species_name, destinations, single=single)
-        #
-        #                 if genome_results and genome_results != "Fail":
-        #                     utilities.add_genome(genome_results)
-        #                 else:
-        #
-        #                     # Couldn't find it in RefSeq, let's try genbank
-        #                     if genbank:
-        #                         destinations = ["genbank"]
-        #                         genome_results = getGenomes.add_genome(species_name, destinations, single=single)
-        #
-        #                         if genome_results and genome_results != "Fail":
-        #
-        #                             utilities.add_genome(genome_results)
-        #                         else:
-        #                             failed_genomes.append(species_name)
-        #
-        #                     else:
-        #                         failed_genomes.append(species_name)
-        #
-        #         elif seq_type == "genome":
-        #             pass
-        #             # genome_names = readLinesFromFile("static/uploads/" + filename)
-        #             #
-        #             # for name in genome_names:
-        #             #     genome_ids = {}
-        #             #     genome_results = {}
-        #             #     genome_ids = readLinesFromFile("static/uploads/" + filename)
-        #             #     genome_results = mapToGenome.get_full_genome([name])
-        #             #     if genome_results and genome_results != 'in_database':
-        #             #         addGenome(genome_results)
-        #             #     elif genome_results != 'in_database' and search_shotgun:
-        #             #         print("\nWe didn't identify any genome records for %s. Attempting to search for shotgun "
-        #             #               "sequenced genomes \n" % (
-        #             #                 name))
-        #             #
-        #             #         shotgun_id_dict = mapToGenome.get_shotgun_id_dict_from_id(name)
-        #             #         if shotgun_id_dict:
-        #             #             # print("Skipping getting shotgun")
-        #             #             # shotgun_results = None
-        #             #             genome_results = mapToGenome.get_shotgun_genome(shotgun_id_dict)
-        #             #             if genome_results:
-        #             #                 addGenome(genome_results)
-        #             #
-        #             #         else:
-        #             #             print("Couldn't find a shotgun sequence for %s \n" % (name))
-        #             #
-        #             #
-        #             #     elif genome_results != 'in_database' and not search_shotgun:
-        #             #         print(
-        #             #             "\nWe didn't identify any genome records for %s. And we are not attempting to search
-        #             # for shotgun sequenced genomes \n" % (
-        #             #                 name))
-        #
-        #         elif seq_type == "profile":
-        #             print ('it is a profile')
-        #
-        #             hmm_path = "static/uploads/" + filename
-        #             while not os.path.exists(hmm_path):
-        #                 time.sleep(1)
-        #             if os.path.isfile(hmm_path):
-        #                 file = open(hmm_path, 'rb')
-        #
-        #                 utilities.save_profile(file)
-        #
-        #     except HTTPError as error:
-        #         flash("There was a HTTP error. Please try again", category='error')
-        #
-        #     seconds = timeit.default_timer() - start_time
-        #     minutes, seconds = divmod(seconds, 60)
-        #     hours, minutes = divmod(minutes, 60)
-        #
-        #     periods = [('hours', hours), ('minutes', minutes), ('seconds', seconds)]
-        #     time_string = ', '.join('{} {}'.format(value, name)
-        #                             for name, value in periods
-        #                             if value)
-        #
-        #     print('\nFINISHED GETTING RECORDS: Time taken was {} \n'.format(time_string))
-        #     if failed_genomes:
-        #         flash ("The following genomes failed to map - " + " ".join(x for x in failed_genomes), category='error')
-        #         print ("The following genomes failed to map - " + " ".join(x for x in failed_genomes))
-        #
-        #
-        # elif request.method == 'POST':
-        #     print ('not validated')
-        #     print (form.genome_type)
+
+            start_time = timeit.default_timer()
+
+            # Get the information from the upload form
+            filename = allfiles.save(request.files['file'])
+            seq_type = form.type.data
+            add_seq = form.add_sequence.data
+            add_genome = form.add_genome.data
+            single = form.single_genome.data
+            genome_type=form.genome_type.data
+            representative = form.representative.data
+            assembly = form.assembly.data
+            genbank = form.genbank.data
+            failed_genomes = []
+
+            print ('seq type is ', seq_type)
+
+            try:
+
+                if seq_type == "protein" or seq_type == "nucleotide":
+                    print('here')
+                    seq_records = utilities.read_fasta("static/uploads/" + filename)
+
+                    if not seq_records:
+                        print("Couldn't find any sequences in the uploaded file.")
+                        flash("Couldn't find any sequences in the uploaded file.", category='error')
+
+                    else:
+                        if add_seq:
+                            utilities.addSequence(seq_records)
+
+                        if add_genome:
+                            # TODO: Correct this call
+                            getGenomes.add_genome(seq_records, seq_type)
+
+                elif seq_type == "species":
+
+                    species_names = utilities.readLinesFromFile("static/uploads/" + filename)
+                    for species_name in species_names:
+
+                        print("Species name is ", species_name)
+
+                        destinations = [genome_type]
+
+                        #TODO: Once the checkbox selection is dynamic we can just add freely here
+                        if representative and genome_type not in ["representative genome", "assembly", "genbank"]:
+                            destinations.append("representative genome")
+
+                        if assembly and genome_type not in ["assembly", "genbank"]:
+                            destinations.append("assembly")
+
+                        print("Destinations is ", destinations)
+
+                        genome_results = getGenomes.add_genome(species_name, destinations, single=single)
+
+                        if genome_results and genome_results != "Fail":
+                            utilities.add_genome(genome_results)
+                        else:
+
+                            # Couldn't find it in RefSeq, let's try genbank
+                            if genbank:
+                                destinations = ["genbank"]
+                                genome_results = getGenomes.add_genome(species_name, destinations, single=single)
+
+                                if genome_results and genome_results != "Fail":
+
+                                    utilities.add_genome(genome_results)
+                                else:
+                                    failed_genomes.append(species_name)
+
+                            else:
+                                failed_genomes.append(species_name)
+
+                elif seq_type == "genome":
+                    pass
+                    # genome_names = readLinesFromFile("static/uploads/" + filename)
+                    #
+                    # for name in genome_names:
+                    #     genome_ids = {}
+                    #     genome_results = {}
+                    #     genome_ids = readLinesFromFile("static/uploads/" + filename)
+                    #     genome_results = mapToGenome.get_full_genome([name])
+                    #     if genome_results and genome_results != 'in_database':
+                    #         addGenome(genome_results)
+                    #     elif genome_results != 'in_database' and search_shotgun:
+                    #         print("\nWe didn't identify any genome records for %s. Attempting to search for shotgun "
+                    #               "sequenced genomes \n" % (
+                    #                 name))
+                    #
+                    #         shotgun_id_dict = mapToGenome.get_shotgun_id_dict_from_id(name)
+                    #         if shotgun_id_dict:
+                    #             # print("Skipping getting shotgun")
+                    #             # shotgun_results = None
+                    #             genome_results = mapToGenome.get_shotgun_genome(shotgun_id_dict)
+                    #             if genome_results:
+                    #                 addGenome(genome_results)
+                    #
+                    #         else:
+                    #             print("Couldn't find a shotgun sequence for %s \n" % (name))
+                    #
+                    #
+                    #     elif genome_results != 'in_database' and not search_shotgun:
+                    #         print(
+                    #             "\nWe didn't identify any genome records for %s. And we are not attempting to search
+                    # for shotgun sequenced genomes \n" % (
+                    #                 name))
+
+                elif seq_type == "profile":
+                    print ('it is a profile')
+
+                    hmm_path = "static/uploads/" + filename
+                    while not os.path.exists(hmm_path):
+                        time.sleep(1)
+                    if os.path.isfile(hmm_path):
+                        file = open(hmm_path, 'rb')
+
+                        utilities.save_profile(file)
+
+            except HTTPError as error:
+                flash("There was a HTTP error. Please try again", category='error')
+
+            seconds = timeit.default_timer() - start_time
+            minutes, seconds = divmod(seconds, 60)
+            hours, minutes = divmod(minutes, 60)
+
+            periods = [('hours', hours), ('minutes', minutes), ('seconds', seconds)]
+            time_string = ', '.join('{} {}'.format(value, name)
+                                    for name, value in periods
+                                    if value)
+
+            print('\nFINISHED GETTING RECORDS: Time taken was {} \n'.format(time_string))
+            if failed_genomes:
+                flash ("The following genomes failed to map - " + " ".join(x for x in failed_genomes), category='error')
+                print ("The following genomes failed to map - " + " ".join(x for x in failed_genomes))
+
+
+        elif request.method == 'POST':
+            print ('not validated')
+            print (form.genome_type)
 
 
         return self.render("upload_admin.html", form=form)
@@ -280,9 +280,10 @@ class SequenceRecordsView(ModelView):
 
 
 class GenomeRecordsView(ModelView):
-
-
     form_edit_rules = ('name', 'species', 'strain', 'description')
+
+    column_list = (
+        'name', 'species', 'strain', 'description', 'sequence', 'Genome Overview')
 
     @login_required
     @expose("/", methods=('GET', 'POST'))
@@ -296,6 +297,11 @@ class GenomeRecordsView(ModelView):
 
         self.page_size = current.page_size
 
+        self.form_edit_rules = ('name', 'species', 'strain', 'description')
+
+        self.column_list = (
+            'name', 'species', 'strain', 'description', 'sequence', 'hits' 'Genome Overview')
+
         return super(ModelView, self).index_view()
 
 
@@ -305,18 +311,16 @@ class GenomeRecordsView(ModelView):
             return False
         return True
 
+    def _download_formatter(self, context, model, name):
 
-        # print (current_user)
-    #
-    #
-    #
-    # create_modal = True
-    # edit_modal = True
-    # can_create = False
-    # can_view_details = True
-    #
+        return Markup(
+            "<a href='{url}' target='_blank'>View Genome</a>".format(url=self.get_url('download_genome_overview', id=model.name)))
+
+
     column_formatters = {
         'sequence': custom_filters.seqdescription_formatter,
+        'Genome Overview': _download_formatter,
+
     }
 
     for name in ref_names:
@@ -527,18 +531,31 @@ class DocumentationView(BaseView):
     def documentation(self):
         return self.render('documentation.html')
 
-@app.route("/<id>", methods=['GET'])
-def download_blob(id):
+# @app.route("/<id>", methods=['GET'])
+# def download_blob(id):
+#     """
+#     Route for downloading profiles from the Profile view
+#     :param id: Profile to download
+#     :return:
+#     """
+#     print (id)
+#     profile = models.Profile.objects().get(name=id)
+#     return send_file(
+#         io.BytesIO(profile.profile),
+#         attachment_filename=id + '.hmm')
+
+@app.route("/overview_<id>", methods=['GET'])
+def download_genome_overview(id):
     """
     Route for downloading profiles from the Profile view
     :param id: Profile to download
     :return:
     """
     print (id)
-    profile = models.Profile.objects().get(name=id)
+    record = models.GenomeRecords.objects().get(name=id)
     return send_file(
-        io.BytesIO(profile.profile),
-        attachment_filename=id + '.hmm')
+        record.genome_overview,
+        attachment_filename=id + '.png')
 
 @app.errorhandler(404)
 def page_not_found(e):
