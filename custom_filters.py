@@ -16,6 +16,23 @@ def seqdescription_formatter(view, context, model, name):
     else:
         return model.sequence
 
+def hitdescription_formatter(view, context, model, name):
+
+    hit_count = {}
+    output_string = ""
+
+    if model.hits:
+        for hit in model.hits:
+            if hit.region in hit_count:
+                hit_count[hit.region] += 1
+            else:
+                hit_count[hit.region] = 0
+    for k, v in hit_count.items():
+        output_string += "%s:%s hits " % (k, v)
+
+    return output_string
+
+
 
 class GetUniqueSpecies(BaseSQLAFilter):
     def apply(self, query, value, alias="None"):

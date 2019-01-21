@@ -106,7 +106,7 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
 
             # Update the Genome Overview graphic and save it to the Genome Record
 
-        genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.species)
+        genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species)
 
         curr = models.GenomeRecords.objects().get(id=query.id)
 

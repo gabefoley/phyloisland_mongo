@@ -4,7 +4,7 @@ from Bio.SeqFeature import SeqFeature, FeatureLocation
 
 
 
-def writeHMMToImage(hmm_dict, reference, seq_record, name, species, expand=False):
+def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, expand=False):
     # Currently taking region to be run simultaneously with hmmer, will need to manipulate some stuff for later
     # Initiation of GenomeDiagram assets"
 
@@ -27,7 +27,10 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, species, expand=False
 
     gd_diagram = GenomeDiagram.Diagram(name)
     max_len = 0
-    output_path = "%s/%s%s.png" % (reference, species, "_expanded" if expand else "")
+    output_path = "images/%s_%s%s.png" % (query_id, species, "_expanded" if expand else "")
+
+    output_path = output_path.replace(" ", "_")
+
     start = 0
     # For my work I was considering changing 'region1, 2, and 3' to a3, TcB, and TcC for convenience
     # Up to others though if I fully change that (is just a UI thing tbh)
@@ -133,7 +136,7 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, species, expand=False
                         if current_track not in backward_tracks.keys():
                             backward_tracks[current_track] = []
                         exec("gd_track" + str(
-                            current_track) + "= gd_diagram.new_track(0, name=seq_record.name + ' Track " + str(
+                            current_track) + "= gd_diagram.new_track(0, name=name + ' Track " + str(
                             current_track) + "', greytrack=True, start=0, end=len(seq_record))")
                         exec("gd_feature_set" + str(current_track) + " = gd_track" + str(current_track) + ".new_set()")
 

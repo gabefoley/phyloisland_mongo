@@ -128,6 +128,10 @@ def HMMread(path, record=None, expand=False):
                         start = expandStartPostion(record, start, strand)
                         end = expandEndPosition(record, end, strand)
 
+                    # Don't add the hit if it's already in the datbase
+
+
+
                     # After expanding, we might have the exact region already identified - don't add multiple regions in
                     if str(start) + ":" + str(end) in hmm_dict.values():
                         print ("Found two identical regions, skipping adding this record %s at position %s : %s" % (infile + "_" + str(i), str(start), str(end)))

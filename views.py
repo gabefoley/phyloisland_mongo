@@ -20,6 +20,7 @@ import os
 from urllib.error import HTTPError
 import random
 import io
+import json
 
 from flask_admin.model.template import EndpointLinkRowAction, LinkRowAction
 
@@ -283,7 +284,7 @@ class GenomeRecordsView(ModelView):
     form_edit_rules = ('name', 'species', 'strain', 'description')
 
     column_list = (
-        'name', 'species', 'strain', 'description', 'sequence', 'Genome Overview')
+        'name', 'species', 'strain', 'description', 'sequence', 'hits', 'Genome Overview', 'Expanded Genome Overview')
 
     @login_required
     @expose("/", methods=('GET', 'POST'))
@@ -311,6 +312,8 @@ class GenomeRecordsView(ModelView):
             return False
         return True
 
+
+
     def _download_formatter(self, context, model, name):
 
         return Markup(
@@ -319,6 +322,7 @@ class GenomeRecordsView(ModelView):
 
     column_formatters = {
         'sequence': custom_filters.seqdescription_formatter,
+        'hits': custom_filters.hitdescription_formatter,
         'Genome Overview': _download_formatter,
 
     }
@@ -362,7 +366,31 @@ class GenomeOverviewView(BaseView):
     def genomeoverview(self):
         form = forms.GenomeOverviewSelectForm()
         # form.genome.choices = [(genome.name, genome.species) for genome in models.GenomeRecords.query.all()]
-        return self.render('genomeoverview.html', form=form)
+
+        queries = models.GenomeRecords.objects()
+        items = []
+
+        # items = json.dumps([dict(src=str(query.id) + "_" + query.species.replace(" ", "_") + ".png") for query in queries])
+
+        for query in queries:
+            query_details = {}
+            query_details['src'] = str(query.id) + "_" + query.species.replace(" ", "_") + ".png"
+            query_details['srct'] =  str(query.id) + "_" + query.species.replace(" ", "_") + ".png"
+            query_details['title'] = str(query.name) + "\n" + query.species
+            # query_details['tags'] = ["tag", "another tag"]
+
+
+
+
+            items.append(query_details)
+
+
+        print (items)
+
+
+        return self.render('genomeoverview.html', form=form, items=items)
+
+
 
 
 class GenomeDetailView(BaseView):

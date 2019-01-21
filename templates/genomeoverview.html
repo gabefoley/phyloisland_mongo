@@ -18,55 +18,28 @@
 {% block body %}
 
 
-
-
-
               <h1></h1>
 
               <!-- ### position of the gallery ### -->
               <div id="my_nanogallery2"></div>
 
               <script>
+                 //noinspection UnterminatedStatementJS
                  jQuery(document).ready(function () {
 
                     jQuery("#my_nanogallery2").nanogallery2( {
                         <!-- ### gallery settings ### -->
                         thumbnailHeight:  150,
                         thumbnailWidth:   150,
-                        itemsBaseURL:     'http://www.gabefoley.com/img/test/',
+                        itemsBaseURL:     "{{ url_for('static', filename='user_images/') }}",
                         galleryDisplayMode: 'moreButton',
 
                         <!-- ### gallery content ### -->
-                        items: [
-                            { src: '1.png', srct: '1.png', title: 'Yersinia entomophaga' },
-                            { src: '2.png', srct: '2.png', title: 'Yersinia pestis' },
-                            { src: '3.png', srct: '3.png', title: 'Chromobacterium amazonense' },
-                            { src: '4.png', srct: '4.png', title: 'Verrucomicrobia bacterium' },
-                            { src: '1.png', srct: '1.png', title: 'Yersinia entomophaga' },
-                            { src: '2.png', srct: '2.png', title: 'Yersinia pestis' },
-                            { src: '3.png', srct: '3.png', title: 'Chromobacterium amazonense' },
-                            { src: '4.png', srct: '4.png', title: 'Verrucomicrobia bacterium' },
 
-
-                            { src: '1.png', srct: '1.png', title: 'Yersinia entomophaga' },
-                            { src: '2.png', srct: '2.png', title: 'Yersinia pestis' },
-                            { src: '3.png', srct: '3.png', title: 'Chromobacterium amazonense' },
-                            { src: '4.png', srct: '4.png', title: 'Verrucomicrobia bacterium' },
-
-
-                            { src: '1.png', srct: '1.png', title: 'Yersinia entomophaga' },
-                            { src: '2.png', srct: '2.png', title: 'Yersinia pestis' },
-                            { src: '3.png', srct: '3.png', title: 'Chromobacterium amazonense' },
-                            { src: '4.png', srct: '4.png', title: 'Verrucomicrobia bacterium' },
-
-
-                            { src: '1.png', srct: '1.png', title: 'Yersinia entomophaga' },
-                            { src: '2.png', srct: '2.png', title: 'Yersinia pestis' },
-                            { src: '3.png', srct: '3.png', title: 'Chromobacterium amazonense' },
-                            { src: '4.png', srct: '4.png', title: 'Verrucomicrobia bacterium' },
-
-                          ]
+                        items: {{ items | safe  }}
                       });
+
+
                   });
               </script>
 
