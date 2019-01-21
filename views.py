@@ -447,7 +447,9 @@ class ProfileView(ModelView):
             return action_rules
 
         self.column_list = (
-            'name', 'references', 'download')
+            'name', 'references')
+        # 'name', 'references', 'download')
+
 
         self.form_columns = ('name', 'profile')
         self.form_extra_fields = {'profile': models.BlobUploadField(
@@ -531,18 +533,7 @@ class DocumentationView(BaseView):
     def documentation(self):
         return self.render('documentation.html')
 
-# @app.route("/<id>", methods=['GET'])
-# def download_blob(id):
-#     """
-#     Route for downloading profiles from the Profile view
-#     :param id: Profile to download
-#     :return:
-#     """
-#     print (id)
-#     profile = models.Profile.objects().get(name=id)
-#     return send_file(
-#         io.BytesIO(profile.profile),
-#         attachment_filename=id + '.hmm')
+
 
 @app.route("/overview_<id>", methods=['GET'])
 def download_genome_overview(id):
@@ -556,6 +547,19 @@ def download_genome_overview(id):
     return send_file(
         record.genome_overview,
         attachment_filename=id + '.png')
+
+@app.route("/<id>", methods=['GET'])
+def download_blob(id):
+    """
+    Route for downloading profiles from the Profile view
+    :param id: Profile to download
+    :return:
+    """
+    print (id)
+    profile = models.Profile.objects().get(name=id)
+    return send_file(
+        io.BytesIO(profile.profile),
+        attachment_filename=id + '.hmm')
 
 @app.errorhandler(404)
 def page_not_found(e):
