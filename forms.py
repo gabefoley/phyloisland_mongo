@@ -77,7 +77,7 @@ class GenomeDiagramSelectForm(FlaskForm):
     tag = StringField('Add tag')
     submit_hit = SubmitField("Add tag")
 
-    delete_hit = SubmitField("Delete")
+    delete_hit = SubmitField("Delete hit")
 
 class GenomeHitForm(FlaskForm):
     """
@@ -86,5 +86,5 @@ class GenomeHitForm(FlaskForm):
     tag = StringField('Add tag', [validators.optional()])
     submit_hit = SubmitField("Add tag")
 
-    delete_hit = SubmitField("Delete")
+    delete_hit = SubmitField("Delete hit")
 

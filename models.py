@@ -48,6 +48,7 @@ class Hit(db.EmbeddedDocument):
     """
     Class for storing a set of HMMER hits for a given region for a Genome Record
     """
+    id = db.ObjectIdField()
     region = db.StringField()
     score = db.StringField()
     start = db.StringField()

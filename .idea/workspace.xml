@@ -8,19 +8,339 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80f516d3-c517-404f-a767-02b4c1b5969a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/genome_detail.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/select.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tmp/Chitinase_profile.hmm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A1/CMLRC/CP009488.1_GBIPA_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Burkholderia_ubonensis/A2/HIKPI/CP009488.1_GYRKR_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_bodei/A1/CMLRC/NZ_NSCM01000192.1_RHMVK_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A1/CMLRC/AUXQ01000298.1_VQMCY_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Photorhabdus_temperata/A2/HIKPI/AUXQ01000298.1_WWMGC_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_AGEKU_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BDUXL_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_BNLCU_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_CEAAQ_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_EFDZM_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_FCKTB_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GJSXK_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_GVLST_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_HEOWD_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_JYDCX_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_MZKPQ_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_OTIEU_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_RUTVO_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TFHJW_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_TPXHF_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UVNMM_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_UYCCU_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_WOZSL_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A1/CMLRC/NZ_CP009533.1_ZEBMO_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_PUCLT_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_QJNVJ_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_backward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_backward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_backward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_backward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_backward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_backward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_forward_0_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_forward_0_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_forward_1_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_forward_1_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_forward_2_hmmsearch_results.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/A2/HIKPI/NZ_CP009533.1_UVGAX_forward_2_translated_genome.fasta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmm_outputs/Pseudomonas_rhizosphaerae/Pseudomonas rhizosphaerae.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/custom_filters.py" afterPath="$PROJECT_DIR$/custom_filters.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forms.py" afterPath="$PROJECT_DIR$/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/layout.css" afterPath="$PROJECT_DIR$/static/css/layout.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/circularsample.js" afterPath="$PROJECT_DIR$/static/js/circularsample.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/lineardemo.js" afterPath="$PROJECT_DIR$/static/js/lineardemo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/linearplot.js" afterPath="$PROJECT_DIR$/static/js/linearplot.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/install/Phylo Island Caveats" afterPath="$PROJECT_DIR$/install/Phylo Island Caveats" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models.py" afterPath="$PROJECT_DIR$/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resultread.py" afterPath="$PROJECT_DIR$/resultread.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/genome_detail.js" afterPath="$PROJECT_DIR$/static/js/genome_detail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/genomedetail.html" afterPath="$PROJECT_DIR$/templates/genomedetail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/setup.html" afterPath="$PROJECT_DIR$/templates/setup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/TcC_profile.hmm" afterPath="$PROJECT_DIR$/tmp/TcC_profile.hmm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/assembly_summary.txt" afterPath="$PROJECT_DIR$/tmp/assembly_summary.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views.py" afterPath="$PROJECT_DIR$/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,7 +353,16 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/phyloisland_2019$__init__.coverage" NAME="phyloisland Coverage Results" MODIFIED="1546499030720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/phyloisland_2019$dynamic.coverage" NAME="dynamic Coverage Results" MODIFIED="1546614231931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/phyloisland_2019$phyloisland.coverage" NAME="phyloisland Coverage Results" MODIFIED="1548144558641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/phyloisland_2019$phyloisland.coverage" NAME="phyloisland Coverage Results" MODIFIED="1548154767875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -41,40 +370,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="241" column="55" lean-forward="false" selection-start-line="241" selection-start-column="55" selection-end-line="241" selection-end-column="55" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setup.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/setup.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="phyloisland.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/phyloisland.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="phrase.rnc" pinned="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/phrase.rnc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="371" column="16" lean-forward="false" selection-start-line="371" selection-start-column="16" selection-end-line="371" selection-end-column="16" />
+            <state relative-caret-position="90">
+              <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -83,18 +380,20 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-430">
-              <caret line="59" column="36" lean-forward="false" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
-              <folding />
+            <state relative-caret-position="600">
+              <caret line="40" column="11" lean-forward="false" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="custom_nanogallery.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/custom_nanogallery.js">
+      <file leaf-file-name="genomedetail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/genomedetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-54">
-              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+            <state relative-caret-position="354">
+              <caret line="120" column="19" lean-forward="false" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -103,18 +402,40 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state relative-caret-position="366">
+              <caret line="79" column="40" lean-forward="false" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="genomedetail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/genomedetail.html">
+      <file leaf-file-name="genome_overview.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/genome_overview.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="71" column="38" lean-forward="false" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+            <state relative-caret-position="405">
+              <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resultread.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resultread.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="97">
+              <caret line="154" column="36" lean-forward="false" selection-start-line="154" selection-start-column="36" selection-end-line="154" selection-end-column="36" />
+              <folding>
+                <element signature="e#91#100#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lineardemo.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/lineardemo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="60" column="9" lean-forward="false" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -124,19 +445,31 @@
         <entry file="file://$PROJECT_DIR$/static/js/genome_detail.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="46" lean-forward="false" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="27" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="custom_filters.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/custom_filters.py">
+      <file leaf-file-name="circularplot.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/circularplot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="-25797">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <marker date="1546523552000" expanded="true" signature="4648:4657" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="linearplot.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/linearplot.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-21822">
+              <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+              <folding>
+                <marker date="1548083707072" expanded="true" signature="4672:4681" ph="..." />
               </folding>
             </state>
           </provider>
@@ -156,12 +489,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>genome_ov</find>
-      <find>GenomeOverviewView</find>
-      <find>url_for</find>
-      <find>%}</find>
-      <find>ajx</find>
-      <find>aj</find>
       <find>aja</find>
       <find>ajax</find>
       <find>add</find>
@@ -175,7 +502,6 @@
       <find>GenomeRecords</find>
       <find>in</find>
       <find>input</find>
-      <find>inputf</find>
       <find>plotbody</find>
       <find>genomedetail</find>
       <find>formatter</find>
@@ -186,6 +512,13 @@
       <find>formatt</find>
       <find>ref</find>
       <find>setup</find>
+      <find>add_tag</find>
+      <find>items=</find>
+      <find>inputf</find>
+      <find>H</find>
+      <find>Hit(</find>
+      <find>db</find>
+      <find>genome =</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -230,9 +563,7 @@
         <option value="$PROJECT_DIR$/getGenomes.py" />
         <option value="$PROJECT_DIR$/static/js/form.js" />
         <option value="$PROJECT_DIR$/genome_overview.py" />
-        <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/checkForFeature.py" />
-        <option value="$PROJECT_DIR$/resultread.py" />
         <option value="$PROJECT_DIR$/phyloisland.py" />
         <option value="$PROJECT_DIR$/static/js/custom_nanogallery.js" />
         <option value="$PROJECT_DIR$/templates/genomeoverview.html" />
@@ -245,12 +576,14 @@
         <option value="$PROJECT_DIR$/templates/layout.html" />
         <option value="$PROJECT_DIR$/static/js/lineardemo.js" />
         <option value="$PROJECT_DIR$/static/css/layout.css" />
-        <option value="$PROJECT_DIR$/forms.py" />
-        <option value="$PROJECT_DIR$/templates/genomedetail.html" />
-        <option value="$PROJECT_DIR$/static/js/genome_detail.js" />
         <option value="$PROJECT_DIR$/custom_filters.py" />
-        <option value="$PROJECT_DIR$/views.py" />
         <option value="$PROJECT_DIR$/templates/setup.html" />
+        <option value="$PROJECT_DIR$/static/js/genome_detail.js" />
+        <option value="$PROJECT_DIR$/templates/genomedetail.html" />
+        <option value="$PROJECT_DIR$/forms.py" />
+        <option value="$PROJECT_DIR$/views.py" />
+        <option value="$PROJECT_DIR$/models.py" />
+        <option value="$PROJECT_DIR$/resultread.py" />
       </list>
     </option>
   </component>
@@ -267,8 +600,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="x" value="1680" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -667,22 +1001,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
+    <frame x="1680" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34387755" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21184371" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33366337" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265306" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18477103" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0026624068" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -744,7 +1078,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/views.py</url>
-          <line>661</line>
+          <line>671</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -769,7 +1103,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/resultread.py</url>
-          <line>162</line>
+          <line>164</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
@@ -879,6 +1213,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -913,16 +1248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resultread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2520">
-          <caret line="168" column="0" lean-forward="false" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
-          <folding>
-            <element signature="e#91#100#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/upload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -935,14 +1260,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="109" column="35" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/genome_overview.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-77">
-          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -976,16 +1293,6 @@
         <state relative-caret-position="-1162">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/linearplot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21967">
-          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-          <folding>
-            <marker date="1548083707072" expanded="true" signature="4672:4681" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1047,16 +1354,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/circularsample.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1913">
-          <caret line="141" column="38" lean-forward="false" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/layout.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -1069,72 +1366,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="11" column="34" lean-forward="true" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/genomeoverview.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/lineardemo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="54" column="16" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/circularplot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25303">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1546523552000" expanded="true" signature="4648:4657" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/genome_detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="46" lean-forward="false" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-430">
-          <caret line="59" column="36" lean-forward="false" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/custom_nanogallery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/genomedetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="38" lean-forward="false" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1165,21 +1396,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views.py">
+    <entry file="file://$PROJECT_DIR$/static/js/custom_nanogallery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="241" column="55" lean-forward="false" selection-start-line="241" selection-start-column="55" selection-end-line="241" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="438">
+          <caret line="47" column="11" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="47" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/genomeoverview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/setup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="261">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/circularsample.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2112">
+          <caret line="141" column="38" lean-forward="false" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/circularplot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25797">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1546523552000" expanded="true" signature="4648:4657" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/linearplot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21822">
+          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding>
+            <marker date="1548083707072" expanded="true" signature="4672:4681" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/genome_detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="27" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/lineardemo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="60" column="9" lean-forward="false" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/genome_overview.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="11" lean-forward="false" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/genomedetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="120" column="19" lean-forward="false" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="79" column="40" lean-forward="false" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resultread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="154" column="36" lean-forward="false" selection-start-line="154" selection-start-column="36" selection-end-line="154" selection-end-column="36" />
+          <folding>
+            <element signature="e#91#100#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

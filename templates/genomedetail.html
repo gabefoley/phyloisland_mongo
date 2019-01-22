@@ -6,10 +6,16 @@
     <script src="../../static/js/d3/d3.min.js"></script>
     <script src="../../static/js/d3/d3-tip.js"></script>
     <script src="../../static/js/select.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+
+    <script type="text/javascript" src="../../static/js/genome_detail.js"></script>
+
 
     <link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
 
     <link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
+            {{ JSGlue.include() }}
+
 
 
 
@@ -33,6 +39,8 @@
 
 </div>
 <script>
+
+
 var tracks = [
 	      { trackName: "track2",
 		trackType: "stranded",
@@ -52,33 +60,25 @@ var tracks = [
 	      }
               ];
 
+
+
 </script>
 
 <div id="hit_div">
-        List of hits to tag or delete
 
+                    Tag to add <input id="tag2add" type="text" value="">
+    <br>
+    <br>
 
-    <form method="POST"    enctype="multipart/form-data">
-            {{ hit_form.hidden_tag() }}
+                    <button name="tagBtn" class="btn-primary" id="tag_hit" type="submit">Add tag</button>
 
-            <div class="smallform">
-
-                {{ hit_form.tag.label }}
-
-                {{ hit_form.tag }}
-
-                <br>
-                {{ hit_form.submit_hit(class="btn-primary") }}
-                {{ hit_form.delete_hit(class="btn-primary") }}
-
-            </div>
-
-         </form>
-
+    <button name="tagBtn" class="btn-primary" id="delete_hit" type="submit">Delete</button>
+    <br>
     <br>
 
 
 
+    List of hits to tag or delete:
     <div id="myList">
                 </div>
 
@@ -104,8 +104,38 @@ var tracks = [
     <script type="text/javascript" src="../../static/js/linearplot.js"></script>
     <script type="text/javascript" src="../../static/js/linearbrush.js"></script>
     <script type="text/javascript" src="../../static/js/lineardemo.js"></script>
+
                 <script type="text/javascript" src="../../static/js/circularsample.js"></script>
 
+<script>
+         $('#submit_hit').on('click', function (e) {
+         e.preventDefault();
+         console.log('clicked submit hit')
+
+     });
+
+     $('#delete_hit').on('click', function (e) {
+         e.preventDefault();
+         console.log('clicked delete hit')
+
+         var genome = "{{ genome |safe }}"
+         hits = "gabe"
+
+
+         $.ajax({
+             url: Flask.url_for("delete_tag"),
+             data: JSON.stringify({
+                 'genome' : genome, 'hits' : selected
+             }),
+             contentType: 'application/json;charset=UTF-8',
+             type: 'POST',
+             error: function(error) {
+                 console.log(error);
+             }
+         });
+
+     });
+</script>
 
         {% endblock %}
 

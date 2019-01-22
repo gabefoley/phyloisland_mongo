@@ -11,6 +11,7 @@ from Bio import SearchIO
 from Bio.Seq import Seq
 import re
 import models
+from bson.objectid import ObjectId
 
 
 def expandStartPostion(record, hit_start, strand):
@@ -151,8 +152,9 @@ def HMMread(path, record=None, expand=False):
                         new_score =  str(hsp.bitscore)
                         new_start = str(start)
                         new_end = str(end)
+                        object_id = ObjectId()
 
-                        hit = models.Hit(new_reg, new_score, new_start, new_end)
+                        hit = models.Hit(object_id, new_reg, new_score, new_start, new_end)
 
                         add = True
                         for hit in record.hits:
@@ -161,11 +163,8 @@ def HMMread(path, record=None, expand=False):
                                 add = False
 
                         if add:
-
                             curr.hits.append(hit)
                             curr.save()
-
-
                     i += 1
                 except ValueError:
                     continue

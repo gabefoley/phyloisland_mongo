@@ -403,7 +403,7 @@ class GenomeDetailView(BaseView):
 
         hit_form = forms.GenomeHitForm()
 
-        if request.method == 'POST':
+        if request.method == 'POST' and select_form.submit_diagram.data:
 
             print ('post')
 
@@ -416,31 +416,31 @@ class GenomeDetailView(BaseView):
 
                 print ('got here')
 
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items, genome=genome.id)
 
-            elif hit_form.submit_hit.data and hit_form.validate():
-
-                print ('got to this')
-
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
-
-
-
-            elif hit_form.delete_hit.data and hit_form.validate():
-
-                print ('nope, here')
-
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
-
+            # elif hit_form.submit_hit.data and hit_form.validate():
+            #
+            #     print ('got to this')
+            #
+            #     return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
+            #
+            #
+            #
+            # elif hit_form.delete_hit.data and hit_form.validate():
+            #
+            #     print ('nope, here')
+            #
+            #     return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
+            #
             else:
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items, genome=genome.id)
         else:
             # Just get the first Genome Record in the database and return a Genome Detail of that
             genome = models.GenomeRecords.objects()[0]
 
             items = utilities.get_genome_items(genome)
 
-            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
+            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items, genome=genome.id)
 
 
 
@@ -645,6 +645,16 @@ def add_tag():
         query.save()
 
     return redirect('genomeoverview')
+
+@app.route("/genomedetail/delete_hit", methods=['GET', 'POST'])
+def delete_tag():
+
+    query = models.GenomeRecords.objects().get(id=request.json['genome'])
+
+    print(request.json['genome'])
+    print(request.json['hits'])
+
+    return redirect('genomedetail')
 
 
 @app.errorhandler(404)
