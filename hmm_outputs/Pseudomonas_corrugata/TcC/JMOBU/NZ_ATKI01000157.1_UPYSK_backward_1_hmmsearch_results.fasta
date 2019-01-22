@@ -1,0 +1,88 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/Pseudomonas_corrugata/TcC/JMOBU/NZ_ATKI01000157.1_UPYSK_backward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/Pseudomonas_corrugata/TcC/JMOBU/NZ_ATKI01000157.1_UPYSK_backward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+   1.6e-170  554.7  11.3   2.4e-170  554.1  11.3    1.1  1  NZ_ATKI01000157.1  Pseudomonas corrugata CFBP 5454 contig157,
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_ATKI01000157.1  Pseudomonas corrugata CFBP 5454 contig157, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  554.1  11.3  2.4e-170  2.4e-170       1     700 [.  153442  154102 ..  153442  154123 .. 0.93
+
+  Alignments for each domain:
+  == domain 1  score: 554.1 bits;  conditional E-value: 2.4e-170
+            TcC_aln      1 mstslfsktPsvtvldnrgltvreiayhrhPdspdvtseritrhqydarGfltqsadPrlh.eaglanlsyltdlagevlrtqgvd 85    
+                           ms+ l+++tP++ v+dnrgl vr++ay+r  ++ ++ + ritr++ d++G  ++  d rl  +a   nl  +++l+g+ l  ++vd
+  NZ_ATKI01000157.1 153442 MSARLHHRTPTIRVIDNRGLPVRQVAYYRR-NTDEQSQARITRYRNDEAGRRVEQWDARLFiNAPAPNLRTVHSLSGKTLLVDSVD 153526
+                           6789*************************7.6889999*********************97255666******************* PP
+
+            TcC_aln     86 agttvalndaagrpflavsnistaddgtedrsqavtrtwqyedaslpGrllsiteqvtgeaariterfvyagntdaekalnlagqc 171   
+                           ag  ++l   ag+ + + +          +r++    t+    +    r+  + eq+ g++ r +e + y  ++    a+nl+g+ 
+  NZ_ATKI01000157.1 153527 AGWRLSLPGDAGQLLHSWD----------QRGNHWRTTFD---S--QLRPTVLREQTPGQNPRTVECLRYGDSSPTSAAHNLCGAL 153597
+                           ************9887766..........56666666663...3..3488999********************************* PP
+
+            TcC_aln    172 vshydtaglvqtdsialtgvplsvtrrllkdadnpdavadWqgedasawndllaaetfttlttadatGavltttdakgnlqrvayd 257   
+                           v+h d+ag   t+  al ++pl  tr++  da      adW  e++     l + + +tt  + da  +++ ++da+ +++r a+d
+  NZ_ATKI01000157.1 153598 VRHDDSAGTLLTHGYALCATPLRQTRHMRADAGP----ADWPTEEKDRDLLLEKGDGHTTSWRYDALAQIIQQSDAAQHQRRYAFD 153679
+                           ***************************9999765....89*9999988888888999***************************** PP
+
+            TcC_aln    258 vaGllsgsWltlkggt.eqvivksltysaagqklreehGnGvvttyeyepetqrlvgikterpaGhasgakvlqdlryeydPvGnv 342   
+                           +aG l++  l+ ++ + eq iv  lty a gq   +  GnGv++   ++p   rl++++         +a++lqdlry ydPvGnv
+  NZ_ATKI01000157.1 153680 LAGQLRSVSLKTRDAAiEQTIVSHLTYNAFGQFETQTAGNGVMSRAVFDPANGRLTALRVSL------SARILQDLRYSYDPVGNV 153759
+                           *******9999998644*****************************************9875......57**************** PP
+
+            TcC_aln    343 lkitndaeetrfWrnqkvvPentyvydslyqlvsatGremanagqqssslpsatvplpidssaytnytrtytydeagnltqirhsa 428   
+                            ++++ a+ +rf  nq+v   ++++ydslyql satGre a  +        +t+ lp+d +   nyt  y+yd +gnlt++rh  
+  NZ_ATKI01000157.1 153760 THVEDKAQPARFGSNQRVEAISAFAYDSLYQLTSATGRETAGLA-------PTTLNLPVDANQLFNYTEHYEYDAGGNLTELRHV- 153837
+                           ***************************************99765.......35667889*************************9. PP
+
+            TcC_aln    429 patnnsyttditvsdrsnrgvlstltenpadvdalftagGqqkqlqpgqelvWtarnellkvtpvvrdgstddsesyrydadsqrv 514   
+                               n+yt  + vs  snr +  +  +++adv    +a G+q+ l pgq+l+W++rn+l  v+ v+rd++ +d e y yd   qrv
+  NZ_ATKI01000157.1 153838 -RDRNNYTRTLNVSATSNRLLSWNTGHSAADVRVDVDAHGNQQALSPGQALAWNTRNQLDSVVLVQRDNAPNDVERYHYDNTGQRV 153922
+                           .6789**************888888899********************************************************** PP
+
+            TcC_aln    515 lkvsvqktgnstqtqrvlylpglelrttksgeteteslqvitvgeagraqvrvlhwesgkpaeisndqlrysydnligssgleldg 600   
+                            kv + +t++ t t+ v ylpgle+++ +     +e+l+vit+ +agr +vr lhw++g+p++i+ +q+ry   +  gs +leld+
+  NZ_ATKI01000157.1 153923 RKVRTTHTAAITHTREVRYLPGLEIHSRH-----NERLEVITL-QAGRFNVRYLHWTEGRPSGIAANQMRYNLGDHLGSNSLELDD 154002
+                           *************************9987.....58999**98.69**************************************** PP
+
+            TcC_aln    601 dgniisleeyypyGGtavwaarsqveadyktvrysGkerdatGlyyyGyryyqpWaGrWlsadpaGtvdGlnlfrmvrnnPvtlsd 686   
+                            g++is+e y pyGGta +a+rs+veady+t+rysGkerda+GlyyyG+ryy pW  rW+s dpaG vdGlnl+ mv nnP+ ++d
+  NZ_ATKI01000157.1 154003 RGDLISQESYLPYGGTAWLASRSAVEADYRTLRYSGKERDASGLYYYGHRYYAPWLQRWISPDPAGAVDGLNLYCMVGNNPLRFVD 154088
+                           ************************************************************************************** PP
+
+            TcC_aln    687 edGlasvkelksqv 700   
+                           ++G  +++ ++s +
+  NZ_ATKI01000157.1 154089 HQGWLKDDVVESVK 154102
+                           ***99954444332 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (2064630 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 9.43u 0.26s 00:00:09.69 Elapsed: 00:00:09.77
+# Mc/sec: 152.42
+//
+[ok]

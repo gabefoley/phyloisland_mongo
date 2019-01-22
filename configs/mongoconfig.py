@@ -1,6 +1,6 @@
 # Names to use for our parameters
-# MONGO_DBNAME = "phyloisland_mongo_2019"
-# MONGO_URI = 'mongodb://pi:abc123@localhost/' + MONGO_DBNAME
+MONGO_DBNAME = "phyloisland_mongo_2019"
+MONGO_URI = 'mongodb://pi:abc123@localhost/' + MONGO_DBNAME
 
 MONGODB_DB = 'phyloisland_mongo_2019'
 MONGODB_HOST= 'localhost'

@@ -1,0 +1,105 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/A1_profile.hmm
+# target sequence database:        hmm_outputs/Photorhabdus_bodei/A1/JMOBU/NZ_NSCM01000192.1_KHGMB_forward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/Photorhabdus_bodei/A1/JMOBU/NZ_NSCM01000192.1_KHGMB_forward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       align  [M=1131]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+     2e-195  637.3  32.0   8.2e-156  506.1  18.1    2.4  2  NZ_NSCM01000192.1  Photorhabdus bodei strain LJ24-63 LJ_63_sc
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_NSCM01000192.1  Photorhabdus bodei strain LJ24-63 LJ_63_scf0192, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  136.6   6.1   3.1e-44   3.1e-44      35     262 .. 1272443 1272667 .. 1272429 1272678 .. 0.92
+   2 !  506.1  18.1  8.2e-156  8.2e-156     430    1128 .. 1272680 1273388 .. 1272667 1273390 .. 0.89
+
+  Alignments for each domain:
+  == domain 1  score: 136.6 bits;  conditional E-value: 3.1e-44
+              align      35 slvdelkrlGyfsifdivkvskqrfikrhneslsGqaevifdkavsmanqlvqsyrqrslrdadteklakvasgaeklPdyssl 118    
+                            + +d++ +  y+sifdi+++ ++ f  ++n   + qae i+d a s+a q+ +++rq+++ ++     +  + + ++ P+y+sl
+  NZ_NSCM01000192.1 1272443 NFTDKIIESDYKSIFDIIRIPRNLFLDKYNS--NHQAEDIYDTANSYAIQIARKFRQQHYTHNT-YARSYSSLSLKEGPQYQSL 1272523
+                            5667888889****************99987..579*********************9876554.4445556667799****** PP
+
+              align     119 fpepwdnfckPdaiesLdsPaaYLleLYkfvkqlelDgtnqalkleqRRaDipeLlLdsdnlnkevsaleivndvLsesareyi 202    
+                            f + w+++c  +a e+ +sP+aYL e+Yk++ ++e ++  +a+k+++RR+D+ +L+Ld+ ++n+e+s+l++vn +L++     +
+  NZ_NSCM01000192.1 1272524 FQDNWQQHCPNGAPEANNSPVAYLAEIYKLAMDIESNAGAEAIKIDERRSDLAHLMLDEVSINQEISTLSLVNAMLNQRLEAML 1272607
+                            ************************************************************************************ PP
+
+              align     203 dqsgeaekpvnqvlGetrfPftlPyslatqqinkGlaekntelgtviqqvdqelpwstte 262    
+                             q+g+++ +   +l + r+Pf lPy+ a  qin+ + +k+     ++qq d+ +p++ ++
+  NZ_NSCM01000192.1 1272608 KQQGKTNLSSYDLLANVRYPFQLPYDHAQNQINLTFDNKKLFCLEMVQQTDKSYPYFLKS 1272667
+                            *******************************************************98765 PP
+
+  == domain 2  score: 506.1 bits;  conditional E-value: 8.2e-156
+              align     430 lkyrlaiakkgtsaeellpeaedffeknyGlsaeesskLkellafgdqteskaeeveellssgdfapvvspnvlfsnpifsskq 513    
+                            l  +l i+++ + +e l p +++f+++nyG++++e   L+ l++f+ qt++++ eve+ll+++  +    + ++  n  +s++ 
+  NZ_NSCM01000192.1 1272680 LANQLGISQQKIINEPLNPSNSQFYQDNYGVNNAE--LLELLSTFTTQTALSVAEVEQLLCIKGISTNKEAALEQNNVRLSQNV 1272761
+                            77899**************************9888..788899***********************999999999999888888 PP
+
+              align     514 seeafp.apyqyGavYinagq...edavsivrtd........dgreltavsddrfdRlnRliRLqrwlelpyhqlDlLltsalk 585    
+                             +  +p apy+yGav+in  +   +d +++ r            ++l+ v  +rfdRlnR+iRL +w++lp +++DlL+t++++
+  NZ_NSCM01000192.1 1272762 LNLGIPaAPYRYGAVFINGSNakeSDFLHLYREFassgnlpqAVNKLSGVNHERFDRLNRMIRLWKWIKLPVDKIDLLVTATMR 1272845
+                            88888736*********8655111556666554377788776778999999********************************* PP
+
+              align     586 Ae.eenldleinentlraLGlFrhlnkqykvsaeaFaallyqltpfavsnnvpflDqlFNqekLFdePlvlddeeFdytetkgd 668    
+                            Ae  en +l++n+ntlr+LG+F h +k+y++s+++Faal+yq+tpf+++  +pf+Dq+FN ++LFd Plv+dd+eF + +++  
+  NZ_NSCM01000192.1 1272846 AEgDENKQLQMNDNTLRMLGVFHHWSKKYHISPDDFAALIYQITPFSIGTAIPFFDQIFNLSSLFDAPLVIDDREFYSEKKQ-- 1272927
+                            **99************************************************************************777766.. PP
+
+              align     669 daktvkqLcagLgIsavtfqllaelveaalelesgkLvrsldvvSalYrLvtiPrlfglsaedgliliniltkegky..Lakep 750    
+                            d   + +LcagL+I+a++f lla+lv++++  ++ +L++sl vvSa+Yr+v++ r++gl++++g++l+ ++  ++     a+ p
+  NZ_NSCM01000192.1 1272928 DDTIISKLCAGLKIKAKDFSLLAPLVAESM--DKKSLTCSLSVVSAFYRIVQLSRILGLTPQEGVVLLTLIGGNKVLkqVAGMP 1273009
+                            8899************************99..5589***********************************887643449**** PP
+
+              align     751 alteeksttekdlLdiilkleelaaWlrkskltpaklslllgktelpvv.atdsevtlfkgiaqglsenvLseddfnraeiP.. 831    
+                             l+++ +++++d+Ldi++++e++++Wlr +kl++ +l l+l   + +v+ + +++v +++++  +  +  L+ +++ ++ +P  
+  NZ_NSCM01000192.1 1273010 YLSQSGNNRQTDILDIMIAMEQTTEWLRINKLSVGTLQLFLLPANEVVMtGNAAQVAFINQVGLHRNSESLTLESLSSNTLPal 1273093
+                            **999999*****************************998877666665056789*******8888888899999999999977 PP
+
+              align     832 ..k.egidWldlLs.....llvdanGlvldiplewgktdeealkekikaiveeikidaddnviailvqlilqaktaQenllsss 907    
+                              +   idWl+  +     +  ++ Glv+      + +  ++++++ik+i+ ++  +++ ++      +i+qa+ aQ+ +  s 
+  NZ_NSCM01000192.1 1273094 dnNgDLIDWLTPRQtvlnaISHQKYGLVKP-----DVNITDEINKAIKSILLDE--KVKVSITEQWSAIITQAQSAQNAISASM 1273170
+                            542588999976554333444567799998.....5555677999999999886..455566666899**************** PP
+
+              align     908 iaaeygverdlvpllLrWlgssvyqvLkkvl...dgtpetvadisdelleltysLliytqlikelklkkellllrltkPeWlgl 988    
+                            + + +++++ ++ + L+W+gss+y++L k +   d++  +++ i +++l l+y L  y  +ik+++l++ +l+    +Pe +g 
+  NZ_NSCM01000192.1 1273171 LVNAFQLSQPFPLFILNWIGSSSYDFLLKSFelfDKKNLQPEMIGHDYLILMYDLSRYISVIKTFRLSTVMLNHFSEHPERFGC 1273254
+                            ***************************9988778888889******************************************** PP
+
+              align     989 avekkdssslsldeiyllsryqdlle...sakqnEdklleYlkfansseadkkeeednsekcaellAeilgwdadeielavakl 1069   
+                                 ++++lsl+ iy +sry+d+++   s ++ Edk+l Yl+++n++++++ ++     +  ++l e+l w+ de+ la +++
+  NZ_NSCM01000192.1 1273255 -----QNTQLSLSVIYYFSRYRDWMQlvaSLDNAEDKILRYLELVNTNNQSNDKA-----NRVKILTELLSWQRDEVLLANSHI 1273328
+                            .....5789**************98633266789************998887777.....5689*****************997 PP
+
+              align    1070 .eltpkrartleqiDwlrRlqqlsektglsvelllqaaaLtpnsdfelyqsvgEavlaaL 1128   
+                             + + + a+tl +iD ++Rl+  se+  ls+  ll+  +++ +s++e y++vg a++a+L
+  NZ_NSCM01000192.1 1273329 iGKEDNTAKTLAEIDIMMRLKVWSEEMALSMRSLLATININAHSSYEDYKQVGVAMVATL 1273388
+                            3667788***************************************************97 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1131 nodes)
+Target sequences:                            1  (1686574 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 12.72u 0.42s 00:00:13.14 Elapsed: 00:00:13.41
+# Mc/sec: 142.25
+//
+[ok]

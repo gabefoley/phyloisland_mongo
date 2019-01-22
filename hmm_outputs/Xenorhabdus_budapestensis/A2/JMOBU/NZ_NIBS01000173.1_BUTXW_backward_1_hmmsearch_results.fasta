@@ -1,0 +1,128 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/A2_profile.hmm
+# target sequence database:        hmm_outputs/Xenorhabdus_budapestensis/A2/JMOBU/NZ_NIBS01000173.1_BUTXW_backward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/Xenorhabdus_budapestensis/A2/JMOBU/NZ_NIBS01000173.1_BUTXW_backward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       align  [M=1020]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+          0 1661.5  27.3          0 1660.7  27.3    1.4  1  NZ_NIBS01000173.1  Xenorhabdus budapestensis strain DSM 16342
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_NIBS01000173.1  Xenorhabdus budapestensis strain DSM 16342 Xbud_173, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 1660.7  27.3         0         0       1    1020 [] 1154307 1155663 .. 1154307 1155663 .. 0.99
+
+  Alignments for each domain:
+  == domain 1  score: 1660.7 bits;  conditional E-value: 0
+              align       1 vsnsieaklle.........ylGqvv..................lyd..................................... 20     
+                            +snsieakl+e         ylGq+v                  lyd                                     
+  NZ_NIBS01000173.1 1154307 MSNSIEAKLQEdlrdalvdyYLGQIVpkgadfqrdrekiknvddLYDyllldtqvsskvttsrlsyvtqsvqqyinrimlnles 1154390
+                            79************************99999999999888888866699999******************************** PP
+
+              align      21 .................................................................................... 20     
+                                                                                                                
+  NZ_NIBS01000173.1 1154391 glamtqeeiadwqefanrygywsanqqlrlypeiyvdptlrltktefffqlesalnqgkltddaaqkavlgylnqfeevsnlev 1154474
+                            ************************************************************************************ PP
+
+              align      21 ....edGid................................tdelsptawsewklidv.......................fev 45     
+                                edG+d                                t+el+ptawsewk+i+v                       fev
+  NZ_NIBS01000173.1 1154475 lsgyEDGVDvandktyfiartrtqpyryfwrsldmmqrntaTNELYPTAWSEWKPISVplenarngivrpvimnnrlyigwFEV 1154558
+                            ************************************************************************************ PP
+
+              align      46 eeekedkdnt..ryrtkiklaylkfdGswssgttlredvldeam........................................ 87     
+                            +eek+dk++t  ryrtk+++a+l+fdG+wssgtt+re+vl++am                                        
+  NZ_NIBS01000173.1 1154559 SEEKDDKESTaiRYRTKLNIAHLGFDGTWSSGTTVREEVLAHAMdkmiavldrtgkeerlalvaftrlhgedkngpydydevfs 1154642
+                            *********999************************************************************************ PP
+
+              align      88 .........................................................................tkddfklkany 98     
+                                                                                                     +k++fkl+a+y
+  NZ_NIBS01000173.1 1154643 yicdnmlmassdlppstthlsdqddygnklvwfffrepdnggmeefnqlilypvninrkwpiegettfegklgNKENFKLSADY 1154726
+                            ************************************************************************************ PP
+
+              align      99 vedtldl.lesvstykydfsksknilylikledkkeercvldekllveedkep.................kdvkvvlgfslekg 164    
+                            vedtld+ l+s+stykydfsksknily+i+l+dk+++rc+l++k+l++ed+e+                 kd+ vv+gfsl+k+
+  NZ_NIBS01000173.1 1154727 VEDTLDMyLTSTSTYKYDFSKSKNILYCIWLQDKNGNRCWLEYKSLTKEDFEKgnielharvkrcnsddlKDIIVVTGFSLPKE 1154810
+                            ************************************************************************************ PP
+
+              align     165 gvddakakikvelkvgkklrekiqlkqqdqvqyLdfpee...ekwystkaiRLntlfakeLiakasqsidkvLswdtqnikeep 245    
+                            + dd++++ikv+l+vgk lrek+q+kq++q+qyL+fp++   ++wys k+ RLntlfakeLi+kas++++ vLsw+tqn++ee+
+  NZ_NIBS01000173.1 1154811 NGDDIGGRIKVTLSVGKLLREKFQIKQSKQTQYLQFPDNqskPVWYSGKQTRLNTLFAKELISKASKKLELVLSWETQNLHEES 1154894
+                            **************************************988899**************************************** PP
+
+              align     246 ltgsasepidlnGangiYfWELFfhmPflvawRlnvEqryeeaerWlkylfnpyededeqalkqgkpryWnsrPlidepkkeys 329    
+                            ++g+ s pidl+GangiYfWELFfhmPflvawR+nvEqr+eea+rW+kylf+pye+ede+alkqgkpryWnsrPl+d+pk++ys
+  NZ_NIBS01000173.1 1154895 ISGGGSVPIDLEGANGIYFWELFFHMPFLVAWRFNVEQRFEEASRWIKYLFDPYENEDEPALKQGKPRYWNSRPLLDDPKETYS 1154978
+                            ************************************************************************************ PP
+
+              align     330 slieptDPDaiaasePihYrkaiFafyvknlidqgDmeYRklerdalteAkliYaqassLLGarPdlqlasqWqpltLedaskk 413    
+                             l++p+DPDaia+ ePihYrkaiF+f+v+nlidqgDmeYRkl+++a+t+A+l+Ya+assLLG+rPd+qlas WqpltLeda ++
+  NZ_NIBS01000173.1 1154979 -LMQPSDPDAIASGEPIHYRKAIFYFLVRNLIDQGDMEYRKLQPTARTIARLSYATASSLLGRRPDVQLASYWQPLTLEDALYQ 1155061
+                            .**********************************************************************************9 PP
+
+              align     414 .enseleelelqseslpllpvvsdktisaldndlFlkpvneellelwdklesRlyNLRhnltldGkelslpLydekidpkdLlk 496    
+                             +nsel++le+qs++lp++pvv+d+ti+a+dndlF+kp+n++l++lwd+le+R+yNLRhnltldGke++++Lydeki+p++L++
+  NZ_NIBS01000173.1 1155062 yDNSELRQLEMQSQPLPYIPVVHDNTIRAIDNDLFMKPINSDLTALWDRLENRIYNLRHNLTLDGKEINMALYDEKISPRGLMN 1155145
+                            999********************************************************************************* PP
+
+              align     497 qryqrvvtarnaskanakipnyRFeplleraksavetliqfGstllsllErkdsasleelqqqqaldlyrftidlQqqaidiaq 580    
+                             ryqrvvtarnas++n++ pnyRFep+l+rak +v+tliqfGstllsllErk+s+s+e++q+ q++dlyrf+idlQqq+i+i+q
+  NZ_NIBS01000173.1 1155146 LRYQRVVTARNASRMNFNPPNYRFEPMLARAKGGVDTLIQFGSTLLSLLERKESLSFEKYQMLQNSDLYRFSIDLQQQEININQ 1155229
+                            ************************************************************************************ PP
+
+              align     581 aslealevskkaaqeRyehyksLydenisstEqevielqsqaaalllaaqaartaaaaldlvpnifglAvGGskwgailraaae 664    
+                            asleal++skkaaq+Ryeh+ksL+denis+tEq++ielqsq+a++llaaq++rt+aaald++pni+glAvGGs+wga+l+aaae
+  NZ_NIBS01000173.1 1155230 ASLEALQISKKAAQDRYEHFKSLHDENISPTEQQIIELQSQSASALLAAQTLRTGAAALDMLPNIYGLAVGGSRWGAALNAAAE 1155313
+                            ************************************************************************************ PP
+
+              align     665 ilqikaesketkadslsvsesYrRRrqEWelqykqAeaeiesidqQinvqqlqleaaqkqlaqveaqqeqaqalleylstrftn 748    
+                            i++ik++s+++kadslsvsesYrRRrqEWe+qykqAe+e++sidqQinvq+lq+eaa+k+l q+ a+q+++ +ll+y+s+rftn
+  NZ_NIBS01000173.1 1155314 IIMIKHQSDSIKADSLSVSESYRRRRQEWEIQYKQAEWEVNSIDQQINVQNLQVEAANKRLVQIAAEQQKSLELLDYFSSRFTN 1155397
+                            ************************************************************************************ PP
+
+              align     749 eslYtWlisqlsalYlqaYdavsslcLsaeaslqyElgdaetnFiksgaWndlYqGLlaGetLkLalqrmeraylerneRrlei 832    
+                            eslYtW+isqls+lYlqaYdavsslcLsaeaslqyEl+ +e++Fi++++Wnd+YqGL++GetLkLalqrmer+y+e+n+R +ei
+  NZ_NIBS01000173.1 1155398 ESLYTWMISQLSNLYLQAYDAVSSLCLSAEASLQYELD-SEQTFIEGSSWNDFYQGLMSGETLKLALQRMERTYIEQNSRLQEI 1155480
+                            *************************************9.899****************************************** PP
+
+              align     833 vkTvslkellkesweeelkelkskssitfslkeklfvedYpelleRriksvsvsLpallGpyedvrAkLsqgssstlakaDlkt 916    
+                            +kT+slkel ke+w+++l++lk++s+itf+l+e++f++dYp+l +RriksvsvsLp+l+Gpyed++A+Ls+g++++++kaD+++
+  NZ_NIBS01000173.1 1155481 TKTISLKELRKEMWDKDLETLKQHSAITFNLQEADFAKDYPNLSHRRIKSVSVSLPMLVGPYEDICAQLSLGVNARMVKADVQV 1155564
+                            ************************************************************************************ PP
+
+              align     917 vekllkkrekadtknvvrniranqqialStglnDsGlftLnfdDerfLPFEGtgveskwklefpeknatdkkqlLesLsDiilh 1000   
+                            +ek+lk++ +ad++++vr+i++nqqi+lS+g+nDsG+ftLnfdDerfLPFEG+gves+w+++f     t+++q+L+sL+D+ilh
+  NZ_NIBS01000173.1 1155565 MEKVLKNGLNADSPYWVRSIHPNQQISLSSGMNDSGMFTLNFDDERFLPFEGSGVESSWTFAF-----TNQTQNLDSLTDVILH 1155643
+                            ***************************************************************.....**************** PP
+
+              align    1001 vrYTakdgssefskavkkll 1020   
+                            vrYTak+gss+f+kav+kll
+  NZ_NIBS01000173.1 1155644 VRYTAKAGSSAFGKAVQKLL 1155663
+                            ****************9986 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1020 nodes)
+Target sequences:                            1  (1437949 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 8.84u 0.21s 00:00:09.05 Elapsed: 00:00:09.09
+# Mc/sec: 161.35
+//
+[ok]

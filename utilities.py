@@ -171,8 +171,8 @@ def set_profile_as_reference(profile_ids, region):
 
 
         # Write the new profile to the tmp folder ready to be used
-        with open("tmp/" + region + "_profile.hmm", 'w') as profile_path:
-            profile_path.write(curr.profile.decode('utf-8'))
+        # with open("tmp/" + region + "_profile.hmm", 'w') as profile_path:
+        #     profile_path.write(curr.profile.decode('utf-8'))
 
         flash("The profile named %s has been set as the reference profile for %s" % (curr.name, region), category='success')
 
@@ -223,8 +223,10 @@ def get_genome_items(genome):
     items = []
 
     for count, hit in enumerate(genome.hits):
+        print (hit.id)
         hit_details = dict()
         hit_details['id'] = count
+        hit_details['hit_id'] = str(hit.id)
         hit_details['start'] = hit.start
         hit_details['end'] = hit.end
         hit_details['name'] = hit.region

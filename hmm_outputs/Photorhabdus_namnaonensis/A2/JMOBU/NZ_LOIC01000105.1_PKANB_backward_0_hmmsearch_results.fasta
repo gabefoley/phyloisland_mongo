@@ -1,0 +1,254 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/A2_profile.hmm
+# target sequence database:        hmm_outputs/Photorhabdus_namnaonensis/A2/JMOBU/NZ_LOIC01000105.1_PKANB_backward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/Photorhabdus_namnaonensis/A2/JMOBU/NZ_LOIC01000105.1_PKANB_backward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       align  [M=1020]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+          0 3050.6  86.4   3.8e-285  934.5  25.2    7.9  4  NZ_LOIC01000105.1  Photorhabdus namnaonensis strain PB45.5 Ph
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LOIC01000105.1  Photorhabdus namnaonensis strain PB45.5 Phpb_contig000106, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  295.7   1.4   3.6e-92   3.6e-92     607    1012 ..  427630  428024 ..  427627  428030 .. 0.90
+   2 !  864.5  12.4  5.5e-264  5.5e-264     251    1005 ..  597006  597760 ..  596998  597769 .. 0.91
+   3 !  934.5  25.2  3.8e-285  3.8e-285      20    1007 ..  601920  603213 ..  601838  603222 .. 0.86
+   4 !  869.7  11.1  1.5e-265  1.5e-265     249    1010 ..  613777  614544 ..  613769  614547 .. 0.92
+
+  Alignments for each domain:
+  == domain 1  score: 295.7 bits;  conditional E-value: 3.6e-92
+              align    607 nisstEqevielqsqaaalllaaqaartaaaaldlvpnifglAvGGskwgailraaaeilqikaesketkadslsvsesYrRRrqE 692   
+                           ++s+ E + ++l+s+a  ++  a+ + +a+++++ vpn+fglA GGs+wga+l   ++  q+ a +++ +a   +v++ Y+RR++E
+  NZ_LOIC01000105.1 427630 GLSAAEIAGLTLRSTAMITNGVATGLLIAGGIANAVPNVFGLANGGSEWGAPLIGSGQATQVGAGIQDQSAGISEVTAGYQRRQEE 427715
+                           68999********************************************************************************* PP
+
+              align    693 WelqykqAeaeiesidqQinvqqlqleaaqkqlaqveaqqeqaqalleylstrftneslYtWlisqlsalYlqaYdavsslcLsae 778   
+                           W lq++ A++ei ++d+Qi+++q+q+++aqkq +  e++q +aqa+++ ++trft ++lY+W++++lsalY+q+Yd + ++cL+a+
+  NZ_LOIC01000105.1 427716 WALQRDIADNEITQLDAQIQSLQEQITMAQKQITLSETEQANAQAIYDLQTTRFTGQALYNWMAGRLSALYYQMYDSTLPICLQAK 427801
+                           ************************************************************************************** PP
+
+              align    779 aslqyElgdaetn.FiksgaWndlYqGLlaGetLkLalqrmeraylerneRrleivkTvslkellkes.weeelkelkskssi... 859   
+                           a+l  Elg++e +   +  +Wndl+qGLlaGe L  +lq++++++l r    le ++Tvsl +l+++   +e++++  + +++   
+  NZ_LOIC01000105.1 427802 AALVQELGEKESDsLFQVPVWNDLWQGLLAGEGLSSELQKLDAIWLARGGIGLEAIRTVSLDTLFGTGtLSENINKVLNGETVsps 427887
+                           ********999887889999*********************************************998544555555554444455 PP
+
+              align    860 ..............tfslkeklfvedYp..elleRriksvsvsLpallGpyedvrAkLsqgssstlakaDlktvekllkkrekadt 929   
+                                         t+ l++  +++ Y+  ++ +Rrik+++v+Lp+llGpy+d++A+L++g +                       
+  NZ_LOIC01000105.1 427888 ggvglaltndifqaTLDLSQLGLDNSYNlgNEKKRRIKRIAVTLPTLLGPYQDLEATLVMGAE----------------------- 427950
+                           5666666676677799***********8435666************************87643....................... PP
+
+              align    930 knvvrniranqqialStglnDsGlftLnfdDerfLPFEGtgveskwklefpe.k..natdkkqlLesLsDiilhvrYTakdgssef 1012  
+                                        alS g+nD G f  +f+D rfLPFEG +++  ++le++  +  ++  +++l+  LsDii+h++Y  +d+  +f
+  NZ_LOIC01000105.1 427951 -----------IAALSHGVNDGGRFVTDFNDSRFLPFEGRDATT-GTLELNIfHagKEGAQHELVANLSDIIVHLNYIIRDAMISF 428024
+                           ...........2379**************************974.56665430201334458899************988876665 PP
+
+  == domain 2  score: 864.5 bits;  conditional E-value: 5.5e-264
+              align    251 sepidlnGangiYfWELFfhmPflvawRlnvEqryeeaerWlkylfnpyededeqalkqgkpryWnsrPlidepkkeysslieptD 336   
+                            ep+d++Gan++YfWELF+++P+l+a+Rl +Eq+++e++rWlky+++p        + q +   Wn+rPl+++++++ +  ++++D
+  NZ_LOIC01000105.1 597006 MEPMDFSGANSLYFWELFYYTPMLIAQRLLQEQNFDETNRWLKYIWSPAGY---IVHGQIQDYHWNVRPLLEDTSWNND-PLNSVD 597087
+                           68**********************************************522...2333445678*************76.9***** PP
+
+              align    337 PDaiaasePihYrkaiFafyvknlidqgDmeYRklerdalteAkliYaqassLLGarPdlqlasqWqpltLedaskkense.leel 421   
+                           PDa+a+++P+hY++ +F++++++l+++gD++YR+lerd+l+eAk++Y qa+ LLG++P+l l+ +W++ +L++a++  +++ +++ 
+  NZ_LOIC01000105.1 597088 PDAVAQHDPMHYKVLTFMRTLDLLMARGDYAYRQLERDTLNEAKMWYMQALYLLGDKPYLPLSPTWDNPRLDKAADIITQKlYSRS 597173
+                           ***************************************************************************99544425444 PP
+
+              align    422 elqseslpllpvvsdktisaldndlFlkpvneellelwdklesRlyNLRhnltldGkelslpLydekidpkdLlkqryqrvvtarn 507   
+                            ++ ++   +p      +++  ++lFl++vne ++++w++l++RlyNLRhnl++dG++l+lp+y++++dpk+Ll+   ++v+ ++ 
+  NZ_LOIC01000105.1 597174 IAALRQGAPTP--LLLRTANKLTALFLPQVNEVMMNYWQTLAQRLYNLRHNLSIDGQPLNLPIYATPADPKALLS---AAVANSQG 597254
+                           44444443333..33344556789**************************************************7...77777787 PP
+
+              align    508 askana.kipnyRFeplleraksavetliqfGstllsllErkdsasleelqqqqaldlyrftidlQqqaidiaqaslealevskka 592   
+                            ++  + +i+ +RF+ +le+a+++v++l+qfGstl+ ++Er+d+++l++l q+qa++l+ ++ ++Q+++i++++a++ +l + ++ 
+  NZ_LOIC01000105.1 597255 GGNLPQvSISLWRFPHMLENARNTVSQLTQFGSTLQNIIERQDAEALNALLQNQATELILTNLSIQDKTIEELDAEKVVLGKARAG 597340
+                           7776555******************************************************************************* PP
+
+              align    593 aqeRyehyksLydenisstEqevielqsqaaalllaaqaartaaaaldlvpnifglAvGGskwgailraaaeilqikaesketkad 678   
+                           aq+R++ y++Ly+eni++ E+++++l+++aa l++a+qaar+a+aa+dlvpnifglA GGs+wgai++a++++++++a++++t+ad
+  NZ_LOIC01000105.1 597341 AQSRFDNYSKLYNENINAGENRAMTLRATAAGLTTAVQAARLAGAAADLVPNIFGLAGGGSRWGAIAEATGYVMEFSANVMNTEAD 597426
+                           ************************************************************************************** PP
+
+              align    679 slsvsesYrRRrqEWelqykqAeaeiesidqQinvqqlqleaaqkqlaqveaqqeqaqalleylstrftneslYtWlisqlsalYl 764   
+                           ++s+se YrRRrqEWe+q+++Aeaei++id+Q+++++++ eaa  q++++++qqeq+qa+l++l+++f+n++lY+Wl ++l+a+Y+
+  NZ_LOIC01000105.1 597427 KISQSETYRRRRQEWEIQRNNAEAEIKQIDAQLKSLAVRREAAILQKTSLKTQQEQTQAQLAFLQRKFSNQALYNWLRGRLAAIYF 597512
+                           ************************************************************************************** PP
+
+              align    765 qaYdavsslcLsaeaslqyElgdaetnFiksgaWndlYqGLlaGetLkLalqrmeraylerneRrleivkTvslkellkes..... 845   
+                           q+Yd ++++cL+ae ++++E++da ++Fik+gaW+ +Y GLl+GetL+L l++me+a+l++++R+le+++Tvsl+e+++       
+  NZ_LOIC01000105.1 597513 QFYDLAVARCLMAELAYRWETNDAAAHFIKPGAWQGTYSGLLTGETLMLSLAQMEDAHLKQDQRALEVERTVSLAEFYAGLssdkf 597598
+                           ******************************************************************************98844454 PP
+
+              align    846 .weeelkelkskssi.............................tfslkeklfvedYpelle..RriksvsvsLpallGpyedvrA 899   
+                                    ++  ++                             ++sl++ ++ +dYp+++   Rrik++svsLpallGpy+dv+A
+  NZ_LOIC01000105.1 597599 nL------AEKIAELvgkgsgsagsgsnklafgtgtdtktslqaSISLSNLNIRSDYPTSIGktRRIKQISVSLPALLGPYQDVQA 597678
+                           41......33332222333333344444445555555555555566**************9888********************** PP
+
+              align    900 kLsq.gssstlakaDlktvekllkkrekadtknvvrniranqqialStglnDsGlftLnfdDerfLPFEGtgveskwklefpekna 984   
+                            Ls+ g+ + lak+                          ++++a+S g+nDsG+f+L+f+D++fLPFEG+ v++k++l+++++na
+  NZ_LOIC01000105.1 597679 ILSYgGDAAGLAKG--------------------------CKALAVSHGMNDSGQFQLDFNDGKFLPFEGITVDDKGTLTLSFPNA 597738
+                           ****5556666666..........................9********************************************9 PP
+
+              align    985 tdk.kqlLesLsDiilhvrYTa 1005  
+                           t+k k++L++L+Diilh+rYT 
+  NZ_LOIC01000105.1 597739 TSKqKAMLQTLNDIILHIRYTI 597760
+                           988799***************6 PP
+
+  == domain 3  score: 934.5 bits;  conditional E-value: 3.8e-285
+              align     20 dedGidtdelsptawsewklidv...............................fevee.ekedkdntryrtkiklaylkfdGsws 73    
+                           d++  +  ++s +awsew+ id                                 e +  ++edk +++y+ ++kla++++dG+w+
+  NZ_LOIC01000105.1 601920 DHNKFSEGKFSANAWSEWHKIDCpinpyediirpvifqsrlyitwleqkkttnrAEGKTvKQEDKTTANYHYELKLAHIRYDGTWN 602005
+                           34444477899*******************************999888888666333331333444449***************** PP
+
+              align     74 sgttlredvldeam........................................................................ 87    
+                           ++ t   d+  +                                                                          
+  NZ_LOIC01000105.1 602006 TPITFDVDKKISDLnleqnkmlglycasyqgkdkllvifyqkrpeqadykqatmqglyissnmsqeemvpdnyktniykqldthtt 602091
+                           **9998776444445888999***************************************************************** PP
+
+              align     88 ...................................................................................... 87    
+                                                                                                                 
+  NZ_LOIC01000105.1 602092 nssvirvnnryaesyeipssinsnngydwgegylsmvyggnvlitrpqlngskiqispklriihngyegrqrnqcnlmkkygklgd 602177
+                           ************************************************************************************** PP
+
+              align     88 ...................................................................................... 87    
+                                                                                                                 
+  NZ_LOIC01000105.1 602178 kfiiyttlginpnnssnkkfiypvyqyegntsqlsqgrllfyrdsatnfarawlpssgsqpareistannggnsngndgyitnsln 602263
+                           ************************************************************************************** PP
+
+              align     88 ...............................tkddfklkanyvedtldllesvstykydfsksknilylikledkkeercvldekl 142   
+                                                          +  ++k++++ +  ++++   +++ ++++     +  ++ +  + +    +d ++
+  NZ_LOIC01000105.1 602264 tadpfkqyfymddhggidtdvsgpifintkiQPSNVKVIIKATGIEEKT--FIARENNNVPIE-PTPNFEEMYYQFKALEEIDVSK 602346
+                           9999999999999999999877777776655444444444433333222..333333322222.2222222222233333344444 PP
+
+              align    143 lveedkepkdvkvvlgfslekggvddakakikvelkvgkklrekiqlkqqdqvqyLdfpee.....ekwystkaiRLntlfakeLi 223   
+                           l+ ++   ++ ++ ++f+ + ++     ++ + e ++g++      +k+++    L++ ++          + + RLntlfa++Li
+  NZ_LOIC01000105.1 602347 LTYNN---NEASIDITFTASADAF----ESGQKERNLGEEHFSIRIIKKSETDNVLSLHSDpsgaqYMQWGAYRTRLNTLFARKLI 602425
+                           54444...4446777777554444....23333333444333333344444445555555543432122234589*********** PP
+
+              align    224 akasqsidkvLswdtqnikeepltgsa...sepidlnGangiYfWELFfhmPflvawRlnvEqryeeaerWlkylfnpyededeqa 306   
+                           ++a+++i+++Ls +tqni+e++l +s+    ep+d+nGan++YfWELF+++P+l+a+Rl +Eq+++ea+rWlky++np+  +  + 
+  NZ_LOIC01000105.1 602426 SRANAGINTILSMETQNIQEPKLAESSpdaMEPMDFNGANSLYFWELFYYTPMLIAQRLLHEQNFDEANRWLKYVWNPS-GHIAN- 602509
+                           ***********************9998444689*********************************************6.33444. PP
+
+              align    307 lkqgkpryWnsrPlidepkkeysslieptDPDaiaasePihYrkaiFafyvknlidqgDmeYRklerdalteAkliYaqassLLGa 392   
+                            ++++p+ Wn+rPl+++++++ +  +++ DPDaia+++P+hY++a+F++ +++li+qgD++YR+lerd+l+eAk++Y qa++LLG+
+  NZ_LOIC01000105.1 602510 GQKQHPHNWNVRPLQEDTSWNDD-PLDTFDPDAIAQHDPMHYKVATFMRALDLLIEQGDYAYRQLERDTLAEAKMWYMQALHLLGD 602594
+                           44479****************66.99************************************************************ PP
+
+              align    393 rPdlqlasqWqpltLedaskkenseleelelqseslpllpvvsdktisaldndlFlkpvneellelwdklesRlyNLRhnltldGk 478   
+                           +P+l l+s+W+  +Le+a++ e++++++         ++   + + +s +++dlFl++vne +l++w+kle+RlyNLRhnl++dG+
+  NZ_LOIC01000105.1 602595 KPHLPLSSTWSDPELEEAADLEKQQAHAK-------AIADLRQGQPTSGSNTDLFLPQVNEVMLSYWQKLEQRLYNLRHNLSIDGQ 602673
+                           ******************99955543333.......234456677888999*********************************** PP
+
+              align    479 elslpLydekidpkdLlkqryqrvvtarnaskana..kipnyRFeplleraksavetliqfGstllsllErkdsasleelqqqqal 562   
+                           +l+lp++++++dpk+Ll+   ++v+ +++ ++      i+ +RF+ +le+a+s+v++l+qfGstl+ ++Er+d+++l++l q+qa+
+  NZ_LOIC01000105.1 602674 PLHLPIFATPADPKALLR---AAVASSQSGGNLPSesFISVWRFPHMLENARSMVSQLTQFGSTLQNIIERQDAEALNTLLQNQAA 602756
+                           *****************8...45555555555443237************************************************ PP
+
+              align    563 dlyrftidlQqqaidiaqaslealevskkaaqeRyehyksLydenisstEqevielqsqaaalllaaqaartaaaaldlvpnifgl 648   
+                           +l+ ++ ++Q+++i++++ ++ +le+ ++ a++R+++y++ yde+i++ E+++++l+++ a l +a qa+++a+aaldl+pnifg+
+  NZ_LOIC01000105.1 602757 ELILTNLSIQDKTIEELDVEKTVLEKTRAGAKSRFDSYSKFYDEDINAGEKQAMALRASVAGLSTALQASHLAGAALDLAPNIFGF 602842
+                           ************************************************************************************** PP
+
+              align    649 AvGGskwgailraaaeilqikaesketkadslsvsesYrRRrqEWelqykqAeaeiesidqQinvqqlqleaaqkqlaqveaqqeq 734   
+                           A GGs+wgai++a++++++++a++++t+ad++s+se+YrRRrqEWe+q+++A+ae+++id+Q++++ ++ +aa  q++++++qqeq
+  NZ_LOIC01000105.1 602843 ADGGSHWGAIAQATGNVMEFSASVMNTEADKISQSEAYRRRRQEWEIQRNNADAELKQIDAQLQSLVVRRQAAVLQKTSLKTQQEQ 602928
+                           ************************************************************************************** PP
+
+              align    735 aqalleylstrftneslYtWlisqlsalYlqaYdavsslcLsaeaslqyElgdaetnFiksgaWndlYqGLlaGetLkLalqrmer 820   
+                           +qa+l +l+++f+n++lY+Wl ++lsa+Y+q+Yd ++++cL+ae+++++E+++++++Fik+gaW+ +++GLlaGetL+L+l++me+
+  NZ_LOIC01000105.1 602929 TQAQLLFLQHKFSNQALYNWLRGRLSAIYFQFYDLTVARCLMAEMAYRWETNKTNASFIKPGAWQGTHAGLLAGETLMLNLAQMED 603014
+                           ************************************************************************************** PP
+
+              align    821 aylerneRrleivkTvslkellkes....weeelkelksk.........ssi.............tfslkeklfvedYpelle... 877   
+                           ayl++++R le+++T sl++l+ke+     +e+++el ++         +++             + sl++ ++ +dYpe+     
+  NZ_LOIC01000105.1 603015 AYLRQDKRVLEVERTASLADLYKETgqfsLTEKIAELVKHksgtagsgsNTLifgtgnaqaslqaSVSLADLQIRNDYPENSGvgs 603100
+                           ************************9887633444444444233444444333455555555555566*************998899 PP
+
+              align    878 .RriksvsvsLpallGpyedvrAkLsq.gssstlakaDlktvekllkkrekadtknvvrniranqqialStglnDsGlftLnfdDe 961   
+                            Rrik++sv+LpallGpy+d++A Ls+ g+ s la++                          ++++a+S g+nDsG+f+L+f+D+
+  NZ_LOIC01000105.1 603101 vRRIKQISVTLPALLGPYQDIQAILSYsGEASGLAES--------------------------CKSLAVSHGMNDSGQFQLDFNDG 603160
+                           9**************************5555555544..........................9********************** PP
+
+              align    962 rfLPFEGtgveskwklefpeknatdk........kqlLesLsDiilhvrYTakd 1007  
+                           +fLPFEG+++ +k++l+++++na+dk        +++LesL+Diilh+rYT ++
+  NZ_LOIC01000105.1 603161 KFLPFEGIEI-DKGTLTLSFPNAIDKekdkkgkqQAMLESLNDIILHIRYTIRQ 603213
+                           ********98.57888888888887666667766789**************876 PP
+
+  == domain 4  score: 869.7 bits;  conditional E-value: 1.5e-265
+              align    249 sasepidlnGangiYfWELFfhmPflvawRlnvEqryeeaerWlkylfnpyededeqalkqgkpryWnsrPlidepkkeyssliep 334   
+                           +++ep+d++Gan++YfWELF+++P+lva+Rl +Eq+++ea+rWlky+++p+       + q +   Wn+rPl++++ ++ +  +++
+  NZ_LOIC01000105.1 613777 TFTEPMDFSGANSLYFWELFYYTPMLVAQRLLHEQNFDEANRWLKYVWSPSGY---IVHGQIQNYQWNVRPLLEDTGWNSD-PLDS 613858
+                           5799**********************************************522...2223344567*************66.9*** PP
+
+              align    335 tDPDaiaasePihYrkaiFafyvknlidqgDmeYRklerdalteAkliYaqassLLGarPdlqlasqWqpltLedaskkense.le 419   
+                           +DPDa+a+++P+hY++++F++++++li++gD +YR+lerd+l+eAk++Y qa++LLG++P+l l+++W+  +L+ a++ ++++  +
+  NZ_LOIC01000105.1 613859 VDPDAVAQHDPMHYKVSTFMRTLDLLIARGDHAYRQLERDTLNEAKMWYMQALHLLGDKPYLPLSTTWSDPRLDRAADMTTQNaHD 613944
+                           *****************************************************************************995555388 PP
+
+              align    420 elelqseslpllpvvsdktisaldndlFlkpvneellelwdklesRlyNLRhnltldGkelslpLydekidpkdLlkqryqrvvta 505   
+                           ++ ++ ++ + +p + +   +++ +dlFl+++ne ++++w++l++R+yNLRhnl+ldG++l lp+y++++dpk+Ll+   ++v+t+
+  NZ_LOIC01000105.1 613945 SAIVALRQSTPIPEALSLRSANTLTDLFLPQINEVMMNYWQTLAQRVYNLRHNLSLDGQPLYLPIYATPADPKALLS---AAVATS 614027
+                           888999999999****************************************************************6...899999 PP
+
+              align    506 rnaskana.kipnyRFeplleraksavetliqfGstllsllErkdsasleelqqqqaldlyrftidlQqqaidiaqaslealevsk 590   
+                           +  +k     ++ +RF+ +le+a+ +v++l+qfGstl+ ++Er+d+++l++l q+qa++l+ ++ ++Q+++i++++a++++le+sk
+  NZ_LOIC01000105.1 614028 QGGGKLPEsFMSLWRFPHMLENARGMVSQLTQFGSTLQNIIERQDAEALNALLQNQAAELILTNLSIQDKTIEELDAEKAVLEKSK 614113
+                           99999877479*************************************************************************** PP
+
+              align    591 kaaqeRyehyksLydenisstEqevielqsqaaalllaaqaartaaaaldlvpnifglAvGGskwgailraaaeilqikaesketk 676   
+                           + aq+R+++y++Lydeni++ E+++++l+++aa l++a+qa+r+a+aa+dlvpnifg+A GGs+wgai++a++++++++a++++t+
+  NZ_LOIC01000105.1 614114 AGAQSRFDSYSKLYDENINAGENQAMTLRASAAGLTTAVQASRLAGAAADLVPNIFGFAGGGSRWGAIAEATGYVMEFSANVMNTE 614199
+                           ************************************************************************************** PP
+
+              align    677 adslsvsesYrRRrqEWelqykqAeaeiesidqQinvqqlqleaaqkqlaqveaqqeqaqalleylstrftneslYtWlisqlsal 762   
+                           ad++s+se YrRRrqEWe+q+++Aeae++++d+Q+++++++ eaa  q++++++qqeq+q++l++l+++f+n++lY+Wl ++l+a+
+  NZ_LOIC01000105.1 614200 ADKISQSETYRRRRQEWEIQRNNAEAELKQLDAQLKSLAVRREAAVLQKTSLKTQQEQTQSQLAFLQRKFSNQALYNWLRGRLAAI 614285
+                           ************************************************************************************** PP
+
+              align    763 YlqaYdavsslcLsaeaslqyElgdaetnFiksgaWndlYqGLlaGetLkLalqrmeraylerneRrleivkTvslkellkes... 845   
+                           Y+q+Yd ++++cL+ae ++++El+d +++Fik+gaW+ +Y+GLlaGetL+L l++me+a+l+r++R+le+++Tvsl+e+++     
+  NZ_LOIC01000105.1 614286 YFQFYDLAVARCLMAEQAYRWELNDDSARFIKPGAWQGTYAGLLAGETLMLSLAQMEDAHLKRDKRALEVERTVSLAEVYTGLpqd 614371
+                           ********************************************************************************999777 PP
+
+              align    846 .....weeelkelksk.........ssitf..............slkeklfvedYpelle..RriksvsvsLpallGpyedvrAkL 901   
+                                 ++e+++l sk         +++ f              sl++ ++ edYp++l   Rrik++sv+LpallGpy+dv+A L
+  NZ_LOIC01000105.1 614372 kgpfsLTQEIDKLVSKgsgstgsgnNNLAFgagtdtktalqasvSLADLNIREDYPASLGkiRRIKQISVTLPALLGPYQDVQAIL 614457
+                           77766223444433333333444445554455555555555555**************9999************************ PP
+
+              align    902 sqgssstlakaDlktvekllkkrekadtknvvrniranqqialStglnDsGlftLnfdDerfLPFEGtgveskw..klefpeknat 985   
+                           s+++ + la++                          ++++a+S g+nDsG+f+L+f+D++fLPFEG++++ ++  +l+fp+++  
+  NZ_LOIC01000105.1 614458 SYSDKAGLANG--------------------------CEALAVSHGMNDSGQFQLDFNDGKFLPFEGVAID-QGtlTLSFPNASMP 614516
+                           ***99999999..........................99*****************************875.55015555555444 PP
+
+              align    986 dk...kqlLesLsDiilhvrYTakdgss 1010  
+                           dk   +++L++L+Diilh+rYT +  s+
+  NZ_LOIC01000105.1 614517 DKgkqATMLKTLNDIILHIRYTIRMPSN 614544
+                           54544889**************987665 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1020 nodes)
+Target sequences:                            1  (1806677 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 11.59u 0.30s 00:00:11.89 Elapsed: 00:00:12.06
+# Mc/sec: 152.80
+//
+[ok]

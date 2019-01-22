@@ -84,11 +84,7 @@ def expandEndPosition(record, hit_end, strand):
 
 
 def HMMread(path, record=None, expand=False):
-    print('here we are in hmmRead')
     hmm_dict = {}
-
-    print (record.hits)
-
     record.id
     for infile in glob.glob(path + '/*/*.fasta'):
         try:
@@ -114,8 +110,6 @@ def HMMread(path, record=None, expand=False):
             for i in range(len(qresult.hsps)):
                 try:
                     hsp = qresult[0][i]
-
-                    print (hsp)
 
                     if strand == "forward":
                         start = ((hsp.hit_start + 1) * 3) - correction - 1
@@ -143,9 +137,6 @@ def HMMread(path, record=None, expand=False):
                     else:
                         hmm_dict[infile + "_" + str(i)] = str(start) + ':' + str(end)
 
-                        print ('id here is')
-                        print (record.id)
-
                         curr = models.GenomeRecords.objects().get(id=record.id)
 
                         new_reg = path.split("/")[-1]
@@ -157,12 +148,16 @@ def HMMread(path, record=None, expand=False):
                         hit = models.Hit(object_id, new_reg, new_score, new_start, new_end)
 
                         add = True
-                        for hit in record.hits:
-                            if hit.region == new_reg and hit.start == new_start and hit.end == new_end:
-                                print ("It already existed")
+                        for hit_check in record.hits:
+                            if hit_check.region == new_reg and hit_check.start == new_start and hit_check.end == new_end:
                                 add = False
 
                         if add:
+                            print ('we are adding something in')
+                            print (record.hits)
+                            print (new_reg)
+                            print (hit.start)
+                            print (hit.end)
                             curr.hits.append(hit)
                             curr.save()
                     i += 1
@@ -171,7 +166,6 @@ def HMMread(path, record=None, expand=False):
         except ValueError:
             continue
 
-    print ('here is the hmm dict ', hmm_dict)
     return hmm_dict
 
 

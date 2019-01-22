@@ -189,21 +189,13 @@ def add_genome(species_name, categories, single):
         out, err = process.communicate()
         errcode = process.returncode
 
-        # print ("errcode ", errcode)
-        # print ("output ", out.decode("utf-8"))
-
         if errcode != 0:
             return
 
         summary = pd.read_csv("./tmp/assembly_summary.txt", sep='\t', header=1)
 
-        # print (summary)
-
         for category in categories:
             records = get_record_list(summary, category, single)
-
-            # print ('category and records found are - ')
-            # print (category, records)
 
             if records:
                 genome_dict = retrieve_genome(records, species_name, category, database)

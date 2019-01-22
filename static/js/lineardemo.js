@@ -3,7 +3,8 @@
    plot in px, the width of the plot, the div container to
    put the SVG element, and an initial zoom level */
 
-var selected = new Array()
+var selected = new Object()
+var selected_arr = new Array()
 var linearlayout = { genomesize: 6264404,
                      height: 250,
                      width: 900,
@@ -54,18 +55,37 @@ function linearPopup(trackName, d) {
    the click callback is defined in the data json object for
    each track */
 function linearClick(trackName, d) {
-    var new_elem = d.name + " " + d.start + ":" + d.end
-    var index = selected.indexOf(new_elem)
-        if (index > -1) {
-            selected.splice(index, 1);
-        }
-        else {
-            selected.push(new_elem);
+    var new_id = d.hit_id;
+    var new_elem = d.name + " " + d.start + ":" + d.end;
 
-        }
+    if (selected.hasOwnProperty(new_id)) {
+        console.log('it was in it')
+        delete selected[new_id]
+    }
+    else {
+        console.log('was not in it')
+        selected[new_id] = new_elem
+    }
 
-    console.log(selected)
+    //
+    // var index = selected.indexOf(new_elem)
+    //     if (index > -1) {
+    //         selected.splice(index, 1);
+    //     }
+    //     else {
+    //         selected.push(new_elem);
+    //
+    //     }
+
+    // console.log(selected)
     var list = document.getElementById('myList');
+    console.log(selected)
+    console.log('and the keys')
+    console.log(Object.keys(selected))
 
-    $('#myList').html(selected.join('<br>'));
+    for (var i in Object.keys(selected)) {
+        selected_arr.push(selected[i])
+    }
+    $('#myList').html(selected_arr.join('<br>'));
+
 }
