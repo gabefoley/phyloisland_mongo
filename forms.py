@@ -73,4 +73,18 @@ class GenomeDiagramSelectForm(FlaskForm):
     Form for selecting which genomes to look at in the Genome Diagram
     """
     genome = SelectMultipleField('Genome', choices=[])
-    submit = SubmitField("Submit")
+    submit_diagram = SubmitField("Submit")
+    tag = StringField('Add tag')
+    submit_hit = SubmitField("Add tag")
+
+    delete_hit = SubmitField("Delete")
+
+class GenomeHitForm(FlaskForm):
+    """
+    Form for selecting which genomes to look at in the Genome Diagram
+    """
+    tag = StringField('Add tag', [validators.optional()])
+    submit_hit = SubmitField("Add tag")
+
+    delete_hit = SubmitField("Delete")
+

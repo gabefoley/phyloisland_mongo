@@ -1,5 +1,5 @@
 var linearTrackDefaults = {
-    width: 940,
+    width: 1940,
     height: 500,
     left_margin: 15,
     right_margin: 15,

@@ -38,33 +38,13 @@
             </div>
          <br>
 
-         <div>
-             Current reference names are - <br>
-             {% for name in prefs['references'] %}
-                {{name}} <br>
-             {% endfor %}
-         </div>
+
 
  </form>
 
 </div>
 
-<div>
-         <form method="POST"    enctype="multipart/form-data">
-            {{ form.hidden_tag() }}
 
-            <div class="smallform">
-
-                {{ form.page_size.label }}
-
-                {{ del_form.del_references }}
-                {{ del_form.del_references.label }}
-                <br>
-                {{ form.submit(class="btn-primary") }}
-            </div>
-         </form>
-
-</div>
 
 
 {% endblock %}

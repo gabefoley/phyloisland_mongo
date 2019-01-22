@@ -213,7 +213,7 @@ class SetupView(BaseView):
     @expose("/", methods=('GET', 'POST'))
     def setup(self):
         form = forms.SetupForm()
-        del_form = forms.DeleteForm()
+        # del_form = forms.DeleteForm()
         current = models.User.objects().get(username=str(current_user.username))
         prefs = {'page_size' : current.page_size, 'references' : current_user.references}
 
@@ -228,19 +228,18 @@ class SetupView(BaseView):
                         models.User.objects().update(add_to_set__references=reference)
 
                     flash("User preferences updated", category='success')
-                    return self.render('setup.html', form=form, del_form=del_form, prefs=prefs)
+                    return self.render('setup.html', form=form, prefs=prefs)
 
                 except Exception as e:
                     print(e)
                     flash("Something went wrong", category='error')
-                    return self.render('setup.html', form=form, del_form=del_form, prefs=prefs)
+                    return self.render('setup.html', form=form, prefs=prefs)
 
             else:
-                return self.render('setup.html', form=form, del_form=del_form, prefs=prefs)
+                return self.render('setup.html', form=form, prefs=prefs)
 
         elif request.method == "GET":
-            print ('here')
-            return self.render('setup.html', form=form, del_form=del_form, prefs=prefs)
+            return self.render('setup.html', form=form, prefs=prefs)
 
 
 class SequenceRecordsView(ModelView):
@@ -399,29 +398,49 @@ class GenomeDetailView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def genomedetail(self):
-        form = forms.GenomeOverviewSelectForm()
-        form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in models.GenomeRecords.objects()]
+        select_form = forms.GenomeDiagramSelectForm()
+        select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in models.GenomeRecords.objects()]
+
+        hit_form = forms.GenomeHitForm()
 
         if request.method == 'POST':
 
-            print ('form dot genome is', request.form.get('genome'))
+            print ('post')
 
-            genome = models.GenomeRecords.objects.get(id=request.form.get('genome'))
+
+            genome = models.GenomeRecords.objects.get(id=select_form.data['genome'][0])
 
             items = utilities.get_genome_items(genome)
 
+            if select_form.submit_diagram.data and select_form.validate():
 
-            return self.render('genomedetail.html', form=form, items=items)
+                print ('got here')
+
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
+
+            elif hit_form.submit_hit.data and hit_form.validate():
+
+                print ('got to this')
+
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
 
 
 
+            elif hit_form.delete_hit.data and hit_form.validate():
+
+                print ('nope, here')
+
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
+
+            else:
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
         else:
             # Just get the first Genome Record in the database and return a Genome Detail of that
             genome = models.GenomeRecords.objects()[0]
 
             items = utilities.get_genome_items(genome)
 
-            return self.render('genomedetail.html', form=form, items=items)
+            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
 
 
 
@@ -547,6 +566,7 @@ class ProfileView(ModelView):
 
         self.column_formatters = {
             'download': _download_formatter,
+            'references': custom_filters.references_formatter,
         }
 
         return super(ModelView, self).index_view()

@@ -25,6 +25,17 @@ h2 {
     margin-left: 0px;
 }
 
+/*#myList {*/
+	/*float:right;*/
+  /*}*/
+
+#hit_div {
+	margin-top: 200px;
+	margin-right: 200px;
+
+	float:right;
+  }
+
 /* Style disabled checkboxes */
 input[type=checkbox][disabled] + label {
 }

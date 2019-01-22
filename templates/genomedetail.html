@@ -5,6 +5,10 @@
 
     <script src="../../static/js/d3/d3.min.js"></script>
     <script src="../../static/js/d3/d3-tip.js"></script>
+    <script src="../../static/js/select.js"></script>
+
+    <link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
+
     <link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
 
 
@@ -15,15 +19,15 @@
 
 <div>
          <form method="POST"    enctype="multipart/form-data">
-            {{ form.hidden_tag() }}
+            {{ select_form.hidden_tag() }}
 
             <div class="smallform">
 
-                {{ form.genome.label }}
+                {{ select_form.genome.label }}
 
-                {{ form.genome }}
+                {{ select_form.genome }}
                 <br>
-                {{ form.submit(class="btn-primary") }}
+                {{ select_form.submit_diagram(class="btn-primary") }}
             </div>
          </form>
 
@@ -47,16 +51,40 @@ var tracks = [
               items : {{items | safe}}
 	      }
               ];
-//		items: [
-//                         {id: 1, start:1027919, end:1032311, name:"region1", strand: -2},
-//                         {id: 2, start:1041107,end:1045847, name:"pop", strand: -2},
-//                         {id: 3, start:1032476,end:1037282, name:"drop", strand: -2},
-//                         {id: 4, start:1046036,end:1049426, name:"winks", strand: 2},
-//                         {id: 5, start:1037408,end:1040807, name:"noon", strand: 1}
-//			]
-//	      }
 
 </script>
+
+<div id="hit_div">
+        List of hits to tag or delete
+
+
+    <form method="POST"    enctype="multipart/form-data">
+            {{ hit_form.hidden_tag() }}
+
+            <div class="smallform">
+
+                {{ hit_form.tag.label }}
+
+                {{ hit_form.tag }}
+
+                <br>
+                {{ hit_form.submit_hit(class="btn-primary") }}
+                {{ hit_form.delete_hit(class="btn-primary") }}
+
+            </div>
+
+         </form>
+
+    <br>
+
+
+
+    <div id="myList">
+                </div>
+
+</div>
+
+
 
 <br>
 <br>
@@ -80,4 +108,6 @@ var tracks = [
 
 
         {% endblock %}
+
+
 

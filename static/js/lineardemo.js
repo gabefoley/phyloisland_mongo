@@ -2,6 +2,8 @@
    parameters such as the genome size, the height of the
    plot in px, the width of the plot, the div container to
    put the SVG element, and an initial zoom level */
+
+var selected = new Array()
 var linearlayout = { genomesize: 6264404,
                      height: 250,
                      width: 900,
@@ -52,6 +54,18 @@ function linearPopup(trackName, d) {
    the click callback is defined in the data json object for
    each track */
 function linearClick(trackName, d) {
-    console.log(d);
-    window.open("https://github.com/lairdm/islandplot", '_blank');
+    var new_elem = d.name + " " + d.start + ":" + d.end
+    var index = selected.indexOf(new_elem)
+        if (index > -1) {
+            selected.splice(index, 1);
+        }
+        else {
+            selected.push(new_elem);
+
+        }
+
+    console.log(selected)
+    var list = document.getElementById('myList');
+
+    $('#myList').html(selected.join('<br>'));
 }

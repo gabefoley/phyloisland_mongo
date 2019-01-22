@@ -1,0 +1,3 @@
+Phylo Island Caveats
+
+* Have to place HMMs in the temp folder (They aren't writing correctly)

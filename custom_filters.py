@@ -28,16 +28,23 @@ def hitdescription_formatter(view, context, model, name):
             else:
                 hit_count[hit.region] = 1
 
-    print (model.name)
-    print (model.hits)
-
     for k, v in hit_count.items():
-        print ('chceking the chits')
-        print (k)
-        print (v)
         output_string += "%s:%s hits " % (k, v)
 
     return output_string
+
+def references_formatter(view, context, model, name):
+
+    output_string = ""
+
+    if model.references:
+
+        for k in model.references.keys():
+            output_string += "%s " % (k)
+
+    return output_string
+
+
 
 
 
