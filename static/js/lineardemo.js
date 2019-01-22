@@ -4,7 +4,6 @@
    put the SVG element, and an initial zoom level */
 
 var selected = new Object()
-var selected_arr = new Array()
 var linearlayout = { genomesize: 6264404,
                      height: 250,
                      width: 900,
@@ -57,6 +56,8 @@ function linearPopup(trackName, d) {
 function linearClick(trackName, d) {
     var new_id = d.hit_id;
     var new_elem = d.name + " " + d.start + ":" + d.end;
+    var selected_vals = new Array()
+
 
     if (selected.hasOwnProperty(new_id)) {
         console.log('it was in it')
@@ -83,9 +84,13 @@ function linearClick(trackName, d) {
     console.log('and the keys')
     console.log(Object.keys(selected))
 
-    for (var i in Object.keys(selected)) {
-        selected_arr.push(selected[i])
+    for(var index in selected) {
+        selected_vals.push(selected[index])
     }
-    $('#myList').html(selected_arr.join('<br>'));
+
+    // console.log('and the selected arr')
+    //
+    // console.log(selected_arr)
+    $('#myList').html(selected_vals.join('<br>'));
 
 }
