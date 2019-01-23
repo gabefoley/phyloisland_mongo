@@ -97,19 +97,30 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
             if '.' not in infile:
                 all_reg.append(infile)
         hmmerout = []
+        hmmerout_extend = []
         print ('here is all reg')
         print (all_reg)
         # add handler to HMMread for output paths
         for reg in all_reg:
             hmmerout.append(resultread.HMMread(reg, query))
+            hmmerout_extend.append(resultread.HMMread(reg, query, expand=True))
+
 
             # Update the Genome Overview graphic and save it to the Genome Record
 
+        print ('here are dict regions')
+        print (hmmerout)
+        print (hmmerout_extend)
+
         genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species)
+
+        genome_expanded_image = genome_overview.writeHMMToImage(hmmerout_extend, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species, expand=True)
 
         curr = models.GenomeRecords.objects().get(id=query.id)
 
         curr.genome_overview.replace(genome_image)
+        curr.genome_expanded_overview.replace(genome_expanded_image)
+
 
         curr.save()
 

@@ -53,6 +53,8 @@ class Hit(db.EmbeddedDocument):
     score = db.StringField()
     start = db.StringField()
     end = db.StringField()
+    tags = db.ListField(db.StringField(), default=list)
+
 
 
 
@@ -69,6 +71,7 @@ class GenomeRecords(db.DynamicDocument):
     hits = db.EmbeddedDocumentListField(Hit)
     references = db.ListField(db.StringField(), default=list)
     genome_overview = db.ImageField()
+    genome_expanded_overview = db.ImageField()
     tags = db.ListField(db.StringField(), default=list)
 
 # class BlobMixin(db.DynamicDocument):

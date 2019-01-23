@@ -68,17 +68,7 @@ function linearClick(trackName, d) {
         selected[new_id] = new_elem
     }
 
-    //
-    // var index = selected.indexOf(new_elem)
-    //     if (index > -1) {
-    //         selected.splice(index, 1);
-    //     }
-    //     else {
-    //         selected.push(new_elem);
-    //
-    //     }
 
-    // console.log(selected)
     var list = document.getElementById('myList');
     console.log(selected)
     console.log('and the keys')

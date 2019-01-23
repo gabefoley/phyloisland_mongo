@@ -121,7 +121,7 @@ var tracks = [
 
 
          $.ajax({
-             url: Flask.url_for("delete_tag"),
+             url: Flask.url_for("delete_hit"),
              data: JSON.stringify({
                  'genome' : genome, 'hits' : selected
              }),

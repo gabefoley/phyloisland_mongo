@@ -318,11 +318,18 @@ class GenomeRecordsView(ModelView):
         return Markup(
             "<a href='{url}' target='_blank'>View Genome</a>".format(url=self.get_url('download_genome_overview', id=model.name)))
 
+    def _expanded_download_formatter(self, context, model, name):
+
+        return Markup(
+            "<a href='{url}' target='_blank'>View Genome</a>".format(url=self.get_url('download_genome_expanded_overview', id=model.name)))
+
+
 
     column_formatters = {
         'sequence': custom_filters.seqdescription_formatter,
         'hits': custom_filters.hitdescription_formatter,
         'Genome Overview': _download_formatter,
+        'Expanded Genome Overview' : _expanded_download_formatter,
 
     }
 
@@ -622,6 +629,19 @@ def download_genome_overview(id):
         record.genome_overview,
         attachment_filename=id + '.png')
 
+@app.route("/expanded_overview_<id>", methods=['GET'])
+def download_genome_expanded_overview(id):
+    """
+    Route for downloading profiles from the Profile view
+    :param id: Profile to download
+    :return:
+    """
+    print (id)
+    record = models.GenomeRecords.objects().get(name=id)
+    return send_file(
+        record.genome_expanded_overview,
+        attachment_filename=id + '.png')
+
 # @app.route("/<id>", methods=['GET'])
 # def download_blob(id):
 #     """
@@ -647,12 +667,21 @@ def add_tag():
     return redirect('genomeoverview')
 
 @app.route("/genomedetail/delete_hit", methods=['GET', 'POST'])
-def delete_tag():
+def delete_hit():
 
     query = models.GenomeRecords.objects().get(id=request.json['genome'])
 
+    for hit_id in request.json['hits'].keys():
+        print ('hop id')
+        print (hit_id)
+        query.update(pull__hits__id=hit_id)
+
+    print ('before')
     print(request.json['genome'])
     print(request.json['hits'])
+    print ('after')
+
+
 
     return redirect('genomedetail')
 

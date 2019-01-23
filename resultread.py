@@ -140,6 +140,8 @@ def HMMread(path, record=None, expand=False):
                         curr = models.GenomeRecords.objects().get(id=record.id)
 
                         new_reg = path.split("/")[-1]
+                        if expand:
+                            new_reg += "_expanded"
                         new_score =  str(hsp.bitscore)
                         new_start = str(start)
                         new_end = str(end)
@@ -149,7 +151,7 @@ def HMMread(path, record=None, expand=False):
 
                         add = True
                         for hit_check in record.hits:
-                            if hit_check.region == new_reg and hit_check.start == new_start and hit_check.end == new_end:
+                            if hit_check.region == new_reg and hit.start == new_start and hit.end == new_end:
                                 add = False
 
                         if add:
