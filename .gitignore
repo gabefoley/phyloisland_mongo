@@ -1,6 +1,7 @@
 # Upload folders
 /hmm_outputs/*
 /static/user_images/*
+/testing/*
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
