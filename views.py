@@ -731,10 +731,10 @@ class MyModelView(ModelView):
 
 admin = Admin(app, 'Phylo Island', base_template='layout.html', url='/', template_mode='bootstrap3')
 
-admin.add_view(UserView(model=models.User, endpoint='user'))
+# admin.add_view(UserView(model=models.User, endpoint='user'))
 admin.add_view(SetupView(name='Setup', endpoint='setup'))
 admin.add_view(UploadView(name='Upload', endpoint='upload_admin'))
-admin.add_view(SequenceRecordsView(model=models.SequenceRecords, endpoint="sequence_records"))
+# admin.add_view(SequenceRecordsView(model=models.SequenceRecords, endpoint="sequence_records"))
 admin.add_view(GenomeRecordsView(model=models.GenomeRecords, endpoint="genome_records"))
 admin.add_view(ProfileView(model=models.Profile, name='Profiles', endpoint='profiles'))
 # admin.add_view(MyModelView(model=models.Profile, name='Profiles', endpoint='models'))

@@ -30,8 +30,8 @@ def read_genome(outpath, species_name):
         if len(species_name) > 40:
             species_name = species_name[0:40]
 
-    return SeqRecord(Seq(concatenated_genome), id=genome_id, name= species_name, description=description,
-                       annotations={"organism": species_name, "source": ""})
+    return SeqRecord(Seq(concatenated_genome), id=genome_id, name= species_name.replace(" ", "_"), description=description,
+                       annotations={"organism": species_name.replace(" ", "_"), "source": ""})
 
 
 def retrieve_genome(records, species_name, category, database):
