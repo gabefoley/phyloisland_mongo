@@ -7,7 +7,10 @@ import time
 from flask import flash
 import subprocess
 import Bio
-from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+from Bio.Alphabet import generic_dna
+from Bio import SeqIO, Alphabet
 import phyloisland
 import glob
 import resultread
@@ -33,7 +36,12 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
         random_id = utilities.randstring(5)
 
         # Get the nucleotide sequence of the genome
-        nuc_seq = Bio.Seq.Seq(str(seq_record))
+        nuc_seq = Bio.Seq.Seq(str(query.sequence))
+
+        seq_record = SeqRecord(Seq(query.sequence, generic_dna), '', '', '')
+
+        # seq_record = SeqRecord(seq=Seq(nuc_seq, Alphabet()), id='', name='', description='', dbxrefs=[])
+
 
         outpath = reference + "/" + query.species + "/" + region + "/" + profile_name + "/"
         outpath = outpath.replace(" ", "_")
@@ -97,24 +105,29 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
             if '.' not in infile:
                 all_reg.append(infile)
         hmmerout = []
-        hmmerout_extend = []
+        hmmerout_expanded = []
         print ('here is all reg')
         print (all_reg)
         # add handler to HMMread for output paths
         for reg in all_reg:
             hmmerout.append(resultread.HMMread(reg, query))
-            hmmerout_extend.append(resultread.HMMread(reg, query, expand=True))
+            hmmerout_expanded.append(resultread.HMMread(reg, query, expand=True))
 
 
             # Update the Genome Overview graphic and save it to the Genome Record
 
         print ('here are dict regions')
         print (hmmerout)
-        print (hmmerout_extend)
+        print (hmmerout_expanded)
 
         genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species)
 
-        genome_expanded_image = genome_overview.writeHMMToImage(hmmerout_extend, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species, expand=True)
+        genome_expanded_image = genome_overview.writeHMMToImage(hmmerout_expanded, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species, expand=True)
+
+        genbank = genome_overview.write_hits_to_gb(hmmerout, reference +"/" + query.species.replace(" ", "_"), seq_record, query.species)
+
+        genbank_expanded = genome_overview.write_hits_to_gb(hmmerout_expanded, reference +"/" + query.species.replace(" ", "_"), seq_record, query.species, expand=True)
+
 
         curr = models.GenomeRecords.objects().get(id=query.id)
 

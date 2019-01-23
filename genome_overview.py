@@ -1,6 +1,9 @@
 from Bio.Graphics import GenomeDiagram
 import utilities
+from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
+from Bio.Seq import Seq
+from Bio.Alphabet import generic_dna
 
 
 
@@ -163,3 +166,55 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
     print("Genome Diagram has been added to file " + output_path)
     fh = open(output_path, 'rb')
     return fh
+
+def write_hits_to_gb(hmm_dict, reference, seqrecord, species, expand=False):
+    name = species + "_sequence"
+    name += "_expanded" if expand else ""
+    output_path = reference + "/" + name + ".gb"
+    print (name)
+    print (reference)
+    seqrecord.name = species[0:9]
+
+    # Write Annotated Sequences to Genbank files to allow easy movement to Artemis
+    print("Writing sequences to GenBank File")
+    """ Create a dictionary for key = feature type -> value = location """
+    locs = {}
+    strand_dict = {}
+    colour_dict = {"A1": "255 165 0", "A2": "255 0 0", "A3": "255 255 0", "TcB": "0 0 255", "TcC": "255 0 255",
+                   "Chitinase": "0 255 0", "region1": "0 255 255", "region2": "255 153 255", "region3": "204 0 102",
+                   "region4": "0 0 0"}
+    for result in hmm_dict:
+        print (result)
+        i = 0
+        for reg in result:
+            """ Create a dictionary for key = feature type -> value = location """
+            if "forward" in reg:
+                location = reg.split("/")[2] + utilities.randstring(5)
+                locs[location] = result[reg].split(":")
+                strandd = 1
+                strand_dict[location] = strandd
+
+            elif "backward" in reg:
+
+                strandd = -1
+
+                location = reg.split("/")[2] + utilities.randstring(5)
+                locs[location] = result[reg].split(":")
+                strand_dict[location] = strandd
+
+            i += 1
+
+    print("Adding %s genome to diagram" % (seqrecord.name))
+
+    seqrecord.features = []
+    for location in locs:
+        """ create and add features based on locations """
+        color = {'color': colour_dict[location[0:-5]]}
+        feature = SeqFeature(
+            location=FeatureLocation(int(locs[location][0]), int(locs[location][1]), strand=strand_dict[location]),
+            type=location[0:-5], qualifiers=color)
+        seqrecord.features.append(feature)
+
+    # sequence = str(seqrecord)[2:-1]
+    # seqrecord.seq = Seq(sequence, generic_dna)
+    SeqIO.write(seqrecord, output_path, "genbank")
