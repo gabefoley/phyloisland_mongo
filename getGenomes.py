@@ -30,8 +30,8 @@ def read_genome(outpath, species_name):
         if len(species_name) > 40:
             species_name = species_name[0:40]
 
-    return SeqRecord(Seq(concatenated_genome), id=genome_id, name= species_name.replace(" ", "_"), description=description,
-                       annotations={"organism": species_name.replace(" ", "_"), "source": ""})
+    return SeqRecord(Seq(concatenated_genome), id=genome_id, name= species_name, description=description,
+                       annotations={"organism": species_name, "source": ""})
 
 
 def retrieve_genome(records, species_name, category, database):
@@ -200,6 +200,10 @@ def add_genome(species_name, categories, single):
             if records:
                 genome_dict = retrieve_genome(records, species_name, category, database)
                 return genome_dict
+
+        # Clean up the assembly summary
+        utilities.remove_file('./tmp/assembly_summary.txt')
+
         return
 
     except subprocess.CalledProcessError as exc:

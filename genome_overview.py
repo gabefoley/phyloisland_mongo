@@ -173,7 +173,10 @@ def write_hits_to_gb(hmm_dict, reference, seqrecord, species, expand=False):
     output_path = reference + "/" + name + ".gb"
     print (name)
     print (reference)
-    seqrecord.name = species[0:9]
+    print ('and species name is', species)
+    seqrecord.name = species[0:9].zfill(9).replace(" ", "_")
+
+    print (seqrecord.name)
 
     # Write Annotated Sequences to Genbank files to allow easy movement to Artemis
     print("Writing sequences to GenBank File")
