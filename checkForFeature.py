@@ -26,7 +26,7 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
     :return:
     """
 
-    queries = models.GenomeRecords.objects(id__in=ids)
+    queries = models.GenomeRecords.objects(id__in=ids).timeout(False)
 
     for query in queries:
 
@@ -136,6 +136,8 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
 
 
         curr.save()
+
+    del queries
 
 
 
