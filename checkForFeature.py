@@ -129,7 +129,7 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
         genbank_expanded = genome_overview.write_hits_to_gb(hmmerout_expanded, reference +"/" + query.species.replace(" ", "_"), seq_record, query.species, expand=True)
 
 
-        curr = models.GenomeRecords.objects().get(id=query.id).timeout(False)
+        curr = models.GenomeRecords.objects().timeout(False).get(id=query.id)
 
         curr.genome_overview.replace(genome_image)
         curr.genome_expanded_overview.replace(genome_expanded_image)
