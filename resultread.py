@@ -23,17 +23,22 @@ def expandStartPostion(record, hit_start, strand):
     :return:
     """
 
+    # Expanding leftwards on a genome, so at the start of something on the forward strand, but at the end of
+    # something on the backwards strand.
+    # So we want to return the start position if we're on the forward strand, otherwise we want to return the
+    # position just before the stop codon
+
     if strand == "forward":
         codon_list = ["TGA", "TAA", "TAG"]
     elif strand == "backward":
         codon_list = ["TCA", "TTA", "CTA"]
 
-    codon = ""
     first_pos = hit_start
     second_pos = hit_start + 3
 
     start_pos = first_pos # variable to keep track of all the potential start positions (methionines) we run into
-    print (" positions are" , first_pos, second_pos)
+
+    print(" positions are" , first_pos, second_pos)
     while  first_pos -3 > 0:
         codon = record.sequence[first_pos: second_pos]
 
@@ -57,17 +62,28 @@ def expandStartPostion(record, hit_start, strand):
 
 def expandEndPosition(record, hit_end, strand):
 
+    """
+    Expanding rightwards on a genome, so at the end of something on the forward strand, but at the start of something on
+     the backwards strand
+    :param record:
+    :param hit_end:
+    :param strand:
+    :return:
+    """
+
     if strand == "forward":
         codon_list = ["TGA", "TAA", "TAG"]
     elif strand == "backward":
         codon_list = ["TCA", "TTA", "CTA"]
 
-    print(record.sequence[hit_end])
-    codon = ""
     first_pos = hit_end - 3
     second_pos = hit_end
+
+    start_pos = second_pos # Variable to keep track of all the potential start positions (methionines) we run into
+
     while  first_pos +3 < len(record.sequence):
         codon = record.sequence[first_pos: second_pos]
+        print ('codon: ', codon)
         if codon == "CAT":
             start_pos = second_pos
         if codon in codon_list:
