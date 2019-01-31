@@ -171,6 +171,8 @@ def write_hits_to_gb(hmm_dict, reference, seqrecord, species, expand=False):
     name = species + "_sequence"
     name += "_expanded" if expand else ""
     output_path = reference + "/" + name + ".gb"
+
+    output_path = output_path.replace(" ", "_")
     print (name)
     print (reference)
     print ('and species name is', species)
