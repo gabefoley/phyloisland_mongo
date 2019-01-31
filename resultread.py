@@ -38,7 +38,6 @@ def expandStartPostion(record, hit_start, strand):
 
     start_pos = first_pos # variable to keep track of all the potential start positions (methionines) we run into
 
-    print(" positions are" , first_pos, second_pos)
     while  first_pos -3 > 0:
         codon = record.sequence[first_pos: second_pos]
 
@@ -83,7 +82,6 @@ def expandEndPosition(record, hit_end, strand):
 
     while  first_pos +3 < len(record.sequence):
         codon = record.sequence[first_pos: second_pos]
-        print ('codon: ', codon)
         if codon == "CAT":
             start_pos = second_pos
         if codon in codon_list:
