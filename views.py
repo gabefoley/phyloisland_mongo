@@ -26,7 +26,7 @@ from flask_admin.model.template import EndpointLinkRowAction, LinkRowAction
 
 from wtforms import SelectField
 
-ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC']
+ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1']
 
 
 class UploadView(BaseView):

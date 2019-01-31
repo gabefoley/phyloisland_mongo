@@ -39,7 +39,7 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
     start = 0
     # For my work I was considering changing 'region1, 2, and 3' to a3, TcB, and TcC for convenience
     # Up to others though if I fully change that (is just a UI thing tbh)
-    region_colours = {"A1": "orange", "A2": "red", "Chitinase": "green", "A3": "yellow",
+    region_colours = {"A1": "orange", "A2": "red", "Chitinase": "green", "TcdA1": "yellow",
                       "TcB": "blue", "TcC": "magenta", "pore": "grey", "region1": "lightblue", "region2": "pink",
                       "region3": "purple", "region4": "black"}
     locs = {}
@@ -183,7 +183,7 @@ def write_hits_to_gb(hmm_dict, reference, seqrecord, species, expand=False):
     """ Create a dictionary for key = feature type -> value = location """
     locs = {}
     strand_dict = {}
-    colour_dict = {"A1": "255 165 0", "A2": "255 0 0", "A3": "255 255 0", "TcB": "0 0 255", "TcC": "255 0 255",
+    colour_dict = {"A1": "255 165 0", "A2": "255 0 0", "TcdA1": "255 255 0", "TcB": "0 0 255", "TcC": "255 0 255",
                    "Chitinase": "0 255 0", "region1": "0 255 255", "region2": "255 153 255", "region3": "204 0 102",
                    "region4": "0 0 0"}
     for result in hmm_dict:
