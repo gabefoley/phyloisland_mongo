@@ -24,6 +24,10 @@ def read_genome(outpath, species_name):
             description = r.description
             genome_id = r.id
 
+        else:
+            print ('Was a plasmid')
+            print (r.description)
+
         # Temporary measure to reduce the name so it can fit in the database. Edge case but occurs with
         # 'bacterium endosymbiont of Mortierella elongata FMR23-6', for example
 
