@@ -8,7 +8,7 @@ tree = Tree('./Files/abc_toxins.nwk')
 
 attribute_dict = attributes.attribute_dict
 
-# Define the colours to use for each type - list of colours are here -
+# Define the colours to use for each type - list of colours are here - http://etetoolkit.org/docs/latest/reference/reference_treeview.html
 colour_dict = {'type1_single' :'dodgerblue', 'type2b_single': 'gold', 'type2a_single':'forestgreen', 'multiple' : 'red', 'unknown' : 'black'}
 
 output_tree, ts = colour_tree.colour_tips(tree, attribute_dict, colour_dict, outpath='./Output/coloured_tips22.png',
