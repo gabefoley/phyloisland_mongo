@@ -18,15 +18,21 @@ def read_genome(outpath, species_name):
 
     my_dict = SeqIO.to_dict(SeqIO.parse(outpath, "fasta"))
     for r in sorted(my_dict.values(), key=operator.attrgetter('id')):
+        concatenated_genome += str(r.seq)
+        description = r.description
+        genome_id = r.id
 
         if "plasmid" not in r.description:
-            concatenated_genome += str(r.seq)
-            description = r.description
-            genome_id = r.id
+            print ('Was not a plasmid')
+            print (r.description)
+            # concatenated_genome += str(r.seq)
+            # description = r.description
+            # genome_id = r.id
 
         else:
             print ('Was a plasmid')
             print (r.description)
+
 
         # Temporary measure to reduce the name so it can fit in the database. Edge case but occurs with
         # 'bacterium endosymbiont of Mortierella elongata FMR23-6', for example
