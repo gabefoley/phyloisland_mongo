@@ -6,6 +6,7 @@ MONGODB_DB = 'phyloisland_mongo_2019'
 MONGODB_HOST= 'localhost'
 MONGODB_USERNAME = 'pi'
 MONGODB_PASSWORD = 'abc123'
+MONGODB_CONNECT = False
 
 
 # User / login configuration
