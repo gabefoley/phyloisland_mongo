@@ -15,6 +15,7 @@ import phyloisland
 import glob
 import resultread
 import genome_overview
+import random
 
 def get_feature_location_with_profile(ids, reference, profile_name, recordName, recordLocation, region):
     """
@@ -120,13 +121,17 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
         print (hmmerout)
         print (hmmerout_expanded)
 
+
         genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species)
 
         genome_expanded_image = genome_overview.writeHMMToImage(hmmerout_expanded, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species, expand=True)
 
-        genbank = genome_overview.write_hits_to_gb(hmmerout, reference +"/" + query.species.replace(" ", "_"), seq_record, query.species)
+        genbank = genome_overview.write_hits_to_gb(hmmerout, reference +"/" + query.species.replace(" ", "_"),
+                                                   seq_record, query.id, query.species)
 
-        genbank_expanded = genome_overview.write_hits_to_gb(hmmerout_expanded, reference +"/" + query.species.replace(" ", "_"), seq_record, query.species, expand=True)
+        genbank_expanded = genome_overview.write_hits_to_gb(hmmerout_expanded, reference +"/" +
+                                                            query.species.replace(" ", "_"), seq_record,
+                                                            query.id, query.species, expand=True)
 
 
         curr = models.GenomeRecords.objects().timeout(False).get(id=query.id)
@@ -144,7 +149,7 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
 
 
 # Function to be called when wanting to generate Genome Diagram and GenBank output
-def generate_output(ids, reference, diagram=True, genbank=True, interactive_diagram=False, fasta=False, expand=False):
+def generate_output(ids, reference, diagram=True, genbank=True, interactive_diagram=False, fasta=True, expand=False):
     query = models.GenomeRecords.query.filter(models.GenomeRecords.uid.in_(ids))
     fasta_region_dict = {}
     for record in query.all():
@@ -207,3 +212,7 @@ def generate_output(ids, reference, diagram=True, genbank=True, interactive_diag
             outpath = "%s/hmm_outputs/%s_%s%s.fasta" % (
             os.getcwd(), reg_name, "expanded_" if expand else "", str(len(ids)))
             utilities.saveFASTA(output, outpath)
+            print ('porcupine')
+            print (reg_name)
+            print (outpath)
+

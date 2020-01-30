@@ -9,7 +9,7 @@ from flask_login import login_required, current_user
 from flask_admin import Admin, expose, BaseView
 from flask_admin.actions import action
 from flask_admin.contrib.mongoengine import ModelView, filters
-from Bio.Alphabet import generic_protein
+from Bio.Alphabet import generic_protein, generic_nucleotide
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 from markupsafe import Markup
@@ -21,6 +21,7 @@ from urllib.error import HTTPError
 import random
 import io
 import json
+import Bio
 
 from flask_admin.model.template import EndpointLinkRowAction, LinkRowAction
 
@@ -240,6 +241,83 @@ class SetupView(BaseView):
 
         elif request.method == "GET":
             return self.render('setup.html', form=form, prefs=prefs)
+
+
+class DownloadFastaView(BaseView):
+
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def setup(self):
+        form = forms.DownloadFastaForm()
+
+        if request.method == "POST":
+            if form.submit.data:
+                try:
+                    fasta_list = []
+                    print (form.region.data)
+                    query = models.GenomeRecords.objects(hits__region = form.region.data)
+                    print (query)
+                    for x in query:
+                        print (x)
+
+                    aggregate = models.GenomeRecords._get_collection().aggregate([
+                        {"$match": {
+                            "hits.region": form.region.data
+                        }},
+                        {"$redact": {
+                            "$cond": {
+                                "if": {"$eq": [{"$ifNull": ["$region", form.region.data]}, form.region.data]},
+                                "then": "$$DESCEND",
+                                "else": "$$PRUNE"
+                            }
+                        }}
+                    ])
+
+
+                    for genome in aggregate:
+                        for hit in genome['hits']:
+                            print ()
+                            print (hit['name'])
+                            print (hit['region'])
+
+
+                            print (hit['start'])
+                            print (hit['end'])
+                            print (hit['strand'])
+
+
+                            sequence = Bio.Seq.Seq(hit['sequence'], generic_nucleotide)
+
+                            if hit['strand'] == 'backward':
+                                sequence = sequence.reverse_complement()
+
+                            print (sequence[0:10])
+
+                            id_name = hit['name'] + "_" + hit['region'] + "_" + hit['start'] + ":" + hit['end'] + "_" + hit['strand']
+
+                            print (id_name)
+
+                            fasta_record = SeqRecord(sequence, id_name)
+
+                            fasta_list.append(fasta_record)
+
+                        utilities.createFasta(fasta_list, form.region.data)
+
+
+
+                    flash("User preferences updated", category='success')
+                    return self.render('download_fasta.html', form=form)
+
+                except Exception as e:
+                    print(e)
+                    flash("Something went wrong", category='error')
+                    return self.render('download_fasta.html', form=form)
+
+            else:
+                return self.render('download_fasta.html', form=form)
+
+        elif request.method == "GET":
+            return self.render('download_fasta.html', form=form)
 
 
 class SequenceRecordsView(ModelView):
@@ -741,4 +819,6 @@ admin.add_view(ProfileView(model=models.Profile, name='Profiles', endpoint='prof
 
 admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
 admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
+admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
+
 admin.add_view(DocumentationView(name='Documentation & FAQ', endpoint='documentation'))

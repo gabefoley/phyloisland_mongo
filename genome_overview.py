@@ -4,7 +4,8 @@ from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Seq import Seq
 from Bio.Alphabet import generic_dna
-
+import random
+import models
 
 
 def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, expand=False):
@@ -26,15 +27,13 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
     name = reference + "_" + species + "_GenomeDiagram"
     name += "_expanded" if expand else ""
 
-
-
     gd_diagram = GenomeDiagram.Diagram(name)
     max_len = 0
     output_path = "static/user_images/%s_%s%s.png" % (query_id, species, "_expanded" if expand else "")
 
     output_path = output_path.replace(" ", "_")
 
-    print (output_path)
+    print(output_path)
 
     start = 0
     # For my work I was considering changing 'region1, 2, and 3' to a3, TcB, and TcC for convenience
@@ -60,8 +59,6 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
                 location = reg.split("/")[2] + utilities.randstring(5)
                 locs[location] = result[reg].split(":")
                 strand_dict[location] = strandd
-
-
 
             i += 1
             # Prepare for literally the worst code in existence
@@ -92,7 +89,6 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
 
     for feature in seq_record.features:
         feature_locations.append((feature.location.start, feature.location.end))
-
 
     total_tracks = 1
     # Dictionary to keep track of which locations are at which track
@@ -167,18 +163,36 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
     fh = open(output_path, 'rb')
     return fh
 
-def write_hits_to_gb(hmm_dict, reference, seqrecord, species, expand=False):
+
+# def add_hit_to_database(query_id, species, region, start, end, expand):
+#
+#     print ('coco checking ' + str(species) + str(region) + str(start) + str(end))
+#
+#     models.GenomeRecords.objects(_id= query_id, hits__region=region, hits__start=start, hits__end= end)
+#
+#     Feed.objects(_id="...", posts__region=region, hits__start).update(set__posts__S__value="updatevalue")
+#
+#     if models.Hits.objects().get(region=region, start=start, end=end):
+#         hit = models.Hits(region=region, score=str(random.randrange(1, 11, 1)), start=str(start), end=str(end),
+#                          expand=expand, tags=[])
+#
+#         hit.save()
+#     else:
+#         print ('it was already there')
+#
+
+def write_hits_to_gb(hmm_dict, reference, seqrecord, query_id, species, expand=False):
     name = species + "_sequence"
     name += "_expanded" if expand else ""
     output_path = reference + "/" + name + ".gb"
 
     output_path = output_path.replace(" ", "_")
-    print (name)
-    print (reference)
-    print ('and species name is', species)
+    print(name)
+    print(reference)
+    print('and species name is', species)
     seqrecord.name = species[0:9].zfill(9).replace(" ", "_")
 
-    print (seqrecord.name)
+    print(seqrecord.name)
 
     # Write Annotated Sequences to Genbank files to allow easy movement to Artemis
     print("Writing sequences to GenBank File")
@@ -189,7 +203,7 @@ def write_hits_to_gb(hmm_dict, reference, seqrecord, species, expand=False):
                    "Chitinase": "0 255 0", "region1": "0 255 255", "region2": "255 153 255", "region3": "204 0 102",
                    "region4": "0 0 0"}
     for result in hmm_dict:
-        print (result)
+        print(result)
         i = 0
         for reg in result:
             """ Create a dictionary for key = feature type -> value = location """
@@ -219,6 +233,12 @@ def write_hits_to_gb(hmm_dict, reference, seqrecord, species, expand=False):
             location=FeatureLocation(int(locs[location][0]), int(locs[location][1]), strand=strand_dict[location]),
             type=location[0:-5], qualifiers=color)
         seqrecord.features.append(feature)
+
+        # add_hit_to_database(query_id = query_id, species=species, region=location[0:-5], start=int(locs[location][0]), \
+        #                                                                             end=int(locs[
+        #                                                                                                       location][
+        #                                                                                                       1]),
+        #                     expand=expand)
 
     # sequence = str(seqrecord)[2:-1]
     # seqrecord.seq = Seq(sequence, generic_dna)

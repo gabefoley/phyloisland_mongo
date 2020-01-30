@@ -44,35 +44,44 @@ class SequenceRecords(db.DynamicDocument):
     sequence = db.StringField()
     references = db.ListField(db.StringField(), default=list)
 
-class Hit(db.EmbeddedDocument):
+
+
+class Hits(db.EmbeddedDocument):
     """
     Class for storing a set of HMMER hits for a given region for a Genome Record
     """
     id = db.ObjectIdField()
+    name = db.StringField()
     region = db.StringField()
     score = db.StringField()
     start = db.StringField()
     end = db.StringField()
+    expand = db.BooleanField()
+    strand = db.StringField()
+    sequence = db.StringField()
     tags = db.ListField(db.StringField(), default=list)
-
-
-
 
 class GenomeRecords(db.DynamicDocument):
     """
     Class for storing Genome records
     """
+
     name = db.StringField()
     species = db.StringField()
     strain = db.StringField()
     description = db.StringField()
     sequence = db.StringField()
     present = db.DictField()
-    hits = db.EmbeddedDocumentListField(Hit)
+    hits = db.EmbeddedDocumentListField(Hits)
     references = db.ListField(db.StringField(), default=list)
     genome_overview = db.ImageField()
     genome_expanded_overview = db.ImageField()
     tags = db.ListField(db.StringField(), default=list)
+
+
+
+
+
 
 # class BlobMixin(db.DynamicDocument):
 #     mimetype = db.StringField()

@@ -2,7 +2,11 @@
 # MONGO_DBNAME = "phyloisland_mongo_2019"
 # MONGO_URI = 'mongodb://pi:abc123@localhost/' + MONGO_DBNAME
 #
-MONGODB_DB = 'phyloisland_mongo_2019'
+# MONGODB_DB = 'phyloisland_mongo_2019_dream_again'
+# MONGODB_DB = 'phyloisland_mongo_2019_dream_again_no_delete'
+MONGODB_DB = 'restart'
+
+#
 # MONGODB_HOST= 'localhost'
 # MONGODB_USERNAME = 'pi'
 # MONGODB_PASSWORD = 'abc123'
@@ -10,7 +14,7 @@ MONGODB_DB = 'phyloisland_mongo_2019'
 
 # User / login configuration
 USER_APP_NAME = "Phylo Island" # Shown in email templates and page footers
-CSRF_ENABLED = True
+CSRF_ENABLED = False
 USER_ENABLE_EMAIL = False # Require email authentication?
 USER_ENABLE_USERNAME = True  # Enable username authentication
 USER_REQUIRE_RETYPE_PASSWORD = True  # Require retyping of password

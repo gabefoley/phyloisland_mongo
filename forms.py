@@ -88,3 +88,8 @@ class GenomeHitForm(FlaskForm):
 
     delete_hit = SubmitField("Delete hit")
 
+class DownloadFastaForm(FlaskForm):
+        region = SelectField('Which region should we download for?', choices=[
+        ('Chitinase','Chitinase'),
+        ('TcC', 'TcC')])
+        submit = SubmitField("Submit")

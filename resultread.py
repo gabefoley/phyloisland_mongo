@@ -140,8 +140,6 @@ def HMMread(path, record=None, expand=False):
                         start = expandStartPostion(record, start, strand)
                         end = expandEndPosition(record, end, strand)
 
-                    # Don't add the hit if it's already in the datbase
-
 
 
                     # After expanding, we might have the exact region already identified - don't add multiple regions in
@@ -161,14 +159,32 @@ def HMMread(path, record=None, expand=False):
                         new_end = str(end)
                         object_id = ObjectId()
 
-                        hit = models.Hit(object_id, new_reg, new_score, new_start, new_end)
+                        hit = models.Hits(object_id, record.name, new_reg, new_score, new_start, new_end, expand)
 
+
+                        # TODO Make the hit check query better here
                         add = True
                         for hit_check in record.hits:
                             if hit_check.region == new_reg and hit.start == new_start and hit.end == new_end:
                                 add = False
 
                         if add:
+
+                            # Extract the genomic region to add to the Hit record
+
+                            print ('lets add them')
+                            print (new_start)
+                            print (new_end)
+                            print (len(record.sequence))
+
+                            sequence = record.sequence[int(new_start):int(new_end)]
+
+
+                            print (sequence)
+
+                            hit = models.Hits(object_id, record.name, new_reg, new_score, new_start, new_end, expand,
+                                              strand, sequence)
+
                             print ('we are adding something in')
                             print (record.hits)
                             print (new_reg)

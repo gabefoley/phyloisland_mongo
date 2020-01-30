@@ -176,18 +176,25 @@ def set_profile_as_reference(profile_ids, region):
 
         flash("The profile named %s has been set as the reference profile for %s" % (curr.name, region), category='success')
 
-def createProfile(align_list):
-
-    SeqIO.write(align_list, "tmp/align.fasta", "fasta")
-    muscle_cline = MuscleCommandline(input="tmp/align.fasta")
+def createAlignment(input, output):
+    muscle_cline = MuscleCommandline(input=input)
     # result = subprocess.run(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True) )
     child = subprocess.Popen(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                              universal_newlines=True, shell=(sys.platform != "win32"))
     child.wait()
 
     alignment = AlignIO.read(child.stdout, "fasta")
-    AlignIO.write(alignment, "tmp/align.aln", "fasta")
+    AlignIO.write(alignment, output, "fasta")
+
+
+
+def createProfile(align_list):
+
+    SeqIO.write(align_list, "tmp/align.fasta", "fasta")
+
     hmm_path = "tmp/profile3.hmm"
+
+    createAlignment('tmp/align.fasta', 'tmp/align.aln')
 
     outfile = open(hmm_path, "w")
     result = subprocess.call(["hmmbuild", hmm_path, "tmp/align.aln"], stdout=subprocess.PIPE)
@@ -200,6 +207,17 @@ def createProfile(align_list):
 
         save_profile(file)
         remove_file(hmm_path, "tmp/align.fasta", "tmp/align.aln")
+
+
+def createFasta(fasta_list, region_name, align=True):
+
+    print ('hee ')
+    print (fasta_list)
+    SeqIO.write(fasta_list, region_name + ".fasta", "fasta")
+
+    if align:
+        createAlignment(region_name + ".fasta", region_name + ".aln")
+
 
 def check_with_profile(ids, region):
     # Check if a reference profile for this region exists

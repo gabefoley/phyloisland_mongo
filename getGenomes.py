@@ -126,7 +126,7 @@ def retrieve_genome(records, species_name, category, database):
                 print ("Genome dict is ")
                 print (genome_dict)
 
-                utilities.remove_file(outpath)
+                # utilities.remove_file(outpath)
                 utilities.remove_file(filepath)
 
 
