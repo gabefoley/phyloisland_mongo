@@ -293,6 +293,11 @@ class DownloadFastaView(BaseView):
 
                             print (sequence[0:10])
 
+                            # Do we want to translate the sequences into protein?
+                            if form.translate.data:
+                                sequence = sequence.translate()
+
+
                             id_name = hit['name'] + "_" + hit['region'] + "_" + hit['start'] + ":" + hit['end'] + "_" + hit['strand']
 
                             print (id_name)
@@ -301,7 +306,7 @@ class DownloadFastaView(BaseView):
 
                             fasta_list.append(fasta_record)
 
-                        utilities.createFasta(fasta_list, form.region.data)
+                        utilities.createFasta(fasta_list, form.region.data + "_" + form.filename.data, form.align.data)
 
 
 
@@ -495,13 +500,14 @@ class GenomeDetailView(BaseView):
 
             genome = models.GenomeRecords.objects.get(id=select_form.data['genome'][0])
 
-            items = utilities.get_genome_items(genome)
+            tracks = utilities.get_genome_items(genome)
 
             if select_form.submit_diagram.data and select_form.validate():
 
                 print ('got here')
 
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items, genome=genome.id)
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
+                                   genome=genome.id)
 
             # elif hit_form.submit_hit.data and hit_form.validate():
             #
@@ -518,7 +524,8 @@ class GenomeDetailView(BaseView):
             #     return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
             #
             else:
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items, genome=genome.id)
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
+                                   genome=genome.id)
         else:
             # Just get the first Genome Record in the database and return a Genome Detail of that
             genome = models.GenomeRecords.objects()[0]

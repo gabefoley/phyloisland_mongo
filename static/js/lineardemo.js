@@ -4,7 +4,7 @@
    put the SVG element, and an initial zoom level */
 
 var selected = new Object()
-var linearlayout = { genomesize: 6264404,
+var linearlayout = { genomesize: 4666385,
                      height: 250,
                      width: 900,
                      container: "#linearchart",

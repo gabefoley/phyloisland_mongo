@@ -429,12 +429,14 @@ genomeTrack.prototype.displayStranded = function(track, i) {
 		ystack = stackNum;
 		d.suffix = 'neg';
 	    } else if(d.strand == "1") {
-		ystack = stackNum -1;
+		ystack = 1;
 		d.suffix = 'pos';
 	    } else {
 		ystack = stackNum - 0.3;
 		d.suffix = 'none';
 	    }
+
+
 	    var shift_gene = 0;
 	    if(typeof d.feature !== 'undefined' && d.feature == "terminator") {
 		ystack = ystack - 0.5;

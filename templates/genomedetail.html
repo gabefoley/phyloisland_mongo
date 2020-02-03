@@ -39,24 +39,7 @@
 <script>
 
 
-var tracks = [
-	      { trackName: "track2",
-		trackType: "stranded",
-		visible: true,
-		inner_radius: 130,
-		outer_radius: 185,
-		trackFeatures: "complex",
-		featureThreshold: 1040807,
-		mouseclick: 'islandPopup',
-		mouseover_callback: 'islandPopup',
-		mouseout_callback: 'islandPopupClear',
-		linear_mouseclick: 'linearPopup',
-		showLabels: true,
-		showTooltip: true,
-		linear_mouseclick: 'linearClick',
-              items : {{items | safe}}
-	      }
-              ];
+var tracks = {{ tracks | safe}} ;
 
 
 

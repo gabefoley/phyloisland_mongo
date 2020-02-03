@@ -9,13 +9,43 @@
 
             <div class="smallform">
 
-                {{ form.region.label }}
 
-                {{ form.region() }}
+                <br>
+
+                {{ form.region.label  }}
+
+                {{ form.region()  }}
 
                 <br>
 
                 <br>
+
+                {{ form.filename.label }}
+
+                {{ form.filename() }}
+
+                <br>
+
+                <br>
+
+                {{ form.translate() }}
+
+
+                {{ form.translate.label (class_="genome-search") }}
+
+
+                <br>
+
+                <br>
+
+                {{ form.align() }}
+
+
+                {{ form.align.label (class_="genome-search") }}
+
+
+                <br>
+
 
             {{ form.submit(class="btn-primary") }}
             </div>

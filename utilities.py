@@ -7,6 +7,8 @@ import random
 import time
 import subprocess
 import sys
+from collections import defaultdict
+import json
 
 
 from Bio.SeqRecord import SeqRecord
@@ -14,7 +16,9 @@ from Bio import SeqIO
 from Bio import AlignIO
 from Bio.Align.Applications import MuscleCommandline
 
-
+region_name_mapper = {"A1": "track1", "A2": "track2", "Chitinase": "track1", "TcdA1": "track4",
+                  "TcB": "track5", "TcC": "track5", "A1_expanded" : "track1",  "Chitinase_expanded": "track3",
+                      "TcC_expanded": "track5"}
 def read_fasta(filename):
     """
     Read in a FASTA file
@@ -209,14 +213,14 @@ def createProfile(align_list):
         remove_file(hmm_path, "tmp/align.fasta", "tmp/align.aln")
 
 
-def createFasta(fasta_list, region_name, align=True):
+def createFasta(fasta_list, name, align):
 
     print ('hee ')
     print (fasta_list)
-    SeqIO.write(fasta_list, region_name + ".fasta", "fasta")
+    SeqIO.write(fasta_list,  name + ".fasta", "fasta")
 
     if align:
-        createAlignment(region_name + ".fasta", region_name + ".aln")
+        createAlignment(name + ".fasta", name + ".aln")
 
 
 def check_with_profile(ids, region):
@@ -238,7 +242,8 @@ def get_genome_items(genome):
     :return:
     """
 
-    items = []
+    items = defaultdict(list)
+    region_list = []
 
     for count, hit in enumerate(genome.hits):
         print (hit.id)
@@ -249,9 +254,64 @@ def get_genome_items(genome):
         hit_details['end'] = hit.end
         hit_details['name'] = hit.region
         hit_details['strand'] = 1 if count % 2 == 0 else -1
-        items.append(hit_details)
 
-    return items
+        region_list.append(hit_details)
+
+
+        items[hit.region].append(hit_details)
+
+    print (items)
+
+    tracks = build_tracks(items)
+
+    return tracks
+
+def build_tracks(items):
+
+    tracks = []
+
+    for region_name in items:
+
+        print ('region name')
+        print (region_name)
+
+        regions = []
+
+        #NOTE: I'm forcing the strands all to be 1 here to visualise on the same line in the linear genome
+
+        for region in items[region_name]:
+            print ('region')
+            print (region)
+            region_dict = {'id' : region['id'], 'start' : region['start'], 'end' : region['end'], 'name' : region[
+                'name'],
+             'strand' : 1}
+            regions.append(region_dict)
+
+        track = { 'trackName': region_name_mapper[region_name],
+		'trackType': "stranded",
+		'visible': 'true',
+		'inner_radius': 130,
+		'outer_radius': 185,
+		'trackFeatures': "complex",
+		'featureThreshold': 7000000,
+		'mouseclick': 'islandPopup',
+		'mouseover_callback': 'islandPopup',
+		'mouseout_callback': 'islandPopupClear',
+		'linear_mouseclick': 'linearPopup',
+		'showLabels': 'true',
+		'showTooltip': 'true',
+		'linear_mouseclick': 'linearClick',
+        'items' : regions }
+
+        tracks.append(track)
+    print ('and tracks are ')
+    print (tracks)
+
+    json_tracks = json.dumps(tracks)
+
+    print (json_tracks)
+
+    return json_tracks
 
 def randstring(length=10):
     valid_letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'

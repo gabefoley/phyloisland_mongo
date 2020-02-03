@@ -79,6 +79,10 @@ class GenomeDiagramSelectForm(FlaskForm):
 
     delete_hit = SubmitField("Delete hit")
 
+    show_hits = BooleanField("Show hits?", default="checked")
+
+    show_expanded_hits = BooleanField("Show expanded hits?", default= "checked")
+
 class GenomeHitForm(FlaskForm):
     """
     Form for selecting which genomes to look at in the Genome Diagram
@@ -92,4 +96,10 @@ class DownloadFastaForm(FlaskForm):
         region = SelectField('Which region should we download for?', choices=[
         ('Chitinase','Chitinase'),
         ('TcC', 'TcC')])
+        filename = StringField('Append extra text to filename?')
+
+        translate = BooleanField("Translate nucleotides to proteins?",
+                                default="checked")
+        align = BooleanField("Also create an alignment?",
+                               default="checked")
         submit = SubmitField("Submit")

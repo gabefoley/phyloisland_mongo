@@ -164,6 +164,42 @@
     font: 12px arial;
 }
 
+/* Track 3 is a non-stranded track, so no _pos
+   and _neg modifiers on the classes */
+.track4 {
+    fill: #3399FF;
+    fill-opacity: .7;
+}
+
+.track4:hover {
+    fill: blue;
+    fill-opacity: .9;
+}
+
+.track4_text {
+    fill: white;
+    font-weight: bold;
+    font: 12px arial;
+}
+
+/* Track 3 is a non-stranded track, so no _pos
+   and _neg modifiers on the classes */
+.track5 {
+    fill: #3399FF;
+    fill-opacity: .7;
+}
+
+.track5:hover {
+    fill: blue;
+    fill-opacity: .9;
+}
+
+.track5_text {
+    fill: white;
+    font-weight: bold;
+    font: 12px arial;
+}
+
 /* The GC Plot type track, give the stroke a colour */
 .gcplot {
     stroke: black;
