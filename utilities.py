@@ -287,7 +287,7 @@ def build_tracks(items):
         for region in items[region_name]:
             print ('region')
             print (region)
-            region_dict = {'id' : region['id'], 'start' : int(region['start']), 'end' : int(region['end']),
+            region_dict = {'id' : region['hit_id'], 'start' : int(region['start']), 'end' : int(region['end']),
                            'name' : region[
                 'name'],
              'strand' : 1}

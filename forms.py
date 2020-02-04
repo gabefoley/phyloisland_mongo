@@ -74,7 +74,7 @@ class GenomeDiagramSelectForm(FlaskForm):
     """
     genome = SelectMultipleField('Genome', choices=[])
     submit_diagram = SubmitField("Submit")
-    tag = StringField('Add tag')
+    tag_genome = SubmitField('Tag genome')
     submit_hit = SubmitField("Add tag")
     hide_hit = SubmitField('Hide hit')
 

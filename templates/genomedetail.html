@@ -71,6 +71,12 @@ var tracks = {{ tracks | safe}} ;
     <br>
     <br>
 
+        <button name="tagBtn" class="btn-primary" id="tag_genome" type="submit">Tag genome</button>
+
+    <br>
+    <br>
+
+
 
 
     List of hits to tag, hide, or delete:
@@ -146,6 +152,67 @@ var tracks = {{ tracks | safe}} ;
 
      });
 
+                       $('#tag_genome').on('click', function (e) {
+         e.preventDefault();
+
+         var genome = "{{ genome |safe }}"
+         tag2add = $("#tag2add").val();
+
+
+         $.ajax({
+             url: Flask.url_for("tag_genome"),
+             data: JSON.stringify({
+                 'genome' : genome, tag2add :
+                 tag2add
+             }),
+             contentType: 'application/json;charset=UTF-8',
+             type: 'POST',
+             error: function(error) {
+                 console.log(error);
+             },
+              success: function (response) {
+
+                        console.log('bamboozled')
+
+                        window.location.reload();
+
+
+                    }
+         });
+
+     });
+
+              $('#tag_hit').on('click', function (e) {
+         e.preventDefault();
+         console.log('clicked tag hit')
+
+         var genome = "{{ genome |safe }}"
+         tag2add = $("#tag2add").val();
+
+
+         $.ajax({
+             url: Flask.url_for("tag_hit"),
+             data: JSON.stringify({
+                 'genome' : genome, 'hits' : selected, tag2add :
+                 tag2add
+             }),
+             contentType: 'application/json;charset=UTF-8',
+             type: 'POST',
+             error: function(error) {
+                 console.log(error);
+             },
+              success: function (response) {
+
+                        console.log('bamboozled')
+
+                        window.location.reload();
+
+
+                    }
+         });
+
+     });
+
      $('#delete_hit').on('click', function (e) {
          e.preventDefault();
          console.log('clicked delete hit')
@@ -163,7 +230,15 @@ var tracks = {{ tracks | safe}} ;
              type: 'POST',
              error: function(error) {
                  console.log(error);
-             }
+             },
+              success: function (response) {
+
+                        console.log('bamboozled')
+
+                        window.location.reload();
+
+
+                    }
          });
 
      });

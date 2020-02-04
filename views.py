@@ -487,7 +487,7 @@ class GenomeDetailView(BaseView):
 
     @login_required
     @expose("/", methods=('GET', 'POST'))
-    def genomedetail(self, genome=None, hits=None):
+    def genomedetail(self):
         select_form = forms.GenomeDiagramSelectForm()
         select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in models.GenomeRecords.objects()]
 
@@ -495,40 +495,40 @@ class GenomeDetailView(BaseView):
 
         print ('back here again')
 
-        print ('and values are ')
-        print (genome)
-        print (hits)
 
-        if genome:
-            print ('and we have a genome')
-            print ('and hits are ' + hits)
-            tracks = utilities.get_genome_items(genome, hits)
+
 
         if request.method == 'POST' and select_form.submit_diagram.data:
 
             print ('post')
 
             if session.get('genome') is not None:
+                print ('session genome not none')
 
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
                 tracks = utilities.get_genome_items(genome, hits=session['hits'])
 
+                session['genome'] = None
+
                 return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
                                    genome=genome.id, hit_type=session['hits'])
 
 
-
             genome = models.GenomeRecords.objects.get(id=select_form.data['genome'][0])
 
-            tracks = utilities.get_genome_items(genome)
+            if session.get('hits') is None:
+                session['hits'] = 'all'
 
-            if select_form.submit_diagram.data and select_form.validate():
 
-                print ('got here')
+            tracks = utilities.get_genome_items(genome, hits=session['hits'])
 
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-                                   genome=genome.id)
+
+            print ('got here')
+
+
+            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
+                               genome=genome.id, hit_type=session['hits'])
 
             # elif hit_form.submit_hit.data and hit_form.validate():
             #
@@ -544,9 +544,11 @@ class GenomeDetailView(BaseView):
             #
             #     return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
             #
-            else:
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-                                   genome=genome.id)
+        # else:
+        #
+        #     print ('could not make it')
+        #     return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
+        #                        genome=genome.id)
         else:
 
             print ('get')
@@ -778,10 +780,59 @@ def add_tag():
 
     return redirect('genomeoverview')
 
+@app.route("/genomedetail/tag_hit)", methods=['GET', 'POST'])
+def tag_hit():
+
+    query = models.GenomeRecords.objects().get(id=request.json['genome'])
+
+    print ('query id')
+
+    print (query.id)
+
+    print(query.hits)
+
+    hits = query.hits
+
+    print('hits')
+    print(hits)
+
+    for hit in hits:
+        print (hit.id)
+
+
+    for hit_id in request.json['hits'].keys():
+            print ('hop id')
+            print (hit_id)
+
+            hits.get(id=hit_id).tags.append(request.json['tag2add'])
+
+            hits.save()
+
+            # models.GenomeRecords.objects().get(id=request.json['genome'], hits__id=hit_id).update(push__hits__tags=
+            #     request.json['tag2add'])
+            #
+
+    return redirect('genomedetail')
+
+
+@app.route("/genomedetail/tag_genome)", methods=['GET', 'POST'])
+def tag_genome():
+
+    models.GenomeRecords.objects().get(id=request.json['genome']).update(push__tags=
+            request.json['tag2add'])
+
+
+    return redirect('genomedetail')
+
 @app.route("/genomedetail/delete_hit", methods=['GET', 'POST'])
 def delete_hit():
 
     query = models.GenomeRecords.objects().get(id=request.json['genome'])
+
+    print ('query id')
+
+    print (query.id)
+
 
     for hit_id in request.json['hits'].keys():
         print ('hop id')
