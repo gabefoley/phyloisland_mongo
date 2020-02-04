@@ -33,6 +33,17 @@
                 <br>
                 {{ select_form.submit_diagram(class="btn-primary") }}
             </div>
+
+             <br>
+
+                          {{select_form.show_hits.label }}
+
+             <br>
+
+             {{select_form.show_hits}}
+
+
+             <br>
          </form>
 
 </div>
@@ -51,15 +62,18 @@ var tracks = {{ tracks | safe}} ;
     <br>
     <br>
 
-                    <button name="tagBtn" class="btn-primary" id="tag_hit" type="submit">Add tag</button>
+    <button name="tagBtn" class="btn-primary" id="tag_hit" type="submit">Add tag</button>
 
-    <button name="tagBtn" class="btn-primary" id="delete_hit" type="submit">Delete</button>
+    <button name="tagBtn" class="btn-primary" id="hide_hit" type="submit">Hide hit</button>
+
+
+    <button name="tagBtn" class="btn-primary" id="delete_hit" type="submit">Delete hit</button>
     <br>
     <br>
 
 
 
-    List of hits to tag or delete:
+    List of hits to tag, hide, or delete:
     <div id="myList">
                 </div>
 
@@ -89,6 +103,43 @@ var tracks = {{ tracks | safe}} ;
                 <script type="text/javascript" src="../../static/js/circularsample.js"></script>
 
 <script>
+
+
+            $('#show_hits').val("{{hit_type | safe }}")
+
+             $('#show_hits').on('change', function() {
+
+                 var genome = "{{ genome |safe }}"
+
+                 $.ajax({
+
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                url: "{{  url_for ('show_hits')}}",
+                 data: JSON.stringify({
+                 'genome' : genome, 'hits' : this.value
+             }),
+             contentType: 'application/json;charset=UTF-8',
+             type: 'POST',
+                traditional: "true",
+                                         success: function (response) {
+
+                        console.log('bamboozled')
+
+                        window.location.reload();
+
+
+                    }
+
+
+
+            });
+});
+
+
+
+
+
          $('#submit_hit').on('click', function (e) {
          e.preventDefault();
          console.log('clicked submit hit')

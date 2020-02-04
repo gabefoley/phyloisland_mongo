@@ -4,7 +4,7 @@ import forms
 import utilities
 import getGenomes
 import custom_filters
-from flask import render_template, flash, request, session, send_file, has_app_context, redirect
+from flask import render_template, flash, request, session, send_file, has_app_context, redirect, url_for
 from flask_login import login_required, current_user
 from flask_admin import Admin, expose, BaseView
 from flask_admin.actions import action
@@ -487,15 +487,36 @@ class GenomeDetailView(BaseView):
 
     @login_required
     @expose("/", methods=('GET', 'POST'))
-    def genomedetail(self):
+    def genomedetail(self, genome=None, hits=None):
         select_form = forms.GenomeDiagramSelectForm()
         select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in models.GenomeRecords.objects()]
 
         hit_form = forms.GenomeHitForm()
 
+        print ('back here again')
+
+        print ('and values are ')
+        print (genome)
+        print (hits)
+
+        if genome:
+            print ('and we have a genome')
+            print ('and hits are ' + hits)
+            tracks = utilities.get_genome_items(genome, hits)
+
         if request.method == 'POST' and select_form.submit_diagram.data:
 
             print ('post')
+
+            if session.get('genome') is not None:
+
+                genome = models.GenomeRecords.objects.get(id=session['genome'])
+
+                tracks = utilities.get_genome_items(genome, hits=session['hits'])
+
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
+                                   genome=genome.id, hit_type=session['hits'])
+
 
 
             genome = models.GenomeRecords.objects.get(id=select_form.data['genome'][0])
@@ -527,12 +548,18 @@ class GenomeDetailView(BaseView):
                 return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
                                    genome=genome.id)
         else:
+
+            print ('get')
+
+
+
             # Just get the first Genome Record in the database and return a Genome Detail of that
             genome = models.GenomeRecords.objects()[0]
 
-            items = utilities.get_genome_items(genome)
+            tracks = utilities.get_genome_items(genome)
 
-            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items, genome=genome.id)
+            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
+                               genome=genome.id)
 
 
 
@@ -771,6 +798,17 @@ def delete_hit():
     return redirect('genomedetail')
 
 
+@app.route("/genomedetail/show_hits", methods=['GET', 'POST'])
+def show_hits():
+
+    # Store the information in session
+
+    session['genome'] = request.json['genome']
+    session['hits'] = request.json['hits']
+
+    return redirect(url_for('genomedetail.genomedetail'))
+
+
 @app.errorhandler(404)
 def page_not_found(e):
         return render_template("404.html")
@@ -824,8 +862,9 @@ admin.add_view(GenomeRecordsView(model=models.GenomeRecords, endpoint="genome_re
 admin.add_view(ProfileView(model=models.Profile, name='Profiles', endpoint='profiles'))
 # admin.add_view(MyModelView(model=models.Profile, name='Profiles', endpoint='models'))
 
-admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
 admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
+admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
+
 admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
 
 admin.add_view(DocumentationView(name='Documentation & FAQ', endpoint='documentation'))

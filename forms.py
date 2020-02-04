@@ -76,12 +76,14 @@ class GenomeDiagramSelectForm(FlaskForm):
     submit_diagram = SubmitField("Submit")
     tag = StringField('Add tag')
     submit_hit = SubmitField("Add tag")
+    hide_hit = SubmitField('Hide hit')
 
     delete_hit = SubmitField("Delete hit")
 
-    show_hits = BooleanField("Show hits?", default="checked")
+    show_hits = SelectField('Which hits should we show?', choices=[('all', 'All hits'), ('initial', 'Just initial '
+                                                                                                    'hits'),
+                                                                   ('expanded', 'Just expanded hits')])
 
-    show_expanded_hits = BooleanField("Show expanded hits?", default= "checked")
 
 class GenomeHitForm(FlaskForm):
     """

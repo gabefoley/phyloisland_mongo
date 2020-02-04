@@ -54,9 +54,17 @@ function linearPopup(trackName, d) {
    the click callback is defined in the data json object for
    each track */
 function linearClick(trackName, d) {
-    var new_id = d.hit_id;
+
+    var new_id = d.id;
     var new_elem = d.name + " " + d.start + ":" + d.end;
     var selected_vals = new Array()
+
+    console.log('selected is ')
+    console.log(selected)
+
+    console.log(d)
+
+    console.log('new id is ' + new_id)
 
 
     if (selected.hasOwnProperty(new_id)) {
@@ -70,6 +78,7 @@ function linearClick(trackName, d) {
 
 
     var list = document.getElementById('myList');
+    console.log('selected is now')
     console.log(selected)
     console.log('and the keys')
     console.log(Object.keys(selected))

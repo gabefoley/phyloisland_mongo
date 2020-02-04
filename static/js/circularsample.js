@@ -12,6 +12,11 @@ var circularlayout = {genomesize: genomesize,
                       w: 550, h: 550
         };
 
+
+track_names = ['A1', 'A2', 'TcdA1', 'TcB', 'TcC', 'Chitinase']
+
+expanded_track_names = ['A1_expanded', 'A2_expanded', 'TcdA1_expanded', 'TcB_expanded', 'TcC_expanded', 'Chitinase_expanded']
+
 // The actual initialization call which takes two
 // parameters, the layout (above) for the plot and
 // the dataset to visualize (from data.js, a json
@@ -53,6 +58,44 @@ function updateStrand(cb) {
     }
 }
 
+function updateHits(cb){
+
+    console.log('got to uh')
+    if(cb.checked) {
+        for (track in track_names) {
+            cTrack.showTrack(track);
+        }
+    }
+    else
+    {
+        for (track in track_names) {
+
+            cTrack.hideTrack(track);
+        }
+
+    }
+
+}
+
+function updateExpandedHits(cb){
+
+    console.log("got ot ueh")
+    if(cb.checked) {
+        for (track in expanded_track_names) {
+            cTrack.showTrack(track);
+        }
+    }
+    else
+    {
+        for (track in expanded_track_names) {
+
+            cTrack.hideTrack(track);
+        }
+
+    }
+
+}
+
 // Attached to the contig gap checkbox, call the plot to
 // add/remove the contig gap squiggles
 function updateGaps(cb) {
@@ -87,7 +130,7 @@ function saveImage() {
 // do it this way to get around IE <9 not supporting
 // parameters to the function called by setTimeout()
 //
-// If you have over an island, the console log will 
+// If you have over an island, the console log will
 // display the callback parameters when the timer expires
 //
 // The callback for hover (along with click) are defined in
@@ -96,7 +139,11 @@ var timer;
 var d_callback;
 function islandPopup(d) {
     d_callback = d;
-    timer = setTimeout(function() {console.log(d_callback);}, 1000);
+    timer = setTimeout(function() {
+
+        console.log('clicko')
+
+        console.log(d_callback);}, 1000);
 }
 
 function islandPopupClear(d) {

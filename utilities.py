@@ -17,8 +17,9 @@ from Bio import AlignIO
 from Bio.Align.Applications import MuscleCommandline
 
 region_name_mapper = {"A1": "track1", "A2": "track2", "Chitinase": "track1", "TcdA1": "track4",
-                  "TcB": "track5", "TcC": "track5", "A1_expanded" : "track1",  "Chitinase_expanded": "track3",
-                      "TcC_expanded": "track5"}
+                  "TcB": "track5", "TcC": "track5", "A1_expanded" : "track1_expanded",  "Chitinase_expanded":
+                          "track3_expanded",
+                      "TcC_expanded": "track5_expanded"}
 def read_fasta(filename):
     """
     Read in a FASTA file
@@ -235,7 +236,7 @@ def check_with_profile(ids, region):
     else:
         flash("Please set a profile as the %s reference profile first" % (region), "error")
 
-def get_genome_items(genome):
+def get_genome_items(genome, hits='all'):
     """
     Format the items in a genome correctly for a Genome Detail view
     :param self:
@@ -246,19 +247,23 @@ def get_genome_items(genome):
     region_list = []
 
     for count, hit in enumerate(genome.hits):
-        print (hit.id)
-        hit_details = dict()
-        hit_details['id'] = count
-        hit_details['hit_id'] = str(hit.id)
-        hit_details['start'] = hit.start
-        hit_details['end'] = hit.end
-        hit_details['name'] = hit.region
-        hit_details['strand'] = 1 if count % 2 == 0 else -1
 
-        region_list.append(hit_details)
+        if ((hits == 'all') or ((hits == 'initial') and ('expanded' not in hit.region)) or ((hits == 'expanded') and
+         'expanded' in hit.region)):
+
+            print (hit.id)
+            hit_details = dict()
+            hit_details['id'] = count
+            hit_details['hit_id'] = str(hit.id)
+            hit_details['start'] = hit.start
+            hit_details['end'] = hit.end
+            hit_details['name'] = hit.region
+            hit_details['strand'] = 1 if count % 2 == 0 else -1
+
+            region_list.append(hit_details)
 
 
-        items[hit.region].append(hit_details)
+            items[hit.region].append(hit_details)
 
     print (items)
 
@@ -282,7 +287,8 @@ def build_tracks(items):
         for region in items[region_name]:
             print ('region')
             print (region)
-            region_dict = {'id' : region['id'], 'start' : region['start'], 'end' : region['end'], 'name' : region[
+            region_dict = {'id' : region['id'], 'start' : int(region['start']), 'end' : int(region['end']),
+                           'name' : region[
                 'name'],
              'strand' : 1}
             regions.append(region_dict)
@@ -294,7 +300,7 @@ def build_tracks(items):
 		'outer_radius': 185,
 		'trackFeatures': "complex",
 		'featureThreshold': 7000000,
-		'mouseclick': 'islandPopup',
+		'mouseclick': 'linearClick',
 		'mouseover_callback': 'islandPopup',
 		'mouseout_callback': 'islandPopupClear',
 		'linear_mouseclick': 'linearPopup',
