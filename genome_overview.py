@@ -50,13 +50,15 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
             """ Create a dictionary for key = feature type -> value = location """
             if "forward" in reg:
                 strandd = 1
-                location = reg.split("/")[2] + utilities.randstring(5)
+                location = reg.split("/")[3] + utilities.randstring(5)
                 locs[location] = result[reg].split(":")
                 strand_dict[location] = strandd
 
             elif "backward" in reg:
                 strandd = -1
-                location = reg.split("/")[2] + utilities.randstring(5)
+                print ('bananas')
+                print (reg)
+                location = reg.split("/")[3] + utilities.randstring(5)
                 locs[location] = result[reg].split(":")
                 strand_dict[location] = strandd
 
@@ -73,6 +75,9 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
     seq_record.features = []
     i = 0
     for location in locs:
+
+        print ('whoopsy')
+        print (location)
         """ Extract start and end values from each location, and add to independent lists """
         """ create and add features based on locations """
         feature = SeqFeature(
@@ -146,6 +151,10 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
                     current_track += 1
 
             else:
+
+                print ('howie')
+                print (feature)
+                print (feature.type)
                 # Add to this track
                 exec("gd_feature_set" + str(
                     current_track) + ".add_feature(feature, label=True, name=feature.type, color=region_colours[feature.type], label_position='middle')")
@@ -182,6 +191,8 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
 #
 
 def write_hits_to_gb(hmm_dict, reference, seqrecord, query_id, species, expand=False):
+    print ('and reference is ')
+    print (reference)
     name = species + "_sequence"
     name += "_expanded" if expand else ""
     output_path = reference + "/" + name + ".gb"
@@ -208,7 +219,7 @@ def write_hits_to_gb(hmm_dict, reference, seqrecord, query_id, species, expand=F
         for reg in result:
             """ Create a dictionary for key = feature type -> value = location """
             if "forward" in reg:
-                location = reg.split("/")[2] + utilities.randstring(5)
+                location = reg.split("/")[3] + utilities.randstring(5)
                 locs[location] = result[reg].split(":")
                 strandd = 1
                 strand_dict[location] = strandd
@@ -217,7 +228,7 @@ def write_hits_to_gb(hmm_dict, reference, seqrecord, query_id, species, expand=F
 
                 strandd = -1
 
-                location = reg.split("/")[2] + utilities.randstring(5)
+                location = reg.split("/")[3] + utilities.randstring(5)
                 locs[location] = result[reg].split(":")
                 strand_dict[location] = strandd
 

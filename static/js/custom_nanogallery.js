@@ -44,7 +44,14 @@ jQuery(document).ready(function () {
             type: 'POST',
             error: function(error) {
                 console.log(error);
-            }
+            },
+                          success: function (response) {
+
+
+                        window.location.reload();
+
+
+                    }
         });
 
         $("#my_nanogallery2").nanogallery2('resize');

@@ -16,10 +16,11 @@ from Bio import SeqIO
 from Bio import AlignIO
 from Bio.Align.Applications import MuscleCommandline
 
-region_name_mapper = {"A1": "track1", "A2": "track2", "Chitinase": "track1", "TcdA1": "track4",
-                  "TcB": "track5", "TcC": "track5", "A1_expanded" : "track1_expanded",  "Chitinase_expanded":
-                          "track3_expanded",
-                      "TcC_expanded": "track5_expanded"}
+region_name_mapper = {"A1": "track1", "A2": "track2", "Chitinase": "track3", "TcdA1": "track4",
+                  "TcB": "track5", "TcC": "track6", "A1_expanded" : "track1_expanded", 'A2_expanded' : "track2",
+                      "Chitinase_expanded": "track3_expanded", "TcdA1_expanded": "track4_expanded","TcB_expanded" :
+                          "track5_expanded",
+                      "TcC_expanded": "track6_expanded"}
 def read_fasta(filename):
     """
     Read in a FASTA file
@@ -112,17 +113,20 @@ def addSequence(seq_records):
                                               sequence = seq_sequence)
             sequence.save()
 
-def save_profile(profile):
+def save_profile(profile, name=None):
     """
     Save a profile into the database
     :param profile: Profile to save
     """
     print ('in save profile')
-    name = randstring(5)
+    if not name:
+        name = randstring(5)
+
+    print (name)
 
     # print (str(profile))
     # print (profile)
-    print (profile.read())
+    # print (profile.read())
     profile_entry = models.Profile(name, profile, {})
     profile_entry.save()
 
@@ -157,9 +161,13 @@ def set_profile_as_reference(profile_ids, region):
 
         profile_id = profile_ids[0]
 
+        print ('profile id is ')
+        print (profile_id)
+
         curr = models.Profile.objects().get(id=profile_id)
 
-        # curr = models.Profile.objects(id=profile_id)
+
+        print (curr)
 
 
         # curr.update(references= {region: "*"})
@@ -168,18 +176,28 @@ def set_profile_as_reference(profile_ids, region):
 
         curr.save()
 
-        print (curr.profile)
+        # print (curr.profile.read())
+        #
+        # print ('*****')
+        #
+        # # print (curr.profile.file.read())
+        #
+        # print (type(curr.profile.read()))
+        #
+        # print (curr.profile.decode("utf-8"))
+        #
+        # print ('decoder')
+        #
+        # print (str(curr.profile.read(), 'utf-8'))
 
-        print ('*****')
-
-        print (curr.profile.read())
 
 
         # Write the new profile to the tmp folder ready to be used
-        # with open("tmp/" + region + "_profile.hmm", 'w') as profile_path:
-        #     profile_path.write(curr.profile.decode('utf-8'))
+        with open("tmp/" + region + "_profile.hmm", 'wb') as profile_path:
 
-        flash("The profile named %s has been set as the reference profile for %s" % (curr.name, region), category='success')
+            profile_path.write(curr.profile.read())
+
+        # flash("The profile named %s has been set as the reference profile for %s" % (curr.name, region), category='success')
 
 def createAlignment(input, output):
     muscle_cline = MuscleCommandline(input=input)

@@ -100,7 +100,9 @@ def expandEndPosition(record, hit_end, strand):
 def HMMread(path, record=None, expand=False):
     hmm_dict = {}
     record.id
-    for infile in glob.glob(path + '/*/*.fasta'):
+
+    for infile in glob.glob(path + '/*.fasta'):
+
         try:
             qresult = SearchIO.read(infile, 'hmmer3-text')
             strand_regex = re.search(r'_.{3,4}ward_\d', infile)
@@ -175,18 +177,14 @@ def HMMread(path, record=None, expand=False):
                             print ('lets add them')
                             print (new_start)
                             print (new_end)
-                            print (len(record.sequence))
-
                             sequence = record.sequence[int(new_start):int(new_end)]
 
-
-                            print (sequence)
 
                             hit = models.Hits(object_id, record.name, new_reg, new_score, new_start, new_end, expand,
                                               strand, sequence)
 
                             print ('we are adding something in')
-                            print (record.hits)
+
                             print (new_reg)
                             print (hit.start)
                             print (hit.end)

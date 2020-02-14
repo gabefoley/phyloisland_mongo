@@ -95,10 +95,25 @@ class GenomeHitForm(FlaskForm):
     delete_hit = SubmitField("Delete hit")
 
 class DownloadFastaForm(FlaskForm):
-        region = SelectField('Which region should we download for?', choices=[
-        ('Chitinase','Chitinase'),
-        ('TcC', 'TcC')])
+        region = SelectField('Which region should we download?', choices=[('A1', 'A1'), ('A2', 'A2'), ('TcdA1',
+                                                                                                       'TcdA1'),
+        ('Chitinase','Chitinase'), ('TcB', 'TcB'), ('TcC', 'TcC'), ('A1_expanded', 'A1_expanded'), ('A2_expanded',
+                                                                                                    'A2_expanded'),
+                                                                          ('TcdA1_expanded',
+                                                                                                       'TcdA1_expanded'),
+        ('Chitinase_expanded','Chitinase_expanded'), ('TcB_expanded', 'TcB_expanded'), ('TcC_expanded', 'TcC_expanded')])
+
         filename = StringField('Append extra text to filename?')
+
+        include_genome = StringField('Only include genomes tagged with - ')
+
+        exclude_genome = StringField('Exclude genomes tagged with - ')
+
+        include_hits = StringField('Only include hits tagged with - ')
+
+        exclude_hits = StringField('Exclude hits tagged with - ', default='hidden')
+
+
 
         translate = BooleanField("Translate nucleotides to proteins?",
                                 default="checked")

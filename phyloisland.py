@@ -13,6 +13,8 @@ app.config.from_pyfile('configs/mongoconfig.py')
 
 # Connect the database
 db = MongoEngine(app)
+
+
 connect(configs.mongoconfig.MONGODB_DB)
 
 # Add the Upload directory

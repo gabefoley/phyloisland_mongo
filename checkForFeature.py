@@ -43,8 +43,12 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
 
         # seq_record = SeqRecord(seq=Seq(nuc_seq, Alphabet()), id='', name='', description='', dbxrefs=[])
 
+        print ('and regerence is ')
 
-        outpath = reference + "/" + query.species + "/" + region + "/" + profile_name + "/"
+        print (reference)
+
+
+        outpath = reference + "/" + query.name + "/" + query.species + "/" + region + "/"
         outpath = outpath.replace(" ", "_")
 
         print (outpath)
@@ -97,13 +101,13 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
                     # result = subprocess.call(["hmmsearch", 'files/output.txt', reference, cleaned_path], stdout=subprocess.PIPE)
                     # for x in result:
                     #     print (x)
-        print("Creating a diagram of %s region hits" % (region))
         # for regions in hmmer_outputs/organism add reg to all_reg
         all_reg = []
-        for infile in glob.glob(os.path.join(reference + "/" + query.species.replace(" ", "_") + '/*')):
+        for infile in glob.glob(os.path.join(reference + "/" + query.name + "/" + query.species.replace(" ",
+                                                                                                      "_") + '/*')):
             print ('infile')
             print (infile)
-            if '.' not in infile:
+            if '.gb' not in infile:
                 all_reg.append(infile)
         hmmerout = []
         hmmerout_expanded = []
@@ -122,14 +126,21 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
         print (hmmerout_expanded)
 
 
-        genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species)
+        genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.name +
+                                                       "/" + query.species.replace(" ", "_"), nuc_seq, query.name, \
+                                                           query.id, query.species)
 
-        genome_expanded_image = genome_overview.writeHMMToImage(hmmerout_expanded, reference + "/" + query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species, expand=True)
+        genome_expanded_image = genome_overview.writeHMMToImage(hmmerout_expanded, reference + "/" + query.name +
+                                                                                                         "/" +
+                                                                query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species, expand=True)
 
-        genbank = genome_overview.write_hits_to_gb(hmmerout, reference +"/" + query.species.replace(" ", "_"),
+        genbank = genome_overview.write_hits_to_gb(hmmerout, reference +"/" + query.name + "/" +
+                                                   query.species.replace(
+            " ",
+                                                                                                               "_"),
                                                    seq_record, query.id, query.species)
 
-        genbank_expanded = genome_overview.write_hits_to_gb(hmmerout_expanded, reference +"/" +
+        genbank_expanded = genome_overview.write_hits_to_gb(hmmerout_expanded, reference +"/" + query.name + "/" +
                                                             query.species.replace(" ", "_"), seq_record,
                                                             query.id, query.species, expand=True)
 

@@ -31,7 +31,6 @@ ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2
 
 
 class UploadView(BaseView):
-
     """
     View for uploading files
     """
@@ -40,22 +39,21 @@ class UploadView(BaseView):
     @expose("/", methods=('GET', 'POST'))
     def upload(self):
         form = forms.UploadForm()
-        print ('is it validated - ', form.validate())
+        print('is it validated - ', form.validate())
 
         if request.method == "POST" and not form.validate():
-            print ('not validated')
-            print (form.genome_type)
-            print (request.get_json())
-
+            print('not validated')
+            print(form.genome_type)
+            print(request.get_json())
 
         if request.method == 'POST' and form.validate():
 
             if request.method == 'POST':
                 names = request.get_json()
-                print ('names coming in')
-                print (request)
-                print (request.data)
-                print (names)
+                print('names coming in')
+                print(request)
+                print(request.data)
+                print(names)
                 # for name in names:
                 #     print (name)
 
@@ -67,13 +65,13 @@ class UploadView(BaseView):
             add_seq = form.add_sequence.data
             add_genome = form.add_genome.data
             single = form.single_genome.data
-            genome_type=form.genome_type.data
+            genome_type = form.genome_type.data
             representative = form.representative.data
             assembly = form.assembly.data
             genbank = form.genbank.data
             failed_genomes = []
 
-            print ('seq type is ', seq_type)
+            print('seq type is ', seq_type)
 
             try:
 
@@ -102,7 +100,7 @@ class UploadView(BaseView):
 
                         destinations = [genome_type]
 
-                        #TODO: Once the checkbox selection is dynamic we can just add freely here
+                        # TODO: Once the checkbox selection is dynamic we can just add freely here
                         if representative and genome_type not in ["representative genome", "assembly", "genbank"]:
                             destinations.append("representative genome")
 
@@ -112,6 +110,8 @@ class UploadView(BaseView):
                         print("Destinations is ", destinations)
 
                         genome_results = getGenomes.add_genome(species_name, destinations, single=single)
+
+                        print ('genome resutls was ' + genome_results)
 
                         if genome_results and genome_results != "Fail":
                             utilities.add_genome(genome_results)
@@ -166,12 +166,14 @@ class UploadView(BaseView):
                     #                 name))
 
                 elif seq_type == "profile":
-                    print ('it is a profile')
+                    print('it is a profile')
 
                     hmm_path = "static/uploads/" + filename
                     while not os.path.exists(hmm_path):
                         time.sleep(1)
                     if os.path.isfile(hmm_path):
+
+                        print ('path for hmm is ' + hmm_path)
                         file = open(hmm_path, 'rb')
 
                         utilities.save_profile(file)
@@ -190,14 +192,13 @@ class UploadView(BaseView):
 
             print('\nFINISHED GETTING RECORDS: Time taken was {} \n'.format(time_string))
             if failed_genomes:
-                flash ("The following genomes failed to map - " + " ".join(x for x in failed_genomes), category='error')
-                print ("The following genomes failed to map - " + " ".join(x for x in failed_genomes))
+                flash("The following genomes failed to map - " + " ".join(x for x in failed_genomes), category='error')
+                print("The following genomes failed to map - " + " ".join(x for x in failed_genomes))
 
 
         elif request.method == 'POST':
-            print ('not validated')
-            print (form.genome_type)
-
+            print('not validated')
+            print(form.genome_type)
 
         return self.render("upload_admin.html", form=form)
 
@@ -209,20 +210,19 @@ class UploadView(BaseView):
 
 
 class SetupView(BaseView):
-
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def setup(self):
         form = forms.SetupForm()
         # del_form = forms.DeleteForm()
         current = models.User.objects().get(username=str(current_user.username))
-        prefs = {'page_size' : current.page_size, 'references' : current_user.references}
+        prefs = {'page_size': current.page_size, 'references': current_user.references}
 
         if request.method == "POST":
             if form.submit.data:
                 try:
                     models.User.objects().get(username=str(current_user.username)).update(page_size=form.page_size.data)
-                    print ('data')
+                    print('data')
                     models.User.objects().get(username=str(current_user.username)).update(page_size=form.page_size.data)
 
                     for reference in request.form.getlist('references'):
@@ -244,7 +244,6 @@ class SetupView(BaseView):
 
 
 class DownloadFastaView(BaseView):
-
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def setup(self):
@@ -254,11 +253,19 @@ class DownloadFastaView(BaseView):
             if form.submit.data:
                 try:
                     fasta_list = []
-                    print (form.region.data)
-                    query = models.GenomeRecords.objects(hits__region = form.region.data)
-                    print (query)
-                    for x in query:
-                        print (x)
+                    print(form.region.data)
+
+                    region = form.region.data
+                    include_genome = form.include_genome.data.split(",")
+                    exclude_genome = form.exclude_genome.data.split(",")
+                    include_hits = form.include_hits.data.split(",")
+                    exclude_hits = form.exclude_hits.data.split(",")
+
+                    print('here they come')
+                    print(include_genome)
+                    print(exclude_genome)
+                    print(include_hits)
+                    print(exclude_hits)
 
                     aggregate = models.GenomeRecords._get_collection().aggregate([
                         {"$match": {
@@ -266,56 +273,77 @@ class DownloadFastaView(BaseView):
                         }},
                         {"$redact": {
                             "$cond": {
-                                "if": {"$eq": [{"$ifNull": ["$region", form.region.data]}, form.region.data]},
+                                "if": {"$eq": [{"$ifNull": ["$region", region]}, region]},
                                 "then": "$$DESCEND",
                                 "else": "$$PRUNE"
                             }
                         }}
                     ])
 
-
                     for genome in aggregate:
-                        for hit in genome['hits']:
-                            print ()
-                            print (hit['name'])
-                            print (hit['region'])
+
+                        print('and now')
+
+                        # print (genome)
 
 
-                            print (hit['start'])
-                            print (hit['end'])
-                            print (hit['strand'])
+                        # Check that this genome should be included (if include_genome is non-empty) and that it
+                        # shouldn't be excluded
+                        if ((include_genome == [''] or bool(set(genome['tags']).intersection(set(include_genome))))) \
+                                and not bool(set(genome['tags']).intersection(set(exclude_genome))):
 
+                            print('got to here')
 
-                            sequence = Bio.Seq.Seq(hit['sequence'], generic_nucleotide)
+                            # Check that this hit should be included (if include_hit is non-empty) and that it
+                            # shouldn't be excluded
+                            for hit in genome['hits']:
+                                if (include_hits == [''] or bool(set(hit['tags']).intersection(
+                                        set(include_hits)))) \
+                                        and not bool(set(hit['tags']).intersection(set(exclude_hits))):
 
-                            if hit['strand'] == 'backward':
-                                sequence = sequence.reverse_complement()
+                                    print()
+                                    print(hit['name'])
+                                    print(hit['region'])
 
-                            print (sequence[0:10])
+                                    print(hit['start'])
+                                    print(hit['end'])
+                                    print(hit['strand'])
 
-                            # Do we want to translate the sequences into protein?
-                            if form.translate.data:
-                                sequence = sequence.translate()
+                                    sequence = Bio.Seq.Seq(hit['sequence'], generic_nucleotide)
 
+                                    if hit['strand'] == 'backward':
+                                        sequence = sequence.reverse_complement()
 
-                            id_name = hit['name'] + "_" + hit['region'] + "_" + hit['start'] + ":" + hit['end'] + "_" + hit['strand']
+                                    print(sequence[0:10])
 
-                            print (id_name)
+                                    # Do we want to translate the sequences into protein?
+                                    if form.translate.data:
+                                        sequence = sequence.translate()
 
-                            fasta_record = SeqRecord(sequence, id_name)
+                                    id_name = hit['name'] + "_" + genome['species'].replace(" ", "_") + '_' + hit[
+                                        'region'] + \
+                                              "_" + \
+                                              hit['start'] + "_" + \
+                                              hit['end'] + "_" + hit['strand']
 
-                            fasta_list.append(fasta_record)
+                                    print(id_name)
 
-                        utilities.createFasta(fasta_list, form.region.data + "_" + form.filename.data, form.align.data)
+                                    fasta_record = SeqRecord(sequence, id_name)
 
+                                    fasta_list.append(fasta_record)
 
+                    # Don't add an underscore if we're not also adding extra text to the filename
 
-                    flash("User preferences updated", category='success')
+                    filename = form.region.data + "_" + form.filename.data if form.filename.data else form.region.data
+
+                    utilities.createFasta(fasta_list, filename, form.align.data)
+
+                    flash("Downloaded " + region + " file", category='success')
                     return self.render('download_fasta.html', form=form)
 
                 except Exception as e:
                     print(e)
-                    flash("Something went wrong", category='error')
+                    flash(e, category='error')
                     return self.render('download_fasta.html', form=form)
 
             else:
@@ -326,8 +354,6 @@ class DownloadFastaView(BaseView):
 
 
 class SequenceRecordsView(ModelView):
-
-
     edit_modal = True
     can_create = False
     can_view_details = True
@@ -345,7 +371,7 @@ class SequenceRecordsView(ModelView):
     def action_generate_profile(self, ids):
         try:
             query = models.SequenceRecords.objects(id in ids)
-            print (query)
+            print(query)
             align_list = []
             for record in query.all():
                 align_record = SeqRecord(Seq(record.sequence, generic_protein), id=str(record.name) + "_" + "seq")
@@ -360,8 +386,6 @@ class SequenceRecordsView(ModelView):
             flash(gettext(ex))
 
 
-
-
 class GenomeRecordsView(ModelView):
     form_edit_rules = ('name', 'species', 'strain', 'description')
 
@@ -371,9 +395,9 @@ class GenomeRecordsView(ModelView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def index_view(self):
-        print (session.get('page_size'))
+        print(session.get('page_size'))
         current = models.User.objects().get(username=str(current_user.username))
-        print (current.page_size)
+        print(current.page_size)
         self.edit_modal = True
         self.can_create = False
         self.can_view_details = True
@@ -387,38 +411,36 @@ class GenomeRecordsView(ModelView):
 
         return super(ModelView, self).index_view()
 
-
     def is_accessible(self):
         if (not current_user.is_active or not
         current_user.is_authenticated):
             return False
         return True
 
-
-
     def _download_formatter(self, context, model, name):
 
         return Markup(
-            "<a href='{url}' target='_blank'>View Genome</a>".format(url=self.get_url('download_genome_overview', id=model.name)))
+            "<a href='{url}' target='_blank'>View Genome</a>".format(
+                url=self.get_url('download_genome_overview', id=model.name)))
 
     def _expanded_download_formatter(self, context, model, name):
 
         return Markup(
-            "<a href='{url}' target='_blank'>View Genome</a>".format(url=self.get_url('download_genome_expanded_overview', id=model.name)))
-
-
+            "<a href='{url}' target='_blank'>View Genome</a>".format(
+                url=self.get_url('download_genome_expanded_overview', id=model.name)))
 
     column_formatters = {
         'sequence': custom_filters.seqdescription_formatter,
         'hits': custom_filters.hitdescription_formatter,
         'Genome Overview': _download_formatter,
-        'Expanded Genome Overview' : _expanded_download_formatter,
+        'Expanded Genome Overview': _expanded_download_formatter,
 
     }
 
     for name in ref_names:
         exec('@action("' + name + '_check_with_profile", "Check for ' + name + ' region with a profile")\ndef ' + name +
-        '_check_with_profile(self, profile_ids):\n utilities.check_with_profile(profile_ids, "' + name + '")')
+             '_check_with_profile(self, profile_ids):\n utilities.check_with_profile(profile_ids, "' + name + '")')
+
 
 #
 # class ProfileView(ModelView):
@@ -449,7 +471,6 @@ class GenomeRecordsView(ModelView):
 
 
 class GenomeOverviewView(BaseView):
-
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def genomeoverview(self):
@@ -461,49 +482,36 @@ class GenomeOverviewView(BaseView):
 
         for query in queries:
             query_details = {}
-            query_details['src'] = str(query.id) + "_" + query.species.replace(" ", "_") + ".png"
-            query_details['srct'] =  str(query.id) + "_" + query.species.replace(" ", "_") + ".png"
+            query_details['src'] = query.name + "_" + query.species.replace(" ", "_") + ".png"
+            query_details['srct'] = query.name + "_" + query.species.replace(" ", "_") + ".png"
             query_details['title'] = str(query.name) + "\n" + query.species
             query_details['tags'] = " ".join(tag for tag in query.tags)
 
-
-
-
             items.append(query_details)
 
-
-        print (items)
-
+        print(items)
 
         return self.render('genomeoverview.html', form=form, items=items)
 
 
-
-
 class GenomeDetailView(BaseView):
-
-
-
-
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def genomedetail(self):
         select_form = forms.GenomeDiagramSelectForm()
-        select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in models.GenomeRecords.objects()]
+        select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                      models.GenomeRecords.objects()]
 
         hit_form = forms.GenomeHitForm()
 
-        print ('back here again')
-
-
-
+        print('back here again')
 
         if request.method == 'POST' and select_form.submit_diagram.data:
 
-            print ('post')
+            print('post')
 
             if session.get('genome') is not None:
-                print ('session genome not none')
+                print('session genome not none')
 
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
@@ -514,18 +522,14 @@ class GenomeDetailView(BaseView):
                 return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
                                    genome=genome.id, hit_type=session['hits'])
 
-
             genome = models.GenomeRecords.objects.get(id=select_form.data['genome'][0])
 
             if session.get('hits') is None:
                 session['hits'] = 'all'
 
-
             tracks = utilities.get_genome_items(genome, hits=session['hits'])
 
-
-            print ('got here')
-
+            print('got here')
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
                                genome=genome.id, hit_type=session['hits'])
@@ -551,9 +555,7 @@ class GenomeDetailView(BaseView):
         #                        genome=genome.id)
         else:
 
-            print ('get')
-
-
+            print('get')
 
             # Just get the first Genome Record in the database and return a Genome Detail of that
             genome = models.GenomeRecords.objects()[0]
@@ -564,10 +566,7 @@ class GenomeDetailView(BaseView):
                                genome=genome.id)
 
 
-
-
 class UserView(ModelView):
-
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def index_view(self):
@@ -578,13 +577,12 @@ class UserView(ModelView):
         self.column_list = ['username']
 
         choice = bool(random.getrandbits(1))
-        print ("Choice is ", choice)
+        print("Choice is ", choice)
         if choice:
             self.column_list = ['username']
         else:
             self.column_list = ['username', 'password']
         return super(ModelView, self).index_view()
-
 
     def is_accessible(self):
         if (not current_user.is_active or not
@@ -601,21 +599,19 @@ class UserView(ModelView):
         pass
 
 
-
 class UserFormView(BaseView):
-
     @login_required
     @expose("/")
     def userform(self):
         form = forms.UserForm()
         return self.render('user.html', form=form)
 
+
 class ProfileView(ModelView):
     """
     View of the Profile database for storing HMM Profiles """
 
     can_create = False
-
 
     @login_required
     @expose("/", methods=('GET', 'POST'))
@@ -633,7 +629,6 @@ class ProfileView(ModelView):
             print('ref names is ', ref_names)
 
             for name in ref_names:
-
                 action_rules.append(
                     '@action("' + name + '_set_reference", "Set this profile as the ' + name + ' reference")\ndef ' + name +
                     '_set_reference(self, ids):\n print("the name here is" + ids)')
@@ -654,13 +649,14 @@ class ProfileView(ModelView):
             mimetype_field='mimetype'
         )}
 
-        print ('here now in it')
+        print('here now in it')
 
         @action('doggydog', 'Generate a doggydog')
         def kittycat(self, ids):
             print('doggydog')
 
         self.action_form()
+
         # self.list_template = 'custom_list.html'
         #
         # ar = form_rules()
@@ -706,7 +702,6 @@ class ProfileView(ModelView):
     def _list_columns(self, value):
         pass
 
-
     @property
     def _action_form_class(self):
         return self.get_action_form()
@@ -715,19 +710,15 @@ class ProfileView(ModelView):
     def _action_form_class(self, value):
         pass
 
-
     for name in ref_names:
         exec('@action("' + name + '_set_reference", "Set this profile as the ' + name + ' reference")\ndef ' + name +
-        '_set_reference(self, profile_ids):\n utilities.set_profile_as_reference(profile_ids, "' + name + '")')
-
+             '_set_reference(self, profile_ids):\n utilities.set_profile_as_reference(profile_ids, "' + name + '")')
 
 
 class DocumentationView(BaseView):
-
     @expose("/")
     def documentation(self):
         return self.render('documentation.html')
-
 
 
 @app.route("/overview_<id>", methods=['GET'])
@@ -737,11 +728,12 @@ def download_genome_overview(id):
     :param id: Profile to download
     :return:
     """
-    print (id)
+    print(id)
     record = models.GenomeRecords.objects().get(name=id)
     return send_file(
         record.genome_overview,
         attachment_filename=id + '.png')
+
 
 @app.route("/expanded_overview_<id>", methods=['GET'])
 def download_genome_expanded_overview(id):
@@ -750,11 +742,12 @@ def download_genome_expanded_overview(id):
     :param id: Profile to download
     :return:
     """
-    print (id)
+    print(id)
     record = models.GenomeRecords.objects().get(name=id)
     return send_file(
         record.genome_expanded_overview,
         attachment_filename=id + '.png')
+
 
 # @app.route("/<id>", methods=['GET'])
 # def download_blob(id):
@@ -771,23 +764,21 @@ def download_genome_expanded_overview(id):
 
 @app.route("/genomeoverview/add_tag", methods=['GET', 'POST'])
 def add_tag():
-
     for record in request.json['records']:
-
         query = models.GenomeRecords.objects().get(id=record.split("/")[-1].split("_")[0])
         query.tags.append(request.json['tag'])
         query.save()
 
     return redirect('genomeoverview')
 
+
 @app.route("/genomedetail/tag_hit)", methods=['GET', 'POST'])
 def tag_hit():
-
     query = models.GenomeRecords.objects().get(id=request.json['genome'])
 
-    print ('query id')
+    print('query id')
 
-    print (query.id)
+    print(query.id)
 
     print(query.hits)
 
@@ -797,61 +788,54 @@ def tag_hit():
     print(hits)
 
     for hit in hits:
-        print (hit.id)
-
+        print(hit.id)
 
     for hit_id in request.json['hits'].keys():
-            print ('hop id')
-            print (hit_id)
+        print('hop id')
+        print(hit_id)
 
-            hits.get(id=hit_id).tags.append(request.json['tag2add'])
+        hits.get(id=hit_id).tags.append(request.json['tag2add'])
 
-            hits.save()
+        hits.save()
 
-            # models.GenomeRecords.objects().get(id=request.json['genome'], hits__id=hit_id).update(push__hits__tags=
-            #     request.json['tag2add'])
-            #
+        # models.GenomeRecords.objects().get(id=request.json['genome'], hits__id=hit_id).update(push__hits__tags=
+        #     request.json['tag2add'])
+        #
 
     return redirect('genomedetail')
 
 
 @app.route("/genomedetail/tag_genome)", methods=['GET', 'POST'])
 def tag_genome():
-
     models.GenomeRecords.objects().get(id=request.json['genome']).update(push__tags=
-            request.json['tag2add'])
-
+                                                                         request.json['tag2add'])
 
     return redirect('genomedetail')
 
+
 @app.route("/genomedetail/delete_hit", methods=['GET', 'POST'])
 def delete_hit():
-
     query = models.GenomeRecords.objects().get(id=request.json['genome'])
 
-    print ('query id')
+    print('query id')
 
-    print (query.id)
-
+    print(query.id)
 
     for hit_id in request.json['hits'].keys():
-        print ('hop id')
-        print (hit_id)
+        print('hop id')
+        print(hit_id)
         query.update(pull__hits__id=hit_id)
 
-    print ('before')
+    print('before')
     print(request.json['genome'])
     print(request.json['hits'])
-    print ('after')
-
-
+    print('after')
 
     return redirect('genomedetail')
 
 
 @app.route("/genomedetail/show_hits", methods=['GET', 'POST'])
 def show_hits():
-
     # Store the information in session
 
     session['genome'] = request.json['genome']
@@ -862,7 +846,7 @@ def show_hits():
 
 @app.errorhandler(404)
 def page_not_found(e):
-        return render_template("404.html")
+    return render_template("404.html")
 
 
 @app.errorhandler(500)
@@ -871,7 +855,6 @@ def error_encountered(e):
 
 
 class MyModelView(ModelView):
-
     @property
     def _list_columns(self):
         return self.get_list_columns()
@@ -901,7 +884,12 @@ class MyModelView(ModelView):
             @action('doggydog', 'Generate a doggydog')
             def kittycat(self, ids):
                 print('doggydog')
+
             return ['team', 'project_name']
+
+
+
+
 
 admin = Admin(app, 'Phylo Island', base_template='layout.html', url='/', template_mode='bootstrap3')
 

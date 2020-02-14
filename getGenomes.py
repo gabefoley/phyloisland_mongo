@@ -18,20 +18,24 @@ def read_genome(outpath, species_name):
 
     my_dict = SeqIO.to_dict(SeqIO.parse(outpath, "fasta"))
     for r in sorted(my_dict.values(), key=operator.attrgetter('id')):
+
         concatenated_genome += str(r.seq)
         description = r.description
         genome_id = r.id
 
-        if "plasmid" not in r.description:
-            print ('Was not a plasmid')
-            print (r.description)
-            # concatenated_genome += str(r.seq)
-            # description = r.description
-            # genome_id = r.id
+        # if r.id == "NZ_NIBS01000003.1":
+        #     print (concatenated_genome)
 
-        else:
-            print ('Was a plasmid')
-            print (r.description)
+        # if "plasmid" not in r.description:
+        #     print ('Was not a plasmid')
+        #     print (r.description)
+        #     # concatenated_genome += str(r.seq)
+        #     # description = r.description
+        #     # genome_id = r.id
+        #
+        # else:
+        #     # print ('Was a plasmid')
+        #     # print (r.description)
 
 
         # Temporary measure to reduce the name so it can fit in the database. Edge case but occurs with
@@ -46,7 +50,7 @@ def read_genome(outpath, species_name):
 
 def retrieve_genome(records, species_name, category, database):
 
-    print ("Got to retrieve genome")
+    print (f"Retrieving genome for {species_name}")
 
     genome_dict = {}
 
@@ -60,6 +64,8 @@ def retrieve_genome(records, species_name, category, database):
         break
 
     file_type = "--exclude='*cds_from*' --exclude='*rna_from*' --include='*genomic.fna.gz' --exclude='*'"
+
+    print ("Genome retrieval called with following command - ")
 
     print ("rsync -Lrtv --chmod=+rwx -p %s rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/%s/*/%s %s" % (
                     file_type, database, species_name.replace(" ", "_"), folder, location, "./tmp"))
@@ -145,6 +151,7 @@ def get_record_list(summary, category, single):
     :param single: Whether or not to only return a single record
     :return: A dictionary mapping accession id to location, assembly level
     """
+
     ref_dict = defaultdict(list)
 
     if category == "assembly" or category == "genbank":
@@ -189,7 +196,7 @@ def add_genome(species_name, categories, single):
 
 
     try:
-        print ("Got here")
+
         # Add a v to the end of -Lrt to get verbose print outs to the console
         process = subprocess.Popen(
                 "rsync -Lrt --chmod=+rwx -p rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/assembly_summary.txt %s" % (
@@ -200,6 +207,7 @@ def add_genome(species_name, categories, single):
         errcode = process.returncode
 
         if errcode != 0:
+            print (errcode)
             return
 
         summary = pd.read_csv("./tmp/assembly_summary.txt", sep='\t', header=1)

@@ -4,9 +4,10 @@
 #
 # MONGODB_DB = 'phyloisland_mongo_2019_dream_again'
 # MONGODB_DB = 'phyloisland_mongo_2019_dream_again_no_delete'
-MONGODB_DB = 'restart'
+# MONGODB_DB = 'check'
 
-#
+MONGODB_DB = 'raptor'
+
 # MONGODB_HOST= 'localhost'
 # MONGODB_USERNAME = 'pi'
 # MONGODB_PASSWORD = 'abc123'

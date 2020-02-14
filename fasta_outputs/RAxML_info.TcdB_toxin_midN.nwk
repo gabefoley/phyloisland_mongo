@@ -1,0 +1,69 @@
+
+
+This is RAxML version 8.2.9 released by Alexandros Stamatakis on July 20 2016.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 346 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 36.28%
+
+RAxML rapid hill-climbing mode
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+Executing 1 inferences on the original alignment using 1 distinct randomized MP trees
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 346
+Name: No Name Provided
+DataType: AA
+Substitution Matrix: JTT
+Using fixed base frequencies
+
+
+
+
+RAxML was called as follows:
+
+raxml -m PROTGAMMAJTT -p 23456 -n TcdB_toxin_midN.nwk -s TcdB_toxin_midN.aln 
+
+
+Partition: 0 with name: No Name Provided
+Base frequencies: 0.077 0.052 0.043 0.052 0.020 0.041 0.062 0.073 0.023 0.054 0.092 0.059 0.024 0.040 0.051 0.069 0.059 0.014 0.032 0.066 
+
+Inference[0]: Time 33.859452 GAMMA-based likelihood -13006.720396, best rearrangement setting 5
+alpha[0]: 1.633810 
+
+
+Conducting final model optimizations on all 1 trees under GAMMA-based models ....
+
+Inference[0] final GAMMA-based Likelihood: -13006.720391 tree written to file /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/fasta_outputs/RAxML_result.TcdB_toxin_midN.nwk
+
+
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -13006.720391 .... 
+
+Final GAMMA-based Score of best tree -13006.720391
+
+Program execution info written to /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/fasta_outputs/RAxML_info.TcdB_toxin_midN.nwk
+Best-scoring ML tree written to: /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/fasta_outputs/RAxML_bestTree.TcdB_toxin_midN.nwk
+
+Overall execution time: 51.221312 secs or 0.014228 hours or 0.000593 days
+
