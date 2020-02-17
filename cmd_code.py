@@ -17,18 +17,21 @@ import glob
 
 
 
+
 # Get the genomes
 def get_genomes(args):
-    species_names = utilities.readLinesFromFile(args.input_file)
+    species_names = utilities.readLinesFromFile(args.add_genomes)
     get_genomes_cmd(species_names)
 
 
 def update_profiles(args):
+
     # Ensure there is a trailing slash for the profile folder
-    profile_folder = args.profile_folder + "/" if not args.profile_folder[-1] == "/" else args.profile_folder
+    profile_folder = args.add_profiles + "/" if not args.add_profiles[-1] == "/" else args.add_profiles
 
     # For all the profiles in the profile folder, save them to the database and set them as the reference profile
-    profiles = os.listdir(profile_folder)
+    profiles = [x for x in os.listdir(profile_folder) if x != ".DS_Store"]
+
 
     for profile in profiles:
         profile_name = profile.split("_")[0]
@@ -49,6 +52,7 @@ def update_genomes():
     # Check the genomes with the profiles
     queries = models.GenomeRecords.objects.all().timeout(False)
 
+
     profiles = models.Profile.objects.all()
 
     for profile in profiles:
@@ -58,9 +62,21 @@ def update_genomes():
     del queries
 
 
-def delete_profiles():
+def delete_profiles(args):
+
+    # Ensure there is a trailing slash for the profile folder
+    profile_folder = args.add_profiles + "/" if not args.add_profiles[-1] == "/" else args.add_profiles
+
+    # For all the profiles in the profile folder, save them to the database and set them as the reference profile
+    profiles = [x for x in os.listdir(profile_folder) if x != ".DS_Store"]
+
+    profile_names = [profile.split("_")[0] for profile in profiles]
+
+
+
+
     # Delete the profiles from the database (so we can easily update them with new ones if need be)
-    profiles_to_delete = models.Profile.objects.all()
+    profiles_to_delete = models.Profile.objects(name__in=profile_names)
     profiles_to_delete.delete()
 
 
@@ -131,15 +147,12 @@ def get_feature_location_with_profile_cmd(queries, reference, profile_name, reco
 
         # seq_record = SeqRecord(seq=Seq(nuc_seq, Alphabet()), id='', name='', description='', dbxrefs=[])
 
-        print ('and regerence is ')
-
-        print (reference)
 
 
         outpath = reference + "/" + query.name + "/" + query.species + "/" + region + "/"
         outpath = outpath.replace(" ", "_")
 
-        print (outpath)
+        print ("outpath is " + outpath)
 
         # Check three forward reading frames
         if not os.path.exists(outpath):
@@ -185,21 +198,33 @@ def get_feature_location_with_profile_cmd(queries, reference, profile_name, reco
                     # result = subprocess.call(["hmmsearch -o %s %s %s" % (hmmsearch_results, reference, cleaned_path)])
 
                     print("The results from the HMM search have been written to %s \n" % hmmsearch_results)
-                    # read_hmmer_results(hmmsearch_results)
+                     # read_hmmer_results(hmmsearch_results)
                     # result = subprocess.call(["hmmsearch", 'files/output.txt', reference, cleaned_path], stdout=subprocess.PIPE)
                     # for x in result:
                     #     print (x)
-        print("Creating a diagram of %s region hits" % (region))
-        # for regions in hmmer_outputs/organism add reg to all_reg
 
         hmmerout = []
         hmmerout_expanded = []
 
         reg = os.path.join(reference + "/" + query.name + "/" + query.species.replace(" ", "_") + "/"  + profile_name)
-        print("calling hmmerout with" + reg)
 
         hmmerout.append(resultread.HMMread(reg, query))
         hmmerout_expanded.append(resultread.HMMread(reg, query, expand=True))
 
         for infile in glob.glob(reg + '/*.fasta'):
             utilities.remove_file(infile)
+
+def get_overview():
+    queries = models.GenomeRecords.objects.all().timeout(False)
+    print (f"There are {len(queries)} genomes stored in the database\n")
+
+    print ("The genomes are - \n")
+
+
+    for query in queries:
+        print (query.description + "\n")
+        print ("And it has hits for " + " and ".join([hit.region for hit in query.hits if "expanded" not in
+                                                      hit.region]))
+        print ("And it has the following tags - " + " ".join([tag for tag in query.tags]))
+        print ()
+

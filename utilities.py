@@ -153,21 +153,15 @@ def set_profile_as_reference(profile_ids, region):
         # Check for a previous Profile set as this reference
         prev = models.Profile.objects(__raw__={"references.%s" % (region):{'$exists': True}})
 
-        print ('prev is - ', prev)
 
         if prev:
-            print ('found prev')
             prev.update(**{"unset__references__%s" % (region): "*"})
 
         profile_id = profile_ids[0]
 
-        print ('profile id is ')
-        print (profile_id)
 
         curr = models.Profile.objects().get(id=profile_id)
 
-
-        print (curr)
 
 
         # curr.update(references= {region: "*"})
@@ -234,7 +228,6 @@ def createProfile(align_list):
 
 def createFasta(fasta_list, name, align):
 
-    print ('hee ')
     print (fasta_list)
     SeqIO.write(fasta_list,  name + ".fasta", "fasta")
 

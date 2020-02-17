@@ -6,7 +6,9 @@
 # MONGODB_DB = 'phyloisland_mongo_2019_dream_again_no_delete'
 # MONGODB_DB = 'check'
 
-MONGODB_DB = 'raptor'
+
+
+MONGODB_DB = 'groundhogday'
 
 # MONGODB_HOST= 'localhost'
 # MONGODB_USERNAME = 'pi'

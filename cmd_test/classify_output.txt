@@ -1,0 +1,91 @@
+Classifying NZ_CBXE010000496.1 Xenorhabdus cabanillasii JM26, whole genome shotgun sequence
+It has the following regions {'A1_expanded', 'Chitinase', 'A2', 'A2_expanded', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcB', 'Chitinase_expanded'}
+It had A1 / A2 and chitinases, so we're tagging it as Type 2A
+
+Classifying NZ_KB372811.1 Erwinia toletana DAPP-PG 735 scf_2378_90.1, whole genome shotgun sequence
+It has the following regions {'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcdA1_expanded', 'TcB'}
+It had TcdA1 so we're classifying it as Type 1
+
+Classifying NZ_KE166455.1 Pseudomonas plecoglossicida NB2011 PT1_scaffold85, whole genome shotgun sequence
+It has the following regions {'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcdA1_expanded', 'TcB'}
+It had TcdA1 so we're classifying it as Type 1
+
+Classifying NZ_CP011521.2 Pandoraea oxalativorans strain DSM 23570 plasmid pPO70-4, complete sequence
+It has the following regions {'A1_expanded', 'Chitinase', 'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcdA1_expanded', 'TcB', 'Chitinase_expanded'}
+It had A1 / A2 and chitinases, so we're tagging it as Type 2A
+
+Classifying NZ_LUUC01000113.1 Pseudomonas asplenii strain 4A7 scaffold_98, whole genome shotgun sequence
+It has the following regions {'A1_expanded', 'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcdA1_expanded', 'TcB'}
+It had A1 / A2 but no chitinases, so we're tagging it as Type 2B
+
+Classifying NZ_KK211074.1 Microvirgula aerodenitrificans DSM 15089 Q352DRAFT_scaffold00029.29, whole genome shotgun sequence
+It has the following regions {'A1_expanded', 'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcdA1_expanded', 'TcB'}
+It had A1 / A2 but no chitinases, so we're tagging it as Type 2B
+
+Classifying NZ_MLFS01000149.1 Pantoea wallisii strain LMG 26277 Contig0149_, whole genome shotgun sequence
+It has the following regions {'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcdA1_expanded', 'TcB'}
+It had TcdA1 so we're classifying it as Type 1
+
+Classifying NZ_CPYD01000045.1 Yersinia nurmii strain type strain: CIP110231, whole genome shotgun sequence
+It has the following regions {'A1_expanded', 'Chitinase', 'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcdA1_expanded', 'TcB', 'Chitinase_expanded'}
+It had A1 / A2 and chitinases, so we're tagging it as Type 2A
+
+Classifying NZ_AALD02000179.1 Yersinia mollaretii ATCC 43969 contig01326, whole genome shotgun sequence
+It has the following regions {'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcdA1_expanded', 'TcB'}
+It had TcdA1 so we're classifying it as Type 1
+
+Classifying NC_003143.1 Yersinia pestis CO92 chromosome, complete genome
+It has the following regions {'A1_expanded', 'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcdA1_expanded', 'TcB'}
+It had A1 / A2 but no chitinases, so we're tagging it as Type 2B
+
+Classifying NZ_LXEN01000293.1 Cosenzaea myxofaciens ATCC 19692 Sequence00293, whole genome shotgun sequence
+It has the following regions {'A2', 'A2_expanded', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcB'}
+It had a TcB and TcC, but was missing either A1 or TcdA1, so we're classifying it as incomplete
+
+Classifying NZ_JFHN01000075.1 Erwinia mallotivora strain BT-MARDI contig_75, whole genome shotgun sequence
+It has the following regions {'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcdA1_expanded', 'TcB'}
+It had TcdA1 so we're classifying it as Type 1
+
+Classifying NZ_AMBZ01000025.1 Paenibacillus alvei DSM 29 plasmid pPAV14, whole genome shotgun sequence
+It has the following regions {'Chitinase', 'A2', 'A2_expanded', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcB', 'Chitinase_expanded'}
+It had a TcB and TcC, but was missing either A1 or TcdA1, so we're classifying it as incomplete
+
+Classifying NZ_NITZ01000138.1 Xenorhabdus miraniensis strain DSM 17902 Xmir_138, whole genome shotgun sequence
+It has the following regions {'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcdA1_expanded', 'TcB'}
+It had TcdA1 so we're classifying it as Type 1
+
+Classifying CP009451.1 Cedecea neteri strain SSMD04, complete genome
+It has the following regions {'A1_expanded', 'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcdA1_expanded', 'TcB'}
+It had A1 / A2 but no chitinases, so we're tagging it as Type 2B
+
+Classifying NZ_MUBJ01000149.1 Xenorhabdus vietnamensis strain DSM 22392 Xvie_149, whole genome shotgun sequence
+It has the following regions {'A1_expanded', 'Chitinase', 'A2', 'A2_expanded', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcB', 'Chitinase_expanded'}
+It had A1 / A2 and chitinases, so we're tagging it as Type 2A
+
+Classifying NC_017807.1 Rahnella aquatilis HX2 plasmid PRA2, partial sequence
+It has the following regions {'A1_expanded', 'Chitinase', 'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcdA1_expanded', 'TcB', 'Chitinase_expanded'}
+It had A1 / A2 and chitinases, so we're tagging it as Type 2A
+
+Classifying NZ_PHFJ01000026.1 Proteus penneri strain ATCC 33519 Scaffold25_1, whole genome shotgun sequence
+It has the following regions {'A2', 'A2_expanded', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcB'}
+It had a TcB and TcC, but was missing either A1 or TcdA1, so we're classifying it as incomplete
+
+Classifying NZ_CP010029.1 Yersinia entomophaga strain MH96 chromosome
+It has the following regions {'A1_expanded', 'Chitinase', 'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcdA1_expanded', 'TcB', 'Chitinase_expanded'}
+It had A1 / A2 and chitinases, so we're tagging it as Type 2A
+
+Classifying NC_007275.1 Pseudomonas savastanoi pv. phaseolicola 1448A small plasmid, complete sequence
+It has the following regions {'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcdA1_expanded', 'TcB'}
+It had TcdA1 so we're classifying it as Type 1
+
+Classifying NZ_NJAK01000005.1 Xenorhabdus ishibashii strain DSM 22670 Xish_5, whole genome shotgun sequence
+It has the following regions {'A1_expanded', 'Chitinase', 'A2', 'A2_expanded', 'TcC_expanded', 'TcC', 'TcB_expanded', 'A1', 'TcB', 'Chitinase_expanded'}
+It had A1 / A2 and chitinases, so we're tagging it as Type 2A
+
+Classifying NZ_CP011078.1 Yersinia ruckeri strain Big Creek 74, complete genome
+It has the following regions {'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcdA1_expanded', 'TcB'}
+It had TcdA1 so we're classifying it as Type 1
+
+Classifying NZ_FUXU01000241.1 Enterovibrio nigricans DSM 22720, whole genome shotgun sequence
+It has the following regions {'Chitinase', 'A2', 'A2_expanded', 'TcdA1', 'TcC_expanded', 'TcC', 'TcB_expanded', 'TcdA1_expanded', 'TcB', 'Chitinase_expanded'}
+It had TcdA1 so we're classifying it as Type 1

@@ -254,3 +254,44 @@ def write_hits_to_gb(hmm_dict, reference, seqrecord, query_id, species, expand=F
     # sequence = str(seqrecord)[2:-1]
     # seqrecord.seq = Seq(sequence, generic_dna)
     SeqIO.write(seqrecord, output_path, "genbank")
+
+def classify_genomes(queries):
+    for query in queries:
+        region_names = set([hit.region for hit in query.hits])
+        print (f"\nClassifying {query.description}")
+        print (f"It has the following regions {region_names}")
+        if set(["TcB", "TcC"]).issubset(region_names):
+            if set(["A1", "A2"]).issubset(region_names):
+                if set(["Chitinase"]).issubset(region_names):
+                    print ("It had A1 / A2 and chitinases, so we're tagging it as Type 2A")
+                    update_tag(query, "Type2A")
+                else:
+                    print ("It had A1 / A2 but no chitinases, so we're tagging it as Type 2B")
+                    update_tag(query, "Type2B")
+
+            elif set(["TcdA1"]).issubset(region_names):
+                if set("Chitinase").issubset(region_names):
+                    print("It had TcdA1 but also chitinase, so we're tagging it for further investigation")
+                    update_tag(query, "Unsure")
+
+                else:
+                    print ("It had TcdA1 so we're classifying it as Type 1")
+                    update_tag(query, "Type1")
+
+
+            else:
+                print("It had a TcB and TcC, but was missing either A1 or TcdA1, so we're classifying it as incomplete")
+                update_tag(query, "Incomplete")
+
+        else:
+            print ("It was lacking a TcB and TcC, so we're classifying it as incomplete")
+            update_tag(query, "Incomplete")
+
+
+def delete_genome_tags(queries):
+        for query in queries:
+            query.update(tags=[])
+
+def update_tag(query, tag):
+    if tag not in query.tags:
+        query.update(push__tags=tag)

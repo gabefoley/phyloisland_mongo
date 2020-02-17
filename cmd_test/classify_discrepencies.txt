@@ -1,0 +1,13 @@
+Yersinia mollaretii (originally tagged Type 2B) gets tagged as Type 1 because it doesn't have A1 region
+
+Pandoraea oxalativorans (originally tagged Type 2B) gets tagged as Type 2A because it does have chitinases
+
+Cosenzaea myxofaciens (originally tagged Type 1) was tagged as incomplete because it doesn't have A1 or TcdA1
+
+Paenibacillus alvei (originally tagged Multiple) was tagged as incomplete because it doesn't have A1 or TcdA1
+
+Rahnella aquatilis (originally tagged Type 2B) was tagged as Type 2A becuase it does have chitinases
+
+Proteus penneri (originally tagged Type 1) was tagged as incomplete because it doesn't have A1 or TcdA1
+
+
