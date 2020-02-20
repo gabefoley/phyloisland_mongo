@@ -2,6 +2,7 @@ import argparse, subprocess, sys, fnmatch
 from ftplib import FTP
 import gzip
 from Bio import SeqIO
+from Bio.Alphabet import generic_nucleotide
 from datetime import datetime, MINYEAR
 import pandas as pd
 from collections import defaultdict
@@ -9,6 +10,7 @@ import operator
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 import utilities
+import models
 
 
 def read_genome(outpath, species_name):
@@ -226,3 +228,96 @@ def add_genome(species_name, categories, single):
 
     except subprocess.CalledProcessError as exc:
         return
+
+def download_fasta_regions(region, filename, include_genome=[''], exclude_genome=[''], include_hits=[''], exclude_hits=[''],
+                           translate=True, align=True):
+    fasta_dict = {}
+
+    aggregate = models.GenomeRecords._get_collection().aggregate([
+        {"$match": {
+            "hits.region": region
+        }},
+        {"$redact": {
+            "$cond": {
+                "if": {"$eq": [{"$ifNull": ["$region", region]}, region]},
+                "then": "$$DESCEND",
+                "else": "$$PRUNE"
+            }
+        }}
+    ])
+
+    for genome in aggregate:
+
+        print('and now')
+
+        # print (genome)
+
+        print (include_genome)
+        print (exclude_genome)
+
+
+        # Check that this genome should be included (if include_genome is non-empty) and that it
+        # shouldn't be excluded
+        if ((include_genome == [''] or bool(set(genome['tags']).intersection(set(include_genome))))) \
+                and not bool(set(genome['tags']).intersection(set(exclude_genome))):
+
+            print('got to here')
+
+            seq_count = defaultdict(list)
+
+            # Check that this hit should be included (if include_hit is non-empty) and that it
+            # shouldn't be excluded
+            for hit in genome['hits']:
+                if (include_hits == [''] or bool(set(hit['tags']).intersection(
+                        set(include_hits)))) \
+                        and not bool(set(hit['tags']).intersection(set(exclude_hits))):
+
+                    print()
+                    print(hit['name'])
+                    print(hit['region'])
+
+                    print(hit['start'])
+                    print(hit['end'])
+                    print(hit['strand'])
+
+                    sequence = Seq(hit['sequence'], generic_nucleotide)
+
+                    if hit['strand'] == 'backward':
+                        sequence = sequence.reverse_complement()
+
+                    print(sequence[0:10])
+
+                    # Do we want to translate the sequences into protein?
+                    if translate:
+                        sequence = sequence.translate()
+
+                    id_name = hit['name'] + "_" + genome['species'].replace(" ", "_") + '_' + hit[
+                        'region'] + "_" + "position=_" + hit['start'] + "_" + hit['end'] + "_" + hit['strand']
+
+                    print(id_name)
+
+                    seq_count[hit['name']].append(id_name)
+
+                    fasta_record = SeqRecord(sequence, id_name)
+
+                    fasta_dict[id_name] = (fasta_record)
+
+            # Don't add an underscore if we're not also adding extra text to the filename
+            filename = region + "_" + filename if filename else region
+            count = 1
+
+            for hit_name, id_names in seq_count.items():
+                if len(id_names) > 1:
+                    for id_name in sorted(id_names, key=utilities.sort_func):
+                        utilities.createFasta(fasta_dict[id_name], "./fasta_folder/" + filename + "_" + str(count),
+                                              align)
+
+                        fasta_dict.pop(id_name)
+                        count += 1
+
+            if fasta_dict:
+
+
+                print ("Writing out to " + filename)
+
+                utilities.createFasta(fasta_dict.values(), "./fasta_folder/" + filename, align)

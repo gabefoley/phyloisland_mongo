@@ -223,8 +223,19 @@ def get_overview():
 
     for query in queries:
         print (query.description + "\n")
+
+        print (query.hits)
+
+        for hit in sorted(query.hits, key=lambda hit: int(hit.start)):
+            if 'expanded' in hit.region:
+                print (f"{hit.region} - {hit.start} : {hit.end}" )
+
+
+
         print ("And it has hits for " + " and ".join([hit.region for hit in query.hits if "expanded" not in
                                                       hit.region]))
         print ("And it has the following tags - " + " ".join([tag for tag in query.tags]))
+
+        # print ("Gene order is " + " ".join(hit.region for hit ))
         print ()
 

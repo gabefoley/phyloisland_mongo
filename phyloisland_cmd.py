@@ -7,6 +7,7 @@ import models
 import genome_overview
 from flask import Flask
 from flask_mongoengine import MongoEngine
+import getGenomes
 
 
 
@@ -15,8 +16,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-g", "--add_genomes", help="path to list of species")
 # parser.add_argument("-i", "--input_file", help="path to list of species")
 parser.add_argument("-p", "--add_profiles", help="path to profile folder")
+
 parser.add_argument("-u", "--update_genomes", help="update genomes", action="store_true")
-# parser.add_argument("-f", "--profile_folder", help="path to profile folder")
+parser.add_argument("-f", "--fasta", help="save all regions to fasta files", action="store_true")
+parser.add_argument("-r", "--region_order", help="write out order of regions in all genomes ", action="store_true")
+
 parser.add_argument("-o", "--overview", help="get overview of database", action="store_true")
 parser.add_argument("-d", "--delete_genome_tags", help="delete current genome classifications", action="store_true")
 parser.add_argument("-c", "--classify", help="classify genomes based on their regions ", action="store_true")
@@ -89,4 +93,12 @@ if args.classify:
     genome_overview.classify_genomes(queries)
 
 
+if args.fasta:
+    profile_names = models.Profile.objects().all()
+
+    for profile in profile_names:
+        getGenomes.download_fasta_regions(profile.name, "grobs")
+
+if args.region_order:
+    pass
 

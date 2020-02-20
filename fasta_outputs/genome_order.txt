@@ -1,0 +1,4 @@
+>NZ_CBXE010000496.1
+Chitinase_expanded,Chitinase_expanded,A1_expanded,A2_expanded,Chitinase_expanded,TcC_expanded,TcB_expanded
+>NZ_KB372811.1
+TcC_expanded,TcB_expanded,A2_expanded,TcdA1_expanded

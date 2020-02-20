@@ -9,7 +9,7 @@ from flask_login import login_required, current_user
 from flask_admin import Admin, expose, BaseView
 from flask_admin.actions import action
 from flask_admin.contrib.mongoengine import ModelView, filters
-from Bio.Alphabet import generic_protein, generic_nucleotide
+from Bio.Alphabet import generic_protein
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 from markupsafe import Markup
@@ -23,7 +23,7 @@ import io
 import json
 import Bio
 import warnings
-
+from collections import defaultdict
 
 from wtforms import SelectField
 
@@ -246,16 +246,21 @@ class SetupView(BaseView):
 class DownloadFastaView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
+
+
+
+
+
     def setup(self):
         form = forms.DownloadFastaForm()
 
         if request.method == "POST":
             if form.submit.data:
                 try:
-                    fasta_list = []
                     print(form.region.data)
 
                     region = form.region.data
+                    translate = form.translate.data
                     include_genome = form.include_genome.data.split(",")
                     exclude_genome = form.exclude_genome.data.split(",")
                     include_hits = form.include_hits.data.split(",")
@@ -267,76 +272,9 @@ class DownloadFastaView(BaseView):
                     print(include_hits)
                     print(exclude_hits)
 
-                    aggregate = models.GenomeRecords._get_collection().aggregate([
-                        {"$match": {
-                            "hits.region": form.region.data
-                        }},
-                        {"$redact": {
-                            "$cond": {
-                                "if": {"$eq": [{"$ifNull": ["$region", region]}, region]},
-                                "then": "$$DESCEND",
-                                "else": "$$PRUNE"
-                            }
-                        }}
-                    ])
-
-                    for genome in aggregate:
-
-                        print('and now')
-
-                        # print (genome)
+                    getGenomes.download_fasta_regions(region, include_genome, exclude_genome, include_hits, exclude_hits, translate)
 
 
-                        # Check that this genome should be included (if include_genome is non-empty) and that it
-                        # shouldn't be excluded
-                        if ((include_genome == [''] or bool(set(genome['tags']).intersection(set(include_genome))))) \
-                                and not bool(set(genome['tags']).intersection(set(exclude_genome))):
-
-                            print('got to here')
-
-                            # Check that this hit should be included (if include_hit is non-empty) and that it
-                            # shouldn't be excluded
-                            for hit in genome['hits']:
-                                if (include_hits == [''] or bool(set(hit['tags']).intersection(
-                                        set(include_hits)))) \
-                                        and not bool(set(hit['tags']).intersection(set(exclude_hits))):
-
-                                    print()
-                                    print(hit['name'])
-                                    print(hit['region'])
-
-                                    print(hit['start'])
-                                    print(hit['end'])
-                                    print(hit['strand'])
-
-                                    sequence = Bio.Seq.Seq(hit['sequence'], generic_nucleotide)
-
-                                    if hit['strand'] == 'backward':
-                                        sequence = sequence.reverse_complement()
-
-                                    print(sequence[0:10])
-
-                                    # Do we want to translate the sequences into protein?
-                                    if form.translate.data:
-                                        sequence = sequence.translate()
-
-                                    id_name = hit['name'] + "_" + genome['species'].replace(" ", "_") + '_' + hit[
-                                        'region'] + \
-                                              "_" + \
-                                              hit['start'] + "_" + \
-                                              hit['end'] + "_" + hit['strand']
-
-                                    print(id_name)
-
-                                    fasta_record = SeqRecord(sequence, id_name)
-
-                                    fasta_list.append(fasta_record)
-
-                    # Don't add an underscore if we're not also adding extra text to the filename
-
-                    filename = form.region.data + "_" + form.filename.data if form.filename.data else form.region.data
-
-                    utilities.createFasta(fasta_list, filename, form.align.data)
 
                     flash("Downloaded " + region + " file", category='success')
                     return self.render('download_fasta.html', form=form)
@@ -351,6 +289,58 @@ class DownloadFastaView(BaseView):
 
         elif request.method == "GET":
             return self.render('download_fasta.html', form=form)
+
+
+class DownloadGenomeOrderView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def setup(self):
+        form = forms.DownloadGenomeOrder()
+
+        if request.method == "POST":
+            if form.submit.data:
+                try:
+                    fasta_dict = {}
+                    include_genome = form.include_genome.data.split(",")
+                    exclude_genome = form.exclude_genome.data.split(",")
+                    include_hits = form.include_hits.data.split(",")
+                    exclude_hits = form.exclude_hits.data.split(",")
+
+                    genomes = models.GenomeRecords.objects().all()
+
+                    open("./fasta_outputs/genome_order.txt", 'w').close()
+
+                    for genome in genomes:
+
+                        for prok in genome.hits:
+                            print (prok)
+
+                        hits = sorted([(int(hit.start), hit.region) for hit in genome.hits if 'expanded' in
+                                       hit.region])
+
+                        print (hits)
+
+                        regions = [x[1] for x in hits]
+
+                        print (regions)
+
+                        with open("./fasta_outputs/genome_order.txt", "a") as genome_order:
+                            genome_order.write(">" + genome.name + "\n")
+                            genome_order.write(",".join(x for x in regions) + "\n")
+
+                    flash("Downloaded file", category='success')
+                    return self.render('download_genome.html', form=form)
+
+                except Exception as e:
+                    print(e)
+                    flash(e, category='error')
+                    return self.render('download_genome.html', form=form)
+
+            else:
+                return self.render('download_genome.html', form=form)
+
+        elif request.method == "GET":
+            return self.render('download_genome.html', form=form)
 
 
 class SequenceRecordsView(ModelView):
@@ -906,5 +896,7 @@ with warnings.catch_warnings():
     admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
 
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
+    admin.add_view(DownloadGenomeOrderView(name='Download genome order', endpoint='download_order'))
+
 
     admin.add_view(DocumentationView(name='Documentation & FAQ', endpoint='documentation'))

@@ -120,3 +120,15 @@ class DownloadFastaForm(FlaskForm):
         align = BooleanField("Also create an alignment?",
                                default="checked")
         submit = SubmitField("Submit")
+
+class DownloadGenomeOrder(FlaskForm):
+    include_genome = StringField('Only include genomes tagged with - ')
+
+    exclude_genome = StringField('Exclude genomes tagged with - ')
+
+    include_hits = StringField('Only include hits tagged with - ')
+
+    exclude_hits = StringField('Exclude hits tagged with - ', default='hidden')
+
+    submit = SubmitField("Submit")
+
