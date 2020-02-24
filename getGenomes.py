@@ -302,22 +302,47 @@ def download_fasta_regions(region, filename, include_genome=[''], exclude_genome
 
                     fasta_dict[id_name] = (fasta_record)
 
-            # Don't add an underscore if we're not also adding extra text to the filename
-            filename = region + "_" + filename if filename else region
-            count = 1
+    # Don't add an underscore if we're not also adding extra text to the filename
+    filename = region + "_" + filename if filename else region
+    count = 1
 
-            for hit_name, id_names in seq_count.items():
-                if len(id_names) > 1:
-                    for id_name in sorted(id_names, key=utilities.sort_func):
-                        utilities.createFasta(fasta_dict[id_name], "./fasta_folder/" + filename + "_" + str(count),
-                                              align)
+    for hit_name, id_names in seq_count.items():
+        if len(id_names) > 1:
+            for id_name in sorted(id_names, key=utilities.sort_func):
+                utilities.createFasta(fasta_dict[id_name], "./fasta_folder/" + filename + "_" + str(count),
+                                      align)
 
-                        fasta_dict.pop(id_name)
-                        count += 1
+                fasta_dict.pop(id_name)
+                count += 1
 
-            if fasta_dict:
+    if fasta_dict:
 
 
-                print ("Writing out to " + filename)
+        print ("Writing out to " + filename)
 
-                utilities.createFasta(fasta_dict.values(), "./fasta_folder/" + filename, align)
+        utilities.createFasta(fasta_dict.values(), "./fasta_folder/" + filename, align)
+
+def write_genome_order(genomes, path="./fasta_outputs/genome_order.txt"):
+
+    # Clear previous file if it exists
+    open(path, 'w').close()
+
+    for genome in genomes:
+        print ('genome')
+        print (genome.name)
+
+
+
+        hits = sorted([(int(hit.start), hit.region) for hit in genome.hits if 'expanded' in
+                       hit.region])
+
+        regions = [x[1] for x in hits]
+
+        print(regions)
+
+        renamed_regions = utilities.rename_duplicates(regions)
+
+
+        with open(path, "a") as genome_order:
+            genome_order.write(">" + genome.name + "\n")
+            genome_order.write(",".join(x for x in renamed_regions) + "\n")

@@ -22,7 +22,8 @@ parser.add_argument("-f", "--fasta", help="save all regions to fasta files", act
 parser.add_argument("-r", "--region_order", help="write out order of regions in all genomes ", action="store_true")
 
 parser.add_argument("-o", "--overview", help="get overview of database", action="store_true")
-parser.add_argument("-d", "--delete_genome_tags", help="delete current genome classifications", action="store_true")
+parser.add_argument("-dg", "--delete_genomes", help="delete genomes", action="store_true")
+parser.add_argument("-dt", "--delete_genome_tags", help="delete current genome classifications", action="store_true")
 parser.add_argument("-c", "--classify", help="classify genomes based on their regions ", action="store_true")
 
 
@@ -81,6 +82,10 @@ if args.overview:
     print ('Overview of database')
     cmd_code.get_overview()
 
+if args.delete_genomes:
+    queries = models.GenomeRecords.objects.all().timeout(False).delete()
+    print("Deleting all genomes")
+
 if args.delete_genome_tags:
     queries = models.GenomeRecords.objects.all().timeout(False)
     print ("Deleting all existing genome classification tags")
@@ -97,8 +102,9 @@ if args.fasta:
     profile_names = models.Profile.objects().all()
 
     for profile in profile_names:
-        getGenomes.download_fasta_regions(profile.name, "grobs")
+        getGenomes.download_fasta_regions(profile.name, "grobs", align=False)
 
 if args.region_order:
-    pass
+    genomes = models.GenomeRecords.objects.all().timeout(False)
+    getGenomes.write_genome_order(genomes, './fasta_folder/genome_order_from_cmd.txt')
 

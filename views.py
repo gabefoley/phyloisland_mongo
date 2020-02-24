@@ -308,25 +308,7 @@ class DownloadGenomeOrderView(BaseView):
 
                     genomes = models.GenomeRecords.objects().all()
 
-                    open("./fasta_outputs/genome_order.txt", 'w').close()
-
-                    for genome in genomes:
-
-                        for prok in genome.hits:
-                            print (prok)
-
-                        hits = sorted([(int(hit.start), hit.region) for hit in genome.hits if 'expanded' in
-                                       hit.region])
-
-                        print (hits)
-
-                        regions = [x[1] for x in hits]
-
-                        print (regions)
-
-                        with open("./fasta_outputs/genome_order.txt", "a") as genome_order:
-                            genome_order.write(">" + genome.name + "\n")
-                            genome_order.write(",".join(x for x in regions) + "\n")
+                    getGenomes.write_genome_order(genomes)
 
                     flash("Downloaded file", category='success')
                     return self.render('download_genome.html', form=form)

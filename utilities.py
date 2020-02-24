@@ -336,3 +336,26 @@ def randstring(length=10):
 
 def sort_func(elem):
     return int(elem.split("_position=_")[1].split("_")[0])
+
+
+def rename_duplicates(old):
+    seen = {}
+    index = {}
+    for pos in range(len(old)):
+        check = old[pos]
+
+        if check in seen:
+            seen[check] += 1
+            if check in index:
+                index.pop(check)
+        else:
+            seen[check] = 1
+            index[check] = pos
+        old[pos] = check + "_" + str(seen[check])
+
+    print(index)
+
+    for v in index.values():
+        old[v] = old[v][:-2]
+
+    return old

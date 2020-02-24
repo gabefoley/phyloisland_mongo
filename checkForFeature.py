@@ -125,6 +125,8 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
         print (hmmerout)
         print (hmmerout_expanded)
 
+        print ('should we write to gb?')
+
 
         genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.name +
                                                        "/" + query.species.replace(" ", "_"), nuc_seq, query.name, \

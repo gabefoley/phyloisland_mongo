@@ -27,7 +27,7 @@ def colour_tips(tree, attribute_dict, colour_dict, outpath=None, custom_layout=F
                 if spaced_name in attribute_dict.keys():  # If we have a match in the attribute dict
                     colour = colour_dict[attribute_dict[spaced_name]]  # Get the associated colour for this attribute
                     
-                if node.name == "Serratia_entomophila" or node.name == "Yersinia_entomophaga":
+                if node.name == "Serratia_entomophila" or node.name == "Yersinia_entomophagax":
                     nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='red')
                     
                 else:

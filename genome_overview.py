@@ -191,6 +191,8 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
 #
 
 def write_hits_to_gb(hmm_dict, reference, seqrecord, query_id, species, expand=False):
+
+    print ('writing to genbank')
     print ('and reference is ')
     print (reference)
     name = species + "_sequence"
