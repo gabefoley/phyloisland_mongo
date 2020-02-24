@@ -229,7 +229,7 @@ def add_genome(species_name, categories, single):
     except subprocess.CalledProcessError as exc:
         return
 
-def download_fasta_regions(region, filename, include_genome=[''], exclude_genome=[''], include_hits=[''], exclude_hits=[''],
+def download_fasta_regions(region, filename, include_genome=[], exclude_genome=[], include_hits=[], exclude_hits=[],
                            translate=True, align=True):
     fasta_dict = {}
 
@@ -267,10 +267,22 @@ def download_fasta_regions(region, filename, include_genome=[''], exclude_genome
 
             # Check that this hit should be included (if include_hit is non-empty) and that it
             # shouldn't be excluded
+
+            print (genome['hits'])
+            print (type(genome['hits']))
             for hit in genome['hits']:
-                if (include_hits == [''] or bool(set(hit['tags']).intersection(
-                        set(include_hits)))) \
-                        and not bool(set(hit['tags']).intersection(set(exclude_hits))):
+                print ('wait')
+                # print ("*******" + hit)
+                print (include_hits)
+                print ('grover')
+                if not include_hits:
+                    print ('1')
+                if bool(set(hit['tags']).intersection(set(include_hits))):
+                    print ('2')
+                if (include_hits == [''] or bool(set(hit['tags']).intersection(set(include_hits)))) and not bool(set(
+                        hit['tags']).intersection(set(exclude_hits))):
+
+                    print ('found hit')
 
                     print()
                     print(hit['name'])
@@ -306,11 +318,16 @@ def download_fasta_regions(region, filename, include_genome=[''], exclude_genome
     filename = region + "_" + filename if filename else region
     count = 1
 
+    print ('pirate')
+
     for hit_name, id_names in seq_count.items():
         if len(id_names) > 1:
+            print('sorting')
             for id_name in sorted(id_names, key=utilities.sort_func):
                 utilities.createFasta(fasta_dict[id_name], "./fasta_folder/" + filename + "_" + str(count),
                                       align)
+
+                print (id_name)
 
                 fasta_dict.pop(id_name)
                 count += 1

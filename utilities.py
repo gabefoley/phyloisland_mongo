@@ -232,6 +232,7 @@ def createFasta(fasta_list, name, align):
     SeqIO.write(fasta_list,  name + ".fasta", "fasta")
 
     if align:
+        print ("And now an aln")
         createAlignment(name + ".fasta", name + ".aln")
 
 

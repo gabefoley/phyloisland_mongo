@@ -77,11 +77,11 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
 
                     if query.name == "<unknown name>":
                         handle.write(">" + query.description + "\n" + str(
-                            sequence.translate(stop_symbol="M")))
+                            sequence.translate(stop_symbol="*")))
                     else:
 
                         handle.write(">" + query.description + "\n" + str(
-                            sequence.translate(stop_symbol="M")))
+                            sequence.translate(stop_symbol="*")))
 
                 print("Writing the %s sequence with the species %s to %s" % (
                 query.name, query.species, cleaned_path))

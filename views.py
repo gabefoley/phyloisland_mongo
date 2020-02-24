@@ -261,10 +261,12 @@ class DownloadFastaView(BaseView):
 
                     region = form.region.data
                     translate = form.translate.data
+                    filename = form.filename.data
                     include_genome = form.include_genome.data.split(",")
                     exclude_genome = form.exclude_genome.data.split(",")
                     include_hits = form.include_hits.data.split(",")
                     exclude_hits = form.exclude_hits.data.split(",")
+                    align= form.align.data
 
                     print('here they come')
                     print(include_genome)
@@ -272,7 +274,8 @@ class DownloadFastaView(BaseView):
                     print(include_hits)
                     print(exclude_hits)
 
-                    getGenomes.download_fasta_regions(region, include_genome, exclude_genome, include_hits, exclude_hits, translate)
+                    getGenomes.download_fasta_regions(region, filename, include_genome, exclude_genome, include_hits,
+                                                      exclude_hits, translate, align)
 
 
 

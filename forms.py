@@ -117,8 +117,7 @@ class DownloadFastaForm(FlaskForm):
 
         translate = BooleanField("Translate nucleotides to proteins?",
                                 default="checked")
-        align = BooleanField("Also create an alignment?",
-                               default="checked")
+        align = BooleanField("Also create an alignment?")
         submit = SubmitField("Submit")
 
 class DownloadGenomeOrder(FlaskForm):
