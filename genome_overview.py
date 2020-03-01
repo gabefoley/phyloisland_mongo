@@ -35,6 +35,8 @@ def writeHMMToImage(hmm_dict, reference, seq_record, name, query_id, species, ex
 
     print(output_path)
 
+    print ('makea da image')
+
     start = 0
     # For my work I was considering changing 'region1, 2, and 3' to a3, TcB, and TcC for convenience
     # Up to others though if I fully change that (is just a UI thing tbh)

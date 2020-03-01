@@ -43,11 +43,6 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
 
         # seq_record = SeqRecord(seq=Seq(nuc_seq, Alphabet()), id='', name='', description='', dbxrefs=[])
 
-        print ('and regerence is ')
-
-        print (reference)
-
-
         outpath = reference + "/" + query.name + "/" + query.species + "/" + region + "/"
         outpath = outpath.replace(" ", "_")
 

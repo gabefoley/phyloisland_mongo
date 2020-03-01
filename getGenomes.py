@@ -229,9 +229,18 @@ def add_genome(species_name, categories, single):
     except subprocess.CalledProcessError as exc:
         return
 
-def download_fasta_regions(region, filename, include_genome=[], exclude_genome=[], include_hits=[], exclude_hits=[],
+def download_fasta_regions(region, split_strands, filename="", include_genome=[], exclude_genome=[], include_hits=[], \
+                                                                                                     exclude_hits=[],
                            translate=True, align=True):
     fasta_dict = {}
+    forward_dict = {}
+    backward_dict = {}
+
+    # Don't add an underscore if we're not also adding extra text to the filename
+    filename = region + "_" + filename if filename else region
+    count = 1
+
+
 
     aggregate = models.GenomeRecords._get_collection().aggregate([
         {"$match": {
@@ -248,98 +257,107 @@ def download_fasta_regions(region, filename, include_genome=[], exclude_genome=[
 
     for genome in aggregate:
 
-        print('and now')
 
-        # print (genome)
 
-        print (include_genome)
-        print (exclude_genome)
 
+        # seq_count = defaultdict(list)
 
         # Check that this genome should be included (if include_genome is non-empty) and that it
         # shouldn't be excluded
-        if ((include_genome == [''] or bool(set(genome['tags']).intersection(set(include_genome))))) \
+        if ((include_genome == [] or bool(set(genome['tags']).intersection(set(include_genome))))) \
                 and not bool(set(genome['tags']).intersection(set(exclude_genome))):
 
             print('got to here')
 
-            seq_count = defaultdict(list)
 
             # Check that this hit should be included (if include_hit is non-empty) and that it
             # shouldn't be excluded
 
-            print (genome['hits'])
-            print (type(genome['hits']))
             for hit in genome['hits']:
-                print ('wait')
                 # print ("*******" + hit)
                 print (include_hits)
-                print ('grover')
                 if not include_hits:
                     print ('1')
                 if bool(set(hit['tags']).intersection(set(include_hits))):
                     print ('2')
-                if (include_hits == [''] or bool(set(hit['tags']).intersection(set(include_hits)))) and not bool(set(
+                if (not include_hits or bool(set(hit['tags']).intersection(set(include_hits)))) and not bool(set(
                         hit['tags']).intersection(set(exclude_hits))):
 
                     print ('found hit')
-
-                    print()
+                    #
+                    # print()
                     print(hit['name'])
-                    print(hit['region'])
-
-                    print(hit['start'])
-                    print(hit['end'])
-                    print(hit['strand'])
+                    # print(hit['region'])
+                    #
+                    # print(hit['start'])
+                    # print(hit['end'])
+                    # print(hit['strand'])
 
                     sequence = Seq(hit['sequence'], generic_nucleotide)
 
                     if hit['strand'] == 'backward':
                         sequence = sequence.reverse_complement()
 
-                    print(sequence[0:10])
-
                     # Do we want to translate the sequences into protein?
                     if translate:
                         sequence = sequence.translate()
 
-                    id_name = hit['name'] + "_" + genome['species'].replace(" ", "_") + '_' + hit[
+                    id_name = hit['name'] + "_info=_" + genome['species'].replace(" ", "_") + '_' + hit[
                         'region'] + "_" + "position=_" + hit['start'] + "_" + hit['end'] + "_" + hit['strand']
 
-                    print(id_name)
-
-                    seq_count[hit['name']].append(id_name)
+                    # seq_count[hit['name']].append(id_name)
 
                     fasta_record = SeqRecord(sequence, id_name)
 
-                    fasta_dict[id_name] = (fasta_record)
+                    # We want to separate forward and backward strands
+                    if split_strands:
+                        if hit['strand'] == 'forward':
+                            forward_dict[id_name] = (fasta_record)
+                        else:
+                            backward_dict[id_name] = (fasta_record)
 
-    # Don't add an underscore if we're not also adding extra text to the filename
-    filename = region + "_" + filename if filename else region
-    count = 1
 
-    print ('pirate')
 
-    for hit_name, id_names in seq_count.items():
-        if len(id_names) > 1:
-            print('sorting')
-            for id_name in sorted(id_names, key=utilities.sort_func):
-                utilities.createFasta(fasta_dict[id_name], "./fasta_folder/" + filename + "_" + str(count),
-                                      align)
+                    else:
 
-                print (id_name)
+                        fasta_dict[id_name] = (fasta_record)
 
-                fasta_dict.pop(id_name)
-                count += 1
+
+
+        # for hit_name, id_names in seq_count.items():
+        #     if len(id_names) > 1:
+        #         print('sorting')
+        #         for id_name in sorted(id_names, key=utilities.sort_func):
+        #             utilities.createFasta(fasta_dict[id_name], "./fasta_folder/" + filename + "_" + str(count),
+        #                                   align)
+        #
+        #             print (id_name)
+        #
+        #             fasta_dict.pop(id_name)
+        #             count += 1
 
     if fasta_dict:
+
+        print (fasta_dict)
 
 
         print ("Writing out to " + filename)
 
         utilities.createFasta(fasta_dict.values(), "./fasta_folder/" + filename, align)
 
-def write_genome_order(genomes, path="./fasta_outputs/genome_order.txt"):
+    else:
+        if forward_dict:
+            print("Writing out forward dict to ./fasta_folder/" + filename + "_forward")
+
+            utilities.createFasta(forward_dict.values(), "./fasta_folder/" + filename + "_forward", align)
+
+        if backward_dict:
+            print("Writing out backward dict to ./fasta_folder/" + filename + "_backward")
+
+            utilities.createFasta(backward_dict.values(), "./fasta_folder/" + filename + "_backward", align)
+
+
+def write_genome_order(genomes, split_strands=True, path="./fasta_outputs/genome_order.txt"):
 
     # Clear previous file if it exists
     open(path, 'w').close()
@@ -348,16 +366,15 @@ def write_genome_order(genomes, path="./fasta_outputs/genome_order.txt"):
         print ('genome')
         print (genome.name)
 
-
-
-        hits = sorted([(int(hit.start), hit.region) for hit in genome.hits if 'expanded' in
+        hits = sorted([(int(hit.start), hit.region + "_" + hit.strand if split_strands else hit.region) for hit in
+                       genome.hits if 'expanded' in
                        hit.region])
 
         regions = [x[1] for x in hits]
 
         print(regions)
 
-        renamed_regions = utilities.rename_duplicates(regions)
+        renamed_regions = utilities.rename_duplicates(genome.name, regions)
 
 
         with open(path, "a") as genome_order:

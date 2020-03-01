@@ -228,7 +228,6 @@ def createProfile(align_list):
 
 def createFasta(fasta_list, name, align):
 
-    print (fasta_list)
     SeqIO.write(fasta_list,  name + ".fasta", "fasta")
 
     if align:
@@ -339,7 +338,7 @@ def sort_func(elem):
     return int(elem.split("_position=_")[1].split("_")[0])
 
 
-def rename_duplicates(old):
+def rename_duplicates(genome_name, old):
     seen = {}
     index = {}
     for pos in range(len(old)):
@@ -356,7 +355,12 @@ def rename_duplicates(old):
 
     print(index)
 
-    for v in index.values():
-        old[v] = old[v][:-2]
+    # Either add the genome name, or remove the temporarily annotated number from the end
+
+    for pos in range(len(old)):
+        if pos in index.values():
+            old[pos] = "_".join(old[pos].split("_")[0:-1])
+        else:
+            old[pos] = "_".join(old[pos].split("_")[0:-1]) + "_" + genome_name + "_" + old[pos].split("_")[-1]
 
     return old

@@ -75,7 +75,7 @@ class GenomeRecords(db.DynamicDocument):
     hits = db.EmbeddedDocumentListField(Hits)
     references = db.ListField(db.StringField(), default=list)
     genome_overview = db.ImageField()
-    genome_expanded_overview = db.ImageField()
+    genome_expanded_overview = db.FileField()
     tags = db.ListField(db.StringField(), default=list)
 
 

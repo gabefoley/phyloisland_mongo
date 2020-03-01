@@ -1,0 +1,4 @@
+>NZ_KB372811.1
+TcdA1,TcB_expanded,TcC_expanded
+>NZ_CBXE010000496.1
+TcC_expanded,TcB_expanded

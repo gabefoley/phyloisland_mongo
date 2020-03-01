@@ -41,8 +41,8 @@ args = parser.parse_args()
 
 
 # Print out the submitted input
-print (f"Input file is {args.add_genomes}")
-print (f"Profile folder is {args.add_profiles}")
+# print (f"Input file is {args.add_genomes}")
+# print (f"Profile folder is {args.add_profiles}")
 # print (f"Selected database is {args.database_name}")
 
 # # Configure mongo database
@@ -102,9 +102,9 @@ if args.fasta:
     profile_names = models.Profile.objects().all()
 
     for profile in profile_names:
-        getGenomes.download_fasta_regions(profile.name, "grobs", align=False)
+        getGenomes.download_fasta_regions(profile.name, split_strands=True, align=False)
 
 if args.region_order:
     genomes = models.GenomeRecords.objects.all().timeout(False)
-    getGenomes.write_genome_order(genomes, './fasta_folder/genome_order_from_cmd.txt')
+    getGenomes.write_genome_order(genomes, split_strands=True, path ='./fasta_folder/genome_order_from_cmd.txt')
 

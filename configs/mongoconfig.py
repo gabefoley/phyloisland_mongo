@@ -8,7 +8,7 @@
 
 
 
-MONGODB_DB = 'groundhogday'
+MONGODB_DB = 'newpulse'
 
 # MONGODB_HOST= 'localhost'
 # MONGODB_USERNAME = 'pi'
