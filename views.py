@@ -111,9 +111,9 @@ class UploadView(BaseView):
 
                         genome_results = getGenomes.add_genome(species_name, destinations, single=single)
 
-                        print ('genome resutls was ' + genome_results)
-
                         if genome_results and genome_results != "Fail":
+                            print('genome results was ' + genome_results)
+
                             utilities.add_genome(genome_results)
                         else:
 
