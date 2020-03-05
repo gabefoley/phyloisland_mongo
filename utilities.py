@@ -9,6 +9,7 @@ import subprocess
 import sys
 from collections import defaultdict
 import json
+import regex as re
 
 
 from Bio.SeqRecord import SeqRecord
@@ -256,6 +257,7 @@ def get_genome_items(genome, hits='all'):
 
     items = defaultdict(list)
     region_list = []
+    genomesize = len(genome.sequence)
 
     for count, hit in enumerate(genome.hits):
 
@@ -271,7 +273,30 @@ def get_genome_items(genome, hits='all'):
             hit_details['name'] = hit.region
             hit_details['strand'] = 1 if count % 2 == 0 else -1
 
+            print ('get the sequence')
+
+            print (hit.sequence)
+
+            print ('genome length')
+
+
+
+
+            idx1 = 0
+            idx2 = idx1 + 3
+
+            stop_codons = ["TAG", "TAA", "TGA"]
+
+            while idx2 <= len(hit.sequence):
+                if hit.sequence[idx1:idx2] in stop_codons:
+                    print('found', idx1)
+                    print (hit.name)
+                idx1 += 3
+                idx2 += 3
+
+
             region_list.append(hit_details)
+
 
 
             items[hit.region].append(hit_details)
@@ -280,7 +305,7 @@ def get_genome_items(genome, hits='all'):
 
     tracks = build_tracks(items)
 
-    return tracks
+    return tracks, genomesize
 
 def build_tracks(items):
 

@@ -100,15 +100,20 @@ var tracks = {{ tracks | safe}} ;
 
     <input type="button" id="resizeButton" onClick="resizeLinearPlot(); return false;" value="Resize plot">
             </div>
+
+    <script>
+            var genomesize = "{{genomesize | safe}}";
+    </script>
 <!--<script type="text/javascript" src="../../static/js/data.simple.js"></script>-->
-                <script type="text/javascript" src="../../static/js/circularplot.js"></script>
+    <script type="text/javascript" src="../../static/js/circularplot.js"></script>
     <script type="text/javascript" src="../../static/js/linearplot.js"></script>
     <script type="text/javascript" src="../../static/js/linearbrush.js"></script>
     <script type="text/javascript" src="../../static/js/lineardemo.js"></script>
-
-                <script type="text/javascript" src="../../static/js/circularsample.js"></script>
+    <script type="text/javascript" src="../../static/js/circularsample.js"></script>
 
 <script>
+
+
 
 
             $('#show_hits').val("{{hit_type | safe }}")

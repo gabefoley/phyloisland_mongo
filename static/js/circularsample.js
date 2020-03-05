@@ -5,7 +5,6 @@
 // the genome size, the div container to put the
 // SVG object in, what function to call during a
 // double click and the initial chart size.
-var genomesize = 1065000;
 var circularlayout = {genomesize: genomesize,
 		      container: "#circularchart",
 		      dblclick: "doubleClick",

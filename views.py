@@ -490,24 +490,24 @@ class GenomeDetailView(BaseView):
 
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
-                tracks = utilities.get_genome_items(genome, hits=session['hits'])
+                tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'])
 
                 session['genome'] = None
 
                 return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-                                   genome=genome.id, hit_type=session['hits'])
+                                   genome=genome.id, hit_type=session['hits'], genomesize = genomesize)
 
             genome = models.GenomeRecords.objects.get(id=select_form.data['genome'][0])
 
             if session.get('hits') is None:
                 session['hits'] = 'all'
 
-            tracks = utilities.get_genome_items(genome, hits=session['hits'])
+            tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'])
 
             print('got here')
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-                               genome=genome.id, hit_type=session['hits'])
+                               genome=genome.id, hit_type=session['hits'], genomesize = genomesize)
 
             # elif hit_form.submit_hit.data and hit_form.validate():
             #
@@ -535,10 +535,13 @@ class GenomeDetailView(BaseView):
             # Just get the first Genome Record in the database and return a Genome Detail of that
             genome = models.GenomeRecords.objects()[0]
 
-            tracks = utilities.get_genome_items(genome)
+            tracks, genomesize = utilities.get_genome_items(genome)
+
+            print ('genomesize was')
+            print (genomesize )
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-                               genome=genome.id)
+                               genome=genome.id, genomesize=genomesize)
 
 
 class UserView(ModelView):

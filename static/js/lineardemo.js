@@ -5,7 +5,7 @@
 
 var selected = new Object()
 var linearlayout = { genomesize: 4666385,
-                     height: 250,
+                     height: 500,
                      width: 900,
                      container: "#linearchart",
                      initStart: 0,
