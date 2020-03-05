@@ -380,3 +380,50 @@ def write_genome_order(genomes, split_strands=True, path="./fasta_outputs/genome
         with open(path, "a") as genome_order:
             genome_order.write(">" + genome.name + "\n")
             genome_order.write(",".join(x for x in renamed_regions) + "\n")
+
+def write_mlgo_order(genomes, split_strands=True, path="./fasta_outputs/genome_order.txt"):
+
+    # Clear previous file if it exists
+    open(path, 'w').close()
+
+    region_id_count = 1
+    seen_dict = {}
+
+    for genome in genomes:
+        print ('genome')
+        print (genome.name)
+
+        hits = sorted([(int(hit.start), hit.region +"_strand=" + hit.strand) for hit in
+                       genome.hits if 'expanded' in
+                       hit.region])
+
+        regions = [x[1] for x in hits]
+
+        print ('here come the regions')
+
+        print(regions)
+
+
+        # If we've already seen this region in another genome, give it that number, otherwise create new number
+        for region in regions:
+            print (region)
+            if region.split("_strand=")[0] in seen_dict.keys():
+                pass
+            else:
+                seen_dict[region.split("_strand=")[0]] = str(region_id_count)
+                region_id_count += 1
+
+
+
+        renamed_regions = ["-" + seen_dict[region.split("_strand=")[0]] if region.split("_strand=")[1] == 'backward'
+                           else
+                           seen_dict[region.split("_strand=")[0]] for region in regions]
+
+
+
+
+        #
+
+        with open(path, "a") as genome_order:
+            genome_order.write(">" + genome.name + "\n")
+            genome_order.write(" ".join(x for x in renamed_regions) + " $\n")

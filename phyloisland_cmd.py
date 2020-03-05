@@ -25,6 +25,7 @@ parser.add_argument("-o", "--overview", help="get overview of database", action=
 parser.add_argument("-dg", "--delete_genomes", help="delete genomes", action="store_true")
 parser.add_argument("-dt", "--delete_genome_tags", help="delete current genome classifications", action="store_true")
 parser.add_argument("-c", "--classify", help="classify genomes based on their regions ", action="store_true")
+parser.add_argument("-m", "--mlgo", help="write out regions to mlgo format", action="store_true")
 
 
 # parser.add_argument("-d", "--database_name", help="database name", required=True)
@@ -107,4 +108,8 @@ if args.fasta:
 if args.region_order:
     genomes = models.GenomeRecords.objects.all().timeout(False)
     getGenomes.write_genome_order(genomes, split_strands=False, path ='./fasta_folder/genome_order_from_cmd.txt')
+
+if args.mlgo:
+    genomes = models.GenomeRecords.objects.all().timeout(False)
+    getGenomes.write_mlgo_order(genomes, path ='./fasta_folder/mlgo.txt')
 
