@@ -120,7 +120,7 @@ def get_genomes_cmd(species_names):
 
     print('\nFINISHED GETTING RECORDS: Time taken was {} \n'.format(time_string))
     if failed_genomes:
-        print("The following genomes failed to map - " + " ".join(x for x in failed_genomes))
+        print("The following genomes failed to map - \n" + " \n".join(x for x in failed_genomes) + "\n")
 
 def get_feature_location_with_profile_cmd(queries, reference, profile_name, recordName, recordLocation, region):
     """

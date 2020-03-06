@@ -191,7 +191,7 @@ class UploadView(BaseView):
             print('\nFINISHED GETTING RECORDS: Time taken was {} \n'.format(time_string))
             if failed_genomes:
                 flash("The following genomes failed to map - " + " ".join(x for x in failed_genomes), category='error')
-                print("The following genomes failed to map - " + " ".join(x for x in failed_genomes))
+                print("The following genomes failed to map - \n" + " \n".join(x for x in failed_genomes) + "\n")
 
 
         elif request.method == 'POST':
