@@ -103,7 +103,8 @@ if args.fasta:
     profile_names = models.Profile.objects().all()
 
     for profile in profile_names:
-        getGenomes.download_fasta_regions(profile.name, filename='expanded', split_strands=False, align=False)
+        getGenomes.download_fasta_regions(profile.name + "_expanded", filename='cmd', split_strands=False,
+                                          align=False)
 
 if args.region_order:
     genomes = models.GenomeRecords.objects.all().timeout(False)
