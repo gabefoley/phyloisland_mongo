@@ -248,7 +248,7 @@ def check_with_profile(ids, region):
     else:
         flash("Please set a profile as the %s reference profile first" % (region), "error")
 
-def get_genome_items(genome, hits='all'):
+def get_genome_items(genome, hits='all', hidden_type=True):
     """
     Format the items in a genome correctly for a Genome Detail view
     :param self:
@@ -261,45 +261,77 @@ def get_genome_items(genome, hits='all'):
 
     for count, hit in enumerate(genome.hits):
 
+        print ('count is ')
+
+        print (count)
+
         if ((hits == 'all') or ((hits == 'initial') and ('expanded' not in hit.region)) or ((hits == 'expanded') and
          'expanded' in hit.region)):
 
-            print (hit.id)
-            hit_details = dict()
-            hit_details['id'] = count
-            hit_details['hit_id'] = str(hit.id)
-            hit_details['start'] = hit.start
-            hit_details['end'] = hit.end
-            hit_details['name'] = hit.region
-            hit_details['strand'] = 1 if count % 2 == 0 else -1
 
-            print ('get the sequence')
+            print ('hidden type is ' + str(hidden_type))
+            print (hit.tags)
 
-            print (hit.sequence)
+            if ((hidden_type == False) or (hidden_type == True and 'hidden' not in hit.tags)):
 
-            print ('genome length')
+                print (hit.id)
+                print (hit.name)
+                hit_details = dict()
+                hit_details['id'] = count
+                hit_details['hit_id'] = str(hit.id)
+                hit_details['start'] = hit.start
+                hit_details['end'] = hit.end
+                hit_details['name'] = hit.region
+                # hit_details['strand'] = 1 if count % 2 == 0 else -1
+                if hit.region == 'TcdA1' or hit.region == 'TcdA1_expanded':
+                    hit_details['strand'] = -1
+                else:
+                    hit_details['strand'] = 1
 
+                print ('get the sequence')
 
+                print (hit.sequence)
 
+                print (hit.strand)
 
-            idx1 = 0
-            idx2 = idx1 + 3
-
-            stop_codons = ["TAG", "TAA", "TGA"]
-
-            while idx2 <= len(hit.sequence):
-                if hit.sequence[idx1:idx2] in stop_codons:
-                    print('found', idx1)
-                    print (hit.name)
-                idx1 += 3
-                idx2 += 3
-
-
-            region_list.append(hit_details)
+                print (hit_details['strand'])
+                #
+                # print ('genome length')
 
 
 
-            items[hit.region].append(hit_details)
+
+                idx1 = 0
+                idx2 = idx1 + 3
+
+                stop_codons = ["TAG", "TAA", "TGA"]
+
+                # if hit_details['strand'] == 'backward':
+                #     hit_sequence = hit.sequence[len(hit.sequence)::-1]
+                # else:
+                #     hit_sequence = hit.sequence
+                #
+                # print ('flipped seq')
+                #
+                # print (hit_sequence)
+
+
+
+                while idx2 <= len(hit.sequence):
+                    if hit.sequence[idx1:idx2] in stop_codons:
+                        print('found', idx1)
+                        print (hit.name)
+                        print (hit.sequence[idx1:idx2])
+                    print (hit.sequence[idx1:idx2])
+                    idx1 += 3
+                    idx2 += 3
+
+
+                region_list.append(hit_details)
+
+
+
+                items[hit.region].append(hit_details)
 
     print (items)
 
@@ -326,7 +358,7 @@ def build_tracks(items):
             region_dict = {'id' : region['hit_id'], 'start' : int(region['start']), 'end' : int(region['end']),
                            'name' : region[
                 'name'],
-             'strand' : 1}
+             'strand' : region['strand']}
             regions.append(region_dict)
 
         track = { 'trackName': region_name_mapper[region_name],

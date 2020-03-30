@@ -183,7 +183,7 @@
 /* Track 2 is also a stranded track, give it
    a different set of colours */
 .track4_pos {
-    fill: blue;
+    fill: purple;
     fill-opacity: .7;
 }
 
@@ -196,7 +196,7 @@
 }
 
 .track4_neg {
-    fill: blue;
+    fill: purple;
     fill-opacity: .7;
 }
 
@@ -401,7 +401,7 @@
 /* Track 2 is also a stranded track, give it
    a different set of colours */
 .track4_expanded_pos {
-    fill: blue;
+    fill: purple;
     fill-opacity: .7;
 }
 
@@ -414,7 +414,7 @@
 }
 
 .track4_expanded_neg {
-    fill: blue;
+    fill: purple;
     fill-opacity: .7;
 }
 

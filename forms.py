@@ -80,6 +80,8 @@ class GenomeDiagramSelectForm(FlaskForm):
 
     delete_hit = SubmitField("Delete hit")
 
+    hidden_hits = BooleanField("Hide hits marked 'hidden'")
+
     show_hits = SelectField('Which hits should we show?', choices=[('all', 'All hits'), ('initial', 'Just initial '
                                                                                                     'hits'),
                                                                    ('expanded', 'Just expanded hits')])

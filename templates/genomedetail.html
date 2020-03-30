@@ -34,6 +34,15 @@
                 {{ select_form.submit_diagram(class="btn-primary") }}
             </div>
 
+                          <br>
+                          {{select_form.hidden_hits}}
+
+
+                          {{select_form.hidden_hits.label (class_= "genome-search") }}
+
+             <br>
+
+
              <br>
 
                           {{select_form.show_hits.label }}
@@ -51,6 +60,8 @@
 
 
 var tracks = {{ tracks | safe}} ;
+
+
 
 
 
@@ -111,16 +122,44 @@ var tracks = {{ tracks | safe}} ;
     <script type="text/javascript" src="../../static/js/lineardemo.js"></script>
     <script type="text/javascript" src="../../static/js/circularsample.js"></script>
 
+{% if hidden_type == true %}
+    <script>
+        $("#hidden_hits").prop('checked', true);
+
+    </script>
+
+{% else %}
+    <script>
+        $("#hidden_hits").prop('checked', false );
+
+    </script>
+
+{% endif %}
+
 <script>
+
+    console.log('what is it here')
+    console.log("{{hit_type}}")
+    console.log("{{hidden_type}}")
+
 
 
 
 
             $('#show_hits').val("{{hit_type | safe }}")
 
-             $('#show_hits').on('change', function() {
 
-                 var genome = "{{ genome |safe }}"
+
+            $('#hidden_hits').on('change', function() {
+                var genome = "{{ genome |safe }}"
+
+                var show_hits = $('#show_hits').val()
+                var hidden_hits = $('#hidden_hits').is(":checked")
+
+
+                console.log('seending')
+                console.log(this.value)
+
 
                  $.ajax({
 
@@ -128,7 +167,42 @@ var tracks = {{ tracks | safe}} ;
                 contentType: "application/json;charset=utf-8",
                 url: "{{  url_for ('show_hits')}}",
                  data: JSON.stringify({
-                 'genome' : genome, 'hits' : this.value
+                 'genome' : genome, 'hits' : show_hits, 'hidden_type' : hidden_hits
+             }),
+             contentType: 'application/json;charset=UTF-8',
+             type: 'POST',
+                traditional: "true",
+                                         success: function (response) {
+
+                        console.log('bamboozled')
+
+                        window.location.reload();
+
+
+                    }
+
+
+
+            });
+});
+
+             $('#show_hits').on('change', function() {
+
+                 var genome = "{{ genome |safe }}"
+
+                 var hidden_hits = $('#hidden_hits').is(":checked")
+
+                          console.log('seending')
+                console.log(hidden_hits)
+
+
+                 $.ajax({
+
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                url: "{{  url_for ('show_hits')}}",
+                 data: JSON.stringify({
+                 'genome' : genome, 'hits' : this.value, 'hidden_type' : hidden_hits
              }),
              contentType: 'application/json;charset=UTF-8',
              type: 'POST',
@@ -187,7 +261,39 @@ var tracks = {{ tracks | safe}} ;
 
      });
 
-              $('#tag_hit').on('click', function (e) {
+      $('#hide_hit').on('click', function (e) {
+         e.preventDefault();
+         console.log('clicked hide hit')
+
+         var genome = "{{ genome |safe }}"
+         tag2add = 'hidden';
+
+
+         $.ajax({
+             url: Flask.url_for("tag_hit"),
+             data: JSON.stringify({
+                 'genome' : genome, 'hits' : selected, tag2add :
+                 tag2add
+             }),
+             contentType: 'application/json;charset=UTF-8',
+             type: 'POST',
+             error: function(error) {
+                 console.log(error);
+             },
+              success: function (response) {
+
+                        console.log('bamboozled')
+
+                        window.location.reload();
+
+
+                    }
+         });
+
+     });
+
+
+    $('#tag_hit').on('click', function (e) {
          e.preventDefault();
          console.log('clicked tag hit')
 

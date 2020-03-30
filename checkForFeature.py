@@ -88,6 +88,14 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
                     stdoutdata = subprocess.getoutput("hmmsearch -o %s --domT %s %s %s" % (
                     hmmsearch_results, domScore, 'tmp/' + region + "_profile.hmm", cleaned_path))
 
+                    print ('woodflock')
+
+                    print (hmmsearch_results)
+
+                    print (domScore)
+
+                    print (cleaned_path)
+
                     print(stdoutdata)
                     # result = subprocess.call(["hmmsearch -o %s %s %s" % (hmmsearch_results, reference, cleaned_path)])
 

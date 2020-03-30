@@ -375,7 +375,7 @@ genomeTrack.prototype.displayStranded = function(track, i) {
     var rects = this.itemRects[i].selectAll("g")
     .data(visItems, function(d) { return d.id; })
 	.attr("transform", function(d,i) { 
-	    return "translate(" + x1(d.start) + ',' +  d.yshift + ")"; });
+	    return "translate(" + x1(d.start) + ',' +  d.yshift / 8 + ")"; });
 
     // Process the changed/moved rects
     rects.selectAll("rect")
@@ -445,7 +445,7 @@ genomeTrack.prototype.displayStranded = function(track, i) {
 
 	    }
 	    d.yshift = y1(ystack) + 10 + shift_gene;
-	    return "translate(" + x1(d.start) + ',' +  d.yshift + ")"; })
+	    return "translate(" + x1(d.start) + ',' +  d.yshift / 8 + ")"; })
     //	    return "translate(" + x1(d.start) + ',' +  (y1(ystack) + 10 + shift_gene) + ")"; })
     .attr("id", function(d,i) { return track.trackName + '_' + d.id; })
     .attr("class", function(d) {
@@ -607,7 +607,7 @@ genomeTrack.prototype.displayTrack = function(track, i) {
     var rects = this.itemRects[i].selectAll("g")
     .data(visItems, function(d) { return d.id; })
     .attr("transform", function(d,i) { 
-	    return "translate(" + x1(d.start) + ',' + d.yshift  + ")"; 
+	    return "translate(" + x1(d.start) + ',' + d.yshift / 8  + ")";
 	});
 
 
@@ -658,7 +658,7 @@ genomeTrack.prototype.displayTrack = function(track, i) {
 	    }
 
 	    d.yshift = y1(ystack) + 10 + shift_gene;
-	    return "translate(" + x1(d.start) + ',' + d.yshift  + ")"; 
+	    return "translate(" + x1(d.start) + ',' + d.yshift / 8  + ")";
 	})
     .attr("id", function(d,i) { return track.trackName + '_' + d.id; })
     .attr("class", function(d) {return track.trackName + '_group ' + (typeof d.feature === 'undefined' ? 'gene' : d.feature); })//;

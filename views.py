@@ -481,33 +481,46 @@ class GenomeDetailView(BaseView):
 
         print('back here again')
 
+        if session.get('hits') is None:
+            session['hits'] = 'expanded'
+
+        if session.get('hidden_type') is None:
+            session['hidden_type'] = True
+            print ('changing type WOO')
+
         if request.method == 'POST' and select_form.submit_diagram.data:
 
             print('post')
+
+
+
 
             if session.get('genome') is not None:
                 print('session genome not none')
 
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
-                tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'])
+                tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
+                    'hidden_type'])
 
                 session['genome'] = None
 
                 return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-                                   genome=genome.id, hit_type=session['hits'], genomesize = genomesize)
+                                   genome=genome.id, hit_type=session['hits'], hidden_type=session['hidden_type'],
+                genomesize = \
+                    genomesize)
 
             genome = models.GenomeRecords.objects.get(id=select_form.data['genome'][0])
 
-            if session.get('hits') is None:
-                session['hits'] = 'all'
 
-            tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'])
+            tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
+                'hidden_type'])
 
             print('got here')
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-                               genome=genome.id, hit_type=session['hits'], genomesize = genomesize)
+                               genome=genome.id, hit_type=session['hits'], hidden_type=session['hidden_type'],
+            genomesize = genomesize)
 
             # elif hit_form.submit_hit.data and hit_form.validate():
             #
@@ -541,7 +554,7 @@ class GenomeDetailView(BaseView):
             print (genomesize )
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-                               genome=genome.id, genomesize=genomesize)
+                               genome=genome.id, genomesize=genomesize, hit_type=session['hits'], hidden_type=session['hidden_type'])
 
 
 class UserView(ModelView):
@@ -818,6 +831,7 @@ def show_hits():
 
     session['genome'] = request.json['genome']
     session['hits'] = request.json['hits']
+    session['hidden_type'] = request.json['hidden_type']
 
     return redirect(url_for('genomedetail.genomedetail'))
 

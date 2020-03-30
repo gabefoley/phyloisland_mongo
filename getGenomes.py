@@ -185,6 +185,8 @@ def get_record_list(summary, category, single):
 
 def add_genome(species_name, categories, single):
 
+    print ('got here')
+
     for x in ["reference genome", "representative genome", "assembly"]:
         if x in categories:
             database = "refseq"
@@ -210,6 +212,7 @@ def add_genome(species_name, categories, single):
 
         if errcode != 0:
             print (errcode)
+            print (err)
             return
 
         summary = pd.read_csv("./tmp/assembly_summary.txt", sep='\t', header=1)

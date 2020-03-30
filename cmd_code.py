@@ -89,7 +89,7 @@ def get_genomes_cmd(species_names):
     start_time = timeit.default_timer()
     for species_name in species_names:
         print("Species name is ", species_name)
-        destinations = ['reference genome', "representative genome", "assembly", "genbank"]
+        destinations = ['reference genome', "representative genome", "assembly"]
 
         genome_results = getGenomes.add_genome(species_name, destinations, single=True)
 
@@ -100,6 +100,8 @@ def get_genomes_cmd(species_names):
 
             # Couldn't find it in RefSeq, let's try genbank
             destinations = ["genbank"]
+            print ('it failed')
+
             genome_results = getGenomes.add_genome(species_name, destinations, single=True)
 
             if genome_results and genome_results != "Fail":
