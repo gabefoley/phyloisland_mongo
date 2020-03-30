@@ -12,8 +12,9 @@
 # MONGODB_DB = 'groundhog_day'
 # MONGODB_DB = 'raunser'
 # MONGODB_DB = 'RBD'
-MONGODB_DB = 'expanding_RBD'
+# MONGODB_DB = 'expanding_RBD'
 
+MONGODB_DB = 'glyph'
 
 
 # MONGODB_HOST= 'localhost'

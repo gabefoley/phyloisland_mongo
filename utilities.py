@@ -10,6 +10,8 @@ import sys
 from collections import defaultdict
 import json
 import regex as re
+from Bio.Seq import Seq
+from Bio.Alphabet import generic_nucleotide
 
 
 from Bio.SeqRecord import SeqRecord
@@ -256,6 +258,7 @@ def get_genome_items(genome, hits='all', hidden_type=True):
     """
 
     items = defaultdict(list)
+    glyphs = {}
     region_list = []
     genomesize = len(genome.sequence)
 
@@ -288,13 +291,8 @@ def get_genome_items(genome, hits='all', hidden_type=True):
                 else:
                     hit_details['strand'] = 1
 
-                print ('get the sequence')
 
-                print (hit.sequence)
 
-                print (hit.strand)
-
-                print (hit_details['strand'])
                 #
                 # print ('genome length')
 
@@ -306,23 +304,50 @@ def get_genome_items(genome, hits='all', hidden_type=True):
 
                 stop_codons = ["TAG", "TAA", "TGA"]
 
-                # if hit_details['strand'] == 'backward':
-                #     hit_sequence = hit.sequence[len(hit.sequence)::-1]
-                # else:
-                #     hit_sequence = hit.sequence
+                if hit.strand == 'backward':
+                    sequence = Seq(hit.sequence, generic_nucleotide)
+
+                    hit_sequence = sequence.reverse_complement()
+                else:
+                    hit_sequence = hit.sequence
                 #
                 # print ('flipped seq')
                 #
                 # print (hit_sequence)
+                print ('get the sequence')
 
+                # print (hit_sequence)
+                #
+                # print (hit.strand)
+                #
+                # print (hit.start)
+                #
+                # print (hit.end)
 
 
                 while idx2 <= len(hit.sequence):
-                    if hit.sequence[idx1:idx2] in stop_codons:
+                    if hit_sequence[idx1:idx2] in stop_codons:
                         print('found', idx1)
-                        print (hit.name)
-                        print (hit.sequence[idx1:idx2])
-                    print (hit.sequence[idx1:idx2])
+                        print (hit_sequence)
+                        print (hit.region)
+                        print (hit_sequence[idx1:idx2 + 20])
+
+                        print (hit.start)
+                        print (hit.end)
+                        print (idx1)
+
+                        if hit.strand == 'backward':
+                            pos = int(hit.end) - idx1
+                        else:
+                            pos = int(hit.start) + idx1
+
+                        print (pos)
+
+                        if pos in glyphs:
+                            glyphs[pos].append(hit.region)
+                        else:
+                            glyphs[pos] = [hit.region]
+                    # print (hit_sequence[idx1:idx2])
                     idx1 += 3
                     idx2 += 3
 
@@ -333,13 +358,15 @@ def get_genome_items(genome, hits='all', hidden_type=True):
 
                 items[hit.region].append(hit_details)
 
-    print (items)
+    # print (items)
 
-    tracks = build_tracks(items)
+    print ('glyphs')
+    print (glyphs)
+    tracks = build_tracks(items, glyphs)
 
     return tracks, genomesize
 
-def build_tracks(items):
+def build_tracks(items, glyphs):
 
     tracks = []
 
@@ -380,6 +407,43 @@ def build_tracks(items):
         tracks.append(track)
     print ('and tracks are ')
     print (tracks)
+
+    glyph_regions = []
+
+    count = 0
+
+    for loc, names in glyphs.items():
+        count +=1
+        name = " ".join(names)
+        glyph_dict = {'id' : count, 'bp' : loc, 'type': name, 'name': name}
+
+        glyph_regions.append(glyph_dict)
+
+
+
+    if glyphs:
+        glyph_track = {'trackName': "track1",
+        'trackType': 'glyph',
+        'glyphType': 'circle',
+        'radius': 155,
+        'pixel_spacing': 5,
+        'linear_pixel_spacing': 5,
+        'glyph_buffer': 5,
+        'linear_glyph_buffer': 5,
+        'glyphSize': 20,
+        'linear_glyphSize': 20,
+        'linear_height': 100,
+        'showTooltip': 'true',
+        'items': glyph_regions
+        }
+
+    print (glyph_track)
+
+    tracks.append(glyph_track)
+
+
+
+
 
     json_tracks = json.dumps(tracks)
 
