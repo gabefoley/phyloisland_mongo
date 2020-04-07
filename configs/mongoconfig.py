@@ -14,7 +14,11 @@
 # MONGODB_DB = 'RBD'
 # MONGODB_DB = 'expanding_RBD'
 
-MONGODB_DB = 'glyph'
+# MONGODB_DB = 'glyph'
+
+# MONGODB_DB = 'largescale'
+
+MONGODB_DB = 'addition'
 
 
 # MONGODB_HOST= 'localhost'

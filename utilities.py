@@ -360,8 +360,8 @@ def get_genome_items(genome, hits='all', hidden_type=True):
 
     # print (items)
 
-    print ('glyphs')
-    print (glyphs)
+    # print ('glyphs')
+    # print (glyphs)
     tracks = build_tracks(items, glyphs)
 
     return tracks, genomesize
@@ -437,9 +437,9 @@ def build_tracks(items, glyphs):
         'items': glyph_regions
         }
 
-    print (glyph_track)
+    # print (glyph_track)
 
-    tracks.append(glyph_track)
+        tracks.append(glyph_track)
 
 
 
