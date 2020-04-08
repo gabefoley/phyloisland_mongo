@@ -481,6 +481,8 @@ class GenomeDetailView(BaseView):
 
         print('back here again')
 
+        print ('check there is a change here')
+
         if session.get('hits') is None:
             session['hits'] = 'expanded'
 
