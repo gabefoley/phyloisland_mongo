@@ -546,7 +546,10 @@ class GenomeDetailView(BaseView):
             print('get')
 
             # Just get the first Genome Record in the database and return a Genome Detail of that
-            genome = models.GenomeRecords.objects()[0]
+            genome = models.GenomeRecords.objects()[1]
+
+            print ('genome here is ')
+            print (genome.name)
 
             tracks, genomesize = utilities.get_genome_items(genome)
 

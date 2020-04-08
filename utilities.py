@@ -279,84 +279,86 @@ def get_genome_items(genome, hits='all', hidden_type=True):
 
                 print (hit.id)
                 print (hit.name)
-                hit_details = dict()
-                hit_details['id'] = count
-                hit_details['hit_id'] = str(hit.id)
-                hit_details['start'] = hit.start
-                hit_details['end'] = hit.end
-                hit_details['name'] = hit.region
-                # hit_details['strand'] = 1 if count % 2 == 0 else -1
-                if hit.region == 'TcdA1' or hit.region == 'TcdA1_expanded':
-                    hit_details['strand'] = -1
-                else:
-                    hit_details['strand'] = 1
+
+                if hit.name != None:
+                    hit_details = dict()
+                    hit_details['id'] = count
+                    hit_details['hit_id'] = str(hit.id)
+                    hit_details['start'] = hit.start
+                    hit_details['end'] = hit.end
+                    hit_details['name'] = hit.region
+                    # hit_details['strand'] = 1 if count % 2 == 0 else -1
+                    if hit.region == 'TcdA1' or hit.region == 'TcdA1_expanded':
+                        hit_details['strand'] = -1
+                    else:
+                        hit_details['strand'] = 1
 
 
 
-                #
-                # print ('genome length')
+                    #
+                    # print ('genome length')
 
 
 
 
-                idx1 = 0
-                idx2 = idx1 + 3
+                    idx1 = 0
+                    idx2 = idx1 + 3
 
-                stop_codons = ["TAG", "TAA", "TGA"]
+                    stop_codons = ["TAG", "TAA", "TGA"]
 
-                if hit.strand == 'backward':
-                    sequence = Seq(hit.sequence, generic_nucleotide)
+                    if hit.strand == 'backward':
+                        sequence = Seq(hit.sequence, generic_nucleotide)
 
-                    hit_sequence = sequence.reverse_complement()
-                else:
-                    hit_sequence = hit.sequence
-                #
-                # print ('flipped seq')
-                #
-                # print (hit_sequence)
-                print ('get the sequence')
+                        hit_sequence = sequence.reverse_complement()
+                    else:
+                        hit_sequence = hit.sequence
+                    #
+                    # print ('flipped seq')
+                    #
+                    # print (hit_sequence)
+                    print ('get the sequence')
 
-                # print (hit_sequence)
-                #
-                # print (hit.strand)
-                #
-                # print (hit.start)
-                #
-                # print (hit.end)
-
-
-                while idx2 <= len(hit.sequence):
-                    if hit_sequence[idx1:idx2] in stop_codons:
-                        print('found', idx1)
-                        print (hit_sequence)
-                        print (hit.region)
-                        print (hit_sequence[idx1:idx2 + 20])
-
-                        print (hit.start)
-                        print (hit.end)
-                        print (idx1)
-
-                        if hit.strand == 'backward':
-                            pos = int(hit.end) - idx1
-                        else:
-                            pos = int(hit.start) + idx1
-
-                        print (pos)
-
-                        if pos in glyphs:
-                            glyphs[pos].append(hit.region)
-                        else:
-                            glyphs[pos] = [hit.region]
-                    # print (hit_sequence[idx1:idx2])
-                    idx1 += 3
-                    idx2 += 3
+                    # print (hit_sequence)
+                    #
+                    # print (hit.strand)
+                    #
+                    # print (hit.start)
+                    #
+                    # print (hit.end)
 
 
-                region_list.append(hit_details)
+                    while idx2 <= len(hit.sequence):
+                        if hit_sequence[idx1:idx2] in stop_codons:
+                            print('found', idx1)
+                            print (hit_sequence)
+                            print (hit.region)
+                            print (hit_sequence[idx1:idx2 + 20])
+
+                            print (hit.start)
+                            print (hit.end)
+                            print (idx1)
+
+                            if hit.strand == 'backward':
+                                pos = int(hit.end) - idx1
+                            else:
+                                pos = int(hit.start) + idx1
+
+                            print (pos)
+
+                            if pos in glyphs:
+                                glyphs[pos].append(hit.region)
+                            else:
+                                glyphs[pos] = [hit.region]
+                        # print (hit_sequence[idx1:idx2])
+                        idx1 += 3
+                        idx2 += 3
+
+
+                    region_list.append(hit_details)
 
 
 
-                items[hit.region].append(hit_details)
+                    items[hit.region].append(hit_details)
 
     # print (items)
 
