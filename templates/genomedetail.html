@@ -1,75 +1,103 @@
 {% extends 'admin/master.html' %}
 
 {% block head_tail %}
-  {{ super() }}
+{{ super() }}
 
-    <script src="../../static/js/d3/d3.min.js"></script>
-    <script src="../../static/js/d3/d3-tip.js"></script>
-    <script src="../../static/js/select.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-
-
-    <link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
-
-    <link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
-            {{ JSGlue.include() }}
+<script src="../../static/js/d3/d3.min.js"></script>
+<script src="../../static/js/d3/d3-tip.js"></script>
+<script src="../../static/js/select.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
 
 
+<link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
+{{ JSGlue.include() }}
 
 
 {% endblock %}
 
-        {% block body %}
+{% block body %}
 
 <div>
-         <form method="POST"    enctype="multipart/form-data">
-            {{ select_form.hidden_tag() }}
+    <form method="POST" enctype="multipart/form-data">
+        {{ select_form.hidden_tag() }}
 
-            <div class="smallform">
+        <div class="smallform">
 
-                {{ select_form.genome.label }}
+            {{ select_form.genome.label }}
 
-                {{ select_form.genome }}
-                <br>
-                {{ select_form.submit_diagram(class="btn-primary") }}
-            </div>
+            {{ select_form.genome }}
+            <br>
+            {{ select_form.submit_diagram(class="btn-primary") }}
+        </div>
 
-                          <br>
-                          {{select_form.hidden_hits}}
-
-
-                          {{select_form.hidden_hits.label (class_= "genome-search") }}
-
-             <br>
+        <br>
+        {{select_form.hidden_hits}}
 
 
-             <br>
+        {{select_form.hidden_hits.label (class_= "genome-search") }}
 
-                          {{select_form.show_hits.label }}
-
-             <br>
-
-             {{select_form.show_hits}}
+        <br>
 
 
-             <br>
-         </form>
+        <br>
+
+        {{select_form.show_hits.label }}
+
+        <br>
+
+        {{select_form.show_hits}}
+
+
+        <br>
+    </form>
+
+</div>
+
+<div>
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ region_form.hidden_tag() }}
+
+        <div class="region_form">
+            <br>
+            {{region_form.showA1}}
+            {{region_form.showA1.label (class_= "genome-search") }}
+            <br>
+            {{region_form.showA2}}
+            {{region_form.showA2.label (class_= "genome-search") }}
+            <br>
+            {{region_form.showTcdA1}}
+            {{region_form.showTcdA1.label (class_= "genome-search") }}
+            <br>
+            {{region_form.showTcB}}
+            {{region_form.showTcB.label (class_= "genome-search") }}
+            <br>
+            {{region_form.showTcC}}
+            {{region_form.showTcC.label (class_= "genome-search") }}
+            <br>
+            {{region_form.showChitinase}}
+            {{region_form.showChitinase.label (class_= "genome-search") }}
+            <br>
+
+            {{region_form.show_regions}}
+        </div>
+    </form>
+
 
 </div>
 <script>
 
 
-var tracks = {{ tracks | safe}} ;
-
-
-
+    var tracks = {{tracks | safe }};
 
 
 </script>
 
 <div id="hit_div">
 
-                    Tag to add <input id="tag2add" type="text" value="">
+    Tag to add <input id="tag2add" type="text" value="">
     <br>
     <br>
 
@@ -82,20 +110,17 @@ var tracks = {{ tracks | safe}} ;
     <br>
     <br>
 
-        <button name="tagBtn" class="btn-primary" id="tag_genome" type="submit">Tag genome</button>
+    <button name="tagBtn" class="btn-primary" id="tag_genome" type="submit">Tag genome</button>
 
     <br>
     <br>
-
-
 
 
     List of hits to tag, hide, or delete:
     <div id="myList">
-                </div>
+    </div>
 
 </div>
-
 
 
 <br>
@@ -103,38 +128,52 @@ var tracks = {{ tracks | safe}} ;
 <div id="scrollable>">
     <div id="circularchart"></div>
     <div id="demo-controls">
-        <div class="control-item"><input type="checkbox" name="showStrand" onchange="updateStrand(this); return false" checked>Show stranded track</div>
+
 
     </div>
     <div id="linearchart"></div>
     <div id="brush"></div>
 
     <input type="button" id="resizeButton" onClick="resizeLinearPlot(); return false;" value="Resize plot">
-            </div>
+</div>
 
-    <script>
-            var genomesize = "{{genomesize | safe}}";
-    </script>
+<script>
+    var genomesize = "{{genomesize | safe}}";
+</script>
 <!--<script type="text/javascript" src="../../static/js/data.simple.js"></script>-->
-    <script type="text/javascript" src="../../static/js/circularplot.js"></script>
-    <script type="text/javascript" src="../../static/js/linearplot.js"></script>
-    <script type="text/javascript" src="../../static/js/linearbrush.js"></script>
-    <script type="text/javascript" src="../../static/js/lineardemo.js"></script>
-    <script type="text/javascript" src="../../static/js/circularsample.js"></script>
+<script type="text/javascript" src="../../static/js/circularplot.js"></script>
+<script type="text/javascript" src="../../static/js/linearplot.js"></script>
+<script type="text/javascript" src="../../static/js/linearbrush.js"></script>
+<script type="text/javascript" src="../../static/js/lineardemo.js"></script>
+<script type="text/javascript" src="../../static/js/circularsample.js"></script>
 
 {% if hidden_type == true %}
-    <script>
-        $("#hidden_hits").prop('checked', true);
+<script>
+    $("#hidden_hits").prop('checked', true);
 
-    </script>
+</script>
 
 {% else %}
-    <script>
-        $("#hidden_hits").prop('checked', false );
+<script>
+    $("#hidden_hits").prop('checked', false);
 
-    </script>
+</script>
 
 {% endif %}
+
+
+<script>
+    console.log("CHECKED REGIONS IS")
+    console.log("{{checked_regions | safe}}")
+
+    var r = {{checked_regions | safe}}
+
+    for(var i=0;i<r.length;i++) {
+        console.log(r[i])
+    $('#show' + r[i]).prop('checked', true)
+    }
+
+</script>
 
 <script>
 
@@ -142,220 +181,219 @@ var tracks = {{ tracks | safe}} ;
     console.log("{{hit_type}}")
     console.log("{{hidden_type}}")
 
+    $('#show_hits').val("{{hit_type | safe }}")
+
+
+    function collect_details(){
+
+        var checkedregions = [];
+        $("input[name^='show']:checked").each(function() {
+            checkedregions.push($(this).attr('name').split("show")[1].trim());
+        });
+
+        var genome = "{{ genome |safe }}"
+        var show_hits = $('#show_hits').val()
+        var hidden_hits = $('#hidden_hits').is(":checked")
+
+        console.log('checers')
+        console.log(checkedregions)
+
+        return [genome, show_hits, hidden_hits, checkedregions]
+
+    }
+
+        function submit_details(){
+
+        var details = collect_details()
+        genome = details[0];
+        show_hits =details[1];
+        hidden_hits = details[2];
+        checked_regions = details[3];
+
+        $.ajax({
+
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            url: "{{  url_for ('show_hits')}}",
+            data: JSON.stringify({
+                'genome': genome, 'hits': show_hits, 'hidden_type': hidden_hits, 'checked_regions': checked_regions
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            traditional: "true",
+            success: function (response) {
+
+                console.log('bamboozled')
+
+                window.location.reload();
+
+
+            }
+
+
+        });
+    }
 
 
 
+    $('#show_regions').on('click', function (e) {
+        e.preventDefault();
+        console.log('clicked show regions')
+        submit_details()
 
-            $('#show_hits').val("{{hit_type | safe }}")
-
-
-
-            $('#hidden_hits').on('change', function() {
-                var genome = "{{ genome |safe }}"
-
-                var show_hits = $('#show_hits').val()
-                var hidden_hits = $('#hidden_hits').is(":checked")
-
-
-                console.log('seending')
-                console.log(this.value)
-
-
-                 $.ajax({
-
-                type: "POST",
-                contentType: "application/json;charset=utf-8",
-                url: "{{  url_for ('show_hits')}}",
-                 data: JSON.stringify({
-                 'genome' : genome, 'hits' : show_hits, 'hidden_type' : hidden_hits
-             }),
-             contentType: 'application/json;charset=UTF-8',
-             type: 'POST',
-                traditional: "true",
-                                         success: function (response) {
-
-                        console.log('bamboozled')
-
-                        window.location.reload();
-
-
-                    }
-
-
-
-            });
-});
-
-             $('#show_hits').on('change', function() {
-
-                 var genome = "{{ genome |safe }}"
-
-                 var hidden_hits = $('#hidden_hits').is(":checked")
-
-                          console.log('seending')
-                console.log(hidden_hits)
-
-
-                 $.ajax({
-
-                type: "POST",
-                contentType: "application/json;charset=utf-8",
-                url: "{{  url_for ('show_hits')}}",
-                 data: JSON.stringify({
-                 'genome' : genome, 'hits' : this.value, 'hidden_type' : hidden_hits
-             }),
-             contentType: 'application/json;charset=UTF-8',
-             type: 'POST',
-                traditional: "true",
-                                         success: function (response) {
-
-                        console.log('bamboozled')
-
-                        window.location.reload();
-
-
-                    }
-
-
-
-            });
-});
+    });
 
 
 
 
 
-         $('#submit_hit').on('click', function (e) {
-         e.preventDefault();
-         console.log('clicked submit hit')
 
-     });
+    $('#hidden_hits').on('change', function (e) {
 
-                       $('#tag_genome').on('click', function (e) {
-         e.preventDefault();
+        e.preventDefault();
+        console.log('clicked hidden hits regions')
+        submit_details()
 
-         var genome = "{{ genome |safe }}"
-         tag2add = $("#tag2add").val();
+    });
 
+    $('#show_hits').on('change', function (e) {
 
-         $.ajax({
-             url: Flask.url_for("tag_genome"),
-             data: JSON.stringify({
-                 'genome' : genome, tag2add :
-                 tag2add
-             }),
-             contentType: 'application/json;charset=UTF-8',
-             type: 'POST',
-             error: function(error) {
-                 console.log(error);
-             },
-              success: function (response) {
-
-                        console.log('bamboozled')
-
-                        window.location.reload();
+        e.preventDefault();
+        console.log('clicked show hits')
+        submit_details()
+    });
 
 
-                    }
-         });
-
-     });
-
-      $('#hide_hit').on('click', function (e) {
-         e.preventDefault();
-         console.log('clicked hide hit')
-
-         var genome = "{{ genome |safe }}"
-         tag2add = 'hidden';
+    $('#submit_hit').on('click', function (e) {
+        e.preventDefault();
+        console.log('clicked submit hit');
+        var checkedBoxes = document.querySelectorAll('input[name=mycheckboxes]:checked');
 
 
-         $.ajax({
-             url: Flask.url_for("tag_hit"),
-             data: JSON.stringify({
-                 'genome' : genome, 'hits' : selected, tag2add :
-                 tag2add
-             }),
-             contentType: 'application/json;charset=UTF-8',
-             type: 'POST',
-             error: function(error) {
-                 console.log(error);
-             },
-              success: function (response) {
+    });
 
-                        console.log('bamboozled')
+    $('#tag_genome').on('click', function (e) {
+        e.preventDefault();
 
-                        window.location.reload();
+        var genome = "{{ genome |safe }}";
+        tag2add = $("#tag2add").val();
 
 
-                    }
-         });
+        $.ajax({
+            url: Flask.url_for("tag_genome"),
+            data: JSON.stringify({
+                'genome': genome, 'tag2add': tag2add
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            error: function (error) {
+                console.log(error);
+            },
+            success: function (response) {
 
-     });
+                console.log('bamboozled')
+
+                window.location.reload();
+
+
+            }
+        });
+
+    });
+
+    $('#hide_hit').on('click', function (e) {
+        e.preventDefault();
+        console.log('clicked hide hit')
+
+        var genome = "{{ genome |safe }}"
+        tag2add = 'hidden';
+
+
+        $.ajax({
+            url: Flask.url_for("tag_hit"),
+            data: JSON.stringify({
+                'genome': genome, 'hits': selected, 'tag2add': tag2add
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            error: function (error) {
+                console.log(error);
+            },
+            success: function (response) {
+
+                console.log('bamboozled')
+
+                window.location.reload();
+
+
+            }
+        });
+
+    });
 
 
     $('#tag_hit').on('click', function (e) {
-         e.preventDefault();
-         console.log('clicked tag hit')
+        e.preventDefault();
+        console.log('clicked tag hit')
 
-         var genome = "{{ genome |safe }}"
-         tag2add = $("#tag2add").val();
-
-
-         $.ajax({
-             url: Flask.url_for("tag_hit"),
-             data: JSON.stringify({
-                 'genome' : genome, 'hits' : selected, tag2add :
-                 tag2add
-             }),
-             contentType: 'application/json;charset=UTF-8',
-             type: 'POST',
-             error: function(error) {
-                 console.log(error);
-             },
-              success: function (response) {
-
-                        console.log('bamboozled')
-
-                        window.location.reload();
+        var genome = "{{ genome |safe }}"
+        tag2add = $("#tag2add").val();
 
 
-                    }
-         });
+        $.ajax({
+            url: Flask.url_for("tag_hit"),
+            data: JSON.stringify({
+                'genome': genome, 'hits': selected, 'tag2add': tag2add
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            error: function (error) {
+                console.log(error);
+            },
+            success: function (response) {
 
-     });
+                console.log('bamboozled')
 
-     $('#delete_hit').on('click', function (e) {
-         e.preventDefault();
-         console.log('clicked delete hit')
-
-         var genome = "{{ genome |safe }}"
-         hits = "gabe"
-
-
-         $.ajax({
-             url: Flask.url_for("delete_hit"),
-             data: JSON.stringify({
-                 'genome' : genome, 'hits' : selected
-             }),
-             contentType: 'application/json;charset=UTF-8',
-             type: 'POST',
-             error: function(error) {
-                 console.log(error);
-             },
-              success: function (response) {
-
-                        console.log('bamboozled')
-
-                        window.location.reload();
+                window.location.reload();
 
 
-                    }
-         });
+            }
+        });
 
-     });
+    });
+
+    $('#delete_hit').on('click', function (e) {
+        e.preventDefault();
+        console.log('clicked delete hit')
+
+        var genome = "{{ genome |safe }}"
+        hits = "gabe"
+
+
+        $.ajax({
+            url: Flask.url_for("delete_hit"),
+            data: JSON.stringify({
+                'genome': genome, 'hits': selected
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            error: function (error) {
+                console.log(error);
+            },
+            success: function (response) {
+
+                console.log('bamboozled')
+
+                window.location.reload();
+
+
+            }
+        });
+
+    });
 </script>
 
-        {% endblock %}
+{% endblock %}
 
 
 

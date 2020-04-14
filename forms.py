@@ -86,6 +86,20 @@ class GenomeDiagramSelectForm(FlaskForm):
                                                                                                     'hits'),
                                                                    ('expanded', 'Just expanded hits')])
 
+class GenomeDiagamShowRegions(FlaskForm):
+    """
+    Form for selecting which regions to look at in the Genome Diagram
+    """
+
+    showA1 = BooleanField("Show A1")
+    showA2 = BooleanField("Show A2")
+    showTcdA1 = BooleanField("Show TcdA1")
+    showTcB = BooleanField("Show TcB")
+    showTcC = BooleanField("Show TcC")
+    showChitinase = BooleanField("Show Chitinase")
+
+    show_regions = SubmitField("Update regions to show")
+
 
 class GenomeHitForm(FlaskForm):
     """

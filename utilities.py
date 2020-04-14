@@ -250,7 +250,7 @@ def check_with_profile(ids, region):
     else:
         flash("Please set a profile as the %s reference profile first" % (region), "error")
 
-def get_genome_items(genome, hits='all', hidden_type=True):
+def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None):
     """
     Format the items in a genome correctly for a Genome Detail view
     :param self:
@@ -261,6 +261,17 @@ def get_genome_items(genome, hits='all', hidden_type=True):
     glyphs = {}
     region_list = []
     genomesize = len(genome.sequence)
+
+    print ('CHECKED REGIONS IS ')
+    print (checked_regions)
+
+    # Add in the expanded versions of the checked regions
+    if checked_regions != None:
+        for x in range(len(checked_regions)):
+            print (x)
+            checked_regions.append (checked_regions[x] + "_expanded")
+
+    print (checked_regions)
 
     for count, hit in enumerate(genome.hits):
 
@@ -275,90 +286,94 @@ def get_genome_items(genome, hits='all', hidden_type=True):
             print ('hidden type is ' + str(hidden_type))
             print (hit.tags)
 
-            if ((hidden_type == False) or (hidden_type == True and 'hidden' not in hit.tags)):
-
-                print (hit.id)
-                print (hit.name)
-
-                if hit.name != None:
-                    hit_details = dict()
-                    hit_details['id'] = count
-                    hit_details['hit_id'] = str(hit.id)
-                    hit_details['start'] = hit.start
-                    hit_details['end'] = hit.end
-                    hit_details['name'] = hit.region
-                    # hit_details['strand'] = 1 if count % 2 == 0 else -1
-                    if hit.region == 'TcdA1' or hit.region == 'TcdA1_expanded':
-                        hit_details['strand'] = -1
-                    else:
-                        hit_details['strand'] = 1
 
 
+            if (checked_regions == None) or hit.region in checked_regions:
 
-                    #
-                    # print ('genome length')
+                if ((hidden_type == False) or (hidden_type == True and 'hidden' not in hit.tags)):
 
+                    print (hit.id)
+                    print (hit.name)
+
+                    if hit.name != None:
+                        hit_details = dict()
+                        hit_details['id'] = count
+                        hit_details['hit_id'] = str(hit.id)
+                        hit_details['start'] = hit.start
+                        hit_details['end'] = hit.end
+                        hit_details['name'] = hit.region
+                        # hit_details['strand'] = 1 if count % 2 == 0 else -1
+                        if hit.region == 'TcdA1' or hit.region == 'TcdA1_expanded':
+                            hit_details['strand'] = -1
+                        else:
+                            hit_details['strand'] = 1
 
 
 
-                    idx1 = 0
-                    idx2 = idx1 + 3
-
-                    stop_codons = ["TAG", "TAA", "TGA"]
-
-                    if hit.strand == 'backward':
-                        sequence = Seq(hit.sequence, generic_nucleotide)
-
-                        hit_sequence = sequence.reverse_complement()
-                    else:
-                        hit_sequence = hit.sequence
-                    #
-                    # print ('flipped seq')
-                    #
-                    # print (hit_sequence)
-                    print ('get the sequence')
-
-                    # print (hit_sequence)
-                    #
-                    # print (hit.strand)
-                    #
-                    # print (hit.start)
-                    #
-                    # print (hit.end)
-
-
-                    while idx2 <= len(hit.sequence):
-                        if hit_sequence[idx1:idx2] in stop_codons:
-                            print('found', idx1)
-                            print (hit_sequence)
-                            print (hit.region)
-                            print (hit_sequence[idx1:idx2 + 20])
-
-                            print (hit.start)
-                            print (hit.end)
-                            print (idx1)
-
-                            if hit.strand == 'backward':
-                                pos = int(hit.end) - idx1
-                            else:
-                                pos = int(hit.start) + idx1
-
-                            print (pos)
-
-                            if pos in glyphs:
-                                glyphs[pos].append(hit.region)
-                            else:
-                                glyphs[pos] = [hit.region]
-                        # print (hit_sequence[idx1:idx2])
-                        idx1 += 3
-                        idx2 += 3
-
-
-                    region_list.append(hit_details)
+                        #
+                        # print ('genome length')
 
 
 
-                    items[hit.region].append(hit_details)
+
+                        idx1 = 0
+                        idx2 = idx1 + 3
+
+                        stop_codons = ["TAG", "TAA", "TGA"]
+
+                        if hit.strand == 'backward':
+                            sequence = Seq(hit.sequence, generic_nucleotide)
+
+                            hit_sequence = sequence.reverse_complement()
+                        else:
+                            hit_sequence = hit.sequence
+                        #
+                        # print ('flipped seq')
+                        #
+                        # print (hit_sequence)
+                        # print ('get the sequence')
+
+                        # print (hit_sequence)
+                        #
+                        # print (hit.strand)
+                        #
+                        # print (hit.start)
+                        #
+                        # print (hit.end)
+
+
+                        while idx2 <= len(hit.sequence):
+                            if hit_sequence[idx1:idx2] in stop_codons:
+                                # print('found', idx1)
+                                # print (hit_sequence)
+                                # print (hit.region)
+                                # print (hit_sequence[idx1:idx2 + 20])
+                                #
+                                # print (hit.start)
+                                # print (hit.end)
+                                # print (idx1)
+
+                                if hit.strand == 'backward':
+                                    pos = int(hit.end) - idx1
+                                else:
+                                    pos = int(hit.start) + idx1
+
+                                # print (pos)
+
+                                if pos in glyphs:
+                                    glyphs[pos].append(hit.region)
+                                else:
+                                    glyphs[pos] = [hit.region]
+                            # print (hit_sequence[idx1:idx2])
+                            idx1 += 3
+                            idx2 += 3
+
+
+                        region_list.append(hit_details)
+
+
+
+                        items[hit.region].append(hit_details)
 
     # print (items)
 
@@ -374,8 +389,8 @@ def build_tracks(items, glyphs):
 
     for region_name in items:
 
-        print ('region name')
-        print (region_name)
+        # print ('region name')
+        # print (region_name)
 
         regions = []
 

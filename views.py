@@ -474,6 +474,7 @@ class GenomeDetailView(BaseView):
     @expose("/", methods=('GET', 'POST'))
     def genomedetail(self):
         select_form = forms.GenomeDiagramSelectForm()
+        region_form = forms.GenomeDiagamShowRegions()
         select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
                                       models.GenomeRecords.objects()]
 
@@ -488,7 +489,9 @@ class GenomeDetailView(BaseView):
 
         if session.get('hidden_type') is None:
             session['hidden_type'] = True
-            print ('changing type WOO')
+
+        if session.get('checked_regions') is None:
+            session['checked_regions'] = None
 
         if request.method == 'POST' and select_form.submit_diagram.data:
 
@@ -503,12 +506,14 @@ class GenomeDetailView(BaseView):
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
                 tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
-                    'hidden_type'])
+                    'hidden_type'], checked_regions=session['checked_regions'])
 
                 session['genome'] = None
 
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
+                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form,
+                                   region_form=region_form, tracks=tracks,
                                    genome=genome.id, hit_type=session['hits'], hidden_type=session['hidden_type'],
+                                   checked_regions=session['checked_regions'],
                 genomesize = \
                     genomesize)
 
@@ -516,13 +521,13 @@ class GenomeDetailView(BaseView):
 
 
             tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
-                'hidden_type'])
+                'hidden_type'], checked_regions=session['checked_regions'])
 
             print('got here')
 
-            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
+            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, region_form=region_form, tracks=tracks,
                                genome=genome.id, hit_type=session['hits'], hidden_type=session['hidden_type'],
-            genomesize = genomesize)
+                               checked_regions=session['checked_regions'],genomesize = genomesize)
 
             # elif hit_form.submit_hit.data and hit_form.validate():
             #
@@ -548,7 +553,7 @@ class GenomeDetailView(BaseView):
             print('get')
 
             # Just get the first Genome Record in the database and return a Genome Detail of that
-            genome = models.GenomeRecords.objects()[1]
+            genome = models.GenomeRecords.objects()[0]
 
             print ('genome here is ')
             print (genome.name)
@@ -558,8 +563,9 @@ class GenomeDetailView(BaseView):
             print ('genomesize was')
             print (genomesize )
 
-            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-                               genome=genome.id, genomesize=genomesize, hit_type=session['hits'], hidden_type=session['hidden_type'])
+            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, region_form=region_form, tracks=tracks,
+                               genome=genome.id,  hit_type=session['hits'],
+                               hidden_type=session['hidden_type'], checked_regions=session['checked_regions'], genomesize=genomesize)
 
 
 class UserView(ModelView):
@@ -837,6 +843,8 @@ def show_hits():
     session['genome'] = request.json['genome']
     session['hits'] = request.json['hits']
     session['hidden_type'] = request.json['hidden_type']
+    session['checked_regions'] = request.json['checked_regions']
+
 
     return redirect(url_for('genomedetail.genomedetail'))
 
