@@ -4,6 +4,7 @@
 /static/uploads/*
 /testing/*
 /tmp/*
+
 # Mongo configs
 /configs/mongoconfig.py
 
