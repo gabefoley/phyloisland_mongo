@@ -4,6 +4,10 @@
 /static/uploads/*
 /testing/*
 
+# Mongo configs
+/configs/mongoconfig.py
+
+
 # Pycharm settings
 
 .idea/
