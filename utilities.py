@@ -303,7 +303,8 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
                         hit_details['end'] = hit.end
                         hit_details['name'] = hit.region
                         # hit_details['strand'] = 1 if count % 2 == 0 else -1
-                        if hit.region == 'TcdA1' or hit.region == 'TcdA1_expanded':
+                        if hit.region == 'TcdA1' or hit.region == 'TcdA1_expanded' or hit.region == 'TcC' or \
+                                hit.region == 'TcC_expanded':
                             hit_details['strand'] = -1
                         else:
                             hit_details['strand'] = 1
