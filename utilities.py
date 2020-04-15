@@ -262,38 +262,38 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
     region_list = []
     genomesize = len(genome.sequence)
 
-    print ('CHECKED REGIONS IS ')
-    print (checked_regions)
+    # print ('CHECKED REGIONS IS ')
+    # print (checked_regions)
 
     # Add in the expanded versions of the checked regions
-    if checked_regions != None:
-        for x in range(len(checked_regions)):
-            print (x)
-            checked_regions.append (checked_regions[x] + "_expanded")
+    # if checked_regions != None:
+    #     for x in range(len(checked_regions)):
+    #         print (x)
+    #         checked_regions.append (checked_regions[x] + "_expanded")
 
-    print (checked_regions)
+    # print (checked_regions)
 
     for count, hit in enumerate(genome.hits):
 
-        print ('count is ')
-
-        print (count)
+        # print ('count is ')
+        #
+        # print (count)
 
         if ((hits == 'all') or ((hits == 'initial') and ('expanded' not in hit.region)) or ((hits == 'expanded') and
          'expanded' in hit.region)):
 
+            #
+            # print ('hidden type is ' + str(hidden_type))
+            # print (hit.tags)
 
-            print ('hidden type is ' + str(hidden_type))
-            print (hit.tags)
 
 
-
-            if (checked_regions == None) or hit.region in checked_regions:
+            if (checked_regions == None) or hit.region in checked_regions or hit.region.split("_expanded")[0] in checked_regions:
 
                 if ((hidden_type == False) or (hidden_type == True and 'hidden' not in hit.tags)):
 
-                    print (hit.id)
-                    print (hit.name)
+                    # print (hit.id)
+                    # print (hit.name)
 
                     if hit.name != None:
                         hit_details = dict()
@@ -398,8 +398,8 @@ def build_tracks(items, glyphs):
         #NOTE: I'm forcing the strands all to be 1 here to visualise on the same line in the linear genome
 
         for region in items[region_name]:
-            print ('region')
-            print (region)
+            # print ('region')
+            # print (region)
             region_dict = {'id' : region['hit_id'], 'start' : int(region['start']), 'end' : int(region['end']),
                            'name' : region[
                 'name'],
@@ -423,8 +423,8 @@ def build_tracks(items, glyphs):
         'items' : regions }
 
         tracks.append(track)
-    print ('and tracks are ')
-    print (tracks)
+    # print ('and tracks are ')
+    # print (tracks)
 
     glyph_regions = []
 
@@ -465,7 +465,7 @@ def build_tracks(items, glyphs):
 
     json_tracks = json.dumps(tracks)
 
-    print (json_tracks)
+    # print (json_tracks)
 
     return json_tracks
 

@@ -480,9 +480,9 @@ class GenomeDetailView(BaseView):
 
         hit_form = forms.GenomeHitForm()
 
-        print('back here again')
-
-        print ('check there is a change here')
+        # print('back here again')
+        #
+        # print ('check there is a change here')
 
         if session.get('hits') is None:
             session['hits'] = 'expanded'
@@ -495,13 +495,13 @@ class GenomeDetailView(BaseView):
 
         if request.method == 'POST' and select_form.submit_diagram.data:
 
-            print('post')
+            # print('post')
 
 
 
 
             if session.get('genome') is not None:
-                print('session genome not none')
+                # print('session genome not none')
 
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
@@ -523,7 +523,7 @@ class GenomeDetailView(BaseView):
             tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
                 'hidden_type'], checked_regions=session['checked_regions'])
 
-            print('got here')
+            # print('got here')
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, region_form=region_form, tracks=tracks,
                                genome=genome.id, hit_type=session['hits'], hidden_type=session['hidden_type'],
@@ -550,18 +550,18 @@ class GenomeDetailView(BaseView):
         #                        genome=genome.id)
         else:
 
-            print('get')
+            # print('get')
 
             # Just get the first Genome Record in the database and return a Genome Detail of that
             genome = models.GenomeRecords.objects()[0]
 
-            print ('genome here is ')
-            print (genome.name)
+            # print ('genome here is ')
+            # print (genome.name)
 
             tracks, genomesize = utilities.get_genome_items(genome)
 
-            print ('genomesize was')
-            print (genomesize )
+            # print ('genomesize was')
+            # print (genomesize )
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, region_form=region_form, tracks=tracks,
                                genome=genome.id,  hit_type=session['hits'],

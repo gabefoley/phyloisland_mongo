@@ -78,6 +78,16 @@ class GenomeRecords(db.DynamicDocument):
     genome_expanded_overview = db.FileField()
     tags = db.ListField(db.StringField(), default=list)
 
+    meta = {
+	'indexes': [
+	{
+	     'fields': ['+name']
+	},
+	{
+	     'fields': ['#name']
+	}]
+    }
+
 
 
 

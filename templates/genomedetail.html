@@ -169,7 +169,7 @@
     var r = {{checked_regions | safe}}
 
     for(var i=0;i<r.length;i++) {
-        console.log(r[i])
+//        console.log(r[i])
     $('#show' + r[i]).prop('checked', true)
     }
 
@@ -177,9 +177,9 @@
 
 <script>
 
-    console.log('what is it here')
-    console.log("{{hit_type}}")
-    console.log("{{hidden_type}}")
+//    console.log('what is it here')
+//    console.log("{{hit_type}}")
+//    console.log("{{hidden_type}}")
 
     $('#show_hits').val("{{hit_type | safe }}")
 
@@ -237,7 +237,6 @@
 
 
     $('#show_regions').on('click', function (e) {
-        e.preventDefault();
         console.log('clicked show regions')
         submit_details()
 
@@ -250,30 +249,30 @@
 
     $('#hidden_hits').on('change', function (e) {
 
-        e.preventDefault();
-        console.log('clicked hidden hits regions')
+//        e.preventDefault();
+//        console.log('clicked hidden hits regions')
         submit_details()
 
     });
 
     $('#show_hits').on('change', function (e) {
 
-        e.preventDefault();
-        console.log('clicked show hits')
+//        e.preventDefault();
+//        console.log('clicked show hits')
         submit_details()
     });
 
 
     $('#submit_hit').on('click', function (e) {
-        e.preventDefault();
-        console.log('clicked submit hit');
+//        e.preventDefault();
+//        console.log('clicked submit hit');
         var checkedBoxes = document.querySelectorAll('input[name=mycheckboxes]:checked');
 
 
     });
 
     $('#tag_genome').on('click', function (e) {
-        e.preventDefault();
+//        e.preventDefault();
 
         var genome = "{{ genome |safe }}";
         tag2add = $("#tag2add").val();
@@ -302,8 +301,8 @@
     });
 
     $('#hide_hit').on('click', function (e) {
-        e.preventDefault();
-        console.log('clicked hide hit')
+//        e.preventDefault();
+//        console.log('clicked hide hit')
 
         var genome = "{{ genome |safe }}"
         tag2add = 'hidden';
@@ -333,8 +332,8 @@
 
 
     $('#tag_hit').on('click', function (e) {
-        e.preventDefault();
-        console.log('clicked tag hit')
+//        e.preventDefault();
+//        console.log('clicked tag hit')
 
         var genome = "{{ genome |safe }}"
         tag2add = $("#tag2add").val();
@@ -363,11 +362,10 @@
     });
 
     $('#delete_hit').on('click', function (e) {
-        e.preventDefault();
-        console.log('clicked delete hit')
+//        e.preventDefault();
+//        console.log('clicked delete hit')
 
         var genome = "{{ genome |safe }}"
-        hits = "gabe"
 
 
         $.ajax({
