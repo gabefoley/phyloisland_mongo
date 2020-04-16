@@ -84,7 +84,7 @@ def add_genome(genome_results):
                 print("Adding the genome record - %s from species - %s to the genome database" % (name, species))
 
                 genome = models.GenomeRecords(name=name, species=species, strain=strain, description=description,
-                                              sequence=sequence, tags = ['first', 'second'])
+                                              sequence=sequence, tags = [])
                 genome.save()
 
 
@@ -503,3 +503,4 @@ def rename_duplicates(genome_name, old):
             old[pos] = "_".join(old[pos].split("_")[0:-1]) + "_" + genome_name + "_" + old[pos].split("_")[-1]
 
     return old
+

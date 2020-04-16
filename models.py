@@ -61,6 +61,11 @@ class Hits(db.EmbeddedDocument):
     sequence = db.StringField()
     tags = db.ListField(db.StringField(), default=list)
 
+class AssociatedHits(db.DynamicDocument):
+    region1 = db.StringField()
+    region2 = db.StringField()
+
+
 class GenomeRecords(db.DynamicDocument):
     """
     Class for storing Genome records

@@ -4,6 +4,8 @@
 /static/uploads/*
 /testing/*
 /tmp/*
+/fasta_folder/*
+
 
 # Mongo configs
 /configs/mongoconfig.py

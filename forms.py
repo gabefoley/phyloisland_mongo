@@ -75,10 +75,13 @@ class GenomeDiagramSelectForm(FlaskForm):
     genome = SelectMultipleField('Genome', choices=[])
     submit_diagram = SubmitField("Submit")
     tag_genome = SubmitField('Tag genome')
+    clear_genome_tags = SubmitField('Clear genome tags')
     submit_hit = SubmitField("Add tag")
     hide_hit = SubmitField('Hide hit')
 
     delete_hit = SubmitField("Delete hit")
+
+    associate_hits = SubmitField("Associate hits")
 
     hidden_hits = BooleanField("Hide hits marked 'hidden'")
 
@@ -134,7 +137,14 @@ class DownloadFastaForm(FlaskForm):
         translate = BooleanField("Translate nucleotides to proteins?",
                                 default="checked")
         align = BooleanField("Also create an alignment?")
+
+
         submit = SubmitField("Submit")
+
+class DownloadAssociatedRegions(FlaskForm):
+
+    associated_regions = SubmitField("Download Associated Regions")
+
 
 class DownloadGenomeOrder(FlaskForm):
     include_genome = StringField('Only include genomes tagged with - ')

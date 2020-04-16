@@ -94,6 +94,13 @@
 
 
 </script>
+<div id="current_tags">
+
+    Genome is currently tagged with -
+
+    {{genome_tags | safe}}
+
+</div>
 
 <div id="hit_div">
 
@@ -111,9 +118,15 @@
     <br>
 
     <button name="tagBtn" class="btn-primary" id="tag_genome" type="submit">Tag genome</button>
+    <button name="tagBtn" class="btn-primary" id="clear_genome_tags" type="submit">Clear all genome tags</button>
 
     <br>
     <br>
+        <button name="tagBtn" class="btn-primary" id="associate_hits" type="submit">Associate A1 / A2 region </button>
+
+    <br>
+    <br>
+
 
 
     List of hits to tag, hide, or delete:
@@ -246,7 +259,6 @@
 
 
 
-
     $('#hidden_hits').on('change', function (e) {
 
 //        e.preventDefault();
@@ -257,7 +269,7 @@
 
     $('#show_hits').on('change', function (e) {
 
-//        e.preventDefault();
+        e.preventDefault();
 //        console.log('clicked show hits')
         submit_details()
     });
@@ -272,7 +284,6 @@
     });
 
     $('#tag_genome').on('click', function (e) {
-//        e.preventDefault();
 
         var genome = "{{ genome |safe }}";
         tag2add = $("#tag2add").val();
@@ -291,6 +302,32 @@
             success: function (response) {
 
                 console.log('bamboozled')
+
+                window.location.reload();
+
+
+            }
+        });
+
+    });
+
+        $('#clear_genome_tags').on('click', function (e) {
+
+        var genome = "{{ genome |safe }}";
+
+
+        $.ajax({
+            url: Flask.url_for("clear_genome_tags"),
+            data: JSON.stringify({
+                'genome': genome
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            error: function (error) {
+                console.log(error);
+            },
+            success: function (response) {
+
 
                 window.location.reload();
 
@@ -372,6 +409,52 @@
             url: Flask.url_for("delete_hit"),
             data: JSON.stringify({
                 'genome': genome, 'hits': selected
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            error: function (error) {
+                console.log(error);
+            },
+            success: function (response) {
+
+                console.log('bamboozled')
+
+                window.location.reload();
+
+
+            }
+        });
+
+    });
+
+        $('#associate_hits').on('click', function (e) {
+        console.log('clicked associate hits')
+
+        var genome = "{{ genome |safe }}";
+
+        console.log(selected);
+
+        console.log ('length was')
+            console.log(Object.keys(selected).length)
+
+
+
+
+        if (Object.keys(selected).length != 2) {
+                        alert("Can only associate between 2 regions at a time")
+        }
+
+        else {
+
+            console.log(selected[0])
+        }
+
+
+
+        $.ajax({
+            url: Flask.url_for("associate_hits"),
+            data: JSON.stringify({
+                'genome': genome, 'hits': selected,
             }),
             contentType: 'application/json;charset=UTF-8',
             type: 'POST',

@@ -251,6 +251,7 @@ class DownloadFastaView(BaseView):
 
     def setup(self):
         form = forms.DownloadFastaForm()
+        associated_regions = forms.DownloadAssociatedRegions()
 
         if request.method == "POST":
             if form.submit.data:
@@ -265,33 +266,57 @@ class DownloadFastaView(BaseView):
                     include_hits = form.include_hits.data.split(",")
                     exclude_hits = form.exclude_hits.data.split(",")
                     align= form.align.data
-                    split_strands = True
+                    split_strands = False
 
                     print('here they come')
-                    print(include_genome)
-                    print(exclude_genome)
-                    print(include_hits)
+                    print("Include genome ")
+                    print (include_genome)
+                    print("Exclude genome ")
+                    print (exclude_genome)
+                    print("Include hits ")
+                    print( include_hits)
+                    print("Exclude hits ")
                     print(exclude_hits)
 
-                    getGenomes.download_fasta_regions(region, split_strands, filename, include_genome, exclude_genome, \
+                    # if include_genome == [""]:
+                    #     include_genome = None
+                    #
+                    # if exclude_genome == [""]:
+                    #     exclude_genome = None
+                    #
+                    # if include_hits == [""]:
+                    #     include_hits = None
+                    #
+                    # if exclude_hits == [""]:
+                    #     exclude_hits = None
+
+                    outpath = getGenomes.download_fasta_regions(region, filename, include_genome, exclude_genome, \
                                                                   include_hits,
-                                                      exclude_hits, translate, align)
+                                                      exclude_hits, translate, align, split_strands)
 
 
 
-                    flash("Downloaded " + region + " file", category='success')
-                    return self.render('download_fasta.html', form=form)
+                    flash("Downloaded " + region + " file to " + outpath, category='success')
+                    return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
 
                 except Exception as e:
                     print(e)
                     flash(e, category='error')
-                    return self.render('download_fasta.html', form=form)
+                    return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
+
+            elif associated_regions.associated_regions.data:
+
+                outpath = getGenomes.download_associated_regions()
+
+                flash("Downloaded associated regions file to " + outpath, category='success')
+
+                return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
 
             else:
-                return self.render('download_fasta.html', form=form)
+                return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
 
         elif request.method == "GET":
-            return self.render('download_fasta.html', form=form)
+            return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
 
 
 class DownloadGenomeOrderView(BaseView):
@@ -484,6 +509,7 @@ class GenomeDetailView(BaseView):
         #
         # print ('check there is a change here')
 
+
         if session.get('hits') is None:
             session['hits'] = 'expanded'
 
@@ -491,28 +517,37 @@ class GenomeDetailView(BaseView):
             session['hidden_type'] = True
 
         if session.get('checked_regions') is None:
-            session['checked_regions'] = None
+            session['checked_regions'] = ['A1', 'A2', 'TcdA1', 'TcB', 'TcC', 'Chitinase']
 
         if request.method == 'POST' and select_form.submit_diagram.data:
 
-            # print('post')
+            print('post')
+
+            # print (session['genome'])
 
 
 
 
             if session.get('genome') is not None:
-                # print('session genome not none')
+                print('session genome not none')
 
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
                 tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
                     'hidden_type'], checked_regions=session['checked_regions'])
 
-                session['genome'] = None
+                # session['genome'] = None
+
+                tags = genome['tags']
+
+                print ('tags was ')
+
+                print (tags)
 
                 return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form,
                                    region_form=region_form, tracks=tracks,
-                                   genome=genome.id, hit_type=session['hits'], hidden_type=session['hidden_type'],
+                                   genome=genome.id, genome_tags = genome['tags'], hit_type=session['hits'], \
+                                                                                    hidden_type=session['hidden_type'],
                                    checked_regions=session['checked_regions'],
                 genomesize = \
                     genomesize)
@@ -814,6 +849,38 @@ def tag_genome():
 
     return redirect('genomedetail')
 
+@app.route("/genomedetail/clear_genome_tags)", methods=['GET', 'POST'])
+def clear_genome_tags():
+    models.GenomeRecords.objects().get(id=request.json['genome']).update(tags=[])
+
+    return redirect('genomedetail')
+
+@app.route("/genomedetail/associate_hits)", methods=['GET', 'POST'])
+def associate_hits():
+
+    hits = request.json['hits']
+
+    print ('here we be ')
+    print (hits)
+
+    vals = [x for x in hits.values()]
+
+
+
+    region1 = sorted(vals)[0].replace(" ", "_")
+    region2 = sorted(vals)[1].replace(" ", "_")
+
+    print (region1)
+    print (region2)
+
+    associated_hit = models.AssociatedHits(region1, region2)
+    associated_hit.save()
+
+    # models.AssociatedHits.objects().get(id=request.json['genome']).update(tags=[])
+
+    return redirect('genomedetail')
+
+
 
 @app.route("/genomedetail/delete_hit", methods=['GET', 'POST'])
 def delete_hit():
@@ -844,6 +911,8 @@ def show_hits():
     session['hits'] = request.json['hits']
     session['hidden_type'] = request.json['hidden_type']
     session['checked_regions'] = request.json['checked_regions']
+
+    print ('yep')
 
 
     return redirect(url_for('genomedetail.genomedetail'))

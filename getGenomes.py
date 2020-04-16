@@ -11,6 +11,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 import utilities
 import models
+import json
 
 
 def read_genome(outpath, species_name):
@@ -232,9 +233,31 @@ def add_genome(species_name, categories, single):
     except subprocess.CalledProcessError as exc:
         return
 
-def download_fasta_regions(region, split_strands, filename="", include_genome=[], exclude_genome=[], include_hits=[], \
+def download_associated_regions():
+
+    ar = models.AssociatedHits.objects()
+    ar_dict = {}
+
+    for x in ar:
+        ar_dict[x['region1']] = x['region2']
+
+
+    print (ar_dict)
+
+
+    print (ar)
+
+    out_path = "./fasta_folder/associated_regions.txt"
+
+    with open (out_path, "w+") as outfile:
+        outfile.write(json.dumps(ar_dict))
+
+    return out_path
+
+def download_fasta_regions(region, filename="", include_genome=[], exclude_genome=[],
+                           include_hits=[], \
                                                                                                      exclude_hits=[],
-                           translate=True, align=True):
+                           translate=True, align=True,  split_strands=False):
     fasta_dict = {}
     forward_dict = {}
     backward_dict = {}
@@ -258,6 +281,7 @@ def download_fasta_regions(region, split_strands, filename="", include_genome=[]
         }}
     ])
 
+
     for genome in aggregate:
 
 
@@ -267,10 +291,12 @@ def download_fasta_regions(region, split_strands, filename="", include_genome=[]
 
         # Check that this genome should be included (if include_genome is non-empty) and that it
         # shouldn't be excluded
-        if ((include_genome == [] or bool(set(genome['tags']).intersection(set(include_genome))))) \
+        if ((include_genome == [''] or bool(set(genome['tags']).intersection(set(include_genome))))) \
                 and not bool(set(genome['tags']).intersection(set(exclude_genome))):
 
             print('got to here')
+
+            print (genome['name'])
 
 
             # Check that this hit should be included (if include_hit is non-empty) and that it
@@ -283,7 +309,7 @@ def download_fasta_regions(region, split_strands, filename="", include_genome=[]
                     print ('1')
                 if bool(set(hit['tags']).intersection(set(include_hits))):
                     print ('2')
-                if (not include_hits or bool(set(hit['tags']).intersection(set(include_hits)))) and not bool(set(
+                if (include_hits == [""] or bool(set(hit['tags']).intersection(set(include_hits)))) and not bool(set(
                         hit['tags']).intersection(set(exclude_hits))):
 
                     print ('found hit')
@@ -314,6 +340,7 @@ def download_fasta_regions(region, split_strands, filename="", include_genome=[]
 
                     # We want to separate forward and backward strands
                     if split_strands:
+                        print ('splitting strands')
                         if hit['strand'] == 'forward':
                             forward_dict[id_name] = (fasta_record)
                         else:
@@ -346,18 +373,35 @@ def download_fasta_regions(region, split_strands, filename="", include_genome=[]
 
         print ("Writing out to " + filename)
 
+        outpath = "./fasta_folder/" + filename + ".fasta"
+
         utilities.createFasta(fasta_dict.values(), "./fasta_folder/" + filename, align)
 
+        return outpath
+
     else:
+
+        forward_path = ""
+        backward_path = ""
+
+
         if forward_dict:
             print("Writing out forward dict to ./fasta_folder/" + filename + "_forward")
 
             utilities.createFasta(forward_dict.values(), "./fasta_folder/" + filename + "_forward", align)
 
+            forward_path = "./fasta_folder/" + filename + "_forward.fasta"
+
         if backward_dict:
             print("Writing out backward dict to ./fasta_folder/" + filename + "_backward")
 
             utilities.createFasta(backward_dict.values(), "./fasta_folder/" + filename + "_backward", align)
+
+            backward_path = "./fasta_folder/" + filename + "_backward.fasta"
+
+        return " and ".join(forward_path, backward_path)
+
+
 
 
 def write_genome_order(genomes, split_strands=True, path="./fasta_outputs/genome_order.txt"):
