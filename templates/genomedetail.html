@@ -217,6 +217,8 @@
 
         function submit_details(){
 
+        console.log('got to submit details')
+
         var details = collect_details()
         genome = details[0];
         show_hits =details[1];
@@ -249,6 +251,8 @@
 
 
 
+
+
     $('#show_regions').on('click', function (e) {
         console.log('clicked show regions')
         submit_details()
@@ -270,15 +274,15 @@
     $('#show_hits').on('change', function (e) {
 
         e.preventDefault();
-//        console.log('clicked show hits')
+        console.log('clicked show hits')
         submit_details()
     });
 
 
     $('#submit_hit').on('click', function (e) {
-//        e.preventDefault();
-//        console.log('clicked submit hit');
-        var checkedBoxes = document.querySelectorAll('input[name=mycheckboxes]:checked');
+        e.preventDefault();
+        console.log('clicked submit hit');
+        submit_details()
 
 
     });

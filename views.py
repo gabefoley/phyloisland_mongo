@@ -536,7 +536,7 @@ class GenomeDetailView(BaseView):
                 tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
                     'hidden_type'], checked_regions=session['checked_regions'])
 
-                # session['genome'] = None
+                session['genome'] = None
 
                 tags = genome['tags']
 
@@ -554,6 +554,7 @@ class GenomeDetailView(BaseView):
 
             genome = models.GenomeRecords.objects.get(id=select_form.data['genome'][0])
 
+            # tags = genome['tags']
 
             tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
                 'hidden_type'], checked_regions=session['checked_regions'])
@@ -561,7 +562,8 @@ class GenomeDetailView(BaseView):
             # print('got here')
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, region_form=region_form, tracks=tracks,
-                               genome=genome.id, hit_type=session['hits'], hidden_type=session['hidden_type'],
+                               genome=genome.id, genome_tags = genome['tags'], hit_type=session['hits'],
+                               hidden_type=session['hidden_type'],
                                checked_regions=session['checked_regions'],genomesize = genomesize)
 
             # elif hit_form.submit_hit.data and hit_form.validate():
@@ -801,6 +803,8 @@ def download_genome_expanded_overview(id):
 
 @app.route("/genomeoverview/add_tag", methods=['GET', 'POST'])
 def add_tag():
+    session['genome'] = request.json['genome']
+
     for record in request.json['records']:
         query = models.GenomeRecords.objects().get(id=record.split("/")[-1].split("_")[0])
         query.tags.append(request.json['tag'])
@@ -844,6 +848,8 @@ def tag_hit():
 
 @app.route("/genomedetail/tag_genome)", methods=['GET', 'POST'])
 def tag_genome():
+    session['genome'] = request.json['genome']
+
     models.GenomeRecords.objects().get(id=request.json['genome']).update(push__tags=
                                                                          request.json['tag2add'])
 
@@ -851,6 +857,9 @@ def tag_genome():
 
 @app.route("/genomedetail/clear_genome_tags)", methods=['GET', 'POST'])
 def clear_genome_tags():
+
+    session['genome'] = request.json['genome']
+
     models.GenomeRecords.objects().get(id=request.json['genome']).update(tags=[])
 
     return redirect('genomedetail')
@@ -912,10 +921,13 @@ def show_hits():
     session['hidden_type'] = request.json['hidden_type']
     session['checked_regions'] = request.json['checked_regions']
 
-    print ('yep')
+    print ('got to show hits')
+
+    return redirect('genomedetail')
 
 
-    return redirect(url_for('genomedetail.genomedetail'))
+
+    # return redirect(url_for('genomedetail.genomedetail'))
 
 
 @app.errorhandler(404)
