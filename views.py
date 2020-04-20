@@ -252,6 +252,7 @@ class DownloadFastaView(BaseView):
     def setup(self):
         form = forms.DownloadFastaForm()
         associated_regions = forms.DownloadAssociatedRegions()
+        tags = forms.DownloadTags()
 
         if request.method == "POST":
             if form.submit.data:
@@ -297,12 +298,12 @@ class DownloadFastaView(BaseView):
 
 
                     flash("Downloaded " + region + " file to " + outpath, category='success')
-                    return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
+                    return self.render('download_fasta.html', form=form, associated_regions=associated_regions, tags=tags)
 
                 except Exception as e:
                     print(e)
                     flash(e, category='error')
-                    return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
+                    return self.render('download_fasta.html', form=form, associated_regions=associated_regions, tags=tags)
 
             elif associated_regions.associated_regions.data:
 
@@ -310,13 +311,24 @@ class DownloadFastaView(BaseView):
 
                 flash("Downloaded associated regions file to " + outpath, category='success')
 
-                return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
+                return self.render('download_fasta.html', form=form, associated_regions=associated_regions, tags=tags)
+
+
+            elif tags.tags.data:
+
+                outpath = getGenomes.download_tags()
+
+                flash("Downloaded tags file to " + outpath, category='success')
+
+                return self.render('download_fasta.html', form=form, associated_regions=associated_regions, tags=tags)
+
+
 
             else:
-                return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
+                return self.render('download_fasta.html', form=form, associated_regions=associated_regions, tags=tags)
 
         elif request.method == "GET":
-            return self.render('download_fasta.html', form=form, associated_regions=associated_regions)
+            return self.render('download_fasta.html', form=form, associated_regions=associated_regions, tags=tags)
 
 
 class DownloadGenomeOrderView(BaseView):
@@ -817,11 +829,13 @@ def add_tag():
 def tag_hit():
     query = models.GenomeRecords.objects().get(id=request.json['genome'])
 
-    print('query id')
+    print('query name')
 
-    print(query.id)
+    # print(query.id)
 
-    print(query.hits)
+    print (query.name)
+
+    # print(query.hits)
 
     hits = query.hits
 
@@ -831,17 +845,29 @@ def tag_hit():
     for hit in hits:
         print(hit.id)
 
-    for hit_id in request.json['hits'].keys():
+    for hit_id, hit_name in request.json['hits'].items():
         print('hop id')
         print(hit_id)
+        print (hit_name)
+
+        # Add it into the genome's list of hits
 
         hits.get(id=hit_id).tags.append(request.json['tag2add'])
-
         hits.save()
+
+        region = '_region_=_ ' +hit_name.split(" ")[0]
+
+        print (hit.name)
+        pos = '_position=_' +hit_name.split(" ")[1]
+
+        genome_tag = models.GenomeTags(query.name + region + pos, tag=request.json['tag2add'])
+        genome_tag.save()
 
         # models.GenomeRecords.objects().get(id=request.json['genome'], hits__id=hit_id).update(push__hits__tags=
         #     request.json['tag2add'])
         #
+
+
 
     return redirect('genomedetail')
 
@@ -852,6 +878,10 @@ def tag_genome():
 
     models.GenomeRecords.objects().get(id=request.json['genome']).update(push__tags=
                                                                          request.json['tag2add'])
+
+    #TODO: At the moment this just supports one tag per genome
+    genome_tag = models.GenomeTags(tag_id=request.json['genome'], tag=request.json['tag2add'])
+    genome_tag.save()
 
     return redirect('genomedetail')
 
@@ -869,6 +899,8 @@ def associate_hits():
 
     hits = request.json['hits']
 
+    genome_name = request.json['genome']
+
     print ('here we be ')
     print (hits)
 
@@ -882,7 +914,7 @@ def associate_hits():
     print (region1)
     print (region2)
 
-    associated_hit = models.AssociatedHits(region1, region2)
+    associated_hit = models.AssociatedHits(genome_name + "_" + region1, genome_name + "_" + region2)
     associated_hit.save()
 
     # models.AssociatedHits.objects().get(id=request.json['genome']).update(tags=[])

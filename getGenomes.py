@@ -254,6 +254,23 @@ def download_associated_regions():
 
     return out_path
 
+def download_tags():
+
+    tags = models.GenomeTags.objects()
+
+    tag_dict = {}
+
+    for x in tags:
+        tag_dict[x['tag_id']] = x['tag']
+
+    out_path = "./fasta_folder/tags.txt"
+
+    with open (out_path, "w+") as outfile:
+        outfile.write(json.dumps(tag_dict))
+
+    return out_path
+
+
 def download_fasta_regions(region, filename="", include_genome=[], exclude_genome=[],
                            include_hits=[], \
                                                                                                      exclude_hits=[],
@@ -331,8 +348,8 @@ def download_fasta_regions(region, filename="", include_genome=[], exclude_genom
                     if translate:
                         sequence = sequence.translate()
 
-                    id_name = hit['name'] + "_info=_" + genome['species'].replace(" ", "_") + '_' + hit[
-                        'region'] + "_" + "position=_" + hit['start'] + "_" + hit['end'] + "_" + hit['strand']
+                    id_name = hit['name'] + "_information=_" + genome['species'].replace(" ", "_") + '_region=' + hit[
+                        'region'] + "_position=_" + hit['start'] + "_" + hit['end'] + "_" + hit['strand']
 
                     # seq_count[hit['name']].append(id_name)
 

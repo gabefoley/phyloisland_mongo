@@ -146,6 +146,12 @@ class DownloadAssociatedRegions(FlaskForm):
     associated_regions = SubmitField("Download Associated Regions")
 
 
+class DownloadTags(FlaskForm):
+
+    tags = SubmitField("Download Tags")
+
+
+
 class DownloadGenomeOrder(FlaskForm):
     include_genome = StringField('Only include genomes tagged with - ')
 

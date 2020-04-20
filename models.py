@@ -65,6 +65,11 @@ class AssociatedHits(db.DynamicDocument):
     region1 = db.StringField()
     region2 = db.StringField()
 
+class GenomeTags(db.DynamicDocument):
+    tag_id = db.StringField()
+    tag = db.StringField()
+
+
 
 class GenomeRecords(db.DynamicDocument):
     """
