@@ -4,8 +4,8 @@
 # Freely distributed under the GNU General Public License (GPLv3).
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # query HMM file:                  leidreiter_profiles/RBD_A.hmm
-# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1274632_1281550_backward
-# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1274632_1281550_backward_profile=RBD_A.hmm.output
+# target sequence database:        /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/RBD_Analysis/results/output/domain_input/tmp/NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1274632_1281550_backward
+# output directed to file:         /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/RBD_Analysis/results/output/domain_output/NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1274632_1281550_backward_profile=RBD_A.hmm.output
 # domain reporting threshold:      score >= 1
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

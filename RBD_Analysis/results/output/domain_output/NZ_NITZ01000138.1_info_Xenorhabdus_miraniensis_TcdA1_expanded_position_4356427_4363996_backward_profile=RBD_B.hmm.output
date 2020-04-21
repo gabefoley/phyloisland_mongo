@@ -4,8 +4,8 @@
 # Freely distributed under the GNU General Public License (GPLv3).
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # query HMM file:                  leidreiter_profiles/RBD_B.hmm
-# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward
-# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward_profile=RBD_B.hmm.output
+# target sequence database:        /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/RBD_Analysis/results/output/domain_input/tmp/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward
+# output directed to file:         /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/RBD_Analysis/results/output/domain_output/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward_profile=RBD_B.hmm.output
 # domain reporting threshold:      score >= 1
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -14,31 +14,31 @@ Scores for complete sequences (score includes all domains):
    --- full sequence ---   --- best 1 domain ---    -#dom-
     E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                        Description
     ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                        -----------
-    9.6e-40  122.1   0.8    4.2e-39  120.0   0.1    2.3  1  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward  <unknown description>
+    6.1e-36  109.7   0.8    2.9e-35  107.5   0.1    2.4  1  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward  <unknown description>
 
 
 Domain annotation for each sequence (and alignments):
 >> NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward  <unknown description>
    #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
  ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
-   1 !  120.0   0.1   4.2e-39   4.2e-39      41     125 ..    1505    1588 ..    1467    1595 .. 0.85
+   1 !  107.5   0.1   2.9e-35   2.9e-35      41     123 ..    1505    1585 ..    1468    1591 .. 0.86
 
   Alignments for each domain:
-  == domain 1  score: 120.0 bits;  conditional E-value: 4.2e-39
-                                                                                            RBD_B   41 yidisleielnsakikitvktGskvleltAekdvalkPsv 80  
-                                                                                                        idi++e+  n+a+ikitv+tGsk++++tA++++a+ P++
+  == domain 1  score: 107.5 bits;  conditional E-value: 2.9e-35
+                                                                                            RBD_B   41 yidisleielnsakvkitvktGsdvleltAekdvalkPsv 80  
+                                                                                                        idi++e+  n+a++kitv+tGs+++++tA++++a+ P++
   NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 1505 WIDIDTEV--NNADIKITVVTGSKTHTFTASGYAASLPAN 1542
                                                                                                        58999999..99**************************** PP
 
-                                                                                            RBD_B   81 sfdelayqFnkleidisalafinnsaslDitlkarakdtr 120 
-                                                                                                       sfd+++y+F++leid+s+l+finn+a+lDit++arak++r
+                                                                                            RBD_B   81 sfdelayqFnkleidisalafiNNdasidvtFkatavkar 120 
+                                                                                                       sfd+++y+F++leid+s+l+fiNN+a++d+tF+a+a+k+r
   NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 1543 SFDAMQYTFKPLEIDASSLTFINNIAPLDITFEARAKKWR 1582
                                                                                                        **************************************** PP
 
-                                                                                            RBD_B  121 vlg.yk 125 
-                                                                                                       vlg +k
-  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 1583 VLGkIK 1588
-                                                                                                       **9544 PP
+                                                                                            RBD_B  121 klg 123 
+                                                                                                        lg
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 1583 VLG 1585
+                                                                                                       997 PP
 
 
 

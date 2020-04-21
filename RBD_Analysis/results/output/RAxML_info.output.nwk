@@ -49,21 +49,21 @@ raxml -m PROTGAMMAJTT -p 23456 -n output.nwk -s output.aln
 Partition: 0 with name: No Name Provided
 Base frequencies: 0.077 0.052 0.043 0.052 0.020 0.041 0.062 0.073 0.023 0.054 0.092 0.059 0.024 0.040 0.051 0.069 0.059 0.014 0.032 0.066 
 
-Inference[0]: Time 38.322534 GAMMA-based likelihood -55793.468483, best rearrangement setting 5
+Inference[0]: Time 37.385980 GAMMA-based likelihood -55793.468483, best rearrangement setting 5
 alpha[0]: 2.278771 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -55793.457892 tree written to file /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/RAxML_result.output.nwk
+Inference[0] final GAMMA-based Likelihood: -55793.457892 tree written to file /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/RBD_Analysis/results/output/RAxML_result.output.nwk
 
 
 Starting final GAMMA-based thorough Optimization on tree 0 likelihood -55793.457892 .... 
 
 Final GAMMA-based Score of best tree -55793.457892
 
-Program execution info written to /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/RAxML_info.output.nwk
-Best-scoring ML tree written to: /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/RAxML_bestTree.output.nwk
+Program execution info written to /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/RBD_Analysis/results/output/RAxML_info.output.nwk
+Best-scoring ML tree written to: /Users/gabefoley/Dropbox/Code/Python_Workspace/phyloisland_2019/RBD_Analysis/results/output/RAxML_bestTree.output.nwk
 
-Overall execution time: 45.611670 secs or 0.012670 hours or 0.000528 days
+Overall execution time: 43.989736 secs or 0.012219 hours or 0.000509 days
 
