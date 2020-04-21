@@ -194,6 +194,12 @@
 //    console.log("{{hit_type}}")
 //    console.log("{{hidden_type}}")
 
+    var genome = "{{ genome.id |safe }}"
+    var genome_name = "{{ genome.name |safe }}"
+    var genome_species = "{{ genome.species | safe}}"
+
+
+
     $('#show_hits').val("{{hit_type | safe }}")
 
 
@@ -204,7 +210,7 @@
             checkedregions.push($(this).attr('name').split("show")[1].trim());
         });
 
-        var genome = "{{ genome |safe }}"
+        var genome = "{{ genome.id |safe }}"
         var show_hits = $('#show_hits').val()
         var hidden_hits = $('#hidden_hits').is(":checked")
 
@@ -289,14 +295,16 @@
 
     $('#tag_genome').on('click', function (e) {
 
-        var genome = "{{ genome |safe }}";
+//        var genome = "{{ genome.id |safe }}";
+//        var genome_name = "{{ genome_name |safe }}";
+
         tag2add = $("#tag2add").val();
 
 
         $.ajax({
             url: Flask.url_for("tag_genome"),
             data: JSON.stringify({
-                'genome': genome, 'tag2add': tag2add
+                'genome': genome, 'genome_name' : genome_name, 'genome_species' : genome_species, 'tag2add': tag2add
             }),
             contentType: 'application/json;charset=UTF-8',
             type: 'POST',
@@ -317,13 +325,15 @@
 
         $('#clear_genome_tags').on('click', function (e) {
 
-        var genome = "{{ genome |safe }}";
+//        var genome = "{{ genome.id |safe }}";
+//        var genome_name = "{{ genome.name |safe }}";
+
 
 
         $.ajax({
             url: Flask.url_for("clear_genome_tags"),
             data: JSON.stringify({
-                'genome': genome
+                'genome': genome, 'genome_name' : genome_name,'genome_species' : genome_species,
             }),
             contentType: 'application/json;charset=UTF-8',
             type: 'POST',
@@ -345,14 +355,16 @@
 //        e.preventDefault();
 //        console.log('clicked hide hit')
 
-        var genome = "{{ genome |safe }}"
+//        var genome = "{{ genome.id |safe }}"
+//        var genome_name = "{{ genome.name |safe }}";
+
         tag2add = 'hidden';
 
 
         $.ajax({
             url: Flask.url_for("tag_hit"),
             data: JSON.stringify({
-                'genome': genome, 'hits': selected, 'tag2add': tag2add
+                'genome': genome, 'genome_name' : genome_name,'genome_species' : genome_species, 'hits': selected, 'tag2add': tag2add
             }),
             contentType: 'application/json;charset=UTF-8',
             type: 'POST',
@@ -376,14 +388,16 @@
 //        e.preventDefault();
 //        console.log('clicked tag hit')
 
-        var genome = "{{ genome |safe }}"
+//        var genome = "{{ genome.id |safe }}"
+//        var genome_name = "{{ genome.name |safe }}";
+
         tag2add = $("#tag2add").val();
 
 
         $.ajax({
             url: Flask.url_for("tag_hit"),
             data: JSON.stringify({
-                'genome': genome, 'hits': selected, 'tag2add': tag2add
+                'genome': genome, 'genome_name' : genome_name,'genome_species' : genome_species, 'hits': selected, 'tag2add': tag2add
             }),
             contentType: 'application/json;charset=UTF-8',
             type: 'POST',
@@ -406,13 +420,15 @@
 //        e.preventDefault();
 //        console.log('clicked delete hit')
 
-        var genome = "{{ genome |safe }}"
+//        var genome = "{{ genome.id |safe }}"
+//        var genome_name = "{{ genome.name |safe }}";
+
 
 
         $.ajax({
             url: Flask.url_for("delete_hit"),
             data: JSON.stringify({
-                'genome': genome, 'hits': selected
+                'genome': genome, 'genome_name' : genome_name,'genome_species' : genome_species, 'hits': selected
             }),
             contentType: 'application/json;charset=UTF-8',
             type: 'POST',
@@ -434,7 +450,9 @@
         $('#associate_hits').on('click', function (e) {
         console.log('clicked associate hits')
 
-        var genome = "{{ genome |safe }}";
+//        var genome = "{{ genome.id |safe }}";
+//        var genome_name = "{{ genome.name |safe }}";
+
 
         console.log(selected);
 
@@ -458,7 +476,7 @@
         $.ajax({
             url: Flask.url_for("associate_hits"),
             data: JSON.stringify({
-                'genome': genome, 'hits': selected,
+                'genome': genome, 'genome_name' : genome_name, 'genome_species' : genome_species, 'hits': selected,
             }),
             contentType: 'application/json;charset=UTF-8',
             type: 'POST',

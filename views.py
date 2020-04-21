@@ -262,10 +262,10 @@ class DownloadFastaView(BaseView):
                     region = form.region.data
                     translate = form.translate.data
                     filename = form.filename.data
-                    include_genome = form.include_genome.data.split(",")
-                    exclude_genome = form.exclude_genome.data.split(",")
-                    include_hits = form.include_hits.data.split(",")
-                    exclude_hits = form.exclude_hits.data.split(",")
+                    include_genome = [x.strip() for x in form.include_genome.data.split(",")]
+                    exclude_genome = [x.strip() for x in form.exclude_genome.data.split(",")]
+                    include_hits = [x.strip() for x in form.include_hits.data.split(",")]
+                    exclude_hits = [x.strip() for x in form.exclude_hits.data.split(",")]
                     align= form.align.data
                     split_strands = False
 
@@ -558,7 +558,9 @@ class GenomeDetailView(BaseView):
 
                 return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form,
                                    region_form=region_form, tracks=tracks,
-                                   genome=genome.id, genome_tags = genome['tags'], hit_type=session['hits'], \
+                                   genome=genome, genome_name = genome.name, genome_tags = genome[
+                                                                                                                            'tags'], \
+                                                                                        hit_type=session['hits'], \
                                                                                     hidden_type=session['hidden_type'],
                                    checked_regions=session['checked_regions'],
                 genomesize = \
@@ -574,7 +576,7 @@ class GenomeDetailView(BaseView):
             # print('got here')
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, region_form=region_form, tracks=tracks,
-                               genome=genome.id, genome_tags = genome['tags'], hit_type=session['hits'],
+                               genome=genome, genome_name = genome.name, genome_tags = genome['tags'], hit_type=session['hits'],
                                hidden_type=session['hidden_type'],
                                checked_regions=session['checked_regions'],genomesize = genomesize)
 
@@ -613,7 +615,7 @@ class GenomeDetailView(BaseView):
             # print (genomesize )
 
             return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, region_form=region_form, tracks=tracks,
-                               genome=genome.id,  hit_type=session['hits'],
+                               genome=genome, genome_name = genome.name,  hit_type=session['hits'],
                                hidden_type=session['hidden_type'], checked_regions=session['checked_regions'], genomesize=genomesize)
 
 
@@ -839,6 +841,8 @@ def tag_hit():
 
     hits = query.hits
 
+    tag2add = request.json['tag2add']
+
     print('hits')
     print(hits)
 
@@ -854,14 +858,22 @@ def tag_hit():
 
         hits.get(id=hit_id).tags.append(request.json['tag2add'])
         hits.save()
+        formatted_hit = hit_name.replace(" ", "_").replace(":", "_")
 
-        region = '_region_=_ ' +hit_name.split(" ")[0]
+        # region = '_region__' +hit_name.split(" ")[0]
 
-        print (hit.name)
-        pos = '_position=_' +hit_name.split(" ")[1]
+        # print (hit.name)
+        # pos = '_position=_' +hit_name.split(" ")[1]
 
-        genome_tag = models.GenomeTags(query.name + region + pos, tag=request.json['tag2add'])
-        genome_tag.save()
+        # At this stage, I see no reason to write out the hidden tag to the GenomeTags record
+        if tag2add != 'hidden':
+
+            genome_tag = models.GenomeTags(query.name + "_information_" + query.species.replace(" ",
+                                                                                                "_") + "_region_" +
+                                           formatted_hit,
+                                           tag=request.json[
+                'tag2add'])
+            genome_tag.save()
 
         # models.GenomeRecords.objects().get(id=request.json['genome'], hits__id=hit_id).update(push__hits__tags=
         #     request.json['tag2add'])
@@ -876,11 +888,13 @@ def tag_hit():
 def tag_genome():
     session['genome'] = request.json['genome']
 
+    genome_name = request.json['genome_name']
+
     models.GenomeRecords.objects().get(id=request.json['genome']).update(push__tags=
                                                                          request.json['tag2add'])
 
     #TODO: At the moment this just supports one tag per genome
-    genome_tag = models.GenomeTags(tag_id=request.json['genome'], tag=request.json['tag2add'])
+    genome_tag = models.GenomeTags(tag_id=genome_name, tag=request.json['tag2add'])
     genome_tag.save()
 
     return redirect('genomedetail')
@@ -889,8 +903,11 @@ def tag_genome():
 def clear_genome_tags():
 
     session['genome'] = request.json['genome']
+    genome_name = request.json['genome_name']
+
 
     models.GenomeRecords.objects().get(id=request.json['genome']).update(tags=[])
+    models.GenomeTags.objects().get(tag_id=genome_name).delete()
 
     return redirect('genomedetail')
 
@@ -899,22 +916,31 @@ def associate_hits():
 
     hits = request.json['hits']
 
-    genome_name = request.json['genome']
+    genome_name = request.json['genome_name'].replace(" ", "_")
+    genome_species = request.json['genome_species'].replace(" ", "_")
+
+    # genome_name = models.GenomeRecords.objects().get(id=request.json['genome']).name
 
     print ('here we be ')
     print (hits)
+
+    print ('genome name is ')
+    print (genome_name)
 
     vals = [x for x in hits.values()]
 
 
 
-    region1 = sorted(vals)[0].replace(" ", "_")
-    region2 = sorted(vals)[1].replace(" ", "_")
+    region1 = sorted(vals)[0].replace(" ", "_").replace(":", "_")
+    region2 = sorted(vals)[1].replace(" ", "_").replace(":", "_")
 
     print (region1)
     print (region2)
 
-    associated_hit = models.AssociatedHits(genome_name + "_" + region1, genome_name + "_" + region2)
+    associated_hit = models.AssociatedHits(genome_name + "_information_" + genome_species + "_region_" + region1,
+                                           genome_name + "_information_" + genome_species +
+                                           "_region_" +
+                                           region2)
     associated_hit.save()
 
     # models.AssociatedHits.objects().get(id=request.json['genome']).update(tags=[])

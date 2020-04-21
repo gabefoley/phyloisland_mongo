@@ -56,11 +56,16 @@ function linearPopup(trackName, d) {
 function linearClick(trackName, d) {
 
     var new_id = d.id;
-    var new_elem = d.name + " " + d.start + ":" + d.end;
+    console.log('plop')
+    console.log(d)
+    var new_elem = d.name + " " + d.start + ":" + d.end + " " + d.actual_strand;
+
     var selected_vals = new Array()
 
     console.log('selected is ')
     console.log(selected)
+
+
 
     console.log(d)
 

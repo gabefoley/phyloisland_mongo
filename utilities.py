@@ -303,11 +303,17 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
                         hit_details['end'] = hit.end
                         hit_details['name'] = hit.region
                         # hit_details['strand'] = 1 if count % 2 == 0 else -1
+
+                        # We set a fake strand here just to force TcC and TcdA1 to a different track
                         if hit.region == 'TcdA1' or hit.region == 'TcdA1_expanded' or hit.region == 'TcC' or \
                                 hit.region == 'TcC_expanded':
                             hit_details['strand'] = -1
                         else:
                             hit_details['strand'] = 1
+
+
+                        # But store the real strand here so we can annotate the hits correctly
+                        hit_details['actual_strand'] = hit.strand
 
 
 
@@ -403,7 +409,7 @@ def build_tracks(items, glyphs):
             region_dict = {'id' : region['hit_id'], 'start' : int(region['start']), 'end' : int(region['end']),
                            'name' : region[
                 'name'],
-             'strand' : region['strand']}
+             'strand' : region['strand'], 'actual_strand' : region['actual_strand']}
             regions.append(region_dict)
 
         track = { 'trackName': region_name_mapper[region_name],
