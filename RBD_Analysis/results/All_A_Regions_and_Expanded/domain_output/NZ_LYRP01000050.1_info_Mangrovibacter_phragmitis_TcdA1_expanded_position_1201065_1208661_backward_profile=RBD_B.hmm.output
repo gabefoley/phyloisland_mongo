@@ -1,0 +1,53 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_B.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_input/tmp/NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_output/NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward_profile=RBD_B.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       RBD_B  [M=126]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                          -----------
+    5.4e-26   77.4   0.8    2.9e-25   75.0   0.0    2.6  1  NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   75.0   0.0   2.9e-25   2.9e-25      37     114 ..    1492    1568 ..    1466    1574 .. 0.89
+
+  Alignments for each domain:
+  == domain 1  score: 75.0 bits;  conditional E-value: 2.9e-25
+                                                                                              RBD_B   37 kleididaisskdisieikagskkveltaekdvalkPsvs 76  
+                                                                                                         kl+id   ++ ++is+e+++++ +++lt++k+++ +P+ +
+  NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward 1492 KLQIDTS-LNLPGISMELSYDGGTDILTGDKNLDGSPEGH 1530
+                                                                                                         7777555.******************************** PP
+
+                                                                                              RBD_B   77 fdemaYqFnkleidiselafinneasidvtfkalakda 114 
+                                                                                                         +d+++Y F+++ei++s+laf+nn+asi+vtfk++ak++
+  NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward 1531 LDHTEYVFTSHEIPFSKLAFKNNQASISVTFKSVAKNG 1568
+                                                                                                         ***********************************976 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (126 nodes)
+Target sequences:                            1  (2532 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 31.90
+//
+[ok]

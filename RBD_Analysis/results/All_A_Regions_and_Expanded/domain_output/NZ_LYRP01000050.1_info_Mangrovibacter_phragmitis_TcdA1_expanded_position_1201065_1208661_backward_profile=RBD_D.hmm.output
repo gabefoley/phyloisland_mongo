@@ -1,0 +1,65 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_D.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_input/tmp/NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_output/NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward_profile=RBD_D.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcA_RBD  [M=131]
+Accession:   PF18518.1
+Description: TcA receptor binding domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                          -----------
+    4.3e-20   58.6   0.0    1.5e-19   56.8   0.0    2.1  1  NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   56.8   0.0   1.5e-19   1.5e-19       1     131 []    1641    1780 ..    1641    1780 .. 0.83
+
+  Alignments for each domain:
+  == domain 1  score: 56.8 bits;  conditional E-value: 1.5e-19
+                                                                                            TcA_RBD    1 EPklgkgfYvtftLpkYnksvHGnsrafklslknv...vd 37  
+                                                                                                         E + g+g Y+++tLp+Y ++ HG+s ++ + l  v   ++
+  NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward 1641 ESQPGNGCYISLTLPPYSTDEHGTSASVSILLTSVentST 1680
+                                                                                                         7899**************************9988754456 PP
+
+                                                                                            TcA_RBD   38 dnakkviysGeLsdtettvkLFvplke........kplnk 69  
+                                                                                                         ++  +v+++G+L  + +tv+LFvp+++         p+n 
+  NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward 1681 AAGAQVFWRGQLLPSAQTVTLFVPVSQtaggdpvqFPENP 1720
+                                                                                                         66789*****************************99**** PP
+
+                                                                                            TcA_RBD   70 deglkvflkykkkktkkwegaefifkeetnkeivtidkes 109 
+                                                                                                         ++g+ v ++++k +++      ++ ++++  ++++ d++ 
+  NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward 1721 KTGVFVQMACQKGTFTAGVLKALN-DDSSVLNAFIKDAQF 1759
+                                                                                                         ************999983333332.444555666666666 PP
+
+                                                                                            TcA_RBD  110 dsstfkglkvvlsqstEPmDFs 131 
+                                                                                                         + +  +++   l+++t P+DF+
+  NZ_LYRP01000050.1_info_Mangrovibacter_phragmitis_TcdA1_expanded_position_1201065_1208661_backward 1760 NPQRDPNV-FPLKDTTAPLDFN 1780
+                                                                                                         66666666.7789********8 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (131 nodes)
+Target sequences:                            1  (2532 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 33.17
+//
+[ok]

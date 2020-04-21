@@ -1,0 +1,65 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_D.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_input/tmp/NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_output/NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward_profile=RBD_D.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcA_RBD  [M=131]
+Accession:   PF18518.1
+Description: TcA receptor binding domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                           Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                           -----------
+    2.6e-26   78.7   0.0    7.7e-26   77.2   0.0    1.9  1  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   77.2   0.0   7.7e-26   7.7e-26       1     130 [.    1945    2073 ..    1945    2074 .. 0.90
+
+  Alignments for each domain:
+  == domain 1  score: 77.2 bits;  conditional E-value: 7.7e-26
+                                                                             TcA_RBD    1 EPklgkgfYvtftLpkYnksvHGnsrafklslknvvddna 40  
+                                                                                          EP lgkgfYv++++  Y++++HG++ +fkl+++   ++++
+  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward 1945 EPALGKGFYVDIVFALYDPQIHGTKTWFKLYYSYFYTNKD 1984
+                                                                                          9*************************************** PP
+
+                                                                             TcA_RBD   41 kkviysGeLsdte.ttvkLFvplkekplnkdeglkvflky 79  
+                                                                                          +++ ++GeLsdte +tv++F p+ ++   ++++ ++ ++y
+  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward 1985 QYLCFEGELSDTEqVTVRIFYPYPNNGWVQKTACHLEVEY 2024
+                                                                                          *************99************************* PP
+
+                                                                             TcA_RBD   80 kkkktkkwegaefifkeetnkeivtidkesdsstfkglkv 119 
+                                                                                          ++  ++ + ga ++f  +t+++++t      +   ++ + 
+  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward 2025 QSGLQSASYGASMMFVYDTEENVATSAR--GALGVDSCEP 2062
+                                                                                          **99888899998888888887665433..3333467788 PP
+
+                                                                             TcA_RBD  120 vlsqstEPmDF 130 
+                                                                                           +s+ tEPmDF
+  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward 2063 DNSNPTEPMDF 2073
+                                                                                          899******** PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (131 nodes)
+Target sequences:                            1  (2866 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 37.54
+//
+[ok]

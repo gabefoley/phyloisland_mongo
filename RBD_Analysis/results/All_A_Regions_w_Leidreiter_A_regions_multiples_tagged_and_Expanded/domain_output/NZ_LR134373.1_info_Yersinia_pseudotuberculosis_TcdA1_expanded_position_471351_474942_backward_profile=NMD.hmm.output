@@ -1,0 +1,60 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_LR134373.1_info_Yersinia_pseudotuberculosis_TcdA1_expanded_position_471351_474942_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_LR134373.1_info_Yersinia_pseudotuberculosis_TcdA1_expanded_position_471351_474942_backward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                      -----------
+    1.8e-19   56.2   4.2    1.8e-19   56.2   4.2    1.9  1  NZ_LR134373.1_info_Yersinia_pseudotuberculosis_TcdA1_expanded_position_471351_474942_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LR134373.1_info_Yersinia_pseudotuberculosis_TcdA1_expanded_position_471351_474942_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   56.2   4.2   1.8e-19   1.8e-19      14     127 ..     178     280 ..     170     325 .. 0.71
+
+  Alignments for each domain:
+  == domain 1  score: 56.2 bits;  conditional E-value: 1.8e-19
+                                                                                  Neuraminidase  14 akdtlhffGrtrtaPyrYYyRtldle.gelsanaWspWek 52 
+                                                                                                    + +t +f+G+tr +P +YY+R+ ++  + +++  Ws+W+k
+  NZ_LR134373.1_info_Yersinia_pseudotuberculosis_TcdA1_expanded_position_471351_474942_backward 178 NIKTHFFLGKTRESPCQYYWRSGEQLsNDSHHLRWSEWKK 217
+                                                                                                    44667999******************999*********** PP
+
+                                                                                  Neuraminidase  53 idldikegey....vrpvvangRlylfwpefeekakskek 88 
+                                                                                                    ++++i +g+     +    +++Rly+ w++ +   + k++
+  NZ_LR134373.1_info_Yersinia_pseudotuberculosis_TcdA1_expanded_position_471351_474942_backward 218 VECNI-NGTEekffINLSWYRNRLYVDWLNKT---AFKTD 253
+                                                                                                    *****.77555677999**************9...22222 PP
+
+                                                                                  Neuraminidase  89 tvddlgdqttgsseeskweiklawsel.rdgkWspkqvsk 127
+                                                                                                    + + +             e++ + ++   ++ W+   +s+
+  NZ_LR134373.1_info_Yersinia_pseudotuberculosis_TcdA1_expanded_position_471351_474942_backward 254 EGKGK------------SEYHYNAAYKnDNNAWNDN-ISN 280
+                                                                                                    22222............2445555555566666555.444 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (1197 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 20.35
+//
+[ok]

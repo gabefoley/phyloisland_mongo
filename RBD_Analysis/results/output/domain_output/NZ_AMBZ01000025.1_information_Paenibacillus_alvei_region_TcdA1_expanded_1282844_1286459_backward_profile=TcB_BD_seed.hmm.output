@@ -1,0 +1,82 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                         Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                         -----------
+    1.7e-52  164.4   1.5    1.1e-35  109.2   0.9    3.4  3  NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  109.2   0.9   1.1e-35   1.1e-35       2     133 ..     917    1049 ..     916    1063 .. 0.94
+   2 !   16.5   0.0   1.9e-07   1.9e-07     165     191 ..    1108    1134 ..    1085    1138 .. 0.86
+   3 !   35.7   0.0   2.7e-13   2.7e-13     225     285 ..    1137    1202 ..    1134    1204 .. 0.84
+
+  Alignments for each domain:
+  == domain 1  score: 109.2 bits;  conditional E-value: 1.1e-35
+                                                                                       TcB_BD_seed    2 qieaaeirleiaekelenqekqienaeevedflrskftne 41  
+                                                                                                        qi+a + ++++++k+l+ +e+++++a++v++  + +ftn+
+  NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward  917 QIAALREQMDMVRKQLALAETEQAHAQAVYELQSARFTNQ 956 
+                                                                                                        999************************************* PP
+
+                                                                                       TcB_BD_seed   42 eLYswlesqlsalyyqaYklalslakkaerafqfElgeka 81  
+                                                                                                         LY+w++++ls+lyyq+Y++al l+  a++a++ E+g ++
+  NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward  957 ALYNWMAGRLSSLYYQMYDAALPLCLMAKQALEKEIGPDK 996 
+                                                                                                        *************************************996 PP
+
+                                                                                       TcB_BD_seed   82 tsfike.gywdslrkgLlagekLlldLkrleaaylernkr 120 
+                                                                                                        t  + +  +w++l++gLlage+Lll+L++le+ +le++kr
+  NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward  997 TVGLFTlPAWNDLYQGLLAGEALLLELQKLENLWLEEDKR 1036
+                                                                                                        66665559******************************** PP
+
+                                                                                       TcB_BD_seed  121 eleitktiSLrql 133 
+                                                                                                         +e ++t+SL +l
+  NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward 1037 GMEAVRTVSLDTL 1049
+                                                                                                        **********987 PP
+
+  == domain 2  score: 16.5 bits;  conditional E-value: 1.9e-07
+                                                                                       TcB_BD_seed  165 lRriksVsltipcvvgpytsvnatLtl 191 
+                                                                                                          rik+ s+t+p+++gpy+++ atL+l
+  NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward 1108 AHRIKNLSVTLPALLGPYQDIAATLSL 1134
+                                                                                                        569**********************98 PP
+
+  == domain 3  score: 35.7 bits;  conditional E-value: 2.7e-13
+                                                                                       TcB_BD_seed  225 qsialSsgqndsGlFelnfrderYlPfEgaGavS.sWrle 263 
+                                                                                                        +++alS+g +dsGlF ++++d+r+lPfEg    S +  l+
+  NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward 1137 ETVALSHGVDDSGLFITDLNDSRFLPFEGMNPLSgTLVLS 1176
+                                                                                                        68***************************99887345566 PP
+
+                                                                                       TcB_BD_seed  264 lpk....evrqfdletisDvilhlrY 285 
+                                                                                                        + +     +++  le+++Dvi+h+rY
+  NZ_AMBZ01000025.1_information_Paenibacillus_alvei_region_TcdA1_expanded_1282844_1286459_backward 1177 IFHagqdGDQRLLLESLNDVIFHIRY 1202
+                                                                                                        6554543459999************* PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (1205 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.01
+# Mc/sec: 34.58
+//
+[ok]

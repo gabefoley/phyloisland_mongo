@@ -1,0 +1,65 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_input/tmp/NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_output/NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                           Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                           -----------
+    3.8e-25   74.6   0.0    1.2e-24   73.1   0.0    1.8  1  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   73.1   0.0   1.2e-24   1.2e-24       1     127 [.    1285    1408 ..    1285    1437 .. 0.81
+
+  Alignments for each domain:
+  == domain 1  score: 73.1 bits;  conditional E-value: 1.2e-24
+                                                                       Neuraminidase    1 LevvsgyiekkdnakdtlhffGrtrtaPyrYYyRtldle. 39  
+                                                                                          L+v+ gy+++   +k++ +f+Gr++ +P+ YY+R+l++e 
+  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward 1285 LKVLCGYHHGAILDKGMSYFVGRSTDTPALYYWRSLNHEa 1324
+                                                                                          89999*********************************** PP
+
+                                                                       Neuraminidase   40 ....gelsanaWspWekidldi.kegeyvrpvvangRlyl 74  
+                                                                                              g ++a aW++We+i+ ++   ++ vrpv++n+Rly+
+  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward 1325 sdgvGGYAASAWTDWEEISGKVsAVNDEVRPVLFNNRLYI 1364
+                                                                                          ****99****************545599************ PP
+
+                                                                       Neuraminidase   75 fwpefeekakskektvddlgdqttgsseeskweiklawse 114 
+                                                                                          +    +      ++ v+ +g+        +k++++l++++
+  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward 1365 ASIIQQ----MVADGVTPDGEPV------KKVQYSLQLTY 1394
+                                                                                          987777....3344444333333......3589******* PP
+
+                                                                       Neuraminidase  115 l.rdgkWspkqvsk 127 
+                                                                                          +  +g+W+p ++  
+  NZ_CP017236.1_info_Yersinia_ruckeri_TcdA1_expanded_position_857944_866542_backward 1395 RkINGNWAPAMSFV 1408
+                                                                                          ********997555 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (2866 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 48.72
+//
+[ok]

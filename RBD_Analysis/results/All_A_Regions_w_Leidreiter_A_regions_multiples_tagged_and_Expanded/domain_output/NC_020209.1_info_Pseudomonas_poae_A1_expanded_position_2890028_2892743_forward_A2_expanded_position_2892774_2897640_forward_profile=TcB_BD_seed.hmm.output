@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                                                    Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                                                    -----------
+    1.3e-78  250.0   0.1    3.1e-78  248.8   0.1    1.6  1  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  248.8   0.1   3.1e-78   3.1e-78       4     287 .]    2230    2520 ..    2227    2520 .. 0.96
+
+  Alignments for each domain:
+  == domain 1  score: 248.8 bits;  conditional E-value: 3.1e-78
+                                                                                                                  TcB_BD_seed    4 eaaeirleiaekelenqekqienaeevedflrskftneeL 43  
+                                                                                                                                   ++++ ++++++ +l+++++++++a+++++ l  +f++++L
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 2230 QTQAEQEKATRLQLRSARSALAQARTTYQALGRRFSQAQL 2269
+                                                                                                                                   5677888999999*************************** PP
+
+                                                                                                                  TcB_BD_seed   44 YswlesqlsalyyqaYklalslakkaerafqfElgekats 83  
+                                                                                                                                   Y+wl+++l + yy  Y+ + sl+  ae+++q+E+ + +++
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 2270 YQWLNARLGTFYYALYDSVQSLCLAAEACWQYETAD-NRQ 2308
+                                                                                                                                   ***********************************9.999 PP
+
+                                                                                                                  TcB_BD_seed   84 fikegywdslrkgLlagekLlldLkrleaaylernkrele 123 
+                                                                                                                                   f k ++w +  +gLl++e+L+l+L r+ +ayl+++ rele
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 2309 FFKGDSWHHASRGLLSAESLKLNLVRMSTAYLQHTPRELE 2348
+                                                                                                                                   **************************************** PP
+
+                                                                                                                  TcB_BD_seed  124 itktiSLrql....................dplallkLre 143 
+                                                                                                                                   i+kt+SLr+                     + ++ ++L +
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 2349 ISKTVSLRHRlietaaspddaekqppsgktWADHKATLVA 2388
+                                                                                                                                   ********9889***********99999988899999*** PP
+
+                                                                                                                  TcB_BD_seed  144 tgkcefelpEvlFdldypghylRriksVsltipcvvgpyt 183 
+                                                                                                                                   +g+  f+l+ +lFd dypgh lRrik +s+++p+ +gpy+
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 2389 NGTLFFDLTPALFDEDYPGHTLRRIKHISVSLPATLGPYE 2428
+                                                                                                                                   **************************************** PP
+
+                                                                                                                  TcB_BD_seed  184 svnatLtllsskvrvkadikavkylekeedderlvtdlia 223 
+                                                                                                                                   +++a Lt++s+++ +               d ++++d++a
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 2429 DIKAMLTQTSNELHMP--------------DGSFRKDWRA 2454
+                                                                                                                                   ***********99886..............589******* PP
+
+                                                                                                                  TcB_BD_seed  224 iqsialSsgqndsGlFelnfr.derYlPfEgaGavSsWrl 262 
+                                                                                                                                    q+ialS+g +d+Gl +lnf+ d rYlPfE++GavSsW+l
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 2455 HQQIALSRGLDDNGLLTLNFDnDPRYLPFEYTGAVSSWSL 2494
+                                                                                                                                   ********************7368**************** PP
+
+                                                                                                                  TcB_BD_seed  263 elpkev.rqfdletisDvilhlrYTA 287 
+                                                                                                                                    +p+   ++  le+isD+ilh+rYTA
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 2495 IFPQPAlQKRLLESISDIILHVRYTA 2520
+                                                                                                                                   ****7769999**************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2527 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.02
+# Mc/sec: 36.26
+//
+[ok]

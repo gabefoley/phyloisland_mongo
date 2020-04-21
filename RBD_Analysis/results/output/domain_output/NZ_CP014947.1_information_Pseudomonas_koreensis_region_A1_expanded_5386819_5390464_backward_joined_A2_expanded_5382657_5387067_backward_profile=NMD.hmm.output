@@ -1,0 +1,65 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_5386819_5390464_backward_joined_A2_expanded_5382657_5387067_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_5386819_5390464_backward_joined_A2_expanded_5382657_5387067_backward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                                                                Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                                                                -----------
+    5.1e-27   80.7   0.0    1.4e-26   79.3   0.0    1.7  1  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_5386819_5390464_backward_joined_A2_expanded_5382657_5387067_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_5386819_5390464_backward_joined_A2_expanded_5382657_5387067_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   79.3   0.0   1.4e-26   1.4e-26       1     130 [.    1482    1606 ..    1482    1629 .. 0.80
+
+  Alignments for each domain:
+  == domain 1  score: 79.3 bits;  conditional E-value: 1.4e-26
+                                                                                                                            Neuraminidase    1 LevvsgyiekkdnakdtlhffGrtrtaPyrYYyRtldle. 39  
+                                                                                                                                               L+v+s +++++ +ak+ ++f+Gr r +P +Y++R++++e 
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_5386819_5390464_backward_joined_A2_expanded_5382657_5387067_backward 1482 LDVISCFMDGVTPAKADYYFLGRQRVQPFQYFWRKAEIEl 1521
+                                                                                                                                               89************************************** PP
+
+                                                                                                                            Neuraminidase   40 ....gelsanaWspWekidldikeg.eyvrpvvangRlyl 74  
+                                                                                                                                                    ++++  Ws+W+ ++++  ++   +rp+++ngRl +
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_5386819_5390464_backward_joined_A2_expanded_5382657_5387067_backward 1522 gatsVAVNPAVWSEWQAVEIPTADQvLDIRPLFWNGRLCV 1561
+                                                                                                                                               **99999***************333255************ PP
+
+                                                                                                                            Neuraminidase   75 fwpefeekakskektvddlgdqttgsseeskweiklawse 114 
+                                                                                                                                               +w+e    ++  ++  ++l++++          + +++++
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_5386819_5390464_backward_joined_A2_expanded_5382657_5387067_backward 1562 VWAEWR--DAVVASAAESLSPSK----------LVINLAF 1589
+                                                                                                                                               ******..444555555555555..........5666666 PP
+
+                                                                                                                            Neuraminidase  115 l.rdgkWspkqvskdsl 130 
+                                                                                                                                               + ++g+Ws++ +  +s 
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_5386819_5390464_backward_joined_A2_expanded_5382657_5387067_backward 1590 MkQNGQWSAPLCVHSSE 1606
+                                                                                                                                               668*****997666222 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (2685 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.00s 00:00:00.00 Elapsed: 00:00:00.01
+# Mc/sec: 45.65
+//
+[ok]

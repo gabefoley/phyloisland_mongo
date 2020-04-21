@@ -1,0 +1,85 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/A_region_test/domain_input/tmp/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/A_region_test/domain_output/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                        -----------
+      4e-63  199.2   5.6    1.8e-45  141.3   4.8    3.2  2  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  141.3   4.8   1.8e-45   1.8e-45       2     191 ..    2225    2444 ..    2224    2452 .. 0.93
+   2 !   53.6   0.0   9.4e-19   9.4e-19     224     286 ..    2454    2520 ..    2448    2521 .. 0.89
+
+  Alignments for each domain:
+  == domain 1  score: 141.3 bits;  conditional E-value: 1.8e-45
+                                                                                      TcB_BD_seed    2 qieaaeirleiaekelenqekqienaeevedflrskftne 41  
+                                                                                                       q++a +ir+e+a+ ++e qe+q+++++   + l+ kftn+
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 2225 QLAALKIRREAAQMQVEYQETQQAQTQVQLELLQRKFTNK 2264
+                                                                                                       899************************************* PP
+
+                                                                                      TcB_BD_seed   42 eLYswlesqlsalyyqaYklalslakkaerafqfElgeka 81  
+                                                                                                        LYsw++++lsa+yyq+++l+ s++  a++a++ El+++ 
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 2265 ALYSWMRGKLSAIYYQFFDLTQSFCLMAQEALRRELNDNG 2304
+                                                                                                       **************************************** PP
+
+                                                                                      TcB_BD_seed   82 tsfikegywdslrkgLlagekLlldLkrleaaylernkre 121 
+                                                                                                        +fi+ g+w+ + +gL+age+Lll+L ++e+a+ler++r 
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 2305 VTFIRGGAWNGTTAGLMAGETLLLNLAEMEKAWLERDERA 2344
+                                                                                                       **************************************** PP
+
+                                                                                      TcB_BD_seed  122 leitktiSLrql............................ 133 
+                                                                                                       le+t+t+SL+q+                            
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 2345 LEVTRTVSLAQFyqtlssdnfsltekltqflsqgkgsagp 2384
+                                                                                                       ***********99************999999999998866 PP
+
+                                                                                      TcB_BD_seed  134 dplallkLretgkcefelpEvlFdldypghy..lRriksV 171 
+                                                                                                         ++l    ++ +++++l++     dyp+    +R++k+V
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 2385 TGNELKLSNRQMEASVRLSDLNIFSDYPESLgsTRQLKQV 2424
+                                                                                                       444444445677889999**9999****986448****** PP
+
+                                                                                      TcB_BD_seed  172 sltipcvvgpytsvnatLtl 191 
+                                                                                                       s+t+p++vgpy++++a L+ 
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 2425 SVTLPALVGPYEDIRAVLNY 2444
+                                                                                                       ****************9975 PP
+
+  == domain 2  score: 53.6 bits;  conditional E-value: 9.4e-19
+                                                                                      TcB_BD_seed  224 iqsialSsgqndsGlFelnfrderYlPfEgaGav..SsWr 261 
+                                                                                                        ++ialS+g ndsG F l+f+d rYlPfEg  +    s +
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 2454 CNAIALSHGMNDSGQFVLDFNDARYLPFEGIPVTdsGSLT 2493
+                                                                                                       689****************************998445678 PP
+
+                                                                                      TcB_BD_seed  262 lelpkev..rqfdletisDvilhlrYT 286 
+                                                                                                       l++p+++  +q+ l++++D+ilh+rYT
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 2494 LSFPDATdrQQALLQSLNDIILHIRYT 2520
+                                                                                                       8889866669999*************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2523 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.03u 0.00s 00:00:00.03 Elapsed: 00:00:00.02
+# Mc/sec: 36.21
+//
+[ok]

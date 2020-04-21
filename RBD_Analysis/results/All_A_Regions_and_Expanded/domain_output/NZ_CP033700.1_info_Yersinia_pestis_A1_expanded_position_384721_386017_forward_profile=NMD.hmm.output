@@ -1,0 +1,60 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_input/tmp/NZ_CP033700.1_info_Yersinia_pestis_A1_expanded_position_384721_386017_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_output/NZ_CP033700.1_info_Yersinia_pestis_A1_expanded_position_384721_386017_forward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                      -----------
+    1.4e-16   46.8   2.8    1.4e-16   46.8   2.8    2.1  1  NZ_CP033700.1_info_Yersinia_pestis_A1_expanded_position_384721_386017_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP033700.1_info_Yersinia_pestis_A1_expanded_position_384721_386017_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   46.8   2.8   1.4e-16   1.4e-16      14      97 ..     610     697 ..     602     735 .. 0.75
+
+  Alignments for each domain:
+  == domain 1  score: 46.8 bits;  conditional E-value: 1.4e-16
+                                                                  Neuraminidase  14 akdtlhffGrtrtaPyrYYyRtldle.gelsanaWspWek 52 
+                                                                                    + +t +f+G+tr +P +YY+R+ ++  + +++  Ws+W+k
+  NZ_CP033700.1_info_Yersinia_pestis_A1_expanded_position_384721_386017_forward 610 NIKTHFFLGKTRESPCQYYWRSGEQLsNDSHHLRWSEWKK 649
+                                                                                    44667999******************999*********** PP
+
+                                                                  Neuraminidase  53 idldikegey....vrpvvangRlylfwpefeekakskek 88 
+                                                                                    ++++i +g+     +    +++ ly+ w +  +   +k++
+  NZ_CP033700.1_info_Yersinia_pestis_A1_expanded_position_384721_386017_forward 650 VNCNI-NGTEekffINLSWHRSSLYIDWINKFSIRTDKDE 688
+                                                                                    *****.6654467688888899*******99933333333 PP
+
+                                                                  Neuraminidase  89 tvddlgdqt 97 
+                                                                                    t+++   + 
+  NZ_CP033700.1_info_Yersinia_pestis_A1_expanded_position_384721_386017_forward 689 TTEKYHYNR 697
+                                                                                    333333333 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (1629 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.00
+# Mc/sec: inf
+//
+[ok]

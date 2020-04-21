@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                                                              Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                                                              -----------
+    2.5e-84  268.8   1.9    4.2e-84  268.1   1.9    1.3  1  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  268.1   1.9   4.2e-84   4.2e-84       2     287 .]    2503    2792 ..    2502    2792 .. 0.94
+
+  Alignments for each domain:
+  == domain 1  score: 268.1 bits;  conditional E-value: 4.2e-84
+                                                                                                                            TcB_BD_seed    2 qieaaeirleiaekelenqekqienaeevedflr..skft 39  
+                                                                                                                                             q+++++ ++++++ +l+++++++++a++++dfl   ++f+
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward 2503 QLAVSDEQHKATQLQLRQARAALNQAKATHDFLLssNRFS 2542
+                                                                                                                                             88899999************************96336*** PP
+
+                                                                                                                            TcB_BD_seed   40 neeLYswlesqlsalyyqaYklalslakkaerafqfElge 79  
+                                                                                                                                             +++ Y+wl+s+++  y+ a++ a sl++ ae+++q+E+g+
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward 2543 RSQTYDWLNSKFAGFYHTAFTNAQSLCQAAEACWQYEMGD 2582
+                                                                                                                                             **************************************** PP
+
+                                                                                                                            TcB_BD_seed   80 katsfikegywdslrkgLlagekLlldLkrleaaylernk 119 
+                                                                                                                                              +++f++ g+w+++++gL age+L+++L+++ ++y+++n+
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward 2583 FTRTFVHPGAWNATYRGLGAGEELKMSLQQMYSQYVQHNR 2622
+                                                                                                                                             **************************************** PP
+
+                                                                                                                            TcB_BD_seed  120 releitktiSLrql..........dplall..kLretgkc 147 
+                                                                                                                                             r+lei kt+SL+ l          +p a +  +L ++g+c
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward 2623 RDLEIRKTVSLKDLtgkdpsstinKPWAQIkqSLVDNGTC 2662
+                                                                                                                                             **************9**8888888555544226889**** PP
+
+                                                                                                                            TcB_BD_seed  148 efelpEvlFdldypg..hylRriksVsltipcvvgpytsv 185 
+                                                                                                                                             e+el++++Fd dy+g  hylRrik++s+t+p+v+gpy+++
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward 2663 ELELTQQMFDDDYAGqnHYLRRIKTISVTLPAVLGPYQDI 2702
+                                                                                                                                             *************97669********************** PP
+
+                                                                                                                            TcB_BD_seed  186 natLtllsskvrvkadikavkylekeedderlvtdliaiq 225 
+                                                                                                                                             +a L+++ skv + +           +  ++++++l+++q
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward 2703 RAVLKQTYSKVEMAP-----------TVGSSVKENLRSSQ 2731
+                                                                                                                                             **************9...........34578999****** PP
+
+                                                                                                                            TcB_BD_seed  226 sialSsgqndsGlFelnfrderYlPfEgaGavSsWrlelp 265 
+                                                                                                                                             +ialSs  +d+G+F+lnf+derYlPfE++Ga+S+W l++p
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward 2732 QIALSSSLEDNGMFQLNFQDERYLPFEYTGAISRWILTFP 2771
+                                                                                                                                             **************************************** PP
+
+                                                                                                                            TcB_BD_seed  266 kevrqfdletisDvilhlrYTA 287 
+                                                                                                                                             k  ++  l+ + D+ilh+ YTA
+  NZ_CP014947.1_information_Pseudomonas_koreensis_region_A1_expanded_4428384_4431948_forward_joined_A2_expanded_4431960_4436793_forward 2772 K-GQEHILQRLPDIILHVCYTA 2792
+                                                                                                                                             7.78889**************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2799 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.01
+# Mc/sec: 80.33
+//
+[ok]

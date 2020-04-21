@@ -1,0 +1,70 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_B.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_JXSK01000016.1_info_Photorhabdus_luminescens-A_TcdA1_expanded_position_2390999_2398565_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_JXSK01000016.1_info_Photorhabdus_luminescens-A_TcdA1_expanded_position_2390999_2398565_forward_profile=RBD_B.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       RBD_B  [M=125]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                          -----------
+    1.7e-60  188.9  11.7    1.1e-36  111.9   0.7    4.2  2  NZ_JXSK01000016.1_info_Photorhabdus_luminescens-A_TcdA1_expanded_position_2390999_2398565_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_JXSK01000016.1_info_Photorhabdus_luminescens-A_TcdA1_expanded_position_2390999_2398565_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  111.9   0.7   1.1e-36   1.1e-36       1      92 [.    1314    1412 ..    1314    1425 .. 0.97
+   2 !   81.2   0.5   3.7e-27   3.7e-27      57     125 .]    1504    1571 ..    1470    1571 .. 0.88
+
+  Alignments for each domain:
+  == domain 1  score: 111.9 bits;  conditional E-value: 1.1e-36
+                                                                                              RBD_B    1 qeedkEidsvisklksydwgdytLstvsegnipaislkvt 40  
+                                                                                                         ++ed+Ei+s+++++k+ydwgdy+Ls+v++g+ip+is+k+t
+  NZ_JXSK01000016.1_info_Photorhabdus_luminescens-A_TcdA1_expanded_position_2390999_2398565_forward 1314 YAEDYEIPSSVNSRKGYDWGDYYLSMVYNGDIPTISYKAT 1353
+                                                                                                         69************************************** PP
+
+                                                                                              RBD_B   41 ssdlkitisPklrinfikk.......islliklgskkvel 73  
+                                                                                                         ssdlki+isPklri+++++       ++l++k+g+  +++
+  NZ_JXSK01000016.1_info_Photorhabdus_luminescens-A_TcdA1_expanded_position_2390999_2398565_forward 1354 SSDLKIYISPKLRIIHNGYegqqrnqCNLMNKYGKLGDKF 1393
+                                                                                                         **************************************** PP
+
+                                                                                              RBD_B   74 taekdvavkPsnssdelay 92  
+                                                                                                         +++++++v+P+nss++l++
+  NZ_JXSK01000016.1_info_Photorhabdus_luminescens-A_TcdA1_expanded_position_2390999_2398565_forward 1394 IVYTSLGVNPNNSSNKLMF 1412
+                                                                                                         ****************998 PP
+
+  == domain 2  score: 81.2 bits;  conditional E-value: 3.7e-27
+                                                                                              RBD_B   57 ikkislliklgskkveltaekdvavkPsnssdelayqFnk 96  
+                                                                                                           k+++++k+gsk++++ta+k+v+++Ps+s+de++yqFn+
+  NZ_JXSK01000016.1_info_Photorhabdus_luminescens-A_TcdA1_expanded_position_2390999_2398565_forward 1504 A-KVQVTVKAGSKEQTFTADKNVSIQPSPSFDEMNYQFNA 1542
+                                                                                                         2.39************************************ PP
+
+                                                                                              RBD_B   97 leidiselafinniasidvtfkalakkar 125 
+                                                                                                         leid+s+l+f+nn+asid+tf+a+a+++r
+  NZ_JXSK01000016.1_info_Photorhabdus_luminescens-A_TcdA1_expanded_position_2390999_2398565_forward 1543 LEIDGSSLNFTNNSASIDITFTAFAEDGR 1571
+                                                                                                         **************************986 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (125 nodes)
+Target sequences:                            1  (2522 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.00
+# Mc/sec: inf
+//
+[ok]

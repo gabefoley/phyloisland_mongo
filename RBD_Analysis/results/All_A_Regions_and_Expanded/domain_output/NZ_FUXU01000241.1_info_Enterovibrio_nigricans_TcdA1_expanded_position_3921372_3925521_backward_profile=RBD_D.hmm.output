@@ -1,0 +1,65 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_D.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_input/tmp/NZ_FUXU01000241.1_info_Enterovibrio_nigricans_TcdA1_expanded_position_3921372_3925521_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_output/NZ_FUXU01000241.1_info_Enterovibrio_nigricans_TcdA1_expanded_position_3921372_3925521_backward_profile=RBD_D.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcA_RBD  [M=131]
+Accession:   PF18518.1
+Description: TcA receptor binding domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                       Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                       -----------
+    3.3e-34  104.2   0.1      1e-33  102.7   0.1    1.9  1  NZ_FUXU01000241.1_info_Enterovibrio_nigricans_TcdA1_expanded_position_3921372_3925521_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_FUXU01000241.1_info_Enterovibrio_nigricans_TcdA1_expanded_position_3921372_3925521_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  102.7   0.1     1e-33     1e-33       1     130 [.     501     630 ..     501     631 .. 0.98
+
+  Alignments for each domain:
+  == domain 1  score: 102.7 bits;  conditional E-value: 1e-33
+                                                                                         TcA_RBD   1 EPklgkgfYvtftLpkYnksvHGnsrafklslknvvddna 40 
+                                                                                                     EP+lg+g+Yv+++L++Y+ ++HG++   kl+ +nv +d +
+  NZ_FUXU01000241.1_info_Enterovibrio_nigricans_TcdA1_expanded_position_3921372_3925521_backward 501 EPQLGQGTYVDIVLDAYDDNIHGENLFYKLYNSNVYKDGD 540
+                                                                                                     9*************************************** PP
+
+                                                                                         TcA_RBD  41 kkviysGeLsdte.ttvkLFvplkekplnkdeglkvflky 79 
+                                                                                                     k++i+sG+L ++  +tv+ F+p+  +++++++++++ ++y
+  NZ_FUXU01000241.1_info_Enterovibrio_nigricans_TcdA1_expanded_position_3921372_3925521_backward 541 KFLIHSGQLDEQSsITVRVFLPRVTNAYGNKDHIYMRAEY 580
+                                                                                                     **********9999************************** PP
+
+                                                                                         TcA_RBD  80 kkkktkkwegaefifkeetnkeivtidkesdsstfkgl.. 117
+                                                                                                     ++  t++   ++f+  ++++++++ id++++++tf+gl  
+  NZ_FUXU01000241.1_info_Enterovibrio_nigricans_TcdA1_expanded_position_3921372_3925521_backward 581 QSGLTDQ---IRFVRADTSDPHGWAIDDTYNEGTFSGLts 617
+                                                                                                     ******9...****************************88 PP
+
+                                                                                         TcA_RBD 118 kvvlsqstEPmDF 130
+                                                                                                     ++ l+  +EPmDF
+  NZ_FUXU01000241.1_info_Enterovibrio_nigricans_TcdA1_expanded_position_3921372_3925521_backward 618 ATALKVDSEPMDF 630
+                                                                                                     88889******** PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (131 nodes)
+Target sequences:                            1  (1383 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.00
+# Mc/sec: inf
+//
+[ok]

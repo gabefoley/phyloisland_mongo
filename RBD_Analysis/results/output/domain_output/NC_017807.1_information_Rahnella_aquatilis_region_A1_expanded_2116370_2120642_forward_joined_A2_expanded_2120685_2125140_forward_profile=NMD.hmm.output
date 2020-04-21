@@ -1,0 +1,65 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                                                         Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                                                         -----------
+    3.6e-33  100.8   2.3    3.6e-33  100.8   2.3    2.0  1  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  100.8   2.3   3.6e-33   3.6e-33       1     130 [.    1592    1720 ..    1592    1762 .. 0.76
+
+  Alignments for each domain:
+  == domain 1  score: 100.8 bits;  conditional E-value: 3.6e-33
+                                                                                                                     Neuraminidase    1 LevvsgyiekkdnakdtlhffGrtrtaPyrYYyRtldle. 39  
+                                                                                                                                        L+vvsgy ++ d+++d+++f+Gr++ +P+ +Y+R+l++  
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 1592 LDVVSGYLDGFDEEQDIYYFIGRSKDTPAVWYWRSLNMGm 1631
+                                                                                                                                        89************************************** PP
+
+                                                                                                                     Neuraminidase   40 ...gelsanaWspWekidldi..keg.eyvrpvvangRly 73  
+                                                                                                                                           g l a aWs+W k+d+++  ++  ++vrpv++n+Rly
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 1632 renGILPASAWSEWLKVDVNLadETLiSTVRPVMFNNRLY 1671
+                                                                                                                                        **999****************75333477*********** PP
+
+                                                                                                                     Neuraminidase   74 lfwpefeekakskektvddlgdqttgsseeskweiklaws 113 
+                                                                                                                                        l w e++    + ++ ++++++       + + +i+ +++
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 1672 LSWWERS---ITGDQATSSNEQ------IKYSATITAYVA 1702
+                                                                                                                                        *******...222222222222......223479****** PP
+
+                                                                                                                     Neuraminidase  114 el.rdgkWspkqvskdsl 130 
+                                                                                                                                        ++ +d++Ws++q+   + 
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 1703 YRkYDNSWSAPQIVGRQS 1720
+                                                                                                                                        ********9999877333 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (2909 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 49.45
+//
+[ok]

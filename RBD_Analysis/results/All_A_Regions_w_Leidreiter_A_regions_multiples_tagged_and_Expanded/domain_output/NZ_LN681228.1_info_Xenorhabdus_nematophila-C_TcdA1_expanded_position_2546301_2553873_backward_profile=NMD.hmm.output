@@ -1,0 +1,70 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                      -----------
+    1.2e-33  102.3   1.8    3.3e-33  100.9   1.8    1.8  1  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  100.9   1.8   3.3e-33   3.3e-33       1     169 [.    1090    1248 ..    1090    1249 .. 0.92
+
+  Alignments for each domain:
+  == domain 1  score: 100.9 bits;  conditional E-value: 3.3e-33
+                                                                                  Neuraminidase    1 LevvsgyiekkdnakdtlhffGrtrtaPyrYYyRtldle. 39  
+                                                                                                     L+vvs+y+++++++++ ++f+G+tr +  +YY+R +d++ 
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 1090 LKVVSAYHDNVNSNTGLTWFIGQTRENLPEYYWRNVDISr 1129
+                                                                                                     89************************************** PP
+
+                                                                                  Neuraminidase   40 ...gelsanaWspWekidldikeg.eyvrpvvangRlylf 75  
+                                                                                                        g+l+anaW++W+kid+++++  + +rpv++++Rl+l+
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 1130 mqaGKLAANAWKEWTKIDTAVNSYkDAIRPVIFRERLHLI 1169
+                                                                                                     *********************444688************* PP
+
+                                                                                  Neuraminidase   76 wpefeekakskektvddlgdqttgsseeskweiklawsel 115 
+                                                                                                     w+e +   + +e+ ++ +++ +         +++l++++l
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 1170 WVEKD---EVAENGTNPVKTYD---------RFTLKLAFL 1197
+                                                                                                     *****...66666666666666.........9******** PP
+
+                                                                                  Neuraminidase  116 .rdgkWspkqvskdsleleetseeeaekkeslkkvalqas 154 
+                                                                                                      +dg+Ws++++++    +++++e+ ++kk+++++ al as
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 1198 rHDGSWSAPWSYD----ITTQVEAVTDKKPDTERLALAAS 1233
+                                                                                                     *********8888....889999999999*********** PP
+
+                                                                                  Neuraminidase  155 allskdklelsvftk 169 
+                                                                                                       + +d+l ++v+++
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 1234 GFQGEDTLLVFVYKT 1248
+                                                                                                     ***********9986 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (2524 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 42.91
+//
+[ok]

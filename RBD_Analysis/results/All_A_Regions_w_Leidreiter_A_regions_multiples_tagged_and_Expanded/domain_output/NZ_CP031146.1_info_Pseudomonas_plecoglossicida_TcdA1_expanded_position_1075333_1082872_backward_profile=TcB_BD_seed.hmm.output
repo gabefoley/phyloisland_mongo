@@ -1,0 +1,87 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                        -----------
+    9.8e-45  138.9   0.4    2.5e-35  108.0   1.1    3.4  3  NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  108.0   1.1   2.5e-35   2.5e-35       2     138 ..    2202    2337 ..    2201    2345 .. 0.97
+   2 !   19.7   0.0     2e-08     2e-08     147     190 ..    2380    2423 ..    2369    2431 .. 0.87
+   3 !    6.4   0.0   0.00022   0.00022     224     286 ..    2433    2511 ..    2428    2512 .. 0.71
+
+  Alignments for each domain:
+  == domain 1  score: 108.0 bits;  conditional E-value: 2.5e-35
+                                                                                      TcB_BD_seed    2 qieaaeirleiaekelenqekqienaeevedflrskftne 41  
+                                                                                                       qiea ++r++ a+ ++ + ++q+++a++  + ++ kft +
+  NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward 2202 QIEALTVRETSAQMHVVHLQTQAAHAQAQLALYQGKFTGK 2241
+                                                                                                       9*************************************** PP
+
+                                                                                      TcB_BD_seed   42 eLYswlesqlsalyyqaYklalslakkaerafqfElgeka 81  
+                                                                                                        +Yswl+++l++++y  Y+l++s +  a+ra+q+E+g+ +
+  NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward 2242 AMYSWLRARLASIFYTYYDLTVSRCLMAQRALQWEKGD-N 2280
+                                                                                                       *************************************9.9 PP
+
+                                                                                      TcB_BD_seed   82 tsfikegywdslrkgLlagekLlldLkrleaaylernkre 121 
+                                                                                                        +++++g+w+s  +gLl+ge L+l+L ++e+a+++ +kre
+  NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward 2281 ATYLRTGTWNSAWAGLLCGEGLMLALGQMESAWVKWHKRE 2320
+                                                                                                       99************************************** PP
+
+                                                                                      TcB_BD_seed  122 leitktiSLrqldplal 138 
+                                                                                                       le+t+t+SL++l + +l
+  NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward 2321 LEVTRTVSLAKLFDGKL 2337
+                                                                                                       ***********988776 PP
+
+  == domain 2  score: 19.7 bits;  conditional E-value: 2e-08
+                                                                                      TcB_BD_seed  147 cefelpEvlFdldypghylRriksVsltipcvvgpytsvn 186 
+                                                                                                       ++f+l+       +     Rri+s+++++p+++gpy++v+
+  NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward 2380 IQFNLKSLNLAAGFETAGSRRIRSIAVSLPAMLGPYQDVH 2419
+                                                                                                       6778888888888999999********************* PP
+
+                                                                                      TcB_BD_seed  187 atLt 190 
+                                                                                                       a+L 
+  NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward 2420 ARLL 2423
+                                                                                                       *995 PP
+
+  == domain 3  score: 6.4 bits;  conditional E-value: 0.00022
+                                                                                      TcB_BD_seed  224 iqsialSsgqndsGlFe......lnfrderYlPfEgaGav 257 
+                                                                                                        ++ ++S++ +d+G F       l   + + lPfEg  + 
+  NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward 2433 CEQCSISHAVQDNGQFSqlngypLMRPGTQLLPFEGLHIA 2472
+                                                                                                       5788999999999999743332233457999999997654 PP
+
+                                                                                      TcB_BD_seed  258 ........SsWrlelpkev..rqfdletisDvilhlrYT 286 
+                                                                                                               ++ +l++ +++  +++ le +sD+ilh+++T
+  NZ_CP031146.1_info_Pseudomonas_plecoglossicida_TcdA1_expanded_position_1075333_1082872_backward 2473 ktddrddqTTLTLNFAQAKgdQRALLERLSDIILHVQFT 2511
+                                                                                                       2222222256677777765669999*************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2513 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.03
+# Mc/sec: 24.04
+//
+[ok]

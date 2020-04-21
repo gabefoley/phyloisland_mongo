@@ -1,0 +1,53 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_A.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/A_region_test/domain_input/tmp/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/A_region_test/domain_output/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward_profile=RBD_A.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       RBD_A  [M=124]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                        -----------
+    6.5e-08   19.0   0.0    3.2e-07   16.7   0.0    2.3  1  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   16.7   0.0   3.2e-07   3.2e-07       6      53 ..     319     367 ..     314     405 .. 0.86
+
+  Alignments for each domain:
+  == domain 1  score: 16.7 bits;  conditional E-value: 3.2e-07
+                                                                                            RBD_A   6 lvNsedgtvtayrirrtetd.nayqldyieLvPlgenkyk 44 
+                                                                                                      l+ +++g+++ay+i+r  +   a++l++ +Lv  g+nk++
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 319 LLTDQEGKLSAYKITRVPGGdDAKHLNFWDLVYKGDNKFI 358
+                                                                                                      678899**********876449****************** PP
+
+                                                                                            RBD_A  45 lnfsvkktk 53 
+                                                                                                      ++ ++kk+ 
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 359 IRANFKKND 367
+                                                                                                      ****99984 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (124 nodes)
+Target sequences:                            1  (2523 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 31.29
+//
+[ok]

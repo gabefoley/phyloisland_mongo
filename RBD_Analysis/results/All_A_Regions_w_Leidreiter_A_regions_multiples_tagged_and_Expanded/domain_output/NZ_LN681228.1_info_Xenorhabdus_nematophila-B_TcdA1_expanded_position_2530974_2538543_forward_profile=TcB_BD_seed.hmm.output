@@ -1,0 +1,85 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                     Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                     -----------
+    2.2e-65  206.6   3.9    5.4e-49  152.8   4.1    3.3  2  NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  152.8   4.1   5.4e-49   5.4e-49       2     194 ..    2225    2447 ..    2224    2452 .. 0.93
+   2 !   49.0   0.0   2.4e-17   2.4e-17     223     286 ..    2453    2520 ..    2447    2521 .. 0.86
+
+  Alignments for each domain:
+  == domain 1  score: 152.8 bits;  conditional E-value: 5.4e-49
+                                                                                   TcB_BD_seed    2 qieaaeirleiaekelenqekqienaeevedflrskftne 41  
+                                                                                                    q+++ ++r+e+a  + +  e+q++++++  +fl+skf+n+
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward 2225 QLATLAVRREAAVLQKNYLETQQAQTQAQLAFLQSKFSNA 2264
+                                                                                                    889999********************************** PP
+
+                                                                                   TcB_BD_seed   42 eLYswlesqlsalyyqaYklalslakkaerafqfElgeka 81  
+                                                                                                     LY+wl+++lsa+yyq+Y+la+sl+  ae+++q+El++ a
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward 2265 ALYNWLRGRLSAIYYQFYDLAVSLCLMAEQTYQYELNNAA 2304
+                                                                                                    **************************************** PP
+
+                                                                                   TcB_BD_seed   82 tsfikegywdslrkgLlagekLlldLkrleaaylernkre 121 
+                                                                                                     +fik g+w  +++gLlage+L+l+L ++e++yle+++r 
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward 2305 AHFIKPGAWHGTYAGLLAGETLMLNLAQMEKSYLEKDERA 2344
+                                                                                                    **************************************** PP
+
+                                                                                   TcB_BD_seed  122 leitktiSLrql.........................dpl 136 
+                                                                                                    le+t+t+SL+++                         + +
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward 2345 LEVTRTVSLAEVyagltensfilkdkvtelvnagegsAGT 2384
+                                                                                                    *****************************99999888667 PP
+
+                                                                                   TcB_BD_seed  137 allkLretg...kcefelpEvlFdldypghy..lRriksV 171 
+                                                                                                     l  L  +g   +++++l++    +dyp+    +Rrik++
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward 2385 TLNGLNVEGtqlQASLKLSDLNIATDYPDGLgnTRRIKQI 2424
+                                                                                                    777777666223689*************975348****** PP
+
+                                                                                   TcB_BD_seed  172 sltipcvvgpytsvnatLtllss 194 
+                                                                                                    s+t+p+++gpy++v+a L+   s
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward 2425 SVTLPALLGPYQDVRAILSYGGS 2447
+                                                                                                    ****************9987655 PP
+
+  == domain 2  score: 49.0 bits;  conditional E-value: 2.4e-17
+                                                                                   TcB_BD_seed  223 aiqsialSsgqndsGlFelnfrderYlPfEgaGav..SsW 260 
+                                                                                                    + ++ia+S+g ndsG F+++f+d +YlPfEg  +    + 
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward 2453 GCKAIAISHGMNDSGQFQMDFNDAKYLPFEGLPVAdtGTL 2492
+                                                                                                    5689***************************999733567 PP
+
+                                                                                   TcB_BD_seed  261 rlelpkev..rqfdletisDvilhlrYT 286 
+                                                                                                    +l++p     ++  l ++sD+ilh+rYT
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-B_TcdA1_expanded_position_2530974_2538543_forward 2493 TLSFPGISgkQKSLLLSLSDIILHIRYT 2520
+                                                                                                    7777874444889999***********9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2523 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.02
+# Mc/sec: 36.21
+//
+[ok]

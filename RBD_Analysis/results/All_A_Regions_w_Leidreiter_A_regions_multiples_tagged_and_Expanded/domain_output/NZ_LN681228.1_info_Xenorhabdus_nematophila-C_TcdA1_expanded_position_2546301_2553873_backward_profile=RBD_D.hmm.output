@@ -1,0 +1,65 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_D.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward_profile=RBD_D.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcA_RBD  [M=131]
+Accession:   PF18518.1
+Description: TcA receptor binding domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                      -----------
+    1.5e-51  160.4   0.2    4.6e-51  158.8   0.2    1.9  1  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  158.8   0.2   4.6e-51   4.6e-51       1     131 []    1651    1781 ..    1651    1781 .. 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 158.8 bits;  conditional E-value: 4.6e-51
+                                                                                        TcA_RBD    1 EPklgkgfYvtftLpkYnksvHGnsrafklslknvvddna 40  
+                                                                                                     EP+lgkgfY+tftLp+Yn+++HG+sraf+l+lk+vvdd++
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 1651 EPQLGKGFYATFTLPPYNSATHGTSRAFQLNLKHVVDDKV 1690
+                                                                                                     9*************************************** PP
+
+                                                                                        TcA_RBD   41 kkviysGeLsdtettvkLFvplkekplnkdeglkvflkyk 80  
+                                                                                                      + i sG L++te++v+LF+pl+++pl++++++kvfl+++
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 1691 -HAIRSGLLQNTEFAVRLFIPLDDTPLHDEYIAKVFLTTQ 1729
+                                                                                                     .*************************************** PP
+
+                                                                                        TcA_RBD   81 kkktkk.wegaefifkeetnkeivtidkesdsstfkglkv 119 
+                                                                                                     k++++  + ga+f++++++n++iv++d+ sd+s+f+g+++
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 1730 KNRNDVpNVGAHFKYDKSNNNRIVINDDISDISMFAGIQI 1769
+                                                                                                     **************************************** PP
+
+                                                                                        TcA_RBD  120 vlsqstEPmDFs 131 
+                                                                                                     +++++tEP+DF+
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 1770 HNGETTEPLDFN 1781
+                                                                                                     ***********8 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (131 nodes)
+Target sequences:                            1  (2524 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 33.06
+//
+[ok]

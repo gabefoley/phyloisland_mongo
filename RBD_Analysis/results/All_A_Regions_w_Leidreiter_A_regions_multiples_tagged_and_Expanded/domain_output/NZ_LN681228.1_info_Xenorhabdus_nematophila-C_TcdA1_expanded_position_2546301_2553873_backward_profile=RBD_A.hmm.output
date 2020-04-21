@@ -1,0 +1,58 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_A.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward_profile=RBD_A.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       RBD_A  [M=124]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                      -----------
+    7.6e-17   48.1   0.6    3.5e-16   45.9   0.6    2.2  1  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   45.9   0.6   3.5e-16   3.5e-16       7     111 ..     319     424 ..     313     437 .. 0.71
+
+  Alignments for each domain:
+  == domain 1  score: 45.9 bits;  conditional E-value: 3.5e-16
+                                                                                          RBD_A   7 lvnsedgkvtvykitrtktd.nakqldYieLvpiggnqyk 45 
+                                                                                                    lv+++++k+++ykitr ktd ++k+++Y++L+++g+nq++
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 319 LVVNNESKLEAYKITRVKTDdYDKNINYFDLMYEGNNQFF 358
+                                                                                                    89******************9******************* PP
+
+                                                                                          RBD_A  46 v..nFsvketekdasdlsiqtgkkedklydkkefvpqani 83 
+                                                                                                    +  nF+v  +++    l+ + g++      +  ++ + n 
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 359 IraNFKV--SREFGATLRKNAGPSGIVGSLSGPLIANTNF 396
+                                                                                                    *555555..5555555665555555222334456666666 PP
+
+                                                                                          RBD_A  84 hysipitLsteqiekkveigltRvkpep 111
+                                                                                                    +     ++s+++ +++v+i   R   ++
+  NZ_LN681228.1_info_Xenorhabdus_nematophila-C_TcdA1_expanded_position_2546301_2553873_backward 397 KSNYLSNISDSEYKNGVKIYAYRYTSST 424
+                                                                                                    6666667777777777777777765544 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (124 nodes)
+Target sequences:                            1  (2524 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.00
+# Mc/sec: inf
+//
+[ok]

@@ -1,0 +1,65 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                                                    Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                                                    -----------
+      6e-25   74.0   0.0    1.4e-24   72.8   0.0    1.6  1  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   72.8   0.0   1.4e-24   1.4e-24       3     127 ..    1072    1218 ..    1070    1256 .. 0.75
+
+  Alignments for each domain:
+  == domain 1  score: 72.8 bits;  conditional E-value: 1.4e-24
+                                                                                                                Neuraminidase    3 vvsgyie..kkdnakdtlhffGrtrtaPyrYYyRtldle. 39  
+                                                                                                                                   +++gyi+  + + +  t++f+G+  t+   YY+R+ldl+ 
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 1072 TLNGYIDgdTRALEASTYYFVGKAATD-DLYYWRSLDLSq 1110
+                                                                                                                                   67899996566667777**********.9*********** PP
+
+                                                                                                                Neuraminidase   40 ......gelsanaWspWekidldi...kegeyvrpvvang 70  
+                                                                                                                                         ++ s+ aWs+Weki+l     ++ + +rpv+   
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 1111 rssinpKAPSPLAWSDWEKINLTFsadTPPHSIRPVLCDK 1150
+                                                                                                                                   ************************65444455******** PP
+
+                                                                                                                Neuraminidase   71 Rlylfwpefe.........ekakskektvddlgdqttgss 101 
+                                                                                                                                   Rl+++w+e           ++++ + + +d+ +++     
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 1151 RLFIVWAECVkpaphnafqNADDVDPDAQDEGEKH----- 1185
+                                                                                                                                   **********7666555532222222223333333..... PP
+
+                                                                                                                Neuraminidase  102 eesk.........weiklawsel.rdgkWspkqvsk 127 
+                                                                                                                                      +         ++++l +s+  +dg+Ws + +  
+  NC_020209.1_info_Pseudomonas_poae_A1_expanded_position_2890028_2892743_forward_A2_expanded_position_2892774_2897640_forward 1186 ---RmaewlnsrfVKFRLCFSYKkLDGSWSLPHTGL 1218
+                                                                                                                                   ...2334445559****************9885443 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (2527 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 42.96
+//
+[ok]

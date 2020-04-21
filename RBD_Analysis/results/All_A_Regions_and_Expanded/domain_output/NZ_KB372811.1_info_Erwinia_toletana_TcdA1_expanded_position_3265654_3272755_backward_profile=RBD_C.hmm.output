@@ -1,0 +1,58 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_C.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_input/tmp/NZ_KB372811.1_info_Erwinia_toletana_TcdA1_expanded_position_3265654_3272755_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_and_Expanded/domain_output/NZ_KB372811.1_info_Erwinia_toletana_TcdA1_expanded_position_3265654_3272755_backward_profile=RBD_C.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       RBD_C  [M=124]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                             Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                             -----------
+    2.4e-53  165.7   1.1    6.2e-53  164.4   1.1    1.7  1  NZ_KB372811.1_info_Erwinia_toletana_TcdA1_expanded_position_3265654_3272755_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_KB372811.1_info_Erwinia_toletana_TcdA1_expanded_position_3265654_3272755_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  164.4   1.1   6.2e-53   6.2e-53       3     116 ..    1221    1335 ..    1219    1342 .. 0.96
+
+  Alignments for each domain:
+  == domain 1  score: 164.4 bits;  conditional E-value: 6.2e-53
+                                                                                 RBD_C    3 riqcnllkkya..klGdkfiiyeslaldsnnssnklifyP 40  
+                                                                                             i+cn+lk++a  ++Gd+f+iye++alds+nss+k+if P
+  NZ_KB372811.1_info_Erwinia_toletana_TcdA1_expanded_position_3265654_3272755_backward 1221 DIACNILKNLAnnNMGDSFYIYENFALDSGNSSGKRIF-P 1259
+                                                                                            589********999************************.* PP
+
+                                                                                 RBD_C   41 vyqykgntsglaqGrllvyrdtsysskvvawiPaakrslt 80  
+                                                                                            vy++k+n+  +++Gr+lvyr++s+s+++v+w Pa+++++t
+  NZ_KB372811.1_info_Erwinia_toletana_TcdA1_expanded_position_3265654_3272755_backward 1260 VYHLKQNS--MTSGRILVYREASASGLEVKW-PALTPAHT 1296
+                                                                                            ********..*********************.******** PP
+
+                                                                                 RBD_C   81 nenasiaddvaldsvkkPdd...lkqyiyltdskktatd 116 
+                                                                                            ++++s+a++val+++k+Pd+   +++++yl+d++k+at 
+  NZ_KB372811.1_info_Erwinia_toletana_TcdA1_expanded_position_3265654_3272755_backward 1297 FTSTSTALYVALNQDKYPDNdalMNASMYLNDNNKSATV 1335
+                                                                                            **************************************4 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (124 nodes)
+Target sequences:                            1  (2367 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.00s 00:00:00.00 Elapsed: 00:00:00.01
+# Mc/sec: 29.35
+//
+[ok]

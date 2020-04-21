@@ -1,0 +1,58 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/RBD_B.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward_profile=RBD_B.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       RBD_B  [M=131]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                        -----------
+    9.6e-40  122.1   0.8    4.2e-39  120.0   0.1    2.3  1  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  120.0   0.1   4.2e-39   4.2e-39      41     125 ..    1505    1588 ..    1467    1595 .. 0.85
+
+  Alignments for each domain:
+  == domain 1  score: 120.0 bits;  conditional E-value: 4.2e-39
+                                                                                            RBD_B   41 yidisleielnsakikitvktGskvleltAekdvalkPsv 80  
+                                                                                                        idi++e+  n+a+ikitv+tGsk++++tA++++a+ P++
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 1505 WIDIDTEV--NNADIKITVVTGSKTHTFTASGYAASLPAN 1542
+                                                                                                       58999999..99**************************** PP
+
+                                                                                            RBD_B   81 sfdelayqFnkleidisalafinnsaslDitlkarakdtr 120 
+                                                                                                       sfd+++y+F++leid+s+l+finn+a+lDit++arak++r
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 1543 SFDAMQYTFKPLEIDASSLTFINNIAPLDITFEARAKKWR 1582
+                                                                                                       **************************************** PP
+
+                                                                                            RBD_B  121 vlg.yk 125 
+                                                                                                       vlg +k
+  NZ_NITZ01000138.1_info_Xenorhabdus_miraniensis_TcdA1_expanded_position_4356427_4363996_backward 1583 VLGkIK 1588
+                                                                                                       **9544 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (131 nodes)
+Target sequences:                            1  (2523 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 33.05
+//
+[ok]

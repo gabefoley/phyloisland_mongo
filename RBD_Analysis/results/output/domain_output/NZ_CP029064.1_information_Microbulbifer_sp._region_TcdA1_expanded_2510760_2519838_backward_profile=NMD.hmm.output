@@ -1,0 +1,65 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                   Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                   -----------
+    1.9e-40  124.4   1.4    3.8e-40  123.5   1.4    1.4  1  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  123.5   1.4   3.8e-40   3.8e-40       1     144 [.    1648    1786 ..    1648    1803 .. 0.88
+
+  Alignments for each domain:
+  == domain 1  score: 123.5 bits;  conditional E-value: 3.8e-40
+                                                                               Neuraminidase    1 LevvsgyiekkdnakdtlhffGrtrta.PyrYYyRtldle 39  
+                                                                                                  Levv+++++    ++ ++h+f+rt++  P++YYyR++++e
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 1648 LEVVATWYQ---TSTRIMHVFARTKSGdPATYYYRRFEQE 1684
+                                                                                                  89*******...99999*********99************ PP
+
+                                                                               Neuraminidase   40 gelsanaWspWekidldikegeyvrpvvangRlylfwpef 79  
+                                                                                                       ++W+pWe +dldi ++++++++  n+Rl l+wp f
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 1685 -----RYWTPWELVDLDI-TSDQLLALERNNRLTLAWPIF 1718
+                                                                                                  .....*************.********************* PP
+
+                                                                               Neuraminidase   80 e.ekakskektvddlgdqttgsseesk..weiklawselr 116 
+                                                                                                  + e+++++e+tv+d+++ t+++++++k  ++i+la+se++
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 1719 SeEPDPNPESTVPDSTPGTVTATDKPKrkLKIQLAVSEFA 1758
+                                                                                                  *999***************9888888889*********** PP
+
+                                                                               Neuraminidase  117 dgkWspkqvskdsleleetseeeaekke 144 
+                                                                                                  dg+W+pk+vskd++ + +  +  + +++
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 1759 DGRWQPKRVSKDAVLTPSSYTTANLQQD 1786
+                                                                                                  ***********98855444444444433 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (3026 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.00s 00:00:00.00 Elapsed: 00:00:00.01
+# Mc/sec: 51.44
+//
+[ok]

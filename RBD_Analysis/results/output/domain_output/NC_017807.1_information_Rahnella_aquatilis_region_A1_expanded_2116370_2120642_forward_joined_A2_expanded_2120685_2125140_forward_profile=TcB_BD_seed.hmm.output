@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                                                         Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                                                         -----------
+   2.2e-109  351.1   1.3   3.9e-109  350.2   1.3    1.5  1  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  350.2   1.3  3.9e-109  3.9e-109       1     287 []    2602    2893 ..    2602    2893 .. 0.99
+
+  Alignments for each domain:
+  == domain 1  score: 350.2 bits;  conditional E-value: 3.9e-109
+                                                                                                                       TcB_BD_seed    1 kqieaaeirleiaekelenqekqienaeevedflrskftn 40  
+                                                                                                                                        kq+++ +ir++ a+++le+++kq++n +++ +fl+ +f++
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 2602 KQLDTLSIRQQSAQTSLEQAKKQQQNLQSTLTFLNARFSQ 2641
+                                                                                                                                        899************************************* PP
+
+                                                                                                                       TcB_BD_seed   41 eeLYswlesqlsalyyqaYklalslakkaerafqfElgek 80  
+                                                                                                                                        ++LY+wl++q++alyyqaY++++s a +a++a+q+E+g+ 
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 2642 SSLYNWLAGQMAALYYQAYDAVISQALNAQSAWQYEIGDF 2681
+                                                                                                                                        **************************************** PP
+
+                                                                                                                       TcB_BD_seed   81 atsfikegywdslrkgLlagekLlldLkrleaaylernkr 120 
+                                                                                                                                        +t fi++++w+++++gLl+ge+L+l+++++eaa+l+rn+r
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 2682 TTIFINTSAWNNSYRGLLVGENLQLNVQQMEAAWLSRNTR 2721
+                                                                                                                                        **************************************** PP
+
+                                                                                                                       TcB_BD_seed  121 eleitktiSLrqldplallkLretgkcefelpEvlFdldy 160 
+                                                                                                                                        +le+tktiSLrql  +++   r+tg+++f+l+E+lFd+dy
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 2722 RLEMTKTISLRQLLGSQFDVQRQTGAFSFTLNETLFDNDY 2761
+                                                                                                                                        **************************************** PP
+
+                                                                                                                       TcB_BD_seed  161 pghylRriksVsltipcvvgpytsvnatLtllsskvrvka 200 
+                                                                                                                                        pg+ylR+ik Vs+++p+++gp+++v+a Lt++ s++ +k+
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 2762 PGQYLRQIKYVSVSLPTLIGPWQDVRALLTQTGSSTLLKP 2801
+                                                                                                                                        **************************************** PP
+
+                                                                                                                       TcB_BD_seed  201 dikavkylek..eedderlvtdliaiqsialSsgqndsGl 238 
+                                                                                                                                        di +v+yl++  +++++++  +l+a+q++a+S+g  dsGl
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 2802 DILGVQYLQDptTGNNSNVIANLRASQQVAISRGLTDSGL 2841
+                                                                                                                                        **********9999************************** PP
+
+                                                                                                                       TcB_BD_seed  239 FelnfrderYlPfEgaGavSsWrlelpkev...rqfdlet 275 
+                                                                                                                                        Fel+f derYlPfEg+Ga+S W+l++p+     +++ l++
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 2842 FELSFGDERYLPFEGTGAISGWQLTFPNPAhtgQKALLDA 2881
+                                                                                                                                        ***************************955456999**** PP
+
+                                                                                                                       TcB_BD_seed  276 isDvilhlrYTA 287 
+                                                                                                                                        ++Dvi++++YTA
+  NC_017807.1_information_Rahnella_aquatilis_region_A1_expanded_2116370_2120642_forward_joined_A2_expanded_2120685_2125140_forward 2882 LNDVIIQVNYTA 2893
+                                                                                                                                        ***********9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2909 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.01
+# Mc/sec: 83.49
+//
+[ok]

@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                -----------
+    5.3e-65  205.4   4.0      5e-61  192.4   4.0    3.3  1  NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  192.4   4.0     5e-61     5e-61       2     286 ..    1994    2287 ..    1993    2288 .. 0.93
+
+  Alignments for each domain:
+  == domain 1  score: 192.4 bits;  conditional E-value: 5e-61
+                                                                              TcB_BD_seed    2 qieaaeirleiaekelenqekqienaeevedflrskftne 41  
+                                                                                               q++a e+r+++a+ +l++++ q+++++e  +fl++kftn+
+  NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward 1994 QLAALEVRRQAAKLQLDSMKLQQQQTQEHLTFLQNKFTNK 2033
+                                                                                               8999************************************ PP
+
+                                                                              TcB_BD_seed   42 eLYswlesqlsalyyqaYklalslakkaerafqfElgeka 81  
+                                                                                                LYswl+s+l+a+y+ +Y+l++s ++ ae a+q++lge +
+  NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward 2034 ALYSWLRSKLMAIYKPFYDLTVSRCRMAELAYQYDLGE-T 2072
+                                                                                               *************************************9.9 PP
+
+                                                                              TcB_BD_seed   82 tsfikegywdslrkgLlagekLlldLkrleaaylernkre 121 
+                                                                                               ++fi+  +w+ +++gL+age+L+++L ++e++y e+++r 
+  NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward 2073 QTFIRPRAWQGNYSGLMAGESLMHNLIQMENSYFEKDNRV 2112
+                                                                                               **************************************** PP
+
+                                                                              TcB_BD_seed  122 leitktiSLrql..........................dp 135 
+                                                                                               leitk +SL+ +                            
+  NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward 2113 LEITKIVSLADVyqglssnkfgfeqvadvinksktqlgTA 2152
+                                                                                               ***********9*****************99988777767 PP
+
+                                                                              TcB_BD_seed  136 lallkLre.tgkcefelpEvlFdldypghy..lRriksVs 172 
+                                                                                               ++ ++L++ + +++++l++     dyp     lRr+k++s
+  NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward 2153 ENGISLKDgQLQASIKLSDLAIGKDYPADLgkLRRVKQIS 2192
+                                                                                               77778886256899*************986558******* PP
+
+                                                                              TcB_BD_seed  173 ltipcvvgpytsvnatLtllsskvrvkadikavkylekee 212 
+                                                                                               +t+p+++g y++++a L+   s+v+ +             
+  NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward 2193 VTLPMLTGAYQNIRAVLNYGGSAVKPR------------- 2219
+                                                                                               *****************9988876544............. PP
+
+                                                                              TcB_BD_seed  213 dderlvtdliaiqsialSsgqndsGlFelnfrderYlPfE 252 
+                                                                                                         + ++ia+S+g ndsG F+lnf+d+rYlPfE
+  NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward 2220 ----------GCSAIAISHGMNDSGQFQLNFNDDRYLPFE 2249
+                                                                                               ..........5789************************** PP
+
+                                                                              TcB_BD_seed  253 gaGav..SsWrlelpkev..rqfdletisDvilhlrYT 286 
+                                                                                               g  +   S+ +l++p+++  ++  l t++D+ilh++YT
+  NZ_UGTQ01000009.1_info_Proteus_penneri_TcdA1_expanded_position_3392479_3399346_backward 2250 GLPVDdtSTLTLSFPDATdkQKEMLLTLNDIILHINYT 2287
+                                                                                               *999655999999**97655788899***********9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2289 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.03
+# Mc/sec: 21.90
+//
+[ok]

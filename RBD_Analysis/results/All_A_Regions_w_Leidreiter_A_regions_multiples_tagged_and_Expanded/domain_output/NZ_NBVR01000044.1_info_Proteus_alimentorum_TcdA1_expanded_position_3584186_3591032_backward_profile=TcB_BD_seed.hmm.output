@@ -1,0 +1,85 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                    Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                    -----------
+    1.2e-65  207.6   2.6    5.7e-47  146.2   1.7    3.1  2  NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  146.2   1.7   5.7e-47   5.7e-47       2     195 ..    1987    2208 ..    1986    2214 .. 0.93
+   2 !   58.6   0.0   2.9e-20   2.9e-20     223     286 ..    2213    2280 ..    2208    2281 .. 0.90
+
+  Alignments for each domain:
+  == domain 1  score: 146.2 bits;  conditional E-value: 5.7e-47
+                                                                                  TcB_BD_seed    2 qieaaeirleiaekelenqekqienaeevedflrskftne 41  
+                                                                                                   q++  ++r+e+a+ +l++++ q+++a+e  +fl++kftn+
+  NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward 1987 QLDGLKVRKEAANLQLDSMKLQQKQAQEHLTFLQNKFTNK 2026
+                                                                                                   778899********************************** PP
+
+                                                                                  TcB_BD_seed   42 eLYswlesqlsalyyqaYklalslakkaerafqfElgeka 81  
+                                                                                                    LYswl+s+ +a+y+ +Y+l+ s ++ ae a+q++lge +
+  NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward 2027 ALYSWLRSKSMAIYKPFYDLVASRCRMAEMAYQYDLGE-T 2065
+                                                                                                   *************************************9.9 PP
+
+                                                                                  TcB_BD_seed   82 tsfikegywdslrkgLlagekLlldLkrleaaylernkre 121 
+                                                                                                   ++fi+ ++w+ +++gL+age+L+++L ++e++yle++kr 
+  NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward 2066 QTFIRPSAWQGNYSGLMAGESLMHNLAEMENSYLEKDKRV 2105
+                                                                                                   **************************************** PP
+
+                                                                                  TcB_BD_seed  122 leitktiSLrql..........................dp 135 
+                                                                                                   leitk +SL+ +                            
+  NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward 2106 LEITKIVSLEDVyqglgshkfgfeqvadvinksktqlgTA 2145
+                                                                                                   ***********9*****************99988777766 PP
+
+                                                                                  TcB_BD_seed  136 lallkLre.tgkcefelpEvlFdldypghy..lRriksVs 172 
+                                                                                                   ++ ++L++ + +++++l++     dyp     lRr+k++s
+  NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward 2146 ENGITLKNgQLQASIKLSDLAIGKDYPADLgkLRRVKQIS 2185
+                                                                                                   77778886255899*************986558******* PP
+
+                                                                                  TcB_BD_seed  173 ltipcvvgpytsvnatLtllssk 195 
+                                                                                                   +t+p+++g y++++a L+   s+
+  NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward 2186 VTLPALTGAYQNIRAVLNYGGSA 2208
+                                                                                                   ***************99876665 PP
+
+  == domain 2  score: 58.6 bits;  conditional E-value: 2.9e-20
+                                                                                  TcB_BD_seed  223 aiqsialSsgqndsGlFelnfrderYlPfEgaGav..SsW 260 
+                                                                                                   + ++ia+S+g ndsG F+lnf+d+rYlPfEg  +   S+ 
+  NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward 2213 GCSAIAISHGMNDSGQFQLNFNDDRYLPFEGLPVDdtSTL 2252
+                                                                                                   5689***************************999655999 PP
+
+                                                                                  TcB_BD_seed  261 rlelpkev..rqfdletisDvilhlrYT 286 
+                                                                                                   +l++p+++  +++ l t++D+ilh++YT
+  NZ_NBVR01000044.1_info_Proteus_alimentorum_TcdA1_expanded_position_3584186_3591032_backward 2253 TLSFPDATdkQKAMLLTLNDIILHINYT 2280
+                                                                                                   999**96655889999***********9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2282 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.03
+# Mc/sec: 21.83
+//
+[ok]

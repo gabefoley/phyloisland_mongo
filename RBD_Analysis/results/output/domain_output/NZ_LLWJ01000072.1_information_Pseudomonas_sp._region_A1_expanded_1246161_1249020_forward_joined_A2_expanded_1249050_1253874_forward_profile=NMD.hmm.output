@@ -1,0 +1,70 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                                                            Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                                                            -----------
+    2.1e-26   78.8   0.0    5.8e-26   77.3   0.0    1.8  1  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   77.3   0.0   5.8e-26   5.8e-26       1     138 [.    1126    1289 ..    1126    1326 .. 0.76
+
+  Alignments for each domain:
+  == domain 1  score: 77.3 bits;  conditional E-value: 5.8e-26
+                                                                                                                        Neuraminidase    1 Levvsgyie..kkdnakdtlhffGrtrtaPyrYYyRtldl 38  
+                                                                                                                                           L++++gyi+   ++ a+ t++++++++ +  +YYyR+l++
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 1126 LHTINGYIDgtAENMADSTYYLIAKSKGS-NTYYYRSLNM 1164
+                                                                                                                                           7899*****6555566677*********9.********** PP
+
+                                                                                                                        Neuraminidase   39 e................gelsanaWspWekidldi...ke 59  
+                                                                                                                                           +                ++ +++aWs+W  + l+     +
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 1165 RsptysttteraaqdslNYPAPGAWSDWMDVPLPAsedIP 1204
+                                                                                                                                           *********************************9955445 PP
+
+                                                                                                                        Neuraminidase   60 geyvrpvvangRlylfwpefeekakskektvddlgdqttg 99  
+                                                                                                                                            + +rpv +n+Rl+++w++ + k + + ++ + l  +   
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 1205 LQSIRPVCFNNRLFVIWAQCT-KPQFSHQELPALIGEIDY 1243
+                                                                                                                                           566******************.666777777766555533 PP
+
+                                                                                                                        Neuraminidase  100 sseesk.......weiklawsel.rdgkWspkqvskdsle 131 
+                                                                                                                                           +++ +         +++l++s+  +dg+Ws +qv  d+  
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 1244 KNPDRLlrfgryyTRLRLHYSYKkLDGSWSCPQVCIDEN- 1282
+                                                                                                                                           33333367888889***************9999887333. PP
+
+                                                                                                                        Neuraminidase  132 leetsee 138 
+                                                                                                                                            +++s +
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 1283 CTSKSLN 1289
+                                                                                                                                           2222222 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (2561 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.00
+# Mc/sec: inf
+//
+[ok]

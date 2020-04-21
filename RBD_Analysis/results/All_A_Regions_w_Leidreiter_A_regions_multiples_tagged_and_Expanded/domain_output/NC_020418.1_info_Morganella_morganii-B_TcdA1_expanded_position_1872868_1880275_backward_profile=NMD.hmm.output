@@ -1,0 +1,70 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/NMD.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NC_020418.1_info_Morganella_morganii-B_TcdA1_expanded_position_1872868_1880275_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NC_020418.1_info_Morganella_morganii-B_TcdA1_expanded_position_1872868_1880275_backward_profile=NMD.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Neuraminidase  [M=170]
+Accession:   PF18413.1
+Description: Neuraminidase-like domain
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                -----------
+    1.2e-32   99.1   4.2    3.2e-32   97.7   4.2    1.8  1  NC_020418.1_info_Morganella_morganii-B_TcdA1_expanded_position_1872868_1880275_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_020418.1_info_Morganella_morganii-B_TcdA1_expanded_position_1872868_1880275_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   97.7   4.2   3.2e-32   3.2e-32       1     164 [.    1066    1210 ..    1066    1221 .. 0.82
+
+  Alignments for each domain:
+  == domain 1  score: 97.7 bits;  conditional E-value: 3.2e-32
+                                                                            Neuraminidase    1 LevvsgyiekkdnakdtlhffGrtrtaPyrYYyRtldle. 39  
+                                                                                               L+vvsgy+++++ ++++++f+G ++t+P +YY+R++d++ 
+  NC_020418.1_info_Morganella_morganii-B_TcdA1_expanded_position_1872868_1880275_backward 1066 LKVVSGYHDTVNINQGNTWFIGTSQTEPKKYYWRKADHSk 1105
+                                                                                               89************************************** PP
+
+                                                                            Neuraminidase   40 ...gelsanaWspWekidldikeg.eyvrpvvangRlylf 75  
+                                                                                                  g+++anaWs+W++i++++++  + vrpv++ +Rlyl 
+  NC_020418.1_info_Morganella_morganii-B_TcdA1_expanded_position_1872868_1880275_backward 1106 cqnGRFAANAWSDWKEITCAVNPYgDMVRPVIFHSRLYLL 1145
+                                                                                               *********************5545*************** PP
+
+                                                                            Neuraminidase   76 wpefeekakskektvddlgdqttgsseeskweiklawsel 115 
+                                                                                               w e +    +k++t     ++t          ++l++++ 
+  NC_020418.1_info_Morganella_morganii-B_TcdA1_expanded_position_1872868_1880275_backward 1146 WIEKQ---VQKDNTG----KDT--------ASFTLKLTHV 1170
+                                                                                               ****9...3333333....333........3678****** PP
+
+                                                                            Neuraminidase  116 .rdgkWspkqvskdsleleetseeeaekkeslkkvalqas 154 
+                                                                                                +dg+W+++ +++           ++++++++kk+ l ++
+  NC_020418.1_info_Morganella_morganii-B_TcdA1_expanded_position_1872868_1880275_backward 1171 kYDGSWASPFSYD----------ITEKNISEWKKTGLYCA 1200
+                                                                                               ******9997777..........23334455566666666 PP
+
+                                                                            Neuraminidase  155 allskdklel 164 
+                                                                                               a++++++l +
+  NC_020418.1_info_Morganella_morganii-B_TcdA1_expanded_position_1872868_1880275_backward 1201 ASQEDNSLLI 1210
+                                                                                               6665555555 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (170 nodes)
+Target sequences:                            1  (2469 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.01
+# Mc/sec: 41.97
+//
+[ok]

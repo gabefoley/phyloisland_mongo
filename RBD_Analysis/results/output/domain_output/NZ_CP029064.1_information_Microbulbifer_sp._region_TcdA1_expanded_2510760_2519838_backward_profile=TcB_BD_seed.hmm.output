@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                   Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                   -----------
+   5.2e-124  399.0   0.2   1.1e-123  398.0   0.2    1.6  1  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  398.0   0.2  1.1e-123  1.1e-123       1     287 []    2589    2878 ..    2589    2878 .. 0.99
+
+  Alignments for each domain:
+  == domain 1  score: 398.0 bits;  conditional E-value: 1.1e-123
+                                                                                 TcB_BD_seed    1 kqieaaeirleiaekelenqekqienaeevedflrskftn 40  
+                                                                                                  +qi+aaeir+++ae++l+n+++qi+na+++++++++k+tn
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 2589 QQITAAEIRKTMAEEDLKNHQRQIDNAHQTDEYMHTKYTN 2628
+                                                                                                  7*************************************** PP
+
+                                                                                 TcB_BD_seed   41 eeLYswlesqlsalyyqaYklalslakkaerafqfElgek 80  
+                                                                                                  +eLY+w+ +++s++y++aYkla++lakkaer +qfElg+ 
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 2629 QELYQWMLGKISSVYFSAYKLAHDLAKKAERNYQFELGR- 2667
+                                                                                                  **************************************9. PP
+
+                                                                                 TcB_BD_seed   81 atsfikegywdslrkgLlagekLlldLkrleaaylernkr 120 
+                                                                                                  ++sfi +gywdsl+kgL++++kL  d++r+ aayl++nkr
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 2668 QDSFIAFGYWDSLKKGLQCADKLIYDINRMSAAYLDNNKR 2707
+                                                                                                  99************************************** PP
+
+                                                                                 TcB_BD_seed  121 eleitktiSLrqldplallkLretgkcefelpEvlFdldy 160 
+                                                                                                   +e+tk+iSL+qldplal++Lr+tg+c+fe+pE++ dld+
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 2708 VYEVTKHISLAQLDPLALARLRATGSCDFEVPEAILDLDH 2747
+                                                                                                  **************************************** PP
+
+                                                                                 TcB_BD_seed  161 pghylRriksVsltipcvvgpytsvnatLtllsskvrvka 200 
+                                                                                                  pghy+Rri++Vsl++pcv+gp tsv a+L+l+s+k+r + 
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 2748 PGHYFRRIRAVSLSLPCVAGPQTSVGAKLSLVSNKYRRNL 2787
+                                                                                                  *************************************987 PP
+
+                                                                                 TcB_BD_seed  201 ...dikavkylekeedderlvtdliaiqsialSsgqndsG 237 
+                                                                                                     +++++ y+e+ ++der+v ++ aiqsia+S +q+dsG
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 2788 hpdNLAGTGYAEDPGNDERFVYNVGAIQSIATSAAQQDSG 2827
+                                                                                                  77889999******************************** PP
+
+                                                                                 TcB_BD_seed  238 lFelnfrderYlPfEgaGavSsWrlelpkev.rqfdleti 276 
+                                                                                                  +Felnfrd+rYlPfEg+Ga+SsWrle+p++   qf+++ti
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 2828 MFELNFRDDRYLPFEGTGAISSWRLEFPSKAlAQFNYDTI 2867
+                                                                                                  *****************************888******** PP
+
+                                                                                 TcB_BD_seed  277 sDvilhlrYTA 287 
+                                                                                                  +Dv+lhl+YTA
+  NZ_CP029064.1_information_Microbulbifer_sp._region_TcdA1_expanded_2510760_2519838_backward 2868 ADVVLHLSYTA 2878
+                                                                                                  **********9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (3026 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.01
+# Mc/sec: 86.85
+//
+[ok]

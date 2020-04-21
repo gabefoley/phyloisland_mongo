@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_input/tmp/NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/All_A_Regions_w_Leidreiter_A_regions_multiples_tagged_and_Expanded/domain_output/NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                                                                Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                                                                -----------
+    2.5e-83  265.5   3.0    9.4e-83  263.6   3.0    2.0  1  NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  263.6   3.0   9.4e-83   9.4e-83       2     287 .]    2250    2547 ..    2249    2547 .. 0.94
+
+  Alignments for each domain:
+  == domain 1  score: 263.6 bits;  conditional E-value: 9.4e-83
+                                                                                                                              TcB_BD_seed    2 qieaaeirleiaekelenqekqienaeevedflrskftne 41  
+                                                                                                                                               q++a + ++++++ +l+ +e+++++a + ++ l ++f+++
+  NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward 2250 QLQAYAEQEKATRLQLRLAETSLAQAWSNYQLLAKRFSKA 2289
+                                                                                                                                               88889999999***************************** PP
+
+                                                                                                                              TcB_BD_seed   42 eLYswlesqlsalyyqaYklalslakkaerafqfElgeka 81  
+                                                                                                                                               +LY+wl++qls+ yyq+Y+l lsl+++a++++q+E  + +
+  NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward 2290 QLYDWLNAQLSKFYYQVYDLSLSLCRSAQACWQYEVADYE 2329
+                                                                                                                                               **************************************** PP
+
+                                                                                                                              TcB_BD_seed   82 tsfikegywdslrkgLlagekLlldLkrleaaylernkre 121 
+                                                                                                                                               ++fi+ g+w+++++g lage+L+l+L ++++ayl++n r+
+  NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward 2330 RTFIQPGAWNNNYRGYLAGEALKLSLLNMNTAYLNQNVRD 2369
+                                                                                                                                               **************************************** PP
+
+                                                                                                                              TcB_BD_seed  122 leitktiSLrql........................dpla 137 
+                                                                                                                                               lei+ktiSLr+                         +  +
+  NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward 2370 LEIVKTISLRHRlneceisspstdtsqttpsgtedkWTPH 2409
+                                                                                                                                               **********98999*************999977665556 PP
+
+                                                                                                                              TcB_BD_seed  138 llkLretgkcefelpEvlFdldypghylRriksVsltipc 177 
+                                                                                                                                                 +L ++g+  f+lpE+lF+ dyp h lRrik +s+++p+
+  NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward 2410 KKQLVDKGTLCFKLPEALFEEDYPRHLLRRIKGISVSLPA 2449
+                                                                                                                                               67999*********************************** PP
+
+                                                                                                                              TcB_BD_seed  178 vvgpytsvnatLtllsskvrvkadikavkylekeedderl 217 
+                                                                                                                                                +gpy++++a Lt++++++ + +               + 
+  NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward 2450 TLGPYEDIKAILTQTRNEIVLPT--------------GER 2475
+                                                                                                                                               *******************9997..............223 PP
+
+                                                                                                                              TcB_BD_seed  218 vtdliaiqsialSsgqndsGlFelnfrd.erYlPfEgaGa 256 
+                                                                                                                                               + d++a q+ialS+g +d+GlF+l+f+  erYlPfE++Ga
+  NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward 2476 RMDMRAHQQIALSTGLDDNGLFTLTFDSnERYLPFEYTGA 2515
+                                                                                                                                               5678999*******************855*********** PP
+
+                                                                                                                              TcB_BD_seed  257 vSsWrlelpkevrqfd.letisDvilhlrYTA 287 
+                                                                                                                                               +S+W+le+p+ +rq d le+i+D+++hlrYTA
+  NZ_JYLH01000043.1_info_Pseudomonas_libanensis_A1_expanded_position_1768953_1771785_forward_A2_expanded_position_1771790_1776629_forward 2516 ISDWTLEFPNPDRQKDvLESINDIVIHLRYTA 2547
+                                                                                                                                               **********997776379************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2557 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.03u 0.00s 00:00:00.03 Elapsed: 00:00:00.03
+# Mc/sec: 24.46
+//
+[ok]

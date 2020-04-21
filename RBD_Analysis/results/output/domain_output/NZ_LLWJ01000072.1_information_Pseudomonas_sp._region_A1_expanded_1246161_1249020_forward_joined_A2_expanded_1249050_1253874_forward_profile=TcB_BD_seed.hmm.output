@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  leidreiter_profiles/TcB_BD_seed.hmm
+# target sequence database:        /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_input/tmp/NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward
+# output directed to file:         /Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200309_RBD/20200331_RBD_Notebook/results/output/domain_output/NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward_profile=TcB_BD_seed.hmm.output
+# domain reporting threshold:      score >= 1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_BD_seed  [M=287]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                                                                                                            Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                                                                                            -----------
+      6e-90  287.3   4.7    1.4e-89  286.1   4.7    1.7  1  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward  <unknown description>
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward  <unknown description>
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  286.1   4.7   1.4e-89   1.4e-89       2     287 .]    2267    2554 ..    2266    2554 .. 0.96
+
+  Alignments for each domain:
+  == domain 1  score: 286.1 bits;  conditional E-value: 1.4e-89
+                                                                                                                          TcB_BD_seed    2 qieaaeirleiaekelenqekqienaeevedflrskftne 41  
+                                                                                                                                           q++a + + + ++ +l+++ +++++a+ ++d l+++ft  
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 2267 QVQAYAEQSNSTRLQLQSTATALSQAKIAYDLLNKRFTAP 2306
+                                                                                                                                           7788888899999999************************ PP
+
+                                                                                                                          TcB_BD_seed   42 eLYswlesqlsalyyqaYklalslakkaerafqfElgeka 81  
+                                                                                                                                           ++Y+wl++qls+ y qaY++al l+ +a++++q+E+ e++
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 2307 QMYQWLSAQLSTFYLQAYDAALALCLDAQACWQYERAESS 2346
+                                                                                                                                           **************************************** PP
+
+                                                                                                                          TcB_BD_seed   82 tsfikegywdslrkgLlagekLlldLkrleaaylernkre 121 
+                                                                                                                                           ++fi++ +w+++++g  age+L+l+L ++ +ayl++n+r 
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 2347 RTFIHTANWNNHHRGFTAGETLKLSLITMHTAYLQHNQRA 2386
+                                                                                                                                           **************************************** PP
+
+                                                                                                                          TcB_BD_seed  122 leitktiSLrql............dplallkLretgkcef 149 
+                                                                                                                                           leitkt+SLr+l            +p+  ++L+++g++ f
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 2387 LEITKTVSLRHLqakdtsatlnmsWPEISASLKTRGTVAF 2426
+                                                                                                                                           ************9*********999*************** PP
+
+                                                                                                                          TcB_BD_seed  150 elpEvlFdldypghylRriksVsltipcvvgpytsvnatL 189 
+                                                                                                                                           e+++++Fd dypghylRriks+s+++p+ ++py++++atL
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 2427 EITQAMFDADYPGHYLRRIKSISVSLPATLSPYEDIRATL 2466
+                                                                                                                                           **************************************** PP
+
+                                                                                                                          TcB_BD_seed  190 tllsskvrvkadikavkylekeedderlvtdliaiqsial 229 
+                                                                                                                                           t++ s++++++            +++    +l+  ++ial
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 2467 TQTYSTIQTSQ------------NADFAYPNLRVREQIAL 2494
+                                                                                                                                           *******9998............334455688899***** PP
+
+                                                                                                                          TcB_BD_seed  230 SsgqndsGlFelnfr.derYlPfEgaGavSsWrlelpkev 268 
+                                                                                                                                           S+g nd+GlF+lnf+ d+rYlPfE++GavS+W l++p+  
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 2495 STGLNDNGLFTLNFEgDDRYLPFEYTGAVSRWILSFPNPA 2534
+                                                                                                                                           **************8469********************77 PP
+
+                                                                                                                          TcB_BD_seed  269 .rqfdletisDvilhlrYTA 287 
+                                                                                                                                            +q  l+++sDvi+h+rYTA
+  NZ_LLWJ01000072.1_information_Pseudomonas_sp._region_A1_expanded_1246161_1249020_forward_joined_A2_expanded_1249050_1253874_forward 2535 aQQSMLDSLSDVIVHVRYTA 2554
+                                                                                                                                           69999**************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (287 nodes)
+Target sequences:                            1  (2561 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.01
+# Mc/sec: 73.50
+//
+[ok]
