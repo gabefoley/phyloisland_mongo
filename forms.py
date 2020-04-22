@@ -72,7 +72,7 @@ class GenomeDiagramSelectForm(FlaskForm):
     """
     Form for selecting which genomes to look at in the Genome Diagram
     """
-    genome = SelectMultipleField('Genome', choices=[])
+    genome = SelectField('Genome', choices=[])
     submit_diagram = SubmitField("Submit")
     tag_genome = SubmitField('Tag genome')
     clear_genome_tags = SubmitField('Clear genome tags')
@@ -88,6 +88,11 @@ class GenomeDiagramSelectForm(FlaskForm):
     show_hits = SelectField('Which hits should we show?', choices=[('all', 'All hits'), ('initial', 'Just initial '
                                                                                                     'hits'),
                                                                    ('expanded', 'Just expanded hits')])
+
+class GenomeDiagramtPageForm(FlaskForm):
+    page = SelectField('Page to display', choices=[])
+    select_page = SubmitField('Select page')
+
 
 class GenomeDiagamShowRegions(FlaskForm):
     """

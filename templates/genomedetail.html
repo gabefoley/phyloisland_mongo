@@ -20,6 +20,37 @@
 {% block body %}
 
 <div>
+
+    Selected genome is {{genome_name}} <br>
+    Selected page is {{page_name}}
+    <br>
+    <br>
+
+     <form method="POST" enctype="multipart/form-data">
+        {{ page_form.hidden_tag() }}
+
+          <div class="smallform">
+
+            {{ page_form.page.label }}
+
+            {{ page_form.page }}
+
+              <br>
+
+              {{ page_form.select_page(class="btn-primary") }}
+
+
+          </div>
+     </form>
+
+    <br>
+    <br>
+
+
+
+
+
+
     <form method="POST" enctype="multipart/form-data">
         {{ select_form.hidden_tag() }}
 
@@ -28,7 +59,13 @@
             {{ select_form.genome.label }}
 
             {{ select_form.genome }}
+
+
+
+
             <br>
+
+
             {{ select_form.submit_diagram(class="btn-primary") }}
         </div>
 
@@ -53,6 +90,10 @@
         <br>
     </form>
 
+</div>
+
+<div>
+    Currently selected genome is {{genome_name}}
 </div>
 
 <div>
@@ -99,6 +140,7 @@
     Genome is currently tagged with -
 
     {{genome_tags | safe}}
+
 
 </div>
 
@@ -202,6 +244,8 @@
 
     $('#show_hits').val("{{hit_type | safe }}")
 
+    $('#page').val("{{page_name | safe }}")
+    $('#genome').val("{{genome.id | safe }}")
 
     function collect_details(){
 
@@ -260,6 +304,8 @@
 
 
     $('#show_regions').on('click', function (e) {
+                e.preventDefault();
+
         console.log('clicked show regions')
         submit_details()
 
@@ -454,11 +500,11 @@
 //        var genome_name = "{{ genome.name |safe }}";
 
 
-        console.log(selected);
-
-        console.log ('length was')
-            console.log(Object.keys(selected).length)
-
+//        console.log(selected);
+//
+//        console.log ('length was')
+//            console.log(Object.keys(selected).length)
+//
 
 
 

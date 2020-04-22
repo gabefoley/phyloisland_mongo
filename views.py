@@ -23,6 +23,7 @@ import io
 import json
 import Bio
 import warnings
+import math
 from collections import defaultdict
 
 from wtforms import SelectField
@@ -510,17 +511,6 @@ class GenomeDetailView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def genomedetail(self):
-        select_form = forms.GenomeDiagramSelectForm()
-        region_form = forms.GenomeDiagamShowRegions()
-        select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
-                                      models.GenomeRecords.objects()]
-
-        hit_form = forms.GenomeHitForm()
-
-        # print('back here again')
-        #
-        # print ('check there is a change here')
-
 
         if session.get('hits') is None:
             session['hits'] = 'expanded'
@@ -531,19 +521,68 @@ class GenomeDetailView(BaseView):
         if session.get('checked_regions') is None:
             session['checked_regions'] = ['A1', 'A2', 'TcdA1', 'TcB', 'TcC', 'Chitinase']
 
+        if session.get('page_choice') is None:
+            session['page_choice'] = 0
+
+        records_per_page = 20
+
+        genome_count = models.GenomeRecords.objects().count()
+        page_count = math.ceil(genome_count /  records_per_page)
+        page_choices = [(x, "Page " + str(x)) for x in range(page_count)]
+        page_choice = session['page_choice']
+
+
+
+        print ('Total genomes is ' + str(genome_count))
+        print ("Page count is " + str(page_count))
+        print ('Page choices is ' + str(page_choices))
+        print ('page choice is ' + str(page_choice))
+
+        select_form = forms.GenomeDiagramSelectForm()
+        page_form = forms.GenomeDiagramtPageForm()
+        region_form = forms.GenomeDiagamShowRegions()
+        hit_form = forms.GenomeHitForm()
+
+
+        select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                      models.GenomeRecords.objects()[page_choice:page_choice + records_per_page]]
+        # select_form.genome.data = 0
+        page_form.page.choices = page_choices
+
+
+
+
         if request.method == 'POST' and select_form.submit_diagram.data:
 
             print('post')
 
-            # print (session['genome'])
+            print (session['page_choice'])
+
+            page_form.data['page'] = [session['page_choice']]
+
+            page_choice = int(page_choice) * records_per_page
+
+            select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                          models.GenomeRecords.objects()[page_choice:page_choice + records_per_page]]
 
 
 
+
+
+
+            # page_form.data['page'] = [12]
+
+            # genome = models.GenomeRecords.objects.get(id=select_form.data['genome'])
+
+            # session['genome'] = genome.id
 
             if session.get('genome') is not None:
                 print('session genome not none')
 
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
+
+                print ('genome was ')
+                print (genome)
 
                 tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
                     'hidden_type'], checked_regions=session['checked_regions'])
@@ -556,9 +595,10 @@ class GenomeDetailView(BaseView):
 
                 print (tags)
 
-                return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form,
+                return self.render('genomedetail.html', select_form=select_form, page_form = page_form,
+                hit_form=hit_form,
                                    region_form=region_form, tracks=tracks,
-                                   genome=genome, genome_name = genome.name, genome_tags = genome[
+                                   genome=genome, genome_name = genome.name, page_name = session['page_choice'], genome_tags = genome[
                                                                                                                             'tags'], \
                                                                                         hit_type=session['hits'], \
                                                                                     hidden_type=session['hidden_type'],
@@ -566,56 +606,94 @@ class GenomeDetailView(BaseView):
                 genomesize = \
                     genomesize)
 
-            genome = models.GenomeRecords.objects.get(id=select_form.data['genome'][0])
 
-            # tags = genome['tags']
 
+            genome = models.GenomeRecords.objects.get(id=select_form.data['genome'])
+
+            print (genome.name)
+            print (page_choice)
+            print (records_per_page)
+
+
+
+
+
+
+            # page_form.data['page'] = ['12']
+            # select_form.data['genome'] = [genome.id]
+
+            print ('why not')
             tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
                 'hidden_type'], checked_regions=session['checked_regions'])
 
             # print('got here')
 
-            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, region_form=region_form, tracks=tracks,
-                               genome=genome, genome_name = genome.name, genome_tags = genome['tags'], hit_type=session['hits'],
+            return self.render('genomedetail.html', select_form=select_form, page_form = page_form,  hit_form=hit_form,
+                               region_form=region_form, tracks=tracks,
+                               genome=genome, genome_name = genome.name, page_name = session['page_choice'],  genome_tags\
+                = genome[
+                                                                                                                         'tags'],
+                               hit_type=session['hits'],
                                hidden_type=session['hidden_type'],
                                checked_regions=session['checked_regions'],genomesize = genomesize)
 
-            # elif hit_form.submit_hit.data and hit_form.validate():
-            #
-            #     print ('got to this')
-            #
-            #     return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
-            #
-            #
-            #
-            # elif hit_form.delete_hit.data and hit_form.validate():
-            #
-            #     print ('nope, here')
-            #
-            #     return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, items=items)
-            #
-        # else:
-        #
-        #     print ('could not make it')
-        #     return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, tracks=tracks,
-        #                        genome=genome.id)
-        else:
 
-            # print('get')
+        elif request.method == 'POST' and page_form.select_page.data:
 
-            # Just get the first Genome Record in the database and return a Genome Detail of that
-            genome = models.GenomeRecords.objects()[0]
+            print ('change page')
 
-            # print ('genome here is ')
-            # print (genome.name)
+
+            page_choice = int(page_form.page.data) * records_per_page
+            session['page_choice'] = int(page_form.page.data)
+            print ('page chioce is ' + str(page_choice))
+            print ('records per page is ' + str(records_per_page))
+
+
+
+            select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                          models.GenomeRecords.objects()[page_choice:page_choice + records_per_page]]
+
+            genome = models.GenomeRecords.objects()[page_choice]
+
+            select_form.data['genome'] = [genome.id]
+
+            print ('genome here is ')
+            print (genome.name)
 
             tracks, genomesize = utilities.get_genome_items(genome)
 
-            # print ('genomesize was')
-            # print (genomesize )
+            return self.render('genomedetail.html', select_form=select_form, page_form = page_form,  hit_form=hit_form,
+                               region_form=region_form, tracks=tracks,
+                               genome=genome, genome_name = genome.name, page_name = session['page_choice'], genome_tags = genome['tags'],
+                               hit_type=session['hits'],
+                               hidden_type=session['hidden_type'], checked_regions=session['checked_regions'], genomesize=genomesize)
 
-            return self.render('genomedetail.html', select_form=select_form, hit_form=hit_form, region_form=region_form, tracks=tracks,
-                               genome=genome, genome_name = genome.name,  hit_type=session['hits'],
+
+
+        else:
+
+            print('get')
+
+            # Just get the first Genome Record in the database and return a Genome Detail of that
+
+            genome = models.GenomeRecords.objects()[0]
+            select_form.data['genome'] = [genome.id]
+            page_choice = 0
+            # session['page_choice'] = 0
+
+
+
+            select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                          models.GenomeRecords.objects()[page_choice:page_choice + records_per_page]]
+
+
+
+            tracks, genomesize = utilities.get_genome_items(genome)
+
+            return self.render('genomedetail.html', select_form=select_form, page_form = page_form,  hit_form=hit_form,
+                               region_form=region_form, tracks=tracks,
+                               genome=genome, genome_name = genome.name, page_name = 0, genome_tags = genome['tags'],
+                               hit_type=session['hits'],
                                hidden_type=session['hidden_type'], checked_regions=session['checked_regions'], genomesize=genomesize)
 
 
