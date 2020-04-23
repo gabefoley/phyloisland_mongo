@@ -11,6 +11,9 @@
 /RBD_Analysis/profiles/*
 /RBD_Analysis/*.fasta
 /RBD_Analysis/A_regions_to_join/*.fasta
+/RBD_Analysis/a_regions_to_join_setup.py
+/RBD_Analysis/checking_domains_setup.py
+
 
 # Mongo configs
 /configs/mongoconfig.py
