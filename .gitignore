@@ -6,6 +6,8 @@
 /tmp/*
 /fasta_folder/*
 
+# Notebook result folders
+/RBD_Analysis/results/*
 
 # Mongo configs
 /configs/mongoconfig.py
