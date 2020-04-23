@@ -946,12 +946,25 @@ def tag_hit():
         # At this stage, I see no reason to write out the hidden tag to the GenomeTags record
         if tag2add != 'hidden':
 
-            genome_tag = models.GenomeTags(query.name + "_information_" + query.species.replace(" ",
-                                                                                                "_") + "_region_" +
-                                           formatted_hit,
-                                           tag=request.json[
-                'tag2add'])
-            genome_tag.save()
+            genome_name = query.name + "_information_" + query.species.replace(" ", "_") + "_region_" + formatted_hit
+
+            if not models.GenomeTags.objects(tag_id=genome_name):
+                genome_tag = models.GenomeTags(tag_id=genome_name, tags=[request.json['tag2add']])
+                genome_tag.save()
+
+                print('Genome tag does not exist')
+
+            else:
+
+                print('Genome tag exists')
+                models.GenomeTags.objects().get(tag_id=genome_name).update(push__tags=request.json['tag2add'])
+
+            # genome_tag = models.GenomeTags(query.name + "_information_" + query.species.replace(" ",
+            #                                                                                     "_") + "_region_" +
+            #                                formatted_hit,
+            #                                tag=request.json[
+            #     'tag2add'])
+            # genome_tag.save()
 
         # models.GenomeRecords.objects().get(id=request.json['genome'], hits__id=hit_id).update(push__hits__tags=
         #     request.json['tag2add'])
@@ -972,8 +985,18 @@ def tag_genome():
                                                                          request.json['tag2add'])
 
     #TODO: At the moment this just supports one tag per genome
-    genome_tag = models.GenomeTags(tag_id=genome_name, tag=request.json['tag2add'])
-    genome_tag.save()
+    if not models.GenomeTags.objects(tag_id=genome_name):
+        genome_tag = models.GenomeTags(tag_id=genome_name, tags=[request.json['tag2add']])
+        genome_tag.save()
+
+        print ('Genome tag does not exist')
+
+    else:
+
+        print ('Genome tag exists')
+        models.GenomeTags.objects().get(tag_id=genome_name).update(push__tags=request.json['tag2add'])
+
+
 
     return redirect('genomedetail')
 
@@ -983,8 +1006,15 @@ def clear_genome_tags():
     session['genome'] = request.json['genome']
     genome_name = request.json['genome_name']
 
+    print ('from here')
+    print ('genome name is ')
+
+    print ('clear the records')
+
 
     models.GenomeRecords.objects().get(id=request.json['genome']).update(tags=[])
+
+    print ('clear the tags')
     models.GenomeTags.objects().get(tag_id=genome_name).delete()
 
     return redirect('genomedetail')

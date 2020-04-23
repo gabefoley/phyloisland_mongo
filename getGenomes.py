@@ -261,7 +261,7 @@ def download_tags():
     tag_dict = {}
 
     for x in tags:
-        tag_dict[x['tag_id']] = x['tag']
+        tag_dict[x['tag_id']] = x['tags']
 
     out_path = "./fasta_folder/tags.txt"
 

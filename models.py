@@ -67,7 +67,7 @@ class AssociatedHits(db.DynamicDocument):
 
 class GenomeTags(db.DynamicDocument):
     tag_id = db.StringField()
-    tag = db.StringField()
+    tags = db.ListField(db.StringField(), default=list)
 
 
 
