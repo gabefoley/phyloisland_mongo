@@ -8,6 +8,9 @@
 
 # Notebook result folders
 /RBD_Analysis/results/*
+/RBD_Analysis/profiles/*
+/RBD_Analysis/*.fasta
+/RBD_Analysis/A_regions_to_join/*.fasta
 
 # Mongo configs
 /configs/mongoconfig.py
