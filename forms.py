@@ -48,7 +48,8 @@ class SetupForm(FlaskForm):
     """
     Form for customising user preferences
     """
-    page_size = IntegerField(u'Preferred page size', [validators.optional()])
+    page_size = IntegerField(u'Number of records per page in Genome Records ', [validators.optional()])
+    record_size = IntegerField(u'Number of records per page in Genome Detail', [validators.optional()])
     submit = SubmitField("Submit")
 
 # class DeleteReferenceForm(FlaskForm):

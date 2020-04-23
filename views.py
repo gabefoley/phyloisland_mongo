@@ -5,7 +5,7 @@ import utilities
 import getGenomes
 import custom_filters
 from flask import render_template, flash, request, session, send_file, has_app_context, redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, user_logged_in
 from flask_admin import Admin, expose, BaseView
 from flask_admin.actions import action
 from flask_admin.contrib.mongoengine import ModelView, filters
@@ -29,6 +29,12 @@ from collections import defaultdict
 from wtforms import SelectField
 
 ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2', 'region3', 'region4']
+
+@user_logged_in.connect_via(app)
+def on_user_logged_in(sender, user):
+    current = models.User.objects().get(username=str(current_user.username))
+    session['page_size'] = current.page_size if current.page_size != None else 20
+    session['record_size'] = current.record_size if current.record_size != None else 20
 
 
 class UploadView(BaseView):
@@ -201,11 +207,11 @@ class UploadView(BaseView):
 
         return self.render("upload_admin.html", form=form)
 
-        def is_accessible(self):
-            if (not current_user.is_active or not
-            current_user.is_authenticated):
-                return False
-            return True
+        # def is_accessible(self):
+        #     if (not current_user.is_active or not
+        #     current_user.is_authenticated):
+        #         return False
+        #     return True
 
 
 class SetupView(BaseView):
@@ -215,14 +221,21 @@ class SetupView(BaseView):
         form = forms.SetupForm()
         # del_form = forms.DeleteForm()
         current = models.User.objects().get(username=str(current_user.username))
-        prefs = {'page_size': current.page_size, 'references': current_user.references}
+        prefs = {'page_size': current.page_size, 'record_size': current.record_size, 'references':
+            current_user.references}
 
         if request.method == "POST":
             if form.submit.data:
                 try:
                     models.User.objects().get(username=str(current_user.username)).update(page_size=form.page_size.data)
                     print('data')
-                    models.User.objects().get(username=str(current_user.username)).update(page_size=form.page_size.data)
+                    models.User.objects().get(username=str(current_user.username)).update(
+                        record_size=form.record_size.data)
+
+                    session['page_size'] = form.page_size.data if form.page_size.data != None else \
+                        session['page_size']
+                    session['record_size'] = form.record_size.data if form.record_size.data != None else \
+                        session['page_size']
 
                     for reference in request.form.getlist('references'):
                         models.User.objects().update(add_to_set__references=reference)
@@ -409,13 +422,15 @@ class GenomeRecordsView(ModelView):
     @expose("/", methods=('GET', 'POST'))
     def index_view(self):
         print(session.get('page_size'))
-        current = models.User.objects().get(username=str(current_user.username))
-        print(current.page_size)
+        # current = models.User.objects().get(username=str(current_user.username))
+        # print(current.page_size)
         self.edit_modal = True
         self.can_create = False
         self.can_view_details = True
 
-        self.page_size = current.page_size
+        # self.page_size = current.page_size
+
+        self.page_size = session['page_size']
 
         self.form_edit_rules = ('name', 'species', 'strain', 'description')
 
@@ -424,11 +439,11 @@ class GenomeRecordsView(ModelView):
 
         return super(ModelView, self).index_view()
 
-    def is_accessible(self):
-        if (not current_user.is_active or not
-        current_user.is_authenticated):
-            return False
-        return True
+    # def is_accessible(self):
+    #     if (not current_user.is_active or not
+    #     current_user.is_authenticated):
+    #         return False
+    #     return True
 
     def _download_formatter(self, context, model, name):
 
@@ -508,6 +523,8 @@ class GenomeOverviewView(BaseView):
 
 
 class GenomeDetailView(BaseView):
+
+
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def genomedetail(self):
@@ -524,7 +541,12 @@ class GenomeDetailView(BaseView):
         if session.get('page_choice') is None:
             session['page_choice'] = 0
 
-        records_per_page = 20
+        current = models.User.objects().get(username=str(current_user.username))
+        print(current.record_size)
+
+        records_per_page = session['record_size']
+
+        # records_per_page = current.record_size if current.record_size != None else 20
 
         genome_count = models.GenomeRecords.objects().count()
         page_count = math.ceil(genome_count /  records_per_page)
@@ -715,11 +737,11 @@ class UserView(ModelView):
             self.column_list = ['username', 'password']
         return super(ModelView, self).index_view()
 
-    def is_accessible(self):
-        if (not current_user.is_active or not
-        current_user.is_authenticated):
-            return False
-        return True
+    # def is_accessible(self):
+    #     if (not current_user.is_active or not
+    #     current_user.is_authenticated):
+    #         return False
+    #     return True
 
     @property
     def _list_columns(self):
@@ -819,11 +841,11 @@ class ProfileView(ModelView):
 
         return super(ModelView, self).index_view()
 
-    def is_accessible(self):
-        if (not current_user.is_active or not
-        current_user.is_authenticated):
-            return False
-        return True
+    # def is_accessible(self):
+    #     if (not current_user.is_active or not
+    #     current_user.is_authenticated):
+    #         return False
+    #     return True
 
     @property
     def _list_columns(self):

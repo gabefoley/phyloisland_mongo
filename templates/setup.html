@@ -20,6 +20,17 @@
                 <br>
                 <br>
 
+                {{ form.record_size.label }}
+
+
+                {% set f = form.record_size.process_data(prefs['record_size']|string()) %}
+
+
+                {{ form.record_size() }}
+
+                <br>
+                <br>
+
                 <div class="multi-field-wrapper">
                 <div class="multi-fields">
                 <div class="multi-field">
