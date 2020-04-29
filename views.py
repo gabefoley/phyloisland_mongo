@@ -521,6 +521,12 @@ class GenomeOverviewView(BaseView):
 
         return self.render('genomeoverview.html', form=form, items=items)
 
+class BatchDeleteView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def batch_delete(self):
+        form = forms.BatchDeleteForm()
+        return self.render('batch_delete.html', form=form)
 
 class GenomeDetailView(BaseView):
 
@@ -926,6 +932,28 @@ def add_tag():
 
     return redirect('genomeoverview')
 
+@app.route("/delete_all_tags", methods=['GET', 'POST'])
+def delete_all_tags():
+
+    print ('delete_all_genome_tags')
+
+    queries = models.GenomeRecords.objects().all()
+
+    queries.update(tags=[])
+
+    for query in queries:
+
+        for hit in query.hits:
+            hit.tags = []
+
+        query.save()
+
+
+    models.GenomeTags.objects().delete()
+
+    return redirect('batch_delete')
+
+
 
 @app.route("/genomedetail/tag_hit)", methods=['GET', 'POST'])
 def tag_hit():
@@ -1178,6 +1206,7 @@ with warnings.catch_warnings():
 
     admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
     admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
+    admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))
 
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
     admin.add_view(DownloadGenomeOrderView(name='Download genome order', endpoint='download_order'))

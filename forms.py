@@ -147,6 +147,11 @@ class DownloadFastaForm(FlaskForm):
 
         submit = SubmitField("Submit")
 
+class BatchDeleteForm(FlaskForm):
+    delete_all_tags = SubmitField('Delete all tags')
+    # delete_all_region_tags = SubmitField('Delete all tags at the region level')
+
+
 class DownloadAssociatedRegions(FlaskForm):
 
     associated_regions = SubmitField("Download Associated Regions")
