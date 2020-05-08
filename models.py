@@ -63,6 +63,7 @@ class Hits(db.EmbeddedDocument):
     tags = db.ListField(db.StringField(), default=list)
 
 class AssociatedHits(db.DynamicDocument):
+    genome_id = db.StringField()
     region1 = db.StringField()
     region2 = db.StringField()
 

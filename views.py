@@ -612,8 +612,11 @@ class GenomeDetailView(BaseView):
                 print ('genome was ')
                 print (genome)
 
-                tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
+                tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
+                                                                       hidden_type=session[
                     'hidden_type'], checked_regions=session['checked_regions'])
+
+                associated_dict = utilities.get_associated_dict(genome)
 
                 session['genome'] = None
 
@@ -623,9 +626,11 @@ class GenomeDetailView(BaseView):
 
                 print (tags)
 
+
                 return self.render('genomedetail.html', select_form=select_form, page_form = page_form,
                 hit_form=hit_form,
-                                   region_form=region_form, tracks=tracks,
+                                   region_form=region_form, tracks=tracks, hit_tags = hit_tags, associated_dict =
+                                   associated_dict,
                                    genome=genome, genome_name = genome.name, page_name = session['page_choice'], genome_tags = genome[
                                                                                                                             'tags'], \
                                                                                         hit_type=session['hits'], \
@@ -651,13 +656,16 @@ class GenomeDetailView(BaseView):
             # select_form.data['genome'] = [genome.id]
 
             print ('why not')
-            tracks, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
+            tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'], hidden_type=session[
                 'hidden_type'], checked_regions=session['checked_regions'])
+
+            associated_dict = utilities.get_associated_dict(genome)
 
             # print('got here')
 
             return self.render('genomedetail.html', select_form=select_form, page_form = page_form,  hit_form=hit_form,
-                               region_form=region_form, tracks=tracks,
+                               region_form=region_form, tracks=tracks, hit_tags = hit_tags, associated_dict =
+                                   associated_dict,
                                genome=genome, genome_name = genome.name, page_name = session['page_choice'],  genome_tags\
                 = genome[
                                                                                                                          'tags'],
@@ -688,10 +696,13 @@ class GenomeDetailView(BaseView):
             print ('genome here is ')
             print (genome.name)
 
-            tracks, genomesize = utilities.get_genome_items(genome)
+            tracks, hit_tags, genomesize = utilities.get_genome_items(genome)
+
+            associated_dict = utilities.get_associated_dict(genome)
 
             return self.render('genomedetail.html', select_form=select_form, page_form = page_form,  hit_form=hit_form,
-                               region_form=region_form, tracks=tracks,
+                               region_form=region_form, tracks=tracks, hit_tags = hit_tags, associated_dict =
+                                   associated_dict,
                                genome=genome, genome_name = genome.name, page_name = session['page_choice'], genome_tags = genome['tags'],
                                hit_type=session['hits'],
                                hidden_type=session['hidden_type'], checked_regions=session['checked_regions'], genomesize=genomesize)
@@ -716,10 +727,13 @@ class GenomeDetailView(BaseView):
 
 
 
-            tracks, genomesize = utilities.get_genome_items(genome)
+            tracks, hit_tags, genomesize = utilities.get_genome_items(genome)
+
+            associated_dict = utilities.get_associated_dict(genome)
 
             return self.render('genomedetail.html', select_form=select_form, page_form = page_form,  hit_form=hit_form,
-                               region_form=region_form, tracks=tracks,
+                               region_form=region_form, tracks=tracks, hit_tags = hit_tags, associated_dict =
+                                   associated_dict,
                                genome=genome, genome_name = genome.name, page_name = 0, genome_tags = genome['tags'],
                                hit_type=session['hits'],
                                hidden_type=session['hidden_type'], checked_regions=session['checked_regions'], genomesize=genomesize)
@@ -971,27 +985,34 @@ def tag_hit():
 
     tag2add = request.json['tag2add']
 
+    print ('poker')
+
+    print (tag2add)
+
+
+
     print('hits')
     print(hits)
 
-    for hit in hits:
-        print(hit.id)
+    # for hit in hits:
+    #     # print(hit.id)
 
     for hit_id, hit_name in request.json['hits'].items():
-        print('hop id')
-        print(hit_id)
-        print (hit_name)
 
         # Add it into the genome's list of hits
 
-        hits.get(id=hit_id).tags.append(request.json['tag2add'])
+        print (hits.get(id=hit_id).tags)
+
+        if hits.get(id=hit_id).tags == [""]:
+            print ('create new')
+            hits.get(id=hit_id).tags = [tag2add]
+
+        else:
+
+            hits.get(id=hit_id).tags.append(tag2add)
         hits.save()
         formatted_hit = hit_name.replace(" ", "_").replace(":", "_")
 
-        # region = '_region__' +hit_name.split(" ")[0]
-
-        # print (hit.name)
-        # pos = '_position=_' +hit_name.split(" ")[1]
 
         # At this stage, I see no reason to write out the hidden tag to the GenomeTags record
         if tag2add != 'hidden':
@@ -1025,26 +1046,84 @@ def tag_hit():
     return redirect('genomedetail')
 
 
+
+
+
+
+
+@app.route("/genomedetail/update_hit_tags)", methods=['GET', 'POST'])
+def update_hit_tags():
+    genome = request.json['genome']
+    genome_name = request.json['genome_name']
+    genome_species = request.json['genome_species']
+
+    tags = request.json['hit_tags'].split(",")
+    hit_id = request.json['hit_id']
+    hit_name = request.json['hit_name'].replace(" ", "_").replace(":", "_")
+
+    print ('hit name is ')
+    print (hit_name)
+
+    formatted_hit_name = genome_name + "_information_" + genome_species.replace(" ", "_") + "_region_" + hit_name
+
+    print ('hits to change is ')
+    print (tags)
+
+    print (formatted_hit_name)
+
+
+
+    hits = models.GenomeRecords.objects().get(id=genome).hits.get(id=hit_id)
+
+    hits.tags = tags
+
+    hits.save()
+
+
+
+    models.GenomeTags.objects().get(tag_id=formatted_hit_name).update(tags=tags)
+
+    return redirect('genomedetail')
+
+
+
 @app.route("/genomedetail/tag_genome)", methods=['GET', 'POST'])
 def tag_genome():
     session['genome'] = request.json['genome']
 
     genome_name = request.json['genome_name']
 
-    models.GenomeRecords.objects().get(id=request.json['genome']).update(push__tags=
-                                                                         request.json['tag2add'])
+    tags = request.json['tag2add'].split(",")
 
-    #TODO: At the moment this just supports one tag per genome
+    print ('tag')
+
+    # models.GenomeRecords.objects().get(id=request.json['genome']).update(push__tags=
+    #                                                                      request.json['tag2add'])
+
+    # models.GenomeRecords.objects().get(id=request.json['genome']).update(tags=[request.json['tag2add']])
+
+    # Add all the tags to GenomeRecords
+    models.GenomeRecords.objects().get(id=request.json['genome']).update(tags=tags)
+
+    # Add all the tags to GenomeTags
+    # genome_tag = models.GenomeTags(tag_id=genome_name, tags=tags)
+    # genome_tag.save()
+
+
+
+
+    # #TODO: At the moment this just supports one tag per genome
     if not models.GenomeTags.objects(tag_id=genome_name):
-        genome_tag = models.GenomeTags(tag_id=genome_name, tags=[request.json['tag2add']])
+        genome_tag = models.GenomeTags(tag_id=genome_name, tags=tags)
         genome_tag.save()
 
-        print ('Genome tag does not exist')
+        # print ('Genome tag does not exist')
 
     else:
 
-        print ('Genome tag exists')
-        models.GenomeTags.objects().get(tag_id=genome_name).update(push__tags=request.json['tag2add'])
+        # print ('Genome tag exists')
+        models.GenomeTags.objects().get(tag_id=genome_name).update(tags=tags)
+        models.GenomeRecords.objects().get(id=request.json['genome']).update(tags=tags)
 
 
 
@@ -1075,7 +1154,9 @@ def associate_hits():
     hits = request.json['hits']
 
     genome_name = request.json['genome_name'].replace(" ", "_")
+    genome_id = request.json['genome']
     genome_species = request.json['genome_species'].replace(" ", "_")
+
 
     # genome_name = models.GenomeRecords.objects().get(id=request.json['genome']).name
 
@@ -1084,6 +1165,9 @@ def associate_hits():
 
     print ('genome name is ')
     print (genome_name)
+
+    print ('genome id is ')
+    print (genome_id)
 
     vals = [x for x in hits.values()]
 
@@ -1095,7 +1179,8 @@ def associate_hits():
     print (region1)
     print (region2)
 
-    associated_hit = models.AssociatedHits(genome_name + "_information_" + genome_species + "_region_" + region1,
+    associated_hit = models.AssociatedHits(genome_id, genome_name + "_information_" + genome_species + "_region_" +
+                                           region1,
                                            genome_name + "_information_" + genome_species +
                                            "_region_" +
                                            region2)
@@ -1105,7 +1190,28 @@ def associate_hits():
 
     return redirect('genomedetail')
 
+@app.route("/genomedetail/update_assoc_hits)", methods=['GET', 'POST'])
+def update_assoc_hits():
 
+    print ('assoco')
+    print()
+
+    remove_assoc = request.json['remove_assoc']
+
+    print (remove_assoc)
+    print (type(remove_assoc))
+
+    for assoc in remove_assoc:
+        models.AssociatedHits.objects(id=assoc).delete()
+
+    # models.AssociatedHits.deleteMany({'_id':{'$in':remove_assoc}})
+
+    # models.GenomeRecords.objects().get(id=request.json['genome']).update(tags=[])
+    #
+    # print ('clear the tags')
+    # models.GenomeTags.objects().get(tag_id=genome_name).delete()
+
+    return redirect('genomedetail')
 
 @app.route("/genomedetail/delete_hit", methods=['GET', 'POST'])
 def delete_hit():

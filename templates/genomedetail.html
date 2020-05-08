@@ -6,12 +6,21 @@
 <script src="../../static/js/d3/d3.min.js"></script>
 <script src="../../static/js/d3/d3-tip.js"></script>
 <script src="../../static/js/select.js"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
 
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script src="../../static/js/selectize.min.js"></script>
+<script src="../../static/js/selectize_custom.js"></script>
+
+
+<link href="{{ url_for('static', filename='css/selectize.min.css') }}" rel="stylesheet">
 
 <link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
 
 <link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='css/genome_detail.css') }}" rel="stylesheet">
+
 {{ JSGlue.include() }}
 
 
@@ -19,183 +28,223 @@
 
 {% block body %}
 
-<div>
 
-    Selected genome is {{genome_name}} <br>
-    Selected page is {{page_name}}
-    <br>
-    <br>
+<div id="options_wrapper">
 
-     <form method="POST" enctype="multipart/form-data">
-        {{ page_form.hidden_tag() }}
-
-          <div class="smallform">
-
-            {{ page_form.page.label }}
-
-            {{ page_form.page }}
-
-              <br>
-
-              {{ page_form.select_page(class="btn-primary") }}
+    <div id="select_div">
+                    <h3> Select: </h3>
 
 
-          </div>
-     </form>
-
-    <br>
-    <br>
-
-
-
-
-
-
-    <form method="POST" enctype="multipart/form-data">
-        {{ select_form.hidden_tag() }}
-
-        <div class="smallform">
-
-            {{ select_form.genome.label }}
-
-            {{ select_form.genome }}
-
-
-
-
-            <br>
-
-
-            {{ select_form.submit_diagram(class="btn-primary") }}
-        </div>
-
+        Select genome:
         <br>
-        {{select_form.hidden_hits}}
+        <br>
+
+         <form method="POST" enctype="multipart/form-data">
+            {{ page_form.hidden_tag() }}
+
+              <div class="smallform">
+
+                {{ page_form.page.label }}
+
+                {{ page_form.page }}
+
+                  <br>
+
+                  {{ page_form.select_page(class="btn-primary") }}
 
 
-        {{select_form.hidden_hits.label (class_= "genome-search") }}
+              </div>
+         </form>
 
         <br>
 
 
+
+
+
+
+        <form method="POST" enctype="multipart/form-data">
+            {{ select_form.hidden_tag() }}
+
+            <div class="smallform">
+
+                {{ select_form.genome.label }}
+
+                {{ select_form.genome }}
+
+
+
+
+                <br>
+
+
+                {{ select_form.submit_diagram(class="btn-primary") }}
+            </div>
+            </div>
+    <div id="options_div">
+
+        <h3> Options: </h3>
+
+            {{select_form.hidden_hits}}
+
+
+            {{select_form.hidden_hits.label (class_= "genome-search") }}
+
+            <br>
+
+
+            <br>
+
+            {{select_form.show_hits.label }}
+
+            <br>
+
+            {{select_form.show_hits}}
+
+
+            <br>
+        </form>
+    </div>
+    <div id="regions_div">
+        <br>
         <br>
 
-        {{select_form.show_hits.label }}
+        <form method="POST" enctype="multipart/form-data">
+            {{ region_form.hidden_tag() }}
 
-        <br>
+            <div class="region_form">
+                {{region_form.showA1}}
+                {{region_form.showA1.label (class_= "genome-search") }}
+                <br>
+                {{region_form.showA2}}
+                {{region_form.showA2.label (class_= "genome-search") }}
+                <br>
+                {{region_form.showTcdA1}}
+                {{region_form.showTcdA1.label (class_= "genome-search") }}
+                <br>
+                {{region_form.showTcB}}
+                {{region_form.showTcB.label (class_= "genome-search") }}
+                <br>
+                {{region_form.showTcC}}
+                {{region_form.showTcC.label (class_= "genome-search") }}
+                <br>
+                {{region_form.showChitinase}}
+                {{region_form.showChitinase.label (class_= "genome-search") }}
+                <br>
 
-        {{select_form.show_hits}}
-
-
-        <br>
-    </form>
-
-</div>
-
-<div>
-    Currently selected genome is {{genome_name}}
-</div>
-
-<div>
-
-    <form method="POST" enctype="multipart/form-data">
-        {{ region_form.hidden_tag() }}
-
-        <div class="region_form">
-            <br>
-            {{region_form.showA1}}
-            {{region_form.showA1.label (class_= "genome-search") }}
-            <br>
-            {{region_form.showA2}}
-            {{region_form.showA2.label (class_= "genome-search") }}
-            <br>
-            {{region_form.showTcdA1}}
-            {{region_form.showTcdA1.label (class_= "genome-search") }}
-            <br>
-            {{region_form.showTcB}}
-            {{region_form.showTcB.label (class_= "genome-search") }}
-            <br>
-            {{region_form.showTcC}}
-            {{region_form.showTcC.label (class_= "genome-search") }}
-            <br>
-            {{region_form.showChitinase}}
-            {{region_form.showChitinase.label (class_= "genome-search") }}
-            <br>
-
-            {{region_form.show_regions}}
-        </div>
-    </form>
+                {{region_form.show_regions}}
+            </div>
+        </form>
 
 
-</div>
-<script>
-
-
-    var tracks = {{tracks | safe }};
-
-
-</script>
-<div id="current_tags">
-
-    Genome is currently tagged with -
-
-    {{genome_tags | safe}}
-
-
-</div>
-
-<div id="hit_div">
-
-    Tag to add <input id="tag2add" type="text" value="">
-    <br>
-    <br>
-
-    <button name="tagBtn" class="btn-primary" id="tag_hit" type="submit">Add tag</button>
-
-    <button name="tagBtn" class="btn-primary" id="hide_hit" type="submit">Hide hit</button>
-
-
-    <button name="tagBtn" class="btn-primary" id="delete_hit" type="submit">Delete hit</button>
-    <br>
-    <br>
-
-    <button name="tagBtn" class="btn-primary" id="tag_genome" type="submit">Tag genome</button>
-    <button name="tagBtn" class="btn-primary" id="clear_genome_tags" type="submit">Clear all genome tags</button>
-
-    <br>
-    <br>
-        <button name="tagBtn" class="btn-primary" id="associate_hits" type="submit">Associate A1 / A2 region </button>
-
-    <br>
-    <br>
-
-
-
-    List of hits to tag, hide, or delete:
-    <div id="myList">
     </div>
 
 </div>
 
+Associated dict is
+
+{{associated_dict }}
 
 <br>
-<br>
-<div id="scrollable>">
-    <div id="circularchart"></div>
-    <div id="demo-controls">
+
+
+
+<div class="scrollable">
+
+
+
+
+    <div id="genome">
+        <div id="circularchart"></div>
+        <div id="linearchart"></div>
+    </div>
+
+    <div id="tagging_div">
+
+
+    <div id="edit_tags">
+
+        <h3> Tag hits: </h3>
+        Tag to add <input id="tag2add" type="text" value="">
+        <br>
+        <br>
+
+        <button name="tagBtn" class="btn-primary" id="tag_hit" type="submit">Add tag</button>
+
+        <button name="tagBtn" class="btn-primary" id="hide_hit" type="submit">Hide hit</button>
+
+
+        <button name="tagBtn" class="btn-primary" id="delete_hit" type="submit">Delete hit</button>
+        <br>
+        <br>
+
+        <!--<button name="tagBtn" class="btn-primary" id="tag_genome" type="submit">Tag genome</button>-->
+        <!--<button name="tagBtn" class="btn-primary" id="clear_genome_tags" type="submit">Clear all genome tags</button>-->
+
+        <!--<br>-->
+        <!--<br>-->
+            <button name="tagBtn" class="btn-primary" id="associate_hits" type="submit">Associate A1 / A2 region </button>
+
+        <br>
+        <br>
+
+        <h3> Selected hits: </h3>
+        <div id="myList">
+        </div>
+
+        <div id="associated_hits">
+            <h3>Associated hits:</h3>
+            <input type="text" id="input-assoc">
+            <button name="tagBtn" class="btn-primary" id="update-assoc" type="submit">Update associated hits</button>
+        </div>
+
+
 
 
     </div>
-    <div id="linearchart"></div>
-    <div id="brush"></div>
 
-    <input type="button" id="resizeButton" onClick="resizeLinearPlot(); return false;" value="Resize plot">
+    <div id="current_tags">
+        <div id="genome_tag">
+
+        <h3> Tag genome: </h3>
+        {{genome_name | safe}} has the following tags:
+        <br>
+            <input type="text" id="input-tags">
+        <button name="tagBtn" class="btn-primary" id="tag_genome" type="submit">Update genome tags</button>
+        </div>
+        <br>
+        <br>
+
+
+
+
+        <h3>Current tagged hits:</h3>
+
+    </div>
+
+        </div>
+
+
 </div>
 
+
+        </div>
+
+
+
+
 <script>
+
+        var tracks = {{tracks | safe }};
+
+
+
+
+
+
+
     var genomesize = "{{genomesize | safe}}";
 </script>
-<!--<script type="text/javascript" src="../../static/js/data.simple.js"></script>-->
 <script type="text/javascript" src="../../static/js/circularplot.js"></script>
 <script type="text/javascript" src="../../static/js/linearplot.js"></script>
 <script type="text/javascript" src="../../static/js/linearbrush.js"></script>
@@ -218,6 +267,63 @@
 
 
 <script>
+
+    var associated_dict = {{associated_dict | tojson }}
+
+    var swapped_assoc_dict = swap(associated_dict)
+
+
+    // Populate the genome tags field
+    $('#input-tags').val({{genome_tags | safe}});
+    $('#input-assoc').val( Object.values(associated_dict));
+
+
+    // Create any hit tags fields needed
+
+    var hit_tags = {{hit_tags | tojson }};
+
+
+    hit_count = 1
+
+    console.log(hit_tags)
+//
+    for (const hit_tag in hit_tags) {
+        console.log('hit tag is')
+        console.log(hit_tag)
+        console.log(hit_tags[hit_tag])
+        if (hit_tags[hit_tag][1] != "") {
+            console.log ('pineapple')
+
+            $('#current_tags').append("" +
+                "<div id ='input-name-" + hit_tag + "' >" + hit_tags[hit_tag][0] +
+                "<br>" +
+                "<input type='text' id='input-tags-" + hit_tag + "'>" +
+                "<button name='tagBtn' class='btn-primary'id='tag_hit_current-" + hit_tag +
+                "'type='submit'>Update hit tags</button>" +
+                "</div>" +
+                "<br>");
+
+            $('#input-tags-' + hit_tag).val(hit_tags[hit_tag][1]);
+        }
+
+
+
+//        var div = document.createElement('hit_tag_div' + hit_count);
+//
+//        var input = document.createElement("input");
+//        input.type = "text";
+//        input.className = "input-tags-" + hit_count; // set the CSS class
+//        $("#hit_tag_div" + hit_count).append(input);
+//        $("#input-tags-" + hit_count).append(div);
+//
+
+        hit_count +=1
+
+    }
+
+
+
+
     console.log("CHECKED REGIONS IS")
     console.log("{{checked_regions | safe}}")
 
@@ -228,17 +334,14 @@
     $('#show' + r[i]).prop('checked', true)
     }
 
-</script>
 
-<script>
-
-//    console.log('what is it here')
-//    console.log("{{hit_type}}")
-//    console.log("{{hidden_type}}")
 
     var genome = "{{ genome.id |safe }}"
     var genome_name = "{{ genome.name |safe }}"
     var genome_species = "{{ genome.species | safe}}"
+
+    console.log('id was ')
+    console.log(genome)
 
 
 
@@ -339,12 +442,55 @@
 
     });
 
+    $("[id^='tag_hit_current']").on('click', function (e) {
+
+        console.log('christmas dog');
+        console.log(e)
+        clicked = e.target;
+        hit_id = clicked.id.split("-")[1]
+        console.log(hit_id)
+        hit_tags = $("#input-tags-" + hit_id).val();
+        if (hit_tags == null){
+            hit_tags = []
+        }
+
+        hit_name = $("#input-name-" + hit_id).html().split("<br>")[0];
+
+        console.log( hit_name)
+
+        $.ajax({
+            url: Flask.url_for("update_hit_tags"),
+            data: JSON.stringify({
+                'genome': genome, 'genome_name': genome_name, 'genome_species': genome_species, 'hit_name': hit_name,
+                'hit_id': hit_id,
+                'hit_tags': hit_tags
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            error: function (error) {
+                console.log(error);
+            },
+            success: function (response) {
+
+                window.location.reload();
+
+
+            }
+        });
+
+    });
+
+
+
     $('#tag_genome').on('click', function (e) {
 
 //        var genome = "{{ genome.id |safe }}";
 //        var genome_name = "{{ genome_name |safe }}";
 
-        tag2add = $("#tag2add").val();
+        tag2add = $("#input-tags").val();
+
+        console.log('adding')
+        console.log(tag2add)
 
 
         $.ajax({
@@ -359,8 +505,6 @@
             },
             success: function (response) {
 
-                console.log('bamboozled')
-
                 window.location.reload();
 
 
@@ -373,11 +517,6 @@
 
 //        var genome = "{{ genome.id |safe }}";
 //        var genome_name = "{{ genome.name |safe }}";
-
-            console.log ('gneom and genome name and species are')
-            console.log(genome)
-            console.log(genome_name)
-            console.log(genome_species)
 
 
 
@@ -468,12 +607,6 @@
     });
 
     $('#delete_hit').on('click', function (e) {
-//        e.preventDefault();
-//        console.log('clicked delete hit')
-
-//        var genome = "{{ genome.id |safe }}"
-//        var genome_name = "{{ genome.name |safe }}";
-
 
 
         $.ajax({
@@ -498,18 +631,10 @@
 
     });
 
+
         $('#associate_hits').on('click', function (e) {
         console.log('clicked associate hits')
 
-//        var genome = "{{ genome.id |safe }}";
-//        var genome_name = "{{ genome.name |safe }}";
-
-
-//        console.log(selected);
-//
-//        console.log ('length was')
-//            console.log(Object.keys(selected).length)
-//
 
 
 
@@ -527,7 +652,8 @@
         $.ajax({
             url: Flask.url_for("associate_hits"),
             data: JSON.stringify({
-                'genome': genome, 'genome_name' : genome_name, 'genome_species' : genome_species, 'hits': selected,
+                'genome': genome, 'genome_id' : genome.id, 'genome_name' : genome_name, 'genome_species' :
+                genome_species, 'hits': selected,
             }),
             contentType: 'application/json;charset=UTF-8',
             type: 'POST',
@@ -545,6 +671,94 @@
         });
 
     });
+
+        $('#update-assoc').on('click', function (e) {
+
+            console.log('swapped assoc dict')
+            console.log(swapped_assoc_dict)
+
+            original_assoc = Object.keys(associated_dict)
+            console.log('original assoc')
+
+
+            console.log(original_assoc)
+
+            remaining_assoc = $("#input-assoc").val().split(',');
+
+            console.log('remaining assoc')
+
+            console.log(remaining_assoc)
+
+            current_assoc = []
+
+            for (const assoc of remaining_assoc) {
+
+                console.log('croc')
+                console.log(assoc)
+
+                current_assoc.push(swapped_assoc_dict[assoc])
+            }
+
+
+            console.log(current_assoc)
+
+            var remove_assoc = original_assoc.filter(x => !current_assoc.includes(x));
+
+
+
+
+        $.ajax({
+            url: Flask.url_for("update_assoc_hits"),
+            data: JSON.stringify({
+                'remove_assoc': remove_assoc
+            }),
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            error: function (error) {
+                console.log(error);
+            },
+            success: function (response) {
+
+                console.log('bamboozled')
+
+                window.location.reload();
+
+
+            }
+        });
+
+    });
+
+        	$("[id^='input-tags']").selectize({
+    delimiter: ',',
+    persist: false, plugins: ['remove_button'],
+
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+});
+
+    $('#input-assoc').selectize({
+    delimiter: ',',
+                create: false,
+    persist: false, plugins: ['remove_button'],
+
+
+});
+
+    function swap(json){
+  var ret = {};
+  for(var key in json){
+    ret[json[key]] = key;
+  }
+  return ret;
+}
+
+
+
 </script>
 
 {% endblock %}

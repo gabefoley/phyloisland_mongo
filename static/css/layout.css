@@ -13,6 +13,7 @@ body {
 	border: 1px solid #CCC;
 	padding: 15px 20px 30px 35px;
 	margin-top: 15px;
+	margin-right: 10px;
 
 }
 
@@ -29,12 +30,12 @@ h2 {
 	/*float:right;*/
   /*}*/
 
-#hit_div {
-	margin-top: 200px;
-	margin-right: 200px;
+/*#hit_div {*/
+	/*margin-top: 200px;*/
+	/*margin-right: 200px;*/
 
-	float:right;
-  }
+	/*float:right;*/
+  /*}*/
 
 /* Style disabled checkboxes */
 input[type=checkbox][disabled] + label {
@@ -96,3 +97,4 @@ ul {
 a.dropdown-toggle b.caret {
     margin-left: 5px;
 }
+

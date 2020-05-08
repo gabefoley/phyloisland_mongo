@@ -374,7 +374,7 @@ genomeTrack.prototype.displayStranded = function(track, i) {
 
     var rects = this.itemRects[i].selectAll("g")
     .data(visItems, function(d) { return d.id; })
-	.attr("transform", function(d,i) { 
+	.attr("transform", function(d,i) {
 	    return "translate(" + x1(d.start) + ',' +  d.yshift / 2 + ")"; });
 
     // Process the changed/moved rects

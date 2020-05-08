@@ -1,6 +1,6 @@
 var circularTrackDefaults = {
     radius: 5,
-    w: 600,
+    w: 400,
     h: 600,
     factor: 1,
     factorLegend: .85,

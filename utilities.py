@@ -259,6 +259,7 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
 
     items = defaultdict(list)
     glyphs = {}
+    hit_tags = {}
     region_list = []
     genomesize = len(genome.sequence)
 
@@ -292,8 +293,9 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
 
                 if ((hidden_type == False) or (hidden_type == True and 'hidden' not in hit.tags)):
 
-                    # print (hit.id)
-                    # print (hit.name)
+                    if hit.tags:
+                        hit_tags[str(hit.id)] = (str(hit.region) + " " + str(hit.start) + ":" + str(hit.end) + " " + \
+                                         hit.strand, hit.tags)
 
                     if hit.name != None:
                         hit_details = dict()
@@ -388,7 +390,9 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
     # print (glyphs)
     tracks = build_tracks(items, glyphs)
 
-    return tracks, genomesize
+    return tracks, hit_tags, genomesize
+# def get_hit_tags((hits, hits='all', hidden_type=True, checked_regions=None):):
+
 
 def build_tracks(items, glyphs):
 
@@ -474,6 +478,41 @@ def build_tracks(items, glyphs):
     # print (json_tracks)
 
     return json_tracks
+
+def get_associated_dict(genome):
+
+    associated_dict = {}
+
+    print ('assoc')
+
+    print (genome.id)
+
+    # assoc_hits = models.AssociatedHits.objects().get(genome_id=str(genome.id))
+
+
+    aggregate = models.AssociatedHits._get_collection().aggregate([
+        {"$match": {
+            "genome_id": str(genome.id)
+        }},
+    ])
+
+    assoc_hits = list(aggregate)
+
+
+    # for as in aggregate:
+
+
+    print (assoc_hits)
+
+    for hit in assoc_hits:
+        print (hit['_id'])
+        print (hit['region1'])
+        associated_dict[str(hit['_id'])] = (hit['region1'].split("region_")[1] + " and " + hit[
+            'region2'].split("region_")[1])
+
+    return associated_dict
+
+
 
 def randstring(length=10):
     valid_letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
