@@ -36,6 +36,7 @@ def on_user_logged_in(sender, user):
     current = models.User.objects().get(username=str(current_user.username))
     session['page_size'] = current.page_size if current.page_size != None else 20
     session['record_size'] = current.record_size if current.record_size != None else 20
+    session['genome'] = None
 
 
 class UploadView(BaseView):
@@ -571,8 +572,15 @@ class GenomeDetailView(BaseView):
 
         untagged = session['untagged']
 
+        # untagged = False
+
         if untagged:
-            genome_count = models.GenomeRecords.objects(tags=['']).count()
+            if models.GenomeRecords.objects(tags=['']).count() != 0:
+                genome_count = models.GenomeRecords.objects(tags=['']).count()
+            else:
+                genome_count = models.GenomeRecords.objects().count()
+                session['untagged'] = False
+                untagged = False
 
         else:
             genome_count = models.GenomeRecords.objects().count()
@@ -581,6 +589,8 @@ class GenomeDetailView(BaseView):
         page_choices = [(x, "Page " + str(x)) for x in range(page_count)]
         page_choice = int(session['page_choice'])
 
+        print ('genome count is')
+        print(genome_count)
 
         # untagged = True
         genome_tagged = ""
