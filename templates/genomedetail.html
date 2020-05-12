@@ -28,29 +28,45 @@
 
 {% block body %}
 
+untagged is {{untagged | safe}}
+
 
 <div id="options_wrapper">
 
     <div id="select_div">
                     <h3> Select: </h3>
 
+        <br>
 
-        Select genome:
-        <br>
-        <br>
 
          <form method="POST" enctype="multipart/form-data">
             {{ page_form.hidden_tag() }}
 
               <div class="smallform">
 
+                  {{ page_form.untagged.label }}
+
+                {{ page_form.untagged }}
+                  <br>
+
+                  {{ page_form.genome_tagged.label }}
+
+                {{ page_form.genome_tagged }}
+                  <br>
+
+                  {{ page_form.show_tagged_genome(class="btn-primary") }}
+
+                  <br>
+                  <br>
+
+
                 {{ page_form.page.label }}
 
                 {{ page_form.page }}
 
-                  <br>
+                  <!--<br>-->
 
-                  {{ page_form.select_page(class="btn-primary") }}
+                  <!--{{ page_form.select_page(class="btn-primary") }}-->
 
 
               </div>
@@ -78,7 +94,7 @@
                 <br>
 
 
-                {{ select_form.submit_diagram(class="btn-primary") }}
+                <!--{{ select_form.submit_diagram(class="btn-primary") }}-->
             </div>
             </div>
     <div id="options_div">
@@ -241,8 +257,6 @@ Associated dict is
 
 
 
-
-
     var genomesize = "{{genomesize | safe}}";
 </script>
 <script type="text/javascript" src="../../static/js/circularplot.js"></script>
@@ -264,6 +278,24 @@ Associated dict is
 </script>
 
 {% endif %}
+
+
+{% if untagged == true %}
+<script>
+    $("#untagged").prop('checked', true);
+    $("#genome_tagged").prop("disabled", true);
+
+</script>
+
+{% else %}
+<script>
+    $("#untagged").prop('checked', false);
+    $("#genome_tagged").prop("disabled", false);
+
+</script>
+
+{% endif %}
+
 
 
 <script>
@@ -308,14 +340,6 @@ Associated dict is
 
 
 
-//        var div = document.createElement('hit_tag_div' + hit_count);
-//
-//        var input = document.createElement("input");
-//        input.type = "text";
-//        input.className = "input-tags-" + hit_count; // set the CSS class
-//        $("#hit_tag_div" + hit_count).append(input);
-//        $("#input-tags-" + hit_count).append(div);
-//
 
         hit_count +=1
 
@@ -347,8 +371,15 @@ Associated dict is
 
     $('#show_hits').val("{{hit_type | safe }}")
 
-    $('#page').val("{{page_name | safe }}")
-    $('#genome').val("{{genome.id | safe }}")
+    console.log('genome choice is ')
+    console.log('{{genome.id}}')
+
+    var suspend = true;
+
+    $('#page').val("{{page_selected | safe }}")
+    $('#genome').val("{{genome.id}}")
+
+    var suspend = false;
 
     function collect_details(){
 
@@ -357,18 +388,24 @@ Associated dict is
             checkedregions.push($(this).attr('name').split("show")[1].trim());
         });
 
-        var genome = "{{ genome.id |safe }}"
+        console.log('what is tigers')
+        console.log("{{ genome.id |safe }}")
+        console.log($('#genome').val())
+
+        var genome = $('#genome').val()
         var show_hits = $('#show_hits').val()
         var hidden_hits = $('#hidden_hits').is(":checked")
+        var untagged= $('#untagged').is(":checked")
+        var tagged_genomes= $('#hidden_hits').is(":checked")
+        var page_choice = $('#page').val()
 
-        console.log('checers')
-        console.log(checkedregions)
 
-        return [genome, show_hits, hidden_hits, checkedregions]
+
+        return [genome, show_hits, hidden_hits, checkedregions, untagged, tagged_genomes, page_choice]
 
     }
 
-        function submit_details(){
+        function submit_details(passed_from){
 
         console.log('got to submit details')
 
@@ -377,6 +414,10 @@ Associated dict is
         show_hits =details[1];
         hidden_hits = details[2];
         checked_regions = details[3];
+        untagged = details[4];
+        tagged_genomes = details[5]
+        page_choice = details[6]
+
 
         $.ajax({
 
@@ -384,7 +425,9 @@ Associated dict is
             contentType: "application/json;charset=utf-8",
             url: "{{  url_for ('show_hits')}}",
             data: JSON.stringify({
-                'genome': genome, 'hits': show_hits, 'hidden_type': hidden_hits, 'checked_regions': checked_regions
+                'genome': genome, 'hits': show_hits, 'hidden_type': hidden_hits, 'checked_regions': checked_regions,
+                'untagged' : untagged, 'tagged_genomes': tagged_genomes, 'page_choice' : page_choice, 'passed_from':
+                passed_from
             }),
             contentType: 'application/json;charset=UTF-8',
             type: 'POST',
@@ -410,19 +453,28 @@ Associated dict is
                 e.preventDefault();
 
         console.log('clicked show regions')
-        submit_details()
+        submit_details('show_regions')
+
+    });
+
+
+    $('#untagged').on('change', function (e) {
+
+        submit_details('untagged')
+
+    });
+
+    $('#page').on('change', function (e) {
+            if(suspend){return;}
+        submit_details('page')
 
     });
 
 
 
-
-
     $('#hidden_hits').on('change', function (e) {
 
-//        e.preventDefault();
-//        console.log('clicked hidden hits regions')
-        submit_details()
+        submit_details('hidden_hits')
 
     });
 
@@ -430,14 +482,20 @@ Associated dict is
 
         e.preventDefault();
         console.log('clicked show hits')
-        submit_details()
+        submit_details('show_hits')
     });
 
 
-    $('#submit_hit').on('click', function (e) {
-        e.preventDefault();
-        console.log('clicked submit hit');
-        submit_details()
+    $('#genome').on('change', function (e) {
+            if(suspend){
+                console.log('chog')
+                return;
+
+                ;}
+
+            console.log(suspend)
+        console.log('big bog')
+        submit_details('genome')
 
 
     });
@@ -484,8 +542,6 @@ Associated dict is
 
     $('#tag_genome').on('click', function (e) {
 
-//        var genome = "{{ genome.id |safe }}";
-//        var genome_name = "{{ genome_name |safe }}";
 
         tag2add = $("#input-tags").val();
 
@@ -515,8 +571,7 @@ Associated dict is
 
         $('#clear_genome_tags').on('click', function (e) {
 
-//        var genome = "{{ genome.id |safe }}";
-//        var genome_name = "{{ genome.name |safe }}";
+
 
 
 
@@ -748,6 +803,21 @@ Associated dict is
 
 
 });
+
+
+    $('#genome_tagged').selectize({
+    delimiter: ',',
+    persist: false, plugins: ['remove_button'],
+        create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+
+
+});
+
 
     function swap(json){
   var ret = {};

@@ -41,6 +41,10 @@ h2 {
 input[type=checkbox][disabled] + label {
 }
 
+input[type=text][disabled] {
+	background-color: darkgrey;
+}
+
 #brand {
     display: inline;
 }
