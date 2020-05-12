@@ -35,6 +35,7 @@ def on_user_logged_in(sender, user):
     current = models.User.objects().get(username=str(current_user.username))
     session['page_size'] = current.page_size if current.page_size != None else 20
     session['record_size'] = current.record_size if current.record_size != None else 20
+    session['genome'] = None
 
 
 class UploadView(BaseView):
@@ -592,6 +593,9 @@ class GenomeDetailView(BaseView):
 
         records_per_page = session['record_size']
 
+        print ('session genome here is ')
+        print (session['genome'])
+
         # records_per_page = current.record_size if current.record_size != None else 20
 
         genome_count = models.GenomeRecords.objects().count()
@@ -646,6 +650,8 @@ class GenomeDetailView(BaseView):
 
             if session.get('genome') is not None:
                 print('session genome not none')
+
+                print (session['genome'])
 
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
