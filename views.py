@@ -284,6 +284,10 @@ class DownloadFastaView(BaseView):
                     split_strands = False
 
                     print('here they come')
+                    print ('region')
+                    print (region)
+                    print ('filename')
+                    print (filename)
                     print("Include genome ")
                     print (include_genome)
                     print("Exclude genome ")
@@ -292,7 +296,12 @@ class DownloadFastaView(BaseView):
                     print( include_hits)
                     print("Exclude hits ")
                     print(exclude_hits)
-
+                    print ('translate')
+                    print (translate)
+                    print ('align')
+                    print (align)
+                    print ('split strands')
+                    print (split_strands)
                     # if include_genome == [""]:
                     #     include_genome = None
                     #

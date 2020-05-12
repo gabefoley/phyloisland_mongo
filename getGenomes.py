@@ -274,7 +274,7 @@ def download_tags():
 def download_fasta_regions(region, filename="", include_genome=[], exclude_genome=[],
                            include_hits=[], \
                                                                                                      exclude_hits=[],
-                           translate=True, align=True,  split_strands=False):
+                           translate=True, align=True,  split_strands=False, outpath=None):
     fasta_dict = {}
     forward_dict = {}
     backward_dict = {}
@@ -390,11 +390,12 @@ def download_fasta_regions(region, filename="", include_genome=[], exclude_genom
 
         print ("Writing out to " + filename)
 
-        outpath = "./fasta_folder/" + filename + ".fasta"
+        if not outpath:
+            outpath = "./fasta_folder/" + filename
 
-        utilities.createFasta(fasta_dict.values(), "./fasta_folder/" + filename, align)
+        utilities.createFasta(fasta_dict.values(), outpath, align)
 
-        return outpath
+        return outpath + ".fasta"
 
     else:
 
@@ -416,7 +417,10 @@ def download_fasta_regions(region, filename="", include_genome=[], exclude_genom
 
             backward_path = "./fasta_folder/" + filename + "_backward.fasta"
 
-        return " and ".join(forward_path, backward_path)
+        print (forward_path)
+        print (backward_path)
+
+        return " and ".join([forward_path, backward_path])
 
 
 
