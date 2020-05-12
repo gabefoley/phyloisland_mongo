@@ -82,6 +82,12 @@ ul {
 	border-color: #ccc;
 }
 
+.btn-primary.disabled, .btn-primary:disabled {
+  color: grey;
+  background-color: darkgrey;
+  border-color: grey;
+}
+
 .btn, textarea, input[type], button, .model-list {
 	border-radius: 0;
 }

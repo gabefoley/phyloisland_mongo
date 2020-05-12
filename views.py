@@ -528,7 +528,7 @@ class GenomeDetailView(BaseView):
     @expose("/", methods=('GET', 'POST'))
     def genomedetail(self):
 
-        passed_from_page = False
+        # passed_from_page = False
 
         select_form = forms.GenomeDiagramSelectForm()
         page_form = forms.GenomeDiagramPageForm()
@@ -556,22 +556,31 @@ class GenomeDetailView(BaseView):
             select_form.data['genome'] = [genome.id]
             session['genome'] = str(genome.id)
 
-        # If it is passed from page we need to reset the genome we're getting
-        if session.get('passed_from') == 'page':
-            print ('passed from page')
-            passed_from_page = True
+        # # If it is passed from page we need to reset the genome we're getting
+        # if session.get('passed_from') == 'page':
+        #     print ('passed from page')
+        #     passed_from_page = True
+
+        if session.get('passed_from') == 'untagged':
+            session['page_choice'] = 0
 
         current = models.User.objects().get(username=str(current_user.username))
         records_per_page = int(session['record_size'])
 
         # records_per_page = current.record_size if current.record_size != None else 20
 
-        genome_count = models.GenomeRecords.objects().count()
+        untagged = session['untagged']
+
+        if untagged:
+            genome_count = models.GenomeRecords.objects(tags=['']).count()
+
+        else:
+            genome_count = models.GenomeRecords.objects().count()
+
         page_count = math.ceil(genome_count / records_per_page)
         page_choices = [(x, "Page " + str(x)) for x in range(page_count)]
         page_choice = int(session['page_choice'])
 
-        untagged = session['untagged']
 
         # untagged = True
         genome_tagged = ""
@@ -585,31 +594,39 @@ class GenomeDetailView(BaseView):
 
         specific_choice = int(page_choice) * records_per_page
 
+        print ('speci')
+
+        if untagged:
+            select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                          models.GenomeRecords.objects(tags=[''])[
+                                          specific_choice:specific_choice + records_per_page]]
 
 
-        select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+        else:
+
+            select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
                                       models.GenomeRecords.objects()[specific_choice:specific_choice + records_per_page]]
-        # select_form.genome.data = 0
+
+        # The list of pages to choose from
         page_form.page.choices = page_choices
 
-        # if request.method == 'POST':
-
-        #
-        # print ('genome selection is')
-        # print (genome_selection)
-
+        # The page that is chosen
         page_form.data['page'] = page_choice
 
-        # page_choice = int(page_choice) * records_per_page
-        #
-        # select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
-        #                               models.GenomeRecords.objects()[page_choice:page_choice + records_per_page]]
+        # If a page change generated this request, we just want to set the genome to whatever is top of that page
+        if session.get('passed_from') == 'page':
 
-
-        if passed_from_page:
-            print ('got here')
             genome = models.GenomeRecords.objects()[specific_choice]
 
+        elif session.get('passed_from') == 'untagged':
+            if untagged:
+                genome = models.GenomeRecords.objects(tags=[''])[0]
+            else:
+                genome = models.GenomeRecords.objects()[0]
+
+
+
+        # Otherwise we want the specific genome we've chosen
         else:
             genome = models.GenomeRecords.objects.get(id=session['genome'])
 
