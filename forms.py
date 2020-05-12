@@ -98,6 +98,11 @@ class GenomeDiagramPageForm(FlaskForm):
     select_page = SubmitField('Select page')
 
 
+class ChartsForm(FlaskForm):
+    select_tags = SelectMultipleField('Tags to chart', choices=[])
+    update_chart = SubmitField('Update chart')
+
+
 class GenomeDiagamShowRegions(FlaskForm):
     """
     Form for selecting which regions to look at in the Genome Diagram

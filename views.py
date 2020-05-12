@@ -515,6 +515,55 @@ class GenomeOverviewView(BaseView):
 
         return self.render('genomeoverview.html', form=form, items=items)
 
+class ChartView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def chart(self):
+        chart_form = forms.ChartsForm()
+        unique_tags = models.GenomeRecords.objects().distinct(field='tags')
+
+        labels = []
+        values = []
+
+        for tag in unique_tags:
+            tag_count = models.GenomeRecords.objects(tags=tag).count()
+            labels.append(tag)
+            values.append(tag_count)
+
+        # The list of tags to choose from
+        chart_form.select_tags.choices = list(zip(labels,labels))
+
+        colors = [
+            "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA",
+            "#ABCDEF", "#DDDDDD", "#ABCABC", "#4169E1",
+            "#C71585", "#FF4500", "#FEDCBA", "#46BFBD"]
+
+
+        if request.method == 'POST':
+            selected_vals = chart_form.data['select_tags']
+
+            labels = []
+            values = []
+
+            for tag in selected_vals:
+                tag_count = models.GenomeRecords.objects(tags=tag).count()
+                labels.append(tag)
+                values.append(tag_count)
+
+        else:
+            selected_vals = labels
+
+        background_colors = []
+
+        for x in range(len(labels)):
+            background_colors.append(colors[x])
+
+        print (background_colors)
+
+        return self.render('charts.html', chart_form=chart_form, title='Unique tags', max=max(values) + 10,
+                           labels=labels, values=values, background_colors=background_colors,
+                           selected_vals=json.dumps(selected_vals))
+
 
 class BatchDeleteView(BaseView):
     @login_required
@@ -604,7 +653,6 @@ class GenomeDetailView(BaseView):
 
         specific_choice = int(page_choice) * records_per_page
 
-        print ('speci')
 
         if untagged:
             select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
@@ -1527,6 +1575,8 @@ with warnings.catch_warnings():
 
     admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
     admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
+    admin.add_view(ChartView(name='Charts', endpoint='chart'))
+
     admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))
 
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
