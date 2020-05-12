@@ -147,6 +147,9 @@ class DownloadFastaForm(FlaskForm):
 
         submit = SubmitField("Submit")
 
+class TempFixForm(FlaskForm):
+    fix_assoc = SubmitField("Click this to fix the associated regions in the database")
+
 class BatchDeleteForm(FlaskForm):
     delete_all_tags = SubmitField('Delete all tags')
     # delete_all_region_tags = SubmitField('Delete all tags at the region level')

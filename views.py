@@ -537,6 +537,35 @@ class BatchDeleteView(BaseView):
         form = forms.BatchDeleteForm()
         return self.render('batch_delete.html', form=form)
 
+
+class TempFixView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def temp_fix(self):
+        form = forms.TempFixForm()
+        return self.render('temp_fix.html', form=form)
+
+@app.route("/temp_assoc_fix", methods=['GET', 'POST'])
+def temp_assoc_fix():
+
+    print ('Fixing the Associated Regions dict')
+
+    queries = models.AssociatedHits.objects()
+
+    for query in queries:
+        print (query)
+        print (query.region1)
+        print (query.region1.split("_information")[0])
+
+        genome_name = query.region1.split("_information")[0]
+        genome = models.GenomeRecords.objects().get(name=genome_name)
+        genome_id = genome.id
+        query.genome_id = genome_id
+        query.save()
+
+
+    return redirect('temp_fix')
+
 class GenomeDetailView(BaseView):
 
 
@@ -1219,6 +1248,7 @@ with warnings.catch_warnings():
 
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
     admin.add_view(DownloadGenomeOrderView(name='Download genome order', endpoint='download_order'))
+    admin.add_view(TempFixView(name='Temp Fix', endpoint='temp_fix'))
 
 
     admin.add_view(DocumentationView(name='Documentation & FAQ', endpoint='documentation'))
