@@ -559,7 +559,9 @@ def temp_assoc_fix():
 
         genome_name = query.region1.split("_information")[0]
         genome = models.GenomeRecords.objects().get(name=genome_name)
-        genome_id = genome.id
+        genome_id = str(genome.id)
+        print ('this genome id was ')
+        print (genome_id)
         query.genome_id = genome_id
         query.save()
 
@@ -595,7 +597,7 @@ class GenomeDetailView(BaseView):
         genome_count = models.GenomeRecords.objects().count()
         page_count = math.ceil(genome_count /  records_per_page)
         page_choices = [(x, "Page " + str(x)) for x in range(page_count)]
-        page_choice = session['page_choice']
+        page_choice = int(session['page_choice'])
 
 
 
