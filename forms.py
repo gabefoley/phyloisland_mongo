@@ -90,9 +90,17 @@ class GenomeDiagramSelectForm(FlaskForm):
                                                                                                     'hits'),
                                                                    ('expanded', 'Just expanded hits')])
 
-class GenomeDiagramtPageForm(FlaskForm):
+class GenomeDiagramPageForm(FlaskForm):
+    untagged = BooleanField("Limit selection to untagged genomes")
+    genome_tagged = StringField("Limit selection to genomes tagged with:")
+    show_tagged_genome = SubmitField('Limit selection')
     page = SelectField('Page to display', choices=[])
     select_page = SubmitField('Select page')
+
+
+class ChartsForm(FlaskForm):
+    select_tags = SelectMultipleField('Tags to chart', choices=[])
+    update_chart = SubmitField('Update chart')
 
 
 class GenomeDiagamShowRegions(FlaskForm):
