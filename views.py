@@ -594,15 +594,9 @@ class ChartView(BaseView):
         else:
             selected_vals = labels
 
-        background_colors = []
-
-        for x in range(len(labels)):
-            background_colors.append(colors[x])
-
-        print (background_colors)
 
         return self.render('charts.html', chart_form=chart_form, title='Unique tags', max=max(values) + 10,
-                           labels=labels, values=values, background_colors=background_colors,
+                           labels=labels, values=values,
                            selected_vals=json.dumps(selected_vals))
 
 
@@ -1623,7 +1617,7 @@ with warnings.catch_warnings():
     admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))
 
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
-    admin.add_view(DownloadGenomeOrderView(name='Download genome order', endpoint='download_order'))
-    admin.add_view(TempFixView(name='Temp Fix', endpoint='temp_fix'))
+    # admin.add_view(DownloadGenomeOrderView(name='Download genome order', endpoint='download_order'))
+    # admin.add_view(TempFixView(name='Temp Fix', endpoint='temp_fix'))
 
     admin.add_view(DocumentationView(name='Documentation & FAQ', endpoint='documentation'))
