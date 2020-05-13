@@ -621,7 +621,7 @@ class GenomeDetailView(BaseView):
         hit_form = forms.GenomeHitForm()
 
 
-        genome = models.GenomeRecords.objects.get(id=session['genome'])
+        # genome = models.GenomeRecords.objects.get(id=session['genome'])
         if session.get('hits') is None:
             session['hits'] = 'expanded'
 
