@@ -615,6 +615,8 @@ class GenomeDetailView(BaseView):
 
         # passed_from_page = False
 
+        print ("Function was passed from " + session['passed_from'])
+
         select_form = forms.GenomeDiagramSelectForm()
         page_form = forms.GenomeDiagramPageForm()
         region_form = forms.GenomeDiagamShowRegions()
@@ -637,6 +639,13 @@ class GenomeDetailView(BaseView):
         if session.get('untagged') is None:
             session['untagged'] = False
 
+
+        if session.get('limit_genomes') is None:
+            session['limit_genomes'] = False
+
+        if session.get('genome_tagged') is None:
+            session['genome_tagged'] = [""]
+
         if session.get('genome') is None:
             print ('IT WAS NONE')
             genome = models.GenomeRecords.objects()[0]
@@ -650,6 +659,19 @@ class GenomeDetailView(BaseView):
 
         if session.get('passed_from') == 'untagged':
             session['page_choice'] = 0
+            session['limit_genomes'] == False
+
+        if session.get('passed_from') == 'limit_selection':
+            session['page_choice'] = 0
+
+
+
+
+
+
+        unique_tags = models.GenomeRecords.objects().distinct(field='tags')
+        page_form.genome_tagged.choices = list(zip(unique_tags,unique_tags))
+
 
         current = models.User.objects().get(username=str(current_user.username))
         records_per_page = int(session['record_size'])
@@ -657,16 +679,29 @@ class GenomeDetailView(BaseView):
         # records_per_page = current.record_size if current.record_size != None else 20
 
         untagged = session['untagged']
+        limit_genomes = session['limit_genomes']
+
+        genome_tagged = session['genome_tagged']
+
+
 
         # untagged = False
 
         if untagged:
             if models.GenomeRecords.objects(tags=['']).count() != 0:
                 genome_count = models.GenomeRecords.objects(tags=['']).count()
+                limit_genomes = False
+                session['limit_genomes'] = False
+
             else:
                 genome_count = models.GenomeRecords.objects().count()
                 session['untagged'] = False
                 untagged = False
+
+        elif limit_genomes:
+            genome_count = models.GenomeRecords.objects(tags=genome_tagged[0]).count()
+
+
 
         else:
             genome_count = models.GenomeRecords.objects().count()
@@ -675,18 +710,18 @@ class GenomeDetailView(BaseView):
         page_choices = [(x, "Page " + str(x)) for x in range(page_count)]
         page_choice = int(session['page_choice'])
 
-        print ('genome count is')
-        print(genome_count)
+        # print ('genome count is')
+        # print(genome_count)
 
         # untagged = True
-        genome_tagged = ""
 
         print('Total genomes is ' + str(genome_count))
         print("Page count is " + str(page_count))
         print('Page choices is ' + str(page_choices))
         print('Page choice is ' + str(page_choice))
-
         print ('untagged is ' + str(untagged))
+        print ('limit genomes is ' + str(limit_genomes))
+        # print ('tags to limit to is ' + str(genome_tagged[0]))
 
         specific_choice = int(page_choice) * records_per_page
 
@@ -695,6 +730,15 @@ class GenomeDetailView(BaseView):
             select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
                                           models.GenomeRecords.objects(tags=[''])[
                                           specific_choice:specific_choice + records_per_page]]
+
+        elif limit_genomes:
+            print ('selecing limited genomes')
+            selection = models.GenomeRecords.objects(tags=genome_tagged[0])
+            print (len(selection))
+            select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                          models.GenomeRecords.objects(tags=genome_tagged[0])[
+                                          specific_choice:specific_choice + records_per_page]]
+
 
 
         else:
@@ -713,9 +757,15 @@ class GenomeDetailView(BaseView):
 
             genome = models.GenomeRecords.objects()[specific_choice]
 
-        elif session.get('passed_from') == 'untagged':
+        elif session.get('passed_from') == 'untagged' or session.get('passed_from') == 'limit_selection':
             if untagged:
                 genome = models.GenomeRecords.objects(tags=[''])[0]
+
+            elif limit_genomes:
+                print ('limiting genomes')
+                genome = models.GenomeRecords.objects(tags=genome_tagged[0])[0]
+
+
             else:
                 genome = models.GenomeRecords.objects()[0]
 
@@ -749,7 +799,7 @@ class GenomeDetailView(BaseView):
                                    region_form=region_form, tracks=tracks, hit_tags=hit_tags, associated_dict=
                                    associated_dict,
                                    genome=genome, genome_name=genome.name, page_selected=page_choice,
-                                   untagged=untagged,
+                                   untagged=untagged, limit_genomes = limit_genomes, genome_tagged=genome_tagged[0],
                                    genome_tags=genome['tags'], \
                                    hit_type=session['hits'], \
                                    hidden_type=session['hidden_type'],
@@ -1537,6 +1587,9 @@ def show_hits():
     session['page_choice'] = request.json['page_choice']
     session['checked_regions'] = request.json['checked_regions']
     session['untagged'] = request.json['untagged']
+    session['limit_genomes'] = request.json['limit_genomes']
+    session['genome_tagged'] = [request.json['genome_tagged']]
+
     session['passed_from'] = request.json['passed_from']
 
     print('got to show hits')

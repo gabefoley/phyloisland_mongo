@@ -42,20 +42,27 @@
 
               <div class="smallform">
 
+                  {{ page_form.untagged }}
+
+
                   {{ page_form.untagged.label }}
 
-                {{ page_form.untagged }}
                   <br>
 
-                  <!--{{ page_form.genome_tagged.label }}-->
 
-                <!--{{ page_form.genome_tagged }}-->
+                {{ page_form.limit_genomes }}
+
+                  {{ page_form.limit_genomes.label }}
+
+
+
+                {{ page_form.genome_tagged }}
                   <br>
 
-                  <!--{{ page_form.show_tagged_genome(class="btn-primary") }}-->
+                  {{ page_form.limit_selection(class="btn-primary") }}
 
-                  <!--<br>-->
-                  <!--<br>-->
+                  <br>
+                  <br>
 
 
                 {{ page_form.page.label }}
@@ -279,6 +286,8 @@
     $("#untagged").prop('checked', true);
     $("#genome_tagged").prop("disabled", true);
     $("#show_tagged_genome").prop("disabled", true);
+    $("#limit_genomes").prop({"disabled" : true, 'checked' : false});
+    $("#limit_selection").prop({"disabled" : true});
 
 
 </script>
@@ -286,8 +295,31 @@
 {% else %}
 <script>
     $("#untagged").prop('checked', false);
+    $("#limit_genomes").prop("disabled", false);
+
+</script>
+
+{% endif %}
+
+{% if limit_genomes == true %}
+<script>
+
+    $("#untagged").prop('checked', false);
+    $("#limit_genomes").prop({'checked' : true});
+
     $("#genome_tagged").prop("disabled", false);
-    $("#show_tagged_genome").prop("disabled", false);
+    $("#limit_genomes").prop("disabled", false);
+
+
+</script>
+
+{% else %}
+<script>
+
+    $("#limit_genomes").prop({'checked' : false});
+    $("#limit_selection").prop({"disabled" : true});
+
+
 
 </script>
 
@@ -295,7 +327,14 @@
 
 
 
+
 <script>
+
+    console.log('untagged was ')
+    console.log ("{{untagged}}")
+
+        console.log('limit_genomes was ')
+    console.log ("{{limit_genomes}}")
 
     var associated_dict = {{associated_dict | tojson }}
 
@@ -355,6 +394,24 @@
     $('#show' + r[i]).prop('checked', true)
     }
 
+    $('#limit_genomes').on('click', function (e) {
+
+        if ($('#limit_genomes').is(':checked')) {
+
+            $("#genome_tagged").prop("disabled", false);
+            $("#limit_selection").prop("disabled", false);
+
+        }
+        else {
+
+            $("#genome_tagged").prop("disabled", true);
+            $("#limit_selection").prop("disabled", true);
+
+            submit_details('untagged')
+
+        }
+    });
+
 
 
 
@@ -374,6 +431,11 @@
 
     $('#page').val("{{page_selected | safe }}")
     $('#genome').val("{{genome.id}}")
+    $('#genome_tagged').val("{{genome_tagged | safe}}")
+
+    console.log('genome tagged was')
+    console.log("{{genome_tagged | safe}}")
+
 
     var suspend = false;
 
@@ -392,12 +454,14 @@
         var show_hits = $('#show_hits').val()
         var hidden_hits = $('#hidden_hits').is(":checked")
         var untagged= $('#untagged').is(":checked")
-        var tagged_genomes= $('#hidden_hits').is(":checked")
+        var limit_genomes= $('#limit_genomes').is(":checked")
+        var genome_tagged = $('#genome_tagged').val()
+
         var page_choice = $('#page').val()
 
 
 
-        return [genome, show_hits, hidden_hits, checkedregions, untagged, tagged_genomes, page_choice]
+        return [genome, show_hits, hidden_hits, checkedregions, untagged, limit_genomes, genome_tagged, page_choice]
 
     }
 
@@ -411,8 +475,10 @@
         hidden_hits = details[2];
         checked_regions = details[3];
         untagged = details[4];
-        tagged_genomes = details[5]
-        page_choice = details[6]
+        limit_genomes = details[5];
+        genome_tagged = details[6];
+
+        page_choice = details[7];
 
 
         $.ajax({
@@ -422,7 +488,8 @@
             url: "{{  url_for ('show_hits')}}",
             data: JSON.stringify({
                 'genome': genome, 'hits': show_hits, 'hidden_type': hidden_hits, 'checked_regions': checked_regions,
-                'untagged' : untagged, 'tagged_genomes': tagged_genomes, 'page_choice' : page_choice, 'passed_from':
+                'untagged' : untagged, 'limit_genomes': limit_genomes, 'genome_tagged' : genome_tagged, 'page_choice' :
+                page_choice, 'passed_from':
                 passed_from
             }),
             contentType: 'application/json;charset=UTF-8',
@@ -441,6 +508,13 @@
         });
     }
 
+
+        $('#limit_selection').on('click', function (e) {
+                e.preventDefault();
+
+        submit_details('limit_selection')
+
+    });
 
 
 
@@ -804,6 +878,8 @@
     $('#genome_tagged').selectize({
     delimiter: ',',
     persist: false, plugins: ['remove_button'],
+            maxItems: 1,
+
         create: function(input) {
         return {
             value: input,

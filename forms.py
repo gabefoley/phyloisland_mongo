@@ -92,8 +92,9 @@ class GenomeDiagramSelectForm(FlaskForm):
 
 class GenomeDiagramPageForm(FlaskForm):
     untagged = BooleanField("Limit selection to untagged genomes")
-    genome_tagged = StringField("Limit selection to genomes tagged with:")
-    show_tagged_genome = SubmitField('Limit selection')
+    limit_genomes = BooleanField("Limit selection to genomes tagged with:")
+    genome_tagged = SelectField( choices=[])
+    limit_selection = SubmitField('Limit selection')
     page = SelectField('Page to display', choices=[])
     select_page = SubmitField('Select page')
 
