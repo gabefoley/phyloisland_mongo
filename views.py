@@ -175,14 +175,18 @@ class UploadView(BaseView):
                 elif seq_type == "profile":
                     print('it is a profile')
 
-                    hmm_path = "static/uploads/" + filename
-                    while not os.path.exists(hmm_path):
-                        time.sleep(1)
-                    if os.path.isfile(hmm_path):
-                        print('path for hmm is ' + hmm_path)
-                        file = open(hmm_path, 'rb')
+                    # hmm_path = "static/uploads/" + filename
 
-                        utilities.save_profile(file)
+                    file = utilities.open_file(filename)
+                    utilities.save_profile(file)
+
+                    # while not os.path.exists(hmm_path):
+                    #     time.sleep(1)
+                    # if os.path.isfile(hmm_path):
+                    #     print('path for hmm is ' + hmm_path)
+                    #     file = open(hmm_path, 'rb')
+                    #
+                    #     utilities.save_profile(file)
 
             except HTTPError as error:
                 flash("There was a HTTP error. Please try again", category='error')
@@ -255,15 +259,61 @@ class SetupView(BaseView):
         elif request.method == "GET":
             return self.render('setup.html', form=form, prefs=prefs)
 
+class RegionView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def tree(self):
+        upload_form = forms.UploadRegion()
+        region_form = forms.RegionForm()
+        alignment_form = forms.AlignmentForm()
+
+        if upload_form.upload_submit.data:
+            print ('upload form')
+
+            print(request)
+            print(request.data)
+
+            name = upload_form.name.data
+
+
+            region = models.RegionRecords(name=name, regions=request.files['file'].read())
+
+            region.save()
+
+            flash("Saved " + name + " to Region Records", category='success')
+
+        if region_form.search_regions.data:
+            print ('region form')
+
+        if alignment_form.align.data:
+            print ('alignment form')
+
+        region_names = [region.name for region in models.RegionRecords.objects()]
+        align_names = [align.name for align in models.AlignmentRecords.objects()]
+
+        region_choices = [(region.name, region.name) for region in models.RegionRecords.objects()]
+        profile_choices = [(profile.name, profile.name) for profile in models.Profile.objects()]
+
+        region_form.region.choices = region_choices
+        region_form.profiles.choices = profile_choices
+
+        alignment_form.region.choices = region_choices
+
+
+
+
+        return self.render('regions.html', upload_form = upload_form, region_form=region_form, \
+                                                                              alignment_form=alignment_form,
+                           region_names=region_names, align_names=align_names)
+
+
 
 class TreeView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def tree(self):
-        alignment_form = forms.AlignmentForm()
         tree_form = forms.TreeForm()
-
-        return self.render('trees.html', alignment_form=alignment_form, tree_form=tree_form)
+        return self.render('trees.html', tree_form=tree_form)
 
 
 class DownloadFastaView(BaseView):
@@ -1627,6 +1677,25 @@ def show_hits():
     # return redirect(url_for('genomedetail.genomedetail'))
 
 
+@app.route("/regions/update_regions", methods=['GET', 'POST'])
+def update_regions():
+
+    keep_regions = request.json['regions']
+
+    models.RegionRecords.objects(name__nin=keep_regions).delete()
+
+    return redirect('regions')
+
+@app.route("/regions/update_aligns", methods=['GET', 'POST'])
+def update_aligns():
+
+    keep_aligns = request.json['aligns']
+
+    models.AlignmentRecords.objects(name__nin=keep_aligns).delete()
+
+    return redirect('regions')
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -1688,7 +1757,8 @@ with warnings.catch_warnings():
     admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
     # admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
     admin.add_view(ChartView(name='Charts', endpoint='chart'))
-    admin.add_view(TreeView(name='Make trees', endpoint='trees'))
+    admin.add_view(RegionView(name='Regions', endpoint='regions'))
+    # admin.add_view(TreeView(name='Make trees', endpoint='trees'))
 
     admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))
 

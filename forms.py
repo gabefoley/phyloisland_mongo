@@ -159,20 +159,30 @@ class DownloadFastaForm(FlaskForm):
 class TempFixForm(FlaskForm):
     fix_assoc = SubmitField("Click this to fix the associated regions in the database")
 
-class UploadAlignment(FlaskForm):
-    name = StringField('Alignment name', [validators.DataRequired()])
-    upload_alignment = FileField('Upload the file that contains the information we will map to the genome records.',
+
+class UploadRegion(FlaskForm):
+    name = StringField('Region name', [validators.DataRequired()])
+    file = FileField('Upload the FASTA file.',
                      [validators.DataRequired()])
+    upload_submit = SubmitField("Upload Region")
+
+class RegionForm(FlaskForm):
+    region = SelectField('Select region to use ', choices=[])
+    profiles = SelectMultipleField('Search region using these profiles', choices=[])
+    search_regions = SubmitField("Search regions")
+
 
 class AlignmentForm(FlaskForm):
-  name = StringField('Alignment name ')
-  region = SelectField('Make alignment based on ', choices=[('TcC', 'TcC'), ('TcB', 'TcB')])
-  limit = StringField('Limit to these ranges - ')
+  name = StringField('Alignment name ', [validators.DataRequired()])
+  region = SelectField('Make alignment based on ', choices=[])
   tool = SelectField('Select alignment tool - ', choices=[('MAFFT', 'MAFFT')])
   align = SubmitField('Make alignment')
 
-class TreeForm():
-  align = SubmitField('Make tree')
+class TreeForm(FlaskForm):
+  name = StringField('Tree name ', [validators.DataRequired()])
+  region = SelectField('Make alignment based on ', choices=[])
+  tool = SelectField('Select tree inference tool - ', choices=[('FastTree', 'FastTree')])
+  make_tree = SubmitField('Make tree')
 
 class BatchDeleteForm(FlaskForm):
     delete_all_tags = SubmitField('Delete all tags')

@@ -1,0 +1,259 @@
+{% extends 'admin/master.html' %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+
+{% block head_tail %}
+    {{ super() }}
+
+    <script src="../../static/js/d3/d3.min.js"></script>
+    <script src="../../static/js/d3/d3-tip.js"></script>
+    <script src="../../static/js/select.js"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="../../static/js/selectize.min.js"></script>
+    <script src="../../static/js/selectize_custom.js"></script>
+
+    <link href="{{ url_for('static', filename='css/selectize.min.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/regions.css') }}" rel="stylesheet">
+    {{ JSGlue.include() }}
+
+
+{% endblock %}
+{% block body %}
+
+    <div id="options_wrapper">
+
+        <div id="upload_div">
+
+            <h3>Upload regions</h3>
+
+
+            <form method="POST" enctype="multipart/form-data">
+                {{ upload_form.hidden_tag() }}
+
+                <div class="smallform">
+
+                    {{ upload_form.name.label }}
+
+                    {{ upload_form.name }}
+
+                    <br>
+                    <br>
+
+                    {{ upload_form.file.label }}
+
+                    {{ upload_form.file }}
+
+                    {% if upload_form.file.errors %}
+                        {% for error in upload_form.file.errors %}
+                            <p class="error-message">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+
+                    <br>
+
+                    {{ upload_form.upload_submit(class="btn-primary") }}
+
+
+                </div>
+            </form>
+
+
+        </div>
+        <br>
+        <br>
+
+        <div id="profile_div">
+
+            <h3>Profile search</h3>
+
+            <form method="POST" enctype="multipart/form-data">
+                {{ region_form.hidden_tag() }}
+
+                <div class="smallform">
+
+                    {{ region_form.region.label }}
+
+                    {{ region_form.region }}
+
+                    <br>
+                    <br>
+
+                    {{ region_form.profiles.label }}
+
+                    {{ region_form.profiles }}
+
+                    <br>
+                    {{ region_form.search_regions(class="btn-primary") }}
+
+
+                </div>
+            </form>
+
+
+        </div>
+
+        <div id="align_div">
+            <h3>Make alignments</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {{ alignment_form.hidden_tag() }}
+
+                <div class="smallform">
+
+                    {{ alignment_form.name.label }}
+
+                    {{ alignment_form.name }}
+                    <br>
+                    <br>
+
+                    {{ alignment_form.region.label }}
+
+                    {{ alignment_form.region }}
+                    <br>
+
+                    <br>
+
+
+                    {{ alignment_form.tool.label }}
+
+                    {{ alignment_form.tool }}
+
+                    <br>
+                    <br>
+
+
+                    {{ alignment_form.align(class="btn-primary") }}
+
+
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+    <div id="avail-regions-div">
+
+        <br>
+        <br>
+
+        Currently available regions -
+
+        <br>
+
+        <input type="text" id="avail_regions">
+        <br>
+        <button name="tagBtn" class="btn-primary" id="update_regions" type="submit">Update available regions</button>
+
+
+        <br>
+    </div>
+
+
+    <div id="avail-aligns-div">
+
+        <br>
+        <br>
+
+        Currently available alignments -
+
+        <br>
+
+        <input type="text" id="avail_aligns">
+        <br>
+        <button name="tagBtn" class="btn-primary" id="update_aligns" type="submit">Update alignments</button>
+
+
+        <br>
+    </div>
+
+    <script>
+
+        console.log("{{ region_names | safe }}")
+        console.log("{{ align_names | safe }}")
+
+        $('#avail_regions').val({{region_names | safe}});
+        $('#avail_aligns').val({{align_names | safe}});
+
+
+        $('#update_regions').on('click', function (e) {
+
+            regions = $('#avail_regions').val().split(',');
+
+
+            $.ajax({
+                url: Flask.url_for("update_regions"),
+                data: JSON.stringify({
+                    'regions': regions
+                }),
+                contentType: 'application/json;charset=UTF-8',
+                type: 'POST',
+                error: function (error) {
+                    console.log(error);
+                },
+                success: function (response) {
+
+                    window.location.reload();
+
+
+                }
+            });
+
+        });
+
+        $('#update_aligns').on('click', function (e) {
+
+            aligns = $('#avail_aligns').val().split(',');
+
+
+            $.ajax({
+                url: Flask.url_for("update_aligns"),
+                data: JSON.stringify({
+                    'aligns': aligns
+
+                }),
+                contentType: 'application/json;charset=UTF-8',
+                type: 'POST',
+                error: function (error) {
+                    console.log(error);
+                },
+                success: function (response) {
+
+                    window.location.reload();
+
+
+                }
+            });
+
+        });
+
+
+        $("[id^='avail_']").selectize({
+            delimiter: ',',
+            create: false,
+            persist: false, plugins: ['remove_button'],
+
+
+        });
+
+        $('#profiles').selectize({
+            delimiter: ',',
+            persist: false, plugins: ['remove_button'],
+//                   options: "{{labels}}",
+            create: false
+
+        });
+
+
+    </script>
+
+
+
+
+
+{% endblock %}

@@ -49,7 +49,7 @@ class SequenceRecords(db.DynamicDocument):
 
 class Hits(db.EmbeddedDocument):
     """
-    Class for storing a set of HMMER hits for a given region for a Genome Record
+    Class for storing a set of HMMER hits for a given region for a Genome Record or Region Record
     """
     id = db.ObjectIdField()
     name = db.StringField()
@@ -70,6 +70,25 @@ class AssociatedHits(db.DynamicDocument):
 class GenomeTags(db.DynamicDocument):
     tag_id = db.StringField()
     tags = db.ListField(db.StringField(), default=list)
+
+class RegionRecords(db.DynamicDocument):
+    name = db.StringField(unique=True)
+    region_tags = db.ListField()
+    regions = db.BinaryField()
+    hits = db.EmbeddedDocumentListField(Hits)
+
+class AlignmentRecords(db.DynamicDocument):
+    name = db.StringField()
+    alignment = db.BinaryField()
+
+class TreeRecords(db.DynamicDocument):
+    name = db.StringField()
+    alignment = db.IntField()
+    tree = db.BinaryField()
+
+
+
+
 
 
 

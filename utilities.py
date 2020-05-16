@@ -512,6 +512,19 @@ def get_associated_dict(genome):
 
     return associated_dict
 
+def open_file(filename):
+
+    print ('file name is ')
+    print (filename)
+    file_path = "static/uploads/" + filename
+
+    print ('file path is')
+    print(file_path)
+    while not os.path.exists(file_path):
+        time.sleep(1)
+    if os.path.isfile(file_path):
+        file = open(file_path, 'rb')
+        return file
 
 
 def randstring(length=10):
