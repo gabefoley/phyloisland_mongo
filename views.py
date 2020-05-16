@@ -615,7 +615,7 @@ class GenomeDetailView(BaseView):
 
         # passed_from_page = False
 
-        print ("Function was passed from " + session['passed_from'])
+        # print ("Function was passed from " + session['passed_from'])
 
         select_form = forms.GenomeDiagramSelectForm()
         page_form = forms.GenomeDiagramPageForm()
@@ -663,6 +663,8 @@ class GenomeDetailView(BaseView):
 
         if session.get('passed_from') == 'limit_selection':
             session['page_choice'] = 0
+
+
 
 
 
