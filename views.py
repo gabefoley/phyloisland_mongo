@@ -1254,6 +1254,12 @@ class ProfileView(ModelView):
         exec('@action("' + name + '_set_reference", "Set this profile as the ' + name + ' reference")\ndef ' + name +
              '_set_reference(self, profile_ids):\n utilities.set_profile_as_reference(profile_ids, "' + name + '")')
 
+class FeatureLogView(BaseView):
+    @expose("/")
+    def feature_log(self):
+        return self.render('features.html')
+
+
 
 class DocumentationView(BaseView):
     @expose("/")
@@ -1674,5 +1680,5 @@ with warnings.catch_warnings():
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
     # admin.add_view(DownloadGenomeOrderView(name='Download genome order', endpoint='download_order'))
     # admin.add_view(TempFixView(name='Temp Fix', endpoint='temp_fix'))
-
+    admin.add_view(FeatureLogView(name='Feature Log', endpoint='features'))
     admin.add_view(DocumentationView(name='Documentation & FAQ', endpoint='documentation'))

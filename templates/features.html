@@ -1,0 +1,27 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+
+<h4>16/05/2020</h4>
+<h5>Limit selection to genomes tagged with works</h5>
+
+<ul>
+    <li>Use it by ticking the checkbox, selecting which tag you want to limit to, clicking the “Limit selection”
+        button</li>
+    <li>Go back to the full records by unchecking the checkbox</li>
+</ul>
+
+<h5>Current limitations with Limit selection to genomes </h5>
+<ul>
+    <li>
+        Limited to searching for one tag at a time (i.e. can’t search from Genomes tagged “Type1” and “Multiple" at
+        once)
+    </li>
+    <li>
+      Queries are slow when the checkbox is ticked
+    </li>
+</ul>
+
+<h5>Added Feature Log</h5>
+
+{% endblock %}
