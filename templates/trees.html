@@ -1,0 +1,112 @@
+{% extends 'admin/master.html' %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+
+{% block head_tail %}
+{{ super() }}
+
+<script src="../../static/js/d3/d3.min.js"></script>
+<script src="../../static/js/d3/d3-tip.js"></script>
+<script src="../../static/js/select.js"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="../../static/js/selectize.min.js"></script>
+    <script src="../../static/js/selectize_custom.js"></script>
+
+<link href="{{ url_for('static', filename='css/selectize.min.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='css/genome_detail.css') }}" rel="stylesheet">
+{{ JSGlue.include() }}
+
+
+{% endblock %}
+{% block body %}
+
+<div class = "container">
+
+    <div id="alignment_form">
+
+             <form method="POST" enctype="multipart/form-data">
+            {{ alignment_form.hidden_tag() }}
+
+              <div class="smallform">
+
+                                    {{ alignment_form.name.label }}
+
+                {{ alignment_form.name }}
+                  <br>
+                  <br>
+
+                  {{ alignment_form.region.label }}
+
+                {{ alignment_form.region }}
+                  <br>
+
+                  <br>
+
+
+
+                {{ alignment_form.limit.label }}
+
+                {{ alignment_form.limit }}
+
+                  <br>
+                  <br>
+
+                  {{ alignment_form.tool.label }}
+
+                {{ alignment_form.tool }}
+
+                  <br>
+                  <br>
+
+
+                  {{ alignment_form.align(class="btn-primary") }}
+
+
+              </div>
+            </form>
+
+    </div>
+
+    <div id="available-alignments">
+
+        <br>
+        <br>
+
+        Currently available alignments -
+
+        <br>
+
+        <input type="text" id="avail-align">
+
+        <br>
+        <button name="del-align" class="btn-primary" id="del_align" type="submit">Update available alignments</button>
+
+    </div>
+
+
+
+</div>
+
+<script>
+
+
+            	    $('#avail-align').selectize({
+    delimiter: ',',
+                create: false,
+    persist: false, plugins: ['remove_button'],
+
+
+});
+</script>
+
+
+
+
+
+
+{% endblock %}

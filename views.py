@@ -256,6 +256,16 @@ class SetupView(BaseView):
             return self.render('setup.html', form=form, prefs=prefs)
 
 
+class TreeView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def tree(self):
+        alignment_form = forms.AlignmentForm()
+        tree_form = forms.TreeForm()
+
+        return self.render('trees.html', alignment_form=alignment_form, tree_form=tree_form)
+
+
 class DownloadFastaView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
@@ -1670,7 +1680,7 @@ with warnings.catch_warnings():
     # admin.add_view(UserView(model=models.User, endpoint='user'))
     admin.add_view(SetupView(name='Setup', endpoint='setup'))
     admin.add_view(UploadView(name='Upload', endpoint='upload_admin'))
-    # admin.add_view(SequenceRecordsView(model=models.SequenceRecords, endpoint="sequence_records"))
+    admin.add_view(SequenceRecordsView(model=models.SequenceRecords, endpoint="sequence_records"))
     admin.add_view(GenomeRecordsView(model=models.GenomeRecords, endpoint="genome_records"))
     admin.add_view(ProfileView(model=models.Profile, name='Profiles', endpoint='profiles'))
     # admin.add_view(MyModelView(model=models.Profile, name='Profiles', endpoint='models'))
@@ -1678,6 +1688,7 @@ with warnings.catch_warnings():
     admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
     # admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
     admin.add_view(ChartView(name='Charts', endpoint='chart'))
+    admin.add_view(TreeView(name='Make trees', endpoint='trees'))
 
     admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))
 

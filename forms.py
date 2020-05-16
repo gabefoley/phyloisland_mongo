@@ -159,6 +159,21 @@ class DownloadFastaForm(FlaskForm):
 class TempFixForm(FlaskForm):
     fix_assoc = SubmitField("Click this to fix the associated regions in the database")
 
+class UploadAlignment(FlaskForm):
+    name = StringField('Alignment name', [validators.DataRequired()])
+    upload_alignment = FileField('Upload the file that contains the information we will map to the genome records.',
+                     [validators.DataRequired()])
+
+class AlignmentForm(FlaskForm):
+  name = StringField('Alignment name ')
+  region = SelectField('Make alignment based on ', choices=[('TcC', 'TcC'), ('TcB', 'TcB')])
+  limit = StringField('Limit to these ranges - ')
+  tool = SelectField('Select alignment tool - ', choices=[('MAFFT', 'MAFFT')])
+  align = SubmitField('Make alignment')
+
+class TreeForm():
+  align = SubmitField('Make tree')
+
 class BatchDeleteForm(FlaskForm):
     delete_all_tags = SubmitField('Delete all tags')
     # delete_all_region_tags = SubmitField('Delete all tags at the region level')
