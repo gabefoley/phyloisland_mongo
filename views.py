@@ -420,8 +420,12 @@ class SequenceRecordsView(ModelView):
 class GenomeRecordsView(ModelView):
     form_edit_rules = ('name', 'species', 'strain', 'description')
 
+    # column_list = (
+    #     'name', 'species', 'strain', 'description', 'sequence', 'hits', 'Genome Overview', 'Expanded Genome Overview')
+    #
     column_list = (
-        'name', 'species', 'strain', 'description', 'sequence', 'hits', 'Genome Overview', 'Expanded Genome Overview')
+        'name', 'species', 'strain', 'description', 'sequence', 'hits')
+
 
     @login_required
     @expose("/", methods=('GET', 'POST'))
@@ -450,21 +454,21 @@ class GenomeRecordsView(ModelView):
     #         return False
     #     return True
 
-    def _download_formatter(self, context, model, name):
-        return Markup(
-            "<a href='{url}' target='_blank'>View Genome</a>".format(
-                url=self.get_url('download_genome_overview', id=model.name)))
-
-    def _expanded_download_formatter(self, context, model, name):
-        return Markup(
-            "<a href='{url}' target='_blank'>View Genome</a>".format(
-                url=self.get_url('download_genome_expanded_overview', id=model.name)))
+    # def _download_formatter(self, context, model, name):
+    #     return Markup(
+    #         "<a href='{url}' target='_blank'>View Genome</a>".format(
+    #             url=self.get_url('download_genome_overview', id=model.name)))
+    #
+    # def _expanded_download_formatter(self, context, model, name):
+    #     return Markup(
+    #         "<a href='{url}' target='_blank'>View Genome</a>".format(
+    #             url=self.get_url('download_genome_expanded_overview', id=model.name)))
 
     column_formatters = {
         'sequence': custom_filters.seqdescription_formatter,
         'hits': custom_filters.hitdescription_formatter,
-        'Genome Overview': _download_formatter,
-        'Expanded Genome Overview': _expanded_download_formatter,
+        # 'Genome Overview': _download_formatter,
+        # 'Expanded Genome Overview': _expanded_download_formatter,
 
     }
 
@@ -1672,7 +1676,7 @@ with warnings.catch_warnings():
     # admin.add_view(MyModelView(model=models.Profile, name='Profiles', endpoint='models'))
 
     admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
-    admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
+    # admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
     admin.add_view(ChartView(name='Charts', endpoint='chart'))
 
     admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))
