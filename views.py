@@ -287,7 +287,7 @@ class RegionView(BaseView):
             region_to_search = region_form.region.data
             profiles = region_form.profiles.data
 
-            region_dict, domain_dict = utilities.search_regionsgit add _with_profiles(region_to_search, profiles)
+            region_dict, domain_dict = utilities.search_regions_with_profiles(region_to_search, profiles)
 
             region_to_profile = models.RegionToProfileRecords(region_to_search, profiles =
             profiles, region_dict=region_dict, domain_dict=domain_dict)
