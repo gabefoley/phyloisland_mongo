@@ -270,8 +270,6 @@ class RegionView(BaseView):
         if upload_form.upload_submit.data:
             print ('upload form')
 
-            print(request)
-            print(request.data)
 
             name = upload_form.name.data
 
@@ -283,16 +281,43 @@ class RegionView(BaseView):
             flash("Saved " + name + " to Region Records", category='success')
 
         if region_form.search_regions.data:
-            print ('region form')
+
+            print ("Searching for regions with profiles")
+
+            region_to_search = region_form.region.data
+            profiles = region_form.profiles.data
+
+            region_dict, domain_dict = utilities.search_regionsgit add _with_profiles(region_to_search, profiles)
+
+            region_to_profile = models.RegionToProfileRecords(region_to_search, profiles =
+            profiles, region_dict=region_dict, domain_dict=domain_dict)
+
+            region_to_profile.save()
+
+
+
 
         if alignment_form.align.data:
-            print ('alignment form')
+            # We want to make an alignment
+
+            print ("Making an alignment \n")
+
+            aln_name = alignment_form.name.data
+            region_name = alignment_form.region.data
+            tool = alignment_form.tool.data
+            regions = models.RegionRecords.objects.get(name=region_name).regions.decode()
+            aln_path = utilities.make_alignment_from_regions(aln_name, regions, tool)
+
+            with open(aln_path, "rb") as aln_file:
+                aln = models.AlignmentRecords(name=aln_name, alignment=aln_file.read())
+                aln.save()
+
 
         region_names = [region.name for region in models.RegionRecords.objects()]
         align_names = [align.name for align in models.AlignmentRecords.objects()]
 
         region_choices = [(region.name, region.name) for region in models.RegionRecords.objects()]
-        profile_choices = [(profile.name, profile.name) for profile in models.Profile.objects()]
+        profile_choices = [(profile.id, profile.name) for profile in models.Profile.objects()]
 
         region_form.region.choices = region_choices
         region_form.profiles.choices = profile_choices
@@ -305,6 +330,27 @@ class RegionView(BaseView):
         return self.render('regions.html', upload_form = upload_form, region_form=region_form, \
                                                                               alignment_form=alignment_form,
                            region_names=region_names, align_names=align_names)
+
+
+class AlignmentsView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def alignments(self):
+        form = forms.SelectAlignmentForm()
+
+        if request.method == "POST" and form.submit.data:
+            align_name = form.name.data
+            alignment = models.AlignmentRecords.objects().get(id=align_name)
+
+            print (alignment.name)
+
+        elif request.method == "GET":
+            alignment = models.AlignmentRecords.objects()[0]
+
+        form.name.choices = [(align.id, align.name) for align in models.AlignmentRecords.objects()]
+
+        return self.render('alignments.html', form = form, align_data=alignment.alignment)
+
 
 
 
@@ -1253,7 +1299,6 @@ class ProfileView(ModelView):
             mimetype_field='mimetype'
         )}
 
-        print('here now in it')
 
         @action('doggydog', 'Generate a doggydog')
         def kittycat(self, ids):
@@ -1758,6 +1803,8 @@ with warnings.catch_warnings():
     # admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
     admin.add_view(ChartView(name='Charts', endpoint='chart'))
     admin.add_view(RegionView(name='Regions', endpoint='regions'))
+    admin.add_view(AlignmentsView(name='Alignments', endpoint='alignments'))
+
     # admin.add_view(TreeView(name='Make trees', endpoint='trees'))
 
     admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))

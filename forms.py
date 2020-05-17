@@ -178,6 +178,11 @@ class AlignmentForm(FlaskForm):
   tool = SelectField('Select alignment tool - ', choices=[('MAFFT', 'MAFFT')])
   align = SubmitField('Make alignment')
 
+class SelectAlignmentForm(FlaskForm):
+    name = SelectField('Alignment name ', choices=[])
+    submit = SubmitField("Select alignment")
+
+
 class TreeForm(FlaskForm):
   name = StringField('Tree name ', [validators.DataRequired()])
   region = SelectField('Make alignment based on ', choices=[])

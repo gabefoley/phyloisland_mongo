@@ -10,13 +10,14 @@ import sys
 from collections import defaultdict
 import json
 import regex as re
+import shutil
+import glob
 from Bio.Seq import Seq
 from Bio.Alphabet import generic_nucleotide
 
 
 from Bio.SeqRecord import SeqRecord
-from Bio import SeqIO
-from Bio import AlignIO
+from Bio import SeqIO, AlignIO, SearchIO
 from Bio.Align.Applications import MuscleCommandline
 
 region_name_mapper = {"A1": "track1", "A2": "track2", "Chitinase": "track3", "TcdA1": "track4",
@@ -59,6 +60,10 @@ def remove_file(*args):
     for arg in args:
         os.remove(arg)
 
+def remove_folder(*args):
+
+    for arg in args:
+        shutil.rmtree(arg)
 
 def add_genome(genome_results):
     """
@@ -197,6 +202,7 @@ def set_profile_as_reference(profile_ids, region):
         # flash("The profile named %s has been set as the reference profile for %s" % (curr.name, region), category='success')
 
 def createAlignment(input, output):
+    # Version that gets called from Download FASTA
     muscle_cline = MuscleCommandline(input=input)
     # result = subprocess.run(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True) )
     child = subprocess.Popen(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -205,6 +211,132 @@ def createAlignment(input, output):
 
     alignment = AlignIO.read(child.stdout, "fasta")
     AlignIO.write(alignment, output, "fasta")
+
+
+def search_regions_with_profiles(region_to_search, profile_ids):
+
+    domScore = 1
+    region_dict = {}
+
+    regions = models.RegionRecords.objects.get(name=region_to_search)
+
+    profile_folder = f"./tmp/profiles_{regions.name}/"
+
+    os.mkdir(profile_folder)
+
+    fasta_path = f"{profile_folder}{regions.name}.fasta"
+
+    with open (fasta_path, "w+") as fasta_file:
+        fasta_file.write(regions.regions.decode())
+
+    while not os.path.exists(fasta_path):
+        time.sleep(1)
+
+    if os.path.isfile(fasta_path):
+
+        seqs = read_fasta(fasta_path)
+
+        for name in seqs.keys():
+            region_dict[name.replace(".", "***")] = {}
+
+
+    for profile_id in profile_ids:
+        profile = models.Profile.objects().get(id=profile_id)
+
+
+        with open(profile_folder + profile.name + "_profile.hmm", 'wb') as profile_path:
+            profile_path.write(profile.profile.read())
+
+        while not os.path.exists(profile_folder + profile.name + "_profile.hmm"):
+            time.sleep(1)
+
+        subprocess.getoutput(
+            f'hmmsearch -o {profile_folder}{profile.name}.output --domT {domScore} {profile_folder}{profile.name}_profile.hmm {fasta_path}')
+
+        while not os.path.exists(profile_folder + profile.name + ".output"):
+            time.sleep(1)
+
+    region_dict, domain_dict = process_hmmer_results(region_dict, profile_folder)
+
+    # Delete the profile folder we used
+    remove_folder(profile_folder)
+
+
+    return region_dict, domain_dict
+
+def process_hmmer_results(region_dict, profile_folder):
+
+    domain_dict = {}
+
+    print ('in process hmmer')
+
+
+    print (region_dict)
+
+
+
+    for infile in glob.glob(profile_folder + '*.output'):
+
+        # seq_name = infile.split(output_folder)[1].split("_profile=")[0]
+
+        qresult = SearchIO.read(infile, 'hmmer3-text')
+
+        print (region_dict)
+
+        if len(qresult.hits) > 0:
+
+            for hsp in qresult.hsps:
+                # hsp = qresult[0][i]
+
+
+                print (hsp.query.id)
+                start = hsp.hit_start
+                end = hsp.hit_end
+                print ('pinto')
+                print (qresult.id)
+                print (hsp.hit_id)
+                print (start)
+                print (end)
+                region_dict[hsp.hit_id.replace(".", "***")] = {hsp.query.id :  (start, end)}
+
+                if hsp.query.id not in domain_dict:
+                    domain_dict[hsp.query.id] = []
+                domain_dict[hsp.query.id].append(hsp.hit_id)
+
+    print (region_dict)
+
+    print (domain_dict)
+
+    return region_dict, domain_dict
+
+
+
+
+
+
+
+
+def make_alignment_from_regions(aln_name, region_data, tool="MAFFT"):
+
+    # Write out region data to a FASTA file
+
+    fasta_path = "./tmp/" + aln_name + ".fasta"
+    aln_path = "./tmp/" + aln_name + ".aln"
+
+    with open (fasta_path, "w+") as fasta_file:
+        fasta_file.write(region_data)
+
+    while not os.path.exists(fasta_path):
+        time.sleep(1)
+
+    if os.path.isfile(fasta_path):
+        if tool=="MAFFT":
+            print ("Aligning with MAFFT")
+            stdoutdata = subprocess.getoutput(f'mafft  --reorder {fasta_path} > {aln_path}')
+
+    if os.path.isfile(aln_path):
+        return aln_path
+
 
 
 
