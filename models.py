@@ -78,11 +78,11 @@ class RegionRecords(db.DynamicDocument):
     hits = db.EmbeddedDocumentListField(Hits)
 
 class RegionToProfileRecords(db.DynamicDocument):
+    rtp_id = db.StringField()
     region = db.StringField()
     profiles = db.ListField()
     region_dict = db.DictField()
     domain_dict = db.DictField()
-
 
 class AlignmentRecords(db.DynamicDocument):
     name = db.StringField()

@@ -182,6 +182,11 @@ class SelectAlignmentForm(FlaskForm):
     name = SelectField('Alignment name ', choices=[])
     submit = SubmitField("Select alignment")
 
+class SelectRegionToProfilesForm(FlaskForm):
+    name = SelectField('Region to profiles name ', choices=[])
+    submit = SubmitField("Select region to profiles")
+
+
 
 class TreeForm(FlaskForm):
   name = StringField('Tree name ', [validators.DataRequired()])

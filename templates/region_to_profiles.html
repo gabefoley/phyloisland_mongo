@@ -53,43 +53,34 @@
         </form>
 
 
-        <div id="biojs-align-div"></div>
+        <div id="rtp-div"></div>
 
 
     </div>
 
+
     <script>
 
 
-        var align_data = $.trim("{{ align_data | safe  }}");
-        var trimmed_data = align_data.slice(2, align_data.length - 1);
-        var seqs = msa.io.fasta.parse(trimmed_data);
+        var region_dict = {{ rtp.region_dict | tojson }}
+        var info = JSON.stringify(region_dict)
+
+        $('#rtp-div').append(" Region searched was " + "{{  rtp.region}}" + "<br><ul>")
 
 
-        var opts = {
-            el: document.getElementById("biojs-align-div"),
-            seqs: seqs,
 
-            vis: {
-                conserv: false,
-                overviewbox: false
-            },
+        for (const [key, val] of Object.entries(region_dict)) {
+        $('#rtp-div').append("<li>" + key.replace("***", ".") + " has these domains " + val +
+            "</li>")
+        }
 
-            zoomer: {
-                rowHeight: 15, // default = 15
-                // alignmentWidth: 500,
-                alignmentHeight: 500,
-            },
-            // smaller menu for JSBin
-            menu: "small",
-            bootstrapMenu: true
-        };
-
-        var m = new msa.msa(opts);
-        m.render();
+                $('#rtp-div').append("<ul>")
 
 
     </script>
+
+
+
 
 
 

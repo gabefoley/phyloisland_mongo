@@ -259,6 +259,7 @@ class SetupView(BaseView):
         elif request.method == "GET":
             return self.render('setup.html', form=form, prefs=prefs)
 
+
 class RegionView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
@@ -268,11 +269,9 @@ class RegionView(BaseView):
         alignment_form = forms.AlignmentForm()
 
         if upload_form.upload_submit.data:
-            print ('upload form')
-
+            print('upload form')
 
             name = upload_form.name.data
-
 
             region = models.RegionRecords(name=name, regions=request.files['file'].read())
 
@@ -281,26 +280,23 @@ class RegionView(BaseView):
             flash("Saved " + name + " to Region Records", category='success')
 
         if region_form.search_regions.data:
-
-            print ("Searching for regions with profiles")
+            print("Searching for regions with profiles")
 
             region_to_search = region_form.region.data
             profiles = region_form.profiles.data
 
             region_dict, domain_dict = utilities.search_regions_with_profiles(region_to_search, profiles)
 
-            region_to_profile = models.RegionToProfileRecords(region_to_search, profiles =
-            profiles, region_dict=region_dict, domain_dict=domain_dict)
+            region_to_profile = models.RegionToProfileRecords(rtp_id=utilities.randstring(5), region=region_to_search,
+                                                              profiles=profiles, region_dict=region_dict,
+                                                              domain_dict=domain_dict)
 
             region_to_profile.save()
-
-
-
 
         if alignment_form.align.data:
             # We want to make an alignment
 
-            print ("Making an alignment \n")
+            print("Making an alignment \n")
 
             aln_name = alignment_form.name.data
             region_name = alignment_form.region.data
@@ -312,8 +308,14 @@ class RegionView(BaseView):
                 aln = models.AlignmentRecords(name=aln_name, alignment=aln_file.read())
                 aln.save()
 
-
         region_names = [region.name for region in models.RegionRecords.objects()]
+        region_to_profile_names = [region_to_profile.rtp_id + "_" + region_to_profile.region + " ( " + str(len(
+            region_to_profile.profiles)) + " "
+                                                                                                          "profiles " \
+                                                                                                           ")" for
+                                   region_to_profile in
+                                   models.RegionToProfileRecords.objects()]
+
         align_names = [align.name for align in models.AlignmentRecords.objects()]
 
         region_choices = [(region.name, region.name) for region in models.RegionRecords.objects()]
@@ -324,12 +326,31 @@ class RegionView(BaseView):
 
         alignment_form.region.choices = region_choices
 
+        return self.render('regions.html', upload_form=upload_form, region_form=region_form, \
+                           alignment_form=alignment_form,
+                           region_names=region_names, region_to_profile_names=region_to_profile_names,
+                           align_names=align_names)
 
 
+class RegionToProfilesView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def region_to_profiles(self):
+        form = forms.SelectRegionToProfilesForm()
 
-        return self.render('regions.html', upload_form = upload_form, region_form=region_form, \
-                                                                              alignment_form=alignment_form,
-                           region_names=region_names, align_names=align_names)
+        if request.method == "POST" and form.submit.data:
+            region_to_profiles_name = form.name.data
+            print(region_to_profiles_name)
+            region_to_profiles = models.RegionToProfileRecords.objects().get(id=region_to_profiles_name)
+
+
+        elif request.method == "GET":
+            region_to_profiles = models.RegionToProfileRecords.objects()[0]
+
+        form.name.choices = [(region_to_profiles.id, region_to_profiles.rtp_id) for region_to_profiles in
+                             models.RegionToProfileRecords.objects()]
+
+        return self.render('region_to_profiles.html', form=form, rtp=region_to_profiles)
 
 
 class AlignmentsView(BaseView):
@@ -342,16 +363,14 @@ class AlignmentsView(BaseView):
             align_name = form.name.data
             alignment = models.AlignmentRecords.objects().get(id=align_name)
 
-            print (alignment.name)
+            print(alignment.name)
 
         elif request.method == "GET":
             alignment = models.AlignmentRecords.objects()[0]
 
         form.name.choices = [(align.id, align.name) for align in models.AlignmentRecords.objects()]
 
-        return self.render('alignments.html', form = form, align_data=alignment.alignment)
-
-
+        return self.render('alignments.html', form=form, align_data=alignment.alignment)
 
 
 class TreeView(BaseView):
@@ -386,10 +405,10 @@ class DownloadFastaView(BaseView):
                     split_strands = False
 
                     print('here they come')
-                    print ('region')
-                    print (region)
-                    print ('filename')
-                    print (filename)
+                    print('region')
+                    print(region)
+                    print('filename')
+                    print(filename)
                     print("Include genome ")
                     print(include_genome)
                     print("Exclude genome ")
@@ -398,12 +417,12 @@ class DownloadFastaView(BaseView):
                     print(include_hits)
                     print("Exclude hits ")
                     print(exclude_hits)
-                    print ('translate')
-                    print (translate)
-                    print ('align')
-                    print (align)
-                    print ('split strands')
-                    print (split_strands)
+                    print('translate')
+                    print(translate)
+                    print('align')
+                    print(align)
+                    print('split strands')
+                    print(split_strands)
                     # if include_genome == [""]:
                     #     include_genome = None
                     #
@@ -532,7 +551,6 @@ class GenomeRecordsView(ModelView):
     column_list = (
         'name', 'species', 'strain', 'description', 'sequence', 'hits')
 
-
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def index_view(self):
@@ -642,33 +660,32 @@ class TempFixView(BaseView):
         form = forms.TempFixForm()
         return self.render('temp_fix.html', form=form)
 
+
 @app.route("/temp_assoc_fix", methods=['GET', 'POST'])
 def temp_assoc_fix():
-
-    print ('Fixing the Associated Regions dict')
+    print('Fixing the Associated Regions dict')
 
     queries = models.AssociatedHits.objects()
 
     for query in queries:
-        print (query)
-        print (query.region1)
-        print (query.region1.split("_information")[0])
+        print(query)
+        print(query.region1)
+        print(query.region1.split("_information")[0])
 
         genome_name = query.region1.split("_information")[0]
         genome = models.GenomeRecords.objects().get(name=genome_name)
         genome_id = str(genome.id)
-        print ('this genome id was ')
-        print (genome_id)
+        print('this genome id was ')
+        print(genome_id)
         query.genome_id = genome_id
         query.save()
 
-
     return redirect('temp_fix')
+
 
 class ChartView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
-
     def chart(self):
         chart_form = forms.ChartsForm()
         unique_tags = models.GenomeRecords.objects().distinct(field='tags')
@@ -682,13 +699,12 @@ class ChartView(BaseView):
             values.append(tag_count)
 
         # The list of tags to choose from
-        chart_form.select_tags.choices = list(zip(labels,labels))
+        chart_form.select_tags.choices = list(zip(labels, labels))
 
         colors = [
             "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA",
             "#ABCDEF", "#DDDDDD", "#ABCABC", "#4169E1",
             "#C71585", "#FF4500", "#FEDCBA", "#46BFBD"]
-
 
         if request.method == 'POST':
             selected_vals = chart_form.data['select_tags']
@@ -703,7 +719,6 @@ class ChartView(BaseView):
 
         else:
             selected_vals = labels
-
 
         return self.render('charts.html', chart_form=chart_form, title='Unique tags', max=max(values) + 10,
                            labels=labels, values=values,
@@ -732,7 +747,6 @@ class GenomeDetailView(BaseView):
         region_form = forms.GenomeDiagamShowRegions()
         hit_form = forms.GenomeHitForm()
 
-
         # genome = models.GenomeRecords.objects.get(id=session['genome'])
         if session.get('hits') is None:
             session['hits'] = 'expanded'
@@ -749,7 +763,6 @@ class GenomeDetailView(BaseView):
         if session.get('untagged') is None:
             session['untagged'] = False
 
-
         if session.get('limit_genomes') is None:
             session['limit_genomes'] = False
 
@@ -757,7 +770,7 @@ class GenomeDetailView(BaseView):
             session['genome_tagged'] = [""]
 
         if session.get('genome') is None:
-            print ('IT WAS NONE')
+            print('IT WAS NONE')
             genome = models.GenomeRecords.objects()[0]
             select_form.data['genome'] = [genome.id]
             session['genome'] = str(genome.id)
@@ -774,16 +787,8 @@ class GenomeDetailView(BaseView):
         if session.get('passed_from') == 'limit_selection':
             session['page_choice'] = 0
 
-
-
-
-
-
-
-
         unique_tags = models.GenomeRecords.objects().distinct(field='tags')
-        page_form.genome_tagged.choices = list(zip(unique_tags,unique_tags))
-
+        page_form.genome_tagged.choices = list(zip(unique_tags, unique_tags))
 
         current = models.User.objects().get(username=str(current_user.username))
         records_per_page = int(session['record_size'])
@@ -794,8 +799,6 @@ class GenomeDetailView(BaseView):
         limit_genomes = session['limit_genomes']
 
         genome_tagged = session['genome_tagged']
-
-
 
         # untagged = False
 
@@ -831,12 +834,11 @@ class GenomeDetailView(BaseView):
         print("Page count is " + str(page_count))
         print('Page choices is ' + str(page_choices))
         print('Page choice is ' + str(page_choice))
-        print ('untagged is ' + str(untagged))
-        print ('limit genomes is ' + str(limit_genomes))
+        print('untagged is ' + str(untagged))
+        print('limit genomes is ' + str(limit_genomes))
         # print ('tags to limit to is ' + str(genome_tagged[0]))
 
         specific_choice = int(page_choice) * records_per_page
-
 
         if untagged:
             select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
@@ -844,9 +846,9 @@ class GenomeDetailView(BaseView):
                                           specific_choice:specific_choice + records_per_page]]
 
         elif limit_genomes:
-            print ('selecing limited genomes')
+            print('selecing limited genomes')
             selection = models.GenomeRecords.objects(tags=genome_tagged[0])
-            print (len(selection))
+            print(len(selection))
             select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
                                           models.GenomeRecords.objects(tags=genome_tagged[0])[
                                           specific_choice:specific_choice + records_per_page]]
@@ -856,7 +858,8 @@ class GenomeDetailView(BaseView):
         else:
 
             select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
-                                      models.GenomeRecords.objects()[specific_choice:specific_choice + records_per_page]]
+                                          models.GenomeRecords.objects()[
+                                          specific_choice:specific_choice + records_per_page]]
 
         # The list of pages to choose from
         page_form.page.choices = page_choices
@@ -874,7 +877,7 @@ class GenomeDetailView(BaseView):
                 genome = models.GenomeRecords.objects(tags=[''])[0]
 
             elif limit_genomes:
-                print ('limiting genomes')
+                print('limiting genomes')
                 genome = models.GenomeRecords.objects(tags=genome_tagged[0])[0]
 
 
@@ -888,8 +891,7 @@ class GenomeDetailView(BaseView):
             genome = models.GenomeRecords.objects.get(id=session['genome'])
 
         print('genome was ')
-        print (genome['species'])
-
+        print(genome['species'])
 
         tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
                                                                   hidden_type=session[
@@ -907,16 +909,16 @@ class GenomeDetailView(BaseView):
         print(tags)
 
         return self.render('genomedetail.html', select_form=select_form, page_form=page_form,
-                                   hit_form=hit_form,
-                                   region_form=region_form, tracks=tracks, hit_tags=hit_tags, associated_dict=
-                                   associated_dict,
-                                   genome=genome, genome_name=genome.name, page_selected=page_choice,
-                                   untagged=untagged, limit_genomes = limit_genomes, genome_tagged=genome_tagged[0],
-                                   genome_tags=genome['tags'], \
-                                   hit_type=session['hits'], \
-                                   hidden_type=session['hidden_type'],
-                                   checked_regions=session['checked_regions'],
-                                   genomesize= genomesize)
+                           hit_form=hit_form,
+                           region_form=region_form, tracks=tracks, hit_tags=hit_tags, associated_dict=
+                           associated_dict,
+                           genome=genome, genome_name=genome.name, page_selected=page_choice,
+                           untagged=untagged, limit_genomes=limit_genomes, genome_tagged=genome_tagged[0],
+                           genome_tags=genome['tags'], \
+                           hit_type=session['hits'], \
+                           hidden_type=session['hidden_type'],
+                           checked_regions=session['checked_regions'],
+                           genomesize=genomesize)
 
         #     genome = models.GenomeRecords.objects.get(id=select_form.data['genome'])
         #
@@ -1011,8 +1013,6 @@ class GenomeDetailView(BaseView):
         #                        hit_type=session['hits'],
         #                        hidden_type=session['hidden_type'], checked_regions=session['checked_regions'],
         #                        genomesize=genomesize)
-
-
 
 
 # class GenomeDetailView(BaseView):
@@ -1299,7 +1299,6 @@ class ProfileView(ModelView):
             mimetype_field='mimetype'
         )}
 
-
         @action('doggydog', 'Generate a doggydog')
         def kittycat(self, ids):
             print('doggydog')
@@ -1363,11 +1362,11 @@ class ProfileView(ModelView):
         exec('@action("' + name + '_set_reference", "Set this profile as the ' + name + ' reference")\ndef ' + name +
              '_set_reference(self, profile_ids):\n utilities.set_profile_as_reference(profile_ids, "' + name + '")')
 
+
 class FeatureLogView(BaseView):
     @expose("/")
     def feature_log(self):
         return self.render('features.html')
-
 
 
 class DocumentationView(BaseView):
@@ -1711,9 +1710,9 @@ def show_hits():
 
     print('got to show hits')
 
-    print (request.json['genome'])
+    print(request.json['genome'])
 
-    print (request.json['page_choice'])
+    print(request.json['page_choice'])
 
     return redirect('genomedetail')
 
@@ -1724,22 +1723,36 @@ def show_hits():
 
 @app.route("/regions/update_regions", methods=['GET', 'POST'])
 def update_regions():
-
     keep_regions = request.json['regions']
 
     models.RegionRecords.objects(name__nin=keep_regions).delete()
 
     return redirect('regions')
 
-@app.route("/regions/update_aligns", methods=['GET', 'POST'])
-def update_aligns():
 
-    keep_aligns = request.json['aligns']
+@app.route("/regions/update_region_to_profiles", methods=['GET', 'POST'])
+def update_region_to_profiles():
+    keep_region_to_profiles = request.json['region_to_profiles']
 
-    models.AlignmentRecords.objects(name__nin=keep_aligns).delete()
+    print (keep_region_to_profiles)
+
+    keep_region_to_profiles = [x.split("_")[0] for x in keep_region_to_profiles]
+
+
+    print (keep_region_to_profiles)
+
+    models.RegionToProfileRecords.objects(rtp_id__nin=keep_region_to_profiles).delete()
 
     return redirect('regions')
 
+
+@app.route("/regions/update_aligns", methods=['GET', 'POST'])
+def update_aligns():
+    keep_aligns = request.json['aligns']
+
+    models.AlignmentRecords.objects(id__nin=keep_aligns).delete()
+
+    return redirect('regions')
 
 
 @app.errorhandler(404)
@@ -1803,6 +1816,8 @@ with warnings.catch_warnings():
     # admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
     admin.add_view(ChartView(name='Charts', endpoint='chart'))
     admin.add_view(RegionView(name='Regions', endpoint='regions'))
+    # admin.add_view(RegionToProfilesView(name='Region to profiles', endpoint='region_to_profiles'))
+
     admin.add_view(AlignmentsView(name='Alignments', endpoint='alignments'))
 
     # admin.add_view(TreeView(name='Make trees', endpoint='trees'))

@@ -154,6 +154,24 @@
         <br>
     </div>
 
+        <div id="avail-record-to-profiles-div">
+
+        <br>
+        <br>
+
+        Currently available region to profile searches -
+
+        <br>
+
+        <input type="text" id="avail_region_to_profiles">
+        <br>
+        <button name="tagBtn" class="btn-primary" id="update_region_to_profiles" type="submit">Update
+            region to profile searches</button>
+
+
+        <br>
+    </div>
+
 
     <div id="avail-aligns-div">
 
@@ -178,6 +196,8 @@
         console.log("{{ align_names | safe }}")
 
         $('#avail_regions').val({{region_names | safe}});
+        $('#avail_region_to_profiles').val({{region_to_profile_names | safe}});
+
         $('#avail_aligns').val({{align_names | safe}});
 
 
@@ -190,6 +210,31 @@
                 url: Flask.url_for("update_regions"),
                 data: JSON.stringify({
                     'regions': regions
+                }),
+                contentType: 'application/json;charset=UTF-8',
+                type: 'POST',
+                error: function (error) {
+                    console.log(error);
+                },
+                success: function (response) {
+
+                    window.location.reload();
+
+
+                }
+            });
+
+        });
+
+                $('#update_region_to_profiles').on('click', function (e) {
+
+            region_to_profiles = $('#avail_region_to_profiles').val().split(',');
+
+
+            $.ajax({
+                url: Flask.url_for("update_region_to_profiles"),
+                data: JSON.stringify({
+                    'region_to_profiles': region_to_profiles
                 }),
                 contentType: 'application/json;charset=UTF-8',
                 type: 'POST',
