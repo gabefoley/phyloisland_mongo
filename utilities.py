@@ -337,6 +337,28 @@ def make_alignment_from_regions(aln_name, region_data, tool="MAFFT"):
     if os.path.isfile(aln_path):
         return aln_path
 
+def make_tree(alignment_name, alignment, tool):
+
+    aln_path = "./tmp/" + alignment_name + ".aln"
+    tree_path = "./tmp/" + alignment_name + ".nwk"
+
+    with open (aln_path, "w+") as fasta_file:
+        fasta_file.write(alignment)
+
+    while not os.path.exists(aln_path):
+        time.sleep(1)
+
+    if os.path.isfile(aln_path):
+        if tool=="FastTree":
+            print ("Making tree with FastTree")
+            stdoutdata = subprocess.getoutput(f'fasttree {aln_path} > {tree_path}')
+
+    if os.path.isfile(tree_path):
+        return tree_path
+
+
+
+
 
 
 

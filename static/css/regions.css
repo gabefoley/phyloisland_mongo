@@ -11,7 +11,7 @@
 }
 
 #upload_div{
-    margin: 10px 30px 30px 10px;
+    margin: 10px 30px 30px 30px;
         /*background-color:greenyellow;*/
 
 }
@@ -26,6 +26,12 @@
 
 #align_div{
     margin: 10px 30px 30px 60px;
+        /*background-color:mediumpurple;*/
+
+}
+
+#tree_div{
+    margin: 10px 30px 30px 30px;
         /*background-color:mediumpurple;*/
 
 }

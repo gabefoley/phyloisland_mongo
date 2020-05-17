@@ -267,6 +267,7 @@ class RegionView(BaseView):
         upload_form = forms.UploadRegion()
         region_form = forms.RegionForm()
         alignment_form = forms.AlignmentForm()
+        tree_form = forms.TreeForm()
 
         if upload_form.upload_submit.data:
             print('upload form')
@@ -305,8 +306,31 @@ class RegionView(BaseView):
             aln_path = utilities.make_alignment_from_regions(aln_name, regions, tool)
 
             with open(aln_path, "rb") as aln_file:
-                aln = models.AlignmentRecords(name=aln_name, alignment=aln_file.read())
+                aln = models.AlignmentRecords(name=aln_name, alignment=aln_file.read(), tool=tool)
                 aln.save()
+
+        if tree_form.make_tree.data:
+
+            print("Making a tree \n")
+
+            tree_name = tree_form.name.data
+            alignment_name = tree_form.alignment.data
+            tool = tree_form.tool.data
+            alignment = models.AlignmentRecords.objects.get(name=alignment_name).alignment.decode()
+            tree_path = utilities.make_tree(tree_name, alignment, tool)
+
+
+
+            with open(tree_path, "rb") as tree_file:
+                print ('here')
+                print(tree_name)
+                print(alignment_name)
+                print(tree_file.read())
+                print(tool)
+                tree = models.TreeRecords(name=tree_name, alignment=alignment_name, tree=tree_file.read(), tool=tool)
+                tree.save()
+
+
 
         region_names = [region.name for region in models.RegionRecords.objects()]
         region_to_profile_names = [region_to_profile.rtp_id + "_" + region_to_profile.region + " ( " + str(len(
@@ -317,19 +341,24 @@ class RegionView(BaseView):
                                    models.RegionToProfileRecords.objects()]
 
         align_names = [align.name for align in models.AlignmentRecords.objects()]
+        tree_names = [tree.name for tree in models.TreeRecords.objects()]
 
         region_choices = [(region.name, region.name) for region in models.RegionRecords.objects()]
         profile_choices = [(profile.id, profile.name) for profile in models.Profile.objects()]
+        align_choices = [(align.name, align.name) for align in models.AlignmentRecords.objects()]
+
 
         region_form.region.choices = region_choices
         region_form.profiles.choices = profile_choices
 
         alignment_form.region.choices = region_choices
+        tree_form.alignment.choices = align_choices
+
 
         return self.render('regions.html', upload_form=upload_form, region_form=region_form, \
-                           alignment_form=alignment_form,
+                           alignment_form=alignment_form, tree_form = tree_form,
                            region_names=region_names, region_to_profile_names=region_to_profile_names,
-                           align_names=align_names)
+                           align_names=align_names, tree_names=tree_names)
 
 
 class RegionToProfilesView(BaseView):
@@ -363,8 +392,6 @@ class AlignmentsView(BaseView):
             align_name = form.name.data
             alignment = models.AlignmentRecords.objects().get(id=align_name)
 
-            print(alignment.name)
-
         elif request.method == "GET":
             alignment = models.AlignmentRecords.objects()[0]
 
@@ -377,9 +404,18 @@ class TreeView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def tree(self):
-        tree_form = forms.TreeForm()
-        return self.render('trees.html', tree_form=tree_form)
+        form = forms.TreeSelectForm()
 
+        if request.method == "POST" and form.submit.data:
+            tree_name = form.name.data
+            tree = models.TreeRecords.objects().get(id=tree_name)
+
+        elif request.method == "GET":
+            tree = models.TreeRecords.objects()[0]
+
+        form.name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
+
+        return self.render('trees.html', form=form, tree_data=tree)
 
 class DownloadFastaView(BaseView):
     @login_required
@@ -1754,6 +1790,13 @@ def update_aligns():
 
     return redirect('regions')
 
+@app.route("/regions/update_trees", methods=['GET', 'POST'])
+def update_trees():
+    keep_trees = request.json['trees']
+
+    models.TreeRecords.objects(name__nin=keep_trees).delete()
+
+    return redirect('regions')
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -1820,7 +1863,7 @@ with warnings.catch_warnings():
 
     admin.add_view(AlignmentsView(name='Alignments', endpoint='alignments'))
 
-    # admin.add_view(TreeView(name='Make trees', endpoint='trees'))
+    admin.add_view(TreeView(name='Trees', endpoint='trees'))
 
     admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))
 

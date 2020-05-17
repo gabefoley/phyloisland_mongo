@@ -186,13 +186,16 @@ class SelectRegionToProfilesForm(FlaskForm):
     name = SelectField('Region to profiles name ', choices=[])
     submit = SubmitField("Select region to profiles")
 
-
-
 class TreeForm(FlaskForm):
   name = StringField('Tree name ', [validators.DataRequired()])
-  region = SelectField('Make alignment based on ', choices=[])
+  alignment = SelectField('Make tree based on ', choices=[])
   tool = SelectField('Select tree inference tool - ', choices=[('FastTree', 'FastTree')])
   make_tree = SubmitField('Make tree')
+
+class TreeSelectForm(FlaskForm):
+    name = SelectField('Tree name ', choices=[])
+    submit = SubmitField("Select tree")
+
 
 class BatchDeleteForm(FlaskForm):
     delete_all_tags = SubmitField('Delete all tags')

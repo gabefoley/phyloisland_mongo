@@ -25,68 +25,37 @@
 {% endblock %}
 {% block body %}
 
-<div class = "container">
+    <div class="options-wrapper">
 
-    <div id="alignment_form">
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
 
-             <form method="POST" enctype="multipart/form-data">
-            {{ alignment_form.hidden_tag() }}
+            <div class="smallform">
 
-              <div class="smallform">
+                {{ form.name.label }}
 
-                                    {{ alignment_form.name.label }}
+                {{ form.name }}
 
-                {{ alignment_form.name }}
-                  <br>
-                  <br>
+                <br>
 
-                  {{ alignment_form.region.label }}
+                {{ form.submit(class="btn-primary") }}
 
-                {{ alignment_form.region }}
-                  <br>
-
-                  <br>
+                <br>
+                <br>
 
 
-
-                {{ alignment_form.limit.label }}
-
-                {{ alignment_form.limit }}
-
-                  <br>
-                  <br>
-
-                  {{ alignment_form.tool.label }}
-
-                {{ alignment_form.tool }}
-
-                  <br>
-                  <br>
+            </div>
+        </form>
 
 
-                  {{ alignment_form.align(class="btn-primary") }}
+        <div id="biojs-align-div"></div>
 
-
-              </div>
-            </form>
 
     </div>
+<div id="tree_img">
 
-    <div id="available-alignments">
+</div>
 
-        <br>
-        <br>
-
-        Currently available alignments -
-
-        <br>
-
-        <input type="text" id="avail-align">
-
-        <br>
-        <button name="del-align" class="btn-primary" id="del_align" type="submit">Update available alignments</button>
-
-    </div>
 
 
 
@@ -95,13 +64,6 @@
 <script>
 
 
-            	    $('#avail-align').selectize({
-    delimiter: ',',
-                create: false,
-    persist: false, plugins: ['remove_button'],
-
-
-});
 </script>
 
 

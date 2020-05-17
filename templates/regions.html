@@ -134,6 +134,43 @@
 
         </div>
 
+            <div id="tree_div">
+            <h3>Make trees</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {{ tree_form.hidden_tag() }}
+
+                <div class="smallform">
+
+                    {{ tree_form.name.label }}
+
+                    {{ tree_form.name }}
+                    <br>
+                    <br>
+
+                    {{ tree_form.alignment.label }}
+
+                    {{ tree_form.alignment }}
+                    <br>
+
+                    <br>
+
+
+                    {{ tree_form.tool.label }}
+
+                    {{ tree_form.tool }}
+
+                    <br>
+                    <br>
+
+
+                    {{ tree_form.make_tree(class="btn-primary") }}
+
+
+                </div>
+            </form>
+
+        </div>
+
 
     </div>
 
@@ -190,6 +227,23 @@
         <br>
     </div>
 
+        <div id="avail-trees-div">
+
+        <br>
+        <br>
+
+        Currently available trees -
+
+        <br>
+
+        <input type="text" id="avail_trees">
+        <br>
+        <button name="tagBtn" class="btn-primary" id="update_trees" type="submit">Update trees</button>
+
+
+        <br>
+    </div>
+
     <script>
 
         console.log("{{ region_names | safe }}")
@@ -200,6 +254,7 @@
 
         $('#avail_aligns').val({{align_names | safe}});
 
+        $('#avail_trees').val({{tree_names | safe}});
 
         $('#update_regions').on('click', function (e) {
 
@@ -260,6 +315,32 @@
                 url: Flask.url_for("update_aligns"),
                 data: JSON.stringify({
                     'aligns': aligns
+
+                }),
+                contentType: 'application/json;charset=UTF-8',
+                type: 'POST',
+                error: function (error) {
+                    console.log(error);
+                },
+                success: function (response) {
+
+                    window.location.reload();
+
+
+                }
+            });
+
+        });
+
+                $('#update_trees').on('click', function (e) {
+
+            trees = $('#avail_trees').val().split(',');
+
+
+            $.ajax({
+                url: Flask.url_for("update_trees"),
+                data: JSON.stringify({
+                    'trees': trees
 
                 }),
                 contentType: 'application/json;charset=UTF-8',
