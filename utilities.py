@@ -363,7 +363,7 @@ def make_tree(alignment_name, alignment, tool):
 def get_tree_image(tree, tree_name, tag_dict, region_dict, colour_dict):
 
     tree_path = f"./tmp/{tree_name}.nwk"
-    img_path = f"static/img/{tree_name}.png"
+    img_path = f"static/img/trees/{tree_name}.png"
     tag_dict_path = f"./tmp/{tree_name}_tagdict.p"
     region_dict_path = f"./tmp/{tree_name}_regiondict.p"
     colour_dict_path = f"./tmp/{tree_name}_colourdict.p"

@@ -2,6 +2,7 @@
 /hmm_outputs/*
 /static/user_images/*
 /static/uploads/*
+/static/img/trees/*
 /testing/*
 /tmp/*
 /fasta_folder/*

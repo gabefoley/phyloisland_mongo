@@ -420,20 +420,22 @@ class TreeView(BaseView):
                            'SIngle': 'brown', 'Single ': 'brown', 'Type?': 'pink'}
 
         elif request.method == "GET":
-            if models.TreeRecords.objects().count() == 0:
-                tree = None
-            else:
-                tree = models.TreeRecords.objects()[0]
-                tag_dict = {}
-                region_dict = {}
-                colour_dict = {}
+            tree = None
+            # if models.TreeRecords.objects().count() == 0:
+            #     tree = None
+            # else:
+            #     tree = models.TreeRecords.objects()[0]
+            #     tag_dict = {}
+            #     region_dict = {}
+            #     colour_dict = {}
 
         if tree:
             tree_img = utilities.get_tree_image(tree.tree.decode(), tree.name, tag_dict, region_dict, colour_dict)
+            tree_img = "/" + tree_img + "#" + utilities.randstring(4)
             # if tree_img:
             #     tree_img = tree_img.split("static/")[1]
         else:
-            tree_img = None
+            tree_img = ""
 
         profile_choices = [(rtp.rtp_id, rtp.rtp_id) for rtp in models.RegionToProfileRecords.objects()]
 
@@ -444,7 +446,7 @@ class TreeView(BaseView):
         form.name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
         form.profiles.choices = profile_choices
 
-        return self.render('trees.html', form=form, tree_img=tree_img + "#" + utilities.randstring(4))
+        return self.render('trees.html', form=form, tree_img=tree_img)
 
 class DownloadFastaView(BaseView):
     @login_required
