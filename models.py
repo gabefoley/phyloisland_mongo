@@ -86,7 +86,7 @@ class RegionToProfileRecords(db.DynamicDocument):
 
 class AlignmentRecords(db.DynamicDocument):
     name = db.StringField()
-    alignment = db.BinaryField()
+    alignment = db.FileField()
     tool = db.StringField()
 
 class TreeRecords(db.DynamicDocument):

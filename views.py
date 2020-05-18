@@ -316,7 +316,9 @@ class RegionView(BaseView):
             tree_name = tree_form.name.data
             alignment_name = tree_form.alignment.data
             tool = tree_form.tool.data
-            alignment = models.AlignmentRecords.objects.get(name=alignment_name).alignment.decode()
+            alignment = models.AlignmentRecords.objects.get(name=alignment_name).alignment.read().decode()
+
+
             tree_path = utilities.make_tree(tree_name, alignment, tool)
 
 
