@@ -1,27 +1,150 @@
 {% extends 'admin/master.html' %}
+{% block head_tail %}
+    {{ super() }}
+
+    <link href="{{ url_for('static', filename='css/features.css') }}" rel="stylesheet">
+
+{% endblock %}
 
 {% block body %}
 
-<h4>16/05/2020</h4>
-<h5>Limit selection to genomes tagged with works</h5>
+    <h3>18/05/2020</h3>
+    <br>
+    <h4> Regions </h4>
+    <h5>Added Regions section</h5>
 
-<ul>
-    <li>Use it by ticking the checkbox, selecting which tag you want to limit to, clicking the “Limit selection”
-        button</li>
-    <li>Go back to the full records by unchecking the checkbox</li>
-</ul>
+    <ul>
+        <li>User can upload a FASTA file of sequence data on which to perform further analysis.</li>
+        <li>Data is stored in the newly created Regions Record Collection.</li>
+        <li>This data will be able to be generated directly from Genome Records in the future, for now a user must
+            download the data using Download FASTA and then upload it via the Regions page.
+        </li>
+    </ul>
 
-<h5>Current limitations with Limit selection to genomes </h5>
-<ul>
+    <h5>Added Profile search (found in Regions section)</h5>
+    <ul>
+        <li>
+            User can select a FASTA file that has been uploaded to Region Records and a set of profiles that have been
+            uploaded to Profile Records. Each profile is searched against each sequence in a Region.
+        </li>
+        <li>
+            The results from searching these regions is stored in the newly created RegionToProfile Collection.
+        </li>
+    </ul>
+
+    <h5>Added Alignment generation (found in Regions section)</h5>
+    <ul>
+        <li>
+            User can select a FASTA file that has been uploaded to Region Records and create an alignment.
+        </li>
+        <li>
+            The results from aligning these regions is stored in the newly created Alignments Collection.
+        </li>
+        <li>
+            At the moment, MAFFT is the only supported alignment program.
+        </li>
+    </ul>
+
+    <h5>Added Tree inference (found in Regions section)</h5>
+    <ul>
+        <li>
+            User can select an alignment that has been uploaded to Alignments and infer a phylogenetic tree.
+        </li>
+        <li>
+            The inferred trees are stored in the newly created Tree Collection.
+        </li>
+        <li>
+            At the moment, FastTree is the only supported tree inference program.
+        </li>
+    </ul>
+
+    <h5>All objects create from Regions section can be deleted from Regions page</h5>
+    <ul>
+        <li>
+            Regions, region to profile searches, alignments, and trees that are created on the Regions page can all
+            be viewed and deleted directly from Regions section.
+        </li>
+    </ul>
+    <br>
+
+    <h4>Alignments</h4>
+
+    <h5>Added Alignments section</h5>
+    <ul>
+        <li>
+            User can select an Alignment and view it using <a href="https://msa.biojs.net/"> MSAViewer (a BioJS
+            component) </a></li>
+
+    </ul>
+    <br>
+
+    <h4>Trees</h4>
+
+    <h5>Added Trees section</h5>
+    <ul>
+        <li>
+            User can select a Tree and view an image of it generated using the <a href="http://etetoolkit
+        .org/docs/latest/index.html"> ETE3 Toolkit </a></li>
+        <li>
+            Trees are automatically coloured by the tags applied to the regions and genomes in Phylo Island
+        </li>
+        <li> If a tree contains a region that has a tag associated with it, it will be coloured by this, otherwise it
+            will
+            be coloured by the tag associated with its genome.
+        </li>
+
     <li>
-        Limited to searching for one tag at a time (i.e. can’t search from Genomes tagged “Type1” and “Multiple" at
-        once)
+        User can select a Region to Profile record to annotate trees with presence / absence of the domains contained
+        within the Region to Profile record.
     </li>
     <li>
-      Queries are slow when the checkbox is ticked
+        The Region to Profile record does not need to be generated from the same Region record that the tree is. One
+        advantge of this is that you can perform domain analysis on a set of full length sequences, then add a
+        version of the set of sequences trimmed to an area of interest (active site, specific domain) and perform
+        alignment and tree inference on the trimmed sequences. The Region to Profile information from the full
+        sequences can then be overlaid onto the tree generated from the trimmed sequences.
     </li>
-</ul>
 
-<h5>Added Feature Log</h5>
+    <li>
+        Tree images are freshly generated each time, rather than stored, to allow for changes to annotations to be
+        dynamic.
+    </li>
+    </ul>
+    <br>
+
+
+    <h3>16/05/2020</h3>
+    <br>
+    <h4>Limit selection to genomes</h4>
+    <h5>Added limit selection to genomes</h5>
+
+    <ul>
+        <li>Use it by ticking the checkbox, selecting which tag you want to limit to, clicking the “Limit selection”
+            button.
+        </li>
+        <li>Go back to the full records by unchecking the checkbox.</li>
+    </ul>
+
+    <h5>Current limitations with Limit selection to genomes </h5>
+    <ul>
+        <li>
+            Limited to searching for one tag at a time (i.e. can’t search from Genomes tagged “Type1” and “Multiple" at
+            once).
+        </li>
+        <li>
+            Queries are slow when the checkbox is ticked.
+        </li>
+    </ul>
+
+    <br>
+
+    <h4> Feature Log</h4>
+
+    <h5>Added Feature Log</h5>
+    <ul>
+        <li>
+            Updates will be added to this page.
+        </li>
+    </ul>
 
 {% endblock %}
