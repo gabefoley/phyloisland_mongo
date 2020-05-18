@@ -254,14 +254,19 @@ def download_associated_regions():
 
     return out_path
 
-def download_tags():
-
+def get_tags():
     tags = models.GenomeTags.objects()
 
     tag_dict = {}
 
     for x in tags:
         tag_dict[x['tag_id']] = x['tags']
+
+    return tag_dict
+
+def download_tags():
+
+    tag_dict = get_tags()
 
     out_path = "./fasta_folder/tags.txt"
 

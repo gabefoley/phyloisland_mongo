@@ -12,13 +12,13 @@ import json
 import regex as re
 import shutil
 import glob
+import tree_code
 from Bio.Seq import Seq
 from Bio.Alphabet import generic_nucleotide
-
-
 from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO, AlignIO, SearchIO
 from Bio.Align.Applications import MuscleCommandline
+import pickle
 
 region_name_mapper = {"A1": "track1", "A2": "track2", "Chitinase": "track3", "TcdA1": "track4",
                   "TcB": "track5", "TcC": "track6", "A1_expanded" : "track1_expanded", 'A2_expanded' : "track2",
@@ -220,6 +220,7 @@ def search_regions_with_profiles(region_to_search, profile_ids):
 
     regions = models.RegionRecords.objects.get(name=region_to_search)
 
+
     profile_folder = f"./tmp/profiles_{regions.name}/"
 
     os.mkdir(profile_folder)
@@ -281,6 +282,8 @@ def process_hmmer_results(region_dict, profile_folder):
 
         qresult = SearchIO.read(infile, 'hmmer3-text')
 
+        print ('charlie')
+
         print (region_dict)
 
         if len(qresult.hits) > 0:
@@ -297,7 +300,7 @@ def process_hmmer_results(region_dict, profile_folder):
                 print (hsp.hit_id)
                 print (start)
                 print (end)
-                region_dict[hsp.hit_id.replace(".", "***")] = {hsp.query.id :  (start, end)}
+                region_dict[hsp.hit_id.replace(".", "***")][hsp.query.id] =  (start, end)
 
                 if hsp.query.id not in domain_dict:
                     domain_dict[hsp.query.id] = []
@@ -357,9 +360,55 @@ def make_tree(alignment_name, alignment, tool):
         return tree_path
 
 
+def get_tree_image(tree, tree_name, tag_dict, region_dict, colour_dict):
+
+    tree_path = f"./tmp/{tree_name}.nwk"
+    img_path = f"static/img/{tree_name}.png"
+    tag_dict_path = f"./tmp/{tree_name}_tagdict.p"
+    region_dict_path = f"./tmp/{tree_name}_regiondict.p"
+    colour_dict_path = f"./tmp/{tree_name}_colourdict.p"
 
 
 
+    print ('here is tree')
+    print (tree)
+
+
+    # Write out tree to file
+    with open (tree_path, "w+") as tree_file:
+        tree_file.write(tree)
+
+    while not os.path.exists(tree_path):
+        time.sleep(1)
+
+    pickle_dict(tag_dict, tag_dict_path)
+    pickle_dict(region_dict, region_dict_path)
+    pickle_dict(colour_dict, colour_dict_path)
+
+    if os.path.isfile(tree_path):
+
+        # remove_file(img_path)
+
+
+
+        print (tree_path)
+
+        loaded_tree = tree_code.load_tree(tree_path)
+
+        stdoutdata = subprocess.getoutput(f"python tree_code.py -t {tree_path} -o{img_path} -td {tag_dict_path} -rd {region_dict_path} -cd {colour_dict_path}")
+
+        print (stdoutdata)
+
+        # tree_code.colour_tips(loaded_tree, tag_dict, colour_dict, region_dict, outpath=img_path,
+        #                                         custom_layout=False)
+
+        if os.path.isfile(img_path):
+            return img_path
+
+
+def pickle_dict(dict, outpath):
+    with open(outpath, 'wb') as handle:
+        pickle.dump(dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 
 def createProfile(align_list):

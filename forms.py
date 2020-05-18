@@ -194,6 +194,7 @@ class TreeForm(FlaskForm):
 
 class TreeSelectForm(FlaskForm):
     name = SelectField('Tree name ', choices=[])
+    profiles = SelectField('Add profile search results from', choices=[])
     submit = SubmitField("Select tree")
 
 

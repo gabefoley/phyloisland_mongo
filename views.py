@@ -325,7 +325,6 @@ class RegionView(BaseView):
                 print ('here')
                 print(tree_name)
                 print(alignment_name)
-                print(tree_file.read())
                 print(tool)
                 tree = models.TreeRecords(name=tree_name, alignment=alignment_name, tree=tree_file.read(), tool=tool)
                 tree.save()
@@ -389,8 +388,7 @@ class AlignmentsView(BaseView):
         form = forms.SelectAlignmentForm()
 
         if request.method == "POST" and form.submit.data:
-            align_name = form.name.data
-            alignment = models.AlignmentRecords.objects().get(id=align_name)
+            alignment = models.AlignmentRecords.objects().get(id=form.name.data)
 
         elif request.method == "GET":
             alignment = models.AlignmentRecords.objects()[0]
@@ -407,15 +405,46 @@ class TreeView(BaseView):
         form = forms.TreeSelectForm()
 
         if request.method == "POST" and form.submit.data:
-            tree_name = form.name.data
-            tree = models.TreeRecords.objects().get(id=tree_name)
+            tree = models.TreeRecords.objects().get(id=form.name.data)
+            tag_dict = getGenomes.get_tags()
+
+            print ('check for')
+            print (form.profiles.data)
+            if form.profiles.data == 'None':
+                region_dict = {}
+            else:
+                region_dict = models.RegionToProfileRecords.objects().get(rtp_id=form.profiles.data).region_dict
+
+            colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type2b': 'gold', 'Type2a': 'green',
+                           'Type3': 'purple', 'Multiple': 'red', 'unknown': 'black', 'dsda': 'pink', 'Single': 'brown',
+                           'SIngle': 'brown', 'Single ': 'brown', 'Type?': 'pink'}
 
         elif request.method == "GET":
-            tree = models.TreeRecords.objects()[0]
+            if models.TreeRecords.objects().count() == 0:
+                tree = None
+            else:
+                tree = models.TreeRecords.objects()[0]
+                tag_dict = {}
+                region_dict = {}
+                colour_dict = {}
+
+        if tree:
+            tree_img = utilities.get_tree_image(tree.tree.decode(), tree.name, tag_dict, region_dict, colour_dict)
+            # if tree_img:
+            #     tree_img = tree_img.split("static/")[1]
+        else:
+            tree_img = None
+
+        profile_choices = [(rtp.rtp_id, rtp.rtp_id) for rtp in models.RegionToProfileRecords.objects()]
+
+        # Insert a None option in case we don't want to add profile information
+        profile_choices.insert(0, (None, None))
+
 
         form.name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
+        form.profiles.choices = profile_choices
 
-        return self.render('trees.html', form=form, tree_data=tree)
+        return self.render('trees.html', form=form, tree_img=tree_img + "#" + utilities.randstring(4))
 
 class DownloadFastaView(BaseView):
     @login_required
@@ -1786,7 +1815,7 @@ def update_region_to_profiles():
 def update_aligns():
     keep_aligns = request.json['aligns']
 
-    models.AlignmentRecords.objects(id__nin=keep_aligns).delete()
+    models.AlignmentRecords.objects(name__nin=keep_aligns).delete()
 
     return redirect('regions')
 

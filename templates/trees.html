@@ -2,24 +2,24 @@
 <!--{% import "bootstrap/wtf.html" as wtf %}-->
 
 {% block head_tail %}
-{{ super() }}
+    {{ super() }}
 
-<script src="../../static/js/d3/d3.min.js"></script>
-<script src="../../static/js/d3/d3-tip.js"></script>
-<script src="../../static/js/select.js"></script>
+    <script src="../../static/js/d3/d3.min.js"></script>
+    <script src="../../static/js/d3/d3-tip.js"></script>
+    <script src="../../static/js/select.js"></script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
     <script src="../../static/js/selectize.min.js"></script>
     <script src="../../static/js/selectize_custom.js"></script>
 
-<link href="{{ url_for('static', filename='css/selectize.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/selectize.min.css') }}" rel="stylesheet">
 
-<link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
 
-<link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/tracks.css') }}" rel="stylesheet">
 
-<link href="{{ url_for('static', filename='css/genome_detail.css') }}" rel="stylesheet">
-{{ JSGlue.include() }}
+    <link href="{{ url_for('static', filename='css/genome_detail.css') }}" rel="stylesheet">
+    {{ JSGlue.include() }}
 
 
 {% endblock %}
@@ -38,6 +38,12 @@
 
                 <br>
 
+                {{ form.profiles.label }}
+
+                {{ form.profiles }}
+
+                <br>
+
                 {{ form.submit(class="btn-primary") }}
 
                 <br>
@@ -48,23 +54,22 @@
         </form>
 
 
-        <div id="biojs-align-div"></div>
+        <div id="tree_img">
+
+
+
+             <img id="img_id" src="">
+
+
+        </div>
+
+        <script>
+            var tree_img = "{{ tree_img | safe }}"
+            $("#img_id").attr("src", "/" + tree_img)    </script>
 
 
     </div>
-<div id="tree_img">
 
-</div>
-
-
-
-
-</div>
-
-<script>
-
-
-</script>
 
 
 
