@@ -60,33 +60,41 @@
 
     <script>
 
-
-        var align_data = $.trim("{{ align_data | safe  }}");
-        var trimmed_data = align_data.slice(2, align_data.length - 1);
-        var seqs = msa.io.fasta.parse(trimmed_data);
+        {% if align_data is not none %}
 
 
-        var opts = {
-            el: document.getElementById("biojs-align-div"),
-            seqs: seqs,
 
-            vis: {
-                conserv: false,
-                overviewbox: false
-            },
+            var align_data = $.trim("{{ align_data.alignment.read() | safe  }}");
 
-            zoomer: {
-                rowHeight: 15, // default = 15
-                // alignmentWidth: 500,
-                alignmentHeight: 500,
-            },
-            // smaller menu for JSBin
-            menu: "small",
-            bootstrapMenu: true
-        };
+            console.log(align_data)
+            var trimmed_data = align_data.slice(2, align_data.length - 1);
+            var seqs = msa.io.fasta.parse(trimmed_data);
 
-        var m = new msa.msa(opts);
-        m.render();
+
+            var opts = {
+                el: document.getElementById("biojs-align-div"),
+                seqs: seqs,
+
+                vis: {
+                    conserv: false,
+                    overviewbox: false
+                },
+
+                zoomer: {
+                    rowHeight: 15, // default = 15
+                    // alignmentWidth: 500,
+                    alignmentHeight: 500,
+                },
+                // smaller menu for JSBin
+                menu: "small",
+                bootstrapMenu: true
+            };
+
+            var m = new msa.msa(opts);
+            m.render();
+
+
+        {% endif %}
 
 
     </script>

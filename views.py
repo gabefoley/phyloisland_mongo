@@ -174,6 +174,7 @@ class UploadView(BaseView):
 
                 elif seq_type == "profile":
                     print('it is a profile')
+                    print('it is a profile')
 
                     # hmm_path = "static/uploads/" + filename
 
@@ -393,11 +394,11 @@ class AlignmentsView(BaseView):
             alignment = models.AlignmentRecords.objects().get(id=form.name.data)
 
         elif request.method == "GET":
-            alignment = models.AlignmentRecords.objects()[0]
+            alignment = None
 
         form.name.choices = [(align.id, align.name) for align in models.AlignmentRecords.objects()]
 
-        return self.render('alignments.html', form=form, align_data=alignment.alignment)
+        return self.render('alignments.html', form=form, align_data=alignment)
 
 
 class TreeView(BaseView):
