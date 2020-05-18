@@ -271,7 +271,6 @@ class RegionView(BaseView):
         tree_form = forms.TreeForm()
 
         if upload_form.upload_submit.data:
-            print('upload form')
 
             name = upload_form.name.data
 
@@ -289,11 +288,16 @@ class RegionView(BaseView):
 
             region_dict, domain_dict = utilities.search_regions_with_profiles(region_to_search, profiles)
 
-            region_to_profile = models.RegionToProfileRecords(rtp_id=utilities.randstring(5), region=region_to_search,
+            rtp_id = utilities.randstring(5)
+
+            region_to_profile = models.RegionToProfileRecords(rtp_id= rtp_id, region=region_to_search,
                                                               profiles=profiles, region_dict=region_dict,
                                                               domain_dict=domain_dict)
 
             region_to_profile.save()
+
+            flash("Saved results of searching " + region_to_search + " as " + rtp_id, category='success')
+
 
         if alignment_form.align.data:
             # We want to make an alignment
@@ -309,6 +313,9 @@ class RegionView(BaseView):
             with open(aln_path, "rb") as aln_file:
                 aln = models.AlignmentRecords(name=aln_name, alignment=aln_file.read(), tool=tool)
                 aln.save()
+
+            flash("Made alignment " + aln_name + " based on " + region_name + " with " + tool, category='success')
+
 
         if tree_form.make_tree.data:
 
@@ -331,6 +338,9 @@ class RegionView(BaseView):
                 print(tool)
                 tree = models.TreeRecords(name=tree_name, alignment=alignment_name, tree=tree_file.read(), tool=tool)
                 tree.save()
+
+            flash("Made tree " + tree_name + " based on " + alignment_name + " with " + tool, category='success')
+
 
 
 
