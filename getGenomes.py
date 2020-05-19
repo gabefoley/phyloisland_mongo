@@ -430,7 +430,7 @@ def download_fasta_regions(region, filename="", include_genome=[], exclude_genom
 
 
 
-def write_genome_order(genomes, split_strands=True, path="./fasta_outputs/genome_order.txt"):
+def write_genome_order(genomes, split_strands=True, path="./fasta_folder/genome_order.txt"):
 
     # Clear previous file if it exists
     open(path, 'w').close()
