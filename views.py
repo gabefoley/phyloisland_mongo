@@ -410,12 +410,16 @@ class TreeView(BaseView):
             tree = models.TreeRecords.objects().get(id=form.name.data)
             tag_dict = getGenomes.get_tags()
 
-            print('check for')
-            print(form.profiles.data)
             if form.profiles.data == 'None':
                 region_dict = {}
             else:
                 region_dict = models.RegionToProfileRecords.objects().get(rtp_id=form.profiles.data).region_dict
+
+            if form.region_order.data == 'None':
+                region_order_dict = {}
+            else:
+                region_order_dict = models.RegionOrderRecords.objects().get(
+                    name=form.region_order.data).region_order_dict
 
             colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type2b': 'gold', 'Type2a': 'green',
                            'Type3': 'purple', 'Multiple': 'red', 'unknown': 'black', 'dsda': 'pink', 'Single': 'brown',
@@ -432,7 +436,8 @@ class TreeView(BaseView):
             #     colour_dict = {}
 
         if tree:
-            tree_img = utilities.get_tree_image(tree.tree.decode(), tree.name, tag_dict, region_dict, colour_dict)
+            tree_img = utilities.get_tree_image(tree.tree.decode(), tree.name, tag_dict, region_dict,
+                                                region_order_dict, colour_dict)
             tree_img = "/" + tree_img + "#" + utilities.randstring(5)
             # if tree_img:
             #     tree_img = tree_img.split("static/")[1]
@@ -440,12 +445,17 @@ class TreeView(BaseView):
             tree_img = ""
 
         profile_choices = [(rtp.rtp_id, rtp.rtp_id) for rtp in models.RegionToProfileRecords.objects()]
+        region_order_choices = [(region_order.name, region_order.name) for region_order in
+                                models.RegionOrderRecords.objects()]
 
-        # Insert a None option in case we don't want to add profile information
+        # Insert a None option in case we don't want to add certain information
         profile_choices.insert(0, (None, None))
+        region_order_choices.insert(0, (None, None))
+
 
         form.name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
         form.profiles.choices = profile_choices
+        form.region_order.choices = region_order_choices
 
         return self.render('trees.html', form=form, tree_img=tree_img)
 

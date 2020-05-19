@@ -43,60 +43,82 @@ def get_domains(domains):
 
     return domain_list
 
-def get_example_tree2(tree, tag_dict, colour_dict, region_dict, outpath):
-    print('in get example tree')
 
+def get_region_domains(regions):
+    region_domains = []
 
-    ts = TreeStyle()
-    ts.show_leaf_name = False
-    # ts.mode = 'c'
+    region_colour_dict = {"TcdA1": 'purple', 'A1': 'orange', 'A2': 'red', 'TcB': 'dodgerblue', 'TcC': 'pink',
+                          'Chitinase' : 'green'}
 
-    colour = None
-    # Get the colours for each extant genome
-    for node in tree.iter_descendants("postorder"):
-        if node.is_leaf():
-            colour = 'blue'
-
-
-
-
-            # spaced_name = " ".join(node.name.split("_")[3:5])
-
-            # nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='blue')
-            # node.add_face(nameFace, column=0)
-
-
-        # else:
-        #     colour = 'black'
-        #
-        # if colour == None:
-        #     colour = 'black'
-        #
-        # print('node colour here is ')
-        # print(colour)
-        #
-        # print(node)
-        #
-
+    start = 20
+    for region in regions:
+        region_short = region.split("_")[0]
+        if region_short == 'Chitinase':
+            region_name = 'Chi'
         else:
-            colour = 'red'
+            region_name = region_short
+        region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
+                         "rgradient:" + region_colour_dict[region_short], "arial|4|black|" + region_name]
+        region_domains.append(region_domain)
+        start += 130
 
-        spaced_name = " ".join(node.name.split("_")[3:5])
-
-        nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='black')
-        node.add_face(nameFace, column=0)
-
-        nstyle = NodeStyle()
-        nstyle["fgcolor"] = colour
-        nstyle["size"] = 20
-        node.set_style(nstyle)
+    return region_domains
 
 
-    # tree.render(outpath, dpi=300, tree_style=ts)
+# def get_example_tree2(tree, tag_dict, colour_dict, region_dict, outpath):
+#     print('in get example tree')
+#
+#
+#     ts = TreeStyle()
+#     ts.show_leaf_name = False
+#     # ts.mode = 'c'
+#
+#     colour = None
+#     # Get the colours for each extant genome
+#     for node in tree.iter_descendants("postorder"):
+#         if node.is_leaf():
+#             colour = 'blue'
+#
+#
+#
+#
+#             # spaced_name = " ".join(node.name.split("_")[3:5])
+#
+#             # nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='blue')
+#             # node.add_face(nameFace, column=0)
+#
+#
+#         # else:
+#         #     colour = 'black'
+#         #
+#         # if colour == None:
+#         #     colour = 'black'
+#         #
+#         # print('node colour here is ')
+#         # print(colour)
+#         #
+#         # print(node)
+#         #
+#
+#         else:
+#             colour = 'red'
+#
+#         spaced_name = " ".join(node.name.split("_")[3:5])
+#
+#         nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='black')
+#         node.add_face(nameFace, column=0)
+#
+#         nstyle = NodeStyle()
+#         nstyle["fgcolor"] = colour
+#         nstyle["size"] = 20
+#         node.set_style(nstyle)
+#
+#
+#     # tree.render(outpath, dpi=300, tree_style=ts)
+#
+#     return tree, ts
 
-    return tree, ts
-
-def get_example_tree(tree, tag_dict, colour_dict, region_dict, outpath):
+def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath):
 
     print ('in get example tree')
 
@@ -115,16 +137,6 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, outpath):
 
             long_name = node.name.split("_joined")[0]
             short_name = node.name.split("_information")[0]
-            # print (tag_dict)
-            #
-            # print ('long name')
-            # print (long_name)
-            #
-            # print ('short name')
-            # print (short_name)
-
-
-
 
             if long_name in tag_dict:
 
@@ -194,13 +206,30 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, outpath):
 
             # HERE
 
-            box_domains = get_domains(region_names)
+            if region_dict:
+
+                box_domains = get_domains(region_names)
 
 
-            # box_domains = get_domains([x for x in region_dict[node.name.replace("***", ".")].keys()])
+                # box_domains = get_domains([x for x in region_dict[node.name.replace("***", ".")].keys()])
 
-            seqFace = SeqMotifFace(seq=None, motifs=box_domains, gap_format="line")
-            node.add_face(seqFace, 0, "aligned")
+                seqFace = SeqMotifFace(seq=None, motifs=box_domains, gap_format="line")
+                node.add_face(seqFace, 0, "aligned")
+
+            elif region_order_dict:
+
+                region_order_name = node.name.split("_information_")[0].replace(".", "***")
+
+                # HERE!!
+                #                     box_domains = get_domains([x for x in region_dict[node.name].keys()])
+
+                if region_order_name in region_order_dict:
+                    regions = region_order_dict[region_order_name].split(",")
+
+                    region_domains = get_region_domains(regions)
+
+                    seqFace = SeqMotifFace(seq=None, motifs=region_domains, gap_format="line")
+                    node.add_face(seqFace, 0, "aligned")
 
 
         else:
@@ -221,7 +250,7 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, outpath):
 
         ts = TreeStyle()
         ts.show_leaf_name = False
-        ts.branch_vertical_margin = 10
+        ts.branch_vertical_margin = 15
     # ts.mode = "c"
 
 
@@ -242,8 +271,9 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, outpath):
     return tree, ts
 
 
-def colour_tips(tree, tag_dict, colour_dict, region_dict, outpath=None, custom_layout=False):
-    tree, ts = get_example_tree(tree, tag_dict, colour_dict, region_dict, outpath)
+def colour_tips(tree, tag_dict, colour_dict, region_dict=None, region_order_dict=None, outpath=None,
+                custom_layout=False):
+    tree, ts = get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath)
     # if outpath:
     # ts.layout_fn = lambda x: None
 
@@ -256,6 +286,8 @@ def parse_args(args):
     parser.add_argument("-s", "--seqs", help="Path to sequences")
     parser.add_argument("-td", "--tag_dict", help="Path to tag dict")
     parser.add_argument("-rd", "--region_dict", help="Path to region dict")
+    parser.add_argument("-rod", "--region_order_dict", help="Path to region order dict")
+
     parser.add_argument("-cd", "--colour_dict", help="Path to colour dict")
 
     parser.add_argument("-o", "--outpath", help="Outpath", default="treegaze.png")
@@ -281,15 +313,23 @@ if __name__ == "__main__":
 
     tag_dict = pickle_open(parser.tag_dict)
     region_dict = pickle_open(parser.region_dict)
+    region_order_dict = pickle_open(parser.region_order_dict)
+
     colour_dict = pickle_open(parser.colour_dict)
 
+
+    print ('tag dict')
     print (tag_dict)
+    print ('region dict')
 
     print (region_dict)
+    print ('region order dict')
 
+    print (region_order_dict)
+    print ('colour dict')
     print (colour_dict)
 
-    colour_tips(loaded_tree, tag_dict, colour_dict, region_dict, outpath)
+    colour_tips(loaded_tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath)
 
 
 
