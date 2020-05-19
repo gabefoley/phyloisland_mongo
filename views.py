@@ -264,14 +264,13 @@ class SetupView(BaseView):
 class RegionView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
-    def tree(self):
+    def setup(self):
         upload_form = forms.UploadRegion()
         region_form = forms.RegionForm()
         alignment_form = forms.AlignmentForm()
         tree_form = forms.TreeForm()
 
         if upload_form.upload_submit.data:
-
             name = upload_form.name.data
 
             region = models.RegionRecords(name=name, regions=request.files['file'].read())
@@ -290,14 +289,13 @@ class RegionView(BaseView):
 
             rtp_id = utilities.randstring(5)
 
-            region_to_profile = models.RegionToProfileRecords(rtp_id= rtp_id, region=region_to_search,
+            region_to_profile = models.RegionToProfileRecords(rtp_id=rtp_id, region=region_to_search,
                                                               profiles=profiles, region_dict=region_dict,
                                                               domain_dict=domain_dict)
 
             region_to_profile.save()
 
             flash("Saved results of searching " + region_to_search + " as " + rtp_id, category='success')
-
 
         if alignment_form.align.data:
             # We want to make an alignment
@@ -316,9 +314,7 @@ class RegionView(BaseView):
 
             flash("Made alignment " + aln_name + " based on " + region_name + " with " + tool, category='success')
 
-
         if tree_form.make_tree.data:
-
             print("Making a tree \n")
 
             tree_name = tree_form.name.data
@@ -326,13 +322,10 @@ class RegionView(BaseView):
             tool = tree_form.tool.data
             alignment = models.AlignmentRecords.objects.get(name=alignment_name).alignment.read().decode()
 
-
             tree_path = utilities.make_tree(tree_name, alignment, tool)
 
-
-
             with open(tree_path, "rb") as tree_file:
-                print ('here')
+                print('here')
                 print(tree_name)
                 print(alignment_name)
                 print(tool)
@@ -341,16 +334,14 @@ class RegionView(BaseView):
 
             flash("Made tree " + tree_name + " based on " + alignment_name + " with " + tool, category='success')
 
-
-
-
         region_names = [region.name for region in models.RegionRecords.objects()]
         region_to_profile_names = [region_to_profile.rtp_id + "_" + region_to_profile.region + " ( " + str(len(
             region_to_profile.profiles)) + " "
-                                                                                                          "profiles " \
-                                                                                                           ")" for
+                                           "profiles " \
+                                           ")" for
                                    region_to_profile in
                                    models.RegionToProfileRecords.objects()]
+
 
         align_names = [align.name for align in models.AlignmentRecords.objects()]
         tree_names = [tree.name for tree in models.TreeRecords.objects()]
@@ -359,16 +350,14 @@ class RegionView(BaseView):
         profile_choices = [(profile.id, profile.name) for profile in models.Profile.objects()]
         align_choices = [(align.name, align.name) for align in models.AlignmentRecords.objects()]
 
-
         region_form.region.choices = region_choices
         region_form.profiles.choices = profile_choices
 
         alignment_form.region.choices = region_choices
         tree_form.alignment.choices = align_choices
 
-
         return self.render('regions.html', upload_form=upload_form, region_form=region_form, \
-                           alignment_form=alignment_form, tree_form = tree_form,
+                           alignment_form=alignment_form, tree_form=tree_form,
                            region_names=region_names, region_to_profile_names=region_to_profile_names,
                            align_names=align_names, tree_names=tree_names)
 
@@ -421,8 +410,8 @@ class TreeView(BaseView):
             tree = models.TreeRecords.objects().get(id=form.name.data)
             tag_dict = getGenomes.get_tags()
 
-            print ('check for')
-            print (form.profiles.data)
+            print('check for')
+            print(form.profiles.data)
             if form.profiles.data == 'None':
                 region_dict = {}
             else:
@@ -444,7 +433,7 @@ class TreeView(BaseView):
 
         if tree:
             tree_img = utilities.get_tree_image(tree.tree.decode(), tree.name, tag_dict, region_dict, colour_dict)
-            tree_img = "/" + tree_img + "#" + utilities.randstring(4)
+            tree_img = "/" + tree_img + "#" + utilities.randstring(5)
             # if tree_img:
             #     tree_img = tree_img.split("static/")[1]
         else:
@@ -455,11 +444,11 @@ class TreeView(BaseView):
         # Insert a None option in case we don't want to add profile information
         profile_choices.insert(0, (None, None))
 
-
         form.name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
         form.profiles.choices = profile_choices
 
         return self.render('trees.html', form=form, tree_img=tree_img)
+
 
 class DownloadFastaView(BaseView):
     @login_required
@@ -555,11 +544,14 @@ class DownloadFastaView(BaseView):
             return self.render('download_fasta.html', form=form, associated_regions=associated_regions, tags=tags)
 
 
-class DownloadGenomeOrderView(BaseView):
+class DownloadRegionOrderView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def setup(self):
-        form = forms.DownloadGenomeOrder()
+        form = forms.DownloadRegionOrder()
+
+        region_order_names = [region_order.name for region_order in models.RegionOrderRecords.objects()]
+
 
         if request.method == "POST":
             if form.submit.data:
@@ -570,23 +562,18 @@ class DownloadGenomeOrderView(BaseView):
                     include_hits = form.include_hits.data.split(",")
                     exclude_hits = form.exclude_hits.data.split(",")
 
-                    genomes = models.GenomeRecords.objects().all()
+                    genomes = models.GenomeRecords.objects(tags__in=include_genome)
 
-                    getGenomes.write_genome_order(genomes)
+                    getGenomes.write_region_order(genomes, exclude_hits=exclude_hits, save_to_db=form.save_to_db.data)
 
-                    flash("Downloaded file", category='success')
-                    return self.render('download_genome.html', form=form)
+                    flash("Downloaded file to fasta_folder/region_order.txt", category='success')
 
                 except Exception as e:
                     print(e)
                     flash(e, category='error')
-                    return self.render('download_genome.html', form=form)
 
-            else:
-                return self.render('download_genome.html', form=form)
 
-        elif request.method == "GET":
-            return self.render('download_genome.html', form=form)
+        return self.render('download_region_order.html', form=form, region_order_names = region_order_names)
 
 
 class SequenceRecordsView(ModelView):
@@ -740,6 +727,7 @@ class TempFixView(BaseView):
         form = forms.TempFixForm()
         return self.render('temp_fix.html', form=form)
 
+
 class AutomaticTaggingView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
@@ -753,13 +741,11 @@ class AutomaticTaggingView(BaseView):
             genomes = models.GenomeRecords.objects(tags__in=include_genome)
 
             for g in genomes:
-                print (g.name)
+                print(g.name)
 
             simple = getGenomes.tag_as_simple(genomes, exclude_hits)
 
-
         return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form)
-
 
 
 @app.route("/temp_assoc_fix", methods=['GET', 'POST'])
@@ -812,30 +798,28 @@ class ChartView(BaseView):
             selected_vals = chart_form.data['select_tags']
             exclude_vals = chart_form.data['exclude_tags']
 
-            print ('Selected was ')
-            print (selected_vals)
-            print ("Excluded was ")
-            print (exclude_vals)
+            print('Selected was ')
+            print(selected_vals)
+            print("Excluded was ")
+            print(exclude_vals)
 
             labels = []
             values = []
 
-
             for tag in selected_vals:
                 tag_count = models.GenomeRecords.objects(__raw__={"tags": {"$in": [tag],
-                                                                                "$nin": exclude_vals}}).count()
+                                                                           "$nin": exclude_vals}}).count()
 
-                print (tag)
-                print (tag_count)
+                print(tag)
+                print(tag_count)
                 labels.append(tag)
                 values.append(tag_count)
 
-            print ("Wow!")
+            print("Wow!")
 
         else:
             selected_vals = labels
             exclude_vals = labels
-
 
         return self.render('charts.html', chart_form=chart_form, title='Unique tags', max=max(values) + 10,
                            labels=labels, values=values,
@@ -1853,17 +1837,27 @@ def update_regions():
 def update_region_to_profiles():
     keep_region_to_profiles = request.json['region_to_profiles']
 
-    print (keep_region_to_profiles)
+    print(keep_region_to_profiles)
 
     keep_region_to_profiles = [x.split("_")[0] for x in keep_region_to_profiles]
 
-
-    print (keep_region_to_profiles)
+    print(keep_region_to_profiles)
 
     models.RegionToProfileRecords.objects(rtp_id__nin=keep_region_to_profiles).delete()
 
     return redirect('regions')
 
+
+@app.route("/regions/update_region_order", methods=['GET', 'POST'])
+def update_region_order():
+
+    keep_region_order = request.json['region_order']
+
+    keep_region_order = [x.split("_")[0] for x in keep_region_order]
+
+    models.RegionOrderRecords.objects(name__nin=keep_region_order).delete()
+
+    return redirect('download_region_order')
 
 @app.route("/regions/update_aligns", methods=['GET', 'POST'])
 def update_aligns():
@@ -1873,6 +1867,7 @@ def update_aligns():
 
     return redirect('regions')
 
+
 @app.route("/regions/update_trees", methods=['GET', 'POST'])
 def update_trees():
     keep_trees = request.json['trees']
@@ -1880,6 +1875,7 @@ def update_trees():
     models.TreeRecords.objects(name__nin=keep_trees).delete()
 
     return redirect('regions')
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -1951,7 +1947,7 @@ with warnings.catch_warnings():
     admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))
 
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
-    admin.add_view(DownloadGenomeOrderView(name='Download genome order', endpoint='download_order'))
+    admin.add_view(DownloadRegionOrderView(name='Download Region order', endpoint='download_region_order'))
     # admin.add_view(TempFixView(name='Temp Fix', endpoint='temp_fix'))
     admin.add_view(AutomaticTaggingView(name='Automatic Tagging', endpoint='automatic_tagging'))
 

@@ -95,6 +95,9 @@ class TreeRecords(db.DynamicDocument):
     tree = db.BinaryField()
     tool = db.StringField()
 
+class RegionOrderRecords(db.DynamicDocument):
+    name = db.StringField(unique=True)
+    region_order_dict = db.DictField()
 
 
 

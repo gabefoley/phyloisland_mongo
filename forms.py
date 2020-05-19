@@ -221,7 +221,7 @@ class DownloadTags(FlaskForm):
 
 
 
-class DownloadGenomeOrder(FlaskForm):
+class DownloadRegionOrder(FlaskForm):
     include_genome = StringField('Only include genomes tagged with - ')
 
     exclude_genome = StringField('Exclude genomes tagged with - ')
@@ -229,6 +229,8 @@ class DownloadGenomeOrder(FlaskForm):
     include_hits = StringField('Only include hits tagged with - ')
 
     exclude_hits = StringField('Exclude hits tagged with - ', default='hidden')
+
+    save_to_db = BooleanField('Save to database as well', default='checked')
 
     submit = SubmitField("Submit")
 

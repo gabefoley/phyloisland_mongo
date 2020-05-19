@@ -462,10 +462,13 @@ def tag_as_simple(genomes, exclude_hits):
             genome.update(push__tags="Simple")
 
 
-def write_genome_order(genomes, split_strands=True, path="./fasta_folder/genome_order.txt"):
+def write_region_order(genomes, split_strands=True, exclude_hits =[], path="./fasta_folder/region_order.txt",
+                       save_to_db=False):
 
     # Clear previous file if it exists
     open(path, 'w').close()
+
+    region_order_dict = {}
 
     for genome in genomes:
         print ('genome')
@@ -473,7 +476,8 @@ def write_genome_order(genomes, split_strands=True, path="./fasta_folder/genome_
 
         hits = sorted([(int(hit.start), hit.region + "_" + hit.strand if split_strands else hit.region) for hit in
                        genome.hits if 'expanded' in
-                       hit.region])
+                       hit.region and not bool(set(hit['tags']).intersection(
+                    set(exclude_hits)))])
 
         regions = [x[1] for x in hits]
 
@@ -482,53 +486,63 @@ def write_genome_order(genomes, split_strands=True, path="./fasta_folder/genome_
         renamed_regions = utilities.rename_duplicates(genome.name, regions)
 
 
-        with open(path, "a") as genome_order:
-            genome_order.write(">" + genome.name + "\n")
-            genome_order.write(",".join(x for x in renamed_regions) + "\n")
+        with open(path, "a") as region_order:
+            region_string = ",".join(x for x in renamed_regions)
+            region_order.write(">" + genome.name + "\n")
+            region_order.write(region_string + "\n")
 
-def write_mlgo_order(genomes, split_strands=True, path="./fasta_outputs/genome_order.txt"):
+        if save_to_db:
+            region_order_dict[genome.name.replace(".","***")] = ",".join(x for x in renamed_regions)
 
-    # Clear previous file if it exists
-    open(path, 'w').close()
+    if save_to_db:
+        region_order_record = models.RegionOrderRecords(name=utilities.randstring(5), region_order_dict=region_order_dict)
 
-    region_id_count = 1
-    seen_dict = {}
-
-    for genome in genomes:
-        print ('genome')
-        print (genome.name)
-
-        hits = sorted([(int(hit.start), hit.region +"_strand=" + hit.strand) for hit in
-                       genome.hits if 'expanded' in
-                       hit.region])
-
-        regions = [x[1] for x in hits]
-
-        print ('here come the regions')
-
-        print(regions)
+        region_order_record.save()
 
 
-        # If we've already seen this region in another genome, give it that number, otherwise create new number
-        for region in regions:
-            print (region)
-            if region.split("_strand=")[0] in seen_dict.keys():
-                pass
-            else:
-                seen_dict[region.split("_strand=")[0]] = str(region_id_count)
-                region_id_count += 1
-
-
-
-        renamed_regions = ["-" + seen_dict[region.split("_strand=")[0]] if region.split("_strand=")[1] == 'backward'
-                           else
-                           seen_dict[region.split("_strand=")[0]] for region in regions]
-
-
-
-
-        #
-
-        with open(path, "a") as genome_order:
-            genome_order.write(">" + genome.name + "\n")
-            genome_order.write(" ".join(x for x in renamed_regions) + " $\n")
+# def write_mlgo_order(genomes, split_strands=True, path="./fasta_outputs/genome_order.txt"):
+#
+#     # Clear previous file if it exists
+#     open(path, 'w').close()
+#
+#     region_id_count = 1
+#     seen_dict = {}
+#
+#     for genome in genomes:
+#         print ('genome')
+#         print (genome.name)
+#
+#         hits = sorted([(int(hit.start), hit.region +"_strand=" + hit.strand) for hit in
+#                        genome.hits if 'expanded' in
+#                        hit.region])
+#
+#         regions = [x[1] for x in hits]
+#
+#         print ('here come the regions')
+#
+#         print(regions)
+#
+#
+#         # If we've already seen this region in another genome, give it that number, otherwise create new number
+#         for region in regions:
+#             print (region)
+#             if region.split("_strand=")[0] in seen_dict.keys():
+#                 pass
+#             else:
+#                 seen_dict[region.split("_strand=")[0]] = str(region_id_count)
+#                 region_id_count += 1
+#
+#
+#
+#         renamed_regions = ["-" + seen_dict[region.split("_strand=")[0]] if region.split("_strand=")[1] == 'backward'
+#                            else
+#                            seen_dict[region.split("_strand=")[0]] for region in regions]
+#
+#
+#
+#
+#         #
+#
+#         with open(path, "a") as genome_order:
+#             genome_order.write(">" + genome.name + "\n")
+#             genome_order.write(" ".join(x for x in renamed_regions) + " $\n")
