@@ -8,6 +8,25 @@
 
 {% block body %}
 
+    <h3>19/05/2020</h3>
+    <br>
+    <h4> Charts </h4>
+    <h5>Added exclude by tags to charts</h5>
+
+    <ul>
+        <li>User can select tags to include and tags to exclude on the Charts page.</li>
+        <li>Usage example would be if we have tagged every genome as either Single or Multiple, depending on how many
+            islands it contains. User could then include any tags they wanted to get a count for, and exclude
+            Multiple, to return a summary of just the subset of the database tagged Single.
+        </li>
+        <li> Categories will be anything in the `Tags to include` field. If a user chooses something that returns a
+            value of zero it will be displayed as zero. This is possible if, for example, we wish to show all tags
+            added only to genomes tagged with the tag Multiple, but some of the tags we choose to count only occur in
+            genomes if they are tagged with Single. These zero values can be excluded from the chart simply by
+            removing them from the 'Tags to include field.
+        </li>
+    </ul>
+
     <h3>18/05/2020</h3>
     <br>
     <h4> Regions </h4>
@@ -93,22 +112,23 @@
             be coloured by the tag associated with its genome.
         </li>
 
-    <li>
-        User can select a Region to Profile record to annotate trees with presence / absence of the domains contained
-        within the Region to Profile record.
-    </li>
-    <li>
-        The Region to Profile record does not need to be generated from the same Region record that the tree is. One
-        advantge of this is that you can perform domain analysis on a set of full length sequences, then add a
-        version of the set of sequences trimmed to an area of interest (active site, specific domain) and perform
-        alignment and tree inference on the trimmed sequences. The Region to Profile information from the full
-        sequences can then be overlaid onto the tree generated from the trimmed sequences.
-    </li>
+        <li>
+            User can select a Region to Profile record to annotate trees with presence / absence of the domains
+            contained
+            within the Region to Profile record.
+        </li>
+        <li>
+            The Region to Profile record does not need to be generated from the same Region record that the tree is. One
+            advantge of this is that you can perform domain analysis on a set of full length sequences, then add a
+            version of the set of sequences trimmed to an area of interest (active site, specific domain) and perform
+            alignment and tree inference on the trimmed sequences. The Region to Profile information from the full
+            sequences can then be overlaid onto the tree generated from the trimmed sequences.
+        </li>
 
-    <li>
-        Tree images are freshly generated each time, rather than stored, to allow for changes to annotations to be
-        dynamic.
-    </li>
+        <li>
+            Tree images are freshly generated each time, rather than stored, to allow for changes to annotations to be
+            dynamic.
+        </li>
     </ul>
     <br>
 

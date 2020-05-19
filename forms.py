@@ -100,7 +100,9 @@ class GenomeDiagramPageForm(FlaskForm):
 
 
 class ChartsForm(FlaskForm):
-    select_tags = SelectMultipleField('Tags to chart', choices=[])
+    select_tags = SelectMultipleField('Tags to include', choices=[])
+    exclude_tags = SelectMultipleField('Tags to exclude', choices=[])
+
     update_chart = SubmitField('Update chart')
 
 

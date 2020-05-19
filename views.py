@@ -780,6 +780,7 @@ class ChartView(BaseView):
 
         # The list of tags to choose from
         chart_form.select_tags.choices = list(zip(labels, labels))
+        chart_form.exclude_tags.choices = list(zip(labels, labels))
 
         colors = [
             "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA",
@@ -788,21 +789,36 @@ class ChartView(BaseView):
 
         if request.method == 'POST':
             selected_vals = chart_form.data['select_tags']
+            exclude_vals = chart_form.data['exclude_tags']
+
+            print ('Selected was ')
+            print (selected_vals)
+            print ("Excluded was ")
+            print (exclude_vals)
 
             labels = []
             values = []
 
+
             for tag in selected_vals:
-                tag_count = models.GenomeRecords.objects(tags=tag).count()
+                tag_count = records = models.GenomeRecords.objects(__raw__={"tags": {"$in": [tag],
+                                                                                "$nin": exclude_vals}}).count()
+
+                print (tag)
+                print (tag_count)
                 labels.append(tag)
                 values.append(tag_count)
 
+            print ("Wow!")
+
         else:
             selected_vals = labels
+            exclude_vals = labels
+
 
         return self.render('charts.html', chart_form=chart_form, title='Unique tags', max=max(values) + 10,
                            labels=labels, values=values,
-                           selected_vals=json.dumps(selected_vals))
+                           selected_vals=json.dumps(selected_vals), exclude_vals=json.dumps(exclude_vals))
 
 
 class BatchDeleteView(BaseView):
