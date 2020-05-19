@@ -161,6 +161,11 @@ class DownloadFastaForm(FlaskForm):
 class TempFixForm(FlaskForm):
     fix_assoc = SubmitField("Click this to fix the associated regions in the database")
 
+class TagSimpleForm(FlaskForm):
+    include_genome = StringField('Only include genomes tagged with - ')
+    exclude_hits = StringField('Exclude hits tagged with - ', default='hidden')
+    tag_simple = SubmitField("Tag genomes as simple")
+
 
 class UploadRegion(FlaskForm):
     name = StringField('Region name', [validators.DataRequired()])

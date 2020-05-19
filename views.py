@@ -740,6 +740,27 @@ class TempFixView(BaseView):
         form = forms.TempFixForm()
         return self.render('temp_fix.html', form=form)
 
+class AutomaticTaggingView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def automatic_tagging(self):
+        tag_simple_form = forms.TagSimpleForm()
+
+        if request.method == "POST" and tag_simple_form.tag_simple.data:
+            include_genome = [x.strip() for x in tag_simple_form.include_genome.data.split(",")]
+            exclude_hits = [x.strip() for x in tag_simple_form.exclude_hits.data.split(",")]
+
+            genomes = models.GenomeRecords.objects(tags__in=include_genome)
+
+            for g in genomes:
+                print (g.name)
+
+            simple = getGenomes.tag_as_simple(genomes, exclude_hits)
+
+
+        return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form)
+
+
 
 @app.route("/temp_assoc_fix", methods=['GET', 'POST'])
 def temp_assoc_fix():
@@ -801,7 +822,7 @@ class ChartView(BaseView):
 
 
             for tag in selected_vals:
-                tag_count = records = models.GenomeRecords.objects(__raw__={"tags": {"$in": [tag],
+                tag_count = models.GenomeRecords.objects(__raw__={"tags": {"$in": [tag],
                                                                                 "$nin": exclude_vals}}).count()
 
                 print (tag)
@@ -1672,6 +1693,8 @@ def tag_genome():
 
 
 
+
+
     # #TODO: At the moment this just supports one tag per genome
     if not models.GenomeTags.objects(tag_id=genome_name):
         genome_tag = models.GenomeTags(tag_id=genome_name, tags=tags)
@@ -1912,14 +1935,14 @@ with warnings.catch_warnings():
     admin.add_view(UploadView(name='Upload', endpoint='upload_admin'))
     admin.add_view(SequenceRecordsView(model=models.SequenceRecords, endpoint="sequence_records"))
     admin.add_view(GenomeRecordsView(model=models.GenomeRecords, endpoint="genome_records"))
-    admin.add_view(ProfileView(model=models.Profile, name='Profiles', endpoint='profiles'))
+    admin.add_view(ProfileView(model=models.Profile, name='Profile Records', endpoint='profiles'))
     # admin.add_view(MyModelView(model=models.Profile, name='Profiles', endpoint='models'))
 
     admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
     # admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
-    admin.add_view(ChartView(name='Charts', endpoint='chart'))
-    admin.add_view(RegionView(name='Regions', endpoint='regions'))
+    admin.add_view(RegionView(name='Region Records', endpoint='regions'))
     # admin.add_view(RegionToProfilesView(name='Region to profiles', endpoint='region_to_profiles'))
+    admin.add_view(ChartView(name='Charts', endpoint='chart'))
 
     admin.add_view(AlignmentsView(name='Alignments', endpoint='alignments'))
 
@@ -1930,5 +1953,7 @@ with warnings.catch_warnings():
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
     admin.add_view(DownloadGenomeOrderView(name='Download genome order', endpoint='download_order'))
     # admin.add_view(TempFixView(name='Temp Fix', endpoint='temp_fix'))
+    admin.add_view(AutomaticTaggingView(name='Automatic Tagging', endpoint='automatic_tagging'))
+
     admin.add_view(FeatureLogView(name='Feature Log', endpoint='features'))
     admin.add_view(DocumentationView(name='Documentation & FAQ', endpoint='documentation'))

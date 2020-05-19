@@ -738,6 +738,7 @@ def sort_func(elem):
     return int(elem.split("_position=_")[1].split("_")[0])
 
 
+
 def rename_duplicates(genome_name, old):
     seen = {}
     index = {}

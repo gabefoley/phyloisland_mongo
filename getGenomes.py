@@ -428,6 +428,38 @@ def download_fasta_regions(region, filename="", include_genome=[], exclude_genom
         return " and ".join([forward_path, backward_path])
 
 
+def tag_as_simple(genomes, exclude_hits):
+    """
+    Given a list of genomes and a list of hit tags to exclude on, tag the genomes
+    :param genomes:
+    :param exclude_hits:
+    :return:
+    """
+
+    for genome in genomes:
+
+        simple = True
+        found_hits = set()
+
+
+        for hit in genome.hits:
+
+            #TODO: Chitinase is hard coded so that we still tag a genome as simple if it contains a Chitinase
+
+            if 'expanded' in hit.region and 'Chitinase' not in hit.region and not bool(set(hit['tags']).intersection(
+                    set(exclude_hits))):
+
+                # If we've seen it before it's not simple
+                if hit.region in found_hits:
+                    simple = False
+
+
+                found_hits.add(hit.region)
+
+        if simple:
+            print("This one is simple")
+            print (genome.name)
+            genome.update(push__tags="Simple")
 
 
 def write_genome_order(genomes, split_strands=True, path="./fasta_folder/genome_order.txt"):

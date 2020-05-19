@@ -27,6 +27,25 @@
         </li>
     </ul>
 
+        <br>
+    <h4> Automatic Tagging </h4>
+    <h5>Added Automatic Tagging section</h5>
+
+    <ul>
+        <li>User can now automatically tag genomes as 'Simple'</li>
+        <li>'Simple' means that, for each of the reference profiles, the profile appears as a hit in the genome a
+            maximum of one time.
+        </li>
+        <li> User can specify to only search Genomes tagged with certain terms, and to ignore hits within genomes
+            that are tagged with certain terms (by default, 'hidden' hits are ignored).
+        </li>
+    <li>
+        Currently the reference profile 'Chitinase' is hard-coded as a region to not consider, to allow for multiple
+        chitinase hits to exist in a genome and have it still be tagged as 'Simple'. In the future we will allow for
+        users to provide a list of reference profiles to consider during this search.
+    </li>
+    </ul>
+
     <h3>18/05/2020</h3>
     <br>
     <h4> Regions </h4>
