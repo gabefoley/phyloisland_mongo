@@ -479,11 +479,40 @@ def write_region_order(genomes, split_strands=True, exclude_hits =[], path="./fa
                        hit.region and not bool(set(hit['tags']).intersection(
                     set(exclude_hits)))])
 
-        regions = [x[1] for x in hits]
+        print ('hits')
+
+        print (hits)
+
+        # regions = [x[1] for x in hits]
+
+        curr_pos = 0
+
+        regions = []
+        for idx, region in enumerate(hits):
+
+            pos = region[0]
+
+            if pos == curr_pos:
+                if ('forward' in regions[-1] and 'forward' not in region[1]) or ('backward' in regions[-1] and \
+                                                                                             'backward' not in region[
+                                                                                             1]):
+                    raise NameError("ERROR: Trying to create a region order dictionary and Forward and Backward are "
+                                    "apparently fused")
+                regions[-1] += "_joined_" + region[1]
+                idx -= 1
+
+            else:
+                regions.append(region[1])
+            curr_pos = pos
 
         print(regions)
+        print("******")
 
         renamed_regions = utilities.rename_duplicates(genome.name, regions)
+
+        print ('renamed regions')
+
+        print (renamed_regions)
 
 
         with open(path, "a") as region_order:
