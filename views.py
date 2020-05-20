@@ -423,7 +423,7 @@ class TreeView(BaseView):
 
             colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type2b': 'gold', 'Type2a': 'green',
                            'Type3': 'purple', 'Multiple': 'red', 'unknown': 'black', 'dsda': 'pink', 'Single': 'brown',
-                           'SIngle': 'brown', 'Single ': 'brown', 'Type?': 'pink'}
+                           'SIngle': 'brown', 'Single ': 'brown', 'Type?': 'pink', 'Type5' : 'pink'}
 
         elif request.method == "GET":
             tree = None
