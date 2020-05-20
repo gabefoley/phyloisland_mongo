@@ -209,6 +209,7 @@ class TreeSelectForm(FlaskForm):
     tree_select_name = SelectField('Tree name ', choices=[])
     profiles = SelectField('Add profile search results from', choices=[])
     region_order = SelectField('Add region order search results from', choices=[])
+    full_names = BooleanField("Display full names on tree", default='unchecked')
 
     submit = SubmitField("Select tree")
 

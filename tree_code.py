@@ -64,63 +64,12 @@ def get_region_domains(regions):
 
     return region_domains
 
-
-# def get_example_tree2(tree, tag_dict, colour_dict, region_dict, outpath):
-#     print('in get example tree')
-#
-#
-#     ts = TreeStyle()
-#     ts.show_leaf_name = False
-#     # ts.mode = 'c'
-#
-#     colour = None
-#     # Get the colours for each extant genome
-#     for node in tree.iter_descendants("postorder"):
-#         if node.is_leaf():
-#             colour = 'blue'
-#
-#
-#
-#
-#             # spaced_name = " ".join(node.name.split("_")[3:5])
-#
-#             # nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='blue')
-#             # node.add_face(nameFace, column=0)
-#
-#
-#         # else:
-#         #     colour = 'black'
-#         #
-#         # if colour == None:
-#         #     colour = 'black'
-#         #
-#         # print('node colour here is ')
-#         # print(colour)
-#         #
-#         # print(node)
-#         #
-#
-#         else:
-#             colour = 'red'
-#
-#         spaced_name = " ".join(node.name.split("_")[3:5])
-#
-#         nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='black')
-#         node.add_face(nameFace, column=0)
-#
-#         nstyle = NodeStyle()
-#         nstyle["fgcolor"] = colour
-#         nstyle["size"] = 20
-#         node.set_style(nstyle)
-#
-#
-#     # tree.render(outpath, dpi=300, tree_style=ts)
-#
-#     return tree, ts
-
-def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath):
+def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath, full_names=False):
 
     print ('in get example tree')
+
+    print ('full names is')
+    print (full_names)
 
 
     # Label all internal nodes
@@ -179,8 +128,13 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                 # print ('short and long both were not in tag dict')
                 colour = 'black'
 
-            # spaced_name = " ".join(node.name.split("_")[3:5])
-            spaced_name = " ".join(long_name.split("_"))
+            if full_names:
+                print ('got ')
+                print (long_name)
+                print (type(full_names))
+                spaced_name = " ".join(long_name.split("_"))
+            else:
+                spaced_name = " ".join(node.name.split("_")[3:5])
 
             nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='black')
             node.add_face(nameFace, column=0)
@@ -191,19 +145,14 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
 
             cleaned_name = node.name.replace(".", "***")
 
-            print (cleaned_name)
-            print (region_dict)
+            # print (cleaned_name)
+            # print (region_dict)
 
 
             if cleaned_name in region_dict:
 
                 region_names = [x for x in region_dict[cleaned_name].keys()]
 
-
-
-
-            print ("REGION NAMES IS")
-            print (region_names)
 
             # HERE
 
@@ -267,17 +216,19 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
 
     # print (outpath)
 
-    tree.render(outpath, dpi=300, tree_style=ts)
+    # tree.render(outpath, dpi=300, tree_style=ts)
 
     return tree, ts
 
 
-def colour_tips(tree, tag_dict, colour_dict, region_dict=None, region_order_dict=None, outpath=None,
+def colour_tips(tree, tag_dict, colour_dict, region_dict=None, region_order_dict=None, outpath=None, full_names=False,
                 custom_layout=False):
-    tree, ts = get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath)
+    tree, ts = get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath, full_names)
     # if outpath:
     # ts.layout_fn = lambda x: None
 
+    print ('outpath is ')
+    print (outpath)
     tree.render(outpath, dpi=300, tree_style=ts)
 
 def parse_args(args):
@@ -292,6 +243,8 @@ def parse_args(args):
     parser.add_argument("-cd", "--colour_dict", help="Path to colour dict")
 
     parser.add_argument("-o", "--outpath", help="Outpath", default="treegaze.png")
+    parser.add_argument("-fn", "--full_names", help="Add full name to leaf node", default=False)
+
 
     return parser.parse_args(args)
 
@@ -318,6 +271,9 @@ if __name__ == "__main__":
 
     colour_dict = pickle_open(parser.colour_dict)
 
+    full_names = parser.full_names
+
+    full_names = True if parser.full_names == "True" else False
 
     print ('tag dict')
     print (tag_dict)
@@ -330,7 +286,7 @@ if __name__ == "__main__":
     print ('colour dict')
     print (colour_dict)
 
-    colour_tips(loaded_tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath)
+    colour_tips(loaded_tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath, full_names)
 
 
 
