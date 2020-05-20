@@ -32,10 +32,21 @@ ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2
 
 @user_logged_in.connect_via(app)
 def on_user_logged_in(sender, user):
+
+    # Clear any existing session values
+    keys = [key for key in session.keys() if key not in ["_fresh", "_permanent", "csrf_token", "user_id", "_id"]]
+
+    print (keys)
+
+    for key in keys:
+        session.pop(key)
+
+    # Get the current User
     current = models.User.objects().get(username=str(current_user.username))
+
     session['page_size'] = current.page_size if current.page_size != None else 20
     session['record_size'] = current.record_size if current.record_size != None else 20
-    session['genome'] = None
+    # session['genome'] = None
 
 
 class UploadView(BaseView):
