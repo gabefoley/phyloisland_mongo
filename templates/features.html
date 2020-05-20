@@ -7,8 +7,23 @@
 {% endblock %}
 
 {% block body %}
+    <h3>21/05/2020</h3>
+    <h4> Trees </h4>
 
-        <h3>20/05/2020</h3>
+    <h5>Tree visualisation</h5>
+    <ul>
+        <li>Added option to display full names on trees.</li>
+        <li>Visualise fused Regions (where two or more reference profiles map to the same spot on the genome) as a
+            joined element when the Region Order diagram is added to a Tree visualisation.
+        </li>
+            <li>User can choose to collapse the tree based on the Genome Tags. Tree will be collapsed as far as it
+                can without collapsing a conflicting tag.
+        </li>
+    </ul>
+
+    <br>
+
+    <h3>20/05/2020</h3>
     <br>
     <h4> Trees </h4>
     <h5>Added region order diagrams to trees</h5>
@@ -17,22 +32,27 @@
         <li>User can select a Region Order and add it as a diagram to a generated Tree image
         </li>
         <li> Region Order analysis is performed at the Genome level, so their results are matched to the Genome
-            information in trees and can therefore be added to any trees.</li>
+            information in trees and can therefore be added to any trees.
+        </li>
         <li> If a given Tree contains genomes not present in the Region Order they will simply not have the Region
-            Order visualised on the image</li>
-    <li>At the moment, user can either add a Region Order or a Profile search to the Tree image, but not both at
-        once.</li>
+            Order visualised on the image
+        </li>
+        <li>At the moment, user can either add a Region Order or a Profile search to the Tree image, but not both at
+            once.
+        </li>
     </ul>
 
     <h5> Added reroot trees to Region Records section</h5>
-        <ul>
+    <ul>
         <li>User can select a tree and a sequence within that tree to select as an outgroup and reroot the tree on
             that outgroup.
         </li>
         <li> Rerooted trees must have a unique name and are stored in the same Collection and viewed in the same way
-            as any other tree</li>
+            as any other tree.
+        </li>
     </ul>
-    <h5>Added option to display full names on trees</h5>
+
+
 
 
 
@@ -55,7 +75,7 @@
         </li>
     </ul>
 
-        <br>
+    <br>
     <h4> Automatic Tagging </h4>
     <h5>Added Automatic Tagging section</h5>
 
@@ -67,11 +87,11 @@
         <li> User can specify to only search Genomes tagged with certain terms, and to ignore hits within genomes
             that are tagged with certain terms (by default, 'hidden' hits are ignored).
         </li>
-    <li>
-        Currently the reference profile 'Chitinase' is hard-coded as a region to not consider, to allow for multiple
-        chitinase hits to exist in a genome and have it still be tagged as 'Simple'. In the future we will allow for
-        users to provide a list of reference profiles to consider during this search.
-    </li>
+        <li>
+            Currently the reference profile 'Chitinase' is hard-coded as a region to not consider, to allow for multiple
+            chitinase hits to exist in a genome and have it still be tagged as 'Simple'. In the future we will allow for
+            users to provide a list of reference profiles to consider during this search.
+        </li>
     </ul>
 
     <br>
@@ -81,8 +101,10 @@
     <ul>
         <li>User can download the order that Regions occur in a chosen set of genomes and can optionally chose to store
             it as a dictionary in the newly created
-        Region Order Records Collection.</li>
-    <li> User can store any number of dictionaries, as different filtering conditions will create different lists </li>
+            Region Order Records Collection.
+        </li>
+        <li> User can store any number of dictionaries, as different filtering conditions will create different lists
+        </li>
     </ul>
 
 

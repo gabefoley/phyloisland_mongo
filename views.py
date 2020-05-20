@@ -496,6 +496,8 @@ class TreeView(BaseView):
 
             full_names = form.full_names.data
 
+            collapse_on_genome_tags = form.collapse_on_genome_tags.data
+
             colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type2b': 'gold', 'Type2a': 'green',
                            'Type3': 'purple', 'Multiple': 'red', 'unknown': 'black', 'dsda': 'pink', 'Single': 'brown',
                            'SIngle': 'brown', 'Single ': 'brown', 'Type?': 'pink', 'Type5': 'pink'}
@@ -512,7 +514,7 @@ class TreeView(BaseView):
 
         if tree:
             tree_img = utilities.get_tree_image(tree.tree.decode(), tree.name, tag_dict, region_dict,
-                                                region_order_dict, colour_dict, full_names)
+                                                region_order_dict, colour_dict, full_names, collapse_on_genome_tags)
 
             print (tree_img)
             tree_img = "/" + tree_img + "#" + utilities.randstring(5)

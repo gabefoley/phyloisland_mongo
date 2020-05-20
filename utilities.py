@@ -360,10 +360,11 @@ def make_tree(alignment_name, alignment, tool):
         return tree_path
 
 
-def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, colour_dict, full_names):
+def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, colour_dict, full_names,
+                   collapse_on_genome_tags):
 
     tree_path = f"./tmp/{tree_name}.nwk"
-    img_path = f"static/img/trees/{tree_name}{'_full' if full_names else ''}.png"
+    img_path = f"static/img/trees/{tree_name}{'_full' if full_names else ''}{'_collapse' if collapse_on_genome_tags else ''}.png"
     tag_dict_path = f"./tmp/{tree_name}_tagdict.p"
     region_dict_path = f"./tmp/{tree_name}_regiondict.p"
     region_order_dict_path = f"./tmp/{tree_name}_regionorderdict.p"
@@ -392,9 +393,7 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, co
 
         loaded_tree = tree_code.load_tree(tree_path)
 
-        stdoutdata = subprocess.getoutput(f"python tree_code.py -t {tree_path} -o{img_path} -td {tag_dict_path} "
-                                          f"-rd {region_dict_path} -rod {region_order_dict_path} "
-                                          f"-cd {colour_dict_path} -fn {full_names}")
+        stdoutdata = subprocess.getoutput(f"python tree_code.py -t {tree_path} -o {img_path} -td {tag_dict_path} -rd {region_dict_path} -rod {region_order_dict_path} -cd {colour_dict_path} -fn {full_names} -cgt {collapse_on_genome_tags}")
 
         print (stdoutdata)
 

@@ -108,3 +108,7 @@ a.dropdown-toggle b.caret {
     margin-left: 5px;
 }
 
+.img_id {
+	max-width:100%;
+	max-height:100%;
+}
