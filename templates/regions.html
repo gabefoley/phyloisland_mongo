@@ -134,7 +134,7 @@
 
         </div>
 
-            <div id="tree_div">
+        <div id="tree_div">
             <h3>Make trees</h3>
             <form method="POST" enctype="multipart/form-data">
                 {{ tree_form.hidden_tag() }}
@@ -171,6 +171,39 @@
 
         </div>
 
+        <div id="reroot_tree_div">
+            <h3>Reroot trees</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {{ reroot_tree_form.hidden_tag() }}
+
+                <div class="smallform">
+
+                    {{ reroot_tree_form.tree.label }}
+
+                    {{ reroot_tree_form.tree }}
+                    <br>
+                    <br>
+
+                    {{ reroot_tree_form.rerooted_tree_name.label }}
+
+                    {{ reroot_tree_form.rerooted_tree_name }}
+                    <br>
+                    <br>
+
+                    {{ reroot_tree_form.seq.label }}
+
+                    {{ reroot_tree_form.seq }}
+                    <br>
+                    <br>
+
+                    {{ reroot_tree_form.reroot_tree(class="btn-primary") }}
+
+
+                </div>
+            </form>
+
+        </div>
+
 
     </div>
 
@@ -191,7 +224,7 @@
         <br>
     </div>
 
-        <div id="avail-record-to-profiles-div">
+    <div id="avail-record-to-profiles-div">
 
         <br>
         <br>
@@ -203,7 +236,8 @@
         <input type="text" id="avail_region_to_profiles">
         <br>
         <button name="tagBtn" class="btn-primary" id="update_region_to_profiles" type="submit">Update
-            region to profile searches</button>
+            region to profile searches
+        </button>
 
 
         <br>
@@ -227,7 +261,7 @@
         <br>
     </div>
 
-        <div id="avail-trees-div">
+    <div id="avail-trees-div">
 
         <br>
         <br>
@@ -256,6 +290,32 @@
 
         $('#avail_trees').val({{tree_names | safe}});
 
+        $('#tree').val("{{tree_to_reroot | safe}}");
+
+
+        $('#tree').on('change', function (e) {
+            tree_choice = $('#tree').val();
+
+            $.ajax({
+                url: Flask.url_for("update_outgroup_choices"),
+                data: JSON.stringify({
+                    'tree_choice': tree_choice
+                }),
+                contentType: 'application/json;charset=UTF-8',
+                type: 'POST',
+                error: function (error) {
+                    console.log(error);
+                },
+                success: function (response) {
+
+                    window.location.reload();
+
+
+                }
+            });
+
+        });
+
         $('#update_regions').on('click', function (e) {
 
             regions = $('#avail_regions').val().split(',');
@@ -281,7 +341,7 @@
 
         });
 
-                $('#update_region_to_profiles').on('click', function (e) {
+        $('#update_region_to_profiles').on('click', function (e) {
 
             region_to_profiles = $('#avail_region_to_profiles').val().split(',');
 
@@ -332,7 +392,7 @@
 
         });
 
-                $('#update_trees').on('click', function (e) {
+        $('#update_trees').on('click', function (e) {
 
             trees = $('#avail_trees').val().split(',');
 

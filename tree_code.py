@@ -179,7 +179,8 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                 # print ('short and long both were not in tag dict')
                 colour = 'black'
 
-            spaced_name = " ".join(node.name.split("_")[3:5])
+            # spaced_name = " ".join(node.name.split("_")[3:5])
+            spaced_name = " ".join(long_name.split("_"))
 
             nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='black')
             node.add_face(nameFace, column=0)

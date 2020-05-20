@@ -24,8 +24,7 @@ import json
 import Bio
 import warnings
 import math
-from collections import defaultdict
-
+from ete3 import PhyloTree
 from wtforms import SelectField
 
 ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2', 'region3', 'region4']
@@ -264,11 +263,41 @@ class SetupView(BaseView):
 class RegionView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
-    def setup(self):
+    def setup(self, outgroup_choices=None):
+
+        if session.get('outgroup_choices') is None:
+            outgroup_choices = ["Select tree first"]
+            tree_to_reroot = None
+        else:
+            tree = models.TreeRecords.objects().get(name=session['outgroup_choices'])
+
+            alignment = models.AlignmentRecords.objects().get(name=tree.alignment).alignment.read().decode()
+
+            temp_path = "./tmp/tmp_alignment.aln"
+
+            with open(temp_path, 'w+') as temp_align:
+                temp_align.write(alignment)
+
+            while not os.path.exists(temp_path):
+                time.sleep(1)
+
+            if os.path.isfile(temp_path):
+                seqs = utilities.read_fasta(temp_path)
+                seq_names = [x for x in seqs.keys()]
+
+            outgroup_choices = seq_names
+            tree_to_reroot = tree.name
+
+
+
+        print ('ogc')
+        print (outgroup_choices)
+
         upload_form = forms.UploadRegion()
         region_form = forms.RegionForm()
         alignment_form = forms.AlignmentForm()
         tree_form = forms.TreeForm()
+        reroot_tree_form = forms.RerootTreeForm()
 
         if upload_form.upload_submit.data:
             name = upload_form.name.data
@@ -334,6 +363,44 @@ class RegionView(BaseView):
 
             flash("Made tree " + tree_name + " based on " + alignment_name + " with " + tool, category='success')
 
+        if request.method == "POST" and reroot_tree_form.data:
+            print ('rerooting tree')
+            tree_name = reroot_tree_form.tree.data
+            rerooted_tree_name = reroot_tree_form.rerooted_tree_name.data
+            reroot_on_seq = reroot_tree_form.seq.data
+
+            print (tree_name)
+
+            tree = models.TreeRecords.objects.get(name=tree_name)
+
+            phylo_tree = PhyloTree(tree.tree.decode())
+
+            phylo_tree.set_outgroup(reroot_on_seq)
+
+            print (phylo_tree)
+
+            print (os.getcwd())
+
+            tree_path = "./tmp/tmptree.nwk"
+
+            phylo_tree.write(outfile=tree_path)
+
+            while not os.path.exists(tree_path):
+                time.sleep(1)
+
+            with open(tree_path, 'rb') as tree_file:
+
+
+
+
+                rerooted_tree = models.TreeRecords(name=rerooted_tree_name, alignment=tree.alignment,
+                                                   tree = tree_file.read(),
+                                                   tool = tree.tool)
+                rerooted_tree.save()
+
+
+
+
         region_names = [region.name for region in models.RegionRecords.objects()]
         region_to_profile_names = [region_to_profile.rtp_id + "_" + region_to_profile.region + " ( " + str(len(
             region_to_profile.profiles)) + " "
@@ -342,24 +409,30 @@ class RegionView(BaseView):
                                    region_to_profile in
                                    models.RegionToProfileRecords.objects()]
 
-
         align_names = [align.name for align in models.AlignmentRecords.objects()]
         tree_names = [tree.name for tree in models.TreeRecords.objects()]
 
         region_choices = [(region.name, region.name) for region in models.RegionRecords.objects()]
         profile_choices = [(profile.id, profile.name) for profile in models.Profile.objects()]
         align_choices = [(align.name, align.name) for align in models.AlignmentRecords.objects()]
+        tree_choices = [(tree.name, tree.name) for tree in models.TreeRecords.objects()]
+        outgroup_choices = list(zip(outgroup_choices, outgroup_choices))
+
+        tree_choices.insert(0, (None, "Click to select tree"))
+
 
         region_form.region.choices = region_choices
         region_form.profiles.choices = profile_choices
 
         alignment_form.region.choices = region_choices
         tree_form.alignment.choices = align_choices
+        reroot_tree_form.tree.choices = tree_choices
+        reroot_tree_form.seq.choices = outgroup_choices
 
         return self.render('regions.html', upload_form=upload_form, region_form=region_form, \
-                           alignment_form=alignment_form, tree_form=tree_form,
+                           alignment_form=alignment_form, tree_form=tree_form, reroot_tree_form=reroot_tree_form,
                            region_names=region_names, region_to_profile_names=region_to_profile_names,
-                           align_names=align_names, tree_names=tree_names)
+                           align_names=align_names, tree_names=tree_names, tree_to_reroot = tree_to_reroot)
 
 
 class RegionToProfilesView(BaseView):
@@ -407,7 +480,7 @@ class TreeView(BaseView):
         form = forms.TreeSelectForm()
 
         if request.method == "POST" and form.submit.data:
-            tree = models.TreeRecords.objects().get(id=form.name.data)
+            tree = models.TreeRecords.objects().get(id=form.tree_select_name.data)
             tag_dict = getGenomes.get_tags()
 
             if form.profiles.data == 'None':
@@ -423,7 +496,7 @@ class TreeView(BaseView):
 
             colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type2b': 'gold', 'Type2a': 'green',
                            'Type3': 'purple', 'Multiple': 'red', 'unknown': 'black', 'dsda': 'pink', 'Single': 'brown',
-                           'SIngle': 'brown', 'Single ': 'brown', 'Type?': 'pink', 'Type5' : 'pink'}
+                           'SIngle': 'brown', 'Single ': 'brown', 'Type?': 'pink', 'Type5': 'pink'}
 
         elif request.method == "GET":
             tree = None
@@ -452,8 +525,7 @@ class TreeView(BaseView):
         profile_choices.insert(0, (None, None))
         region_order_choices.insert(0, (None, None))
 
-
-        form.name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
+        form.tree_select_name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
         form.profiles.choices = profile_choices
         form.region_order.choices = region_order_choices
 
@@ -562,7 +634,6 @@ class DownloadRegionOrderView(BaseView):
 
         region_order_names = [region_order.name for region_order in models.RegionOrderRecords.objects()]
 
-
         if request.method == "POST":
             if form.submit.data:
                 try:
@@ -582,8 +653,7 @@ class DownloadRegionOrderView(BaseView):
                     print(e)
                     flash(e, category='error')
 
-
-        return self.render('download_region_order.html', form=form, region_order_names = region_order_names)
+        return self.render('download_region_order.html', form=form, region_order_names=region_order_names)
 
 
 class SequenceRecordsView(ModelView):
@@ -1834,6 +1904,22 @@ def show_hits():
     # return redirect(url_for('genomedetail.genomedetail'))
 
 
+@app.route("/regions/update_outgroup_choices", methods=['GET', 'POST'])
+def update_outgroup_choices():
+    # TODO: If we associate trees and regions with sequences correctly, we won't need to write out the alignment to
+    # file and parse it back in.
+
+
+
+    session['outgroup_choices'] = request.json['tree_choice']
+
+    print ('session outgroup choice here is ')
+    print (session['outgroup_choices'])
+
+
+    return redirect('regions')
+
+
 @app.route("/regions/update_regions", methods=['GET', 'POST'])
 def update_regions():
     keep_regions = request.json['regions']
@@ -1860,7 +1946,6 @@ def update_region_to_profiles():
 
 @app.route("/regions/update_region_order", methods=['GET', 'POST'])
 def update_region_order():
-
     keep_region_order = request.json['region_order']
 
     keep_region_order = [x.split("_")[0] for x in keep_region_order]
@@ -1868,6 +1953,7 @@ def update_region_order():
     models.RegionOrderRecords.objects(name__nin=keep_region_order).delete()
 
     return redirect('download_region_order')
+
 
 @app.route("/regions/update_aligns", methods=['GET', 'POST'])
 def update_aligns():

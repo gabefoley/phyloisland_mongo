@@ -199,8 +199,14 @@ class TreeForm(FlaskForm):
   tool = SelectField('Select tree inference tool - ', choices=[('FastTree', 'FastTree')])
   make_tree = SubmitField('Make tree')
 
+class RerootTreeForm(FlaskForm):
+    tree = SelectField('Reroot this tree - ', choices=[])
+    rerooted_tree_name = StringField('Tree name ', [validators.DataRequired()])
+    seq = SelectField('Set this sequence as outgroup - ', choices=[])
+    reroot_tree = SubmitField('Reroot tree')
+
 class TreeSelectForm(FlaskForm):
-    name = SelectField('Tree name ', choices=[])
+    tree_select_name = SelectField('Tree name ', choices=[])
     profiles = SelectField('Add profile search results from', choices=[])
     region_order = SelectField('Add region order search results from', choices=[])
 
