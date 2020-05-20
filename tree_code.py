@@ -48,11 +48,16 @@ def get_region_domains(regions):
     region_domains = []
 
     region_colour_dict = {"TcdA1": 'purple', 'A1': 'orange', 'A2': 'red', 'TcB': 'dodgerblue', 'TcC': 'pink',
-                          'Chitinase' : 'green'}
+                          'Chi' : 'green', 'Chi/Chi': 'green', 'TcB/TcC' : 'yellow' }
 
     start = 20
     for region in regions:
-        region_short = region.split("_")[0]
+        print ("**")
+        print (region)
+        region = region.replace("Chitinase", "Chi")
+        region_split = region.split("_joined_")
+
+        region_short = "/".join([region.split("_")[0] for region in region_split])
         if region_short == 'Chitinase':
             region_name = 'Chi'
         else:
@@ -169,9 +174,6 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
             elif region_order_dict:
 
                 region_order_name = node.name.split("_information_")[0].replace(".", "***")
-
-                # HERE!!
-                #                     box_domains = get_domains([x for x in region_dict[node.name].keys()])
 
                 if region_order_name in region_order_dict:
                     regions = region_order_dict[region_order_name].split(",")
