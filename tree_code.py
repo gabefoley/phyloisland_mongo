@@ -131,7 +131,7 @@ def continue_wo_collapse(node, skip_tags=["Single", "Multiple"]):
 
 
 def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath, full_names=False,
-                     highlight_nodes=[], collapse_on_genome_tag=True):
+                     highlight_nodes=[], collapse_on_genome_tags=True):
     ts = TreeStyle()
     ts.show_leaf_name = False
     ts.branch_vertical_margin = 15
@@ -142,7 +142,9 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
     # Get the colours for each extant genome
     for node in tree.iter_descendants("postorder"):
         node_style = ""
-        if collapse_on_genome_tag and continue_wo_collapse(node) == True or node.is_leaf():
+        print (node.name)
+        if (collapse_on_genome_tags and continue_wo_collapse(node) == True) or node.is_leaf():
+            print ('here')
             if node.is_leaf():
                 node.show_leaf_name = True
 
@@ -235,22 +237,24 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
         else:
             #             print ('collapse')
             if node.name not in highlight_nodes:
-                node_style = 'skip'
-                tag = get_leaf_tag(node)
 
-                format_text = " extant sequence " if len(node) == 1 else " extant sequences "
-                N = TextFace(" " + str(len(node)) + format_text, fsize=14, fgcolor="black")
-                node.add_face(N, 1, position="branch-right")
+                if collapse_on_genome_tags:
+                    node_style = 'skip'
+                    tag = get_leaf_tag(node)
 
-                wid = max(len(node) * 10, 10)
+                    format_text = " extant sequence " if len(node) == 1 else " extant sequences "
+                    N = TextFace(" " + str(len(node)) + format_text, fsize=14, fgcolor="black")
+                    node.add_face(N, 1, position="branch-right")
 
-                #                 node.add_face(ImgFace("./triangle.png",width=wid), 0)
-                box_domains = [10, 200, "<", None, wid, "black", "rgradient:" + colour_dict[tag],
-                               "arial|4|black|" + tag]
+                    wid = max(len(node) * 10, 10)
 
-                seqFace = SeqMotifFace(seq=None, motifs=[box_domains], gap_format="line")
-                node.add_face(seqFace, 0, "branch-right")
-                node.img_style['draw_descendants'] = False
+                    #                 node.add_face(ImgFace("./triangle.png",width=wid), 0)
+                    box_domains = [10, 200, "<", None, wid, "black", "rgradient:" + colour_dict[tag],
+                                   "arial|4|black|" + tag]
+
+                    seqFace = SeqMotifFace(seq=None, motifs=[box_domains], gap_format="line")
+                    node.add_face(seqFace, 0, "branch-right")
+                    node.img_style['draw_descendants'] = False
 
         if node_style != 'skip':
             nstyle = NodeStyle()
@@ -266,9 +270,14 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
     return tree, ts
 
 
-def colour_tips(tree, tag_dict, colour_dict, region_dict=None, region_order_dict=None, outpath=None, full_names=False,
+def colour_tips(tree, tag_dict, colour_dict, region_dict=None, region_order_dict=None, outpath=None,
+                full_names=False, highlight_nodes=[],
                 custom_layout=False, collapse_on_genome_tags=False):
-    tree, ts = get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, outpath, full_names)
+    tree, ts = get_example_tree(tree, tag_dict, colour_dict, region_dict=region_dict,
+                                region_order_dict=region_order_dict,
+                                outpath=outpath,
+                                full_names=full_names,
+                                collapse_on_genome_tags=collapse_on_genome_tags)
     # if outpath:
     # ts.layout_fn = lambda x: None
 
