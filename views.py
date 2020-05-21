@@ -832,6 +832,12 @@ class AutomaticTaggingView(BaseView):
     @expose("/", methods=('GET', 'POST'))
     def automatic_tagging(self):
         tag_simple_form = forms.TagSimpleForm()
+        update_tags_form = forms.UpdateTagsForm()
+
+        unique_tags = models.GenomeRecords.objects().distinct(field='tags')
+
+        # The list of tags to choose from
+        update_tags_form.old_tag.choices = list(zip(unique_tags, unique_tags))
 
         if request.method == "POST" and tag_simple_form.tag_simple.data:
             include_genome = [x.strip() for x in tag_simple_form.include_genome.data.split(",")]
@@ -842,9 +848,69 @@ class AutomaticTaggingView(BaseView):
             for g in genomes:
                 print(g.name)
 
-            simple = getGenomes.tag_as_simple(genomes, exclude_hits)
+            getGenomes.tag_as_simple(genomes, exclude_hits)
 
-        return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form)
+        if request.method == "POST" and update_tags_form.update_tags.data:
+            print ('update tags')
+            old_tag = update_tags_form.old_tag.data
+            new_tag = update_tags_form.new_tag.data
+            # db.getCollection("genome_records").updateMany({"tags": "monkey"}, {"$set": {"tags.$": "possum_face"}})
+            # BlogPost.objects(tags="mongoEngien").update(set__tags__S="MongoEngine")
+
+            models.GenomeRecords.objects(tags=old_tag).update(set__tags__S=new_tag)
+
+            # models.Hits.objects(tags=old_tag).update(set__tags__S=new_tag)
+
+
+            # models.GenomeRecords.objects(hits__tags=old_tag).update(set__tags__=new_tag)
+            #
+            # genomes = models.GenomeRecords.objects().all()
+            #
+            # mg = models.GenomeRecords.objects(hits__tags=old_tag)
+            #
+            #
+            #
+            # print (mg)
+            #
+            # for g in mg:
+            #     g.hits.tags = ['pop']
+            #
+
+
+            # models.Hits.objects(tags=old_tag).update(set__tags__S=new_tag)
+
+            # hits = models.GenomeRecords.objects(field='hits')
+
+            # print (hits)
+
+            # for genome in genomes:
+            #     hits = genome.hits
+            #
+            # #     hits.(tags=old_tag).update(set__tags__S=new_tag)
+            # #
+            #     for hit in hits:
+            #
+            #         for idx, tag in enumerate(hit.tags):
+            #             if tag == old_tag:
+            #                 hit.tags[idx] = new_tag
+            #
+            # genomes.save()
+
+
+            #
+            # hits = models.GenomeRecords.hits(tags=old_tag).update(set__tags__S=new_tag)
+
+            # hits(tags=old_tag).update(set__tags__S=new_tag)
+
+            # models.GenomeRecords.objects(tags__hits=old_tag).update(set__tags__hits__S=new_tag)
+
+            # print (new_tag)
+
+            models.GenomeTags.objects(tags=old_tag).update(set__tags__S=new_tag)
+
+            flash("Changed all genome tags - " + old_tag + " into " + new_tag, category='success')
+
+        return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form, update_tags_form=update_tags_form)
 
 
 @app.route("/temp_assoc_fix", methods=['GET', 'POST'])

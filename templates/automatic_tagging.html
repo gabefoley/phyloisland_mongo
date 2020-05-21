@@ -63,6 +63,43 @@
 
         </form>
 
+    <div>
+
+        WARNING: The following is an experimental feature. It updates tags on Genomes and doesn't update tags on Regions
+        . However, it will update the tags on Genomes and Regions in the GenomeTags dictionary. In other words, if
+        the tag you are changing has been tagged onto a Region then you must manually update the tag names for
+        Regions in the Genome Detail view. Otherwise your GenomeTags dictionary will be out of sync with the tags on
+        your Regions.
+
+        <br>
+        <br>
+
+                <form method="POST" enctype="multipart/form-data">
+            {{ update_tags_form.hidden_tag() }}
+
+            <div class="smallform">
+
+                {{ update_tags_form.old_tag.label }}
+
+                {{ update_tags_form.old_tag }}
+
+                <br>
+
+
+                {{ update_tags_form.new_tag.label }}
+
+                {{ update_tags_form.new_tag }}
+
+                <br>
+
+                {{ update_tags_form.update_tags(class="btn-primary") }}
+
+
+            </div>
+        </form>
+
+    </div>
+
     </div>
 
 
