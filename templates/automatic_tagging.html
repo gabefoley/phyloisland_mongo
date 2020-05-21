@@ -63,6 +63,34 @@
 
         </form>
 
+    <div>
+
+                <form method="POST" enctype="multipart/form-data">
+            {{ update_tags_form.hidden_tag() }}
+
+            <div class="smallform">
+
+                {{ update_tags_form.old_tag.label }}
+
+                {{ update_tags_form.old_tag }}
+
+                <br>
+
+
+                {{ update_tags_form.new_tag.label }}
+
+                {{ update_tags_form.new_tag }}
+
+                <br>
+
+                {{ update_tags_form.update_tags(class="btn-primary") }}
+
+
+            </div>
+        </form>
+
+    </div>
+
     </div>
 
 

@@ -166,6 +166,11 @@ class TagSimpleForm(FlaskForm):
     exclude_hits = StringField('Exclude hits tagged with - ', default='hidden')
     tag_simple = SubmitField("Tag genomes as simple")
 
+class UpdateTagsForm(FlaskForm):
+     old_tag = SelectField('Tag to update', choices=[])
+     new_tag = StringField('Change it to ', [validators.DataRequired()])
+     update_tags = SubmitField("Update tags")
+
 
 class UploadRegion(FlaskForm):
     name = StringField('Region name', [validators.DataRequired()])
