@@ -374,7 +374,7 @@ class RegionView(BaseView):
 
             flash("Made tree " + tree_name + " based on " + alignment_name + " with " + tool, category='success')
 
-        if request.method == "POST" and reroot_tree_form.data:
+        if request.method == "POST" and reroot_tree_form.reroot_tree.data:
             print ('rerooting tree')
             tree_name = reroot_tree_form.tree.data
             rerooted_tree_name = reroot_tree_form.rerooted_tree_name.data
