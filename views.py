@@ -488,30 +488,43 @@ class TreeView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def tree(self):
-        form = forms.TreeSelectForm()
+        tree = None
+        tree_select_form = forms.TreeSelectForm()
+        tree_download_form = forms.TreeDownloadForm()
 
-        if request.method == "POST" and form.submit.data:
-            tree = models.TreeRecords.objects().get(id=form.tree_select_name.data)
+        if request.method == "POST" and tree_select_form.submit.data:
+            tree = models.TreeRecords.objects().get(id=tree_select_form.tree_select_name.data)
             tag_dict = getGenomes.get_tags()
 
-            if form.profiles.data == 'None':
+            if tree_select_form.profiles.data == 'None':
                 region_dict = {}
             else:
-                region_dict = models.RegionToProfileRecords.objects().get(rtp_id=form.profiles.data).region_dict
+                region_dict = models.RegionToProfileRecords.objects().get(rtp_id=tree_select_form.profiles.data).region_dict
 
-            if form.region_order.data == 'None':
+            if tree_select_form.region_order.data == 'None':
                 region_order_dict = {}
             else:
                 region_order_dict = models.RegionOrderRecords.objects().get(
-                    name=form.region_order.data).region_order_dict
+                    name=tree_select_form.region_order.data).region_order_dict
 
-            full_names = form.full_names.data
+            full_names = tree_select_form.full_names.data
 
-            collapse_on_genome_tags = form.collapse_on_genome_tags.data
+            collapse_on_genome_tags = tree_select_form.collapse_on_genome_tags.data
 
             colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type2b': 'gold', 'Type2a': 'green',
                            'Type3': 'purple', 'Multiple': 'red', 'unknown': 'black', 'dsda': 'pink', 'Single': 'brown',
                            'SIngle': 'brown', 'Single ': 'brown', 'Type?': 'pink', 'Type5': 'pink'}
+
+        elif request.method == "POST" and tree_download_form.download_tree.data:
+            download_tree = models.TreeRecords.objects().get(name=tree_download_form.tree.data)
+
+            tree_path = f"./fasta_folder/{download_tree.name}.nwk"
+
+            with open(tree_path, 'w+') as tree_file:
+                tree_file.write(download_tree.tree.decode())
+            flash(f"Wrote {download_tree.name} to {tree_path} ")
+
+
 
         elif request.method == "GET":
             tree = None
@@ -537,6 +550,7 @@ class TreeView(BaseView):
             tree_img = ""
 
         profile_choices = [(rtp.rtp_id, rtp.rtp_id) for rtp in models.RegionToProfileRecords.objects()]
+
         region_order_choices = [(region_order.name, region_order.name) for region_order in
                                 models.RegionOrderRecords.objects()]
 
@@ -544,11 +558,17 @@ class TreeView(BaseView):
         profile_choices.insert(0, (None, None))
         region_order_choices.insert(0, (None, None))
 
-        form.tree_select_name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
-        form.profiles.choices = profile_choices
-        form.region_order.choices = region_order_choices
+        tree_choices = [(tree.name, tree.name) for tree in models.TreeRecords.objects()]
 
-        return self.render('trees.html', form=form, tree_img=tree_img)
+
+        tree_select_form.tree_select_name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
+        tree_select_form.profiles.choices = profile_choices
+        tree_select_form.region_order.choices = region_order_choices
+
+        tree_download_form.tree.choices = tree_choices
+
+        return self.render('trees.html', tree_select_form=tree_select_form, tree_download_form=tree_download_form,
+        tree_img=tree_img)
 
 
 class DownloadFastaView(BaseView):

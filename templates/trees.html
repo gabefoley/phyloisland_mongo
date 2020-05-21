@@ -25,47 +25,49 @@
 {% endblock %}
 {% block body %}
 
-    <div class="options-wrapper">
+    <div id="options_wrapper">
+
+    <div id="tree_select_div">
 
         <form method="POST" enctype="multipart/form-data">
-            {{ form.hidden_tag() }}
+            {{ tree_select_form.hidden_tag() }}
 
             <div class="smallform">
 
-                {{ form.tree_select_name.label }}
+                {{ tree_select_form.tree_select_name.label }}
 
-                {{ form.tree_select_name }}
-
-                <br>
-
-                {{ form.profiles.label }}
-
-                {{ form.profiles }}
+                {{ tree_select_form.tree_select_name }}
 
                 <br>
 
-                {{ form.region_order.label }}
+                {{ tree_select_form.profiles.label }}
 
-                {{ form.region_order }}
+                {{ tree_select_form.profiles }}
+
+                <br>
+
+                {{ tree_select_form.region_order.label }}
+
+                {{ tree_select_form.region_order }}
 
                 <br>
 
 
-                {{ form.full_names }}
+                {{ tree_select_form.full_names }}
 
-                {{ form.full_names.label }}
-
-
-                <br>
-
-                {{ form.collapse_on_genome_tags }}
-
-                {{ form.collapse_on_genome_tags.label }}
+                {{ tree_select_form.full_names.label }}
 
 
                 <br>
 
-                {{ form.submit(class="btn-primary") }}
+                {{ tree_select_form.collapse_on_genome_tags }}
+
+                {{ tree_select_form.collapse_on_genome_tags.label }}
+
+
+                <br>
+
+                {{ tree_select_form.submit(class="btn-primary") }}
 
                 <br>
                 <br>
@@ -73,6 +75,38 @@
 
             </div>
         </form>
+
+    </div>
+
+        <div id="tree_download_div">
+
+                   <form method="POST" enctype="multipart/form-data">
+            {{ tree_download_form.hidden_tag() }}
+
+            <div class="smallform">
+
+                {{ tree_download_form.tree.label }}
+
+                {{ tree_download_form.tree }}
+
+
+
+                <br>
+
+                {{ tree_download_form.download_tree(class="btn-primary") }}
+
+                <br>
+                <br>
+
+
+            </div>
+        </form>
+
+
+
+        </div>
+
+        </div>
 
 
         <div id="tree_img">

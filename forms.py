@@ -198,11 +198,15 @@ class SelectRegionToProfilesForm(FlaskForm):
     name = SelectField('Region to profiles name ', choices=[])
     submit = SubmitField("Select region to profiles")
 
-class TreeForm(FlaskForm):
+class VisualiseTreeForm(FlaskForm):
   name = StringField('Tree name ', [validators.DataRequired()])
   alignment = SelectField('Make tree based on ', choices=[])
   tool = SelectField('Select tree inference tool - ', choices=[('FastTree', 'FastTree')])
   make_tree = SubmitField('Make tree')
+
+class TreeDownloadForm(FlaskForm):
+    tree = SelectField('Select tree to download ', choices=[])
+    download_tree = SubmitField('Download tree')
 
 class RerootTreeForm(FlaskForm):
     tree = SelectField('Reroot this tree - ', choices=[])

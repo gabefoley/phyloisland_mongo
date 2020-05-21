@@ -89,3 +89,27 @@
 #biojs-align-div {
     height:100%;
 }
+
+#select_div{
+    margin: 10px 30px 30px 10px;
+        /*background-color:greenyellow;*/
+
+}
+
+#options_div{
+    margin: 10px 30px 30px 30px;
+        /*background-color:darkorange;*/
+
+}
+
+#tree_select_div{
+    margin: 10px 30px 30px 10px;
+        /*background-color:greenyellow;*/
+
+}
+
+#tree_download_div{
+    margin: 10px 30px 30px 30px;
+        /*background-color:darkorange;*/
+
+}

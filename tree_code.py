@@ -283,7 +283,7 @@ def colour_tips(tree, tag_dict, colour_dict, region_dict=None, region_order_dict
 
     print ('outpath is ')
     print (outpath)
-    tree.render(outpath, dpi=300, tree_style=ts, w=600)
+    tree.render(outpath, dpi=300, tree_style=ts)
 
 def parse_args(args):
     parser = argparse.ArgumentParser()
