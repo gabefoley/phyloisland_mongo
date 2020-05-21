@@ -857,9 +857,9 @@ class AutomaticTaggingView(BaseView):
             # db.getCollection("genome_records").updateMany({"tags": "monkey"}, {"$set": {"tags.$": "possum_face"}})
             # BlogPost.objects(tags="mongoEngien").update(set__tags__S="MongoEngine")
 
-            # models.GenomeRecords.objects(tags=old_tag).update(set__tags__S=new_tag)
+            models.GenomeRecords.objects(tags=old_tag).update(set__tags__S=new_tag)
 
-            models.Hits.objects(tags=old_tag).update(set__tags__S=new_tag)
+            # models.Hits.objects(tags=old_tag).update(set__tags__S=new_tag)
 
 
             # models.GenomeRecords.objects(hits__tags=old_tag).update(set__tags__=new_tag)
@@ -904,7 +904,7 @@ class AutomaticTaggingView(BaseView):
 
             # models.GenomeRecords.objects(tags__hits=old_tag).update(set__tags__hits__S=new_tag)
 
-            print (new_tag)
+            # print (new_tag)
 
             models.GenomeTags.objects(tags=old_tag).update(set__tags__S=new_tag)
 
