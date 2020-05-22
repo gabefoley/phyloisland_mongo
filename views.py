@@ -1006,7 +1006,12 @@ class ChartView(BaseView):
             selected_vals = labels
             exclude_vals = labels
 
-        return self.render('charts.html', chart_form=chart_form, title='Unique tags', max=max(values) + 10,
+        if values:
+            max = max(values) + 10
+        else:
+            max = 10
+
+        return self.render('charts.html', chart_form=chart_form, title='Unique tags', max=max,
                            labels=labels, values=values,
                            selected_vals=json.dumps(selected_vals), exclude_vals=json.dumps(exclude_vals))
 
@@ -1846,6 +1851,10 @@ def tag_genome():
     tags = request.json['tag2add'].split(",")
 
     print('tag')
+
+    # Don't add blank tags in
+    if tags == [""]:
+        tags = []
 
     # models.GenomeRecords.objects().get(id=request.json['genome']).update(push__tags=
     #                                                                      request.json['tag2add'])
