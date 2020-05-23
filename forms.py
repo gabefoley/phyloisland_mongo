@@ -198,7 +198,7 @@ class SelectRegionToProfilesForm(FlaskForm):
     name = SelectField('Region to profiles name ', choices=[])
     submit = SubmitField("Select region to profiles")
 
-class VisualiseTreeForm(FlaskForm):
+class MakeTreeForm(FlaskForm):
   name = StringField('Tree name ', [validators.DataRequired()])
   alignment = SelectField('Make tree based on ', choices=[])
   tool = SelectField('Select tree inference tool - ', choices=[('FastTree', 'FastTree')])
@@ -213,6 +213,12 @@ class RerootTreeForm(FlaskForm):
     rerooted_tree_name = StringField('Tree name ', [validators.DataRequired()])
     seq = SelectField('Set this sequence as outgroup - ', choices=[])
     reroot_tree = SubmitField('Reroot tree')
+
+class TrimToProfileForm(FlaskForm):
+    region = SelectField('Region to trim', choices=[])
+    name = StringField('Name of new region file ', [validators.DataRequired()])
+    section=SelectMultipleField('Place content where you would like to trim to :', choices=[])
+    trim = SubmitField("Trim")
 
 class TreeSelectForm(FlaskForm):
     tree_select_name = SelectField('Tree name ', choices=[])

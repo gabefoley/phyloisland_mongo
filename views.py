@@ -307,7 +307,7 @@ class RegionView(BaseView):
         upload_form = forms.UploadRegion()
         region_form = forms.RegionForm()
         alignment_form = forms.AlignmentForm()
-        tree_form = forms.TreeForm()
+        tree_form = forms.MakeTreeForm()
         reroot_tree_form = forms.RerootTreeForm()
 
         if upload_form.upload_submit.data:
@@ -953,6 +953,16 @@ def temp_assoc_fix():
         query.save()
 
     return redirect('temp_fix')
+
+
+class TrimToProfileView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def trim_to_profile(self):
+        trim_to_profile_form = forms.TrimToProfileForm()
+        return self.render('trim_to_profile.html', trim_to_profile_form=trim_to_profile_form)
+
+
 
 
 class ChartView(BaseView):
@@ -2147,6 +2157,8 @@ with warnings.catch_warnings():
     admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
     # admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
     admin.add_view(RegionView(name='Region Records', endpoint='regions'))
+    admin.add_view(TrimToProfileView(name='Trim To Profile', endpoint='trim_to_profile'))
+
     # admin.add_view(RegionToProfilesView(name='Region to profiles', endpoint='region_to_profiles'))
     admin.add_view(ChartView(name='Charts', endpoint='chart'))
 
@@ -2157,7 +2169,7 @@ with warnings.catch_warnings():
     admin.add_view(BatchDeleteView(name='Batch Delete', endpoint='batch_delete'))
 
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
-    admin.add_view(DownloadRegionOrderView(name='Download Region order', endpoint='download_region_order'))
+    admin.add_view(DownloadRegionOrderView(name='Download Region Order', endpoint='download_region_order'))
     # admin.add_view(TempFixView(name='Temp Fix', endpoint='temp_fix'))
     admin.add_view(AutomaticTaggingView(name='Automatic Tagging', endpoint='automatic_tagging'))
 
