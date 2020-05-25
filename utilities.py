@@ -403,6 +403,101 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, co
         if os.path.isfile(img_path):
             return img_path
 
+def trim_to_profile(regions, profile, trimmed_name):
+
+    fasta_path =  "./tmp/" + trimmed_name + ".fasta"
+    profile_path = "./tmp/" + trimmed_name + ".hmm"
+    results_outpath = "./tmp/" + trimmed_name + "_results.txt"
+    trimmed_path =  "./tmp/" + trimmed_name  + "_trimmed"
+
+    # Write out regions
+
+
+    with open(fasta_path, 'w+') as regions_out:
+        regions_out.write(regions.decode())
+    # Write out profile
+
+    with open(profile_path, 'wb') as profile_out:
+        profile_out.write(profile.read())
+
+    seqs = read_fasta(fasta_path)
+
+    # Perform the hmmsearch on the regions file
+    os.system('hmmsearch -o' + results_outpath + ' --domT 1 ' + profile_path + " " + fasta_path)
+
+    pos_dict = get_pos_dict_from_hmm(results_outpath, seqs)
+
+    trimmed = []
+
+    failed_seqs = []
+
+    for name, seq in seqs.items():
+        if name in pos_dict:
+            print ('trimmo seq')
+            print (seq)
+            trimmed.append(seq)
+        else:
+            failed_seqs.append(name)
+
+    print ('trimmed')
+    print (trimmed)
+
+    print ('failed')
+    print (failed_seqs)
+
+    # Write the newly trimmed file to disk
+    createFasta(trimmed, trimmed_path, align=False)
+
+    # Load and save the newly trimmed file
+    with open(trimmed_path + ".fasta", 'rb') as trimmed_seqs:
+        # Load files into database
+        region = models.RegionRecords(name=trimmed_name, regions=trimmed_seqs.read())
+        region.save()
+
+    # Return sequences that failed to have a hmmer match
+    return failed_seqs
+
+def get_pos_dict_from_hmm(path, seqs):
+    qresult = SearchIO.read(path, 'hmmer3-text')
+
+    pos_dict = {}
+
+    print(len(qresult.hsps))
+    print(len(seqs))
+
+    if len(qresult.hsps) > len(seqs):
+        print("ERROR: More HSPs than expected")
+
+    for hsp in qresult.hsps:
+        #         print (hsp.hit.id)
+        #         print (hsp.hit_start)
+        #         print (hsp.hit_end)
+        pos_dict[hsp.hit.id] = (hsp.hit_start, hsp.hit_end)
+
+    return pos_dict
+
+def trim_sequence(seqs, pos_dict1=None, pos_dict2=None, pos1='start', pos2='start'):
+
+    failed_seqs = []
+
+    if pos_dict1==None:
+        if pos_dict2 == None:
+            raise NameError("Must provide at least one position dictionary")
+        else: # From the start of a sequence to a profile match
+
+            if pos2 == 'start': # Don't include the profile
+                pass
+            elif pos2 == 'end': # Include the profile
+                pass
+    elif pos_dict2 == None: # From a profile match to the end of a sequence
+        pass
+
+    else: # Between two profile matches
+        pass
+
+
+
+
 
 def pickle_dict(dict, outpath):
     with open(outpath, 'wb') as handle:

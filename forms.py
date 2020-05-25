@@ -215,10 +215,16 @@ class RerootTreeForm(FlaskForm):
     reroot_tree = SubmitField('Reroot tree')
 
 class TrimToProfileForm(FlaskForm):
-    region = SelectField('Region to trim', choices=[])
-    name = StringField('Name of new region file ', [validators.DataRequired()])
-    section=SelectMultipleField('Place content where you would like to trim to :', choices=[])
-    trim = SubmitField("Trim")
+    trim_to_region = SelectField('Regions to trim to', choices=[])
+    trim_to_name = StringField('Name of new Regions file ', [validators.DataRequired()])
+    trim_to_profile = SelectField('Choose profile to trim Regions to :', choices=[])
+    trim_to = SubmitField("Trim to profile")
+
+class TrimAroundProfileForm(FlaskForm):
+    trim_around_region = SelectField('Regions to trim around', choices=[])
+    trim_around_name = StringField('Name of new Regions file ', [validators.DataRequired()])
+    trim_around_profile = SelectMultipleField('Place content where you would like to trim to :', choices=[])
+    trim_around_submit = SubmitField("Trim around profile")
 
 class TreeSelectForm(FlaskForm):
     tree_select_name = SelectField('Tree name ', choices=[])

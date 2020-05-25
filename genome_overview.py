@@ -268,28 +268,28 @@ def classify_genomes(queries):
             if set(["A1", "A2"]).issubset(region_names):
                 if set(["Chitinase"]).issubset(region_names):
                     print ("It had A1 / A2 and chitinases, so we're tagging it as Type 2A")
-                    update_tag(query, "Type2A")
+                    update_tag(query, "Auto_Type2A")
                 else:
                     print ("It had A1 / A2 but no chitinases, so we're tagging it as Type 2B")
-                    update_tag(query, "Type2B")
+                    update_tag(query, "Auto_Type2B")
 
             elif set(["TcdA1"]).issubset(region_names):
                 if set("Chitinase").issubset(region_names):
                     print("It had TcdA1 but also chitinase, so we're tagging it for further investigation")
-                    update_tag(query, "Unsure")
+                    update_tag(query, "Auto_Unsure")
 
                 else:
                     print ("It had TcdA1 so we're classifying it as Type 1")
-                    update_tag(query, "Type1")
+                    update_tag(query, "Auto_Type1")
 
 
             else:
                 print("It had a TcB and TcC, but was missing either A1 or TcdA1, so we're classifying it as incomplete")
-                update_tag(query, "Incomplete")
+                update_tag(query, "Auto_Incomplete")
 
         else:
             print ("It was lacking a TcB and TcC, so we're classifying it as incomplete")
-            update_tag(query, "Incomplete")
+            update_tag(query, "Auto_Incomplete")
 
 
 def delete_genome_tags(queries):

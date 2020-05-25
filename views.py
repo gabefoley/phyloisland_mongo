@@ -32,11 +32,10 @@ ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2
 
 @user_logged_in.connect_via(app)
 def on_user_logged_in(sender, user):
-
     # Clear any existing session values
     keys = [key for key in session.keys() if key not in ["_fresh", "_permanent", "csrf_token", "user_id", "_id"]]
 
-    print (keys)
+    print(keys)
 
     for key in keys:
         session.pop(key)
@@ -299,10 +298,8 @@ class RegionView(BaseView):
             outgroup_choices = seq_names
             tree_to_reroot = tree.name
 
-
-
-        print ('ogc')
-        print (outgroup_choices)
+        print('ogc')
+        print(outgroup_choices)
 
         upload_form = forms.UploadRegion()
         region_form = forms.RegionForm()
@@ -375,12 +372,12 @@ class RegionView(BaseView):
             flash("Made tree " + tree_name + " based on " + alignment_name + " with " + tool, category='success')
 
         if request.method == "POST" and reroot_tree_form.reroot_tree.data:
-            print ('rerooting tree')
+            print('rerooting tree')
             tree_name = reroot_tree_form.tree.data
             rerooted_tree_name = reroot_tree_form.rerooted_tree_name.data
             reroot_on_seq = reroot_tree_form.seq.data
 
-            print (tree_name)
+            print(tree_name)
 
             tree = models.TreeRecords.objects.get(name=tree_name)
 
@@ -388,9 +385,9 @@ class RegionView(BaseView):
 
             phylo_tree.set_outgroup(reroot_on_seq)
 
-            print (phylo_tree)
+            print(phylo_tree)
 
-            print (os.getcwd())
+            print(os.getcwd())
 
             tree_path = "./tmp/tmptree.nwk"
 
@@ -401,16 +398,10 @@ class RegionView(BaseView):
 
             with open(tree_path, 'rb') as tree_file:
 
-
-
-
                 rerooted_tree = models.TreeRecords(name=rerooted_tree_name, alignment=tree.alignment,
-                                                   tree = tree_file.read(),
-                                                   tool = tree.tool)
+                                                   tree=tree_file.read(),
+                                                   tool=tree.tool)
                 rerooted_tree.save()
-
-
-
 
         region_names = [region.name for region in models.RegionRecords.objects()]
         region_to_profile_names = [region_to_profile.rtp_id + "_" + region_to_profile.region + " ( " + str(len(
@@ -431,7 +422,6 @@ class RegionView(BaseView):
 
         tree_choices.insert(0, (None, "Click to select tree"))
 
-
         region_form.region.choices = region_choices
         region_form.profiles.choices = profile_choices
 
@@ -443,7 +433,7 @@ class RegionView(BaseView):
         return self.render('regions.html', upload_form=upload_form, region_form=region_form, \
                            alignment_form=alignment_form, tree_form=tree_form, reroot_tree_form=reroot_tree_form,
                            region_names=region_names, region_to_profile_names=region_to_profile_names,
-                           align_names=align_names, tree_names=tree_names, tree_to_reroot = tree_to_reroot)
+                           align_names=align_names, tree_names=tree_names, tree_to_reroot=tree_to_reroot)
 
 
 class RegionToProfilesView(BaseView):
@@ -499,7 +489,8 @@ class TreeView(BaseView):
             if tree_select_form.profiles.data == 'None':
                 region_dict = {}
             else:
-                region_dict = models.RegionToProfileRecords.objects().get(rtp_id=tree_select_form.profiles.data).region_dict
+                region_dict = models.RegionToProfileRecords.objects().get(
+                    rtp_id=tree_select_form.profiles.data).region_dict
 
             if tree_select_form.region_order.data == 'None':
                 region_order_dict = {}
@@ -540,10 +531,10 @@ class TreeView(BaseView):
             tree_img = utilities.get_tree_image(tree.tree.decode(), tree.name, tag_dict, region_dict,
                                                 region_order_dict, colour_dict, full_names, collapse_on_genome_tags)
 
-            print (tree_img)
+            print(tree_img)
             tree_img = "/" + tree_img + "#" + utilities.randstring(5)
 
-            print (tree_img)
+            print(tree_img)
             # if tree_img:
             #     tree_img = tree_img.split("static/")[1]
         else:
@@ -560,7 +551,6 @@ class TreeView(BaseView):
 
         tree_choices = [(tree.name, tree.name) for tree in models.TreeRecords.objects()]
 
-
         tree_select_form.tree_select_name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
         tree_select_form.profiles.choices = profile_choices
         tree_select_form.region_order.choices = region_order_choices
@@ -568,7 +558,7 @@ class TreeView(BaseView):
         tree_download_form.tree.choices = tree_choices
 
         return self.render('trees.html', tree_select_form=tree_select_form, tree_download_form=tree_download_form,
-        tree_img=tree_img)
+                           tree_img=tree_img)
 
 
 class DownloadFastaView(BaseView):
@@ -871,7 +861,7 @@ class AutomaticTaggingView(BaseView):
             getGenomes.tag_as_simple(genomes, exclude_hits)
 
         if request.method == "POST" and update_tags_form.update_tags.data:
-            print ('update tags')
+            print('update tags')
             old_tag = update_tags_form.old_tag.data
             new_tag = update_tags_form.new_tag.data
             # db.getCollection("genome_records").updateMany({"tags": "monkey"}, {"$set": {"tags.$": "possum_face"}})
@@ -955,14 +945,62 @@ def temp_assoc_fix():
     return redirect('temp_fix')
 
 
-class TrimToProfileView(BaseView):
+class TrimRegionsView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
-    def trim_to_profile(self):
+    def trim_regions(self):
         trim_to_profile_form = forms.TrimToProfileForm()
-        return self.render('trim_to_profile.html', trim_to_profile_form=trim_to_profile_form)
+        trim_around_profile_form = forms.TrimAroundProfileForm()
+        region_choices = [(region.name, region.name) for region in models.RegionRecords.objects()]
+        profile_choices = [(profile.name, profile.name) for profile in models.Profile.objects()]
+        section_choices = [(profile.name, profile.name) for profile in models.Profile.objects()]
+        section_choices.insert(0, ("Content", "Content"))
+
+        trim_to_profile_form.trim_to_region.choices = region_choices
+        trim_to_profile_form.trim_to_profile.choices = profile_choices
+
+        trim_around_profile_form.trim_around_region.choices = region_choices
+
+        trim_around_profile_form.trim_around_profile.choices = section_choices
+
+        if request.method == 'POST' and trim_to_profile_form.trim_to.data:
+            regions = models.RegionRecords.objects().get(name=trim_to_profile_form.trim_to_region.data).regions
+            profile = models.Profile.objects().get(name=trim_to_profile_form.trim_to_profile.data)
+            trimmed_name = trim_to_profile_form.trim_to_name.data
+            failed_seqs = ['fail1', 'fail2']
+            failed_seqs = utilities.trim_to_profile(regions, profile.profile, trimmed_name)
+
+            if failed_seqs:
+                print (failed_seqs)
+                print (profile.name)
+                flash("The following regions did not have a match for " + profile.name + " and so have not been added to "
+                                                                                         "the new file - " + " ".join(failed_seqs), category='error')
+            flash("Regions have been trimmed to " + profile.name + " and saved as " + trimmed_name, category='success')
 
 
+
+        if request.method == 'POST' and trim_around_profile_form.trim_around_submit.data:
+            if 'Content' not in trim_to_profile_form.trim_around_profile.data:
+                flash("'Content' needs to be one of the selected options", category='error')
+            else:
+                regions = trim_to_profile_form.trim_to_region.data
+                profile = models.Profile.objects().get(name=trim_to_profile_form.trim_to_profile.data).profile
+                trimmed_name = trim_to_profile_form.trim_to_name.data
+                failed_seqs = utilities.trim_to_profile(regions, profile, trimmed_name)
+                failed_seqs = ['fail1', 'fail2']
+
+                if failed_seqs:
+                    flash(
+                        "The following regions did not have a match for " + profile.name + " and so have not been added to "
+                                                                                           "the new file - " + " ".join(
+                            failed_seqs), category='error')
+
+
+                flash("Regions have been trimmed and saved as " + trimmed_name, category='success')
+
+
+        return self.render('trim_regions.html', trim_to_profile_form=trim_to_profile_form,
+                           trim_around_profile_form=trim_around_profile_form)
 
 
 class ChartView(BaseView):
@@ -2037,9 +2075,8 @@ def update_outgroup_choices():
 
     session['outgroup_choices'] = request.json['tree_choice']
 
-    print ('session outgroup choice here is ')
-    print (session['outgroup_choices'])
-
+    print('session outgroup choice here is ')
+    print(session['outgroup_choices'])
 
     return redirect('regions')
 
@@ -2157,7 +2194,7 @@ with warnings.catch_warnings():
     admin.add_view(GenomeDetailView(name='Genome Detail', endpoint='genomedetail'))
     # admin.add_view(GenomeOverviewView(name='Genome Overview', endpoint='genomeoverview'))
     admin.add_view(RegionView(name='Region Records', endpoint='regions'))
-    admin.add_view(TrimToProfileView(name='Trim To Profile', endpoint='trim_to_profile'))
+    admin.add_view(TrimRegionsView(name='Trim Regions', endpoint='trim_regions'))
 
     # admin.add_view(RegionToProfilesView(name='Region to profiles', endpoint='region_to_profiles'))
     admin.add_view(ChartView(name='Charts', endpoint='chart'))

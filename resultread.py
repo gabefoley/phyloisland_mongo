@@ -47,13 +47,45 @@ def expandStartPostion(record, hit_start, strand):
         if codon in codon_list:
             break
 
+
+
         second_pos = first_pos
         first_pos = first_pos - 3
 
+
+
     if strand == "forward":
-        return start_pos
+        # print (record.name)
+        # print ('mizzy')
+        # print (codon)
+        if record.sequence[start_pos: start_pos+3] == "ATG":
+            return start_pos
+        else:
+            # Start of hmmer hit was not a start codon, so go forwards to find it
+
+            # print ("Do something else")
+            # print(record.sequence)
+            # print(record.sequence[hit_start])
+            # print(record.sequence[hit_start : hit_start + 50])
+
+            first_pos = hit_start
+            second_pos = hit_start + 3
+
+            while first_pos + 3 < len(record.sequence):
+                codon = record.sequence[first_pos: second_pos]
+
+                if codon == "ATG":
+                    return first_pos
+
+                first_pos = second_pos
+                second_pos = first_pos + 3
+
+
     else:
-        return first_pos + 3
+
+        return first_pos
+
+
 
 
 
@@ -90,10 +122,58 @@ def expandEndPosition(record, hit_end, strand):
         second_pos = first_pos + 3
 
     if strand == "forward":
-        return second_pos - 3
+        return second_pos
     else:
-        return start_pos
+        if record.sequence[start_pos: start_pos+3] == "CAT":
+            return start_pos + 3
+        else:
 
+            first_pos = hit_end - 3
+            second_pos = hit_end
+
+            # while first_pos + 3 < len(record.sequence):
+            #     codon = record.sequence[first_pos: second_pos]
+            #
+            #     if codon == "ATG":
+            #         return first_pos
+            #
+            #     first_pos = second_pos
+            #     second_pos = first_pos + 3
+
+        while first_pos - 3 > 0:
+            codon = record.sequence[first_pos: second_pos]
+
+            if codon == "CAT":
+                return start_pos
+
+            second_pos = first_pos
+            first_pos = first_pos - 3
+
+
+
+
+
+
+
+
+            #
+        # if record.sequence[start_pos: start_pos-3] == "CAT":
+        #    return start_pos
+        # else:
+        #     # Start of hmmer hit was not a start codon, so go forwards to find it
+        #
+        #     print ('INTERESTING!!')
+        #     first_pos = hit_end
+        #     second_pos = hit_end + 3
+        #
+        #     while first_pos - 3 > 0:
+        #         codon = record.sequence[first_pos: second_pos]
+        #
+        #         if codon == "CAT":
+        #             return first_pos + 3
+        #
+        #         second_pos = first_pos
+        #         first_pos = first_pos - 3
 
 
 
