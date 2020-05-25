@@ -32,6 +32,7 @@ def expandStartPostion(record, hit_start, strand):
         codon_list = ["TGA", "TAA", "TAG"]
     elif strand == "backward":
         codon_list = ["TCA", "TTA", "CTA"]
+    start_codons = ["ATG", "TTG", "GTG"]
 
     first_pos = hit_start
     second_pos = hit_start + 3
@@ -41,7 +42,7 @@ def expandStartPostion(record, hit_start, strand):
     while  first_pos -3 > 0:
         codon = record.sequence[first_pos: second_pos]
 
-        if codon == "ATG":
+        if codon in start_codons:
             start_pos = first_pos
 
         if codon in codon_list:
@@ -58,7 +59,7 @@ def expandStartPostion(record, hit_start, strand):
         # print (record.name)
         # print ('mizzy')
         # print (codon)
-        if record.sequence[start_pos: start_pos+3] == "ATG":
+        if record.sequence[start_pos: start_pos+3] in start_codons:
             return start_pos
         else:
             # Start of hmmer hit was not a start codon, so go forwards to find it
@@ -74,7 +75,7 @@ def expandStartPostion(record, hit_start, strand):
             while first_pos + 3 < len(record.sequence):
                 codon = record.sequence[first_pos: second_pos]
 
-                if codon == "ATG":
+                if codon in start_codons:
                     return first_pos
 
                 first_pos = second_pos
@@ -107,6 +108,9 @@ def expandEndPosition(record, hit_end, strand):
     elif strand == "backward":
         codon_list = ["TCA", "TTA", "CTA"]
 
+    start_codons = ["CAT", "CAA", "CAC"]
+
+
     first_pos = hit_end - 3
     second_pos = hit_end
 
@@ -114,7 +118,7 @@ def expandEndPosition(record, hit_end, strand):
 
     while  first_pos +3 < len(record.sequence):
         codon = record.sequence[first_pos: second_pos]
-        if codon == "CAT":
+        if codon in start_codons:
             start_pos = second_pos
         if codon in codon_list:
             break
@@ -124,7 +128,7 @@ def expandEndPosition(record, hit_end, strand):
     if strand == "forward":
         return second_pos
     else:
-        if record.sequence[start_pos: start_pos+3] == "CAT":
+        if record.sequence[start_pos: start_pos+3] in start_codons:
             return start_pos + 3
         else:
 
@@ -143,7 +147,7 @@ def expandEndPosition(record, hit_end, strand):
         while first_pos - 3 > 0:
             codon = record.sequence[first_pos: second_pos]
 
-            if codon == "CAT":
+            if codon in start_codons:
                 return start_pos
 
             second_pos = first_pos
