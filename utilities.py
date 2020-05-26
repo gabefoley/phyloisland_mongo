@@ -496,6 +496,60 @@ def trim_sequence(seqs, pos_dict1=None, pos_dict2=None, pos1='start', pos2='star
         pass
 
 
+def search_for_promoters(mismatch):
+    genomes = models.GenomeRecords.objects()
+
+    regions = []
+
+    prom_regex = "(TTGACA.{15,25}TATAAT){s<=" + str(mismatch) + "}"
+
+    for g in genomes:
+        # if g.name == "NZ_CP010029.1":
+        for hit in g.hits:
+            if "expanded" in hit.region:
+                print(hit.region)
+                print(hit.start)
+                print(hit.end)
+                if hit.strand == "forward":
+                    seq_content = g.sequence[int(hit.start) - 50: int(hit.start)]
+
+                    print(seq_content)
+                    regions.append(seq_content)
+                    match = re.findall(prom_regex, seq_content)
+                    print(match)
+                    if match:
+                        hit.promoter = True
+                    else:
+                        hit.promoter = False
+
+
+                elif hit.strand == "backward":
+                    seq_content = g.sequence[int(hit.end): int(hit.end) + 50]
+
+                    rev_content = str(Seq(str(seq_content)).reverse_complement())
+                    print(rev_content)
+                    regions.append(rev_content)
+                    match = re.findall(prom_regex, rev_content)
+                    print(match)
+                    if match:
+                        hit.promoter = True
+                    else:
+                        hit.promoter = False
+
+        g.save()
+
+
+def clear_all_promoters():
+    """
+    Clear all the promoters for all the hits
+    :return:
+    """
+    genomes = models.GenomeRecords.objects()
+
+    for g in genomes:
+        for hit in g.hits:
+            hit.promoter = False
+        g.save()
 
 
 
@@ -546,7 +600,8 @@ def check_with_profile(ids, region):
     else:
         flash("Please set a profile as the %s reference profile first" % (region), "error")
 
-def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None):
+def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False, show_stop_codons=False,
+checked_regions=None):
     """
     Format the items in a genome correctly for a Genome Detail view
     :param self:
@@ -554,7 +609,8 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
     """
 
     items = defaultdict(list)
-    glyphs = {}
+    stop_codon_glyphs = {}
+    promoter_glyphs = {}
     hit_tags = {}
     region_list = []
     genomesize = len(genome.sequence)
@@ -613,12 +669,20 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
                         # But store the real strand here so we can annotate the hits correctly
                         hit_details['actual_strand'] = hit.strand
 
+                        # Add the promoters:
 
+                        if show_promoters:
 
-                        #
-                        # print ('genome length')
+                            if hit.promoter:
 
+                                promoter_pos = hit.start if hit.strand == 'forward' else hit.end
 
+                                if promoter_pos in promoter_glyphs:
+
+                                    promoter_glyphs[promoter_pos].append( hit.region + ' promoter')
+
+                                else:
+                                    promoter_glyphs[promoter_pos] = [hit.region + ' promoter']
 
 
                         idx1 = 0
@@ -665,11 +729,13 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
 
                                 # print (pos)
 
-                                if pos in glyphs:
-                                    glyphs[pos].append(hit.region)
-                                else:
-                                    glyphs[pos] = [hit.region]
-                            # print (hit_sequence[idx1:idx2])
+                                if show_stop_codons:
+
+                                    if pos in stop_codons:
+                                        stop_codon_glyphs[pos].append(hit.region)
+                                    else:
+                                        stop_codon_glyphs[pos] = [hit.region]
+
                             idx1 += 3
                             idx2 += 3
 
@@ -682,30 +748,26 @@ def get_genome_items(genome, hits='all', hidden_type=True, checked_regions=None)
 
     # print (items)
 
-    # print ('glyphs')
-    # print (glyphs)
-    tracks = build_tracks(items, glyphs)
+    print ('stop_codons')
+    print (stop_codon_glyphs)
+    tracks = build_tracks(items, stop_codon_glyphs, promoter_glyphs)
 
     return tracks, hit_tags, genomesize
 # def get_hit_tags((hits, hits='all', hidden_type=True, checked_regions=None):):
 
 
-def build_tracks(items, glyphs):
+def build_tracks(items, stop_codons, promoters):
 
     tracks = []
 
     for region_name in items:
-
-        # print ('region name')
-        # print (region_name)
 
         regions = []
 
         #NOTE: I'm forcing the strands all to be 1 here to visualise on the same line in the linear genome
 
         for region in items[region_name]:
-            # print ('region')
-            # print (region)
+
             region_dict = {'id' : region['hit_id'], 'start' : int(region['start']), 'end' : int(region['end']),
                            'name' : region[
                 'name'],
@@ -729,23 +791,26 @@ def build_tracks(items, glyphs):
         'items' : regions }
 
         tracks.append(track)
-    # print ('and tracks are ')
-    # print (tracks)
-
-    glyph_regions = []
-
-    count = 0
-
-    for loc, names in glyphs.items():
-        count +=1
-        name = " ".join(names)
-        glyph_dict = {'id' : count, 'bp' : loc, 'type': name, 'name': name}
-
-        glyph_regions.append(glyph_dict)
 
 
 
-    if glyphs:
+
+
+    if stop_codons:
+
+        stop_codon_regions = []
+
+        count = 0
+
+        for loc, names in stop_codons.items():
+            count += 1
+            name = " ".join(names)
+            stop_codon_dict = {'id': count, 'bp': loc, 'type': name, 'name': name}
+
+            stop_codon_regions.append(stop_codon_dict)
+
+
+
         glyph_track = {'trackName': "track1",
         'trackType': 'glyph',
         'glyphType': 'circle',
@@ -758,20 +823,43 @@ def build_tracks(items, glyphs):
         'linear_glyphSize': 20,
         'linear_height': 100,
         'showTooltip': 'true',
-        'items': glyph_regions
+        'items': stop_codon_regions
         }
 
-    # print (glyph_track)
 
         tracks.append(glyph_track)
 
+    if promoters:
 
+        promoter_regions = []
 
+        count = 0
 
+        for loc, names in promoters.items():
+            count += 1
+            name = names
+            promoter_dict = {'id': count, 'bp': loc, 'type': 'promoter', 'name': name}
+
+            promoter_regions.append(promoter_dict)
+
+        promoter_track = {'trackName': "track3",
+                           'trackType': 'glyph',
+                           'glyphType': 'diamond',
+                           'radius': 155,
+                           'pixel_spacing': 5,
+                           'linear_pixel_spacing': 5,
+                           'glyph_buffer': 5,
+                           'linear_glyph_buffer': 5,
+                           'glyphSize': 40,
+                           'linear_glyphSize': 40,
+                           'linear_height': 100,
+                           'showTooltip': 'true',
+                           'items': promoter_regions
+                           }
+
+        tracks.append(promoter_track)
 
     json_tracks = json.dumps(tracks)
-
-    # print (json_tracks)
 
     return json_tracks
 

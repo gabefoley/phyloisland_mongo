@@ -90,6 +90,11 @@ class GenomeDiagramSelectForm(FlaskForm):
                                                                                                     'hits'),
                                                                    ('expanded', 'Just expanded hits')])
 
+    show_promoters = BooleanField("Show promoters")
+    show_stop_codons = BooleanField("Show stop codons")
+
+
+
 class GenomeDiagramPageForm(FlaskForm):
     untagged = BooleanField("Limit selection to untagged genomes")
     limit_genomes = BooleanField("Limit selection to genomes tagged with:")
@@ -165,6 +170,10 @@ class TagSimpleForm(FlaskForm):
     include_genome = StringField('Only include genomes tagged with - ')
     exclude_hits = StringField('Exclude hits tagged with - ', default='hidden')
     tag_simple = SubmitField("Tag genomes as simple")
+
+class SearchForPromoters(FlaskForm):
+    mismatch = IntegerField("Number of allowable mismatches")
+    search_for_promoters = SubmitField("Search for promoters")
 
 class UpdateTagsForm(FlaskForm):
      old_tag = SelectField('Tag to update', choices=[])

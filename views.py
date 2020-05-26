@@ -845,6 +845,7 @@ class AutomaticTaggingView(BaseView):
     @expose("/", methods=('GET', 'POST'))
     def automatic_tagging(self):
         tag_simple_form = forms.TagSimpleForm()
+        search_for_promoters_form = forms.SearchForPromoters()
         update_tags_form = forms.UpdateTagsForm()
 
         unique_tags = models.GenomeRecords.objects().distinct(field='tags')
@@ -856,7 +857,6 @@ class AutomaticTaggingView(BaseView):
             include_genome = [x.strip() for x in tag_simple_form.include_genome.data.split(",")]
             exclude_hits = [x.strip() for x in tag_simple_form.exclude_hits.data.split(",")]
 
-
             if include_genome == [""]:
                 genomes = models.GenomeRecords.objects()
 
@@ -866,8 +866,16 @@ class AutomaticTaggingView(BaseView):
             for g in genomes:
                 print(g.name)
 
-
             getGenomes.tag_as_simple(genomes, exclude_hits)
+
+        if request.method == "POST" and search_for_promoters_form.search_for_promoters.data:
+            mismatch = search_for_promoters_form.mismatch.data
+            if not mismatch:
+                mismatch = 0
+
+            utilities.search_for_promoters(mismatch=mismatch)
+
+            flash("Finished searching for promoters", category='success')
 
         if request.method == "POST" and update_tags_form.update_tags.data:
             print('update tags')
@@ -929,7 +937,9 @@ class AutomaticTaggingView(BaseView):
 
             flash("Changed all genome tags - " + old_tag + " into " + new_tag, category='success')
 
-        return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form, update_tags_form=update_tags_form)
+        return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form,
+                           search_for_promoters_form=search_for_promoters_form,
+                           update_tags_form=update_tags_form)
 
 
 @app.route("/temp_assoc_fix", methods=['GET', 'POST'])
@@ -980,13 +990,13 @@ class TrimRegionsView(BaseView):
             failed_seqs = utilities.trim_to_profile(regions, profile.profile, trimmed_name)
 
             if failed_seqs:
-                print (failed_seqs)
-                print (profile.name)
-                flash("The following regions did not have a match for " + profile.name + " and so have not been added to "
-                                                                                         "the new file - " + " ".join(failed_seqs), category='error')
+                print(failed_seqs)
+                print(profile.name)
+                flash(
+                    "The following regions did not have a match for " + profile.name + " and so have not been added to "
+                                                                                       "the new file - " + " ".join(
+                        failed_seqs), category='error')
             flash("Regions have been trimmed to " + profile.name + " and saved as " + trimmed_name, category='success')
-
-
 
         if request.method == 'POST' and trim_around_profile_form.trim_around_submit.data:
             if 'Content' not in trim_to_profile_form.trim_around_profile.data:
@@ -1004,9 +1014,7 @@ class TrimRegionsView(BaseView):
                                                                                            "the new file - " + " ".join(
                             failed_seqs), category='error')
 
-
                 flash("Regions have been trimmed and saved as " + trimmed_name, category='success')
-
 
         return self.render('trim_regions.html', trim_to_profile_form=trim_to_profile_form,
                            trim_around_profile_form=trim_around_profile_form)
@@ -1098,6 +1106,15 @@ class GenomeDetailView(BaseView):
         # genome = models.GenomeRecords.objects.get(id=session['genome'])
         if session.get('hits') is None:
             session['hits'] = 'expanded'
+
+        if session.get('hidden_type') is None:
+            session['hidden_type'] = True
+
+        if session.get('show_promoters') is None:
+            session['show_promoters'] = False
+
+        if session.get('show_stop_codons') is None:
+            session['show_stop_codons'] = False
 
         if session.get('hidden_type') is None:
             session['hidden_type'] = True
@@ -1238,12 +1255,12 @@ class GenomeDetailView(BaseView):
         else:
             genome = models.GenomeRecords.objects.get(id=session['genome'])
 
-        print('genome was ')
-        print(genome['species'])
 
         tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
                                                                   hidden_type=session[
-                                                                      'hidden_type'],
+                                                                      'hidden_type'], show_promoters=session[
+                'show_promoters'],
+                                                                  show_stop_codons=session['show_stop_codons'],
                                                                   checked_regions=session['checked_regions'])
 
         associated_dict = utilities.get_associated_dict(genome)
@@ -1265,6 +1282,9 @@ class GenomeDetailView(BaseView):
                            genome_tags=genome['tags'], \
                            hit_type=session['hits'], \
                            hidden_type=session['hidden_type'],
+                           show_promoters=
+                           session['show_promoters'],
+                           show_stop_codons=session['show_stop_codons'],
                            checked_regions=session['checked_regions'],
                            genomesize=genomesize)
 
@@ -2059,14 +2079,18 @@ def show_hits():
     session['untagged'] = request.json['untagged']
     session['limit_genomes'] = request.json['limit_genomes']
     session['genome_tagged'] = [request.json['genome_tagged']]
+    session['show_promoters'] = request.json['show_promoters']
+    session['show_stop_codons'] = request.json['show_stop_codons']
 
     session['passed_from'] = request.json['passed_from']
 
     print('got to show hits')
 
-    print(request.json['genome'])
+    print(request.json['show_promoters'])
 
-    print(request.json['page_choice'])
+    print(request.json['show_stop_codons'])
+
+    print(session['hidden_type'])
 
     return redirect('genomedetail')
 
@@ -2141,6 +2165,13 @@ def update_trees():
     models.TreeRecords.objects(name__nin=keep_trees).delete()
 
     return redirect('regions')
+
+@app.route("/automatic_tagging/clear_all_promoters", methods=['GET', 'POST'])
+def clear_all_promoters():
+    utilities.clear_all_promoters()
+
+    return redirect('automatic_tagging')
+
 
 
 @app.errorhandler(404)

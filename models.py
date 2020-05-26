@@ -60,6 +60,7 @@ class Hits(db.EmbeddedDocument):
     expand = db.BooleanField()
     strand = db.StringField()
     sequence = db.StringField()
+    promoter = db.BooleanField()
     tags = db.ListField(db.StringField(), default=list)
 
 class AssociatedHits(db.DynamicDocument):
