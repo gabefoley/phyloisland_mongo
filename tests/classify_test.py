@@ -203,7 +203,6 @@ def delete_all_tags():
     queries.update(tags=[])
 
     for query in queries:
-        print (query.name)
 
         for hit in query.hits:
             hit.tags = []
@@ -211,3 +210,5 @@ def delete_all_tags():
         query.save()
 
     models.GenomeTags.objects().all().delete()
+
+test_auto_classify()
