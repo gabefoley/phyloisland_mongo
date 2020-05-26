@@ -353,6 +353,15 @@ def download_fasta_regions(region, filename="", include_genome=[], exclude_genom
                     if translate:
                         sequence = sequence.translate()
 
+                    # Correct any potential alternative start codons used to methionine
+
+
+                    sequence = sequence.tomutable()
+
+                    sequence[0] = "M"
+
+
+
                     id_name = hit['name'] + "_information_" + genome['species'].replace(" ", "_") + '_region_' + hit[
                         'region'] + "_" + hit['start'] + "_" + hit['end'] + "_" + hit['strand']
 

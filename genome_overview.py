@@ -323,10 +323,7 @@ def classify_genomes(queries):
                             tcB_start = hit.start
                         elif hit.region == 'TcC_expanded':
                             tcC_start = hit.start
-                    print ('positions')
-                    print (query.name)
-                    print (tcB_start)
-                    print (tcC_start)
+
                     if tcB_start == tcC_start:
                         print("It had TcdA1 or A2 and a fused TcB / TcC so we're classifying it as "
                               "Type 3")
