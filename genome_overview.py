@@ -259,7 +259,7 @@ def write_hits_to_gb(hmm_dict, reference, seqrecord, query_id, species, expand=F
     # seqrecord.seq = Seq(sequence, generic_dna)
     SeqIO.write(seqrecord, output_path, "genbank")
 
-def classify_genomes(queries):
+def classify_genomes_original(queries):
     for query in queries:
         region_names = set([hit.region for hit in query.hits])
         print (f"\nClassifying {query.description}")
@@ -290,6 +290,68 @@ def classify_genomes(queries):
         else:
             print ("It was lacking a TcB and TcC, so we're classifying it as incomplete")
             update_tag(query, "Auto_Incomplete")
+
+def classify_genomes(queries):
+    for query in queries:
+        region_names = set([hit.region for hit in query.hits])
+        print (f"\nClassifying {query.description}")
+        print (f"It has the following regions {region_names}")
+        if set(["TcB", "TcC"]).issubset(region_names):
+            if set(["A1", "A2"]).issubset(region_names):
+                if set(["Chitinase"]).issubset(region_names):
+                    print ("It had A1 / A2 and chitinases, so we're tagging it as Type 2A")
+                    update_tag(query, "Auto_Type2a")
+                    genome_tag = models.GenomeTags(tag_id=query.name, tags=["Auto_Type2a"])
+                    genome_tag.save()
+                else:
+                    print ("It had A1 / A2 but no chitinases, so we're tagging it as Type 2B")
+                    update_tag(query, "Auto_Type2b")
+                    genome_tag = models.GenomeTags(tag_id=query.name, tags=["Auto_Type2b"])
+                    genome_tag.save()
+
+            elif set(["TcdA1"]).issubset(region_names) or set(["A2"]).issubset(region_names):
+                if set("Chitinase").issubset(region_names):
+                    print("It had TcdA1 or A2 but also chitinase, so we're tagging it for further investigation")
+                    update_tag(query, "Auto_Unsure")
+                    genome_tag = models.GenomeTags(tag_id=query.name, tags=["Auto_TcdA1_w_Chitinase"])
+                    genome_tag.save()
+
+                else:
+
+                    for hit in query.hits:
+                        if hit.region == "TcB_expanded":
+                            tcB_start = hit.start
+                        elif hit.region == 'TcC_expanded':
+                            tcC_start = hit.start
+                    print ('positions')
+                    print (query.name)
+                    print (tcB_start)
+                    print (tcC_start)
+                    if tcB_start == tcC_start:
+                        print("It had TcdA1 or A2 and a fused TcB / TcC so we're classifying it as "
+                              "Type 3")
+                        update_tag(query, "Auto_Type3")
+                        genome_tag = models.GenomeTags(tag_id=query.name, tags=["Auto_Type3"])
+                        genome_tag.save()
+                    else:
+
+                        print ("It had TcdA1 or A2 and a split TcB / TcC so we're classifying it as Type 1")
+                        update_tag(query, "Auto_Type1")
+                        genome_tag = models.GenomeTags(tag_id=query.name, tags=["Auto_Type1"])
+                        genome_tag.save()
+
+
+            else:
+                print("It had a TcB and TcC, but was missing either A1 or TcdA1, so we're classifying it as incomplete")
+                update_tag(query, "Auto_Incomplete")
+                genome_tag = models.GenomeTags(tag_id=query.name, tags=["Auto_Incomplete"])
+                genome_tag.save()
+
+        else:
+            print ("It was lacking a TcB or TcC, so we're classifying it as incomplete")
+            update_tag(query, "Auto_Incomplete")
+            genome_tag = models.GenomeTags(tag_id=query.name, tags=["Auto_Incomplete"])
+            genome_tag.save()
 
 
 def delete_genome_tags(queries):

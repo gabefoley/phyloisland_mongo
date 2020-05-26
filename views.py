@@ -672,7 +672,10 @@ class DownloadRegionOrderView(BaseView):
                     include_hits = form.include_hits.data.split(",")
                     exclude_hits = form.exclude_hits.data.split(",")
 
-                    genomes = models.GenomeRecords.objects(tags__in=include_genome)
+                    if include_genome == [""]:
+                        genomes = models.GenomeRecords.objects()
+                    else:
+                        genomes = models.GenomeRecords.objects(tags__in=include_genome)
 
                     getGenomes.write_region_order(genomes, exclude_hits=exclude_hits, save_to_db=form.save_to_db.data)
 
@@ -853,10 +856,16 @@ class AutomaticTaggingView(BaseView):
             include_genome = [x.strip() for x in tag_simple_form.include_genome.data.split(",")]
             exclude_hits = [x.strip() for x in tag_simple_form.exclude_hits.data.split(",")]
 
-            genomes = models.GenomeRecords.objects(tags__in=include_genome)
+
+            if include_genome == [""]:
+                genomes = models.GenomeRecords.objects()
+
+            else:
+                genomes = models.GenomeRecords.objects(tags__in=include_genome)
 
             for g in genomes:
                 print(g.name)
+
 
             getGenomes.tag_as_simple(genomes, exclude_hits)
 
@@ -1055,11 +1064,11 @@ class ChartView(BaseView):
             exclude_vals = labels
 
         if values:
-            max = max(values) + 10
+            maxval = max(values) + 10
         else:
-            max = 10
+            maxval = 10
 
-        return self.render('charts.html', chart_form=chart_form, title='Unique tags', max=max,
+        return self.render('charts.html', chart_form=chart_form, title='Unique tags', max=maxval,
                            labels=labels, values=values,
                            selected_vals=json.dumps(selected_vals), exclude_vals=json.dumps(exclude_vals))
 
@@ -2183,10 +2192,10 @@ admin = Admin(app, 'Phylo Island', base_template='layout.html', url='/', templat
 with warnings.catch_warnings():
     warnings.filterwarnings('ignore', 'Fields missing from ruleset', UserWarning)
 
-    # admin.add_view(UserView(model=models.User, endpoint='user'))
+    admin.add_view(UserView(model=models.User, endpoint='user'))
     admin.add_view(SetupView(name='Setup', endpoint='setup'))
     admin.add_view(UploadView(name='Upload', endpoint='upload_admin'))
-    admin.add_view(SequenceRecordsView(model=models.SequenceRecords, endpoint="sequence_records"))
+    # admin.add_view(SequenceRecordsView(model=models.SequenceRecords, endpoint="sequence_records"))
     admin.add_view(GenomeRecordsView(model=models.GenomeRecords, endpoint="genome_records"))
     admin.add_view(ProfileView(model=models.Profile, name='Profile Records', endpoint='profiles'))
     # admin.add_view(MyModelView(model=models.Profile, name='Profiles', endpoint='models'))
