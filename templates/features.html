@@ -7,6 +7,58 @@
 {% endblock %}
 
 {% block body %}
+
+    <h3>26/05/2020</h3>
+    <h4> Search for promoters </h4>
+
+    <h5>Automatically search for promoters</h5>
+    <ul>
+        <li>Added option in automatic tagging to automatically search for promoters in the sequence content
+            directly before a hit for a Region
+        </li>
+        <li> Pattern is hard-coded at the moment, but a number of mismatches that will be tolerated can be provided
+        </li>
+        <li> Information is just stored as a boolean in the hit as to whether or not the Region contained a promoter
+            that
+            matched
+            the pattern
+        </li>
+
+        <li> Added button on same page to automatically clear all promoter information by turning all of the booleans to
+            False
+        </li>
+    </ul>
+    <h5>Visualise promoters</h5>
+
+    <ul>
+        <li>
+            Genome Detail now allows for visualisation of Regions that contained promoters
+        </li>
+        <li> These are visualised as a diamond glyph at the starting position of the Region</li>
+        <li> Promoter visualisations and stop codon visualisations can now be toggled on and off</li>
+
+    </ul>
+
+
+    <h3>25/05/2020</h3>
+    <h5> Start codons </h5>
+    <ul>
+        <li>Fixed a bug where Regions would map to the first location of a hit, not the first start codon</li>
+        <li>Added TTG and GTG as alternative start codons that are searched for</li>
+        <li> When alternative start codons are used, they are corrected to Methionine if choosing to translate to
+            protein when downloading the FASTA file.
+        </li>
+    </ul>
+    <h5> Updated automatic classifier </h5>
+
+    <ul>
+        <li>Updated the currently hard-coded automatic classifier to allow for checking start positions of Regions</li>
+        <li> Created classify test as a pytest test class and a runnable python file, that will check an ABC toxins
+            data set against previously curated classifications.
+        </li>
+    </ul>
+
+
     <h3>21/05/2020</h3>
     <h4> Trees </h4>
 
@@ -16,15 +68,15 @@
         <li>Visualise fused Regions (where two or more reference profiles map to the same spot on the genome) as a
             joined element when the Region Order diagram is added to a Tree visualisation.
         </li>
-            <li>User can choose to collapse the tree based on the Genome Tags. Tree will be collapsed as far as it
-                can without collapsing a conflicting tag.
+        <li>User can choose to collapse the tree based on the Genome Tags. Tree will be collapsed as far as it
+            can without collapsing a conflicting tag.
         </li>
     </ul>
 
     <h5>Tree downloading</h5>
-        <ul>
+    <ul>
         <li>Trees can now be downloaded from the Trees section.</li>
-        </ul>
+    </ul>
 
 
     <h4> Automatic tagging </h4>
@@ -34,7 +86,8 @@
         <li>User can now batch update a particular genome tag to another.</li>
         <li>Note that currently this updates tags on Genomes and doesn't update tags on Regions. However, it will
             update the tags on Genomes and Regions in the GenomeTags dictionary. So if tags exist on Regions you
-            must currently update those manually </li>
+            must currently update those manually
+        </li>
 
     </ul>
 
