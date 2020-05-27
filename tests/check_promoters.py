@@ -8,7 +8,7 @@ def search_for_promoters(mismatch):
 
     regions = []
 
-    prom_regex = "(TTGACA.{15,18}TATAAT){s<=" + mismatch + "}"
+    prom_regex = "(TTGACA.{15,25}TATAAT){s<=" + mismatch + "}"
 
     for g in genomes:
         # if g.name == "NZ_CP010029.1":
