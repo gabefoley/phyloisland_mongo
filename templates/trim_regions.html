@@ -114,10 +114,20 @@
 
                 <br>
 
-                <input type="checkbox" id="section1" name="section1" value="section1">
-                <label for="section1" id="section1_label"> Include the content from the profile labelled - </label><br>
-                <input type="checkbox" id="section2" name="section2" value="section2">
-                <label for="section2" id="section2_label"> Include the content from the profile labelled - </label><br>
+                {{ trim_around_profile_form.section1 }}
+
+                {{ trim_around_profile_form.section1.label }}
+
+                <br>
+
+                {{ trim_around_profile_form.section2 }}
+
+                {{ trim_around_profile_form.section2.label }}
+
+{#                <input type="checkbox" id="section1" name="section1" value="section1">#}
+{#                <label for="section1" id="section1_label"> Include the content from the profile labelled - </label><br>#}
+{#                <input type="checkbox" id="section2" name="section2" value="section2">#}
+{#                <label for="section2" id="section2_label"> Include the content from the profile labelled - </label><br>#}
 
                 <br>
 
@@ -153,7 +163,7 @@
         var $select = $('#trim_around_profile').selectize({
             delimiter: ',',
             persist: true,
-            plugins: ['drag_drop'],
+            plugins: ['drag_drop', 'remove_button'],
             maxItems: 3,
 
             create: false
@@ -180,28 +190,28 @@
 
             if (section_array.length == 0) {
 
-                                        $("#section1_label").html("Include the content from the profile " +
+                                        $("label[for='section1']").html("Include the content from the profile " +
                                             "labelled - ")
 
-                                        $("#section2_label").html("Include the content from the profile " +
+                                        $("label[for='section2']").html("Include the content from the profile " +
                                             "labelled - ")
 
             }
 
             else if (section_array.length == 1) {
-                                                        $("#section1_label").html("Include the content from the profile " +
+                                                        $("label[for='section1']").html("Include the content from the profile " +
                                             "labelled - " + section_array[0])
 
-                                        $("#section2_label").html("Include the content from the profile " +
+                                        $("label[for='section2']").html("Include the content from the profile " +
                                             "labelled - ")
 
             }
 
             else if (section_array.length ==2 ) {
-                                                        $("#section1_label").html("Include the content from the profile " +
+                                                        $("label[for='section1']").html("Include the content from the profile " +
                                             "labelled - " + section_array[0])
 
-                                        $("#section2_label").html("Include the content from the profile " +
+                                        $("label[for='section2']").html("Include the content from the profile " +
                                             "labelled - " + section_array[1])
 
             }
@@ -219,14 +229,16 @@
             console.log(sections[1])
 
             if (sections.length == 1 ) {
+                                e.preventDefault()
                 alert("You need to add a Profile to trim around. Currently you're just selecting everything in the " +
                     "regions ")
             }
 
 
             if (sections.length == 3 && sections[1] != "Content") {
+                                e.preventDefault()
+
                 alert("If you have three sections selected then Content must be in the middle")
-                e.preventDefault()
 
             };
 

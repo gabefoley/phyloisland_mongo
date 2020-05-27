@@ -233,6 +233,8 @@ class TrimAroundProfileForm(FlaskForm):
     trim_around_region = SelectField('Regions to trim around', choices=[])
     trim_around_name = StringField('Name of new Regions file ', [validators.DataRequired()])
     trim_around_profile = SelectMultipleField('Place content where you would like to trim to :', choices=[])
+    section1 = BooleanField("Include the content from the profile labelled - ")
+    section2 = BooleanField("Include the content from the profile labelled - ")
     trim_around_submit = SubmitField("Trim around profile")
 
 class TreeSelectForm(FlaskForm):
@@ -247,6 +249,7 @@ class TreeSelectForm(FlaskForm):
 
 class BatchDeleteForm(FlaskForm):
     delete_all_tags = SubmitField('Delete all tags')
+    delete_all_hits = SubmitField('Delete all hits')
     # delete_all_region_tags = SubmitField('Delete all tags at the region level')
 
 

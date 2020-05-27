@@ -202,9 +202,16 @@ def add_genome(species_name, categories, single):
 
     try:
 
+        print("Genome retrieval called with following command - ")
+
+        print( "rsync -Lrt -v --chmod=+rwx -p "
+        "rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/assembly_summary.txt %s" % (
+            database, species_name.replace(" ", "_"), "./tmp"))
+
         # Add a v to the end of -Lrt to get verbose print outs to the console
         process = subprocess.Popen(
-                "rsync -Lrt --chmod=+rwx -p rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/assembly_summary.txt %s" % (
+                "rsync -Lrt -v --chmod=+rwx -p "
+                "rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/assembly_summary.txt %s" % (
                     database, species_name.replace(" ", "_"), "./tmp"), stderr=subprocess.PIPE,
                 stdout=subprocess.PIPE, shell=True)
 
@@ -212,9 +219,25 @@ def add_genome(species_name, categories, single):
         errcode = process.returncode
 
         if errcode != 0:
+            print ('Something went wrong')
             print (errcode)
             print (err)
+
             return
+
+            # print ("Trying with wget")
+            #
+            # print("Genome retrieval called with following command - ")
+            # print("wget -O  %s/assembly_summary.txt ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/assembly_summary.txt" %
+            # ("./tmp",
+            #  database, species_name.replace(" ", "_")))
+            #
+            # print ()
+            # process = subprocess.Popen(
+            #     "wget -O  %s/assembly_summary.txt ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/assembly_summary.txt" %
+            #     ("./tmp",
+            #         database, species_name.replace(" ", "_")), stderr=subprocess.PIPE,
+            #     stdout=subprocess.PIPE, shell=True)
 
         summary = pd.read_csv("./tmp/assembly_summary.txt", sep='\t', header=1)
 

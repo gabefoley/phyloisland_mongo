@@ -999,22 +999,66 @@ class TrimRegionsView(BaseView):
             flash("Regions have been trimmed to " + profile.name + " and saved as " + trimmed_name, category='success')
 
         if request.method == 'POST' and trim_around_profile_form.trim_around_submit.data:
-            if 'Content' not in trim_to_profile_form.trim_around_profile.data:
-                flash("'Content' needs to be one of the selected options", category='error')
+
+            regions = models.RegionRecords.objects().get(name=trim_around_profile_form.trim_around_region.data).regions
+            trimmed_name = trim_around_profile_form.trim_around_name.data
+            section1 = trim_around_profile_form.section1.data
+            section2 = trim_around_profile_form.section2.data
+
+            sections = trim_around_profile_form.trim_around_profile.data
+
+            print ("Sections was ")
+            print (sections)
+
+            pos1 = None
+            pos2 = None
+
+            if len(sections) == 3:
+
+                print ("Profile 1 is " + sections[0])
+                print ("Profile 2 is " + sections[1])
+
+                profile1 = models.Profile.objects().get(name=sections[0]).profile
+                profile2 = models.Profile.objects().get(name=sections[2]).profile
+
+                pos1 = 'start' if section1 else 'end'
+
+                pos2 = 'end' if section2 else 'start'
+
+            elif len (sections) == 2:
+                if sections[0] == 'Content':
+                    profile1 = None
+                    profile2 = models.Profile.objects().get(name=sections[1]).profile
+
+                    print("Profile 1 is None" )
+                    print("Profile 2 is " + sections[1])
+                    pos2 = 'end' if section1 else 'start' # Need to check section 1
+
+                elif sections[1] == 'Content':
+                    profile1 = models.Profile.objects().get(name=sections[0]).profile
+                    profile2 = None
+
+                    print("Profile 1 is " + sections[0] )
+                    print("Profile 2 is None")
+
+                    pos1 = 'start' if section1 else 'end' # Need to check section 1
+
+
+
             else:
-                regions = trim_to_profile_form.trim_to_region.data
-                profile = models.Profile.objects().get(name=trim_to_profile_form.trim_to_profile.data).profile
-                trimmed_name = trim_to_profile_form.trim_to_name.data
-                failed_seqs = utilities.trim_to_profile(regions, profile, trimmed_name)
-                failed_seqs = ['fail1', 'fail2']
+                flash ("Incorrect number of sections chosen")
+                return self.render('trim_regions.html', trim_to_profile_form=trim_to_profile_form,
+                               trim_around_profile_form=trim_around_profile_form)
 
-                if failed_seqs:
-                    flash(
-                        "The following regions did not have a match for " + profile.name + " and so have not been added to "
-                                                                                           "the new file - " + " ".join(
-                            failed_seqs), category='error')
 
-                flash("Regions have been trimmed and saved as " + trimmed_name, category='success')
+            failed_seqs = utilities.trim_around_profile(regions, profile1, profile2, pos1, pos2, trimmed_name)
+            if failed_seqs:
+                print(failed_seqs)
+                flash(
+                    "The following regions did not have a match for one of the profiles and so have not been added to "
+                                                                                       "the new file - " + " ".join(
+                        failed_seqs), category='error')
+            flash("Regions have been trimmed and saved as " + trimmed_name, category='success')
 
         return self.render('trim_regions.html', trim_to_profile_form=trim_to_profile_form,
                            trim_around_profile_form=trim_around_profile_form)
@@ -1795,6 +1839,18 @@ def add_tag():
 
     return redirect('genomeoverview')
 
+
+@app.route("/delete_all_hits", methods=['GET', 'POST'])
+def delete_all_hits():
+
+    queries = models.GenomeRecords.objects().all()
+
+    queries.update(hits=[])
+
+
+    models.AssociatedHits.objects().delete()
+
+    return redirect('batch_delete')
 
 @app.route("/delete_all_tags", methods=['GET', 'POST'])
 def delete_all_tags():

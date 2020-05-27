@@ -2,28 +2,19 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block head_tail %}
-{{ super() }}
+    {{ super() }}
 
-<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-{{ JSGlue.include() }}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    {{ JSGlue.include() }}
 
 
 {% endblock %}
 {% block body %}
 
-<div class = "container">
+    <div class="container">
 
-    Warning: The following button will delete all tags from genomes, all tags added to regions within any genome,
-    and all the information within the GenomeTags dictionary.
-    <br>
-    <br>
-    This action cannot be undone.
-    <br>
-    <br>
-    Depending on the size of your database these actions could take several minutes
-    <br>
 
-     <form method="POST"    enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
 
             <div class="smallform">
@@ -31,6 +22,33 @@
 
                 <br>
 
+                <h5>Warning: The following button will delete all hits from genomes as well as the information within
+                    the AssociatedRegions dictionary.
+                    .</h5>
+                <br>
+                This action cannot be undone.
+                <br>
+                <br>
+                Depending on the size of your database this action could take several minutes
+                <br>
+
+                <br>
+                {{ form.delete_all_hits() }}
+
+                <br>
+                <br>
+                <br>
+
+                <h5>Warning: The following button will delete all tags from genomes, all tags added to regions within
+                    any
+                genome,
+                    and all the information within the GenomeTags dictionary.</h5>
+                <br>
+                This action cannot be undone.
+                <br>
+                <br>
+                Depending on the size of your database these actions could take several minutes
+                <br>
                 <br>
 
                 {{ form.delete_all_tags() }}
@@ -41,37 +59,59 @@
 
 
             </div>
-         <br>
+            <br>
 
 
+        </form>
 
- </form>
+    </div>
 
-</div>
+    <script>
 
-<script>
+            $('#delete_all_hits').on('click', function (e) {
+            e.preventDefault()
+
+            console.log('clicked')
+
+            $.ajax({
+                url: Flask.url_for("delete_all_hits"),
+                contentType: 'application/json;charset=UTF-8',
+                type: 'POST',
+                error: function (error) {
+                    console.log(error);
+                },
+                success: function (response) {
+
+                    window.location.reload();
+
+                }
+            });
+
+        });
         $('#delete_all_tags').on('click', function (e) {
             e.preventDefault()
 
             console.log('clicked')
 
-        $.ajax({
-            url: Flask.url_for("delete_all_tags"),
-            contentType: 'application/json;charset=UTF-8',
-            type: 'POST',
-            error: function (error) {
-                console.log(error);
-            },
-            success: function (response) {
+            $.ajax({
+                url: Flask.url_for("delete_all_tags"),
+                contentType: 'application/json;charset=UTF-8',
+                type: 'POST',
+                error: function (error) {
+                    console.log(error);
+                },
+                success: function (response) {
 
-                window.location.reload();
+                    window.location.reload();
 
-            }
+                }
+            });
+
         });
 
-    });
 
-</script>
+
+    </script>
 
 
 

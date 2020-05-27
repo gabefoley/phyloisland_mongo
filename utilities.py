@@ -403,12 +403,9 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, co
         if os.path.isfile(img_path):
             return img_path
 
-def trim_to_profile(regions, profile, trimmed_name):
-
-    fasta_path =  "./tmp/" + trimmed_name + ".fasta"
+def create_pos_dict(regions, profile, trimmed_name, fasta_path):
     profile_path = "./tmp/" + trimmed_name + ".hmm"
     results_outpath = "./tmp/" + trimmed_name + "_results.txt"
-    trimmed_path =  "./tmp/" + trimmed_name  + "_trimmed"
 
     # Write out regions
 
@@ -420,50 +417,23 @@ def trim_to_profile(regions, profile, trimmed_name):
     with open(profile_path, 'wb') as profile_out:
         profile_out.write(profile.read())
 
-    seqs = read_fasta(fasta_path)
 
     # Perform the hmmsearch on the regions file
     os.system('hmmsearch -o' + results_outpath + ' --domT 1 ' + profile_path + " " + fasta_path)
 
+    seqs = read_fasta(fasta_path)
+
     pos_dict = get_pos_dict_from_hmm(results_outpath, seqs)
 
-    trimmed = []
-
-    failed_seqs = []
-
-    for name, seq in seqs.items():
-        if name in pos_dict:
-            print ('trimmo seq')
-            trimmed_seq = seq.seq.tomutable()
-            print (trimmed_seq)
-            print (pos_dict[name][0])
-            print (pos_dict[name][1])
-            trimmed_seq = trimmed_seq[int(pos_dict[name][0]):int(pos_dict[name][1])]
-            trimmed.append(SeqRecord(trimmed_seq, seq.name))
-
-            print (trimmed_seq)
-        else:
-            failed_seqs.append(name)
-
-    print ('trimmed')
-    print (trimmed)
-
-    print ('failed')
-    print (failed_seqs)
-
-    # Write the newly trimmed file to disk
-    createFasta(trimmed, trimmed_path, align=False)
-
-    # Load and save the newly trimmed file
-    with open(trimmed_path + ".fasta", 'rb') as trimmed_seqs:
-        # Load files into database
-        region = models.RegionRecords(name=trimmed_name, regions=trimmed_seqs.read())
-        region.save()
-
-    # Return sequences that failed to have a hmmer match
-    return failed_seqs
+    return pos_dict
 
 def get_pos_dict_from_hmm(path, seqs):
+    """
+    Read in a hmm output file and extract the positions of the hits for a given set of sequences
+    :param path: path of the hmm output file
+    :param seqs: SeqRecord of the sequences we want to search for
+    :return: A dictionary mapping sequence name -> (start position, end position)
+    """
     qresult = SearchIO.read(path, 'hmmer3-text')
 
     pos_dict = {}
@@ -480,24 +450,153 @@ def get_pos_dict_from_hmm(path, seqs):
 
     return pos_dict
 
-def trim_sequence(seqs, pos_dict1=None, pos_dict2=None, pos1='start', pos2='start'):
+def trim_to_profile(regions, profile, trimmed_name):
+    fasta_path = "./tmp/" + trimmed_name + ".fasta"
+    trimmed_path = "./tmp/" + trimmed_name + "_trimmed"
+
+    pos_dict = create_pos_dict(regions, profile, trimmed_name, fasta_path)
+
+    seqs = read_fasta(fasta_path)
+
+    trimmed = []
 
     failed_seqs = []
 
-    if pos_dict1==None:
-        if pos_dict2 == None:
-            raise NameError("Must provide at least one position dictionary")
-        else: # From the start of a sequence to a profile match
 
-            if pos2 == 'start': # Don't include the profile
-                pass
-            elif pos2 == 'end': # Include the profile
-                pass
-    elif pos_dict2 == None: # From a profile match to the end of a sequence
-        pass
 
-    else: # Between two profile matches
-        pass
+    for name, seq in seqs.items():
+        if name in pos_dict:
+            trimmed_seq = seq.seq.tomutable()
+            trimmed_seq = trimmed_seq[int(pos_dict[name][0]):int(pos_dict[name][1])]
+            trimmed.append(SeqRecord(trimmed_seq, seq.name))
+
+            print (trimmed_seq)
+        else:
+            failed_seqs.append(name)
+
+
+    # Write the newly trimmed file to disk
+    createFasta(trimmed, trimmed_path, align=False)
+
+    # Load and save the newly trimmed file
+    with open(trimmed_path + ".fasta", 'rb') as trimmed_seqs:
+        # Load files into database
+        region = models.RegionRecords(name=trimmed_name, regions=trimmed_seqs.read())
+        region.save()
+
+    # Return sequences that failed to have a hmmer match
+    return failed_seqs
+
+def trim_around_profile(regions, profile1, profile2, pos1, pos2, trimmed_name):
+    fasta_path = "./tmp/" + trimmed_name + ".fasta"
+    trimmed_path = "./tmp/" + trimmed_name + "_trimmed"
+
+    if profile1:
+        pos_dict1 = create_pos_dict(regions, profile1, trimmed_name, fasta_path)
+    else:
+        pos_dict1 = None
+
+    if profile2:
+        pos_dict2 = create_pos_dict(regions, profile2, trimmed_name, fasta_path)
+    else:
+        pos_dict2 = None
+
+    seqs = read_fasta(fasta_path)
+    trimmed = []
+    failed_seqs = []
+
+    trimmed, failed_seqs = trim_sequence(seqs, pos_dict1, pos_dict2, pos1, pos2)
+
+
+    # Write the newly trimmed file to disk
+    createFasta(trimmed, trimmed_path, align=False)
+
+    # Load and save the newly trimmed file
+    with open(trimmed_path + ".fasta", 'rb') as trimmed_seqs:
+        # Load files into database
+        region = models.RegionRecords(name=trimmed_name, regions=trimmed_seqs.read())
+        region.save()
+
+    # Return sequences that failed to have a hmmer match
+    return failed_seqs
+
+
+
+
+def trim_sequence(seqs, pos_dict1=None, pos_dict2=None, pos1='start', pos2='start'):
+
+    trimmed = []
+    failed_seqs = []
+
+    for name, seq in seqs.items():
+
+        if pos_dict1==None:
+            if pos_dict2 == None:
+                raise NameError("Must provide at least one position dictionary")
+
+            else: # From the start of a sequence to a profile match
+
+
+
+                if name in pos_dict2:
+
+                    print("From the start of sequence to profile match")
+
+                    print(pos2)
+
+
+                    trimmed_seq = seq.seq.tomutable()
+
+                    trimmed_seq = trimmed_seq[:int(pos_dict2[name][0 if
+                    pos2 == 'start' else 1])]
+
+                    if trimmed_seq:
+                        trimmed.append(SeqRecord(trimmed_seq, seq.name))
+                    else:
+                        failed_seqs.append(name)
+
+                else:
+                    failed_seqs.append(name)
+
+
+        elif pos_dict2 == None: # From a profile match to the end of a sequence
+            if name in pos_dict1:
+                trimmed_seq = seq.seq.tomutable()
+
+                print ("From a profile match to the end of the sequence")
+
+                print (pos1)
+
+                trimmed_seq = trimmed_seq[int(pos_dict1[name][0 if pos1 == 'start' else 1]):]
+                if trimmed_seq:
+                    trimmed.append(SeqRecord(trimmed_seq, seq.name))
+                else:
+                    failed_seqs.append(name)
+            else:
+                failed_seqs.append(name)
+
+        else: # Between two profile matches
+            if name in pos_dict1 and name in pos_dict2:
+
+                print ("Between two sequences")
+
+                print (pos1)
+
+                print (pos2)
+                trimmed_seq = seq.seq.tomutable()
+
+                trimmed_seq = trimmed_seq[int(pos_dict1[name][0 if pos1 == 'start' else 1]):int(pos_dict2[name][ 0 if
+                pos2 == 'start' else 1])]
+                if trimmed_seq:
+                    trimmed.append(SeqRecord(trimmed_seq, seq.name))
+                else:
+                    failed_seqs.append(name)
+            else:
+                failed_seqs.append(name)
+
+    return trimmed, failed_seqs
+
+
 
 
 def search_for_promoters(mismatch):
