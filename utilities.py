@@ -434,8 +434,14 @@ def trim_to_profile(regions, profile, trimmed_name):
     for name, seq in seqs.items():
         if name in pos_dict:
             print ('trimmo seq')
-            print (seq)
-            trimmed.append(seq)
+            trimmed_seq = seq.seq.tomutable()
+            print (trimmed_seq)
+            print (pos_dict[name][0])
+            print (pos_dict[name][1])
+            trimmed_seq = trimmed_seq[int(pos_dict[name][0]):int(pos_dict[name][1])]
+            trimmed.append(SeqRecord(trimmed_seq, seq.name))
+
+            print (trimmed_seq)
         else:
             failed_seqs.append(name)
 
@@ -469,9 +475,7 @@ def get_pos_dict_from_hmm(path, seqs):
         print("ERROR: More HSPs than expected")
 
     for hsp in qresult.hsps:
-        #         print (hsp.hit.id)
-        #         print (hsp.hit_start)
-        #         print (hsp.hit_end)
+
         pos_dict[hsp.hit.id] = (hsp.hit_start, hsp.hit_end)
 
     return pos_dict
@@ -934,6 +938,9 @@ def rename_duplicates(genome_name, old):
             seen[check] = 1
             index[check] = pos
         old[pos] = check + "_" + str(seen[check])
+
+
+
 
     print(index)
 
