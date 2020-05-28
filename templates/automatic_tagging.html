@@ -160,6 +160,15 @@
 
         </div>
     </div>
+    <br>
+    <br>
+
+                    <button name="run_auto_classify_test" class="btn-primary" id="run_auto_classify_test"
+                        type="submit">Run the automatic classifier test</button>
+
+                <br>
+
+
     <script>
 
             $('#clear_all_promoters').on('click', function (e) {
@@ -174,7 +183,27 @@
                     console.log(error);
                 },
                 success: function (response) {
-                    flash('wowers')
+                    window.location.reload();
+                    flash('Cleared')
+
+
+                }
+            });
+
+        });
+
+                        $('#run_auto_classify_test').on('click', function (e) {
+
+
+            $.ajax({
+                url: Flask.url_for("run_auto_classify_test"),
+
+                contentType: 'application/json;charset=UTF-8',
+                type: 'POST',
+                error: function (error) {
+                    console.log(error);
+                },
+                success: function (response) {
                     window.location.reload();
 
 

@@ -886,6 +886,15 @@ class AutomaticTaggingView(BaseView):
 
             models.GenomeRecords.objects(tags=old_tag).update(set__tags__S=new_tag)
 
+            queries = models.GenomeRecords.objects().all()
+
+            for query in queries:
+                for hit in query.hits:
+                    new_tags = [new_tag if x == old_tag else x for x in hit.tags]
+                    query.hits.tags = new_tags
+
+                query.save()
+
             # models.Hits.objects(tags=old_tag).update(set__tags__S=new_tag)
 
 
@@ -1970,6 +1979,8 @@ def update_hit_tags():
 
     hits.save()
 
+
+
     models.GenomeTags.objects().get(tag_id=formatted_hit_name).update(tags=tags)
 
     return redirect('genomedetail')
@@ -2225,6 +2236,12 @@ def update_trees():
 @app.route("/automatic_tagging/clear_all_promoters", methods=['GET', 'POST'])
 def clear_all_promoters():
     utilities.clear_all_promoters()
+
+    return redirect('automatic_tagging')
+
+@app.route("/automatic_tagging/run_auto_classify_test", methods=['GET', 'POST'])
+def run_auto_classify_test():
+    utilities.test_auto_classify()
 
     return redirect('automatic_tagging')
 
