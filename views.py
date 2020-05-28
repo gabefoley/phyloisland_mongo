@@ -886,12 +886,20 @@ class AutomaticTaggingView(BaseView):
 
             models.GenomeRecords.objects(tags=old_tag).update(set__tags__S=new_tag)
 
-            queries = models.GenomeRecords.objects().all()
+            queries = models.GenomeRecords.objects()
 
             for query in queries:
                 for hit in query.hits:
                     new_tags = [new_tag if x == old_tag else x for x in hit.tags]
-                    query.hits.tags = new_tags
+                    print ('new tags was ')
+
+                    tags_unique = list(set(new_tags))
+
+
+                    print (new_tags)
+                    print (tags_unique)
+                    hit.tags = tags_unique
+
 
                 query.save()
 
