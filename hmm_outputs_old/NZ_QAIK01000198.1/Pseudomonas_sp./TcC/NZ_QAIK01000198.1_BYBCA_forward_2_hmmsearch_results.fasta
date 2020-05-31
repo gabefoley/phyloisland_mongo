@@ -1,0 +1,88 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/NZ_QAIK01000198.1/Pseudomonas_sp./TcC/NZ_QAIK01000198.1_BYBCA_forward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_QAIK01000198.1/Pseudomonas_sp./TcC/NZ_QAIK01000198.1_BYBCA_forward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+   1.1e-132  429.6   0.5   3.3e-132  428.0   0.5    1.6  1  NZ_QAIK01000198.1  Pseudomonas sp. HMWF021 NODE_1542_length_1
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_QAIK01000198.1  Pseudomonas sp. HMWF021 NODE_1542_length_10718_cov_11.952976, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  428.0   0.5  3.3e-132  3.3e-132       4     692 ..  249683  250310 ..  249680  250341 .. 0.88
+
+  Alignments for each domain:
+  == domain 1  score: 428.0 bits;  conditional E-value: 3.3e-132
+            TcC_aln      4 slfsktPsvtvldnrgltvreiayhrhPdspdvtseritrhqydarGfltqsadPrlheag.lanlsyltdlagevlrtqgvdagt 88    
+                           sl  +tP++tv d+r+l vr++ay+r  +s    +  itr++yd +G  ++  dPrl+ +  + nl+ + dl g+ l+ ++vdag 
+  NZ_QAIK01000198.1 249683 SLDWRTPTLTVYDSRTLHVRQVAYWRN-ESGARAAALITRQRYDPAGRQVEQWDPRLSGTApRPNLASVYDLNGQPLKVDSVDAGW 249767
+                           56678*********************7.67788899*********************9876266********************** PP
+
+            TcC_aln     89 tvalndaagrpflavsnistaddgtedrsqavtrtwqyedaslpGrllsiteqvtgeaariterfvyagntdaekalnlagqcvsh 174   
+                            + l   a   +   +          +r++     w    + l  rl+++te+++ +    +erf ya +++a+   nl+gq   +
+  NZ_QAIK01000198.1 249768 RLHLPGLANERLQRWD----------QRGN----HWHNRYDPL-LRLVAVTENAQPD----VERFSYA-DSHADAGSNLCGQLTEQ 249833
+                           ****999987765554..........3333....343333333.599*999987765....79****8.5678899********** PP
+
+            TcC_aln    175 ydtaglvqtdsialtgvplsvtrrllkdadnpdavadWqgedasawndllaaetfttlttadatGavltttdakgnlqrvaydvaG 260   
+                           +d+agl + +  +l             +            + + ++  + ++ +fttl   da G+v+  tda g++q+  +dvaG
+  NZ_QAIK01000198.1 249834 FDPAGLLRLQGYTLL-----------AQR-----------THE-SRLFAGETAAFTTLIDHDALGNVVQVTDAGGHRQQSRHDVAG 249896
+                           ******986655442...........221...........111.12223355689******************************* PP
+
+            TcC_aln    261 llsgsWltlkggt..eqvivksltysaagqklreehGnGvvttyeyepetqrlvgikterpaGhasgakvlqdlryeydPvGnvlk 344   
+                            l+  W+ l g +  e vi +   y aagq   +  GnGv + + ++p   rl      r+      +  lqdl y+ydPvGnvl+
+  NZ_QAIK01000198.1 249897 QLQQVWMWLAGASapEPVI-RQSHYNAAGQLTEQLAGNGVRSQWLHDPADGRLS-----RQLARKDQQAALQDLHYTYDPVGNVLQ 249976
+                           ******9999865325555.5558******9999******************96.....44444555667**************** PP
+
+            TcC_aln    345 itndaeetrfWrnqkvvPentyvydslyqlvsatGremanagqqssslpsatvplpidssaytnytrtytydeagnltqirhsapa 430   
+                           i++ +  t ++ nq+v     +vydsly+l  ++G e  ++ qq+  lp    p+pid     nyt  y+yd ++nl+++rh    
+  NZ_QAIK01000198.1 249977 IEDHTLGTVYFANQRVEGKREFVYDSLYRLRECSGFE-GEIPQQTPGLP---QPVPIDPGRRYNYTEHYRYDAGNNLIELRHV--R 250056
+                           ***********************************99.689****9999...699***************************9..7 PP
+
+            TcC_aln    431 tnnsyttditvsdrsnrgvlstltenpadvdalftagGqqkqlqpgq.elvWtarnellkvtpvvr.dgstddsesyrydadsqrv 514   
+                            ++++t ++ +  +snr+v  t  +        f+  G+  +lqpg   l W++r++l +vt ++  +g  dd e y y  + +rv
+  NZ_QAIK01000198.1 250057 EGHNFTQHMVIDPHSNRAVRGTSGDPDPVFSEHFDLHGNLLKLQPGVlPLQWNSRDQLARVTLLQHsNGLPDDDEVYLYS-QGERV 250141
+                           89******************998877777799**************747**************98725678999*****6.568** PP
+
+            TcC_aln    515 lkvsvqktgnstqtqrvlylpglelrttksgeteteslqvitvgeagraqvrvlhwesgkpaeisndqlrysydnligssgleldg 600   
+                            kvs  ++ n t    v ylpgle++t ++g+    +l+vi +  a     r lhw sg+paei+ dqlrys d+  gs++leld+
+  NZ_QAIK01000198.1 250142 SKVSSSHAVNVTHRSEVRYLPGLEIHTRSDGQ----QLHVIVLPGA-----RCLHWLSGQPAEIETDQLRYSLDDHLGSCSLELDR 250218
+                           ****************************9997....5899998765.....89********************************* PP
+
+            TcC_aln    601 dgniisleeyypyGGtavwaarsqveadyktvrysGkerdatGlyyyGyryyqpWaGrWlsadpaGtvdGlnlfrmvrnnPvtlsd 686   
+                              +isle yy +GGta waars+vea ykt+rysG+e da+GlyyyG ryy pW  rW+sadpaG vdGlnl+ +v n P+t +d
+  NZ_QAIK01000198.1 250219 RAGVISLEHYYAFGGTAWWAARSAVEAGYKTIRYSGQEMDASGLYYYGARYYAPWLQRWVSADPAGDVDGLNLYAFVSNGPLTHVD 250304
+                           ************************************************************************************** PP
+
+            TcC_aln    687 edGlas 692   
+                           + G+  
+  NZ_QAIK01000198.1 250305 RTGTSM 250310
+                           ***976 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (1984811 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 9.12u 0.20s 00:00:09.31 Elapsed: 00:00:09.43
+# Mc/sec: 151.97
+//
+[ok]

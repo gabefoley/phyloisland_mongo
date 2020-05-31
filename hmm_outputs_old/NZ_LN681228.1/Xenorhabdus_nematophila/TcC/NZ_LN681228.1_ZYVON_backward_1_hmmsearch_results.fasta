@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/NZ_LN681228.1/Xenorhabdus_nematophila/TcC/NZ_LN681228.1_ZYVON_backward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_LN681228.1/Xenorhabdus_nematophila/TcC/NZ_LN681228.1_ZYVON_backward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------      -----------
+          0 1233.7  17.0          0 1233.3  17.0    1.1  1  NZ_LN681228.1  Xenorhabdus nematophila AN6/1 genome assembly 
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LN681228.1  Xenorhabdus nematophila AN6/1 genome assembly XNC2, plasmid : II
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 1233.3  17.0         0         0       1     697 [.  681656  682342 ..  681656  682366 .. 0.98
+
+  Alignments for each domain:
+  == domain 1  score: 1233.3 bits;  conditional E-value: 0
+        TcC_aln      1 mstslfsktPsvtvldnrgltvreiayhrhPdspdvtseritrhqydarGfltqsadPrlheagla.........nlsyltdlagevlrt 81    
+                       m++ ++s+tPsvtvldnrg+tvreia++rhPd+p+vt+erit +qyda+G ltqs+dPr++e++++         nl+ l++l++++lrt
+  NZ_LN681228.1 681656 MKNFVHSNTPSVTVLDNRGQTVREIAWYRHPDTPQVTDERITGYQYDAQGSLTQSIDPRFYERQQTasdknaitpNLILLSSLSKKALRT 681745
+                       7889************************************************************999*********************** PP
+
+        TcC_aln     82 qgvdagttvalndaagrpflavsnistaddgtedrsqavtrtwqyedaslpGrllsiteqvtgeaariterfvyagntdaekalnlagqc 171   
+                       q+vdagt val+d+agrp+lavs            +++v+rt+qye+++lpGrll+iteqv+ge+a+iter++++gnt aek +nlagqc
+  NZ_LN681228.1 681746 QSVDAGTRVALHDVAGRPVLAVS------------ANGVSRTFQYESDNLPGRLLTITEQVKGENACITERLIWSGNTPAEKGNNLAGQC 681823
+                       ***********************............899**************************************************** PP
+
+        TcC_aln    172 vshydtaglvqtdsialtgvplsvtrrllkdadnpdavadWqgedasawndllaaetfttlttadatGavltttdakgnlqrvaydvaGl 261   
+                       v hyd++g++qt+si+lt++pls+t++llkd    d++adW+g+d+s w+++la+e+ft+++t+datG+vlt+tda+gn+qr+aydvaGl
+  NZ_LN681228.1 681824 VVHYDPTGMNQTNSISLTSIPLSITQQLLKD----DSEADWHGMDESGWKNALAPESFTSVSTTDATGTVLTSTDAAGNKQRIAYDVAGL 681909
+                       *******************************....788**************************************************** PP
+
+        TcC_aln    262 lsgsWltlkggteqvivksltysaagqklreehGnGvvttyeyepetqrlvgikterpaGhasgakvlqdlryeydPvGnvlkitndaee 351   
+                       l+gsWl+lkg++eqvivksltysaa+qklreehGnG+vtty+yepetqr++gikterp+Gha+g+k+lq+lryeydPvGnvlk tndae 
+  NZ_LN681228.1 681910 LQGSWLALKGKQEQVIVKSLTYSAASQKLREEHGNGIVTTYTYEPETQRVIGIKTERPSGHAAGEKILQNLRYEYDPVGNVLKSTNDAEI 681999
+                       ****************************************************************************************** PP
+
+        TcC_aln    352 trfWrnqkvvPentyvydslyqlvsatGremanagqqssslpsatvplpidssaytnytrtytydeagnltqirhsapatnnsyttditv 441   
+                       trfWrnqk+vPenty+ydslyqlvs+tGreman+g+q+++lp   +p+ id+++ytny+rty+yd++gnlt+irh++p+t+n+ytt++tv
+  NZ_LN681228.1 682000 TRFWRNQKIVPENTYTYDSLYQLVSVTGREMANIGRQKNQLP---IPALIDNNTYTNYSRTYDYDRGGNLTRIRHNSPITGNNYTTNMTV 682086
+                       ******************************************...9******************************************** PP
+
+        TcC_aln    442 sdrsnrgvlstltenpadvdalftagGqqkqlqpgqelvWtarnellkvtpvvrdgstddsesyrydadsqrvlkvsvqktgnstqtqrv 531   
+                       sd+snr+vl++l+++p++vd+lft+gG+q++l+pgq+l+Wt+r+el++v+ v+r+++t d+e yrydadsqrv+k+++qktgns+q+qr+
+  NZ_LN681228.1 682087 SDHSNRAVLEELAQDPTQVDMLFTPGGHQTRLVPGQDLFWTPRDELQQVILVNRENTTPDQEFYRYDADSQRVIKTHIQKTGNSEQIQRT 682176
+                       ****************************************************************************************** PP
+
+        TcC_aln    532 lylpglelrttksgeteteslqvitvgeagraqvrvlhwesgkpaeisndqlrysydnligssgleldgdgniisleeyypyGGtavwaa 621   
+                       lylp+le+rtt sg+t +e lqvitvge+g+aqvrvlhwe+gkpa+isndqlrysy nligssgleld+dg+iis+eeyypyGGtavwaa
+  NZ_LN681228.1 682177 LYLPELEWRTTYSGNTLKEFLQVITVGESGQAQVRVLHWETGKPADISNDQLRYSYGNLIGSSGLELDSDGQIISQEEYYPYGGTAVWAA 682266
+                       ****************************************************************************************** PP
+
+        TcC_aln    622 rsqveadyktvrysGkerdatGlyyyGyryyqpWaGrWlsadpaGtvdGlnlfrmvrnnPvtlsdedGlasvkelk 697   
+                       rsq+eadyktvrysGkerdatGlyyyGyryyq+W+GrWls+dpaG+vdGlnlfrm+rnnP+++sd+dG+++ + + 
+  NZ_LN681228.1 682267 RSQSEADYKTVRYSGKERDATGLYYYGYRYYQSWTGRWLSVDPAGEVDGLNLFRMCRNNPIVFSDSDGRFPGQGVL 682342
+                       *********************************************************************9944333 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (1528887 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 7.53u 0.18s 00:00:07.71 Elapsed: 00:00:08.14
+# Mc/sec: 135.61
+//
+[ok]

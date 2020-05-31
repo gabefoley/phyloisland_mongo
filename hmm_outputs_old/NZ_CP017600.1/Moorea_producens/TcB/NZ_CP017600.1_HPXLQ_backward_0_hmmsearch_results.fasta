@@ -1,0 +1,202 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcB_profile.hmm
+# target sequence database:        hmm_outputs/NZ_CP017600.1/Moorea_producens/TcB/NZ_CP017600.1_HPXLQ_backward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_CP017600.1/Moorea_producens/TcB/NZ_CP017600.1_HPXLQ_backward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_alignment  [M=1483]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------      -----------
+          0 1700.3  25.9   3.7e-230  752.6   2.5    5.1  3  NZ_CP017600.1  Moorea producens PAL-8-15-08-1 strain PAL 15AU
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP017600.1  Moorea producens PAL-8-15-08-1 strain PAL 15AUG08-1 plasmid unnamed, complete sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  635.8   0.0  6.2e-195  6.2e-195       6     800 .. 1099268 1100060 .. 1099265 1100074 .. 0.90
+   2 !  139.1   5.4   4.8e-45   4.8e-45     808    1239 .. 1100120 1100545 .. 1100107 1100558 .. 0.83
+   3 !  752.6   2.5  3.7e-230  3.7e-230       4    1225 .. 2241858 2243032 .. 2241855 2243063 .. 0.88
+
+  Alignments for each domain:
+  == domain 1  score: 635.8 bits;  conditional E-value: 6.2e-195
+  TcB_alignment       6 elsitelslPkGGGaikGmGealtaaGpdGmaslslPlPisaGrGvaPalslnyssgaGngpfGlGWqcgvmaisrrtskGvPkyeee 93     
+                        +++ t+lslPkGGGai+G+Ge+++a    G asls+P+  s+ rG  P++s+ yssg+Gng+fGlG+  ++  isr+tskG+P+y++ 
+  NZ_CP017600.1 1099268 QITATQLSLPKGGGAIQGIGETFQASEFTGTASLSIPIGTSSCRGFEPKISVDYSSGSGNGSFGLGFSLSIPNISRKTSKGLPQYDGY 1099355
+                        67889*********************************************************************************** PP
+
+  TcB_alignment      94 dtflgPeGevlavalnekgqpdirsesklqgvtleasytvtryqsrlisdfskleywqpakeeeekdfWliyspdGqvhllGktaqar 181    
+                        dtfl  +G+ l+ ++   g +  r       ++ +++ytv +y++r++  f+++e w      e+ +fW i+s+d  + ++Gkt+++r
+  NZ_CP017600.1 1099356 DTFLIFNGDDLVPIV---GGKRER-------ISHNIKYTVISYRPRTEGLFAQIEQWI---APEGDSFWRIVSSDNVTSIFGKTENTR 1099430
+                        ********9887653...333333.......445689********************9...557789********************* PP
+
+  TcB_alignment     182 ianpeeetqiaqWlleesvtptgehiyyqyraeddagcdedelaahpeataqrylakvkyGnitpseslfvldeeapakeeWlfhlvf 269    
+                        i ++e+ ++i +Wll e+  p+g+++ y+y++e+  +  +d  +   ++t+ +y++++kyGn+tp       +e + + e+Wlf +vf
+  NZ_CP017600.1 1099431 IFDSENPSHIFEWLLSETFNPSGDRVVYEYKSENIDNVPNDLCEVNRSQTSNKYIERIKYGNVTPF------QEGQNQVEQWLFEVVF 1099512
+                        **********************************9999999999999****************994......57788899******** PP
+
+  TcB_alignment     270 dyGerssslkevPefaatekWlvrpdrfsryeyGfevrtrrlcrqvlmfhrlqalageakaeetpalvsrlildydenasvstlvavr 357    
+                        dyGe   +l++   ++  ++W+ r+d fs y+ Gfe+rt rlcr vlmfhr +a     +   +p lv+   ++yde  +vs+++ v 
+  NZ_CP017600.1 1099513 DYGEY--NLDSDTPYRPVQSWTNRQDPFSTYHAGFEIRTHRLCRSVLMFHRFEA-----EFGSEPILVKATRFSYDETPIVSLMTGVE 1099593
+                        ***97..5777778*************************************976.....55678************************ PP
+
+  TcB_alignment     358 rlaheedg...tpvtlpPleldyqrfdkekaak....WqeldelenlnalqryqlvdlkGeGlpGilyqdkkaWwyrapqrqee.eds 437    
+                         +++  ++   ++ +lpPle++y +f+++++a      ++ + l  l+   +y l+dl+GeG+pGily d k+  y  p  +e+ +d 
+  NZ_CP017600.1 1099594 SVGYSYENgkyQTKSLPPLEFKYTEFKPTNHAFepllSEKGEFLPGLDLPPNYSLIDLYGEGIPGILYSDGKTTLYWEPEAKENgKDG 1099681
+                        **97544312345679***********99875422224455679999************************99999888766655999 PP
+
+  TcB_alignment     438 navtyekikplpkiP...alq.dnaslldinGdGkldWvitaaGlrGyhsqkpdgeWtrfiPlsalPveyfhPraqladltgaGlsdl 521    
+                         av+y+  ++  + P   ++q  +  l+d+ G+G+++ v++     Gy+  ++d  W +f  + ++P++++ P+ ql d+tg Gl+d+
+  NZ_CP017600.1 1099682 AAVSYSPPQTPQAFPierNVQgATQRLMDLTGNGQMNLVVSRGTTTGYYEANSDRTWQSFQTFPSFPTDFSNPENQLLDMTGDGLTDI 1099769
+                        *****988777666621144434568************************************************************** PP
+
+  TcB_alignment     522 vliGPksvrlya.nerdgfkkgqdvvqsdditlPvpGadarklvafsdvlGsgqqhlvevsadkvtcWPnlGhGrfGqpltlpGfsqs 608    
+                          +    + +y  + ++gf +  +  +++di+l  +G++ +++  f+d+ G+g qhlv v+   v+cWP lG+G+fGq + l+   + 
+  NZ_CP017600.1 1099770 LRMDSDRIWIYPgKGKEGFGSPFSRNNKNDIPLARKGSE-SEIWQFTDIFGTGMQHLVRVTNGMVECWPSLGYGKFGQRVLLDHAPRF 1099856
+                        ***99999999725699******************9986.5799******************************************** PP
+
+  TcB_alignment     609 eeefnpdrvyladldGsGttdliyvhserleiylnesGnkfaapltl..alPd..gv...........rfddtcqlqvadiqGlGvas 681    
+                         +++++ r++ladldGsGt+dliyvhs+r+ei+ n+sGn+f++p+t+  ++P+  g+           ++d   q++ adi G G++ 
+  NZ_CP017600.1 1099857 GKQMDASRLFLADLDGSGTADLIYVHSDRVEIWFNQSGNSFSEPITIplQFPSseGLgvgwagggfpsKWDPLNQIRFADIYGNGTTC 1099944
+                        ********************************************99633678533322233444344478999*************** PP
+
+  TcB_alignment     682 liltvPhmapkhWrldltk.akPwllnevnnnmGaettllyrssaqfWldekaqaeeagktpvsylPfpvhllwrtevldeisgnrlv 768    
+                        l+++  h++p+hW +d+ + +kP+llne+nnn G++ t++y ss++f+l++k++    g+  + +lPfpv ++ +te  d isg ++v
+  NZ_CP017600.1 1099945 LVFSDNHIKPRHWCYDFCQrRKPYLLNEINNNLGSKSTITYCSSTKFYLEDKKK----GNPWIVNLPFPVQVVEKTESFDLISGSKMV 1100028
+                        ****************976279*****************************975....7999************************** PP
+
+  TcB_alignment     769 seleyahGaWdgrerefrGfgrveqtdtdela 800    
+                        s++ y hG +dg erefrGfg ve++d+++l 
+  NZ_CP017600.1 1100029 SSYAYHHGYYDGVEREFRGFGLVERRDAETLE 1100060
+                        ***************************99876 PP
+
+  == domain 2  score: 139.1 bits;  conditional E-value: 4.8e-45
+  TcB_alignment     808 tapsltksWfatGlee....vdealsaeyWrgdkqafagftprftrydeasgkdvaltedeeeryWlnralkgqllrselyglddtek 891    
+                         +p ltk+W+ tG  +    + ++ ++ey++gd+qa++  ++ f+  +   + d    ++++++yW   +lkg++lr+e+ygld+++ 
+  NZ_CP017600.1 1100120 VPPILTKTWYHTGAWQrygsLSRQYEKEYFQGDSQAYQFPDSIFADLNG--EVD---AQTSRQAYW---TLKGMVLREEVYGLDGSDL 1100199
+                        57899********7542222889999***********998988887776..333...3567899**...69***************** PP
+
+  TcB_alignment     892 aeiPytvtesrlqvrllqsa.keeepavwvsviesrsykyeriasdPqcsqqivlksdafGqplksveiayprrekpaespyPdtlpd 978    
+                        ++ Py+vte+ + v+llq + ++++ + +v   e+ sy+yer  +dP++s+q vlk d++G  l+s  +ay rr+   +  +P+ lp 
+  NZ_CP017600.1 1100200 EDKPYAVTETNYHVKLLQPKgDNKYGVYFVEPRETLSYHYERNPDDPRISHQFVLKVDEYGNVLRSCTVAYGRRQPTPNPTHPQPLPG 1100287
+                        *****************8661666778889999*****************************************88777789****97 PP
+
+  TcB_alignment     979 tlfdssyd..dqqqllrltrqkssyhhltdeeervlglpdaersdvftyeaekvpaeglsleallkedsliaddkaaeylgqqrvayt 1064   
+                           +   +   + ++l l    ++   ++ ++  +lg+p  + s  +t  a k  ++ +s+  + +    ++++ a++ l+ qr  y 
+  NZ_CP017600.1 1100288 GEQEGNQEgnVRPEQLSLKVVSEENRFINRKDINLLGVPLENNSYEITNLALKSGEQYFSFAEVDDYLEQVLESDASRLLSWQRHYYW 1100375
+                        655544331134456666666666677899999******99999999999999999********9999999999999**********9 PP
+
+  TcB_alignment    1065 agqset..plekptlqalvaftetavldes.slkafdgvleedelektle.eaGyqqvkrlfeeeaeskvWvarkgytdygdaaqfyr 1148   
+                        + ++e+  p  + + +al+  te a++  +   +af  +l++++le+ l+ e+Gyq ++         + W        y++a++f+ 
+  NZ_CP017600.1 1100376 SPEQEKslPWGEVSPEALLYQTEVAEFYREqVQEAFTSALTQEQLEDLLSrEGGYQLKE---------NYWWNPGLTQTYNSADKFFL 1100454
+                        877766115567788999999****997550567**************97357787643.........345444444569******** PP
+
+  TcB_alignment    1149 plaqrntlltGkttltWdthycvviktqdaagltt.qakydyrfltpvqltdindnqhlvtldalGrvvssrfwGtenGkktGysspe 1235   
+                        p+a  +  +   tt ++d++    +k++da    +   + dy+ l  +++ din+n + v +d +G v+ + f+GtenG+++G+ + e
+  NZ_CP017600.1 1100455 PKATIDP-FGNATTYDYDAYNLLTVKVTDALSNEMvVENVDYQTLQVQRIRDINQNISEVLFDPMGMVTVTSFYGTENGESQGFGPLE 1100541
+                        *998765.6678999***************8776515689********************************************9888 PP
+
+  TcB_alignment    1236 ekpf 1239   
+                        + + 
+  NZ_CP017600.1 1100542 DYQI 1100545
+                        7655 PP
+
+  == domain 3  score: 752.6 bits;  conditional E-value: 3.7e-230
+  TcB_alignment       4 sqelsitelslPkGGGaikGmGealtaaGpdGmaslslPlPisaGrGvaPalslnyssgaGngpfGlGWqcgvmaisrrtskGvPkye 91     
+                         ++++ t+lslPkGGGai+G+Ge+++a    G a ls+P+P +  rG  P+ls++yssg+Gng fGlG+  ++  isr+tskG+Pky+
+  NZ_CP017600.1 2241858 NSKITTTQLSLPKGGGAIQGIGETFQANEFTGTAGLSIPIPTTPCRGFEPQLSVQYSSGSGNGLFGLGFALAIPNISRKTSKGLPKYD 2241945
+                        4578999********************************************************************************* PP
+
+  TcB_alignment      92 eedtflgPeGevlavalnekgqpdirsesklqgvtleasytvtryqsrlisdfskleywqpakeeeekdfWliyspdGqvhllGktaq 179    
+                        ++dtf+  + + l+ +                g + + sy +t+yq+r++  f+k+e w   ++++++++W + s d  +  +Gktaq
+  NZ_CP017600.1 2241946 GTDTFILSNADDLVPV----------------GNRTQGSYDITSYQPRTEGLFAKIEQWC--DRTTGASYWQVISKDNITSRYGKTAQ 2242015
+                        *****87777766655................2233458********************9..788999******************** PP
+
+  TcB_alignment     180 arianpeeetqiaqWlleesvtptgehiyyqyraeddagcdedelaahpeataqrylakvkyGnitpseslfvldeeapakeeWlfhl 267    
+                        ari++pe+e+++ +Wllees  ++g+ i y+y+ e+ +g +++  ++  ++ta +yl+k++yGn +p +      ++  ++ eW f +
+  NZ_CP017600.1 2242016 ARISDPENENHVFEWLLEESFDAKGNYIIYRYKPENTQGVTSSIYETNRTQTANKYLEKIQYGNDQPLQP-----GDDLSSVEWHFEV 2242098
+                        ****************************************************************999764.....55667899***** PP
+
+  TcB_alignment     268 vfdyGerssslkevPefaatekWlvrpdrfsryeyGfevrtrrlcrqvlmfhrlqalageakaeetpalvsrlildydenasvstlva 355    
+                        +fdyGe + + +++  ++   +W+ r d fs y+ Gfe+rt rlcr vlmfhr + l+       +p lv+   ++y e+a+++ l+a
+  NZ_CP017600.1 2242099 IFDYGEYNIDPTNTTPYEPVREWKNRLDPFSTYHAGFEIRTHRLCRHVLMFHRFAELD------SEPVLVHATGFHYREDANITFLTA 2242180
+                        ******************************************************9986......57********************** PP
+
+  TcB_alignment     356 vrrlah..eedg.tpvtlpPleldyqrfdkekaakWqel.delenln...alqryqlvdlkGeGlpGilyqdkkaWwyrapqrqeeed 436    
+                        +  +++  e+ g ++ +lpPle++y  f++e ++ ++++  e  ++       +yq++dl+GeG+pG+ly+d ++  y  p  + +e+
+  NZ_CP017600.1 2242181 AEAIGYryENPGyQTKSLPPLEFQYTPFQPEGHN-FEPFlGEDSQFLpglISSEYQILDLYGEGIPGVLYNDGTTTLYWEPAAN-GEE 2242266
+                        ****97225555356689************9884.5554144445531214689*******************99999999865.679 PP
+
+  TcB_alignment     437 snavtye...kikplpkiPalqdnaslldinGdGkldWvitaaGlrGyhsqkpdgeWtrfiPlsalPveyfhPraqladltgaGlsdl 521    
+                        ++av y+   + ++lp      dn +l+d+ G+G+ld v++++ + Gy+ +k+d  W  f  + a+  e+  P +ql+d+tg Gl dl
+  NZ_CP017600.1 2242267 TQAVRYNppqQPQSLPIAYGKTDNQQLIDLTGNGRLDLVVSSPNVSGYYEVKSDRTWQGFQTFPAFANEFLEPDSQLTDITGDGLLDL 2242354
+                        99****8222445677777788****************************************************************** PP
+
+  TcB_alignment     522 vliGPksvrlyane.rdgfkkgqdvvqsdditlPvpGa.darklvafsdvlGsgqqhlvevsadkvtcWPnlGhGrfGqpltlpGfsq 607    
+                          +    +++y  + ++gf  g  ++q+ +  lP + + d ++ + f+d+ G+g+qhlv +++  v+cWP lG+G+fG+ +tl     
+  NZ_CP017600.1 2242355 LRLESDRIKVYPGKgKAGF--GPAIIQQPENDLPNQKKgDRTEALRFADIFGTGRQHLVRIKSGLVECWPSLGYGKFGKKVTLGNAPS 2242440
+                        ***********86526777..5668888888999876526678899**************************************9999 PP
+
+  TcB_alignment     608 seeefnpdrvyladldGsGttdliyvhserleiylnesGnkfaa.pltlalPdgvrfddtcqlqvadiqGlGvasliltvPhmapkhW 694    
+                            f+  r++l d+dGsGt+d++yv+s+r+ei+ n+sGn+f + plt+ lP++  +++  q+  ad+ G G++ li++     p+hW
+  NZ_CP017600.1 2242441 FGIDFDISRLFLLDIDGSGTADILYVKSDRVEIWFNQSGNSFREtPLTIYLPSN--WNNLDQISFADVYGNGTTCLIFSEETPRPRHW 2242526
+                        9*****************************************7549******96..678889************************** PP
+
+  TcB_alignment     695 rldltk.akPwllnevnnnmGaettllyrssaqfWldekaqaeeagktpvsylPfpvhllwrtevldeisgnrlvseleyahGaWdgr 781    
+                         +d+ + +kP llne  nn Ga t ++y +s++++l++k+    +g+  +++lPfpv ++ + e  d is  +lvs+++y hG +dg 
+  NZ_CP017600.1 2242527 CYDFCQrTKPHLLNETDNNLGATTRITYGTSTKYYLEDKQ----NGQPWITNLPFPVQVIEKVESWDAISQTKLVSSYSYHHGYYDGV 2242610
+                        ***97538******************************97....589***************************************** PP
+
+  TcB_alignment     782 erefrGfgrveqtdtdelaqgtaaertapsltksWfatGleevdealsa....eyWrgdkqafagftprftrydeasgkdvaltedee 865    
+                        eref Gfg++e+ d+++l++  ++   +p l+k+W+ tG  + +e ls+    ey++gd  a++  ++   ++d  +g+     +d+e
+  NZ_CP017600.1 2242611 EREFFGFGMIERLDAETLSSHAQPYDVPPVLSKTWYHTGAWQGEESLSKqyepEYFQGDPAAHQFPDS---VFDA-NGQ----EPDSE 2242690
+                        **************************************986655555442222899999988765444...4555.222....24444 PP
+
+  TcB_alignment     866 eryWlnralkgqllrselyglddtekaeiPytvtesrlqvrllqsa.keeepavwvsviesrsykyeriasdPqcsqqivlksdafGq 952    
+                             +ralkg++lr+elyg+dd++++  Py+vt+s ++v+l+q + ++++ + +v   es +y yer  +dP++ ++ vl+ d++G 
+  NZ_CP017600.1 2242691 TWREAHRALKGMVLREELYGKDDSAQQANPYSVTQSNYRVKLIQPKgENKYGIYFVHPQESLTYDYERNPADPRMGHEFVLEVDQYGN 2242778
+                        444568*************************************9761555667788999***************************** PP
+
+  TcB_alignment     953 plksveiayprrekpaespyPdtlpdtlfdssyddqqqllrltrqkssyhhltdeeervlglpdaersdvftyeaekvpaeglsleal 1040   
+                         l   ++ay rr+ ++         d+l+       q +l++t+   s+   t ++ ++lg+p+ +rs  ++  +    ++ + + ++
+  NZ_CP017600.1 2242779 VLGACAVAYGRRPGSQ---------DQLL------EQFSLKITYSADSFINQT-QDFYLLGVPQDNRSYEIKNLSLPSGQQYFAFADV 2242850
+                        ************8765.........4455......377899999999998765.56789****9999855555555555677888888 PP
+
+  TcB_alignment    1041 lkedsliaddkaaeylgqqrvaytagqset....plekptlqalvaftetavldessl.kafdgvleedelektleeaGyqqvkrlfe 1123   
+                        +++   ++d+ ++  l+ qr  y + +se+    pl +   qal    e a+++ +++ +af+g+l++d+l++ le+ G         
+  NZ_CP017600.1 2242851 KDHLEEVTDSPETPLLSWQRHYYWNPESEEeeffPLGQVGPQALPYRREIAEFSPEQVeAAFEGALTKDKLDQLLENQGSYVL----- 2242933
+                        8888999999999**********9988877112244555667887789*****97766268***************9884332..... PP
+
+  TcB_alignment    1124 eeaeskvWvarkgytdygdaaqfyrplaqrntlltGkttltWdthycvviktqdaagltt.qakydyrfltpvqltdindnqhlvtld 1210   
+                            ++ W  + +   y+  +qfy p+a  +    G t  ++d +    +k++da +  t   + dy+ l p+++ din n + v +d
+  NZ_CP017600.1 2242934 ---ANNYWWNQGSTQAYNPGDQFYLPQATTDPFGNG-TRYEYDGYNLLGVKVTDALNNETlVQAIDYQTLQPQRIRDINHNISEVLFD 2243017
+                        ...3467888888889**********9988776666.6789****9999******8766515569*********************** PP
+
+  TcB_alignment    1211 alGrvvssrfwGten 1225   
+                         lG v+ +  +Gte 
+  NZ_CP017600.1 2243018 PLGMVTVTSHYGTEP 2243032
+                        *************95 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1483 nodes)
+Target sequences:                            1  (3236218 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 31.32u 0.50s 00:00:31.82 Elapsed: 00:00:32.14
+# Mc/sec: 149.33
+//
+[ok]

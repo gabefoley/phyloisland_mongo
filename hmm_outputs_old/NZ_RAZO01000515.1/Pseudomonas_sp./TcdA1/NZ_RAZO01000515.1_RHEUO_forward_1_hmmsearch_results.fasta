@@ -1,0 +1,110 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcdA1_profile.hmm
+# target sequence database:        hmm_outputs/NZ_RAZO01000515.1/Pseudomonas_sp./TcdA1/NZ_RAZO01000515.1_RHEUO_forward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_RAZO01000515.1/Pseudomonas_sp./TcdA1/NZ_RAZO01000515.1_RHEUO_forward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcdA1_alignment_muscle  [M=2503]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+   4.5e-154  501.0   2.6   1.5e-111  360.0   8.4    3.0  2  NZ_RAZO01000515.1  Pseudomonas sp. Sample_9 NODE_2563_length_
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_RAZO01000515.1  Pseudomonas sp. Sample_9 NODE_2563_length_960_cov_19.849724, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  118.2   0.0   1.2e-38   1.2e-38     925    1201 ..  319749  320027 ..  319740  320069 .. 0.89
+   2 !  360.0   8.4  1.5e-111  1.5e-111    1761    2434 ..  320310  320979 ..  320297  321072 .. 0.88
+
+  Alignments for each domain:
+  == domain 1  score: 118.2 bits;  conditional E-value: 1.2e-38
+  TcdA1_alignment_muscle    925 avldeslsaalsayylknvapee...valksRddLYsylLiDnqvsaavkttriaeAiAsiqLYvnraLerieenadsavs 1002  
+                                + l e++ +al++y l +  ++      +k+ d+L + l +D     +v  +  aeAi   q ++n a  + e+  +++  
+       NZ_RAZO01000515.1 319749 NDLLEQRRTALTEYCLGHFGESGgrfSIMKNADHLNELLRLDSLDTQKVPSALGAEAISCAQKFINAAYRKLEPGYSKTEF 319829
+                                55668889999999999887765222567899************************************************* PP
+
+  TcdA1_alignment_muscle   1003 srqfFtdWdtynkrYstWagvsqLvYYPenYiDPtlRigqtkmmdellqsvsqsqltsdtvedaFktYltrfeevAnLkvv 1083  
+                                  +  + W+ y ++Ys W+++  L  YPenY+ P  R   t++ ++l+ +++q++l++d+v  a ++Yl +fee  nL+vv
+       NZ_RAZO01000515.1 319830 PEEDLKRWELY-RNYSDWSALMSLLVYPENYMTPFARPRTTRLFQALMTDLNQTRLSTDSVLIALRNYLKSFEETCNLEVV 319909
+                                ********766.78******************************************************************* PP
+
+  TcdA1_alignment_muscle   1084 saYHDnvnseqGltyfiGksreeaeeyyWRsvDisklsdGk.laanAWseWkkidcalnpykdliRPvifksRLylvWlek 1163  
+                                sa+  + +  +G  +++G+ r +   y+WR++ i+       +   AW+eW+ id+  +     +RPv ++ R  lvW e 
+       NZ_RAZO01000515.1 319910 SAFMHGTSAVDGRYFIVGRERVAPYRYFWREAQIELTPTCTcVNPAAWNEWELIDVGATGTVLDVRPVFWNGRPCLVWAEL 319990
+                                ***********************************998876256789********************************** PP
+
+  TcdA1_alignment_muscle   1164 kevakeegndkvketeryeLklahiryDgtWsaPlsfd 1201  
+                                 +   e+g+d    ++   + +a+   +g Ws   +++
+       NZ_RAZO01000515.1 319991 ADKLGEKGKDGYVPYK-VSINIAFRSQNGDWSPATNLQ 320027
+                                9999989999888887.899***********9766655 PP
+
+  == domain 2  score: 360.0 bits;  conditional E-value: 1.5e-111
+  TcdA1_alignment_muscle   1761 FsganalYfWelFYYtPmlvaqRlLqeqkFdeatrWlkYvwnpaGYi.vngeiqe....yqWnvRPLeedtsWnadpLDsv 1836  
+                                F+gan lYfWelF+    lva R+ +e+++ ea+ W + v++p+    v + +q+      W +RPL        + L   
+       NZ_RAZO01000515.1 320310 FNGANGLYFWELFFHLIHLVAIRFRDENRYREAEAWWRRVFDPQATAqVSDPPQPgdkpDYWRCRPLVSPGNAGPECLVED 320390
+                                *******************************************876525666554222257**********999******* PP
+
+  TcdA1_alignment_muscle   1837 DPDAvAqaDPmHYkvatFmrlldlLiarGDaaYRqLeRDtLneAkmWYvqaLelLGdepylslsaqWsePsLekaAdettq 1917  
+                                DP A+  a P H+++ tFm+++  L+  GD  YRq +RD+L  Ak  Y qa +l+Gd p  ++ ++W+  +L +  d+  +
+       NZ_RAZO01000515.1 320391 DPYAISYAAPQHFQILTFMEFVKNLVEEGDWYYRQQTRDSLVLAKECYQQAQDLMGDPPSARSVTDWQTQTLGALIDQSER 320471
+                                ************************************************************************998888655 PP
+
+  TcdA1_alignment_muscle   1918 ka....vqqallalrqgeaskelrtansltaL..FLPqaneklagYWqtLeqRlynLRhnLsiDGqPLsLaiyatPadPka 1992  
+                                 +     + ++ +l     s++   a  l a   F   +n++l    q  +qRl+nLRh L+iDG+PL+L++y  P dP++
+       NZ_RAZO01000515.1 320472 PTleafERTHVYSLADVPPSADFAPAMGLLATppFKLPTNDRLLALIQLPRQRLHNLRHWLTIDGKPLELPLYEPPGDPAQ 320552
+                                431100444555555555555555555554423354458****************************************** PP
+
+  TcdA1_alignment_muscle   1993 Llsaavaasqggsa.l.peavlslyRFpvmLenarslvsqLtqFGstLlsiierqDaeaLselLqnqaaeLvlqsisiqdk 2071  
+                                Ll+  +a  ++g + +  + v+  y + v  e a    + L   Gs Ll  +e+ D+ +  el q++  e +    +iq+k
+       NZ_RAZO01000515.1 320553 LLRDLAAGNNAGPRrMgGRPVINGYGWRVTSEFALRSAQELQNLGSELLRFMEQRDTAQQVELQQRHLLEQAEWTKAIQEK 320633
+                                ***988887776541445789999********************************************************* PP
+
+  TcdA1_alignment_muscle   2072 tieeldadkavLeesragaqsRldsyskLydedinagekramdLrasasglsaaaqalslaaaaadlvPnifGlavGGsrw 2152  
+                                +++ ++   ++L +s+a++++R d+y + +de+++a e ++md  ++a  l+ ++ a++ aa+a+ ++P +fG+a G +  
+       NZ_RAZO01000515.1 320634 SLAQMNVTLTALRQSHAAVKQRADEYAAWFDENVTAEEYKVMDDLHAAKELNQGSVAVQAAAGAISVIPKVFGMANGNAFP 320714
+                                ********************************************************************************* PP
+
+  TcdA1_alignment_muscle   2153 GaileAsalvlelsasvsrieAdkisqsevYRRRRqeWeiqrnnAeaevkqidaqlealavrreaavlqkeyletqqeqtq 2233  
+                                 ++l+A+a +l++++   + +A+k + +e YR RR+eW +qrn A ae+  +d q++a  +  eaa+   +   +   q  
+       NZ_RAZO01000515.1 320715 EGVLHAIAHGLQIASMGKQADAEKRAVTEGYRLRRREWGLQRNLALAELLALDEQINAQVIAVEAAQASLQLVLQTNRQSL 320795
+                                *****************************************************************9877776666667888 PP
+
+  TcdA1_alignment_muscle   2234 aqleflqrkfsnkaLYsWlRGkLaaiYyqFyDLavsrclmAeeayrwelnkesarfikpgaWqgtyaGLlaGetLmlnLaq 2314  
+                                a  +fl+++ +   LY+Wl G+L a+Yyq yD + s c+ A+ +   ++ +   + + p aW + + GLlaG +L+  +  
+       NZ_RAZO01000515.1 320796 AVYDFLHKRTAHSQLYDWLLGQLKALYYQAYDATYSLCISAQASRIAQTGDYDSQTVLPQAWSEKHHGLLAGQQLVGFVMR 320876
+                                999*****************************************999****999**************************9 PP
+
+  TcdA1_alignment_muscle   2315 mekaylekdeRalevtRtvsLaevYagLssdkFnlaekvvelvkegkgsaGssaneLklenkqlqaslkLsDLkiadDYPe 2395  
+                                  + +l+  eR  e ++tvsL +++a+  + + +  +  +            +  +L+ ++++l     +s+L+   D P 
+       NZ_RAZO01000515.1 320877 EQRDHLQSFERRIERVKTVSLRQLFADTVEPQPDAPDWTT------------ALENLQ-ADGRLA--FCVSELNFNRDHPG 320942
+                                99**********************9876655544433333............333444.345554..4568*********8 PP
+
+  TcdA1_alignment_muscle   2396 slGktRrikqisvtLPaLlGPYqDvrAvLsYgGsvvlpr 2434  
+                                +    R i+++    PaLlGPY+++rA L+ +Gs ++ r
+       NZ_RAZO01000515.1 320943 EY--CRLIRSVEFDCPALLGPYENLRATLTQTGSRTVVR 320979
+                                74..789**************************987654 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (2503 nodes)
+Target sequences:                            1  (2029353 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 37.27u 0.54s 00:00:37.81 Elapsed: 00:00:38.15
+# Mc/sec: 133.14
+//
+[ok]

@@ -1,0 +1,88 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/QJPH01000597.1/Candidatus_Methyloumidiphilus/TcC/QJPH01000597.1_IKSRH_backward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/QJPH01000597.1/Candidatus_Methyloumidiphilus/TcC/QJPH01000597.1_IKSRH_backward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence       Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------       -----------
+      1e-83  267.8   8.7    1.5e-83  267.2   8.7    1.1  1  QJPH01000597.1  Candidatus Methyloumidiphilus alinensis isola
+
+
+Domain annotation for each sequence (and alignments):
+>> QJPH01000597.1  Candidatus Methyloumidiphilus alinensis isolate AMbin10 contig05747, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  267.2   8.7   1.5e-83   1.5e-83       6     695 .. 1266485 1267172 .. 1266481 1267219 .. 0.80
+
+  Alignments for each domain:
+  == domain 1  score: 267.2 bits;  conditional E-value: 1.5e-83
+         TcC_aln       6 fsktPsvtvldnrgltvreiayhrhPdspdvtseritrhqydarGfltqsadPrlheaglanlsyltdlagevlrtqgvdagttval 92     
+                         + +tP+v  +d+ g t  +ia   + d   + ++  tr   d +G   + +d    + g++ + y  ++ g+ l+  +++ag   +l
+  QJPH01000597.1 1266485 HADTPAVEHMDSLGRTFLSIADNGK-DGIGNDQKYSTRILLDIEGNQREVVD----ALGRVVMRYDYTMLGTKLHQASMEAGERWML 1266566
+                         6677777777777777777765443.44445555666666777777666665....578899999999******************* PP
+
+         TcC_aln      93 ndaagrpflavsnista.ddgtedrsqavtrtwqyedaslpGrllsiteqvtgeaariterfvyagntd.aekalnlagqcvshydt 177    
+                         nda+g+p+ a +n     +++ +   + +   +q  d s p   l    q+ + a  +      +g t  ++ + nl g++ +h+d 
+  QJPH01000597.1 1266567 NDATGKPIRAWDNRLYVfSNEYDALHRPLRSYVQGGDPSEPNAKL--YPQKIQFARTLYGDSSDTGLTPlQQTQANLRGKVYRHFDG 1266651
+                         **********99855440444444555555555666666665544..3444444444555555566665256688************ PP
+
+         TcC_aln     178 aglvqtdsialtgvplsvtrrllkdadnpdavadWqgedasawndllaaetfttlttadatGavltttdakgnlqrvaydvaGllsg 264    
+                         ag + td   + g pl  +r+   d +n   + dW        n +l+ e f t    da    +  t     + r +++ a ll+ 
+  QJPH01000597.1 1266652 AGAATTDLYDFKGNPLQSARQFASDYKN---APDWS------QNPALDYEIFLTSISFDAFNRPVIVTAPDKSIYRASFNEANLLDK 1266729
+                         *********************9888666...55885......5778999*************9999999999*************** PP
+
+         TcC_aln     265 sWltlkggte.qvivksltysaagqklreehGnGvvttyeyepetqrlvgikterpaGhas.gakv......lqdlryeydPvGnvl 343    
+                           ++l+g +     v  + y a g++   ++ nG  ttyey+p+t rlv +kt r+aG    +a++      +qdl y+ydP+Gn+ 
+  QJPH01000597.1 1266730 VDVNLRGAAIaTPFVTNIDYNAKGHRTLIQYANGANTTYEYDPDTFRLVHLKTTRTAGQNGlAAQIflntgtVQDLHYTYDPIGNIT 1266816
+                         *******9861569*******************************************9864234432222227************** PP
+
+         TcC_aln     344 kitndaeetrfWrnqkvvPentyvydslyqlvsatGremanagqqssslpsatv...p......lpidssaytnytrtytydeagnl 421    
+                          it+da     + nq v P n y+yd++y+l  + Gre    +  +  lp  +    p       p d  a  nyt  y yd  gn+
+  QJPH01000597.1 1266817 GITDDALPVMTYANQTVPPVNLYTYDAIYRLTESQGRESIGQSALQLGLPRSSYrdyPyaglgaQPFDPKAVRNYTEQYVYDAVGNF 1266903
+                         **************************************98777666666655421222222222699******************** PP
+
+         TcC_aln     422 tqirhsapat....nnsytt..ditvsdrsnrgvlstltenpadvdalftagGqqkqlqpgqelvWtarnellkvtpvvrdgstdds 502    
+                          ++ h+a       + syt   +i   + snr  l++ +   +     ++a G+   +     ++W  +++++       d     +
+  QJPH01000597.1 1266904 LHLIHQAQNGawgrDYSYTEasQIEPGKFSNR--LNQTAVGGTTEAYAYDAHGNMVSMPHIAGMAWDFKDQFQSA-----DLGGGGT 1266983
+                         *****987531211456775114555566776..555454455555679*********************99865.....4455667 PP
+
+         TcC_aln     503 esyrydadsqrvlkvsvqktgnstqtqrvlylpglelrttksgeteteslqvitvgeagraqvrvlhwesgkpaeisndqlrysydn 589    
+                           y yd++ qrv kv  ++ g+ +  q  +yl g+e+    +g  +t +l+  t+      q   l    ++ +++ ++ +ry   n
+  QJPH01000597.1 1266984 AFYIYDGSGQRVRKVIERQNGTRQ--QERIYLGGFEVYREYDGLGKTVALERETLHVMDDKQRIAL---VETRTDVPEQIVRYQLGN 1267065
+                         89*************988876654..5569**********99999888888777766655553333...234456777779****** PP
+
+         TcC_aln     590 ligssgleldgdgniisleeyypyGGtavwaarsqveadyktvrysGkerd.atGlyyyGyryyqpWaGrWlsadpaGtvdGlnlfr 675    
+                           gs++leld+ g++is eey+pyG ta  a rs++e + k +ry+Gkerd  tG+ y+G ryy  W GrW +adpaG++dG n++ 
+  QJPH01000597.1 1267066 HLGSASLELDAAGQLISYEEYHPYGTTAYQAGRSNAEISLKRYRYTGKERDeETGFGYHGARYYAGWLGRWTAADPAGMIDGPNIYA 1267152
+                         **************************************************9459********************************* PP
+
+         TcC_aln     676 mvrnnPvtlsdedGlasvke 695    
+                          +r nPv+l+d +G++s++ 
+  QJPH01000597.1 1267153 YARCNPVKLVDPKGTQSADL 1267172
+                         **************998433 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (2190713 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 9.66u 0.16s 00:00:09.82 Elapsed: 00:00:09.86
+# Mc/sec: 160.25
+//
+[ok]

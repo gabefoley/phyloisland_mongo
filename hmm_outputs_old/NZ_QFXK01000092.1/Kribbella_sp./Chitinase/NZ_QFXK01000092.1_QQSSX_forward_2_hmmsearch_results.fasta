@@ -1,0 +1,63 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/Chitinase_profile.hmm
+# target sequence database:        hmm_outputs/NZ_QFXK01000092.1/Kribbella_sp./Chitinase/NZ_QFXK01000092.1_QQSSX_forward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_QFXK01000092.1/Kribbella_sp./Chitinase/NZ_QFXK01000092.1_QQSSX_forward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Chi_aln  [M=615]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+    1.1e-62  198.5   0.2    2.9e-33  101.2   0.0    2.1  1  NZ_QFXK01000092.1  Kribbella sp. NEAU-SW521 C1814, whole geno
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_QFXK01000092.1  Kribbella sp. NEAU-SW521 C1814, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  101.2   0.0   2.9e-33   2.9e-33     264     580 .. 1933864 1934178 .. 1933833 1934183 .. 0.85
+
+  Alignments for each domain:
+  == domain 1  score: 101.2 bits;  conditional E-value: 2.9e-33
+            Chi_aln     264 akGLLGGlreLqkkaklaGhkLelafsiGGWslsgyfsemakdeekrkvfvksvvdlfkr..fP.........mfsevdidWey 336    
+                             + L G l +L++  k++  kL +++s+GGW+ s yfs+ a  +++r   vks +d++ +  +P         +f+ vdidWe+
+  NZ_QFXK01000092.1 1933864 GQPLAGNLNQLKQ-LKQKFPKLRISISLGGWTGSKYFSDAALTPASRAAHVKSCLDMWLKgnLPgapagaakgIFDGVDIDWEW 1933946
+                            4557788888865.5677889***********************************986533444445555558********** PP
+
+            Chi_aln     337 PgaeGeegnefdpedGenyallikeLrkaLdsa.fglsdrkeisiassavvkkleks.nikelvkaGLdniflmsydffGtgWa 418    
+                            P +eG+ gn++ ped +n++ l++e rk+Ld+a +  + r +++    a  +++++  ++k+l +  L       yd+ G +W 
+  NZ_QFXK01000092.1 1933947 PASEGNPGNVIRPEDKQNFTALVHEYRKQLDRAsWPFRGRYNLTAFLPAAPEQIDNGfQVKQLFRD-LTFGTTQGYDYHG-SWD 1934028
+                            *******************************8736789999999999*******9864899*9998.999999******9.5** PP
+
+            Chi_aln     419 esighhtnLkspkdpdpdeesdlsaeeaieyLleelgipaekinlGyanygrsgkgaelet.reynke.gealGtlekGapeff 500    
+                            +    ++ + +pk  dp+ + ++s ++ i+  l+  g p +++ +G+  y+r  +g+  ++ + +++  g a  t+e G ++ +
+  NZ_QFXK01000092.1 1934029 PITNQQSAIDAPK-GDPS-TEEFSSQVTIDAYLSR-GAPRDQLVMGVPFYSRGWTGVTNQNhGLFQPAtGPAPATYEAGYED-Y 1934108
+                            *99999*****99.5555.5689999999988888.9***************999976655378887779********9765.5 PP
+
+            Chi_aln     501 diinnyldlenelakgkngfnlmtdteadadflyneeskhfisldtPrtvkakgeyaaklklggifsWsgdqd..nGllana 580    
+                             +++             +gf+++ d++a    l++     f + d P  +k+k++y++k++lgg + Ws d d  nG l+ a
+  NZ_QFXK01000092.1 1934109 RLLKA----------KADGFTVYRDNKAGFAWLFDG--TTFWTWDDPVEMKRKAQYISKRHLGGAMIWSLDGDtaNGELISA 1934178
+                            55554..........3479********999999975..5799***************************9887335766666 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (615 nodes)
+Target sequences:                            1  (2676310 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 10.73u 0.31s 00:00:11.04 Elapsed: 00:00:11.16
+# Mc/sec: 147.48
+//
+[ok]

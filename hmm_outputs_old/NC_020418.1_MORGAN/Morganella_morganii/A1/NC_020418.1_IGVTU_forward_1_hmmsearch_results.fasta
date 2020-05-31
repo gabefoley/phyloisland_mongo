@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/A1_profile.hmm
+# target sequence database:        hmm_outputs/NC_020418.1/Morganella_morganii/A1/NC_020418.1_IGVTU_forward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/NC_020418.1/Morganella_morganii/A1/NC_020418.1_IGVTU_forward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       align  [M=1131]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence    Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------    -----------
+   1.3e-125  406.1  12.2   5.2e-108  347.8   6.7    2.1  1  NC_020418.1  Morganella morganii subsp. morganii KT, complete
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_020418.1  Morganella morganii subsp. morganii KT, complete genome
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  347.8   6.7  5.2e-108  5.2e-108     447    1130 ..  458559  459238 ..  458546  459239 .. 0.91
+
+  Alignments for each domain:
+  == domain 1  score: 347.8 bits;  conditional E-value: 5.2e-108
+        align    447 lpeaedffeknyGlsaeesskLkellafgdqteskaeeveellssgdfapvvspnvlfsnpifsskqseeafpapyqyGavYinagqedavs 538   
+                     + ++e++f++n+G+  e+ ++L + ++f++q +++  ++e+l+s+g+++p  spnv+   +   +++   +   p+ yG+v+in+g+ +a+s
+  NC_020418.1 458559 KEDNEKYFKRNFGV--EQFTDLLNTTVFCQQLKLERVDLESLFSCGEYTPHLSPNVIPEISNRYADKEPGREVSPAVYGSVFINNGVMPAIS 458648
+                     457899********..6778************************************94444444444555678899**************** PP
+
+        align    539 ivrtddgreltavsddrfdRlnRliRLqrwlelpyhqlDlLltsalkAe..eenldleinentlraLGlFrhlnkqykvsaeaFaallyqlt 628   
+                     +   ++ ++ +++ + r +R++R++RL+r l+lpy++lD Ll+s lkAe  + + + +i+ ntlra+GlF ++n++ k +a++F+ l   ++
+  NC_020418.1 458649 V--NEKIHSFNELNEGRCERIERFLRLSRALNLPYEKLDTLLISILKAEnnQSGHKWDITTNTLRAIGLFTQMNRKLKCTASQFSVLYDGIS 458738
+                     *..7789******************************************666677899********************************** PP
+
+        align    629 pfavsnnvpflDqlFNqekLFdePlvlddeeFdytetkgddaktvkqLcagLgIsavtfqllaelveaalelesgkLvrsldvvSalYrLvt 720   
+                      ++ +++++ +D+lFN++  F+  ++ldd++         +++ + ++c+  gI+  tf +la l  +++ l    L+rs dv+Sa+Yr v 
+  NC_020418.1 458739 VYSRGKDISDFDRLFNNDDRFNYRFILDDKKM--------EERDINRICSVFGINYDTFSYLALLTREVMGL--NVLTRSRDVISAIYRPVV 458820
+                     *****************************875........467899********************999966..78**************** PP
+
+        align    721 iPrlfglsaedgliliniltkegky...LakepalteeksttekdlLdiilkleelaaWlrkskltpaklslllgktelpvvatdsevtlfk 809   
+                     +  l+ + + + l+l++ ++ + ++    ++ p  +   s  + d+ + i +l  l +W +++kl++a++   ++         ++e +lf 
+  NC_020418.1 458821 LADLLKIKPLELLALMKSMNPDAQFgrlFTGIPENQVYGSFGQADITSAISALISLQTWRKENKLSVAQIFNWITPAIVDDQEDKTERELFR 458912
+                     ************************9998788888888899999*********************************999999999******* PP
+
+        align    810 giaqglsenvLseddfnraeiPkegidWldlLsllvdanGlvldip..lewgktdeealk...ekikaiveeikidaddnviailvqlilqa 896   
+                     +i+++  +++ s++ +  a++P ++i+W+ +L+ lvd++G+++d    l w+  +++alk   +k ++ ++++++++ + +++ +  ++l+ 
+  NC_020418.1 458913 QIKENTDSALFSNEVLYLAGVP-KDINWVSALQELVDDQGILKDADdgLDWDSYKKNALKiitSKSEEKLKNLTSEERNTIVNTILSVLLEK 459003
+                     *********************7.69******************98633689988888876333566777777888899999999******** PP
+
+        align    897 ktaQenllsssiaaeygverdlvpllLrWlgssvyqvLkkvldgtpet.vadisdelleltysLliytqlikelklkkellllrltkP...e 984   
+                     ++aQ + +s  + ++ g + d     L W gs+  ++Lk++ +   ++  +  +++++ l+ sL  y  +i +++l++++++  l +    +
+  NC_020418.1 459004 RAAQWKSVSGLLEGYIGNKTDSITPALYWCGSNTGEFLKNIRALPDNNmLSAKDNNVMVLLSSLRRYSDIIAHFRLEPAMMSQLLSHDnnhN 459095
+                     *****************************************95544440455566799999********************99997652227 PP
+
+        align    985 WlglavekkdssslsldeiyllsryqdllesakqnEdklleYlkfansseadkkee..ednsekcaellAeilgwdadeielavakleltpk 1074  
+                     W+ l+     + +  l+ +y ls y++l++ akq  dkll+Yl+++ns   d++++  +  + ++ ++l  ++gw+ +e+  a++ ++++++
+  NC_020418.1 459096 WYKLK-----TEKPDLQLLYRLSVYRKLIDDAKQPADKLLNYLSLINSLPIDSRSDeiRLYRDQALNKLSLFMGWSINELLTAAQYVAPENA 459182
+                     99983.....33446778********************************9999996667788999************************** PP
+
+        align   1075 rartleqiDwlrRlqqlsektglsvelllqaaaLtpnsdfelyqsvgEavlaaLka 1130  
+                      +rtl qi  ++ ++ ++ ktgls+  ++++ +L+++s+ +lyqsv+  v+ +L  
+  NC_020418.1 459183 IIRTLPQILLVKQIHSVCLKTGLSARSVISLFNLDESSESSLYQSVAGQVMESLAQ 459238
+                     ***************************************************99875 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1131 nodes)
+Target sequences:                            1  (1266512 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 9.77u 0.19s 00:00:09.95 Elapsed: 00:00:10.03
+# Mc/sec: 142.67
+//
+[ok]

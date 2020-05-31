@@ -1,0 +1,63 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/Chitinase_profile.hmm
+# target sequence database:        hmm_outputs/NZ_ASRX01000182.1/Chondromyces_apiculatus/Chitinase/NZ_ASRX01000182.1_SEIJW_backward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_ASRX01000182.1/Chondromyces_apiculatus/Chitinase/NZ_ASRX01000182.1_SEIJW_backward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Chi_aln  [M=615]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+    3.6e-40  124.0   0.4    4.9e-40  123.6   0.4    1.1  1  NZ_ASRX01000182.1  Chondromyces apiculatus DSM 436 contig182,
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_ASRX01000182.1  Chondromyces apiculatus DSM 436 contig182, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  123.6   0.4   4.9e-40   4.9e-40     266     585 .. 2654137 2654440 .. 2654123 2654441 .. 0.86
+
+  Alignments for each domain:
+  == domain 1  score: 123.6 bits;  conditional E-value: 4.9e-40
+            Chi_aln     266 GLLGGlreLqkkaklaGhkLelafsiGGWslsgyfsemakdeekrkvfvksvvdlfkr....fPmfsevdidWeyPgaeGeegn 345    
+                            G+L G  +  +k k++  +L++ +s+GGWs s++fs+ a  +++r  fv+s vdlf +      +f+ +d+dWeyPg+ G+   
+  NZ_ASRX01000182.1 2654137 GVLRGSFNQLRKLKQKYPHLKVMISLGGWSWSAGFSDAA-LPQNRAAFVSSCVDLFIKdsrwAGLFDGIDVDWEYPGSCGN-TC 2654218
+                            5554443434455566667*****************965.6789************652222469****************.99 PP
+
+            Chi_aln     346 efdpedGenyallikeLrkaLdsafglsdrkeisiassavvkkleksnikelvkaGLdniflmsydffGtgWaesighhtnLks 429    
+                             + ped +n++ l++e+r +Ld+    +   e+sia+ a  +k++k ++ ++ ++ Ld +++m+yd+ G +W  +   h+ L++
+  NZ_ASRX01000182.1 2654219 AYRPEDTQNFTALLAEFRGQLDAV---DPDLELSIAAPAGLDKIAKIDVGAIHQY-LDFVNVMTYDMHG-AWETTTNFHAALYN 2654297
+                            9*********************98...55566*******************9999.************9.5************* PP
+
+            Chi_aln     430 pkdpdpdeesdlsaeeaieyLleelgipaekinlGyanygrsgkgaelet.reynke.gealGtlekGapeffdiinnyldlen 511    
+                            ++ ++p ++  +s++ea+   l+  g p+ k+ +G+  ygr  +g+   + + +++  g a G++e G ++ + +++       
+  NZ_ASRX01000182.1 2654298 AS-ANPAKALKYSTDEALGAWLAG-GTPPGKLVMGVPFYGRGWTGVAGGNnGLWQTAaGGAQGAYEVGIED-YKVLK------- 2654371
+                            99.9***************99999.****************988865443256655569999999999765.45554....... PP
+
+            Chi_aln     512 elakgkngfnlmtdteadadflyneeskhfisldtPrtvkakgeyaaklklggifsW..sgdqdnGllanaareGl 585    
+                              akg+ gf+     + d+   +  ++  f s dtP +   k +y+++++lgg + W  sgd  nG l+ a + Gl
+  NZ_ASRX01000182.1 2654372 --AKGHPGFT-----HPDTKSYWTFNGTEFWSYDTPASLAVKMDYIKSKGLGGAMFWelSGDTANGELIQAVHSGL 2654440
+                            ..68999994.....45555667777889************************999977899**********9997 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (615 nodes)
+Target sequences:                            1  (3859239 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 16.43u 0.37s 00:00:16.80 Elapsed: 00:00:17.23
+# Mc/sec: 137.75
+//
+[ok]

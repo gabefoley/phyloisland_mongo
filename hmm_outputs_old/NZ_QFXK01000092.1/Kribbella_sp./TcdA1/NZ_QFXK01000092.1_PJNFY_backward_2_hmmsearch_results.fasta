@@ -1,0 +1,88 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcdA1_profile.hmm
+# target sequence database:        hmm_outputs/NZ_QFXK01000092.1/Kribbella_sp./TcdA1/NZ_QFXK01000092.1_PJNFY_backward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_QFXK01000092.1/Kribbella_sp./TcdA1/NZ_QFXK01000092.1_PJNFY_backward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcdA1_alignment_muscle  [M=2503]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+   3.5e-110  355.4   3.1    1.5e-74  237.2   0.4    3.5  1  NZ_QFXK01000092.1  Kribbella sp. NEAU-SW521 C1814, whole geno
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_QFXK01000092.1  Kribbella sp. NEAU-SW521 C1814, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  237.2   0.4   1.5e-74   1.5e-74    1755    2338 .. 2420525 2421163 .. 2420516 2421174 .. 0.84
+
+  Alignments for each domain:
+  == domain 1  score: 237.2 bits;  conditional E-value: 1.5e-74
+  TcdA1_alignment_muscle    1755 tsepmDFs..ganalYfWelFYYtPmlvaqRlLqeqkFdeatrWlkYvwnpaG....YivngeiqeyqWnvRPLeedts 1827   
+                                   e +DFs  ga + Y WelF+ +P ++a++l ++qkF+ea  W++Y+++p          +++q+  W  +P  e+t 
+       NZ_QFXK01000092.1 2420525 PVEDVDFSykGAYSPYNWELFFHVPFFIANKLSSDQKFEEAISWFHYIFDPTTpdttTADPDTPQQRFWITKPFYETTK 2420603
+                                 56888986669**************************************997522113345788999999999999875 PP
+
+  TcdA1_alignment_muscle    1828 ............................WnadpLDsvDPDAvAqaDPmHYkvatFmrlldlLiarGDaaYRqLeRDtLn 1878   
+                                                             W ++p    +P  +A    + Y+    +++++ Lia  D+ + q + +++n
+       NZ_QFXK01000092.1 2420604 aqyyqqkiqnimlgiakgdaelreqvreWRDNP---FNPHLIARMRTVAYQKNVLIKYIQTLIAWADHLFAQDTIESIN 2420679
+                                 222111111111111111111111111133333...47999************************************** PP
+
+  TcdA1_alignment_muscle    1879 eAkmWYvqaLelLGdepylslsaqWsePsLekaAdettqk...avqqallalrqgeaske......lrtans...ltaL 1945   
+                                 eA   Yv   el G ++ +   ++   P   k+ ++ +q+   a  + l+++++ + +++        +      l  L
+       NZ_QFXK01000092.1 2420680 EATQLYVMCAELRGPRARVVPRQD---PVPVKTFNQLRQEgidAFGNVLTEIENLVPPPSgagggaGPAGPElprLDVL 2420755
+                                 **************9998876654...4444444444443111556778888777666653322211111221113334 PP
+
+  TcdA1_alignment_muscle    1946 .FLPqaneklagYWqtLeqRlynLRhnLsiDGqPLsLaiyatPadPkaLlsaavaasqggsalpe..avlslyRFpvmL 2021   
+                                  F    n+kl+  W t+  Rl+ +Rh + + G   +L++   P dP+ L++a++a  + g  + +  a  + yRF vmL
+       NZ_QFXK01000092.1 2420756 yFGIPDNDKLQTLWDTIDDRLFKIRHCMNLAGVVRQLPLSDPPIDPALLVQATAAGLDIGAVINDlsAPAPQYRFTVML 2420834
+                                 244457**************************************************9999999751155678******* PP
+
+  TcdA1_alignment_muscle    2022 enarslvsqLtqFGstLlsiierqDaeaLselLqnqaaeLvlqsisiqdktieeldadkavLeesragaqsRldsyskL 2100   
+                                  +ar++   +   Gs++l+  e+ Dae+ + l   + ++L+ q  si + +i e   +k++Le+s+  +q R  +y+kL
+       NZ_QFXK01000092.1 2420835 RRARAVCDEVRALGSAMLAALEKRDAEEFAVLRAGHEQKLLEQVRSIRSDQITEAMRNKEALEASKLITQARSAHYTKL 2420913
+                                 ******************************************************************************* PP
+
+  TcdA1_alignment_muscle    2101 ydedinagekramdLrasasglsaaaqalslaaaaadlvPni......fG......lavGGsrwGaileAsalvlelsa 2167   
+                                  d   n  ek+ + L+  a gl+++a++++  +a + l+  i      fG      l +GG  +   l  +a +l   +
+       NZ_QFXK01000092.1 2420914 IDAGWNGWEKAWLGLTIGAMGLETGATVVRAIGASLALIAEIdagvsgFGgsptvkLKIGGKNFAISLYGAADALRGGS 2420992
+                                 ************************************99999866665555444444568999999999999999999** PP
+
+  TcdA1_alignment_muscle    2168 svsrieAdkisqsevYRRRRqeWeiqrnnAeaevkqidaqlealavrreaavlqkeyletqqeqtqaqleflqrkfsnk 2246   
+                                 +  ++ A   s   +Y RR ++W +q+  A+ ++ q+d +++a ++r++ av   + +++  e ++   e+l +kf+++
+       NZ_QFXK01000092.1 2420993 TIAQMGAGMTSTIGSYDRRAEDWGLQKTLADLQLPQLDKEIAAADIRHQLAVKELAGQDQRIELAKVEAEYLTTKFTAT 2421071
+                                 *****************************************************99999999999*************** PP
+
+  TcdA1_alignment_muscle    2247 aLYsWlRGkLaaiYyqFyDLavsrclmAeeayrwelnkesarfikpgaWqgtyaGLlaGetLmlnLaqmekaylekdeR 2325   
+                                  LY+W+  +++++Y+q y La   +  Ae+++r+el   + +++k g W++   GLlaGe L  +L  +e+a+le+++R
+       NZ_QFXK01000092.1 2421072 ELYEWMVNQISTVYFQSYQLAYDLAKRAEQSFRYELGLPTSNYVKFGYWDSLRKGLLAGERLSYDLNRLEAAHLEQNKR 2421150
+                                 ******************************************************************************* PP
+
+  TcdA1_alignment_muscle    2326 alevtRtvsLaev 2338   
+                                 + e+t+ vsLa++
+       NZ_QFXK01000092.1 2421151 EYELTKHVSLAQF 2421163
+                                 ***********97 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (2503 nodes)
+Target sequences:                            1  (2676310 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 52.73u 0.80s 00:00:53.52 Elapsed: 00:00:54.11
+# Mc/sec: 123.80
+//
+[ok]

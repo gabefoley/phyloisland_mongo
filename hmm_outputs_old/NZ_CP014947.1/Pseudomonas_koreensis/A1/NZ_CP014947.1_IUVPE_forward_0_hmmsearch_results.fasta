@@ -1,0 +1,113 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/A1_profile.hmm
+# target sequence database:        hmm_outputs/NZ_CP014947.1/Pseudomonas_koreensis/A1/NZ_CP014947.1_IUVPE_forward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_CP014947.1/Pseudomonas_koreensis/A1/NZ_CP014947.1_IUVPE_forward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       align  [M=1131]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------      -----------
+   3.3e-164  533.9   0.5   5.4e-164  533.2   0.5    1.2  1  NZ_CP014947.1  Pseudomonas koreensis strain D26 chromosome, c
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP014947.1  Pseudomonas koreensis strain D26 chromosome, complete genome
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  533.2   0.5  5.4e-164  5.4e-164      35    1127 .. 1476152 1477305 .. 1476127 1477308 .. 0.84
+
+  Alignments for each domain:
+  == domain 1  score: 533.2 bits;  conditional E-value: 5.4e-164
+          align      35 slvdelkrlGyfsifdivkvskqrfikrhneslsGqaevifdkavsmanqlvqsyrqrslrdadteklakvasgae..kl.Pdysslf 119    
+                            +++++G++s+fdiv++sk  f ++   +   +a+v +d+a+ +a+ + + yr+ +      ++la+++  ++   l   y+ +f
+  NZ_CP014947.1 1476152 DFPTAMQQMGFTSVFDIVRLSKAAFARQLALHSDANADVAYDNAMKYAALISRLYREYQTSSGTLQQLAQRSGVSSlvSLgATYQRMF 1476239
+                        4556899****************************************************999999999887765555555368***** PP
+
+          align     120 pepwdnfckPdaiesLdsPaaYLleLYkfvkqlelDgtn.qalkleqRRaDipeLlLdsdnlnkevsaleivndvLsesareyidqs. 205    
+                         e wd+f+k +ai + dsP+aYL eL +f  qle  + + + l ++qRR+D+++Ll++++++    + leiv +vL+ + r+y+d + 
+  NZ_CP014947.1 1476240 NENWDEFTKVGAIAANDSPVAYLTELRRFSLQLEATSEDpKRLLMDQRRPDLKDLLISQESTFTPRPMLEIVTQVLESHLRTYLDGNl 1476327
+                        **********************************98876245789****************************************652 PP
+
+          align     206 geaekpvnqvlGetrfPftlPyslatqqinkGlaekntelgtviqqvdqelpwstteek.....anqvllay...tqlskeqiellte 285    
+                         + +k+  qvl e  +Pf lPy++   q ++Gla+++  lg +  +    lp +   ++     ++  l a      ls +q +ll +
+  NZ_CP014947.1 1476328 PDKSKSTYQVLAERSYPFELPYNFYHHQCQLGLADNKPRLGELNYRASLLLPIKQVAINdygqlQQPALQAQrllCGLSPQQQQLLLA 1476415
+                        7899***************************************99999999987766655565433334443111568********** PP
+
+          align     286 kapfsqnllsreelvksylsgstteilpekdlskhayivkqeenikGptklvensde...aydeievtCknkakkti..tvklrge.. 366    
+                        + +fs+ +l+r++l+k++    t+ + p +  s+   +++ + +   +t l ++  +   +  ++++t + +++kt+  ++ l ++  
+  NZ_CP014947.1 1476416 PPVFSHFYLTRSNLIKGWQNPLTAYLRPHTTPSRCYLLLSGQPDDVVATPLADAPTNqggSKTVVSLTFR-RDDKTVpaSIDLSSNvp 1476502
+                        *****************************99999877777665555566665554431113445556655.55666422677765421 PP
+
+          align     367 nvltyqrikarlePfdnspPfsrqlkltyveednkdv.nldeGPyfgeltiyaakpkeknsfltlkyrlaiakkgtsaeellpeaedf 453    
+                        ++        rl+   ++p     ++         ++    e  y + +++ +a+ + ++  +  + r+a + ++  + +l++  ++f
+  NZ_CP014947.1 1476503 DLTGTGWLVNRLHAATDKPIVVH-FQ-------AATLpTPTEQEYTARFDLITATGTVEQPVRLARQRFAFTLDD--QYRLTTTEKNF 1476580
+                        34445567899999888874432.22.......334444566779999999999988888888888888887654..67899****** PP
+
+          align     454 feknyGlsaees...skLkellafgdqteskaeeveellssgdfapvvspnvlfsnpifsskqseeafpapyqyGavYinagqedavs 538    
+                        f+  yG++  +    ++L+ l+ f+++t+++ae+ve l++   fa+  spn+ + +p   ++    + + p++yGa+Y+n    +  +
+  NZ_CP014947.1 1476581 FKGAYGVEVTSDapvQQLTLLTDFMQHTGLTAEQVELLVARRSFAVRLSPNCPYLQPTP-NRIDLLTGSFPNHYGACYVNGIG-PGAE 1476666
+                        *******9876522268888999**********************************98.88899999***********9644.3445 PP
+
+          align     539 ivrtd...........................dgreltavsddrfdRlnRliRLqrwlelpyhqlDlLltsalkAe.eenldleinen 598    
+                        + + +                           ++  lt++s dr+dRl+R+iRLqrw ++p+  lD L+ sa++Ae e nl +e+nen
+  NZ_CP014947.1 1476667 LSDNApepapetdlsdesdhaigleriasgdnTQWRLTKTSLDRLDRLQRMIRLQRWSGIPFARLDTLICSAMRAEgEPNLGMELNEN 1476754
+                        555555678888899999**********99887889****************************************999********* PP
+
+          align     599 tlraLGlFrhlnkqykvsaeaFaallyqltpfavsnn.vpflDqlFNqekLFdePlvlddeeFdytetkgddaktvkqLcagLgIsav 685    
+                        tlraLG++r+ln++y + +e+Faall++l+pfa +++ vp +Dq+FN+ +LFd+Pl+ld++  d t+   + +kt+ qLcagLg++ +
+  NZ_CP014947.1 1476755 TLRALGVYRYLNQRYSIEPEEFAALLHDLSPFASGKDaVPLFDQVFNHVQLFDTPLILDQTPIDLTTLDAATQKTLLQLCAGLGVQPT 1476842
+                        *********************************986449**********************************************765 PP
+
+          align     686 t..fqllaelveaalelesgkLvrsldvvSalYrLvtiPrlfglsaedgliliniltkegky...LakepalteeksttekdlLdiil 768    
+                        +    l+a++ e+ +    g L+r l+ vS+lYr  +i rlfg s+e+ l+l+ +l  ++ y   La      +++ + + d+Ld+++
+  NZ_CP014947.1 1476843 EdsLLLIARQTEKHV----GALKRDLPTVSSLYRQARIARLFGHSVEELLALAGLLGGSS-YttaLASGRLS-ATTADANPDILDVLM 1476924
+                        511666777776665....99***********************************8887.54767766555.8899999******** PP
+
+          align     769 kleelaaWlrkskltpaklslllgktelpv...vatdsevtlfkg......iaqgls.......envLseddfnraeiP........k 832    
+                        +l+ + aWl++s+ t++++ + lg  + p       d+++ l ++      + ++l+        ++ +e + n+ ++P        +
+  NZ_CP014947.1 1476925 QLDWAFAWLKDSQQTVTQVLQRLGIDAPPNpeeQENDQQIRLAEQaplpdeLRARLTtlqsdtrRSLATEAQVNALGLPlqedgkrkR 1477012
+                        *******************999987766642124566777665432211115555532222211567788889999999**9988644 PP
+
+          align     833 egidWldlLs..llvdanGlvldiplewgktde..ealkekikaiveeikid..addnviailvqlilqaktaQenllsssiaaeygv 914    
+                         +i+W++lL   +l++a+Gl+  +  +   tde  + l++ + + ++ + ++  ++d    +lv+ +l ++  Q +ll     ++  +
+  NZ_CP014947.1 1477013 GEINWFQLLIehHLITADGLLSGLDRTLTLTDEpvAWLQADVAQALKGLGLAqpVKDACADRLVKFLLDVHDRQAQLLEGLFQETAKL 1477100
+                        99*******999**********9999999999633679********9987765567888889************************** PP
+
+          align     915 erdlvpllLrWlgssvyqvLkkvldgtpetvadisdelleltysLliytqlikelklkkellllrltkPeWlglavekkdsssl.sld 1001   
+                        + d  +  ++W+ +  y++L++ l++ +  ++ + +++     + + ++++++el+l++++l+l  ++P Wlg a  ++ s+s+ sl+
+  NZ_CP014947.1 1477101 APDCCRAVIHWAWATPYSILQQALKTPL--PQALIEDYQ----RVARHAEIVRELRLSNSALRLFAINPMWLGGAAYEEGSNSMpSLS 1477182
+                        ***********************97655..566666665....567889***********************9777666666555*** PP
+
+          align    1002 eiyllsryqdllesakqnEdklleYlkfansseadkkee...ednsekcaellAeilgwdadeielavakleltpkrartleqiDwlr 1086   
+                        ++yll r+  + +s +q+Ed++l Y++ an ++a+ k++   +  se++  +lA +l+w + ++++ ++   l  kra+ + q+Dw+r
+  NZ_CP014947.1 1477183 DLYLLERFSHWFHSQSQSEDHVLSYFSCANPAKAQLKNKalrQLASETADAALARLLNWPQAQVAELTSS--LPDKRATSMAQVDWVR 1477268
+                        **********************************99999887788999999************9988765..66789**********9 PP
+
+          align    1087 RlqqlsektglsvelllqaaaLtpnsdfelyqsvgEavlaa 1127   
+                              + +gl++++llqa+aL ++sd  ++++vgE+v+aa
+  NZ_CP014947.1 1477269 PC----QASGLAAKTLLQATALGEQSDLLAWKAVGEGVMAA 1477305
+                        75....569*******************************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1131 nodes)
+Target sequences:                            1  (2100587 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 16.13u 0.36s 00:00:16.48 Elapsed: 00:00:17.05
+# Mc/sec: 139.34
+//
+[ok]

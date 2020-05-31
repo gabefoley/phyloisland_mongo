@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/NZ_LAIJ01000019.1/Terracidiphilus_gabretensis/TcC/NZ_LAIJ01000019.1_CVWGI_forward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_LAIJ01000019.1/Terracidiphilus_gabretensis/TcC/NZ_LAIJ01000019.1_CVWGI_forward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+    1.2e-81  260.9  17.3    1.9e-81  260.2  17.3    1.1  1  NZ_LAIJ01000019.1  Terracidiphilus gabretensis strain S55 con
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LAIJ01000019.1  Terracidiphilus gabretensis strain S55 contig_30, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  260.2  17.3   1.9e-81   1.9e-81      63     694 ..  481084  481736 ..  481057  481769 .. 0.79
+
+  Alignments for each domain:
+  == domain 1  score: 260.2 bits;  conditional E-value: 1.9e-81
+            TcC_aln     63 aglanlsyltdlagevlrtqgvdagttvalndaagrpflavsnistaddgtedrsqavtrtwqyedaslpGrllsiteqvtgeaar 148   
+                            g++ ++y  d+ g+ ++ ++++ag   +lnd++g+ + a +           r+++   t+      l   +l+i    ++  + 
+  NZ_LAIJ01000019.1 481084 LGRKVMEYDYDMLGNRIHQSSMEAGERWTLNDVTGKLIHAWD----------TRGHNFRTTYDTLRRPLGSFVLGIDAVNSDARTT 481159
+                           4677899999*************************9988776..........3555666666666666666666666555554444 PP
+
+            TcC_aln    149 ite....rfvyagntdaekalnlagqcvshydtaglvqtdsialt.gvplsv..trrllkdadnpdavadWqge.d.asawndlla 225   
+                            +e    + vy        alnl  ++ + ydtag+v + +i  t g   +     ++l+ +   + v d+++  d +s+   +l 
+  NZ_LAIJ01000019.1 481160 AAEvqiqKTVYGE--GLSPALNLNTRVYQVYDTAGVVTSAAINPTtGEQEAYdfKGNMLRCS--RQFVDDYRALpDwSSTTAPVLV 481241
+                           4441001455543..345789****************9999975514333331123344432..2344444442121345566899 PP
+
+            TcC_aln    226 aetfttlttadatGavltttdakgnlqrvaydvaGllsgsWltlkggteqv.ivksltysaagqklreehGnGvvttyeyepetqr 310   
+                           ++ f++ t+ da    l+ t   g + r +y+ a ll++  ++l+g +     v  + y a gq+   ++GnG  t+y+y+  t  
+  NZ_LAIJ01000019.1 481242 EKVFASGTQYDALNRPLAGTTPDGSVVRATYNEANLLETVSVNLQGAASSTpFVTNIDYDAKGQRTLINYGNGAATSYAYDQTTFH 481327
+                           999*******************************************9876539********************************* PP
+
+            TcC_aln    311 lvgikterpaGhasgakvlqdlryeydPvGnvlkitndae..etrfWrnqkvvPentyvydslyqlvsatGre...managqqsss 391   
+                           l+ + t rp+     ++v+qdl+y ydP Gn+ +i++da+  ++ f+ nq+v P + y+yd++y+l+ a+Gre   + n g+q + 
+  NZ_LAIJ01000019.1 481328 LTRLTTTRPTF-PINQQVVQDLQYVYDPAGNITHIQDDADiqNAVFFSNQRVAPSSDYTYDAIYRLIQASGREqlgLDNNGKQLAA 481412
+                           *********95.56789*********************9733578***************************94334566777554 PP
+
+            TcC_aln    392 l.......psatvplpidssaytnytrtytydeagnltqirhsa.patnnsyttd........itvsdrsnrgvlstltenpadvd 461   
+                                   p a +  p d +a  +yt  y+yd  gn+ q  h++ +a++  +t +        +  ++ snr     + e+p    
+  NZ_LAIJ01000019.1 481413 TpgsyndiPRAGLLNPSDGNAMGTYTEQYNYDPVGNFLQFIHKSsSASSPGWTRSysyneaslLEPANMSNRLSTTGFGEQPPSET 481498
+                           41111111445555799*********************9888651444444444311112222344688999999999****9999 PP
+
+            TcC_aln    462 alftagGqqkqlqpgqelvWtarnel.....lkvtpvvrdgstd..dsesyrydadsqrvlkvsvqktgnstqtqrvlylpglelr 540   
+                             ++  G+   +   q + W  ++ l     + v +   dg ++  ++  y y+++ qr+ kv+   ++++ +++  +yl g+e+ 
+  NZ_LAIJ01000019.1 481499 YGYDLHGNMIDMPQLQLMQWDFKDALymsqrQAVNSTDADGIAHqgERTYYVYEGSGQRIRKVTE--SAAQLKKNERFYLGGFEVY 481582
+                           99*********************9984433234666666775551156679***********975..45566677789******99 PP
+
+            TcC_aln    541 ttksgeteteslqvitvgeagraqvrvlhwesgkpaeisndqlrysydnligssgleldgdgniisleeyypyGGtavwaarsqve 626   
+                              s ++ t + + + v +  + ++ ++   ++  ++++++ +ry + n  gs++leld+  n+i+ eey pyG t+  a rs+ve
+  NZ_LAIJ01000019.1 481583 REYSLSAVTLERETLHVMDD-KQRIALVETRTQGTDGLAEQLVRYQFGNHLGSASLELDDYANVITYEEYCPYGNTSYQAGRSAVE 481667
+                           88887777766666666654.55788888889999*************************************************** PP
+
+            TcC_aln    627 adyktvrysGkerd.atGlyyyGyryyqpWaGrWlsadpaGtvdGlnlfrmvrnnPvtlsdedGlasvk 694   
+                           +  k +ry+G erd  tGl y+G ryy +W GrW s+dp G  dG++++  +rn Pv l+d  G+ s+k
+  NZ_LAIJ01000019.1 481668 VALKRYRYTGMERDeETGLNYHGVRYYASWLGRWTSSDPIGIGDGVDMYAYARNCPVLLTDLGGTDSRK 481736
+                           *************945**********************************************9998843 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (1781900 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 7.76u 0.14s 00:00:07.90 Elapsed: 00:00:07.94
+# Mc/sec: 162.03
+//
+[ok]

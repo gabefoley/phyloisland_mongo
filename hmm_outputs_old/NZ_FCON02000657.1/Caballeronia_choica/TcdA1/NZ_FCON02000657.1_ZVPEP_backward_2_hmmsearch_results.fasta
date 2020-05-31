@@ -1,0 +1,68 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcdA1_profile.hmm
+# target sequence database:        hmm_outputs/NZ_FCON02000657.1/Caballeronia_choica/TcdA1/NZ_FCON02000657.1_ZVPEP_backward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_FCON02000657.1/Caballeronia_choica/TcdA1/NZ_FCON02000657.1_ZVPEP_backward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcdA1_alignment_muscle  [M=2503]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+    1.8e-43  134.1  12.6    4.9e-38  116.1   7.9    3.4  1  NZ_FCON02000657.1  Caballeronia choica isolate LMG 22940, who
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_FCON02000657.1  Caballeronia choica isolate LMG 22940, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  116.1   7.9   4.9e-38   4.9e-38    2013    2335 .. 2954234 2954569 .. 2954230 2954576 .. 0.93
+
+  Alignments for each domain:
+  == domain 1  score: 116.1 bits;  conditional E-value: 4.9e-38
+  TcdA1_alignment_muscle    2013 slyRFpvmLenarslvsqLtqFGstLlsiierqDaeaLselLqnqaaeLvlqsisiqdktieeldadkavLeesragaq 2091   
+                                 s yRF  ++++a +  s +   G++Lls  e+ Dae L++l   q +e+++  ++  ++   ++d +++ L++++a +q
+       NZ_FCON02000657.1 2954234 SPYRFSFLIQKAYEYASRVQELGNALLSAFEKGDAEFLASLRAGQEREVLILGLESRKNAWRDVDWQIESLQKTKAMSQ 2954312
+                                 66***************************************************************************** PP
+
+  TcdA1_alignment_muscle    2092 sRldsyskLydedinagekramdLrasasglsaaaqalslaaaaadlvPnif.Gla.vGGsr..w..........Gail 2156   
+                                   l+    L    + +ge    + + +++ l ++++a++  ++a+  + n f G+a +GG+   +          G+ +
+       NZ_FCON02000657.1 2954313 ANLQYVADLKRHGLISGEILYGSFTIASTLLRTGGNAIEAISGAMSSAGNFFaGVAgFGGTPliYyqlpigqplaGGFA 2954391
+                                 **************************************************99766634565322124444444448999 PP
+
+  TcdA1_alignment_muscle    2157 eAsalvlelsasvsrieAdkisqsevYRRRRqeWeiqrnnAeaevkqidaqlealavrreaavlqkeyletqqeqtqaq 2235   
+                                 +A+ + + ls  +s+++  +++qs  + RR  eW  q +    e++qid q+   + rr+ +    + +++q e+    
+       NZ_FCON02000657.1 2954392 SAARVLVALSDIASTTAGLELTQSG-WDRRLAEWTHQIDVLAIEIQQIDRQILGAQRRRDQTLNDLNIQQRQLEHSTEV 2954469
+                                 99999999****************7.567889*******************************9**********99999 PP
+
+  TcdA1_alignment_muscle    2236 leflqrkfsnkaLYsWlRGkLaaiYyqFyDLavsrclmAeeayrwelnkesarfikpgaWqgtyaGLlaGetLmlnLaq 2314   
+                                  +fl+ kf+++ LY +l    aa+  + y+La + +  A+ a++ e  ++s +fi   +W++ + GL+aGe L   L q
+       NZ_FCON02000657.1 2954470 QNFLRDKFTAHDLYLYLQKETAALHSRTYELALAAARQAQYAFNVERGHSSRKFIPECEWDSLHEGLMAGERLSAALRQ 2954548
+                                 9****************************************************************************** PP
+
+  TcdA1_alignment_muscle    2315 mekaylekdeRalevtRtvsL 2335   
+                                 mekayl  + R+ e+t+ +sL
+       NZ_FCON02000657.1 2954549 MEKAYLDENVREYELTKQISL 2954569
+                                 ********************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (2503 nodes)
+Target sequences:                            1  (3258735 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 51.67u 0.70s 00:00:52.37 Elapsed: 00:00:54.32
+# Mc/sec: 150.16
+//
+[ok]

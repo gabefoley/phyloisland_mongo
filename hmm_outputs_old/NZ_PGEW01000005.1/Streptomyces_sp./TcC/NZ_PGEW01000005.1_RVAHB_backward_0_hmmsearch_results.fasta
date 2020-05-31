@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/NZ_PGEW01000005.1/Streptomyces_sp./TcC/NZ_PGEW01000005.1_RVAHB_backward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_PGEW01000005.1/Streptomyces_sp./TcC/NZ_PGEW01000005.1_RVAHB_backward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+    1.8e-88  283.5   5.3    4.7e-86  275.5   3.6    2.1  1  NZ_PGEW01000005.1  Streptomyces sp. CNZ306 Ga0193653_15, whol
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_PGEW01000005.1  Streptomyces sp. CNZ306 Ga0193653_15, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  275.5   3.6   4.7e-86   4.7e-86     122     699 .. 1202983 1203554 .. 1202916 1203565 .. 0.82
+
+  Alignments for each domain:
+  == domain 1  score: 275.5 bits;  conditional E-value: 4.7e-86
+            TcC_aln     122 rtwqyedaslpGrllsiteqvtgeaariterfvyagntdaekalnlagqcvshydtaglvqtdsialtgvplsvtrrllkdadn 205    
+                              w y++   p    s +    +e++r+  r++y  + ++ +a+nl  +    +d ag v+t+ + + g  l+  rrl  d   
+  NZ_PGEW01000005.1 1202983 MWWGYDELRRPAH--SSATAPGEETERLRLRYYYGESLADGRARNLLTRLCLVFDGAGAVRTEDVDFKGNVLATVRRLAADP-- 1203062
+                            4577777776665..44445667889999******************999999*************************8874.. PP
+
+            TcC_aln     206 pdavadWq...ged.asa....wndllaaetfttlttadatGavltttdakgnlqrvaydvaGllsgsWltlkg.gteqvivks 280    
+                             + + dW    g d   a       ll++ ++ ++t  da       td  g + r ay+vaGl++     ++g gt   iv+ 
+  NZ_PGEW01000005.1 1203063 -EGEPDWSalaGIDdPEAalalSAPLLERAAHRSTTAYDALDRPTLATDPDGSRTRPAYNVAGLVEKVEADVRGtGTWTPIVRN 1203145
+                            .44455541113331222111134578899999999************************************98468899**** PP
+
+            TcC_aln     281 ltysaagqklreehGnGvvttyeyepetqrlvgikterpaGhasgakvlqdlryeydPvGnvlkitndaeetrfWrnqkvvPen 364    
+                            + y   g++   e+G G  t+y+ye +t rl    t  + G a      q l y ydPvGnv+ + + +++t f+rn  v    
+  NZ_PGEW01000005.1 1203146 VDYDERGRRTLIEYGCGARTAYAYERDTFRLATADTTAADGAA-----WQRLAYAYDPVGNVVVVDDPSQDTVFFRNTAVGSRR 1203224
+                            ********************************99998777654.....79********************************** PP
+
+            TcC_aln     365 tyvydslyqlvsatGremanagqq..ssslpsatvplpidssaytnytrtytydeagnltqirhsapatnnsyttditvsdrsn 446    
+                            tyv d +y+lvsatGre +  + q   +++p a vp + dssa   yt tytyd++gn+  + h+  a++ s+t     +   +
+  NZ_PGEW01000005.1 1203225 TYVHDPVYRLVSATGREHVGQTAQpgAADVPFAPVPHANDSSALRPYTETYTYDDCGNIRTVTHA--ASGGSWTRRHDTAADGD 1203306
+                            *****************9987777335789**********************************8..67788888777777777 PP
+
+            TcC_aln     447 rgvlstltenpad...vdalftagGqqkqlqpgqelvWtarnellkvtpvvrdgstddsesyrydadsqrvlkvsvqktgnstq 527    
+                            r    +l  +p+        ++a G+ + +    +l W   n l +v+     g   d   y+yd + +rv  ++++  +  t 
+  NZ_PGEW01000005.1 1203307 RLRAGSLPGDPEGtfsAVYAYDANGNVTAMPHLSALDWDVENRLAHVSL----GGGGD-TFYQYDMKGRRVRATTRRGGT--TE 1203383
+                            7777777777764111344579***********************9986....33333.59*********9876655433..33 PP
+
+            TcC_aln     528 tqrvlylpgle.lrttksgeteteslqvitvgeagr.aqvrvlhwesgkpaeisndqlrysydnligssgleldgdgniislee 609    
+                            t+   yl + e +r t++g++ +e+  +   + agr a    +    g+p  +    lry + +  g+s le d+dg ++s ee
+  NZ_PGEW01000005.1 1203384 TR--TYLGNTEtYRRTAAGRAVEERGSLHVADGAGRvALAETVTVRGGRPVPVPRPVLRYQFADHLGGSVLEADQDGAVLSYEE 1203465
+                            33..59998884588899999988888777788888356789999*************************************** PP
+
+            TcC_aln     610 yypyGGtavwaarsqveadyktvrysGkerd.atGlyyyGyryyqpWaGrWlsadpaGtvdGlnlfrmvrnnPvtlsdedGlas 692    
+                            y+pyG t+  a   +  ++ k +r++Gkerd  tG+ y+G ry  pW GrW s dpaG  dG n++  +rnnPv+lsd +G++s
+  NZ_PGEW01000005.1 1203466 YHPYGTTSFHAETGA--VSRKRYRFTGKERDeETGFTYHGARYLAPWLGRWTSPDPAGFADGTNVYAYARNNPVVLSDPSGTQS 1203547
+                            *****9998876655..5789*********9459************************************************99 PP
+
+            TcC_aln     693 vkelksq 699    
+                            ++e++ q
+  NZ_PGEW01000005.1 1203548 RRETQPQ 1203554
+                            7776655 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (2849859 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 12.87u 0.27s 00:00:13.13 Elapsed: 00:00:13.29
+# Mc/sec: 154.82
+//
+[ok]

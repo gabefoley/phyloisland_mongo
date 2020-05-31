@@ -1,0 +1,73 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/Chitinase_profile.hmm
+# target sequence database:        hmm_outputs/NZ_LN681228.1/Xenorhabdus_nematophila/Chitinase/NZ_LN681228.1_OEXPU_forward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_LN681228.1/Xenorhabdus_nematophila/Chitinase/NZ_LN681228.1_OEXPU_forward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Chi_aln  [M=615]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------      -----------
+   7.8e-139  449.9   0.0   1.1e-138  449.4   0.0    1.1  1  NZ_LN681228.1  Xenorhabdus nematophila AN6/1 genome assembly 
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LN681228.1  Xenorhabdus nematophila AN6/1 genome assembly XNC2, plasmid : II
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  449.4   0.0  1.1e-138  1.1e-138      96     604 ..  838893  839390 ..  838849  839399 .. 0.88
+
+  Alignments for each domain:
+  == domain 1  score: 449.4 bits;  conditional E-value: 1.1e-138
+        Chi_aln     96 llkkdelteetyqkvgfkpdgsgsnlsytsarvakplynkyesdktkpkvsayitdWcqydarLdge....edekddrGrGfdLaki... 178   
+                        +     te+ty+ ++f+p +  s+lsyt  r+ak ++n+yes  +   v++y+ dW  yd+r  +     + +  + GrG d+ ++   
+  NZ_LN681228.1 838893 DIWGAGATEKTYEVNEFDPSTADSDLSYTPGRIAKNVFNHYESV-SGFEVFGYLSDWGIYDSRYGNApgdtDVDYGEGGRGTDIMRLlde 838981
+                       4556678**********************************976.5689***************988654334445779****9988665 PP
+
+        Chi_aln    179 ..sptaydklifsflgvtGdkgvksekikevaegwnkqakv...kitkghivpldPygdlgtarnvglpeessetdvdpktflpyyqqkk 263   
+                         +   +d++i++f g++Gd+g k+ +i++ a  ++  ++    +  kg+ ++ d +gd g++ n+g+p   +etd     f    + ++
+  NZ_LN681228.1 838982 gsPLPYFDRIIVGFAGIIGDEGLKEATINQAAIDFKIASDEddlPNHKGEATFTDYWGDTGAYLNCGFPG-WKETD-----F----TPEN 839061
+                       5333468**********************999887776665555889********************984.33334.....4....6678 PP
+
+        Chi_aln    264 akGLLGGlreLqkkaklaGhkLelafsiGGWslsgyfsemakdeekrkvfvksvvdlfkrfPmfsevdidWeyPgaeGeegnefdpedGe 353   
+                       a+G+LG l +L+kk       + + +s+GGWs+s+ f+ +a+++e r+ +++s+ ++f+ fPmf+ +d+dWeyP+ +Gee+n++d+ed e
+  NZ_LN681228.1 839062 AQGVLGALVKLHKKYPD----MPIGLSLGGWSMSQAFHFIAQEPELRQRLAQSLKKIFDLFPMFTDLDLDWEYPNYKGEEHNSYDEEDPE 839147
+                       9***********99876....8999***************************************************************** PP
+
+        Chi_aln    354 nyallikeLrkaLdsafglsdrkeisiassavvkkleksnikelvkaGLdniflmsydffGtgWaesighhtnLkspkdpdpdeesdlsa 443   
+                       n+a like+rk+L           isia+ av + le +ni  l++aG+d++++m+ydffGt+Wae++ghht Lk      ++ee++ s+
+  NZ_LN681228.1 839148 NFAELIKEIRKELPDI-------TISIATIAVPAGLEAANIPLLLEAGVDKLNVMTYDFFGTPWAETLGHHTALKLNP---DKEETQNSV 839227
+                       *************877.......4**************************************************9877...4567888** PP
+
+        Chi_aln    444 eeaieyLleelgipaekinlGyanygrsgkgaelet.....reynkege.alGtlekGapeffdiinnyldlenelakgkngfnlmtdte 527   
+                       ++a++yLl+el ++++kin+Gya+y+r++++a + +     ++y++ g+ alG++e+G++e+ d+++nyld++     g n+f+++td++
+  NZ_LN681228.1 839228 DKAVNYLLDELHVEPKKINIGYAGYTRNAQQASIPSispiyGRYTPRGDiALGSFESGSTEWPDLLRNYLDSNM---DGINNFTVYTDEV 839314
+                       ***********************************999**999**997659********************998...9************ PP
+
+        Chi_aln    528 adadflyneeskhfisldtPrtvkakgeyaaklklggifsWsgdqdnGllanaareGlGyeiksnkekidmeplyne 604   
+                       a a+flyn+es++f+sldtP +vk+k++y+++++lgg+f W +d+dnGll naareGlG  +   + ++dm pl  +
+  NZ_LN681228.1 839315 AKAEFLYNQESRLFMSLDTPYSVKEKAQYVKEKGLGGMFIWMIDHDNGLLTNAAREGLGAATVG-TPRVDMAPLCLS 839390
+                       ***********************************************************98876.799*****9765 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (615 nodes)
+Target sequences:                            1  (1528887 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 6.38u 0.16s 00:00:06.54 Elapsed: 00:00:06.63
+# Mc/sec: 141.82
+//
+[ok]

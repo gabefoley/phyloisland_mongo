@@ -1,0 +1,78 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcdA1_profile.hmm
+# target sequence database:        hmm_outputs/NZ_BBXD01000047.1/Herbidospora_mongoliensis/TcdA1/NZ_BBXD01000047.1_ZDYHW_backward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_BBXD01000047.1/Herbidospora_mongoliensis/TcdA1/NZ_BBXD01000047.1_ZDYHW_backward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcdA1_alignment_muscle  [M=2503]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+    1.4e-97  313.6  26.6    2.9e-64  203.1   0.2    5.2  1  NZ_BBXD01000047.1  Herbidospora mongoliensis strain NBRC 1058
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_BBXD01000047.1  Herbidospora mongoliensis strain NBRC 105882, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  203.1   0.2   2.9e-64   2.9e-64    1834    2338 .. 1728228 1728740 .. 1728223 1728763 .. 0.86
+
+  Alignments for each domain:
+  == domain 1  score: 203.1 bits;  conditional E-value: 2.9e-64
+  TcdA1_alignment_muscle    1834 DsvDPDAvAqaDPmHYkvatFmrlldlLiarGDaaYRqLeRDtLneAkmWYvqaLelLGdepylslsaqWsePsLekaA 1912   
+                                 D  DP A+A   P+ Y+ a  m ++d L+  GD  +Rq + ++++e +m Y+ a ++LGd+p+     +      ++  
+       NZ_BBXD01000047.1 1728228 DPFDPHAIAELRPTAYRRAVVMAYVDNLLDWGDLLFRQYTMESVDESRMLYILAYDILGDRPQGVGRRHLPPV--KTYK 1728304
+                                 678***********************************************************98887765433..3333 PP
+
+  TcdA1_alignment_muscle    1913 dettqkavqqallalrqgeaske..lrtanslt.aLFLPqaneklagYWqtLeqRlynLRhnLsiDGqPLsLaiyatPa 1988   
+                                 +    ++     +++ +g    +       s+  + F    n +l +YW  +e Rl  +R  L i G    L+++  Pa
+       NZ_BBXD01000047.1 1728305 ELDPAEEGDPYAERVTAGGSLLDgmGAVHRSIGdGYFYIPGNAVLGEYWDRVEDRLRKIRASLDILGVSRPLPLFEPPA 1728383
+                                 33333333333333333333332113333444314666668************************************** PP
+
+  TcdA1_alignment_muscle    1989 dPkaLlsaavaas...qggsalpeavlslyRFpvmLenarslvsqLtqFGstLlsiierqDaeaLselLqnqaaeLvlq 2064   
+                                 d  aL++ a+a     q g    ++ ++ yRF  +  +a+ lv  L  FG  Ll++ er D+e+Ls l  +q a +  +
+       NZ_BBXD01000047.1 1728384 DVMALVRGAAAGLtpdQVGA-GLAGPVPNYRFGFLHRKAQDLVDRLRGFGGELLGVLERRDSEELSVLQTRQEAGIRQM 1728461
+                                 ******87766531114444.456789***************************************9888887777777 PP
+
+  TcdA1_alignment_muscle    2065 sisiqdktieeldadkavLeesragaqsRldsyskLydedinagekramdLrasasglsaaaqalslaaaaadlv.... 2139   
+                                   ++ + ++e   +  a +e+sr++++ R + y+k   + +++  +  +d++++a++ ++++  l++ aa+a  +    
+       NZ_BBXD01000047.1 1728462 TRAVREAQVEVATEYLAQIEASREATEARQKYYEKQIADGLTSLQQSQLDIMTAAAAAHLTGAGLKVGAAIAFALpqvl 1728540
+                                 777777777655555677999*****************************************99999999876651112 PP
+
+  TcdA1_alignment_muscle    2140 ..PnifGlavGGsrwGaileAsalvlelsasvsrieAdkisqsevYRRRRqeWeiqrnnAeaevkqidaqlealavrre 2216   
+                                   P ifG  +GG + G ++e  a  +e   +  ++  +         R  +eW  q   A+a+ + +  q+++ + +  
+       NZ_BBXD01000047.1 1728541 agPFIFGTMIGGEQVGKAMESGAEMAEALGEGLSVLGELYGTRVEHERTLDEWKYQVMLAKADYRELGHQVASAKAQLG 1728619
+                                 33569*********************************9999999999******************************* PP
+
+  TcdA1_alignment_muscle    2217 aavlqkeyletqqeqtqaqleflqrkfsnkaLYsWlRGkLaaiYyqFyDLavsrclmAeeayrwelnkesarfikpgaW 2295   
+                                  a+   e +++  ++++a  +fl  kf+n+ LY+W  G+La +Y+  y La   +  Ae+ay++e+  + ++f++p  W
+       NZ_BBXD01000047.1 1728620 QAQRELEIIDQEISDLEAVATFLTGKFTNAELYQWKAGRLAQMYFASYGLAHDIAKAAERAYQYEQGVS-DSFVQPVYW 1728697
+                                 *****************************************************************9987.********* PP
+
+  TcdA1_alignment_muscle    2296 qgtyaGLlaGetLmlnLaqmekaylekdeRalevtRtvsLaev 2338   
+                                 ++  +GLlaGe+L  +L  + +ay+ +d R  e+t+ +sL +v
+       NZ_BBXD01000047.1 1728698 ESRRSGLLAGEALGVDLERLGHAYVSNDGRGFEITKRISLLQV 1728740
+                                 ****************************************887 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (2503 nodes)
+Target sequences:                            1  (3023917 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 58.21u 0.91s 00:00:59.12 Elapsed: 00:01:04.03
+# Mc/sec: 118.21
+//
+[ok]

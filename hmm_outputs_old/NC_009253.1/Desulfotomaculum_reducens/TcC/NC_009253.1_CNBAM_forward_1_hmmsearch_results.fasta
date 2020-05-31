@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/NC_009253.1/Desulfotomaculum_reducens/TcC/NC_009253.1_CNBAM_forward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/NC_009253.1/Desulfotomaculum_reducens/TcC/NC_009253.1_CNBAM_forward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence    Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------    -----------
+   4.2e-127  411.2   4.8   6.8e-127  410.5   4.8    1.2  1  NC_009253.1  Desulfotomaculum reducens MI-1, complete genome
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_009253.1  Desulfotomaculum reducens MI-1, complete genome
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  410.5   4.8  6.8e-127  6.8e-127      41     692 ..  352328  352989 ..  352320  353001 .. 0.87
+
+  Alignments for each domain:
+  == domain 1  score: 410.5 bits;  conditional E-value: 6.8e-127
+      TcC_aln     41 itrhqydarGfltqsadPrlheagla......nlsyltdlagevlrtqgvdagttvalndaagrpflavsnistaddgtedrsqavtrtwqy 126   
+                      t h+ d +G +  s+dPrl+ ++l+      n++y+ d+ ++ l  +++dag +++l+++ g ++ + +   + +  t +  ++++r +q 
+  NC_009253.1 352328 TTYHELDIQGNVLFSVDPRLYYSNLKdhtdyyNFKYVYDMQKKPLSVDSADAGLKLSLSNIFGNTVHSWD---SRGFHTRKMYDSLQRCVQI 352416
+                     58899***************999888889999*******************************9988777...666778888899******* PP
+
+      TcC_aln    127 edaslpGrllsiteqvtgeaariterfvyagntdaekalnlagqcvshydtaglvqtdsialtgvplsvtrrllkdadnpdavadWqgedas 218   
+                       +   Gr l + + v+   + +     y  +++a k++nl gq+ +h+d ag+v  +   l g  +   r+ l d    +++a+W + ++s
+  NC_009253.1 352417 GVEGNDGRGLVLHQAVE---KFVYGE-FYEEKEEASKDKNLRGQVYKHFDQAGVVTCNLYNLKGKAVQTDRQFLADY---KKEANWDNVNKS 352501
+                     *********98765543...223333.477899999**************************************995...568***999988 PP
+
+      TcC_aln    219 awndllaaetfttlttadatGavltttdakgnlqrvaydvaGllsgsWltlkggteqvivksltysaagqklreehGnGvvttyeyepetqr 310   
+                     +    la+e f      da   v+++t   g +   +y+ aGll+   +++k+g+e+  +k + y a gq+l+  +GnGv t y+y   + r
+  NC_009253.1 352502 S----LADELFSIGCSYDALERVISETAPDGSIYTHIYNQAGLLRKVVVAFKDGSEEEFIKDIQYNANGQRLKIIYGNGVTTEYSYTDPALR 352589
+                     6....6778899999***************************************************************************** PP
+
+      TcC_aln    311 lvgikterpaGhasga.k..vlqdlryeydPvGnvlkitndaeetrfWrnqkvvPentyvydslyqlvsatGremana.......g.qqsss 391   
+                     l+ i   +p    +   k  +lq + y+ydPvGnv ++++++  t f+  qkv P + y+y+ lyqlvsatGr+   +       g +qs+ 
+  NC_009253.1 352590 LTDILSLKPDSNNTKDfKgcLLQKIHYTYDPVGNVTRLRDNSYPTVFYNQQKVEPLSDYSYNPLYQLVSATGRQHPGIfdgshrdGfKQSKF 352681
+                     **9998888776543222339****************************************************9876633221111244555 PP
+
+      TcC_aln    392 lpsatvplpidssaytnytrtytydeagnltqirhsapatnnsyttditvsdrsnrgv.lstltenpadvdalftagGqqkqlqpgqelvWt 482   
+                     +p +    p d ++  ny + y+ydeagnlt+irh +++t  s+t ++ +s+ +nr+v + +l    +   + ++++G+  +l    ++ W+
+  NC_009253.1 352682 IP-IKSSNPNDGTSLENYRQDYQYDEAGNLTNIRHISSST--SWTRQLDISKGTNRTVqIASLNGAKNFFKTAYDPCGNMLNLENLASINWS 352770
+                     55.334679999***********************97665..89*************95677888888899********************* PP
+
+      TcC_aln    483 arnellkvtpvvrdgstddsesyrydadsqrvlkvsvqktgnstqtqrvlylpglelrttksgetetes..l..qvitv..geagraqvrv. 567   
+                      rn+l +v  + r+++++dse + yd++ qrv kvs +k g+   ++  lyl ++e++ +k+ + + es  l  q + +  g++  a   + 
+  NC_009253.1 352771 YRNNLSRVDVILRENNSSDSEYFIYDSSGQRVRKVSERKCGSLREIEEKLYLGNFEIKRIKKKSDHLESqiLdrQSLHImdGKSRIAITDIw 352862
+                     ********************************************************998776665555411322333331133333333321 PP
+
+      TcC_aln    568 lhwesgk.paeisndqlrysydnligssgleldgdgniisleeyypyGGtavwaarsqveadyktvrysGkerd.atGlyyyGyryyqpWaG 657   
+                     l  + ++  ++  + + ry  +n  gs+ le+d++ niis eey+pyGGt+ +a r + e++ k +ry Gkerd +tG+yyyG ryy pW G
+  NC_009253.1 352863 LKDDLNReTEKTMERKFRYQLNNNLGSACLEVDEKVNIISCEEYFPYGGTSFIAGRDKREVKLKEYRYCGKERDdSTGFYYYGARYYLPWLG 352954
+                     3333344145567889*********************************************************648**************** PP
+
+      TcC_aln    658 rWlsadpaGtvdGlnlfrmvrnnPvtlsdedGlas 692   
+                     rW+  dpaGtvdGlnl+ +v+ nPv+++d++G++ 
+  NC_009253.1 352955 RWINPDPAGTVDGLNLYSFVKGNPVNFIDTSGKVG 352989
+                     *******************************9875 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (1202701 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 6.11u 0.18s 00:00:06.29 Elapsed: 00:00:06.46
+# Mc/sec: 134.42
+//
+[ok]

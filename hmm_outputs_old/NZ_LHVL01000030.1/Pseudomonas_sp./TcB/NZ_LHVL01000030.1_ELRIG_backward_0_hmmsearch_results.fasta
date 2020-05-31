@@ -1,0 +1,133 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcB_profile.hmm
+# target sequence database:        hmm_outputs/NZ_LHVL01000030.1/Pseudomonas_sp./TcB/NZ_LHVL01000030.1_ELRIG_backward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_LHVL01000030.1/Pseudomonas_sp./TcB/NZ_LHVL01000030.1_ELRIG_backward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_alignment  [M=1483]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+          0 1133.9   0.0          0 1133.5   0.0    1.1  1  NZ_LHVL01000030.1  Pseudomonas sp. Pf153 PREFIX_contig_30, wh
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_LHVL01000030.1  Pseudomonas sp. Pf153 PREFIX_contig_30, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 1133.5   0.0         0         0       6    1480 .. 1873209 1874684 .. 1873204 1874686 .. 0.90
+
+  Alignments for each domain:
+  == domain 1  score: 1133.5 bits;  conditional E-value: 0
+      TcB_alignment       6 elsitelslPkGGGaikGmGealtaaGpdGmaslslPlPisaGrGvaPalslnyssgaGngpfGlGWqcgvmaisrrtskGvPk 89     
+                             l+i ++++ +   +i  +G+ + ++G+ G as+ lPlP+s+ r ++Pal+l+y+s +Gng+fG+G   +v++i+rrts GvP+
+  NZ_LHVL01000030.1 1873209 PLQIVTPTIAN-SASIATIGHRIGPVGTRGAASFELPLPLSSARHLTPALALHYDSQSGNGAFGIGMRLSVASITRRTSDGVPR 1873291
+                            56666666654.46899******************************************************************* PP
+
+      TcB_alignment      90 yeeedtflgPeGevlavalnekgqpdirsesklqgvtleasytvtryqsrlisdfskleywqpakeeeekdfWliyspdGqvhl 173    
+                            y++ed  +  +G         + ++d+   ++l g   +++  v ry +r++s f   e w p+  + +++fW +  ++G+v+ 
+  NZ_LHVL01000030.1 1873292 YDNEDVMIDADGV----ERWPELNEDVPVIHALPGSG-NVTCSVVRYYPRVESAFDVYELWTPS--DGRAPFWRVQGSNGHVYC 1873368
+                            ********99994....33444556677777888864.78899*******************65..5789************** PP
+
+      TcB_alignment     174 lGktaqarianpe......eetqiaqWlleesvtptgehiyyqyraeddagcdedelaahpeataqrylakvkyGnitpseslf 251    
+                            +G ++ +ria+p+       + +ia+Wll e v+p gehiyy+y a+          +   e  +qryl +v+yGn t+se+l+
+  NZ_LHVL01000030.1 1873369 YGYSEASRIAEPKsdadpeRSIRIAEWLLLEEVSPLGEHIYYEYAADPGPF------DGPHEYRSQRYLRRVCYGNATASETLY 1873446
+                            *********98763222225679*********************9965543......33345678******************* PP
+
+      TcB_alignment     252 vldeeapakeeWlfhlvfdyGerssslkevPef..aatekWlvrpdrfsryeyGfevrtrrlcrqvlmfhrlqalageakaeet 333    
+                             +++e pa+ +W fhl+fdyG+r+ +l + P++  +a + W +r d +  y yGfev trrlc+qvlmfh+  a     +a ++
+  NZ_LHVL01000030.1 1873447 CFEDEDPANRNWHFHLLFDYGQRTLDLAQKPSWqaSADAPWPMRSDPLHTYRYGFEVGTRRLCHQVLMFHQFPA-----EAGNE 1873525
+                            *********************************5334568*******************************976.....55679 PP
+
+      TcB_alignment     334 palvsrlildydenas.vstlvavrrlaheedgtpvtlpPleldyqrfdkekaak.WqeldelenlnalqryqlvdlkGeGlpG 415    
+                            palv+rl+l+y   a   s+l+a+   a+++++++   pP+el+y  f+++  ++ + el+++  l+  +ryq vdl+GeG+pG
+  NZ_LHVL01000030.1 1873526 PALVQRLLLEYTATALgYSLLTAAHYQAWDAEDRVQYRPPVELQYSGFEPNLSPApFFELETMPALEDGRRYQCVDLYGEGVPG 1873609
+                            ***********998863799999***************************988755899999999******************* PP
+
+      TcB_alignment     416 ilyqdkkaWwyrapqrqeeedsnavtyekikplpkiPalqdnasll....dinGdGkldWvitaaGlrGyhsqkpdgeWtrfiP 495    
+                             l + +++W+yr p r ++   + ++y+  + l ++P+  dn +++    d+ G G+l+W+i+++G+ G+++ +pd +W+ f+ 
+  NZ_LHVL01000030.1 1873610 FLCRYTDGWYYREPERGAD--GDEIAYGPWSLLESLPVATDNPAVMqvltDLTGSGRLNWIISQPGMSGFYTLNPDRSWSGFTS 1873691
+                            ***************9776..6789**************9996544333399******************************** PP
+
+      TcB_alignment     496 lsalPveyfhPraqladltgaGlsdlvliGPksvrlyaner.dgfkkgqdvvqsdditlPvpGadarklvafsdvlGsgqqhlv 578    
+                            ++  P+e+ hP aql dltg G   l++iGP+svrlyan r +gf+ g dv ++ d  lP+     ++lv f ++lGs  + l 
+  NZ_LHVL01000030.1 1873692 FEQYPTEFLHPAAQLGDLTGDGSRSLAMIGPRSVRLYANLReQGFAPGVDVPHEPDSDLPLFNGLRSELVLFGNLLGSDSTELY 1873775
+                            ***************************************87369**************************************** PP
+
+      TcB_alignment     579 evsadkvtcWPnlGhGrfGqpltlpGfsqseeefnpdrvyladldGsGttdliyvhserleiylnesGnkfaa.pltlalPdgv 661    
+                             ++ d+++cWPnlGhGrfG+  +++ +  s  +f++drv +adldGsG+  liy +s++++iyln+ Gn++++ p+++  P gv
+  NZ_LHVL01000030.1 1873776 RIRFDEIRCWPNLGHGRFGEGFVMSALPFSYGQFDADRVRIADLDGSGAPALIYLNSDCFDIYLNRGGNGLEQtPVRVPWPTGV 1873859
+                            **********************************************************************97549********* PP
+
+      TcB_alignment     662 rfddtcqlqvadiqGlGvasliltvPhma.....pkhWrldltkakPwllnevnnnmGaettllyrssaqfWldekaqaeeagk 740    
+                            r+d+ cq+ +ad+qGlG aslil+ Phm+     p+hWr+d+   +P+lln  nnnmG  t+l yrssaqfWldek+q  ++++
+  NZ_LHVL01000030.1 1873860 RYDNVCQVTLADLQGLGCASLILSTPHMTpemekPRHWRYDFVAVRPYLLNGTNNNMGCSTALAYRSSAQFWLDEKQQRVAKEE 1873943
+                            ****************************73333358************************************************ PP
+
+      TcB_alignment     741 tpvsylPfpvhllwrtevldeisgnrlvseleyahGaWdgrerefrGfgrveqtdtdelaqgtaaertapsltksWfatGleev 824    
+                            +p++ylP+++ ll r++ ldei+gn l++  +y  G +dg  refrGfgr+ q d++     t    tap l k+Wf tG ++v
+  NZ_LHVL01000030.1 1873944 KPTCYLPLALPLLARQQQLDEITGNCLTQCFTYFEGNYDGYHREFRGFGRLYQVDSEVPDGETPGGFTAPLLVKTWFHTG-RAV 1874026
+                            ********************************************************98887788899*************.78* PP
+
+      TcB_alignment     825 dealsaeyWrgdkqafagftprftrydeasgkdvaltedeeeryWlnralkgqllrselyglddtekaeiPytvtesrlqvrll 908    
+                            d+ l++  ++gd++a +   +  tr++e+++ ++ +t+d + +  +  al g++lrse +  + +++   Pytvt++r+ +r+ 
+  NZ_LHVL01000030.1 1874027 DQPLKD-CFEGDTDAVPLGPTLLTRFHESDEANEIITPDPDTARDMAYALGGRVLRSETHPAEPADT-PKPYTVTQQRYLLRH- 1874107
+                            ***976.569*************************************************99887765.57********98775. PP
+
+      TcB_alignment     909 qsakeeepavwvsviesrsykyeriasdPqcsqqivlksdafGqplksveiayprrekp.aespyPdtlpdtlfdssyddqqql 991    
+                               ++++ +++v ++e+ s++y+  ++dPq ++ i+lk ++fGq ++s +++y+rr    ++ p+ d++ +  + +++ddqqq+
+  NZ_LHVL01000030.1 1874108 --PHAHHKSLLVLALETLSHQYDGFTDDPQTEHGINLKWNRFGQLTHSFAVHYARRLTElNTPPFDDEVENGWWRDAHDDQQQV 1874189
+                            ..555677888999******************************************76516778******************** PP
+
+      TcB_alignment     992 lrltrqkssyhhltdeee..rvlglpdaersdvftyeaekvpaeglsleallkedsliaddkaaeylgqqrvaytagqset..p 1071   
+                            +++++++ +y hl+d++   ++lglp  +r++  +  + ++p+ gl+  ++  e  l  +d+++  +++q +a ++ q+     
+  NZ_LHVL01000030.1 1874190 FHIIEKRDEYLHLIDNTGlrQRLGLPWRSRANGLQRPKGELPQ-GLTPRQVNYETFLEHQDSQQWLAARQLIALQE-QNYLldE 1874271
+                            ***************9964489******************996.67666665554444444444444444444443.4433113 PP
+
+      TcB_alignment    1072 lekptlqalvaftetavldesslkafdgvleedelektleeaGyqqvkrlf....eeeaeskvWvarkgytdygdaaqfyrpla 1151   
+                            ++  ++qal    e a++de++l a+d v  + +++++le  G++ +k  +    ee++ +++W  + g++ y   + f++  a
+  NZ_LHVL01000030.1 1874272 HDDIAFQALRGPLEVAEFDEQALDAYDAVPPPFDIREQLETIGFKPMKLFLpddpEEDEAENLWSKKVGFATYLPLSGFFQLSA 1874355
+                            466789****************************************9998844433445567********************** PP
+
+      TcB_alignment    1152 qrntlltGkttltWdthycvviktqdaaglttqakydyrfltpvqltdindnqhlvtldalGrvvssrfwGtenGkktGysspe 1235   
+                             ++t+  G+tt+ +d ++ + ++++   g tt+  ydy +l+p q+ d+ndn + +++   G +    f GtenG+ +G+   +
+  NZ_LHVL01000030.1 1874356 LQETQSHGETTVGYDPYHFMTTTVTLPDGCTTRLDYDYHWLLPRQIIDANDNPQQAAYGPGGVPLGVTFHGTENGVPAGFD--D 1874437
+                            ********************************************************************************8..6 PP
+
+      TcB_alignment    1236 ekpftvPssvd..ealal.kpal.PvaqclvyapdsWmpklsqeqlselaeeeewkelrkarvvtedgrvcalalrrwl...qr 1312   
+                             +++ +P+++   +a++  +++l  +a+ +   + sWm  +  + + ++++     e   ar v  dg+v a a+ r +   qr
+  NZ_LHVL01000030.1 1874438 IATYRPPEDLTpgHAIEHpQETLgRIASAVRTDTLSWMGAIDVTLVLSTQRA----EWIGARYVLPDGHVRASARARLAslgQR 1874517
+                            6889999999722566542234434788888999*****9998877665544....4678999999****99999887622133 PP
+
+      TcB_alignment    1313 qklstalasllaessrlPphsltlttdrydsdpeqqlrqqvtfsdGfgrllqsavrheaGeawqrkedgslvvdakgapvvaet 1396   
+                              +++ l +l++++ r+P+hs+ l++dry  dp qq+r  ++  dGfgr lq+ +r eaG+a+  +edgslv + +g+p ++++
+  NZ_LHVL01000030.1 1874518 SVAEELLWMLIQATAREPVHSVVLSADRYPDDPLQQIRIALSAVDGFGRPLQTKQRVEAGQAYAVAEDGSLVLE-DGKPLQHHA 1874600
+                            33345667889999***********************************************************9.9******** PP
+
+      TcB_alignment    1397 dtrWavsGrteydnkGqpirtyqPyflndWryvsddsarkdlyadthlydPlGreikvitakgylrrklltPWfvvsedendta 1480   
+                            ++rW vs r+eydnkG + r+y+Pyf + Wry++d s r   y d+++ydP Gr ikvi akg+   +   PW+  + d ndt 
+  NZ_LHVL01000030.1 1874601 EQRWRVSERVEYDNKGLVTRVYRPYFADAWRYINDTSLRVHGYHDQQFYDPPGRLIKVINAKGHEAWHVHHPWYQCDFDYNDTD 1874684
+                            **********************************************************************************95 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1483 nodes)
+Target sequences:                            1  (1993679 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 17.77u 0.23s 00:00:18.00 Elapsed: 00:00:19.18
+# Mc/sec: 154.15
+//
+[ok]

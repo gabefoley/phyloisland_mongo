@@ -1,0 +1,68 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcdA1_profile.hmm
+# target sequence database:        hmm_outputs/NZ_CP013429.1/Burkholderia_sp./TcdA1/NZ_CP013429.1_WLWYW_backward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_CP013429.1/Burkholderia_sp./TcdA1/NZ_CP013429.1_WLWYW_backward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcdA1_alignment_muscle  [M=2503]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------      -----------
+    3.4e-45  139.8  11.4      5e-41  126.0   9.9    3.1  1  NZ_CP013429.1  Burkholderia sp. MSMB0856 chromosome 3, comple
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP013429.1  Burkholderia sp. MSMB0856 chromosome 3, complete sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  126.0   9.9     5e-41     5e-41    2012    2336 .. 2402702 2403033 .. 2402699 2403038 .. 0.92
+
+  Alignments for each domain:
+  == domain 1  score: 126.0 bits;  conditional E-value: 5e-41
+  TcdA1_alignment_muscle    2012 lslyRFpvmLenarslvsqLtqFGstLlsiierqDaeaLselLqnqaaeLvlqsisiqdktieeldadkavLeesraga 2090   
+                                 l+ yRF v++++ar+ v  L   G++Ll+  er D+e L+++  ++ +eL+ + ++i +++  e d + ++L + ++  
+           NZ_CP013429.1 2402702 LTQYRFVVLMQKARECVGRLREMGTALLGAFERGDGEYLAQMHSRHETELADMTVDIRQQQWREADWQVQALRKGKEVQ 2402780
+                                 678************************************************************************9998 PP
+
+  TcdA1_alignment_muscle    2091 qsRldsyskLydedinagekramdLrasasglsaaaqalslaaaaadlvPnif.GlavG......GsrwGaileAsalv 2162   
+                                 q  +   ++L d  + +ge    d +++  gl ++a+ ++ +a a++l+P++f G+ +       G++  ++++ +a  
+           NZ_CP013429.1 2402781 QTNRRYTKRLIDVGLINGELDYQDNMNNEIGLRSTATEIEAVAEAMELIPDLFvGFPCEetwlplGTKLAGMFKTIARI 2402859
+                                 888877789*******************************************999988544444578888888888877 PP
+
+  TcdA1_alignment_muscle    2163 lelsasvsrieAd.kisqsevYRRRRqeWeiqrnnAeaevkqidaqlealavrreaavlqkeyletqqeqtqaqleflq 2240   
+                                 ++   +   ++A+  ++q+  + RR +eW  q +  + e++q++ q+ a + +   + l  +  ++  eq +  l++l+
+           NZ_CP013429.1 2402860 TNEIGEIAGLNAQlDLTQA-GWQRRLDEWVHQVEVLDLEIEQMEIQILAAERKAHETLLELNLHQQSLEQSRERLNLLR 2402937
+                                 7666677777776256776.578999*********************9999888888898888888889********** PP
+
+  TcdA1_alignment_muscle    2241 rkfsnkaLYsWlRGkLaaiYyqFyDLavsrclmAeeayrwelnkesarfikpgaWqgtyaGLlaGetLmlnLaqmekay 2319   
+                                  kf+++ L+ +l     a+Y+q y+La+     A++a+++el  ++ +++  ++W+g   GLlaG++L l L  mek y
+           NZ_CP013429.1 2402938 DKFTSHELWLYLQKEGMAMYWQMYELAQHAVQQAQRAFNFELGFTGRNYLPCESWNGLQEGLLAGDKLQLALDRMEKEY 2403016
+                                 ******************************************************************************* PP
+
+  TcdA1_alignment_muscle    2320 lekdeRalevtRtvsLa 2336   
+                                 l+ ++R+ e+t+ vsLa
+           NZ_CP013429.1 2403017 LQCHQREYELTKHVSLA 2403033
+                                 ****************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (2503 nodes)
+Target sequences:                            1  (2416500 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 40.83u 0.77s 00:00:41.60 Elapsed: 00:00:43.54
+# Mc/sec: 138.92
+//
+[ok]

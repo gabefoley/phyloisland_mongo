@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/NZ_CP027218.1/Pseudomonas_sp./TcC/NZ_CP027218.1_LNVJL_forward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_CP027218.1/Pseudomonas_sp./TcC/NZ_CP027218.1_LNVJL_forward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------      -----------
+   1.7e-153  498.4   6.3   1.4e-145  472.2   3.7    2.1  1  NZ_CP027218.1  Pseudomonas sp. DTU12.3 chromosome, complete g
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_CP027218.1  Pseudomonas sp. DTU12.3 chromosome, complete genome
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  472.2   3.7  1.4e-145  1.4e-145       4     700 ..  466068  466730 ..  466065  466746 .. 0.92
+
+  Alignments for each domain:
+  == domain 1  score: 472.2 bits;  conditional E-value: 1.4e-145
+        TcC_aln      4 slfsktPsvtvldnrgltvreiayhrhPdspdvtseritrhqydarGfltqsadPrlheagla......nlsyltdlagevlrtqgvdag 87    
+                        ++ ktP++ v+d rgltv+++ y+r  d+    + r  r  yd++G  t+  dPrl++++        nl+ + +l+g++lrt++vdag
+  NZ_CP027218.1 466068 DVHYKTPQLVVVDPRGLTVCSLDYWRA-DASLAAQLRTNRTAYDEAGRTTRQWDPRLSAQQVSdpqtpaNLTTVYALSGQALRTDSVDAG 466156
+                       6899**********************7.66667899**********************99988999999********************* PP
+
+        TcC_aln     88 ttvalndaagrpflavsnistaddgtedrsqavtrtwqyedaslpGrllsiteqvtgeaariterfvyagntdaekalnlagqcvshydt 177   
+                       t++ l   a++ +++ +            s++  r ++y+   +  r+l++ e +  + +  +er+vy +  + e+a+n  gq ++h d+
+  NZ_CP027218.1 466157 TQIELPGLAAQVLMSRD------------SRSTVREIEYD---VMLRPLAVFETAPAQPQLCVERLVYGAPGQGEQARNQFGQLIRHDDP 466231
+                       ***********999877............56667888887...5569******************************************* PP
+
+        TcC_aln    178 aglvqtdsialtgvplsvtrrllkdadnpdavadWqgedasawndllaaetfttlttadatGavltttdakgnlqrvaydvaGllsgsWl 267   
+                       ag  q +s al+g  l  tr+  ++     + ++W +  +   + l   +  t+  +  a+G+vl + da+gn+qr a  v G l++  l
+  NZ_CP027218.1 466232 AGSLQFKSFALSGQNLENTRHFTQEL----VSTNWPEPIDERSQLLEPGDGATSRWRFGAQGQVLEQIDARGNRQRFAQTVDGRLHAICL 466317
+                       *********************99984....66899876555555555567899999********************************** PP
+
+        TcC_aln    268 tlkgg.teqvivksltysaagqklreehGnGvvttyeyepetqrlvgikterpaGhasgakvlqdlryeydPvGnvlkitndaeetrfWr 356   
+                       + kg+  e+ +v  + y a gq  +e  GnGv t+ +y p+  rl++ + +r+     g  ++q l y yd +Gnv++i+++    r++ 
+  NZ_CP027218.1 466318 QTKGQpVEKPLVSDIHYNADGQVEQETAGNGVRTSLKYRPQDGRLMS-RHARSY----GGALIQYLIYAYDRMGNVVSIKDQVMPIRYFA 466402
+                       ***97469*************************************97.445555....44589*************************** PP
+
+        TcC_aln    357 nqkvvPentyvydslyqlvsatGremanagqqssslpsatvplpidssaytnytrtytydeagnltqirhsapatnnsyttditvsdrsn 446   
+                       nq++ P n + ydslyql+ atG e   a+ q++  p       +d  a +ny +ty+yd +gnlt++ h      + +  ++ v+ +sn
+  NZ_CP027218.1 466403 NQRIEPLNEFFYDSLYQLIVATGWEA-GAASQGTGSP-----GRVDPRALSNYRQTYHYDAGGNLTKLDHV---GVQVHGRELQVARYSN 466483
+                       ************************95.5566777766.....56799***********************8...5577899********* PP
+
+        TcC_aln    447 rgv..lstltenpadvdalftagGqqkqlqpgqelvWtarnellkvtpvvrdgstddsesyrydadsqrvlkvsvqktgnstqtqrvlyl 534   
+                       r++  ++ +    a++ a +++ G+   l  g ++ W+ rn+l+ v+pv r +  dd+e y y a+ qrv k+   +tg+ t ++ v yl
+  NZ_CP027218.1 466484 RALpyINGVPPGEAQIAAAYDTRGNLLALDQGHDVQWNLRNQLQSVSPVERASGLDDREVYMYGASGQRVRKIRSLQTGARTVINEVRYL 466573
+                       *9744788888899**************************************************************************** PP
+
+        TcC_aln    535 pglelrttksgeteteslqvitvgeagraqvrvlhwesgkpaeisndqlrysydnligssgleldgdgniisleeyypyGGtavwaarsq 624   
+                       pglelr  ++g    e lqvi   ++g   v vlh es  pa+ sndq ry + +  gs++lel+++g+iis+e +yp+G ta w   ++
+  NZ_CP027218.1 466574 PGLELRIDSAG----EVLQVISA-QTGLNSVNVLHRESPLPAD-SNDQYRYHFCDHLGSASLELGEHGRIISQETFYPFGETA-W--SRE 466654
+                       ******99988....689**985.79****************9.89************************************9.4..467 PP
+
+        TcC_aln    625 veadyktvrysGkerdatGlyyyGyryyqpWaGrWlsadpaGtvdGlnlfrmvrnnPvtlsdedGlasvkelksqv 700   
+                       +e++y+t+rysGkerdatGlyyyGyryy pW  rW+  dp G +dG nl+rm+ nnP+t++d+dG +++k+l++  
+  NZ_CP027218.1 466655 SEVSYRTIRYSGKERDATGLYYYGYRYYIPWLQRWMNPDPKGYIDGSNLYRMALNNPITYIDNDGAVTRKQLTNGL 466730
+                       899****************************************************************988776655 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (2089489 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 10.32u 0.29s 00:00:10.61 Elapsed: 00:00:11.01
+# Mc/sec: 137.02
+//
+[ok]

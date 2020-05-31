@@ -1,0 +1,105 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcdA1_profile.hmm
+# target sequence database:        hmm_outputs/NZ_SOCT01000044.1/Pseudomonas_sp./TcdA1/NZ_SOCT01000044.1_RKOQB_forward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_SOCT01000044.1/Pseudomonas_sp./TcdA1/NZ_SOCT01000044.1_RKOQB_forward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcdA1_alignment_muscle  [M=2503]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+   5.3e-148  480.9  46.2    6.5e-94  301.4  18.8    7.3  2  NZ_SOCT01000044.1  Pseudomonas sp. LP_7_YM Ga0304827_144, who
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_SOCT01000044.1  Pseudomonas sp. LP_7_YM Ga0304827_144, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  124.2   2.1   1.8e-40   1.8e-40     896    1141 .. 1712673 1712927 .. 1712641 1712934 .. 0.85
+   2 !  301.4  18.8   6.5e-94   6.5e-94    1753    2340 .. 1713346 1713906 .. 1713342 1713918 .. 0.95
+
+  Alignments for each domain:
+  == domain 1  score: 124.2 bits;  conditional E-value: 1.8e-40
+  TcdA1_alignment_muscle     896 kelpsyaeWetvaealeagLstqqadtlaavldeslsaalsa....yylknvapeevalksRddLYsylLiDnqvsaav 970    
+                                  e+++y++ + + ++l  + s +  + +++ l+e+   al+a    y++   +++++ + + ddL sy+L D  vs++ 
+       NZ_SOCT01000044.1 1712673 GEQSTYEQIDIAGKMLLGACSDDAREVIEDGLQEAWRDALAAylmgYWVPYAEQRQLFMPALDDLSSYFLTDVLVSSDA 1712751
+                                 4668999999999999999888888777777777666555550000566667777888889**************9976 PP
+
+  TcdA1_alignment_muscle     971 .kttriaeAiAsiqLYvnraLerieenadsavssrqfFtdWdtynkrYstWagvsqLvYYPenYiDPtlRigqtkmmde 1048   
+                                  kt+ ++ AiAs+q Y+ r  ++ e+  ++   +    +dW++y  +Y tW +       Pen i  + R  +     +
+       NZ_SOCT01000044.1 1712752 rKTATVSQAIASLQHYLYRLFSHLEPGYEKVSLALDTVRDWQQYLSHYGTWKAWRAQLNHPENLIYYASRPNKSAAFKD 1712830
+                                 37899************************999999****************999988899***********99999888 PP
+
+  TcdA1_alignment_muscle    1049 l...lqsvsqsqltsdtvedaFktYltrfeevAnLkvvsaYHDnvnseqGltyfiGksreeaeeyyWRsvDisklsd.G 1123   
+                                 l   ++++sq +l ++  + a  +Ylt+fe++ nL++vs+Y D+ + ++ + y+iGk++++ +eyyWRsvD+   +d  
+       NZ_SOCT01000044.1 1712831 LeveVNQISQGRLDTQRLQTAVLSYLTKFERLSNLHIVSGYLDGSDPKSDTYYLIGKTNTSPTEYYWRSVDMGLRDDqQ 1712909
+                                 8444689999**************************************************************9877625 PP
+
+  TcdA1_alignment_muscle    1124 klaanAWseWkkidcaln 1141   
+                                 +l+  AWseW+ki+ +++
+       NZ_SOCT01000044.1 1712910 RLSPLAWSEWEKITLPVT 1712927
+                                 799***********9987 PP
+
+  == domain 2  score: 301.4 bits;  conditional E-value: 6.5e-94
+  TcdA1_alignment_muscle    1753 ditsepmDFsganalYfWelFYYtPmlvaqRlLqeqkFdeatrW.lkYvwnpaGYivngeiqeyqWnvRPLeedtsWna 1830   
+                                   t+ p+DF gan lYf elF   P l+a Rl + q+F++a+ W l+Y+++p     +    + +Wn RPL e  s n+
+       NZ_SOCT01000044.1 1713346 ANTNPPVDFHGANGLYFRELFLHLPALIATRLTEQQQFEDAEVWyLRYLFDPYRAQPDQAGRPAHWNTRPLAEVGSLNS 1713424
+                                 457789*************************************989******999888999999*************** PP
+
+  TcdA1_alignment_muscle    1831 dpLDsvDPDAvAqaDPmHYkvatFmrlldlLiarGDaaYRqLeRDtLneAkmWYvqaLelLGdepylslsaqWsePsLe 1909   
+                                 + L  vDP   A +   +Y+ + F+ l++    +GD+ YRqL+   Ln A + Y qa++l+G  p+ ++ ++Ws  sL+
+       NZ_SOCT01000044.1 1713425 ELLKPVDPTSRAFTLSRYYRQSVFLALVENWQQQGDHYYRQLTLSGLNHAWLCYQQAMKLVGPLPERTAVSRWSPLSLS 1713503
+                                 *************************************************************************977665 PP
+
+  TcdA1_alignment_muscle    1910 kaAdettqkavqqallalrqgeaskelrtansltaLFLPqaneklagYWqtLeqRlynLRhnLsiDGqPL.sLaiyatP 1987   
+                                 +                + +g               F   +n++++g  +tLe RlynLRh L+i+G+ L +L    + 
+       NZ_SOCT01000044.1 1713504 T----------------VTAG--------------HFRVPINQRVTGIRNTLENRLYNLRHGLTINGKTLpNLGWAGEG 1713552
+                                 3................3333..............24445899999999*********************66888889* PP
+
+  TcdA1_alignment_muscle    1988 adPkaLlsaavaasqggsalpeavlslyRFpvmLenarslvsqLtqFGstLlsiierqDaeaLselLqnqaaeLvlqsi 2066   
+                                 adP a  + av+   g+ +  +a++++yRF ++L  ar+   qL  FG   + ++e +    Ls+lL  q   L+   +
+       NZ_SOCT01000044.1 1713553 ADPFASARGAVSLVAGSYNSERAAIPAYRFRQLLPTARTAARQLADFGRHYMKLMEDESEVTLSTLLTAQEIRLCDFTL 1713631
+                                 ******************************************************************************* PP
+
+  TcdA1_alignment_muscle    2067 siqdktieeldadkavLeesragaqsRldsyskLydedinagekramdLrasasglsaaaqalslaaaaadlvPnifGl 2145   
+                                 ++q++ i+ ++a k +Le  r+++q R  + ++L de  +  e++a  L+ ++   +a+a  l+ +aa+ + +P ifG+
+       NZ_SOCT01000044.1 1713632 KLQQEAINAVQAGKRTLELGRSAVQARKARLQALLDEGKSPMEEAATGLAIASRMSNATAVPLEAVAAIQEYIPTIFGM 1713710
+                                 ******************************************************************************* PP
+
+  TcdA1_alignment_muscle    2146 avGGsrwGaileAsalvlelsasvsrieAdkisqsevYRRRRqeWeiqrnnAeaevkqidaqlealavrreaavlqkey 2224   
+                                 a+GGs+ G+ +  +a++  +  +  + + +++     Y RR  eW+   ++A+ +++ id q++  ++  +aa++  ++
+       NZ_SOCT01000044.1 1713711 AFGGSHPGGGSARMASTFRIVGDIAEFASEQLLLESDYERRASEWDFELQQAQWDMQMIDQQIAEANIELNAANISLAQ 1713789
+                                 ******************************************************************************* PP
+
+  TcdA1_alignment_muscle    2225 letqqeqtqaqleflqrkfsnkaLYsWlRGkLaaiYyqFyDLavsrclmAeeayrwelnkes.arfikpgaWqgtyaGL 2302   
+                                  ++  ++++   e++ + f    +Y+Wl  +   +Y   yD   s cl  e a+r+e+ + + ++fik+  W+++y G+
+       NZ_SOCT01000044.1 1713790 ARQERANLEEAYEVMTTGFVIIPIYNWLVSRQELMYGAAYDAVLSLCLGLEAAWRYEIGDYThEAFIKTRGWNDSYKGM 1713868
+                                 **********************************************************9864278************** PP
+
+  TcdA1_alignment_muscle    2303 laGetLmlnLaqmekaylekdeRalevtRtvsLaevYa 2340   
+                                 laGe+L+ +L +me+ayl  +eR l ++Rt sL +  +
+       NZ_SOCT01000044.1 1713869 LAGESLLVDLQEMENAYLLANERRLTIKRTFSLKQALS 1713906
+                                 *********************************98655 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (2503 nodes)
+Target sequences:                            1  (1813256 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 29.04u 0.44s 00:00:29.48 Elapsed: 00:00:29.78
+# Mc/sec: 152.40
+//
+[ok]

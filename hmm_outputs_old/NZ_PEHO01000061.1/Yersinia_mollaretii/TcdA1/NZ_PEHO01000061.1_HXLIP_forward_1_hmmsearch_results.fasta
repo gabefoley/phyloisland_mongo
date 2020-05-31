@@ -1,0 +1,120 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcdA1_profile.hmm
+# target sequence database:        hmm_outputs/NZ_PEHO01000061.1/Yersinia_mollaretii/TcdA1/NZ_PEHO01000061.1_HXLIP_forward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_PEHO01000061.1/Yersinia_mollaretii/TcdA1/NZ_PEHO01000061.1_HXLIP_forward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcdA1_alignment_muscle  [M=2503]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+   2.2e-304  999.6  45.8     6e-250  819.0  25.2    3.3  2  NZ_PEHO01000061.1  Yersinia mollaretii strain SCPM-O-B-7598 N
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_PEHO01000061.1  Yersinia mollaretii strain SCPM-O-B-7598 NODE_61_length_224_cov_11.2062, whole genome shotgun sequ
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  183.1  12.7     3e-58     3e-58     921    1266 ..  485801  486163 ..  485794  486178 .. 0.77
+   2 !  819.0  25.2    6e-250    6e-250    1760    2503 .]  486238  486965 ..  486218  486965 .. 0.95
+
+  Alignments for each domain:
+  == domain 1  score: 183.1 bits;  conditional E-value: 3e-58
+  TcdA1_alignment_muscle    921 dtlaavldeslsaalsayylknvapeevalksRddLYsylLiDnqvsaavkttriaeAiAsiqLYvnraLerieenadsa. 1000  
+                                +t+ + ++es+  al +y l+n    +  +k+ d+LY+ylL+D ++ a+vkt+++aeAi s+qLY++r++e++e++a ++ 
+       NZ_PEHO01000061.1 485801 ATVLKKINESRRDALVNYALANKSLGQKDIKNPDELYQYLLLDTKIGAEVKTSKVAEAISSLQLYIERSIEGAEPDAAADk 485881
+                                56667899******************************************************************9876551 PP
+
+  TcdA1_alignment_muscle   1001 ....vssrqfFtdWdtynkrYstWagvsqLvYYPenYiDPtlRigqtkmmdellqsvsqsqltsdtvedaFktYltrfeev 1077  
+                                     s+ +f ++W tynkrY+ Wag  +L YY  +YiDPtlR  +t++  ++ qs++q +lt++++ +a ++Yl +++e+
+       NZ_PEHO01000061.1 485882 vakhFSTDKFLHNWSTYNKRYARWAGKEKLKYYAADYIDPTLRYNKTELFTAFEQSINQGKLTENAITKALQKYLIQYDEL 485962
+                                1111567788899******************************************************************** PP
+
+  TcdA1_alignment_muscle   1078 AnLkvvsaYHDnvnseqGltyfiGksreeaeeyyWRsvDi.sklsdGklaanAWseWkkidcalnpyk.dliRPvifksRL 1156  
+                                  L+ ++  H +  se+ + yfiG+s++   +y+WRs  +  ++ +G      WseWkk+++ ++p k + iR    ++RL
+       NZ_PEHO01000061.1 485963 CHLETIA--HVEA-SEKNTHYFIGRSQHTPYQYFWRSCRQaTQVTEGY----IWSEWKKVNVNIDPLKqSFIRLFWDNNRL 486036
+                                ******7..5444.456689*****************96525778886....5*************962579********* PP
+
+  TcdA1_alignment_muscle   1157 ylvWlekkevakeegndkvketeryeLk...........lahiryDgtWsaPlsfdvnkkvaklklekkd....alglyca 1222  
+                                y+ W   +e++k+ g +++++++++  k              ++yD +    ++   +++++ ++ +++d    +  +y +
+       NZ_PEHO01000061.1 486037 YIYWPSTEEITKSGGGKETHNYHNFSYKndddnwvilhkKEAVKYDQSNMHKITNLNEESINIINIKNPDdmtaTGNIYIS 486117
+                                ************887777777765554411111110000344566666666666555555555555555544422235666 PP
+
+  TcdA1_alignment_muscle   1223 esqeedtllvlvykkedslddl..ksaka.eGlvilsdlsskeleae 1266  
+                                ++  + +++v + k  + +d +  k+    e +++++d+s ++++++
+       NZ_PEHO01000061.1 486118 HQSMSGNFTVEILKPLTMVDYFlvKTD-IeEVVIVYEDGSDETIKNT 486163
+                                666666666666666555555532222.2255555666666666555 PP
+
+  == domain 2  score: 819.0 bits;  conditional E-value: 6e-250
+  TcdA1_alignment_muscle   1760 DFsganalYfWelFYYtPmlvaqRlLqeqkFdeatrWlkYvwnpaGYiv.ngeiq.....eyqWnvRPLeedtsWna.dpL 1833  
+                                 Fs +  +Y WelF+  P+l   R+L+eq+Fd+a+rWlk+++n+aGY    g++q     +  Wn+ PL+ d+ W++ ++L
+       NZ_PEHO01000061.1 486238 AFSESYGIYLWELFFHIPLLASARFLTEQRFDDAERWLKFLFNSAGYRNgSGQLQqdggnTRYWNILPLQKDQDWDSsTAL 486318
+                                599999*****************************************7624666622222568************96268* PP
+
+  TcdA1_alignment_muscle   1834 DsvDPDAvAqaDPmHYkvatFmrlldlLiarGDaaYRqLeRDtLneAkmWYvqaLelLGdepylslsaqWsePsLekaAde 1914  
+                                 ++DPD +A +DPm Yk a Fmr+ld Li+rGD+aYRqLeRDtL +Akm+Y+qa +lLG +p ++ s++W++ sL+++A  
+       NZ_PEHO01000061.1 486319 ATTDPDVIAMNDPMQYKLAVFMRTLDVLITRGDQAYRQLERDTLVDAKMYYIQASQLLGSRPAIPVSHDWKNLSLKETAA- 486398
+                                ***********************************************************************999987653. PP
+
+  TcdA1_alignment_muscle   1915 ttqkavqqallalrqgeaskelrtansltaLFLPqaneklagYWqtLeqRlynLRhnLsiDGqPLsLaiyatPadPkaLls 1995  
+                                                          ++ + FLP +ne+l  YW  L  RlynLRhnLs++GqPL+L+++atP dP++L +
+       NZ_PEHO01000061.1 486399 --------------------------AVEGHFLPPYNEVLLAYWDKLDIRLYNLRHNLSLEGQPLHLPLFATPIDPQELQR 486453
+                                ..........................44567************************************************99 PP
+
+  TcdA1_alignment_muscle   1996 aavaasqggsal..peavlslyRFpvmLenarslvsqLtqFGstLlsiierqDaeaLselLqnqaaeLvlqsisiqdktie 2074  
+                                   a +  +++l   +a++slyRFp +Le+a+s v  ++qFG++L+   e+qD eaLs lLq+q ++++ q  +iq+  i+
+       NZ_PEHO01000061.1 486454 QHSAGAGINTSLnnIAASTSLYRFPLLLERAKSAVGSVMQFGNALQMALEKQDNEALSLLLQQQQQQVLKQTRDIQNANIA 486534
+                                88888877777722567899************************************************************* PP
+
+  TcdA1_alignment_muscle   2075 eldadkavLeesragaqsRldsyskLydedinagekramdLrasasglsaaaqalslaaaaadlvPnifGlavGGsrwGai 2155  
+                                 l++++a+ e  ++ga+ R+d y++  ++ i++ e++a+++r +a +l ++a +   +++a+d++PnifGla GGs+wGai
+       NZ_PEHO01000061.1 486535 ILQSSRAATEVMKKGAEARRDYYKQQVNNGISSNEQKALEMRVAAQTLGLTAIVPLTVGGALDTAPNIFGLADGGSHWGAI 486615
+                                ********************************************************************************* PP
+
+  TcdA1_alignment_muscle   2156 leAsalvlelsasvsrieAdkisqsevYRRRRqeWeiqrnnAeaevkqidaqlealavrreaavlqkeyletqqeqtqaql 2236  
+                                ++ ++ +++++a   +  A        Y RR +eW++q+  Ae ev q++ ql+ la++   a  q++  e  q+++ a  
+       NZ_PEHO01000061.1 486616 SQSITWGIQITAGGLEQGAGIQEIKGNYARRAEEWQLQKTLAEQEVAQLQEQLTGLALQISMAEKQRNLAEMEQSHALAIY 486696
+                                *******************9999999******************************************************* PP
+
+  TcdA1_alignment_muscle   2237 eflqrkfsnkaLYsWlRGkLaaiYyqFyDLavsrclmAeeayrwelnke.sarfikpgaWqgtyaGLlaGetLmlnLaqme 2316  
+                                ++  ++fs k LY+W+ G+L+ +Yyq +D a+  clmA++a++++++ + +++   +  W++ y GLlaGe LmlnL +me
+       NZ_PEHO01000061.1 486697 QMQTTRFSGKELYNWMVGRLSGLYYQLFDAAQPLCLMAKSALERDIDASkTQQLFTNAGWNDLYQGLLAGEDLMLNLHKME 486777
+                                ********************************************998651456677788********************** PP
+
+  TcdA1_alignment_muscle   2317 kaylekdeRalevtRtvsLaevYagLssdkFnlaekvvelvkegkgsaGssaneLklenkqlqaslkLsDLkiadDYP..e 2395  
+                                + +l  d+Ralev+Rt+sLae+Y+   s +Fnl+ekv+++ +    +  +++ ++++++  l+as+k+s+L ++dDYP  +
+       NZ_PEHO01000061.1 486778 NIWLIEDQRALEVERTISLAEIYQK--SANFNLSEKVADYASGTVTEEVADGSGVSIKDDILSASIKISELALMDDYPahM 486856
+                                ***********************85..778************************************************888 PP
+
+  TcdA1_alignment_muscle   2396 slGktRrikqisvtLPaLlGPYqDvrAvLsYgGsvv.lprgCealAvshGlnDsGqFqldFnDgrfLPFeGipvddkGtlt 2475  
+                                 lG+ RrikqisvtLPaLlGPYqDv+A LsY Gs + l++gC+a+A+s+G+nDsGqFqldFnDg++LPFeGi + d+G+l+
+       NZ_PEHO01000061.1 486857 HLGEKRRIKQISVTLPALLGPYQDVQATLSYDGSSSgLANGCTAMAISRGMNDSGQFQLDFNDGKYLPFEGIDISDQGALV 486937
+                                89********************************999******************************************** PP
+
+  TcdA1_alignment_muscle   2476 LsFPnatskqkalLesLsDiiLHiRYti 2503  
+                                L+FPnat kq+ lL+sLsDiiLHiRYti
+       NZ_PEHO01000061.1 486938 LRFPNATAKQQGLLQSLSDIILHIRYTI 486965
+                                ***************************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (2503 nodes)
+Target sequences:                            1  (1565777 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 24.75u 0.29s 00:00:25.04 Elapsed: 00:00:25.45
+# Mc/sec: 153.99
+//
+[ok]

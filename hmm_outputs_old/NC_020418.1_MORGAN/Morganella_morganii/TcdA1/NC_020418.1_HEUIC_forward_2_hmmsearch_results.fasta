@@ -1,0 +1,93 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcdA1_profile.hmm
+# target sequence database:        hmm_outputs/NC_020418.1/Morganella_morganii/TcdA1/NC_020418.1_HEUIC_forward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/NC_020418.1/Morganella_morganii/TcdA1/NC_020418.1_HEUIC_forward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcdA1_alignment_muscle  [M=2503]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence    Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------    -----------
+    1.7e-95  306.7   9.7    2.4e-95  306.2   9.7    1.1  1  NC_020418.1  Morganella morganii subsp. morganii KT, complete
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_020418.1  Morganella morganii subsp. morganii KT, complete genome
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  306.2   9.7   2.4e-95   2.4e-95    1753    2502 ..  460952  461728 ..  460927  461729 .. 0.84
+
+  Alignments for each domain:
+  == domain 1  score: 306.2 bits;  conditional E-value: 2.4e-95
+  TcdA1_alignment_muscle   1753 ditsepmDFsganalYfWelFYYtPmlvaqRlLqeqkFdeatrWlkYvwnp.aGY...ivnge..iqeyqWnvRPL.eedt 1826  
+                                + ++e +D  gan+ Y WelF+Y P lva R+ q++ + +a++Wl+Y+++p +G    i +g+  + +  Wn+R L +ed 
+             NC_020418.1 460952 EDKKEILDLHGANSRYLWELFFYLPYLVASRFSQNRLYYQARQWLHYIFSPyDGHrlsIKDGNelLPPPYWNCRVLtQEDL 461032
+                                4589***********************************************6576333455542256778*****95699* PP
+
+  TcdA1_alignment_muscle   1827 sWnadpLDsvDPDAvAqaDPmHYkvatFmrlldlLiarGDaaYRqLeRDtLneAkmWYvqaLelLGdepylslsaqWsePs 1907  
+                                 ++++     DP A+    P HY+ + ++ ++d Li   D  YRqL RD++  A  +Y qa  +LG  p+ ++  +W+  +
+             NC_020418.1 461033 QYKSNDYALPDPYAISEDVPSHYRKSVYLMYIDTLISEADLNYRQLSRDSITRAWGFYHQAQGMLGYIPKEHSLPKWQPCT 461113
+                                ******************************************************************************999 PP
+
+  TcdA1_alignment_muscle   1908 LekaAdettqkavqqalla....lrqgeaskelrt...anslta.LF.LPqaneklagYWqtLeqRlynLRhnLsiDGqPL 1979  
+                                +++  d+ t + ++++  +    +  ++++k+lr      sl +  F LP +   l +    LeqRl+nLRh L i+G+ +
+             NC_020418.1 461114 VNELLDNKTYSVQESTRPElfsgIYPENMPKKLRGffwYGSLGNeRFrLPVQT-SLLSRQSVLEQRLFNLRHYLDIEGNMM 461193
+                                99888776544444444440001444555555443111456643234377655.56677899******************* PP
+
+  TcdA1_alignment_muscle   1980 sLaiyatPadPkaLlsaavaasqggsalpeavl..slyRFpvmLenarslvsqLtqFGstLlsiierqDaeaLselLqnqa 2058  
+                                +L++ya+  dP  Ll++    ++    l++++l  + y F +mLe+a++  + L+  G   ls  e+++    +++ +++a
+             NC_020418.1 461194 NLPLYAAAFDPFDLLRSRLGGTSELAYLQSGSLsiPSYCFRTMLEKAKEQAAALITLGDKRLSYYEQKERYHTENMQLKDA 461274
+                                *********************9999999988761167******************************************** PP
+
+  TcdA1_alignment_muscle   2059 aeLvlqsisiqdktieeldadkavLeesragaqsRldsyskLydedinagekramdLrasasglsaaaqalslaaaaadlv 2139  
+                                 +L+ +s +iq++  +  ++    L+e+r+ a+s+   y +L     ++ e +a +L  s+s+ +   + + +aa++a  +
+             NC_020418.1 461275 VALADASAAIQSSLRDQQKSALDSLNEARTMAESKKTYYGSLS---TSTKECQARNLLVSSSVFHGVISGAAVAAGIAAAI 461352
+                                *****************************************95...689******************************** PP
+
+  TcdA1_alignment_muscle   2140 PnifGlavGGsrwG..aileAsalvlelsasvsrieAdkisqsevYRRRRqeWeiqrnnAeaevkqidaqlealavrreaa 2218  
+                                P +fGla     +G  a+l+A++ ++ l a+ +r +A+ +   e YRRR +eW   + +Ae+e+k +d q++a +v   aa
+             NC_020418.1 461353 PRVFGLAQDTGDHGktALLSAVGGTAALGAELMRGTAEYVQIDEQYRRRQEEWAFLASQAESEIKVLDKQIDAQNVAITAA 461433
+                                *******988888866899************************************************************** PP
+
+  TcdA1_alignment_muscle   2219 vlqkeyletqqeqtqaqle.flqrkfsnkaLYsWlRGkLaaiYyqFyDLavsrclmAeeayrwelnk.esarfikpgaWqg 2297  
+                                   ++y +  q+q++   + f q++  n++LY+ +   +  +  q   L  ++c + e ++r+e+++ + ++fi ++ W g
+             NC_020418.1 461434 ENSVKYTKLLQAQAKNLYDyFSQTRQVNESLYEKMANIIGLLHDQLCSLVRTFCALTEASWRYETDDyKRQTFIPADLWSG 461514
+                                **************9988726699*****************************************9835689********* PP
+
+  TcdA1_alignment_muscle   2298 tyaGLlaGetLmlnLaqmekaylekdeRalevtRtvsLaevYagLssdkFnlaekvvelvkegkgsaGssaneLklenkql 2378  
+                                   G+l+G +L + L +me ay +++ R l++t+t+sL      L s++   +++ +    ++  +a ++a +L       
+             NC_020418.1 461515 DNLGILVGVKLQKALLEMEMAYTQQNTRRLNITKTISLKS----LVSNHLVKTDETALTTWDEVKEALKGAKKL------- 461584
+                                **************************************75....556665545544333333334444444444....... PP
+
+  TcdA1_alignment_muscle   2379 qaslkLsDLkiadDYPeslGktRrikqisvtLPaLlGPYqDvrAvLsYgGsvvl..p........................ 2433  
+                                  s  Ls      D+P      R+i ++svt P+Ll PYq++r +L  + ++ l  p                        
+             NC_020418.1 461585 --SFGLSHQFFDTDFPGH--YARKIHSLSVTFPTLLPPYQNMRVLLEQTSNTLLvsPdidavkslytsaeqknsesiirnl 461661
+                                ..445666677899**76..47******************99999987776654221222222222222221111111111 PP
+
+  TcdA1_alignment_muscle   2434 rgCealAvshGlnDsGqFqld.FnDgrfLPFeGipvddkGtltLsFPnatskqkalLesLsDiiLHiRYt 2502  
+                                r  + + +s+G +DsG F  d F  g++  Fe           Ls P  ++   +l+  L+Dii+ + Yt
+             NC_020418.1 461662 RVNQKIILSRGCDDSGEFPEDaFTGGQYHSFEHSGA--ISHWLLSVPRPQNS-TELIDNLNDIIIKLNYT 461728
+                                234457899*********8776999******97544..45678999987665.679999******99998 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (2503 nodes)
+Target sequences:                            1  (1266512 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 20.02u 0.26s 00:00:20.28 Elapsed: 00:00:20.39
+# Mc/sec: 155.40
+//
+[ok]

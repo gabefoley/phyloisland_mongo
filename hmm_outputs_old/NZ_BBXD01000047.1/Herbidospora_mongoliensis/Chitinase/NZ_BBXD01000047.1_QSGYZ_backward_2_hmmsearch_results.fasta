@@ -1,0 +1,63 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/Chitinase_profile.hmm
+# target sequence database:        hmm_outputs/NZ_BBXD01000047.1/Herbidospora_mongoliensis/Chitinase/NZ_BBXD01000047.1_QSGYZ_backward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_BBXD01000047.1/Herbidospora_mongoliensis/Chitinase/NZ_BBXD01000047.1_QSGYZ_backward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       Chi_aln  [M=615]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+    7.6e-61  192.3   2.2      6e-34  103.5   0.0    2.1  1  NZ_BBXD01000047.1  Herbidospora mongoliensis strain NBRC 1058
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_BBXD01000047.1  Herbidospora mongoliensis strain NBRC 105882, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  103.5   0.0     6e-34     6e-34     267     574 .. 1828142 1828438 .. 1828108 1828444 .. 0.87
+
+  Alignments for each domain:
+  == domain 1  score: 103.5 bits;  conditional E-value: 6e-34
+            Chi_aln     267 LLGGlreLqk.kaklaGhkLelafsiGGWslsgyfsemakdeekrkvfvksvvdlfkr..fP.........mfsevdidWeyPg 338    
+                            + G l +L+k kak+ G  L++ +s+GGW+ s +fs+ +  +++r+ ++ s +dl+ +  +P         +f+ +d+dWe+Pg
+  NZ_BBXD01000047.1 1828142 IAGNLNQLKKlKAKHPG--LKVLISLGGWTGSKFFSDAVLTPAARTKLATSCIDLWLKgnLPgaapgagagVFDGIDLDWEWPG 1828223
+                            45667777653555555..88899*******************************97633444444555558************ PP
+
+            Chi_aln     339 aeGeegnefdpedGenyallikeLrkaLdsafglsdrkeisiassavvkkleks.nikelvkaGLdniflmsydffGtgWaesi 421    
+                            ++Ge gn++ ped +n++l+++eLr+++++    ++++e++    a  +k++   ++k++ ++ Ld   +  yd+ G +W +  
+  NZ_BBXD01000047.1 1828224 SSGEVGNIIRPEDKQNFTLFLAELRSQMNAY---NKKHELTAFLPAAAAKIDAGfEVKKVFSY-LDFATVQGYDLHG-PWEPVT 1828302
+                            ****************************987...77788999999999999986489999998.***********99.8***** PP
+
+            Chi_aln     422 ghhtnLkspkdpdpdeesdlsaeeaieyLleelgipaekinlGyanygrsgkgaeletreynke.gealGtlekGapeffdiin 504    
+                            gh  nL + + +dp + + +s+++ ++ +++  g p++ki +G+ +yg+  +g+   ++ +++  g a G    G++++ d++n
+  NZ_BBXD01000047.1 1828303 GHNGNLFNDR-KDP-NPVKYSVDQTVRDFISR-GAPKKKIVVGVPAYGQGWTGVTGGNGLWKPAtGAAPGKWAAGTEDYKDLVN 1828383
+                            ******9877.455.4689************9.**********************9999999887*************999997 PP
+
+            Chi_aln     505 nyldlenelakgkngfnlmtdteadadflyneeskhfisldtPrtvkakgeyaaklklggifsWsgdqdn 574    
+                                       gk   +l+t     a  ly+  ++ f s d P +  +k+ y+  ++lgg + Ws+dqd+
+  NZ_BBXD01000047.1 1828384 K---------PGKRHRDLLT----GALWLYD--GNEFWSYDDPISLVEKAAYIRLKGLGGSMMWSIDQDD 1828438
+                            5.........5777766766....5667775..678********************************97 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (615 nodes)
+Target sequences:                            1  (3023916 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 13.82u 0.49s 00:00:14.31 Elapsed: 00:00:14.90
+# Mc/sec: 124.81
+//
+[ok]

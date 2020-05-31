@@ -1,0 +1,78 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/NC_020418.1/Morganella_morganii/TcC/NC_020418.1_AYQHW_backward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/NC_020418.1/Morganella_morganii/TcC/NC_020418.1_AYQHW_backward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence    Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------    -----------
+   4.9e-296  969.6  18.5   7.2e-296  969.1  18.5    1.1  1  NC_020418.1  Morganella morganii subsp. morganii KT, complete
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_020418.1  Morganella morganii subsp. morganii KT, complete genome
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  969.1  18.5  7.2e-296  7.2e-296       3     642 ..  122083  122697 ..  122081  122705 .. 0.98
+
+  Alignments for each domain:
+  == domain 1  score: 969.1 bits;  conditional E-value: 7.2e-296
+      TcC_aln      3 tslfsktPsvtvldnrgltvreiayhrhPdspdvtseritrhqydarGfltqsadPrlheaglanlsyltdlagevlrtqgvdagttvalnd 94    
+                     ++l++ktPsvtvl nr ++vr+i yhrhPd+pd+t+eritrhq+darGfl+qsadPr++++gl n+ y+t+l+g+vlrt+++dagt+++lnd
+  NC_020418.1 122083 NTLHKKTPSVTVLSNRRQAVRNIGYHRHPDTPDKTDERITRHQFDARGFLQQSADPRMQASGLSNFRYITSLSGQVLRTESADAGTSLTLND 122174
+                     689***************************************************************************************** PP
+
+      TcC_aln     95 aagrpflavsnistaddgtedrsqavtrtwqyedaslpGrllsiteqvtgeaariterfvyagntdaekalnlagqcvshydtaglvqtdsi 186   
+                     aagrp  ++s+i+t  +g++drs+avt+t++ye+a+ +Gr+lsiteq++g++a++terfvyagn++aeka+nlag c  hyd+agl+qt+si
+  NC_020418.1 122175 AAGRPATSISQIRTD-NGQDDRSRAVTQTFRYEGADSAGRPLSITEQTAGQNAQVTERFVYAGNSEAEKAKNLAGVCTHHYDPAGLMQTESI 122265
+                     ************986.99************************************************************************** PP
+
+      TcC_aln    187 altgvplsvtrrllkdadnpdavadWqgedasawndllaaetfttlttadatGavltttdakgnlqrvaydvaGllsgsWltlkggteqviv 278   
+                     alt vplsvtr+ll+dadnp    +W +++    + ll+ae++tt+t adatGavl ttda+g++q+v+yd+aGlls+s +t+kgg+e++i+
+  NC_020418.1 122266 ALTKVPLSVTRQLLRDADNPV---NWPENNP---ESLLSAEKYTTQTIADATGAVLNTTDAAGHQQKVTYDIAGLLSTSRVTVKGGAEKIII 122351
+                     *******************95...9*98775...6799****************************************************** PP
+
+      TcC_aln    279 ksltysaagqklreehGnGvvttyeyepetqrlvgikterpaGhasgakvlqdlryeydPvGnvlkitndaeetrfWrnqkvvPentyvyds 370   
+                     ks+tysaagqkl eehGnGvvtty+yep+tqrl+++kte pa     +k++qdlryeydPvGnvl +tndaeetrfW nqkvvPen+y+yd+
+  NC_020418.1 122352 KSVTYSAAGQKLCEEHGNGVVTTYTYEPQTQRLIAVKTEHPA----RKKIFQDLRYEYDPVGNVLCVTNDAEETRFWHNQKVVPENKYTYDT 122439
+                     ***************************************886....78******************************************** PP
+
+      TcC_aln    371 lyqlvsatGremanagqqssslpsatvplpidssaytnytrtytydeagnltqirhsapatnnsyttditvsdrsnrgvlstltenpadvda 462   
+                     lyqlvsatGremanagqqs slp ++   p d+++ytnytr+y yd+agn+tqirh+apatnn+yttditvs+rsnr+vl+tl++ p++ +a
+  NC_020418.1 122440 LYQLVSATGREMANAGQQSGSLPDIS---PFDKASYTNYTRNYVYDRAGNMTQIRHTAPATNNNYTTDITVSQRSNRAVLKTLADTPEKAEA 122528
+                     ***********************888...9************************************************************** PP
+
+      TcC_aln    463 lftagGqqkqlqpgqelvWtarnellkvtpvvrdgstddsesyrydadsqrvlkvsvqktgnstqtqrvlylpglelrttksgeteteslqv 554   
+                     lft+gGqq+qlqpgq+l+Wt r+el++v+pvvr+g++ d+esyryda+sqr+lk++vqktgnstqtq+v+ylpglel         +e+ qv
+  NC_020418.1 122529 LFTPGGQQTQLQPGQTLSWTVRGELQQVMPVVRNGAAGDRESYRYDAGSQRILKTAVQKTGNSTQTQQVIYLPGLELYRG------KENYQV 122614
+                     ****************************************************************************9753......5899** PP
+
+      TcC_aln    555 itvgeagraqvrvlhwesgkpaeisndqlrysydnligssgleldgdgniisleeyypyGGtavwaarsqveadyktvrysGkerdat 642   
+                     i  g agraqvr+lhw+ gk     +d+ r+sydnligssgle dgdgn++s+eeyyp+GGt+v++a  ++  dykt rysGkerda 
+  NC_020418.1 122615 ICAGVAGRAQVRLLHWQDGK-----KDHQRFSYDNLIGSSGLETDGDGNLLSQEEYYPFGGTSVLVAGADSGIDYKTHRYSGKERDAN 122697
+                     ******************98.....5789*********************************************************95 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (1266513 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 5.91u 0.13s 00:00:06.04 Elapsed: 00:00:06.09
+# Mc/sec: 150.15
+//
+[ok]

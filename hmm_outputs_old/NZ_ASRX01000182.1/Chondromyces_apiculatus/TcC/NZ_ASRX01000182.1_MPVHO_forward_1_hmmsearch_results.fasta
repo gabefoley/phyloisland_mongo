@@ -1,0 +1,83 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/NZ_ASRX01000182.1/Chondromyces_apiculatus/TcC/NZ_ASRX01000182.1_MPVHO_forward_1_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_ASRX01000182.1/Chondromyces_apiculatus/TcC/NZ_ASRX01000182.1_MPVHO_forward_1_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+    1.6e-95  306.7   5.2    1.6e-95  306.7   5.2    2.6  1  NZ_ASRX01000182.1  Chondromyces apiculatus DSM 436 contig182,
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_ASRX01000182.1  Chondromyces apiculatus DSM 436 contig182, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  306.7   5.2   1.6e-95   1.6e-95      68     693 .. 1748159 1748773 .. 1748133 1748812 .. 0.84
+
+  Alignments for each domain:
+  == domain 1  score: 306.7 bits;  conditional E-value: 1.6e-95
+            TcC_aln      68 lsyltdlagevlrtqgvdagttvalndaagrpflavsnistaddgtedrsqavtrtwqyedaslpGrllsiteqvtgeaarite 151    
+                            ++++ ++ag+ ++ +++d g+  +l d+ g p+   +            s++ t   +y+   +  r++ +  q+  + + ++e
+  NZ_ASRX01000182.1 1748159 MVHTFAVAGRKIHQDSIDGGIRWMLPDVLGNPLRGWD------------SRGHTLRTKYD---VLRRPIELWVQQGTNPEVLAE 1748227
+                            4555567777777777777777777777777776555............33344444554...45689999999999999**** PP
+
+            TcC_aln     152 rfvyagntdaekalnlagqcvshydtaglvqtdsialtgvplsvtrrllkdadnpdavadWqgedasawndllaaetfttltta 235    
+                            r v+  +  +  +lnl g++ ++yd aglv +    + g pl  tr l  d +n   + dW ++ a a    l++etft+ t  
+  NZ_ASRX01000182.1 1748228 RTVHGESVPNAASLNLRGKIYQQYDGAGLVTSTGFDFKGNPLGSTRTLAVDYQN---QLDWAATPAPA----LQTETFTSSTAY 1748304
+                            ************************************************999766...78**9998876....789********* PP
+
+            TcC_aln     236 datGavltttdakgnlqrvaydvaGllsgsWltlkggte.qvivksltysaagqklreehGnGvvttyeyepetqrlvgikter 318    
+                            da    ++tt       r +y+ aGll++  ++l+g +     v ++ y a gq+ r  +GnGvvt y+y+p t rl+ +k  r
+  NZ_ASRX01000182.1 1748305 DALNRPISTTKPDQSETRPTYNEAGLLEAVDVRLRGASTwTSFVVAINYNAKGQRERIAYGNGVVTEYTYDPLTFRLTRLKSMR 1748388
+                            ***********************************975527799***************************************9 PP
+
+            TcC_aln     319 paGhasgakvlqdlryeydPvGnvlkitndaeetrfWrnqkvvPentyvydslyqlvsatGrema....nagqqssslpsatvp 398    
+                             a     + +lqdlry+ydPvGn++ i++ a++  +   q v P ++y yd+ly+l  a Gre a    +++q    +p +  p
+  NZ_ASRX01000182.1 1748389 IA----DSAILQDLRYTYDPVGNIVLIEDKAQQSLYHNGQLVEPVSRYEYDALYRLTRAEGREHAghnaDVQQDAEGFPLVQAP 1748468
+                            87....5669*****************************************************874411455666789****** PP
+
+            TcC_aln     399 lpidssaytnytrtytydeagnltqirhsapatnnsyttditvsdrsnrgvlst....ltenpadvdalftagGqqkqlqpgqe 478    
+                             p d +a   y+ +y+yde gn+  + h+  a +  +t +  + +  n  +  +    l + p     +++a G+ + +    +
+  NZ_ASRX01000182.1 1748469 HPNDPQALRAYAESYEYDEVGNILTMAHQ--AVGGGWTRHYEIDEDRNWLLSTSlpgdLPSAPYSAHYMYDAHGNVTSMPHLAS 1748550
+                            ****************************9..67788999999998888644433222267789999****************** PP
+
+            TcC_aln     479 lvWtarnellkvtpvvrdgstddsesyrydadsqrvlkvsvqktgnstqtqrvlylpglelrttksg...eteteslqvitvge 559    
+                            +vW  +++  +v           +  y yda+ qrv k+  +       ++  +y  + e+   ++g   +   e+  +  +++
+  NZ_ASRX01000182.1 1748551 IVWDFKDQQREVDL-----GGGGTAYYVYDAAGQRVRKIWEHSG----LKEERIYADEYEVYRRREGlnaDLVLERETLHLMDD 1748625
+                            ******99887743.....3445679************986544....344557888877766666611144445555555677 PP
+
+            TcC_aln     560 agr.aqvrvlhwesgkpaeisndqlrysydnligssgleldgdgniisleeyypyGGtavwaarsqveadyktvrysGkerd.a 641    
+                            a r a v     ++ +p +     +ry  +n  gs+g+eldg g +is eey+pyG ta wa+   ve++ k +ry+ kerd  
+  NZ_ASRX01000182.1 1748626 ARRiAMVETKTVDAFTPVSSPRSGVRYQLENHLGSAGMELDGAGLVISYEEYHPYGTTAYWASPGGVEVSLKRYRYTRKERDeG 1748709
+                            876578999999999******************************************************************956 PP
+
+            TcC_aln     642 tGlyyyGyryyqpWaGrWlsadpaGtvdGlnlfrmvrnnPvtlsdedGlas............v 693    
+                            tGlyy+G ryy  W GrW sadpaG+  G nl+  vr nPv l+d +G+a+            +
+  NZ_ASRX01000182.1 1748710 TGLYYHGARYYACWLGRWTSADPAGVEYGPNLYEYVRGNPVRLHDPSGMAPeddvpdyglafmQ 1748773
+                            **************************************************95555444444441 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (3859240 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 17.66u 0.40s 00:00:18.05 Elapsed: 00:00:18.26
+# Mc/sec: 152.59
+//
+[ok]

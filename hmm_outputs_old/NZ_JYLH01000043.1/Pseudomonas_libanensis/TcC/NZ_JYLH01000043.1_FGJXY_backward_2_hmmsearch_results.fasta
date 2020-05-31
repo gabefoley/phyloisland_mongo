@@ -1,0 +1,135 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcC_profile.hmm
+# target sequence database:        hmm_outputs/NZ_JYLH01000043.1/Pseudomonas_libanensis/TcC/NZ_JYLH01000043.1_FGJXY_backward_2_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_JYLH01000043.1/Pseudomonas_libanensis/TcC/NZ_JYLH01000043.1_FGJXY_backward_2_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcC_aln  [M=722]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+   2.3e-292  957.5  29.1   1.3e-156  508.7   5.9    2.1  2  NZ_JYLH01000043.1  Pseudomonas libanensis strain DSM 17149 46
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_JYLH01000043.1  Pseudomonas libanensis strain DSM 17149 46_593_22.0107, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  454.6  15.1    3e-140    3e-140       1     692 [. 1475705 1476367 .. 1475705 1476390 .. 0.93
+   2 !  508.7   5.9  1.3e-156  1.3e-156       1     697 [. 1481820 1482489 .. 1481820 1482499 .. 0.93
+
+  Alignments for each domain:
+  == domain 1  score: 454.6 bits;  conditional E-value: 3e-140
+            TcC_aln       1 mstslfsktPsvtvldnrgltvreiayhrhPdspdvtseritrhqydarGfltqsadPrlheagla...nlsyltdlagevlrt 81     
+                            ms+ l+++tP++t +d rgl+vr+++yhr     d  + r+ r+ + a+Gfl +  +Pr  ++g       s l +l+ge++rt
+  NZ_JYLH01000043.1 1475705 MSNPLHRNTPALTAIDPRGLAVRTVQYHRAT-LADSPQPRVNRQVFGASGFLLEQWEPRQFARGSSgvaAQSNLYSLSGEAVRT 1475787
+                            67889************************75.4566678*********************99988733355677789******* PP
+
+            TcC_aln      82 qgvdagttvalndaagrpflavsnistaddgtedrsqavtrtwqyedaslpGrllsiteqvtge.aariterfvyagntdaeka 164    
+                            q++dag  ++l+ aa + + + +            s++  +++ y+  +   r++++ eq ++e + r +er++ya+   ae  
+  NZ_JYLH01000043.1 1475788 QSADAGWRLVLHGAAQQRLHSWD------------SRGAHQAFHYDRLQ---RPVAVFEQSAEEpSPRCVERMTYASAIPAEAV 1475856
+                            ***************99998887............778889999*9765...89******9988357***************** PP
+
+            TcC_aln     165 lnlagqcvshydtaglvqtdsialtgvplsvtrrllkdadnpdavadWqgedasawndllaaetfttlttadatGavltttdak 248    
+                             n +g+ ++h d+ag+v  ++ a+    +  trr   d+    a +dW  +d++  + + +++++tt+ + da Ga+l +tdak
+  NZ_JYLH01000043.1 1475857 GNRCGRLIRHADPAGVVLVEAYAIDQRVIKQTRRFRPDT----ALVDWPQSDEA-QDLQAEHQAYTTTWRYDALGALLEQTDAK 1475935
+                            **********************************99995....6799*999985.566778899******************** PP
+
+            TcC_aln     249 gnlqrvaydvaGllsgsWltlkggteqvivksltysaagqklreehGnGvvttyeyepetqrlvgikterpaGhasgakvlqdl 332    
+                            +n+q+  y   G      l + + + qv+v    y a+g+ + e  Gn v+    y     rl  +   r+     +a  lq l
+  NZ_JYLH01000043.1 1475936 DNRQQWRYGQQGWPLEMVLIFTNRERQVLVDQRVYNASGRIVSERVGNNVIKVARYAERNGRLQQLDVYRQG-Q--AATPLQRL 1476016
+                            ********************************************************************9974.4..4567**** PP
+
+            TcC_aln     333 ryeydPvGnvlkitndaeetrfWrnqkvvPentyvydslyqlvsatGremanagqqssslpsatvplpidssaytnytrtytyd 416    
+                             yeydPvGn+l++++ a+ t++  n ++   n+y yd+lyqlv a+Gre + a+  ++ lp+a+   ++d+    nyt+ y+yd
+  NZ_JYLH01000043.1 1476017 VYEYDPVGNILSLSDLAQPTQWHSNSQIDAVNRYQYDTLYQLVQASGRENS-ANADGRALPTAVQFGATDQGLRRNYTQHYAYD 1476099
+                            ************************************************964.566799******999***************** PP
+
+            TcC_aln     417 eagnltqirhsapatnnsyttditvsdrsnrgvlstltenpadvdalftagGqqkqlqpgqelvWtarnellkvtpvvrdgstd 500    
+                            eagnlt++rh  p+++  yt ++ v+  +nr+v         + d  f+a G+q  l   q+ +W+ rn+l   t v+r++   
+  NZ_JYLH01000043.1 1476100 EAGNLTRLRHL-PSSGTGYTREMHVAALTNRAVPAV-QGRQVQWDGAFDANGNQLLLDGVQQAAWNVRNQLTYTTQVQRESGDL 1476181
+                            **********9.********************9765.5666789**************************************** PP
+
+            TcC_aln     501 dsesyrydadsqrvlkvsvqktgnstqtqrvlylpglelrttksgeteteslqvitvgeagraqvrvlhwesgkpaeisndqlr 584    
+                            d esy yd++  r lkv  ++  +   +q + ylpgl l+ ++     +++++v+ ++ +g  +v v+ wesgkp+e++ +q+r
+  NZ_JYLH01000043.1 1476182 DVESYLYDGQGLRALKVRSREVRAKPYIQATYYLPGLHLHKQR-----EQRFNVLDID-TGGGRVTVVQWESGKPSEMEAQQMR 1476259
+                            **************************************98655.....3456677764.67789******************** PP
+
+            TcC_aln     585 ysydnligssgleldgdgniisleeyypyGGtavwaarsqveadyktvrysGkerdatGlyyyGyryyqpWaGrWlsadpaGtv 668    
+                            +s ++   s++leld++ +++s+e yypyG ta wa+ + +   +k+ rys kerdatGlyyyG ryy pW  rW+s dp G v
+  NZ_JYLH01000043.1 1476260 FSIQDHLQSCALELDEQARLLSQEHYYPYGATAWWATSNITRQYHKVRRYSDKERDATGLYYYGARYYAPWLQRWISPDPMGDV 1476343
+                            *************************************99999999*************************************** PP
+
+            TcC_aln     669 dGlnlfrmvrnnPvtlsdedGlas 692    
+                            dGlnl+ m+r nPv ++d dG+++
+  NZ_JYLH01000043.1 1476344 DGLNLYAMARGNPVGFRDADGTQT 1476367
+                            *********************987 PP
+
+  == domain 2  score: 508.7 bits;  conditional E-value: 1.3e-156
+            TcC_aln       1 mstslfsktPsvtvldnrgltvreiayhrhPdspdvt.seritrhqydarGfltqsadPrlheagla......nlsyltdlage 77     
+                            ms+sl+++tPs++ +d rgltvr++ay r    p+v  + r+ r+ y a+G l q  dPrlh+ +l       n + + +l+g+
+  NZ_JYLH01000043.1 1481820 MSASLHRNTPSLAAFDPRGLTVRSVAYLRAT--PKVApTARVRRQVYGASGLLEQQWDPRLHALKLRepsteaNQVSVYSLSGT 1481901
+                            789**************************74..54432579**********************998888888899999****** PP
+
+            TcC_aln      78 vlrtqgvdagttvalndaagrpflavsnistaddgtedrsqavtrtwqyedaslpGrllsiteqvtgea.ariterfvyagntd 160    
+                            ++r + vdag+ ++l+  +g+ + a +            +++    +q  d +   r++++ eq++++a  r +er+ ya +t 
+  NZ_JYLH01000043.1 1481902 LIRRNDVDAGMRLMLSAPSGQLVHAWD------------GRGA---YQRHDYDAMQRPVAVFEQAADQAhPRCVERLEYAPSTP 1481970
+                            *******************99988777............3333...455555566799*******9987369************ PP
+
+            TcC_aln     161 aekalnlagqcvshydtaglvqtdsialtgvplsvtrrllkdadnpdavadWqgedasawndllaaetfttlttadatGavltt 244    
+                            +++aln +g+ v+h d+ag +  d   ++g  l  tr  +++a  p  ++dW  + a   n++l++ ++tt  t da G +l +
+  NZ_JYLH01000043.1 1481971 EDRALNRSGRLVRHADPAGTQVFDKYGISGQVLQQTRA-FREA--PG-EVDWLPAPA-DQNQQLESARYTTRWTFDALGGTLKQ 1482049
+                            *********************************99976.5664..43.689*98875.57999********************* PP
+
+            TcC_aln     245 tdakgnlqrvaydvaGllsgsWltlkggteqvivksltysaagqklreehGnGvvttyeyepetqrlvgikterpaGhasgakv 328    
+                             dakgn q  ay + G ++   ltlk g+ + +++   y aagq      GnGv +   y +e  r+  + + r++  a+    
+  NZ_JYLH01000043.1 1482050 VDAKGNGQHFAYGLGGQVKHIHLTLKSGERKTVIERYDYNAAGQVQAALLGNGVSSRADYRAEDGRMHRLMAYRKNERAA---P 1482130
+                            **************************************************************************998776...5 PP
+
+            TcC_aln     329 lqdlryeydPvGnvlkitndaeetrfWrnqkvvPentyvydslyqlvsatGremanagqqssslpsatvplpidssaytnytrt 412    
+                            lqdl y+ydPvGn+  ++++a+ t++  n +v   ++y ydslyql  atGre a a+  +  lp+ +   ++d   + nyt+ 
+  NZ_JYLH01000043.1 1482131 LQDLNYDYDPVGNISALRDQAQPTQWNHNTQVQASSRYEYDSLYQLTQATGRESAAAA-IGPALPARISFGSTDTGLWRNYTQH 1482213
+                            9****************************************************99876.7899**999999************* PP
+
+            TcC_aln     413 ytydeagnltqirhsapatnnsyttditvsdrsnrgvlstltenpadvdalftagGqqkqlqpgqelvWtarnellkvtpvvrd 496    
+                            y+yde+gnlt++rh  p+++  yt d+ v+  snr++ ++  +  +++ + f+a G+q+ql  g  ++W+ rn+l +vt++vr+
+  NZ_JYLH01000043.1 1482214 YAYDEGGNLTRLRHV-PSSGVGYTRDMQVATGSNRALSNE--HPVTELAQGFDANGNQQQLGRGVPMAWNVRNQLARVTSIVRE 1482294
+                            **************8.*******************97654..557889999********************************* PP
+
+            TcC_aln     497 gstddsesyrydadsqrvlkvsvqktgnstqtqrvlylpglelrttksgeteteslqvitvgeagraqvrvlhwesgkpaeisn 580    
+                            g ++d+e+y y +d qr lk++ q+ + s qt rv ylpglelr          +l+v+ v   ++  v vl we g  ++ ++
+  NZ_JYLH01000043.1 1482295 GGASDEEAYVYAGDGQRALKLTHQQVAGSRQTARVYYLPGLELRHRP-----LRRLNVVRVE-VACCTVEVLQWELGLDEGAAD 1482372
+                            ********************************************765.....67899***95.56778**************** PP
+
+            TcC_aln     581 dqlrysydnligssgleldgdgniisleeyypyGGtavwaarsqveadyktvrysGkerdatGlyyyGyryyqpWaGrWlsadp 664    
+                            + lr+   +   s glel+++ +++s+e y+pyGGta wa+r++ve +ykt rysGkerd +GlyyyG+ryy pW  rW+s dp
+  NZ_JYLH01000043.1 1482373 ETLRFCLKDQQSSHGLELGEQAELLSQESYFPYGGTAWWASRNAVEGSYKTRRYSGKERDGSGLYYYGFRYYAPWLQRWISPDP 1482456
+                            ************************************************************************************ PP
+
+            TcC_aln     665 aGtvdGlnlfrmvrnnPvtlsdedGlasvkelk 697    
+                            aG    lnl+ m+ nnP+t++d+ Gl+++   +
+  NZ_JYLH01000043.1 1482457 AGDGAQLNLYLMAFNNPITFVDSMGLQPAAVEN 1482489
+                            **************************9954443 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (722 nodes)
+Target sequences:                            1  (2071410 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 9.35u 0.19s 00:00:09.53 Elapsed: 00:00:09.63
+# Mc/sec: 155.30
+//
+[ok]

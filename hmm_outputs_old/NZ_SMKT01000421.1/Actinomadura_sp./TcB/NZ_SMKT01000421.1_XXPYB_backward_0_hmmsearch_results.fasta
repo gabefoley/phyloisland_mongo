@@ -1,0 +1,88 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  tmp/TcB_profile.hmm
+# target sequence database:        hmm_outputs/NZ_SMKT01000421.1/Actinomadura_sp./TcB/NZ_SMKT01000421.1_XXPYB_backward_0_translated_genome.fasta
+# output directed to file:         hmm_outputs/NZ_SMKT01000421.1/Actinomadura_sp./TcB/NZ_SMKT01000421.1_XXPYB_backward_0_hmmsearch_results.fasta
+# domain reporting threshold:      score >= 100
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       TcB_alignment  [M=1483]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+   3.4e-103  331.8   0.0    9.1e-77  244.2   0.0    2.8  1  NZ_SMKT01000421.1  Actinomadura sp. KC06 NODE_655_length_400_
+
+
+Domain annotation for each sequence (and alignments):
+>> NZ_SMKT01000421.1  Actinomadura sp. KC06 NODE_655_length_400_cov_9.09524, whole genome shotgun sequence
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  244.2   0.0   9.1e-77   9.1e-77     280     966 .. 2022483 2023121 .. 2022476 2023142 .. 0.84
+
+  Alignments for each domain:
+  == domain 1  score: 244.2 bits;  conditional E-value: 9.1e-77
+      TcB_alignment     280 evPefaate..kWlvrpdrfsryeyGfevrtrrlcrqvlmfhrlqalageakaeetpalvsrlildyde.nasvstlvavrrla 360    
+                            + P+f a+   ++  rpd fs y  Gfe+rt + c q+    r+++l ++ +       v  l  + d   + vs+l +vr ++
+  NZ_SMKT01000421.1 2022483 AAPQFLASVefSYEDRPDAFSAYRCGFEIRTAKRCAQI----RTTVLGDTVR-------VYELGYSNDLgGNGVSLLRSVRSVG 2022555
+                            468995554126778**********************9....6677765544.......55566666762578**********9 PP
+
+      TcB_alignment     361 heedgtpv.tlpPleldyqrfdkekaakWqeldele...nlnalqryqlvdlkGeGlpGilyqdkkaWwyrapqrqeeedsnav 440    
+                            +  dgt + +lpP e+ y  f ++   ++++++  +      a  +  +vd++G+Glp ++    +a ++r   r ++      
+  NZ_SMKT01000421.1 2022556 K--DGTRIqALPPAEFSYTPFAPAGR-RFRRVEGAAfppGSLARPELEMVDITGDGLPDVIELAGTARFWRN--RGDG------ 2022628
+                            6..55555279**********99876.666665543111223455789************999888877763..3333...... PP
+
+      TcB_alignment     441 tyekikplpkiPalq...dnaslldinGdGkldWvitaaGlrGyhsqkpdgeWtrfiPlsalP.veyfhPraqladltgaGlsd 520    
+                             +++ +++p+ P  +     +++ld +GdG+ d ++++    Gy+     g +++f P +  P      P+++l dltg G++d
+  NZ_SMKT01000421.1 2022629 RFDRPRSFPSAPGARlgdPGVQILDADGDGRADLMVSGE-RAGYFPLGHTGAFAPFRPYEQAPgFALDDPEVRLIDLTGDGVTD 2022711
+                            5888888888887654435789***********999876.47*****************9999457789*************** PP
+
+      TcB_alignment     521 lvliGPksvrlyanerdgfkkgqdvvqsdditlP.vpGadarklvafsdvlGsgqqhlvevsadkvtcWPnlGhGrfGqpltlp 603    
+                                G +   ++ +   g+ +++ v + +   +P v  ad r  v  +d++G g + +v v+   v +WPnlGhG +G  +++ 
+  NZ_SMKT01000421.1 2022712 ALRSGARFECFFNDPVRGWGRTRRVPRRGPAEFPdVSFADPR--VKTADMTGDGLTDIVLVTDGAVDYWPNLGHGNWGGRIRML 2022793
+                            **********************************55556665..8899************************************ PP
+
+      TcB_alignment     604 GfsqseeefnpdrvyladldGsGttdliyvhserleiylnesGnkfaapltla.lPdgvrfddtcqlqvadiqGlGvasliltv 686    
+                            G  +  + f+p rv l d+dG G +dl+yv + ++ + +n+sG++fa+p+ ++  P+    dd   ++++d+ G G+a ++ + 
+  NZ_SMKT01000421.1 2022794 GAPRLPRDFDPRRVLLGDVDGDGRADLLYVADGSITVLINQSGERFAEPVVVRgTPSTTDRDD---VRLTDLLGTGTAGVLWST 2022874
+                            **************************************************9984677777776...6889*********99865 PP
+
+      TcB_alignment     687 .Phm..apkhWrldlt.kakPwllnevnnnmGaettllyrssaqfWldekaqaeeagktpvsylPfpvhllwrtevldeisgnr 766    
+                             P    +  h+ ldlt  akP+ll+e+ n  Ga t + y+ s+ f + + +   +  +   + lPfpv ++   e+ d+++g r
+  NZ_SMKT01000421.1 2022875 ePGAggTGMHF-LDLTgGAKPYLLSEIRNGLGALTRVGYKPSTHFLVADAK---SPATRWRTSLPFPVQVVASVETIDQLTGSR 2022954
+                            36652134454.8998358**************************985543...345677889********************* PP
+
+      TcB_alignment     767 lvseleyahGaWdgrerefrGfgrveqtdtdelaqgtaaertapsltksWfatGleevdealsaeyWrgdkqafagftprftry 850    
+                            +++ ++y hG Wdg+erefrGf+rv ++d+            ap  t++Wf  G    d++l +eyW  d  af+         
+  NZ_SMKT01000421.1 2022955 FTAAYSYHHGYWDGHEREFRGFARVDRRDSAA-------AGVAPVETRTWFHIGT---DTRLDHEYWPKDPAAFPPPA------ 2023022
+                            ***************************99753.......34578999******96...89*************99743...... PP
+
+      TcB_alignment     851 deasgkdvaltedeeeryWlnralkgqllrselyglddtekaeiPytvtesrlqvrllqsakeee.pavwvsviesrsykyeri 933    
+                              a+g+d              ral+g  lr+e+ygld+ +    P++vte+ + vr  +   +    + ++  + +r+ ++er 
+  NZ_SMKT01000421.1 2023023 --AEGRDA------------LRALRGSALRAEVYGLDGDD---RPFSVTEQAYAVRPEPGGPDPGgAIFFPHRVAQRTTQWER- 2023088
+                            ..345554............59***************976...59***********99988766515667899**********. PP
+
+      TcB_alignment     934 asdPqcsqqivlksdafGqplksveiayprrek 966    
+                             ++P+ + + + + da+G  l+  +ia pr + 
+  NZ_SMKT01000421.1 2023089 GDEPRTRFTFTPDYDAYGNQLSATQIAVPRGRD 2023121
+                            689**************************9654 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (1483 nodes)
+Target sequences:                            1  (3126809 residues searched)
+Passed MSV filter:                         1  (1); expected 0.0 (0.02)
+Passed bias filter:                        1  (1); expected 0.0 (0.02)
+Passed Vit filter:                         1  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  1  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 88.35u 1.36s 00:01:29.71 Elapsed: 00:16:11.42
+# Mc/sec: 4.77
+//
+[ok]
