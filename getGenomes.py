@@ -12,6 +12,7 @@ from Bio.Seq import Seq
 import utilities
 import models
 import json
+import time
 
 
 def read_genome(outpath, species_name):
@@ -70,10 +71,13 @@ def retrieve_genome(records, species_name, category, database):
 
     print ("Genome retrieval called with following command - ")
 
+
     print ("rsync -Lrtv --chmod=+rwx -p %s rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/%s/*/%s %s" % (
                     file_type, database, species_name.replace(" ", "_"), folder, location, "./tmp"))
+    time.sleep(1)
 
     try:
+
         process = subprocess.Popen(
                 "rsync -Lrtv --chmod=+rwx -p %s rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/%s/*/%s %s" % (
                     file_type, database, species_name.replace(" ", "_"), folder, location, "./tmp"), stderr=subprocess.PIPE,
@@ -208,9 +212,12 @@ def add_genome(species_name, categories, single):
         "rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/assembly_summary.txt %s" % (
             database, species_name.replace(" ", "_"), "./tmp"))
 
+        time.sleep(1)
+
+
         # Add a v to the end of -Lrt to get verbose print outs to the console
         process = subprocess.Popen(
-                "rsync -Lrt -v --chmod=+rwx -p "
+                "rsync -W -v --chmod=+rwx -p "
                 "rsync://ftp.ncbi.nlm.nih.gov/genomes/%s/bacteria/%s/assembly_summary.txt %s" % (
                     database, species_name.replace(" ", "_"), "./tmp"), stderr=subprocess.PIPE,
                 stdout=subprocess.PIPE, shell=True)
