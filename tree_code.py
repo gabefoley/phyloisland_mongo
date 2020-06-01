@@ -48,12 +48,12 @@ def get_region_domains(regions):
     region_domains = []
 
     region_colour_dict = {"TcdA1": 'purple', 'A1': 'orange', 'A2': 'red', 'TcB': 'dodgerblue', 'TcC': 'pink',
-                          'Chi' : 'green', 'Chi/Chi': 'green', 'TcB/TcC' : 'yellow' }
+                          'Chi' : 'green', 'Chi/Chi': 'green', 'TcB/TcC' : 'yellow', 'A2/TcdA1' : 'red' }
 
     start = 20
     for region in regions:
-        print ("**")
-        print (region)
+        # print ("**")
+        # print (region)
         region = region.replace("Chitinase", "Chi")
         region_split = region.split("_joined_")
 
@@ -62,8 +62,15 @@ def get_region_domains(regions):
             region_name = 'Chi'
         else:
             region_name = region_short
-        region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
-                         "rgradient:" + region_colour_dict[region_short], "arial|4|black|" + region_name]
+
+            if region_short in region_colour_dict:
+                region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
+                                 "rgradient:" + region_colour_dict[region_short], "arial|4|black|" + region_name]
+            else:
+                print ("WARNING: Got a value for region colour dict that wasn't in there - " + region_short)
+                region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
+                                 "rgradient:black", "arial|4|black|" + region_name]
+
         region_domains.append(region_domain)
         start += 130
 
