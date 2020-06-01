@@ -8,6 +8,30 @@
 
 {% block body %}
 
+    <h3>01/06/2020</h3>
+    <h5>Added automatically classify genomes to GUI</h5>
+    <ul>
+        <li>Genomes can be automatically classified from Automatic Tagging section</li>
+        <li>This deletes all tags from Genomes, Regions, and the GenomeTags dictionary before it runs</li>
+        <li>Classification test can now be limited to a specific taggit </li>
+
+
+    </ul>
+
+    <h3>28/05/2020</h3>
+    <h5>Automatically change tags</h5>
+    <ul>
+        <li>Automatically change tags now changes the tags on Regions / Hits as well</li>
+        <li>This means it can be used without causing GenomeTags to get out of sync</li>
+    </ul>
+
+    <h5>Added automatically classify genomes test</h5>
+    <li>Test can be run from the Automatic Tagging section</li>
+
+    <ul>
+        <li>Added Trim to Profiles and Trim around Profiles.</li>
+    </ul>
+
     <h3>27/05/2020</h3>
     <h5>Trim Regions to Profiles</h5>
     <ul>
@@ -17,7 +41,7 @@
         </li>
     </ul>
 
-        <h5>Delete hits</h5>
+    <h5>Delete hits</h5>
     <ul>
         <li>Added ability to automatically delete all hits in Batch Delete section</li>
         <li>This clears all hits across all Genomes, as well as the AssociatedRegions dictionary</li>
