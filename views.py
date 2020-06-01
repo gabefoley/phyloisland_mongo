@@ -1,6 +1,7 @@
 from phyloisland import app, allfiles
 import models
 import forms
+import genome_overview
 import utilities
 import getGenomes
 import custom_filters
@@ -847,11 +848,19 @@ class AutomaticTaggingView(BaseView):
         tag_simple_form = forms.TagSimpleForm()
         search_for_promoters_form = forms.SearchForPromoters()
         update_tags_form = forms.UpdateTagsForm()
+        auto_classify_form = forms.AutoClassifyForm()
+        auto_classify_test_form = forms.AutoClassifyTestForm()
 
         unique_tags = models.GenomeRecords.objects().distinct(field='tags')
 
+
         # The list of tags to choose from
         update_tags_form.old_tag.choices = list(zip(unique_tags, unique_tags))
+
+        unique_tags.insert(0, "Test all")
+        auto_classify_test_form.limit_classify_test_tagged.choices = list(zip(unique_tags, unique_tags))
+
+
 
         if request.method == "POST" and tag_simple_form.tag_simple.data:
             include_genome = [x.strip() for x in tag_simple_form.include_genome.data.split(",")]
@@ -954,9 +963,11 @@ class AutomaticTaggingView(BaseView):
 
             flash("Changed all genome tags - " + old_tag + " into " + new_tag, category='success')
 
+
         return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form,
                            search_for_promoters_form=search_for_promoters_form,
-                           update_tags_form=update_tags_form)
+                           update_tags_form=update_tags_form, auto_classify_form=auto_classify_form,
+                           auto_classify_test_form=auto_classify_test_form)
 
 
 @app.route("/temp_assoc_fix", methods=['GET', 'POST'])
@@ -1867,6 +1878,9 @@ def delete_all_hits():
 
     models.AssociatedHits.objects().delete()
 
+    flash ("Deleted hits", category='success')
+
+
     return redirect('batch_delete')
 
 @app.route("/delete_all_tags", methods=['GET', 'POST'])
@@ -1885,6 +1899,8 @@ def delete_all_tags():
         query.save()
 
     models.GenomeTags.objects().delete()
+
+    flash ("Deleted tags", category='success')
 
     return redirect('batch_delete')
 
@@ -2247,9 +2263,33 @@ def clear_all_promoters():
 
     return redirect('automatic_tagging')
 
-@app.route("/automatic_tagging/run_auto_classify_test", methods=['GET', 'POST'])
-def run_auto_classify_test():
-    utilities.test_auto_classify()
+@app.route("/automatic_tagging/auto_classify", methods=['GET', 'POST'])
+def auto_classify():
+
+    utilities.delete_all_tags()
+    queries = models.GenomeRecords.objects().timeout(False)
+
+    print ("Classifying the genomes")
+    genome_overview.classify_genomes(queries)
+
+    flash ('Automatically classified')
+
+    return redirect('automatic_tagging')
+
+
+@app.route("/automatic_tagging/auto_classify_test", methods=['GET', 'POST'])
+def auto_classify_test():
+
+    limit_classify_test_tagged = request.json['limit_classify_test_tagged']
+
+    if limit_classify_test_tagged == 'Test all':
+
+        queries = models.GenomeRecords.objects.all().timeout(False)
+    else:
+        queries = models.GenomeRecords.objects(tags=limit_classify_test_tagged).timeout(False)
+
+
+    utilities.test_auto_classify(queries)
 
     return redirect('automatic_tagging')
 

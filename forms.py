@@ -246,6 +246,15 @@ class TreeSelectForm(FlaskForm):
 
     submit = SubmitField("Select tree")
 
+class AutoClassifyForm(FlaskForm):
+    auto_classify = SubmitField("Run automatic classification")
+
+class AutoClassifyTestForm(FlaskForm):
+    limit_classify_test_tagged = SelectField('Limit classification test to genomes tagged with', choices=[])
+    auto_classify_test = SubmitField("Run automatic classification test")
+
+
+
 
 class BatchDeleteForm(FlaskForm):
     delete_all_tags = SubmitField('Delete all tags')

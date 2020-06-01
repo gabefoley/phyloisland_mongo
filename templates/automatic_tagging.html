@@ -69,8 +69,8 @@
 
             <div class="search_for_promoters_div">
 
-        <h4>Search for promoters</h4>
-            Search in the region directly before all the hits for a promoter sequence using this pattern - <br>
+                <h4>Search for promoters</h4>
+                Search in the region directly before all the hits for a promoter sequence using this pattern - <br>
                 (TTGACA.{15,25}TATAAT)
                 <br>
                 Meaning we must match TTGACA, then anything for 15 to 25 positions, then we must match TATAAT
@@ -103,7 +103,8 @@
                 </form>
 
                 <button name="clear_all_promoters" class="btn-primary" id="clear_all_promoters"
-                        type="submit">Clear all assigned promoters</button>
+                        type="submit">Clear all assigned promoters
+                </button>
 
                 <br>
                 <br>
@@ -117,15 +118,8 @@
                     <h4> Automatically change tags</h4>
 
 
-                    WARNING: The following is an experimental feature. It updates tags on Genomes and doesn't update
-                    tags on Regions
-                    . However, it will update the tags on Genomes and Regions in the GenomeTags dictionary. In other
-                    words, if
-                    the tag you are changing has been tagged onto a Region then you must manually update the tag names
-                    for
-                    Regions in the Genome Detail view. Otherwise your GenomeTags dictionary will be out of sync with the
-                    tags on
-                    your Regions.
+                    WARNING: The following is an experimental feature. It updates tags on Genomes and Regions
+                    and will update the tags on Genomes and Regions in the GenomeTags dictionary.
 
                     <br>
                     <br>
@@ -159,23 +153,91 @@
             </div>
 
         </div>
+    <br>
+
+    <h4> Automatically classify genomes</h4>
+
+
+    WARNING: Currently this will first delete all existing tags and on Genomes and Regions, as well as the contents
+    of the GenomeTags dictionary
+
+    <br>
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ auto_classify_form.hidden_tag() }}
+
+        <div class="smallform">
+
+
+            <br>
+
+            {{ auto_classify_form.auto_classify(class="btn-primary") }}
+
+
+        </div>
+    </form>
+
+    <br>
+
+
+    <br>
+
+        <h4> Test the automatically classified genomes</h4>
+
+
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ auto_classify_test_form.hidden_tag() }}
+
+        <div class="smallform">
+
+            {{ auto_classify_test_form.limit_classify_test_tagged.label }}
+
+            {{ auto_classify_test_form.limit_classify_test_tagged }}
+
+            <br>
+
+
+            <br>
+
+            {{ auto_classify_test_form.auto_classify_test(class="btn-primary") }}
+
+
+        </div>
+    </form>
+
+
+
+    <br>
+
     </div>
-    <br>
-    <br>
 
-                    <button name="run_auto_classify_test" class="btn-primary" id="run_auto_classify_test"
-                        type="submit">Run the automatic classifier test</button>
 
-                <br>
 
 
     <script>
 
-            $('#clear_all_promoters').on('click', function (e) {
+        $('#limit_classify_test_tagged').selectize({
+            delimiter: ',',
+            persist: false, plugins: ['remove_button'],
+            maxItems: 1,
+
+            create: function (input) {
+                return {
+                    value: input,
+                    text: input
+                }
+            }
+
+
+        });
+
+        $('#clear_all_promoters').on('click', function (e) {
 
 
             $.ajax({
                 url: Flask.url_for("clear_all_promoters"),
+
 
                 contentType: 'application/json;charset=UTF-8',
                 type: 'POST',
@@ -192,11 +254,40 @@
 
         });
 
-                        $('#run_auto_classify_test').on('click', function (e) {
+        $('#auto_classify').on('click', function (e) {
+
+            e.preventDefault();
 
 
             $.ajax({
-                url: Flask.url_for("run_auto_classify_test"),
+                url: Flask.url_for("auto_classify"),
+
+                contentType: 'application/json;charset=UTF-8',
+                type: 'POST',
+                error: function (error) {
+                    console.log(error);
+                },
+                success: function (response) {
+                    window.location.reload();
+
+
+                }
+            });
+
+        });
+
+        $('#auto_classify_test').on('click', function (e) {
+
+            e.preventDefault()
+
+            var limit_classify_test_tagged = $('#limit_classify_test_tagged').val()
+
+
+            $.ajax({
+                url: Flask.url_for("auto_classify_test"),
+                data: JSON.stringify({
+                    'limit_classify_test_tagged': limit_classify_test_tagged
+                }),
 
                 contentType: 'application/json;charset=UTF-8',
                 type: 'POST',
