@@ -334,12 +334,12 @@ def get_sequence_content_dict(region):
 
     fasta_path = "./tmp/tmp_regions.fasta"
 
-    regions = models.RegionRecords.objects().get(name=region)
+    alns = models.AlignmentRecords.objects().get(name=region)
 
     # Write out the regions
 
     with open(fasta_path, "w+") as fasta_file:
-        fasta_file.write(regions.regions.decode())
+        fasta_file.write(alns.alignment.read().decode())
 
     while not os.path.exists(fasta_path):
         time.sleep(1)

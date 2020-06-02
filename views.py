@@ -30,6 +30,8 @@ from wtforms import SelectField
 
 ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2', 'region3', 'region4']
 
+ref_mlgo_dict = {'A1' : '1', 'A2' : '2', 'Chitinase' : '3', 'TcB' : '4', 'TcC': '5', 'TcdA1':'6'}
+
 
 @user_logged_in.connect_via(app)
 def on_user_logged_in(sender, user):
@@ -557,13 +559,13 @@ class TreeView(BaseView):
 
         region_order_choices = [(region_order.name, region_order.name) for region_order in
                                 models.RegionOrderRecords.objects()]
-        region_choices = [(region.name, region.name) for region in models.RegionRecords.objects()]
+        alignment_choices = [(aln.name, aln.name) for aln in models.AlignmentRecords.objects()]
 
 
         # Insert a None option in case we don't want to add certain information
         profile_choices.insert(0, (None, None))
         region_order_choices.insert(0, (None, None))
-        region_choices.insert(0, (None, None))
+        alignment_choices.insert(0, (None, None))
 
 
         tree_choices = [(tree.name, tree.name) for tree in models.TreeRecords.objects()]
@@ -571,7 +573,7 @@ class TreeView(BaseView):
         tree_select_form.tree_select_name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
         tree_select_form.profiles.choices = profile_choices
         tree_select_form.region_order.choices = region_order_choices
-        tree_select_form.sequence_content.choices = region_choices
+        tree_select_form.sequence_content.choices = alignment_choices
 
 
         tree_download_form.tree.choices = tree_choices
@@ -705,6 +707,56 @@ class DownloadRegionOrderView(BaseView):
                     flash(e, category='error')
 
         return self.render('download_region_order.html', form=form, region_order_names=region_order_names)
+
+
+class DownloadMLGOView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def setup(self):
+        form = forms.DownloadMLGO()
+        tree_form = forms.DownloadMLGOTree()
+
+        tree_choices = [(tree.name, tree.name) for tree in models.TreeRecords.objects()]
+
+        tree_form.tree_select_name.choices = tree_choices
+
+
+        if request.method == "POST" and form.submit.data:
+            if form.submit.data:
+                try:
+                    fasta_dict = {}
+                    include_genome = form.include_genome.data.split(",")
+                    exclude_genome = form.exclude_genome.data.split(",")
+                    include_hits = form.include_hits.data.split(",")
+                    exclude_hits = form.exclude_hits.data.split(",")
+
+                    if include_genome == [""]:
+                        genomes = models.GenomeRecords.objects()
+                    else:
+                        genomes = models.GenomeRecords.objects(tags__in=include_genome)
+
+                    getGenomes.write_mlgo_order(genomes, ref_mlgo_dict=ref_mlgo_dict)
+
+                    flash("Downloaded file to fasta_folder/mlgo.txt", category='success')
+
+                except Exception as e:
+                    print(e)
+                    flash(e, category='error')
+        if request.method == "POST" and tree_form.download_mlgo_tree.data:
+
+            tree = models.TreeRecords.objects.get(name=tree_form.tree_select_name.data)
+
+            tree_path = "fasta_folder/" + tree.name + "_mlgo.nwk"
+
+            print (tree)
+
+            getGenomes.write_mlgo_tree(tree.tree, tree_path)
+
+            flash("Downloaded file to" + tree_path, category='success')
+
+        return self.render('download_MLGO.html', form=form, tree_form=tree_form)
+
+
 
 
 class SequenceRecordsView(ModelView):
@@ -2386,6 +2438,8 @@ with warnings.catch_warnings():
 
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
     admin.add_view(DownloadRegionOrderView(name='Download Region Order', endpoint='download_region_order'))
+    admin.add_view(DownloadMLGOView(name='Download ML Gene Order', endpoint='download_mlgo'))
+
     # admin.add_view(TempFixView(name='Temp Fix', endpoint='temp_fix'))
     admin.add_view(AutomaticTaggingView(name='Automatic Tagging', endpoint='automatic_tagging'))
 

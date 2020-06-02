@@ -289,3 +289,17 @@ class DownloadRegionOrder(FlaskForm):
 
     submit = SubmitField("Submit")
 
+class DownloadMLGO(FlaskForm):
+    include_genome = StringField('Only include genomes tagged with - ')
+
+    exclude_genome = StringField('Exclude genomes tagged with - ')
+
+    include_hits = StringField('Only include hits tagged with - ')
+
+    exclude_hits = StringField('Exclude hits tagged with - ', default='hidden')
+
+    submit = SubmitField("Submit")
+
+class DownloadMLGOTree(FlaskForm):
+    tree_select_name = SelectField('Tree name ', choices=[])
+    download_mlgo_tree = SubmitField("Download tree in MLGO format")

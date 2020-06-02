@@ -180,7 +180,13 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                         print (tags)
                         colour = 'black'
                     else:
-                        colour = colour_dict[tags[0]]
+                        if tags[0] in colour_dict:
+                            colour = colour_dict[tags[0]]
+
+                        else:
+                            "WARNING: Colour dict doesn't have an entry for " + tags[0]
+                            colour = 'black'
+
 
                 else:
                     print ("\nWARNING: We couldn't find an entry for the following genome in the tag dictionary" )
