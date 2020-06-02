@@ -103,7 +103,7 @@ class RegionOrderRecords(db.DynamicDocument):
 class MLGOTreeRecords(db.DynamicDocument):
     name = db.StringField(unique=True)
     tree = db.FileField()
-    ancestral_orders = db.FileField()
+    ancestral_orders = db.DictField()
 
 
 

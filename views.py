@@ -31,6 +31,7 @@ from wtforms import SelectField
 ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2', 'region3', 'region4']
 
 ref_mlgo_dict = {'A1' : '1', 'A2' : '2', 'Chitinase' : '3', 'TcB' : '4', 'TcC': '5', 'TcdA1':'6'}
+mlgo_ref_dict = {'1' : 'A1', '2' : 'A2', '3' : 'Chitinase', '4' : 'TcB', '5': 'TcC', '6':'TcdA1'}
 
 
 @user_logged_in.connect_via(app)
@@ -763,6 +764,8 @@ class VisualiseMLGOView(BaseView):
         upload_form = forms.UploadMLGOTree()
         select_form = forms.SelectMLGOTree()
 
+        tree_img = ""
+
         tree_choices = [(tree.name, tree.name) for tree in models.MLGOTreeRecords.objects()]
 
         print (tree_choices)
@@ -775,16 +778,30 @@ class VisualiseMLGOView(BaseView):
             # gene_order = open(upload_form.gene_order.data, "r+")
             # mlgo_tree = models.MLGOTreeRecords(upload_form.upload_name.data, annotated_tree,
             #                                    gene_order)
+
+            mlgo_dict = utilities.get_mlgo_dict(upload_form.gene_order.data.read().decode())
+
+
             mlgo_tree = models.MLGOTreeRecords(upload_form.upload_name.data, upload_form.annotated_tree.data,
-                                               upload_form.gene_order.data)
+                                               mlgo_dict)
 
             mlgo_tree.save()
 
             flash ("Uploaded ML Gene Order tree " + upload_form.upload_name.data + " to database")
 
+        if request.method == "POST" and select_form.select.data:
 
+            tree = models.MLGOTreeRecords.objects().get(name=select_form.select_name.data)
 
-        return self.render('visualise_MLGO.html', upload_form=upload_form, select_form=select_form)
+            # print(tree)
+            # print (tree.tree.read().decode())
+
+            tree_img = utilities.get_ml_go_tree_image(tree.tree.read().decode(), tree.name, tree.ancestral_orders,
+                                                      mlgo_ref_dict)
+
+            tree_img = "/" + tree_img + "#" + utilities.randstring(5)
+
+        return self.render('visualise_MLGO.html', upload_form=upload_form, select_form=select_form, tree_img=tree_img)
 
 
 

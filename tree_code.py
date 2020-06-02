@@ -6,6 +6,7 @@ import sys
 import argparse
 import pickle
 
+
 def load_phylo_tree(tree_path, aln_path=None):
     """
     Load a tree, associate an alignment with it if given
@@ -13,12 +14,14 @@ def load_phylo_tree(tree_path, aln_path=None):
     tree = PhyloTree(tree_path, alignment=aln_path, format=1, alg_format='fasta')
     return tree
 
+
 def load_tree(tree_path, aln_path=None):
     """
     Load a tree, associate an alignment with it if given
     """
     tree = Tree(tree_path, format=1)
     return tree
+
 
 def get_domains(domains):
     pos_dict = {'RBD_A': 0, 'RBD_C': 1, 'RBD_B': 2, 'Neuraminidase': 3, 'RBD_D': 4, 'TcB_BD_seed': 5}
@@ -32,14 +35,13 @@ def get_domains(domains):
         [290, 350, "[]", None, 20, "black", "rgradient:gray", "arial|3|black|RBD_D"],
         [360, 430, "[]", None, 20, "black", "rgradient:darkgreen", "arial|3|black|TCB_BD"]]
 
-    print (domains)
+    print(domains)
 
     for k, v in pos_dict.items():
         if k not in domains:
-            print (k + "was not there")
+            print(k + "was not there")
             domain_list[v][6] = 'white'
             domain_list[v][7] = "arial|3|black|"
-
 
     return domain_list
 
@@ -48,7 +50,7 @@ def get_region_domains(regions):
     region_domains = []
 
     region_colour_dict = {"TcdA1": 'purple', 'A1': 'orange', 'A2': 'red', 'TcB': 'dodgerblue', 'TcC': 'pink',
-                          'Chi' : 'green', 'Chi/Chi': 'green', 'TcB/TcC' : 'yellow', 'A2/TcdA1' : 'red' }
+                          'Chi': 'green', 'Chi/Chi': 'green', 'TcB/TcC': 'yellow', 'A2/TcdA1': 'red'}
 
     start = 20
     for region in regions:
@@ -67,7 +69,7 @@ def get_region_domains(regions):
                 region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
                                  "rgradient:" + region_colour_dict[region_short], "arial|4|black|" + region_name]
             else:
-                print ("WARNING: Got a value for region colour dict that wasn't in there - " + region_short)
+                print("WARNING: Got a value for region colour dict that wasn't in there - " + region_short)
                 region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
                                  "rgradient:black", "arial|4|black|" + region_name]
 
@@ -75,6 +77,41 @@ def get_region_domains(regions):
         start += 130
 
     return region_domains
+
+def get_ancestor_domains(regions):
+    ancestor_domains = []
+
+    region_colour_dict = {"TcdA1": 'purple', 'A1': 'orange', 'A2': 'red', 'TcB': 'dodgerblue', 'TcC': 'pink',
+                          'Chi': 'green', 'Chi/Chi': 'green', 'TcB/TcC': 'yellow', 'A2/TcdA1': \
+        'red'}
+
+    start = 20
+    for region in regions:
+        # print ("**")
+        print (region)
+        region = region.replace("Chitinase", "Chi")
+
+        region_name = region.replace("-", "")
+        # region_split = region.split("_joined_")
+
+        # region_short = "/".join([region.split("_")[0] for region in region_split])
+        # if region_short == 'Chitinase':
+        # #     region_name = 'Chi'
+        # else:
+        #     region_name = region_short
+
+        if region_name in region_colour_dict:
+            region_domain = [start, start + 30, ">" if 'forward' in region else "<", None, 20, "black",
+                             "rgradient:" + region_colour_dict[region_name], "arial|4|black|" + region_name]
+        else:
+            print("WARNING: Got a value for region colour dict that wasn't in there - " + region_name)
+            region_domain = [start, start + 30, ">" if 'forward' in region else "<", None, 20, "black",
+                             "rgradient:black", "arial|4|black|" + region_name]
+
+        ancestor_domains.append(region_domain)
+        start += 40
+
+    return ancestor_domains
 
 
 def get_leaf_tag(node, skip_tags=['Single', 'Multiple']):
@@ -138,8 +175,8 @@ def continue_wo_collapse(node, skip_tags=["Single", "Multiple"]):
 
 
 def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, sequence_content_dict, skip_list, \
-                                                                                                    outpath, \
-                                                                                    full_names=False,
+                     outpath, \
+                     full_names=False,
                      highlight_nodes=[], collapse_on_genome_tags=True):
     ts = TreeStyle()
     ts.show_leaf_name = False
@@ -174,10 +211,10 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                     tags = [x for x in tag_dict[short_name] if x not in skip_list]
 
                     if len(tags) > 1:
-                        print ('\nWARNING: The following genome had multiple tags associated with it')
-                        print (long_name)
-                        print ("The tags were ")
-                        print (tags)
+                        print('\nWARNING: The following genome had multiple tags associated with it')
+                        print(long_name)
+                        print("The tags were ")
+                        print(tags)
                         colour = 'black'
                     else:
                         if tags[0] in colour_dict:
@@ -189,8 +226,8 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
 
 
                 else:
-                    print ("\nWARNING: We couldn't find an entry for the following genome in the tag dictionary" )
-                    print (node.name)
+                    print("\nWARNING: We couldn't find an entry for the following genome in the tag dictionary")
+                    print(node.name)
                     colour = 'black'
 
                 if full_names:
@@ -234,7 +271,7 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                         S = SeqMotifFace(sequence_content_dict[node.name], seq_format="seq", width=6)
                         node.add_face(S, 1, position="aligned")
                     else:
-                        print ("\nWARNING: " + node.name + " was not in the sequence content dict")
+                        print("\nWARNING: " + node.name + " was not in the sequence content dict")
 
             else:
                 colour = 'black'
@@ -271,20 +308,58 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
             node.set_style(nstyle)
 
     if display_circular:
-
         ts.mode = "c"
 
     if display_circular_180:
         ts.mode = "c"
-        ts.arc_start = -180 # 0 degrees = 3 o'clock
+        ts.arc_start = -180  # 0 degrees = 3 o'clock
         ts.arc_span = 180
+    ts.root_opening_factor = 1
+
+    return tree, ts
+
+def get_ancestor_tree(tree, ancestral_order_dict, ref_ml_go_dict,
+                     outpath,):
+
+    ts = TreeStyle()
+    ts.show_leaf_name = False
+    ts.branch_vertical_margin = 15
+    ts.layout_fn = lambda x: None
+    #
+
+
+    # Get the colours for each extant genome
+    for node in tree.iter_descendants("postorder"):
+        if not node.is_leaf():
+            # node_style = ""
+            print (node.name)
+            print (ancestral_order_dict)
+            ancestral_orders = [ref_ml_go_dict[x.replace("-", "")] for x in ancestral_order_dict[node.name]]
+            print (ancestral_orders)
+
+            region_domains = get_ancestor_domains(ancestral_orders)
+
+            print ('rego')
+
+            print (region_domains)
+
+            if region_domains:
+
+                seqFace = SeqMotifFace(seq=None, motifs=region_domains, gap_format="line")
+                node.add_face(seqFace, 0, "branch-right")
+
+
+
+
+
+
     ts.root_opening_factor = 1
 
     return tree, ts
 
 
 def colour_tips(tree, tag_dict, colour_dict, region_dict=None, region_order_dict=None, sequence_content_dict=None,
-    skip_list=[],
+                skip_list=[],
                 display_circular=False, display_circular_180=False, outpath=None,
                 full_names=False, highlight_nodes=[],
                 custom_layout=False, collapse_on_genome_tags=False):
@@ -297,9 +372,18 @@ def colour_tips(tree, tag_dict, colour_dict, region_dict=None, region_order_dict
     # if outpath:
     # ts.layout_fn = lambda x: None
 
-    print ('outpath is ')
-    print (outpath)
+    print('outpath is ')
+    print(outpath)
     tree.render(outpath, dpi=300, tree_style=ts)
+
+
+def display_ancestors(tree, ancestral_order_dict, ref_ml_go_dict, outpath):
+    tree, ts = get_ancestor_tree(tree, ancestral_order_dict=ancestral_order_dict, ref_ml_go_dict=ref_ml_go_dict,
+                                 outpath=outpath,
+                                 )
+
+    tree.render(outpath, dpi=300, tree_style=ts)
+
 
 def parse_args(args):
     parser = argparse.ArgumentParser()
@@ -316,9 +400,13 @@ def parse_args(args):
     parser.add_argument("-cgt", "--collapse_on_genome_tags", help="Collapse tree based on genome tags", default=False)
     parser.add_argument("-dc", "--display_circular", help="Display tree as circular", action='store_true')
     parser.add_argument("-dco", "--display_circular_180", help="Display tree as circular (180 degrees)",
-    action='store_true')
+                        action='store_true')
+    parser.add_argument("-ao", "--ancestral_order")
+    parser.add_argument("-mlgo", "--ref_ml_go_dict")
+
 
     return parser.parse_args(args)
+
 
 def pickle_open(filename):
     with open(filename, 'rb') as handle:
@@ -333,53 +421,53 @@ if __name__ == "__main__":
     loaded_tree = load_tree(parser.tree)
     outpath = parser.outpath
 
-    tag_dict = pickle_open(parser.tag_dict)
-    region_dict = pickle_open(parser.region_dict)
-    region_order_dict = pickle_open(parser.region_order_dict)
-    sequence_content_dict = pickle_open(parser.sequence_content_dict)
+    print ('here')
 
+    if parser.ancestral_order != None:
+        print ('adventure')
+        ancestral_order_dict = pickle_open(parser.ancestral_order)
+        ref_ml_go_dict = pickle_open(parser.ref_ml_go_dict)
 
-    colour_dict = pickle_open(parser.colour_dict)
+        display_ancestors(loaded_tree, ancestral_order_dict, ref_ml_go_dict, outpath)
 
-    full_names = True if parser.full_names == "True" else False
+    else:
 
-    collapse_on_genome_tags = True if parser.collapse_on_genome_tags == 'True' else False
+        tag_dict = pickle_open(parser.tag_dict)
+        region_dict = pickle_open(parser.region_dict)
+        region_order_dict = pickle_open(parser.region_order_dict)
+        sequence_content_dict = pickle_open(parser.sequence_content_dict)
 
-    display_circular = True if parser.display_circular else False
-    display_circular_180 = True if parser.display_circular_180 else False
-    skip_list = ["Single", "Multiple"] #Tags to skip when looking for tags to colour on
+        colour_dict = pickle_open(parser.colour_dict)
 
-    print ("\nMake tree called with the following dictionaries - ")
+        full_names = True if parser.full_names == "True" else False
 
+        collapse_on_genome_tags = True if parser.collapse_on_genome_tags == 'True' else False
 
-    print ('tag dict')
-    print (tag_dict)
-    print ('region dict')
-    print (region_dict)
-    print ('region order dict')
+        display_circular = True if parser.display_circular else False
+        display_circular_180 = True if parser.display_circular_180 else False
+        skip_list = ["Single", "Multiple"]  # Tags to skip when looking for tags to colour on
 
-    print (region_order_dict)
-    print ('sequence_content_dict')
+        print("\nMake tree called with the following dictionaries - ")
 
-    print (sequence_content_dict)
-    print ('colour dict')
-    print (colour_dict)
-    print ('skip list')
-    print (skip_list)
+        print('tag dict')
+        print(tag_dict)
+        print('region dict')
+        print(region_dict)
+        print('region order dict')
 
+        print(region_order_dict)
+        print('sequence_content_dict')
 
-    colour_tips(loaded_tree, tag_dict, colour_dict, region_dict, region_order_dict, sequence_content_dict, skip_list, \
-                                                                                             display_circular,
-                display_circular_180,
-                outpath, \
-                                                                                          full_names=full_names,
-                collapse_on_genome_tags=collapse_on_genome_tags)
+        print(sequence_content_dict)
+        print('colour dict')
+        print(colour_dict)
+        print('skip list')
+        print(skip_list)
 
-
-
-
-
-    # colour_tips(loaded_tree, tag_dict, colour_dict, region_dict, outpath=outpath,
-    #                       custom_layout=True)
-
+        colour_tips(loaded_tree, tag_dict, colour_dict, region_dict, region_order_dict, sequence_content_dict, skip_list, \
+                    display_circular,
+                    display_circular_180,
+                    outpath, \
+                    full_names=full_names,
+                    collapse_on_genome_tags=collapse_on_genome_tags)
 
