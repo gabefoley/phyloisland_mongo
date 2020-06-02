@@ -241,8 +241,12 @@ class TreeSelectForm(FlaskForm):
     tree_select_name = SelectField('Tree name ', choices=[])
     profiles = SelectField('Add profile search results from', choices=[])
     region_order = SelectField('Add region order search results from', choices=[])
+    sequence_content = SelectField('Add sequence content from', choices=[])
     full_names = BooleanField("Display full names on tree", default='unchecked')
     collapse_on_genome_tags = BooleanField("Collapse tree based on genome tags", default='unchecked')
+    display_circular = BooleanField("Display tree as circular", default='unchecked')
+    display_circular_180 = BooleanField("Display tree as circular (180 degrees)", default='unchecked')
+
 
     submit = SubmitField("Select tree")
 
@@ -252,7 +256,6 @@ class AutoClassifyForm(FlaskForm):
 class AutoClassifyTestForm(FlaskForm):
     limit_classify_test_tagged = SelectField('Limit classification test to genomes tagged with', choices=[])
     auto_classify_test = SubmitField("Run automatic classification test")
-
 
 
 

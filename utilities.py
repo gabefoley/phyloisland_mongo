@@ -330,6 +330,39 @@ def make_alignment_from_regions(aln_name, region_data, tool="MAFFT"):
     if os.path.isfile(aln_path):
         return aln_path
 
+def get_sequence_content_dict(region):
+
+    fasta_path = "./tmp/tmp_regions.fasta"
+
+    regions = models.RegionRecords.objects().get(name=region)
+
+    # Write out the regions
+
+    with open(fasta_path, "w+") as fasta_file:
+        fasta_file.write(regions.regions.decode())
+
+    while not os.path.exists(fasta_path):
+        time.sleep(1)
+
+    # Load the regions in as a dictionary
+
+    if os.path.isfile(fasta_path):
+
+        seqs = read_fasta(fasta_path)
+
+    print ('pnky')
+    print (seqs)
+
+    seq_content_dict = {k : v.seq for k,v in seqs.items()}
+
+    print (seq_content_dict)
+
+    return seq_content_dict
+
+
+
+
+
 
 def make_tree(alignment_name, alignment, tool):
     aln_path = "./tmp/" + alignment_name + ".aln"
@@ -350,14 +383,15 @@ def make_tree(alignment_name, alignment, tool):
         return tree_path
 
 
-def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, colour_dict, full_names,
-                   collapse_on_genome_tags):
+def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, sequence_content_dict, colour_dict,
+                   full_names,
+                   collapse_on_genome_tags, display_circular, display_circular_180):
     tree_path = f"./tmp/{tree_name}.nwk"
-    img_path = f"static/img/trees/{tree_name}{'_full' if full_names else ''}{'_collapse' if collapse_on_genome_tags else ''}.png"
+    img_path = f"static/img/trees/{tree_name}{'_full' if full_names else ''}{'_collapse' if collapse_on_genome_tags else ''}{'_rd' if region_dict else ''}{'_ro' if region_order_dict else ''}{'_sc' if sequence_content_dict else ''}{'_circ' if display_circular else ''}{'_circ180' if display_circular_180 else ''}.png"
     tag_dict_path = f"./tmp/{tree_name}_tagdict.p"
     region_dict_path = f"./tmp/{tree_name}_regiondict.p"
     region_order_dict_path = f"./tmp/{tree_name}_regionorderdict.p"
-
+    sequence_content_dict_path = f"./tmp/{tree_name}_seqcontentdict.p"
     colour_dict_path = f"./tmp/{tree_name}_colourdict.p"
 
     print(img_path)
@@ -372,6 +406,8 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, co
     pickle_dict(tag_dict, tag_dict_path)
     pickle_dict(region_dict, region_dict_path)
     pickle_dict(region_order_dict, region_order_dict_path)
+    pickle_dict(sequence_content_dict, sequence_content_dict_path)
+
     pickle_dict(colour_dict, colour_dict_path)
 
     if os.path.isfile(tree_path):
@@ -382,8 +418,7 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, co
 
         loaded_tree = tree_code.load_tree(tree_path)
 
-        stdoutdata = subprocess.getoutput(
-            f"python tree_code.py -t {tree_path} -o {img_path} -td {tag_dict_path} -rd {region_dict_path} -rod {region_order_dict_path} -cd {colour_dict_path} -fn {full_names} -cgt {collapse_on_genome_tags}")
+        stdoutdata = subprocess.getoutput(f'python tree_code.py -t {tree_path} -o {img_path} -td {tag_dict_path} -rd {region_dict_path} -rod {region_order_dict_path} -scd {sequence_content_dict_path} -cd {colour_dict_path} -fn {full_names} -cgt {collapse_on_genome_tags} {" -dc" if display_circular else ""} {" -dco" if display_circular_180 else ""}')
 
         print(stdoutdata)
 

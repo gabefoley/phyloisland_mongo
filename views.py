@@ -499,9 +499,19 @@ class TreeView(BaseView):
                 region_order_dict = models.RegionOrderRecords.objects().get(
                     name=tree_select_form.region_order.data).region_order_dict
 
+            if tree_select_form.sequence_content.data == 'None':
+                sequence_content_dict = {}
+            else:
+                sequence_content_dict = utilities.get_sequence_content_dict(tree_select_form.sequence_content.data)
+
             full_names = tree_select_form.full_names.data
 
             collapse_on_genome_tags = tree_select_form.collapse_on_genome_tags.data
+
+            display_circular = tree_select_form.display_circular.data
+            display_circular_180 = tree_select_form.display_circular_180.data
+
+
 
             colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type2b': 'gold', 'Type2a': 'green',
                            'Type3': 'purple', 'Multiple': 'red', 'unknown': 'black', 'Single': 'brown',
@@ -530,7 +540,9 @@ class TreeView(BaseView):
 
         if tree:
             tree_img = utilities.get_tree_image(tree.tree.decode(), tree.name, tag_dict, region_dict,
-                                                region_order_dict, colour_dict, full_names, collapse_on_genome_tags)
+                                                region_order_dict, sequence_content_dict, colour_dict, full_names,
+                                                collapse_on_genome_tags,
+                                                display_circular, display_circular_180)
 
             print(tree_img)
             tree_img = "/" + tree_img + "#" + utilities.randstring(5)
@@ -545,16 +557,22 @@ class TreeView(BaseView):
 
         region_order_choices = [(region_order.name, region_order.name) for region_order in
                                 models.RegionOrderRecords.objects()]
+        region_choices = [(region.name, region.name) for region in models.RegionRecords.objects()]
+
 
         # Insert a None option in case we don't want to add certain information
         profile_choices.insert(0, (None, None))
         region_order_choices.insert(0, (None, None))
+        region_choices.insert(0, (None, None))
+
 
         tree_choices = [(tree.name, tree.name) for tree in models.TreeRecords.objects()]
 
         tree_select_form.tree_select_name.choices = [(tree.id, tree.name) for tree in models.TreeRecords.objects()]
         tree_select_form.profiles.choices = profile_choices
         tree_select_form.region_order.choices = region_order_choices
+        tree_select_form.sequence_content.choices = region_choices
+
 
         tree_download_form.tree.choices = tree_choices
 
