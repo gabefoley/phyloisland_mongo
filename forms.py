@@ -303,3 +303,17 @@ class DownloadMLGO(FlaskForm):
 class DownloadMLGOTree(FlaskForm):
     tree_select_name = SelectField('Tree name ', choices=[])
     download_mlgo_tree = SubmitField("Download tree in MLGO format")
+
+class UploadMLGOTree(FlaskForm):
+    upload_name = StringField('Name ', [validators.DataRequired()])
+
+    gene_order = FileField('Upload the geneorder.out file',
+                     [validators.DataRequired()])
+    annotated_tree = FileField('Upload the gene_order.tree file',
+                     [validators.DataRequired()])
+    upload = SubmitField("Upload")
+
+
+class SelectMLGOTree(FlaskForm):
+    select_name = SelectField('Name ', choices=[])
+    select = SubmitField("Select")

@@ -756,6 +756,36 @@ class DownloadMLGOView(BaseView):
 
         return self.render('download_MLGO.html', form=form, tree_form=tree_form)
 
+class VisualiseMLGOView(BaseView):
+    @login_required
+    @expose("/", methods=('GET', 'POST'))
+    def setup(self):
+        upload_form = forms.UploadMLGOTree()
+        select_form = forms.SelectMLGOTree()
+
+        tree_choices = [(tree.name, tree.name) for tree in models.MLGOTreeRecords.objects()]
+
+        print (tree_choices)
+
+        select_form.select_name.choices = tree_choices
+
+        if request.method == "POST" and upload_form.upload.data:
+
+            # annotated_tree = open(upload_form.annotated_tree.data, "r+")
+            # gene_order = open(upload_form.gene_order.data, "r+")
+            # mlgo_tree = models.MLGOTreeRecords(upload_form.upload_name.data, annotated_tree,
+            #                                    gene_order)
+            mlgo_tree = models.MLGOTreeRecords(upload_form.upload_name.data, upload_form.annotated_tree.data,
+                                               upload_form.gene_order.data)
+
+            mlgo_tree.save()
+
+            flash ("Uploaded ML Gene Order tree " + upload_form.upload_name.data + " to database")
+
+
+
+        return self.render('visualise_MLGO.html', upload_form=upload_form, select_form=select_form)
+
 
 
 
@@ -2439,6 +2469,7 @@ with warnings.catch_warnings():
     admin.add_view(DownloadFastaView(name='Download FASTA', endpoint='download_fasta'))
     admin.add_view(DownloadRegionOrderView(name='Download Region Order', endpoint='download_region_order'))
     admin.add_view(DownloadMLGOView(name='Download ML Gene Order', endpoint='download_mlgo'))
+    admin.add_view(VisualiseMLGOView(name='Visualise ML Gene Order', endpoint='visualise_mlgo'))
 
     # admin.add_view(TempFixView(name='Temp Fix', endpoint='temp_fix'))
     admin.add_view(AutomaticTaggingView(name='Automatic Tagging', endpoint='automatic_tagging'))
