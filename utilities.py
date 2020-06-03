@@ -808,6 +808,7 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
                         hit_details['start'] = hit.start
                         hit_details['end'] = hit.end
                         hit_details['name'] = hit.region
+                        hit_details['score'] = hit.score
                         # hit_details['strand'] = 1 if count % 2 == 0 else -1
 
                         # We set a fake strand here just to force TcC and TcdA1 to a different track
@@ -917,7 +918,7 @@ def build_tracks(items, stop_codons, promoters):
         for region in items[region_name]:
             region_dict = {'id': region['hit_id'], 'start': int(region['start']), 'end': int(region['end']),
                            'name': region[
-                               'name'],
+                               'name'] + " (" + region['score'] + ")",
                            'strand': region['strand'], 'actual_strand': region['actual_strand']}
             regions.append(region_dict)
 

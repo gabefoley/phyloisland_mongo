@@ -28,12 +28,12 @@ def get_domains(domains):
 
     domain_list = [
         # seq.start, seq.end, shape, width, height, fgcolor, bgcolor
-        [10, 70, "[]", None, 20, "black", "rgradient:lightgreen", "arial|3|black|RBD_A"],
-        [80, 140, "[]", None, 20, "black", "rgradient:blue", "arial|3|black|RBD_C"],
-        [150, 210, "[]", None, 20, "black", "rgradient:orange", "arial|3|black|RBD_B"],
-        [220, 280, "[]", None, 20, "black", "rgradient:purple", "arial|3|black|NMD"],
-        [290, 350, "[]", None, 20, "black", "rgradient:gray", "arial|3|black|RBD_D"],
-        [360, 430, "[]", None, 20, "black", "rgradient:darkgreen", "arial|3|black|TCB_BD"]]
+        [10, 70, "[]", None, 20, "black", "rgradient:lightgreen", "arial|40|black|RBD_A"],
+        [80, 140, "[]", None, 20, "black", "rgradient:blue", "arial|40|black|RBD_C"],
+        [150, 210, "[]", None, 20, "black", "rgradient:orange", "arial|40|black|RBD_B"],
+        [220, 280, "[]", None, 20, "black", "rgradient:purple", "arial|40|black|NMD"],
+        [290, 350, "[]", None, 20, "black", "rgradient:gray", "arial|40|black|RBD_D"],
+        [360, 430, "[]", None, 20, "black", "rgradient:darkgreen", "arial|40|black|TCB_BD"]]
 
     print(domains)
 
@@ -67,11 +67,11 @@ def get_region_domains(regions):
 
             if region_short in region_colour_dict:
                 region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
-                                 "rgradient:" + region_colour_dict[region_short], "arial|4|black|" + region_name]
+                                 "rgradient:" + region_colour_dict[region_short], "arial|40|black|" + region_name]
             else:
                 print("WARNING: Got a value for region colour dict that wasn't in there - " + region_short)
                 region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
-                                 "rgradient:black", "arial|4|black|" + region_name]
+                                 "rgradient:black", "arial|40|black|" + region_name]
 
         region_domains.append(region_domain)
         start += 130
@@ -162,9 +162,6 @@ def continue_wo_collapse(node, skip_tags=["Single", "Multiple"]):
 
         tag_set.add(tag[0])
 
-    # print ('set was ')
-
-    #     print (tag_set)
 
     if len(tag_set) > 1:
         return True
@@ -291,13 +288,25 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                     N = TextFace(" " + str(len(node)) + format_text, fsize=14, fgcolor="black")
                     node.add_face(N, 1, position="branch-right")
 
-                    wid = max(len(node) * 10, 10)
+                    ceiling = 50
+                    length = 100
+
+                    if display_circular or display_circular_180:
+                        ceiling = 100
+                        length = 800
+
+
+                    wid = min(len(node) * 10, ceiling)
+
+
+
 
                     #                 node.add_face(ImgFace("./triangle.png",width=wid), 0)
-                    box_domains = [10, 200, "<", None, wid, "black", "rgradient:" + colour_dict[tag],
-                                   "arial|4|black|" + tag]
+                    box_domains = [10, length, "<", None, wid, "black", "rgradient:" + colour_dict[tag],
+                                   "arial|30|black|" + tag]
 
                     seqFace = SeqMotifFace(seq=None, motifs=[box_domains], gap_format="line")
+                    seqFace.rotable = False
                     node.add_face(seqFace, 0, "branch-right")
                     node.img_style['draw_descendants'] = False
 
@@ -339,9 +348,6 @@ def get_ancestor_tree(tree, ancestral_order_dict, ref_ml_go_dict,
 
             region_domains = get_ancestor_domains(ancestral_orders)
 
-            print ('rego')
-
-            print (region_domains)
 
             if region_domains:
 
@@ -374,7 +380,7 @@ def colour_tips(tree, tag_dict, colour_dict, region_dict=None, region_order_dict
 
     print('outpath is ')
     print(outpath)
-    tree.render(outpath, dpi=300, tree_style=ts)
+    tree.render(outpath, dpi=30, tree_style=ts, w=1600)
 
 
 def display_ancestors(tree, ancestral_order_dict, ref_ml_go_dict, outpath):
@@ -382,7 +388,7 @@ def display_ancestors(tree, ancestral_order_dict, ref_ml_go_dict, outpath):
                                  outpath=outpath,
                                  )
 
-    tree.render(outpath, dpi=300, tree_style=ts)
+    tree.render(outpath, dpi=30, tree_style=ts, w=1600)
 
 
 def parse_args(args):
@@ -421,10 +427,7 @@ if __name__ == "__main__":
     loaded_tree = load_tree(parser.tree)
     outpath = parser.outpath
 
-    print ('here')
-
     if parser.ancestral_order != None:
-        print ('adventure')
         ancestral_order_dict = pickle_open(parser.ancestral_order)
         ref_ml_go_dict = pickle_open(parser.ref_ml_go_dict)
 
