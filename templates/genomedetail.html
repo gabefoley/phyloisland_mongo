@@ -36,6 +36,32 @@
 
             <br>
 
+                        <form method="POST" enctype="multipart/form-data">
+                {{ genome_by_name_form.hidden_tag() }}
+
+                <div class="smallform">
+
+                                        {{ genome_by_name_form.genome_by_name.label }}
+
+
+                    {{ genome_by_name_form.genome_by_name }}
+
+
+
+                    <br>
+
+
+
+                    {{ genome_by_name_form.search_by_name(class="btn-primary") }}
+
+                    <br>
+                    <br>
+                    <br>
+
+
+                </div>
+            </form>
+
 
             <form method="POST" enctype="multipart/form-data">
                 {{ page_form.hidden_tag() }}
@@ -68,9 +94,6 @@
 
                     {{ page_form.page }}
 
-                    <!--<br>-->
-
-                    <!--{{ page_form.select_page(class="btn-primary") }}-->
 
 
                 </div>
@@ -89,10 +112,7 @@
                     {{ select_form.genome }}
 
 
-                    <br>
 
-
-                    <!--{{ select_form.submit_diagram(class="btn-primary") }}-->
                 </div>
         </div>
         <div id="options_div">
@@ -263,6 +283,7 @@
 
 
         var genomesize = "{{genomesize | safe}}";
+
     </script>
     <script type="text/javascript" src="../../static/js/circularplot.js"></script>
     <script type="text/javascript" src="../../static/js/linearplot.js"></script>
@@ -381,6 +402,9 @@
         // Create any hit tags fields needed
 
         var hit_tags = {{hit_tags | tojson }};
+
+        $("#genome_by_name").val = "";
+
 
 
         hit_count = 1
@@ -595,6 +619,12 @@
              $('#show_stop_codons').on('change', function (e) {
 
             submit_details('show_stop_codons')
+
+        });
+
+        $('#search_by_name').on('click', function (e) {
+
+            submit_details('search_by_name')
 
         });
 

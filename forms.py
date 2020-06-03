@@ -74,7 +74,7 @@ class GenomeDiagramSelectForm(FlaskForm):
     Form for selecting which genomes to look at in the Genome Diagram
     """
     genome = SelectField('Genome', choices=[])
-    submit_diagram = SubmitField("Submit")
+    # submit_diagram = SubmitField("Submit")
     tag_genome = SubmitField('Tag genome')
     clear_genome_tags = SubmitField('Clear genome tags')
     submit_hit = SubmitField("Add tag")
@@ -93,6 +93,9 @@ class GenomeDiagramSelectForm(FlaskForm):
     show_promoters = BooleanField("Show promoters")
     show_stop_codons = BooleanField("Show stop codons")
 
+class GenomeByNameForm(FlaskForm):
+    genome_by_name = StringField('Search by name', [validators.DataRequired()])
+    search_by_name = SubmitField('Select genome')
 
 
 class GenomeDiagramPageForm(FlaskForm):
@@ -101,7 +104,8 @@ class GenomeDiagramPageForm(FlaskForm):
     genome_tagged = SelectField( choices=[])
     limit_selection = SubmitField('Limit selection')
     page = SelectField('Page to display', choices=[])
-    select_page = SubmitField('Select page')
+    # select_page = SubmitField('Select page')
+
 
 
 class ChartsForm(FlaskForm):

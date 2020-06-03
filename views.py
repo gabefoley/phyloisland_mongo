@@ -1288,6 +1288,7 @@ class GenomeDetailView(BaseView):
         # print ("Function was passed from " + session['passed_from'])
 
         select_form = forms.GenomeDiagramSelectForm()
+        genome_by_name_form = forms.GenomeByNameForm()
         page_form = forms.GenomeDiagramPageForm()
         region_form = forms.GenomeDiagamShowRegions()
         hit_form = forms.GenomeHitForm()
@@ -1356,6 +1357,8 @@ class GenomeDetailView(BaseView):
 
         # untagged = False
 
+
+
         if untagged:
             if models.GenomeRecords.objects(tags=['']).count() != 0:
                 genome_count = models.GenomeRecords.objects(tags=['']).count()
@@ -1379,10 +1382,7 @@ class GenomeDetailView(BaseView):
         page_choices = [(x, "Page " + str(x)) for x in range(page_count)]
         page_choice = int(session['page_choice'])
 
-        # print ('genome count is')
-        # print(genome_count)
 
-        # untagged = True
 
         print('Total genomes is ' + str(genome_count))
         print("Page count is " + str(page_count))
@@ -1444,6 +1444,18 @@ class GenomeDetailView(BaseView):
         else:
             genome = models.GenomeRecords.objects.get(id=session['genome'])
 
+        # If we're searching directly by name, just get the genome
+        if session.get('passed_from') == 'search_by_name':
+
+            try:
+                genome = models.GenomeRecords.objects.get(name=genome_by_name_form.genome_by_name.data)
+
+            except:
+                genome = models.GenomeRecords.objects.get(id=session['genome'])
+
+                print ('not there')
+                flash (genome_by_name_form.genome_by_name.data + ' was not found in the database', category='error')
+
 
         tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
                                                                   hidden_type=session[
@@ -1462,7 +1474,8 @@ class GenomeDetailView(BaseView):
 
         print(tags)
 
-        return self.render('genomedetail.html', select_form=select_form, page_form=page_form,
+        return self.render('genomedetail.html', select_form=select_form, genome_by_name_form=genome_by_name_form,
+                           page_form=page_form,
                            hit_form=hit_form,
                            region_form=region_form, tracks=tracks, hit_tags=hit_tags, associated_dict=
                            associated_dict,
