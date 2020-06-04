@@ -631,13 +631,13 @@ def write_mlgo_tree(tree, tree_path):
     first_split = tree.decode().split(",")
 
     for x in first_split:
-        second_split = x.split("formation_")
+        second_split = x.split("mation_")
         print(second_split)
         for y in second_split:
-            if "_in" in y:
-                rebuilt_tree += y.replace(".", "_").replace("_in", ":")
+            if "_infor" in y:
+                rebuilt_tree += y.replace(".", "_").replace("_infor", ":")
             else:
-                rebuilt_tree += "".join(y.split(":")[1:]) + ","
+                rebuilt_tree += "".join(y.split("ward:")[1:]) + ","
     rebuilt_tree = rebuilt_tree[0: -1]
 
     with open(tree_path, "a") as mlgo_tree:

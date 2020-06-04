@@ -377,7 +377,7 @@ def make_tree(alignment_name, alignment, tool):
     if os.path.isfile(aln_path):
         if tool == "FastTree":
             print("Making tree with FastTree")
-            stdoutdata = subprocess.getoutput(f'fasttree {aln_path} > {tree_path}')
+            stdoutdata = subprocess.getoutput(f'fasttree -nosupport {aln_path} > {tree_path}')
 
     if os.path.isfile(tree_path):
         return tree_path

@@ -732,9 +732,9 @@ class DownloadMLGOView(BaseView):
                     exclude_hits = form.exclude_hits.data.split(",")
 
                     if include_genome == [""]:
-                        genomes = models.GenomeRecords.objects()
+                        genomes = models.GenomeRecords.objects(tags__nin=exclude_genome)
                     else:
-                        genomes = models.GenomeRecords.objects(tags__in=include_genome)
+                        genomes = models.GenomeRecords.objects(tags__in=include_genome, tags__nin=exclude_genome)
 
                     getGenomes.write_mlgo_order(genomes, ref_mlgo_dict=ref_mlgo_dict)
 
@@ -753,7 +753,7 @@ class DownloadMLGOView(BaseView):
 
             getGenomes.write_mlgo_tree(tree.tree, tree_path)
 
-            flash("Downloaded file to" + tree_path, category='success')
+            flash("Downloaded file to " + tree_path, category='success')
 
         return self.render('download_MLGO.html', form=form, tree_form=tree_form)
 
@@ -1446,6 +1446,7 @@ class GenomeDetailView(BaseView):
 
         # If we're searching directly by name, just get the genome
         if session.get('passed_from') == 'search_by_name':
+            print ('search')
 
             try:
                 genome = models.GenomeRecords.objects.get(name=genome_by_name_form.genome_by_name.data)
@@ -1453,8 +1454,9 @@ class GenomeDetailView(BaseView):
             except:
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
-                print ('not there')
-                flash (genome_by_name_form.genome_by_name.data + ' was not found in the database', category='error')
+                if genome_by_name_form.genome_by_name.data:
+
+                    flash (genome_by_name_form.genome_by_name.data + ' was not found in the database', category='error')
 
 
         tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
@@ -2102,6 +2104,8 @@ def clear_all_promoters():
 
 @app.route("/automatic_tagging/auto_classify", methods=['GET', 'POST'])
 def auto_classify():
+
+    print("Delete all existing tags")
 
     utilities.delete_all_tags()
     queries = models.GenomeRecords.objects().timeout(False)
