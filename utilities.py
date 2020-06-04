@@ -1099,7 +1099,7 @@ def test_auto_classify(queries):
                                 "NZ_MQWC01000010.1": ["Single", "Type3", "Simple"],
                                 "NZ_PVZA01000046.1": ["Single", "Type2b"], "NZ_BIFQ01000002.1": ["Single", "Type3"],
                                 "NZ_SSMR01000050.1": ["Multiple", "Type3"], "NZ_QEOF01000027.1": ["Single", "Type2b"],
-                                "NZ_CP041186.1": ["Multiple", "Type3", "Type3"],
+                                "NZ_CP041186.1": ["Multiple", "Type3",],
                                 "NZ_NJAK01000005.1": ["Single", "Type2a"], "NZ_FPBP01000034.1": ["Single", "Type3"],
                                 "NZ_BBMZ01000055.1": ["Single", "Type2b"], "NZ_KI632511.1": ["Single", "Type3"],
                                 "NZ_CP027760.1": ["Single", "Type2b"], "NZ_CP024793.1": ["Single", "Type3"],
@@ -1939,6 +1939,8 @@ def test_auto_classify(queries):
 
     skip_tags = ['Single', 'Multiple']
 
+    skip_tags = ['']
+
     count = 0
     diff_count = 0
     for query in queries:
@@ -1949,7 +1951,8 @@ def test_auto_classify(queries):
 
             set1 = set(original_classifications[query.name])
 
-            check = list(set(new_classification.tags).difference(original_classifications[query.name]))
+            check = list(set(new_classification.tags).difference(set(original_classifications[query.name]))) + list(set(
+                original_classifications[query.name]).difference(set(new_classification.tags)))
 
             check_skip = [x for x in check if x not in skip_tags]
 
