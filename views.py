@@ -965,14 +965,21 @@ class AutomaticTaggingView(BaseView):
         tag_simple_form = forms.TagSimpleForm()
         search_for_promoters_form = forms.SearchForPromoters()
         update_tags_form = forms.UpdateTagsForm()
+        auto_hide_form = forms.AutoHideRegionsForm()
         auto_classify_form = forms.AutoClassifyForm()
         auto_classify_test_form = forms.AutoClassifyTestForm()
 
         unique_tags = models.GenomeRecords.objects().distinct(field='tags')
 
+        regions_list = ['TcdA1_expanded', 'A1_expanded', 'A2_expanded', 'TcB_expanded', 'TcC_expanded', 'Chitinase_expanded']
+
 
         # The list of tags to choose from
         update_tags_form.old_tag.choices = list(zip(unique_tags, unique_tags))
+        auto_hide_form.hide_include_genome.choices = list(zip(unique_tags, unique_tags))
+        auto_hide_form.hide_exclude_genome.choices = list(zip(unique_tags, unique_tags))
+
+        auto_hide_form.auto_hide_region.choices = list(zip(regions_list, regions_list))
 
         unique_tags.insert(0, "Test all")
         auto_classify_test_form.limit_classify_test_tagged.choices = list(zip(unique_tags, unique_tags))
@@ -1080,10 +1087,43 @@ class AutomaticTaggingView(BaseView):
 
             flash("Changed all genome tags - " + old_tag + " into " + new_tag, category='success')
 
+        if request.method == "POST" and auto_hide_form.hide.data:
+
+            include_genome = auto_hide_form.hide_include_genome.data
+            exclude_genome = auto_hide_form.hide_exclude_genome.data
+            hide_region = auto_hide_form.auto_hide_region.data
+
+            if include_genome == [""]:
+                genomes = models.GenomeRecords.objects(tags__nin=exclude_genome)
+            else:
+                genomes = models.GenomeRecords.objects(tags__in=include_genome, tags__nin=exclude_genome)
+
+            print ('check results here')
+            print (include_genome)
+            print (exclude_genome)
+
+
+            for g in genomes:
+                print (g)
+                for hit in g.hits:
+                    print (hit)
+                    print (hit.region)
+                    if hit.region == hide_region:
+                        print (hit.region)
+                        print (hit.tags)
+                        if 'hidden' not in hit.tags:
+                            print ('adding hidden')
+                            hit.tags.append('hidden')
+                g.save()
+
+
+
+
 
         return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form,
                            search_for_promoters_form=search_for_promoters_form,
-                           update_tags_form=update_tags_form, auto_classify_form=auto_classify_form,
+                           update_tags_form=update_tags_form, auto_hide_form=auto_hide_form,
+        auto_classify_form=auto_classify_form,
                            auto_classify_test_form=auto_classify_test_form)
 
 

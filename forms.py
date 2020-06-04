@@ -254,6 +254,13 @@ class TreeSelectForm(FlaskForm):
 
     submit = SubmitField("Select tree")
 
+class AutoHideRegionsForm(FlaskForm):
+    hide_include_genome = SelectMultipleField('Only include genomes tagged with - ', choices=[])
+    hide_exclude_genome = SelectMultipleField('Exclude genomes tagged with - ', choices=[])
+    auto_hide_region = SelectField('Region to hide', choices=[])
+    hide = SubmitField("Hide")
+
+
 class AutoClassifyForm(FlaskForm):
     auto_classify = SubmitField("Run automatic classification")
 

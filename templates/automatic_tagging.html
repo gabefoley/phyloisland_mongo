@@ -150,9 +150,53 @@
 
                 </div>
 
+                <div>
+                    <br>
+
+
+                    <h4> Automatically hide regions</h4>
+
+
+                    <br>
+                    <br>
+
+                    <form method="POST" enctype="multipart/form-data">
+                        {{ auto_hide_form.hidden_tag() }}
+
+                        <div class="smallform">
+
+                            {{ auto_hide_form.hide_include_genome.label }}
+
+                            {{ auto_hide_form.hide_include_genome }}
+
+                            <br>
+
+                            {{ auto_hide_form.hide_exclude_genome.label }}
+
+                            {{ auto_hide_form.hide_exclude_genome }}
+
+                            <br>
+
+
+                            {{ auto_hide_form.auto_hide_region.label }}
+
+                            {{ auto_hide_form.auto_hide_region }}
+
+                            <br>
+
+                            {{ auto_hide_form.hide(class="btn-primary") }}
+
+
+                        </div>
+                    </form>
+
+                </div>
+
             </div>
 
         </div>
+
+    </div>
     <br>
 
     <h4> Automatically classify genomes</h4>
@@ -182,7 +226,7 @@
 
     <br>
 
-        <h4> Test the automatically classified genomes</h4>
+    <h4> Test the automatically classified genomes</h4>
 
 
 
@@ -303,7 +347,37 @@
 
         });
 
+        $('#hide_include_genome').selectize({
+            delimiter: ',',
+            persist: false, plugins: ['remove_button'],
+            create: function (input) {
+                return {
+                    value: input,
+                    text: input
+                }
+            }
+
+
+        });
+
+
+        $('#hide_exclude_genome').selectize({
+            delimiter: ',',
+            persist: false, plugins: ['remove_button'],
+            create: function (input) {
+                return {
+                    value: input,
+                    text: input
+                }
+            }
+
+
+        });
+
+
     </script>
+
+
 
 
 
