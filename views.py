@@ -1454,150 +1454,150 @@ class GenomeDetailView(BaseView):
         page_choice = int(session['page_choice'])
 
         # # If we're searching directly by name, just get the genome
-        # if session.get('passed_from') == 'search_by_name' and genome_by_name_form.search_by_name.data:
-        #     print ('search')
-        #
-        #     print (genome_by_name_form.data)
-        #     print (genome_by_name_form.genome_by_name.data)
-        #
-        #     session['passed_from'] = None
-        #
-        #     try:
-        #         genome = models.GenomeRecords.objects.get(name=genome_by_name_form.genome_by_name.data)
-        #         session['genome'] = str(genome.id)
-        #         select_form.genome.choices = [(str(genome.id), genome.name + " " + genome.species)]
-        #
-        #     except:
-        #         genome = models.GenomeRecords.objects.get(id=session['genome'])
-        #         session['genome'] = None
-        #
-        #
-        #         # if genome_by_name_form.genome_by_name.data:
-        #
-        #         flash ('Genome was not found in the database', category='error')
-        #
-        #
-        #
-        #     tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
-        #                                                               hidden_type=session[
-        #                                                                   'hidden_type'], show_promoters=session[
-        #             'show_promoters'],
-        #                                                               show_stop_codons=session['show_stop_codons'],
-        #                                                               checked_regions=session['checked_regions'])
-        #
-        #     associated_dict = utilities.get_associated_dict(genome)
-        #
-        #     # session['genome'] = None
-        #
-        #     tags = genome['tags']
-        #
-        #     # print('tags was ')
-        #     #
-        #     # print(tags)
-        #
-        #     return self.render('genomedetail.html', select_form=select_form, genome_by_name_form=genome_by_name_form,
-        #                        page_form=page_form,
-        #                        hit_form=hit_form,
-        #                        region_form=region_form, tracks=tracks, hit_tags=hit_tags, associated_dict=
-        #                        associated_dict,
-        #                        genome=genome, genome_name=genome.name, page_selected=page_choice,
-        #                        untagged=untagged, limit_genomes=limit_genomes, genome_tagged=genome_tagged[0],
-        #                        genome_tags=genome['tags'], \
-        #                        hit_type=session['hits'], \
-        #                        hidden_type=session['hidden_type'],
-        #                        show_promoters=
-        #                        session['show_promoters'],
-        #                        show_stop_codons=session['show_stop_codons'],
-        #                        checked_regions=session['checked_regions'],
-        #                        genomesize=genomesize)
+        if session.get('passed_from') == 'search_by_name' and genome_by_name_form.search_by_name.data:
+            print ('search')
 
-        # else:
+            print (genome_by_name_form.data)
+            print (genome_by_name_form.genome_by_name.data)
 
-        print('Total genomes is ' + str(genome_count))
-        print("Page count is " + str(page_count))
-        print('Page choices is ' + str(page_choices))
-        print('Page choice is ' + str(page_choice))
-        print('untagged is ' + str(untagged))
-        print('limit genomes is ' + str(limit_genomes))
-        # print ('tags to limit to is ' + str(genome_tagged[0]))
+            session['passed_from'] = None
 
-        specific_choice = int(page_choice) * records_per_page
+            try:
+                genome = models.GenomeRecords.objects.get(name=genome_by_name_form.genome_by_name.data)
+                session['genome'] = str(genome.id)
+                select_form.genome.choices = [(str(genome.id), genome.name + " " + genome.species)]
 
-        if untagged:
-            select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
-                                          models.GenomeRecords.objects(tags=[''])[
-                                          specific_choice:specific_choice + records_per_page]]
-
-        elif limit_genomes:
-            print('selecing limited genomes')
-            selection = models.GenomeRecords.objects(tags=genome_tagged[0])
-            print(len(selection))
-            select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
-                                          models.GenomeRecords.objects(tags=genome_tagged[0])[
-                                          specific_choice:specific_choice + records_per_page]]
+            except:
+                genome = models.GenomeRecords.objects.get(id=session['genome'])
+                session['genome'] = None
 
 
+                # if genome_by_name_form.genome_by_name.data:
+
+                flash ('Genome was not found in the database', category='error')
+
+
+
+            tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
+                                                                      hidden_type=session[
+                                                                          'hidden_type'], show_promoters=session[
+                    'show_promoters'],
+                                                                      show_stop_codons=session['show_stop_codons'],
+                                                                      checked_regions=session['checked_regions'])
+
+            associated_dict = utilities.get_associated_dict(genome)
+
+            # session['genome'] = None
+
+            tags = genome['tags']
+
+            # print('tags was ')
+            #
+            # print(tags)
+
+            return self.render('genomedetail.html', select_form=select_form, genome_by_name_form=genome_by_name_form,
+                               page_form=page_form,
+                               hit_form=hit_form,
+                               region_form=region_form, tracks=tracks, hit_tags=hit_tags, associated_dict=
+                               associated_dict,
+                               genome=genome, genome_name=genome.name, page_selected=page_choice,
+                               untagged=untagged, limit_genomes=limit_genomes, genome_tagged=genome_tagged[0],
+                               genome_tags=genome['tags'], \
+                               hit_type=session['hits'], \
+                               hidden_type=session['hidden_type'],
+                               show_promoters=
+                               session['show_promoters'],
+                               show_stop_codons=session['show_stop_codons'],
+                               checked_regions=session['checked_regions'],
+                               genomesize=genomesize)
 
         else:
 
-            select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
-                                          models.GenomeRecords.objects()[
-                                          specific_choice:specific_choice + records_per_page]]
+            print('Total genomes is ' + str(genome_count))
+            print("Page count is " + str(page_count))
+            print('Page choices is ' + str(page_choices))
+            print('Page choice is ' + str(page_choice))
+            print('untagged is ' + str(untagged))
+            print('limit genomes is ' + str(limit_genomes))
+            # print ('tags to limit to is ' + str(genome_tagged[0]))
 
-        # The list of pages to choose from
-        page_form.page.choices = page_choices
+            specific_choice = int(page_choice) * records_per_page
 
-        # The page that is chosen
-        page_form.data['page'] = page_choice
-
-        # If a page change generated this request, we just want to set the genome to whatever is top of that page
-        if session.get('passed_from') == 'page':
-
-            genome = models.GenomeRecords.objects()[specific_choice]
-
-        elif session.get('passed_from') == 'untagged' or session.get('passed_from') == 'limit_selection':
             if untagged:
-                genome = models.GenomeRecords.objects(tags=[''])[0]
+                select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                              models.GenomeRecords.objects(tags=[''])[
+                                              specific_choice:specific_choice + records_per_page]]
 
             elif limit_genomes:
-                print('limiting genomes')
-                genome = models.GenomeRecords.objects(tags=genome_tagged[0])[0]
+                print('selecing limited genomes')
+                selection = models.GenomeRecords.objects(tags=genome_tagged[0])
+                print(len(selection))
+                select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                              models.GenomeRecords.objects(tags=genome_tagged[0])[
+                                              specific_choice:specific_choice + records_per_page]]
+
 
 
             else:
-                genome = models.GenomeRecords.objects()[0]
+
+                select_form.genome.choices = [(genome.id, genome.name + " " + genome.species) for genome in
+                                              models.GenomeRecords.objects()[
+                                              specific_choice:specific_choice + records_per_page]]
+
+            # The list of pages to choose from
+            page_form.page.choices = page_choices
+
+            # The page that is chosen
+            page_form.data['page'] = page_choice
+
+            # If a page change generated this request, we just want to set the genome to whatever is top of that page
+            if session.get('passed_from') == 'page':
+
+                genome = models.GenomeRecords.objects()[specific_choice]
+
+            elif session.get('passed_from') == 'untagged' or session.get('passed_from') == 'limit_selection':
+                if untagged:
+                    genome = models.GenomeRecords.objects(tags=[''])[0]
+
+                elif limit_genomes:
+                    print('limiting genomes')
+                    genome = models.GenomeRecords.objects(tags=genome_tagged[0])[0]
+
+
+                else:
+                    genome = models.GenomeRecords.objects()[0]
 
 
 
-        # Otherwise we want the specific genome we've chosen
-        else:
-            genome = models.GenomeRecords.objects.get(id=session['genome'])
+            # Otherwise we want the specific genome we've chosen
+            else:
+                genome = models.GenomeRecords.objects.get(id=session['genome'])
 
 
-        tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
-                                                                  hidden_type=session[
-                                                                      'hidden_type'], show_promoters=session[
-                'show_promoters'],
-                                                                  show_stop_codons=session['show_stop_codons'],
-                                                                  checked_regions=session['checked_regions'])
+            tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
+                                                                      hidden_type=session[
+                                                                          'hidden_type'], show_promoters=session[
+                    'show_promoters'],
+                                                                      show_stop_codons=session['show_stop_codons'],
+                                                                      checked_regions=session['checked_regions'])
 
-        associated_dict = utilities.get_associated_dict(genome)
+            associated_dict = utilities.get_associated_dict(genome)
 
-        return self.render('genomedetail.html', select_form=select_form, genome_by_name_form=genome_by_name_form,
-                           page_form=page_form,
-                           hit_form=hit_form,
-                           region_form=region_form, tracks=tracks, hit_tags=hit_tags, associated_dict=
-                           associated_dict,
-                           genome=genome, genome_name=genome.name, page_selected=page_choice,
-                           untagged=untagged, limit_genomes=limit_genomes, genome_tagged=genome_tagged[0],
-                           genome_tags=genome['tags'], \
-                           hit_type=session['hits'], \
-                           hidden_type=session['hidden_type'],
-                           show_promoters=
-                           session['show_promoters'],
-                           show_stop_codons=session['show_stop_codons'],
-                           checked_regions=session['checked_regions'],
-                           genomesize=genomesize)
+            return self.render('genomedetail.html', select_form=select_form, genome_by_name_form=genome_by_name_form,
+                               page_form=page_form,
+                               hit_form=hit_form,
+                               region_form=region_form, tracks=tracks, hit_tags=hit_tags, associated_dict=
+                               associated_dict,
+                               genome=genome, genome_name=genome.name, page_selected=page_choice,
+                               untagged=untagged, limit_genomes=limit_genomes, genome_tagged=genome_tagged[0],
+                               genome_tags=genome['tags'], \
+                               hit_type=session['hits'], \
+                               hidden_type=session['hidden_type'],
+                               show_promoters=
+                               session['show_promoters'],
+                               show_stop_codons=session['show_stop_codons'],
+                               checked_regions=session['checked_regions'],
+                               genomesize=genomesize)
 
 
 

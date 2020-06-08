@@ -150,15 +150,13 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
                                                             query.id, query.species, expand=True)
 
 
-        curr = models.GenomeRecords.objects().timeout(False).get(id=query.id)
+        # curr = models.GenomeRecords.objects().timeout(False).get(id=query.id)
+        #
+        # curr.genome_overview.replace(genome_image)
+        # curr.genome_expanded_overview.replace(genome_expanded_image)
 
-        curr.genome_overview.replace(genome_image)
-        curr.genome_expanded_overview.replace(genome_expanded_image)
+        #
 
-
-        curr.save()
-
-        del curr
 
     del queries
 
