@@ -131,23 +131,23 @@ def get_feature_location_with_profile(ids, reference, profile_name, recordName, 
         print ('should we write to gb?')
 
 
-        genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.name +
-                                                       "/" + query.species.replace(" ", "_"), nuc_seq, query.name, \
-                                                           query.id, query.species)
-
-        genome_expanded_image = genome_overview.writeHMMToImage(hmmerout_expanded, reference + "/" + query.name +
-                                                                                                         "/" +
-                                                                query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species, expand=True)
-
-        genbank = genome_overview.write_hits_to_gb(hmmerout, reference +"/" + query.name + "/" +
-                                                   query.species.replace(
-            " ",
-                                                                                                               "_"),
-                                                   seq_record, query.id, query.species)
-
-        genbank_expanded = genome_overview.write_hits_to_gb(hmmerout_expanded, reference +"/" + query.name + "/" +
-                                                            query.species.replace(" ", "_"), seq_record,
-                                                            query.id, query.species, expand=True)
+        # genome_image = genome_overview.writeHMMToImage(hmmerout, reference + "/" + query.name +
+        #                                                "/" + query.species.replace(" ", "_"), nuc_seq, query.name, \
+        #                                                    query.id, query.species)
+        #
+        # genome_expanded_image = genome_overview.writeHMMToImage(hmmerout_expanded, reference + "/" + query.name +
+        #                                                                                                  "/" +
+        #                                                         query.species.replace(" ", "_"), nuc_seq, query.name, query.id, query.species, expand=True)
+        #
+        # genbank = genome_overview.write_hits_to_gb(hmmerout, reference +"/" + query.name + "/" +
+        #                                            query.species.replace(
+        #     " ",
+        #                                                                                                        "_"),
+        #                                            seq_record, query.id, query.species)
+        #
+        # genbank_expanded = genome_overview.write_hits_to_gb(hmmerout_expanded, reference +"/" + query.name + "/" +
+        #                                                     query.species.replace(" ", "_"), seq_record,
+        #                                                     query.id, query.species, expand=True)
 
 
         # curr = models.GenomeRecords.objects().timeout(False).get(id=query.id)
