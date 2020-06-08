@@ -226,6 +226,9 @@ class AlignmentDownloadForm(FlaskForm):
     alignment = SelectField('Select alignment to download ', choices=[])
     download_alignment = SubmitField('Download alignment')
 
+class RegionsDownloadForm(FlaskForm):
+    regions_to_download = SelectField('Select regions to download ', choices=[])
+    download_regions = SubmitField('Download regions')
 
 class RerootTreeForm(FlaskForm):
     tree = SelectField('Reroot this tree - ', choices=[])

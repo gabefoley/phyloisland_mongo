@@ -307,6 +307,7 @@ class RegionView(BaseView):
 
         upload_form = forms.UploadRegion()
         region_form = forms.RegionForm()
+        regions_download_form = forms.RegionsDownloadForm()
         alignment_form = forms.AlignmentForm()
         tree_form = forms.MakeTreeForm()
         reroot_tree_form = forms.RerootTreeForm()
@@ -407,6 +408,17 @@ class RegionView(BaseView):
                                                    tool=tree.tool)
                 rerooted_tree.save()
 
+        elif request.method == "POST" and regions_download_form.download_regions.data:
+
+            download_regions = models.RegionRecords.objects().get(name=regions_download_form.regions_to_download.data)
+
+
+            regions_path = f"./fasta_folder/{download_regions.name}.fasta"
+
+            with open(regions_path, 'w+') as regions_file:
+                regions_file.write(download_regions.regions.decode())
+            flash(f"Wrote {download_regions.name} to {regions_path} ")
+
         region_names = [region.name for region in models.RegionRecords.objects()]
         region_to_profile_names = [region_to_profile.rtp_id + "_" + region_to_profile.region + " ( " + str(len(
             region_to_profile.profiles)) + " "
@@ -427,6 +439,8 @@ class RegionView(BaseView):
         tree_choices.insert(0, (None, "Click to select tree"))
 
         region_form.region.choices = region_choices
+        regions_download_form.regions_to_download.choices = region_choices
+
         region_form.profiles.choices = profile_choices
 
         alignment_form.region.choices = region_choices
@@ -434,7 +448,8 @@ class RegionView(BaseView):
         reroot_tree_form.tree.choices = tree_choices
         reroot_tree_form.seq.choices = outgroup_choices
 
-        return self.render('regions.html', upload_form=upload_form, region_form=region_form, \
+        return self.render('regions.html', upload_form=upload_form, region_form=region_form,
+                           regions_download_form=regions_download_form, \
                            alignment_form=alignment_form, tree_form=tree_form, reroot_tree_form=reroot_tree_form,
                            region_names=region_names, region_to_profile_names=region_to_profile_names,
                            align_names=align_names, tree_names=tree_names, tree_to_reroot=tree_to_reroot)

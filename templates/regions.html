@@ -224,6 +224,37 @@
         <br>
     </div>
 
+
+            <div id="regions_download_div">
+
+                   <form method="POST" enctype="multipart/form-data">
+            {{ regions_download_form.hidden_tag() }}
+
+            <div class="smallform">
+
+                {{ regions_download_form.regions_to_download.label }}
+
+                {{ regions_download_form.regions_to_download }}
+
+
+
+                <br>
+
+                {{ regions_download_form.download_regions(class="btn-primary") }}
+
+                <br>
+                <br>
+
+
+            </div>
+        </form>
+
+
+
+        </div>
+
+
+
     <div id="avail-record-to-profiles-div">
 
         <br>
