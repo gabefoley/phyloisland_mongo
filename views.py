@@ -466,16 +466,32 @@ class AlignmentsView(BaseView):
     @expose("/", methods=('GET', 'POST'))
     def alignments(self):
         form = forms.SelectAlignmentForm()
+        alignment_download_form = forms.AlignmentDownloadForm()
+        alignment_choices = [(aln.name, aln.name) for aln in models.AlignmentRecords.objects()]
+        alignment_download_form.alignment.choices = alignment_choices
+
+
 
         if request.method == "POST" and form.submit.data:
             alignment = models.AlignmentRecords.objects().get(id=form.name.data)
+
+        elif request.method == "POST" and alignment_download_form.download_alignment.data:
+            alignment = None
+            download_alignment = models.AlignmentRecords.objects().get(name=alignment_download_form.alignment.data)
+
+            aln_path = f"./fasta_folder/{download_alignment.name}.aln"
+
+            with open(aln_path, 'w+') as aln_file:
+                aln_file.write(download_alignment.alignment.read().decode())
+            flash(f"Wrote {download_alignment.name} to {aln_path} ")
 
         elif request.method == "GET":
             alignment = None
 
         form.name.choices = [(align.id, align.name) for align in models.AlignmentRecords.objects()]
 
-        return self.render('alignments.html', form=form, align_data=alignment)
+        return self.render('alignments.html', form=form, alignment_download_form=alignment_download_form,
+                           align_data=alignment)
 
 
 class TreeView(BaseView):

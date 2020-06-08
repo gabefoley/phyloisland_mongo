@@ -52,6 +52,34 @@
             </div>
         </form>
 
+                <div id="aln_download_div">
+
+                   <form method="POST" enctype="multipart/form-data">
+            {{ alignment_download_form.hidden_tag() }}
+
+            <div class="smallform">
+
+                {{ alignment_download_form.alignment.label }}
+
+                {{ alignment_download_form.alignment }}
+
+
+
+                <br>
+
+                {{ alignment_download_form.download_alignment(class="btn-primary") }}
+
+                <br>
+                <br>
+
+
+            </div>
+        </form>
+
+
+
+        </div>
+
 
         <div id="biojs-align-div"></div>
 

@@ -221,6 +221,12 @@ class TreeDownloadForm(FlaskForm):
     tree = SelectField('Select tree to download ', choices=[])
     download_tree = SubmitField('Download tree')
 
+
+class AlignmentDownloadForm(FlaskForm):
+    alignment = SelectField('Select alignment to download ', choices=[])
+    download_alignment = SubmitField('Download alignment')
+
+
 class RerootTreeForm(FlaskForm):
     tree = SelectField('Reroot this tree - ', choices=[])
     rerooted_tree_name = StringField('Tree name ', [validators.DataRequired()])
