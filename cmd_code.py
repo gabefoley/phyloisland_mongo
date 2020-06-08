@@ -140,7 +140,7 @@ def get_feature_location_with_profile_cmd(queries, reference, profile_name, reco
         seq_record = query.sequence
 
         # Create a path to write the translated genomic sequence to
-        random_id = utilities.randstring(5)
+        # random_id = utilities.randstring(5)
 
         # Get the nucleotide sequence of the genome
         nuc_seq = Bio.Seq.Seq(str(query.sequence))
@@ -151,7 +151,11 @@ def get_feature_location_with_profile_cmd(queries, reference, profile_name, reco
 
 
 
-        outpath = reference + "/" + query.name + "/" + query.species + "/" + region + "/"
+        # outpath = reference + "/" + query.name + "/" + query.species + "/" + region + "/"
+        # outpath = outpath.replace(" ", "_")
+
+        outpath = reference + "/" + query.name + "/" + query.species + "/"
+
         outpath = outpath.replace(" ", "_")
 
         print ("outpath is " + outpath)
@@ -167,32 +171,40 @@ def get_feature_location_with_profile_cmd(queries, reference, profile_name, reco
                 sequence = nuc_seq[i:] if forward else nuc_seq.reverse_complement()[i:]
 
                 cleaned_path = outpath + query.name.replace("/",
-                                                               "_") + "_" + random_id + strand + "_translated_genome.fasta"
-                hmmsearch_results = outpath + query.name.replace("/",
-                                                                    "_") + "_" + random_id + strand + "_hmmsearch_results.fasta"
+                                                               "_") + strand + "_translated_genome.fasta"
+                hmmsearch_results = outpath + region + "/" + query.name.replace("/",
+                                                                    "_") + strand + "_hmmsearch_results.fasta"
                 domScore = 100
 
                 cleaned_path = cleaned_path.replace(" ", "_")
                 hmmsearch_results = hmmsearch_results.replace(" ", "_")
 
-                # Translate the nucleotide genome sequence to a protein sequence
-                with open(cleaned_path, 'w') as handle:
+                if not os.path.isfile(cleaned_path):
 
-                    if query.name == "<unknown name>":
-                        handle.write(">" + query.description + "\n" + str(
-                            sequence.translate(stop_symbol="*")))
-                    else:
+                    print ('Making a new file')
 
-                        handle.write(">" + query.description + "\n" + str(
-                            sequence.translate(stop_symbol="*")))
+                    # Translate the nucleotide genome sequence to a protein sequence
+                    with open(cleaned_path, 'w') as handle:
 
-                print("Writing the %s sequence with the species %s to %s" % (
-                query.name, query.species, cleaned_path))
+                        if query.name == "<unknown name>":
+                            handle.write(">" + query.description + "\n" + str(
+                                sequence.translate(stop_symbol="*")))
+                        else:
 
-                while not os.path.exists(cleaned_path):
-                    time.sleep(1)
+                            handle.write(">" + query.description + "\n" + str(
+                                sequence.translate(stop_symbol="*")))
+
+                    print("Writing the %s sequence with the species %s to %s" % (
+                    query.name, query.species, cleaned_path))
+
+                    while not os.path.exists(cleaned_path):
+                        time.sleep(1)
 
                 if os.path.isfile(cleaned_path):
+
+                    if not os.path.exists(outpath + "/" + region):
+                        os.mkdir(outpath + "/" + region)
+
                     stdoutdata = subprocess.getoutput("hmmsearch -o %s --domT %s %s %s" % (
                     hmmsearch_results, domScore, 'tmp/' + region + "_profile.hmm", cleaned_path))
 
@@ -209,6 +221,8 @@ def get_feature_location_with_profile_cmd(queries, reference, profile_name, reco
         hmmerout_expanded = []
 
         reg = os.path.join(reference + "/" + query.name + "/" + query.species.replace(" ", "_") + "/"  + profile_name)
+
+        print (reg)
 
         hmmerout.append(resultread.HMMread(reg, query))
         hmmerout_expanded.append(resultread.HMMread(reg, query, expand=True))

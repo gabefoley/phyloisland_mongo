@@ -28,6 +28,8 @@ def expandStartPostion(record, hit_start, strand):
     # So we want to return the start position if we're on the forward strand, otherwise we want to return the
     # position just before the stop codon
 
+    print (strand)
+
     if strand == "forward":
         codon_list = ["TGA", "TAA", "TAG"]
     elif strand == "backward":
