@@ -27,6 +27,7 @@ hmm_outputs_old*
 
 .idea/
 .idea/*
+.idea/*.xml
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
