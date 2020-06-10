@@ -2005,7 +2005,7 @@ def get_mlgo_dict(gene_orders):
 def colour_alignment_by_profiles(alignment, profiles):
     colour_dict = {'RBD_A': 'lightgreen', 'RBD_C': 'blue', 'RBD_B': 'orange', 'Neuraminidase': 'mediumPurple',
                    'TcA_RBD': 'grey',
-                   'TcB_BD_seed': 'lawnGreen'}
+                   'TcB_BD_seed': 'lawnGreen', 'VRP1_Full' : 'sandyBrown', 'Big_1_Full' : 'lightYellow'}
 
     split = [x for x in alignment.split(">") if len(x) > 0]
 

@@ -23,27 +23,9 @@ def load_tree(tree_path, aln_path=None):
     return tree
 
 
-def get_domains(domains):
-    pos_dict = {'RBD_A': 0, 'RBD_C': 1, 'RBD_B': 2, 'Neuraminidase': 3, 'RBD_D': 4, 'TcB_BD_seed': 5}
-
-    domain_list = [
-        # seq.start, seq.end, shape, width, height, fgcolor, bgcolor
-        [10, 70, "[]", None, 20, "black", "rgradient:lightgreen", "arial|40|black|RBD_A"],
-        [80, 140, "[]", None, 20, "black", "rgradient:blue", "arial|40|black|RBD_C"],
-        [150, 210, "[]", None, 20, "black", "rgradient:orange", "arial|40|black|RBD_B"],
-        [220, 280, "[]", None, 20, "black", "rgradient:purple", "arial|40|black|NMD"],
-        [290, 350, "[]", None, 20, "black", "rgradient:gray", "arial|40|black|RBD_D"],
-        [360, 430, "[]", None, 20, "black", "rgradient:darkgreen", "arial|40|black|TCB_BD"]]
-
-    print(domains)
-
-    for k, v in pos_dict.items():
-        if k not in domains:
-            print(k + "was not there")
-            domain_list[v][6] = 'white'
-            domain_list[v][7] = "arial|3|black|"
-
-    return domain_list
+###
+###
+###
 
 
 def get_region_domains(regions):
@@ -170,6 +152,42 @@ def continue_wo_collapse(node, skip_tags=["Single", "Multiple"]):
 
     return check
 
+def get_domains(domains):
+    pos_dict = {'Big_1_Full' : 0, 'VRP1_Full' : 1, 'RBD_A': 2, 'RBD_C': 3, 'RBD_B': 4, 'Neuraminidase': 5,
+                'TcA_RBD': 6, 'TcB_BD_seed': 7}
+
+    domain_list = [
+        # seq.start, seq.end, shape, width, height, fgcolor, bgcolor
+        [10, 70, "[]", None, 20, "black", "rgradient:red", "arial|40|black|Big_1"],
+        [80, 140, "[]", None, 20, "black", "rgradient:pink", "arial|40|black|VRP1"],
+        [150, 210, "[]", None, 20, "black", "rgradient:lightgreen", "arial|40|black|RBD_A"],
+        [220, 280, "[]", None, 20, "black", "rgradient:blue", "arial|40|black|RBD_C"],
+        [290, 350, "[]", None, 20, "black", "rgradient:orange", "arial|40|black|RBD_B"],
+        [360, 430, "[]", None, 20, "black", "rgradient:purple", "arial|40|black|NMD"],
+        [440, 500, "[]", None, 20, "black", "rgradient:gray", "arial|40|black|RBD_D"],
+        [510, 560, "[]", None, 20, "black", "rgradient:darkgreen", "arial|40|black|TCB_BD"]]
+
+
+    for k, v in pos_dict.items():
+        if k not in domains:
+            print(k + "was not there")
+            domain_list[v][6] = 'white'
+            domain_list[v][7] = "arial|3|black|"
+
+    return domain_list
+
+def setup_domain_list(region_dict):
+    region_list = []
+
+    print ('setup domain list')
+    for entry in region_dict.keys():
+        region_names = [x[0] for x in sorted(region_dict[entry].items(), key=lambda k: k[1])]
+        region_list.append(region_names)
+
+    print (region_list)
+
+
+
 
 def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict, sequence_content_dict, skip_list, \
                      outpath, \
@@ -179,6 +197,11 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
     ts.show_leaf_name = False
     ts.branch_vertical_margin = 15
     ts.layout_fn = lambda x: None
+
+    if region_dict:
+
+        domain_list = setup_domain_list(region_dict)
+
     #
 
 
@@ -240,9 +263,17 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                 cleaned_name = node.name.replace(".", "***")
 
                 if cleaned_name in region_dict:
-                    region_names = [x for x in region_dict[cleaned_name].keys()]
+                    # region_names = [x for x in region_dict[cleaned_name].keys()]
+                    region_names = [x[0] for x in sorted(region_dict[cleaned_name].items(), key=lambda k: k[1])]
+
+
+
+                    # region_dict = sorted(region_dict.items(), key=lambda k: k[1])
 
                 if region_dict:
+
+                    print ('horseradish')
+                    print (region_names)
 
                     box_domains = get_domains(region_names)
 
@@ -456,7 +487,10 @@ if __name__ == "__main__":
         print(tag_dict)
         print('region dict')
         print(region_dict)
+
+
         print('region order dict')
+
 
         print(region_order_dict)
         print('sequence_content_dict')
