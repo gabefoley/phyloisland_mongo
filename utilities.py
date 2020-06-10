@@ -330,8 +330,8 @@ def make_alignment_from_regions(aln_name, region_data, tool="MAFFT"):
     if os.path.isfile(aln_path):
         return aln_path
 
-def get_sequence_content_dict(region):
 
+def get_sequence_content_dict(region):
     fasta_path = "./tmp/tmp_regions.fasta"
 
     alns = models.AlignmentRecords.objects().get(name=region)
@@ -347,21 +347,16 @@ def get_sequence_content_dict(region):
     # Load the regions in as a dictionary
 
     if os.path.isfile(fasta_path):
-
         seqs = read_fasta(fasta_path)
 
-    print ('pnky')
-    print (seqs)
+    print('pnky')
+    print(seqs)
 
-    seq_content_dict = {k : v.seq for k,v in seqs.items()}
+    seq_content_dict = {k: v.seq for k, v in seqs.items()}
 
-    print (seq_content_dict)
+    print(seq_content_dict)
 
     return seq_content_dict
-
-
-
-
 
 
 def make_tree(alignment_name, alignment, tool):
@@ -418,7 +413,8 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, se
 
         loaded_tree = tree_code.load_tree(tree_path)
 
-        stdoutdata = subprocess.getoutput(f'python tree_code.py -t {tree_path} -o {img_path} -td {tag_dict_path} -rd {region_dict_path} -rod {region_order_dict_path} -scd {sequence_content_dict_path} -cd {colour_dict_path} -fn {full_names} -cgt {collapse_on_genome_tags} {" -dc" if display_circular else ""} {" -dco" if display_circular_180 else ""}')
+        stdoutdata = subprocess.getoutput(
+            f'python tree_code.py -t {tree_path} -o {img_path} -td {tag_dict_path} -rd {region_dict_path} -rod {region_order_dict_path} -scd {sequence_content_dict_path} -cd {colour_dict_path} -fn {full_names} -cgt {collapse_on_genome_tags} {" -dc" if display_circular else ""} {" -dco" if display_circular_180 else ""}')
 
         print(stdoutdata)
 
@@ -428,14 +424,15 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, se
         if os.path.isfile(img_path):
             return img_path
 
+
 def get_ml_go_tree_image(tree, name, ancestral_orders, ref_ml_go_dict):
     tree_path = f"./tmp/{name}_ml.nwk"
     img_path = f"static/img/trees/{name}_ml.png"
     ancestral_orders_path = f"./tmp/{name}_ancestralorders.p"
     ref_ml_go_dict_path = f"./tmp/{name}_ref_ml_go_dict.p"
 
-    print ('hops')
-    print (tree)
+    print('hops')
+    print(tree)
 
     # Write out tree to file
     with open(tree_path, "w+") as tree_file:
@@ -449,12 +446,12 @@ def get_ml_go_tree_image(tree, name, ancestral_orders, ref_ml_go_dict):
 
     if os.path.isfile(tree_path):
 
-        print ('call it')
-        print (tree_path)
-        print (img_path)
-        print (ancestral_orders_path)
-        stdoutdata = subprocess.getoutput(f'python tree_code.py -t {tree_path} -o {img_path} -ao {ancestral_orders_path} -mlgo {ref_ml_go_dict_path}')
-
+        print('call it')
+        print(tree_path)
+        print(img_path)
+        print(ancestral_orders_path)
+        stdoutdata = subprocess.getoutput(
+            f'python tree_code.py -t {tree_path} -o {img_path} -ao {ancestral_orders_path} -mlgo {ref_ml_go_dict_path}')
 
         print(stdoutdata)
 
@@ -918,7 +915,7 @@ def build_tracks(items, stop_codons, promoters):
         for region in items[region_name]:
             region_dict = {'id': region['hit_id'], 'start': int(region['start']), 'end': int(region['end']),
                            'name': region[
-                               'name'] + " (" + region['score'] + ")",
+                                       'name'] + " (" + region['score'] + ")",
                            'strand': region['strand'], 'actual_strand': region['actual_strand']}
             regions.append(region_dict)
 
@@ -1099,7 +1096,7 @@ def test_auto_classify(queries):
                                 "NZ_MQWC01000010.1": ["Single", "Type3", "Simple"],
                                 "NZ_PVZA01000046.1": ["Single", "Type2b"], "NZ_BIFQ01000002.1": ["Single", "Type3"],
                                 "NZ_SSMR01000050.1": ["Multiple", "Type3"], "NZ_QEOF01000027.1": ["Single", "Type2b"],
-                                "NZ_CP041186.1": ["Multiple", "Type3",],
+                                "NZ_CP041186.1": ["Multiple", "Type3", ],
                                 "NZ_NJAK01000005.1": ["Single", "Type2a"], "NZ_FPBP01000034.1": ["Single", "Type3"],
                                 "NZ_BBMZ01000055.1": ["Single", "Type2b"], "NZ_KI632511.1": ["Single", "Type3"],
                                 "NZ_CP027760.1": ["Single", "Type2b"], "NZ_CP024793.1": ["Single", "Type3"],
@@ -1970,7 +1967,6 @@ def test_auto_classify(queries):
 
                 # if original_classifications[query.name] != new_classification.tags[0].split("Auto_")[1]:
 
-
     print("\nWrong: " + str(diff_count))
     print("Correct " + str(count - diff_count))
     print("Total " + str(count))
@@ -1991,20 +1987,92 @@ def delete_all_tags():
 
     models.GenomeTags.objects().all().delete()
 
+
 def get_mlgo_dict(gene_orders):
-
     mlgo_dict = {}
-
-
 
     lines = gene_orders.split("\n")
     for i in range(0, len(lines)):
         line = lines[i]
         if line.startswith('>'):
-            mlgo_dict[line.split(">")[1].strip()] = lines[i+1].split("$")[0].strip().split(" ")
+            mlgo_dict[line.split(">")[1].strip()] = lines[i + 1].split("$")[0].strip().split(" ")
 
-    print (mlgo_dict)
+    print(mlgo_dict)
 
     return mlgo_dict
 
 
+def colour_alignment_by_profiles(alignment, profiles):
+    colour_dict = {'RBD_A': 'lightgreen', 'RBD_C': 'blue', 'RBD_B': 'orange', 'Neuraminidase': 'mediumPurple',
+                   'TcA_RBD': 'grey',
+                   'TcB_BD_seed': 'lawnGreen'}
+
+    split = [x for x in alignment.split(">") if len(x) > 0]
+
+    size = len(split)
+
+    output = {split[i].replace(" <unknown description", "").replace(".", "***"): split[i + 1].replace("\n", "") if size
+                                                                                                                 > i
+                                                                                                                   + 1
+    else None
+              for i in range(0, size, 2)}
+
+
+    print(profiles.region_dict.keys())
+
+
+    # for seqname in output.keys():
+    #     if seqname in profiles.region_dict:
+    #         print('found')
+    #         for domain, pos in profiles.region_dict[seqname].items():
+    #             print(domain)
+    #             print(pos)
+    #             print (output[seqname])
+    #             print ('and now')
+    #             output[seqname] = output[seqname][0:pos[0]] + '<span style = "background-color:' + colour_dict[
+    #                 domain] + \
+    #                               '">' + output[seqname][pos[0]: pos[1]] + '</span>' + output[seqname][pos[1]:]
+
+    for seqname, domains in output.items():
+        if seqname in profiles.region_dict:
+
+            len_offset = 0
+            furtherst_pos = -1
+
+            orig_seq = output[seqname]
+
+            for domain, pos in sorted(profiles.region_dict[seqname].items(), key=lambda k: k[1]):
+                gap_offset = 0
+
+                if pos[0] < furtherst_pos:
+                    print("WARNING: OVERLAP")
+
+                count = 0
+                for aa in orig_seq:
+                    if aa == "-":
+                        gap_offset += 1
+                    else:
+                        count += 1
+                        if count == pos[0] + 1:
+                            first_gap_offset = gap_offset
+
+                        if count == pos[1]:
+                            second_gap_offset = gap_offset
+                            break
+
+                prev_len = len(output[seqname])
+                output[seqname] = output[seqname][
+                              0:pos[0] + len_offset + first_gap_offset] + '<span style = "background-color:' + \
+                              colour_dict[
+                                  domain] + '">' + \
+                                  output[seqname][pos[0] + len_offset + first_gap_offset: pos[
+                                                                                      1] + len_offset + second_gap_offset] + '</span>' + \
+                                  output[seqname][pos[1] +
+                                       len_offset +
+                                       second_gap_offset:]
+                len_offset = len(output[seqname]) - prev_len
+
+                furtherst_pos = pos[1]
+
+
+    return output

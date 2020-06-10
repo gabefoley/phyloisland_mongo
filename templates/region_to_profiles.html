@@ -20,9 +20,7 @@
 
     <link href="{{ url_for('static', filename='css/select.css') }}" rel="stylesheet">
 
-    <link href="{{ url_for('static', filename='css/genome_detail.css') }}" rel="stylesheet">
-
-    <link href="{{ url_for('static', filename='css/genome_detail.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/view_profiles.css') }}" rel="stylesheet">
 
     {{ JSGlue.include() }}
 
@@ -32,29 +30,88 @@
 
     <div class="options-wrapper">
 
-        <form method="POST" enctype="multipart/form-data">
-            {{ form.hidden_tag() }}
+        <div class="view_profiles_on_alignment_div">
 
-            <div class="smallform">
+            <form method="POST" enctype="multipart/form-data">
+                {{ view_profiles_on_alignment_form.hidden_tag() }}
 
-                {{ form.name.label }}
+                <div class="smallform">
 
-                {{ form.name }}
+                    {{ view_profiles_on_alignment_form.alignment_name.label }}
 
-                <br>
+                    {{ view_profiles_on_alignment_form.alignment_name }}
 
-                {{ form.submit(class="btn-primary") }}
+                    <br>
 
-                <br>
-                <br>
+                    {{ view_profiles_on_alignment_form.profiles.label }}
+
+                    {{ view_profiles_on_alignment_form.profiles }}
+
+                    <br>
+
+                    {{ view_profiles_on_alignment_form.view_profiles(class="btn-primary") }}
+
+                    <br>
+                    <br>
 
 
-            </div>
-        </form>
+                </div>
+            </form>
+        </div>
+
+        <div id="rtp-align">
+
+            {% if alignment is not none %}
+
+                <table style="width:100%">
+                <tr>
+                    <th>Name</th>
+                    <th>Sequence</th>
+                </tr>
 
 
-        <div id="rtp-div"></div>
+                {% for name, seq in alignment.items() %}
+                    <tr>
+                        <td>         {{ name }}</td>
+                        <td>                    {{ seq | safe }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% endif %}
 
+        </div>
+
+    <br>
+
+    <br>
+
+        <div class="basic_profile_info_div">
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                <div class="smallform">
+
+                    {{ form.name.label }}
+
+                    {{ form.name }}
+
+                    <br>
+
+                    {{ form.submit(class="btn-primary") }}
+
+                    <br>
+                    <br>
+
+
+                </div>
+            </form>
+
+
+            <div id="rtp-div"></div>
+
+
+        </div>
 
     </div>
 
@@ -62,19 +119,28 @@
     <script>
 
 
-        var region_dict = {{ rtp.region_dict | tojson }}
+        var region_dict =
+        {{ rtp.region_dict | tojson }}
         var info = JSON.stringify(region_dict)
 
         $('#rtp-div').append(" Region searched was " + "{{  rtp.region}}" + "<br><ul>")
 
 
-
         for (const [key, val] of Object.entries(region_dict)) {
-        $('#rtp-div').append("<li>" + key.replace("***", ".") + " has these domains " + val +
-            "</li>")
+
+            console.log(key)
+            console.log(val)
+            var domains = ""
+            for (const [domain, index] of Object.entries(val)) {
+                domains += domain + " at position " + index[0] + ":" + index[1] + " "
+            }
+
+
+            $('#rtp-div').append("<li>" + key.replace("***", ".") + " has these domains " + domains +
+                "</li>")
         }
 
-                $('#rtp-div').append("<ul>")
+        $('#rtp-div').append("<ul>")
 
 
     </script>

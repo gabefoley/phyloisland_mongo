@@ -211,6 +211,12 @@ class SelectRegionToProfilesForm(FlaskForm):
     name = SelectField('Region to profiles name ', choices=[])
     submit = SubmitField("Select region to profiles")
 
+class ViewProfilesOnAlignmentForm(FlaskForm):
+    alignment_name = SelectField('Show profile results on this alignment ', choices=[])
+    profiles = SelectField('Profile search results to show ', choices=[])
+    view_profiles = SubmitField("View profiles on alignment")
+
+
 class MakeTreeForm(FlaskForm):
   name = StringField('Tree name ', [validators.DataRequired()])
   alignment = SelectField('Make tree based on ', choices=[])
@@ -262,6 +268,9 @@ class TreeSelectForm(FlaskForm):
 
 
     submit = SubmitField("Select tree")
+
+
+
 
 class AutoHideRegionsForm(FlaskForm):
     hide_include_genome = SelectMultipleField('Only include genomes tagged with - ', choices=[])

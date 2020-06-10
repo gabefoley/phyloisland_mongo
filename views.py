@@ -30,8 +30,8 @@ from wtforms import SelectField
 
 ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2', 'region3', 'region4']
 
-ref_mlgo_dict = {'A1' : '1', 'A2' : '2', 'Chitinase' : '3', 'TcB' : '4', 'TcC': '5', 'TcdA1':'6'}
-mlgo_ref_dict = {'1' : 'A1', '2' : 'A2', '3' : 'Chitinase', '4' : 'TcB', '5': 'TcC', '6':'TcdA1'}
+ref_mlgo_dict = {'A1': '1', 'A2': '2', 'Chitinase': '3', 'TcB': '4', 'TcC': '5', 'TcdA1': '6'}
+mlgo_ref_dict = {'1': 'A1', '2': 'A2', '3': 'Chitinase', '4': 'TcB', '5': 'TcC', '6': 'TcdA1'}
 
 
 @user_logged_in.connect_via(app)
@@ -413,7 +413,6 @@ class RegionView(BaseView):
 
             download_regions = models.RegionRecords.objects().get(name=regions_download_form.regions_to_download.data)
 
-
             regions_path = f"./fasta_folder/{download_regions.name}.fasta"
 
             with open(regions_path, 'w+') as regions_file:
@@ -456,25 +455,53 @@ class RegionView(BaseView):
                            align_names=align_names, tree_names=tree_names, tree_to_reroot=tree_to_reroot)
 
 
-class RegionToProfilesView(BaseView):
+class ProfilesView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def region_to_profiles(self):
+        view_profiles_on_alignment_form = forms.ViewProfilesOnAlignmentForm()
         form = forms.SelectRegionToProfilesForm()
+
+        align_choices = [(align.name, align.name) for align in models.AlignmentRecords.objects()]
+        profile_choices = [(rtp.id, rtp.rtp_id) for rtp in models.RegionToProfileRecords.objects()]
+
+        view_profiles_on_alignment_form.alignment_name.choices = align_choices
+        view_profiles_on_alignment_form.profiles.choices = profile_choices
+
+        region_to_profiles = models.RegionToProfileRecords.objects()[0]
+
+        alignment = None
+
+        if request.method == "POST" and view_profiles_on_alignment_form.view_profiles.data:
+            print('view on alignment')
+
+            alignment = models.AlignmentRecords.objects().get(
+                name=view_profiles_on_alignment_form.alignment_name.data).alignment
+
+            # print (alignment.read().decode())
+
+            # alignment = alignment.read().decode().replace('\n', '').replace("description >", "hhh <br />\n>").replace(
+            #     ">",
+
+
+            region_to_profiles = models.RegionToProfileRecords.objects().get(
+                id=view_profiles_on_alignment_form.profiles.data)
+
+            alignment = utilities.colour_alignment_by_profiles(alignment.read().decode(), region_to_profiles)
+
+
 
         if request.method == "POST" and form.submit.data:
             region_to_profiles_name = form.name.data
             print(region_to_profiles_name)
             region_to_profiles = models.RegionToProfileRecords.objects().get(id=region_to_profiles_name)
 
-
-        elif request.method == "GET":
-            region_to_profiles = models.RegionToProfileRecords.objects()[0]
-
         form.name.choices = [(region_to_profiles.id, region_to_profiles.rtp_id) for region_to_profiles in
                              models.RegionToProfileRecords.objects()]
 
-        return self.render('region_to_profiles.html', form=form, rtp=region_to_profiles)
+        return self.render('region_to_profiles.html',
+                           view_profiles_on_alignment_form=view_profiles_on_alignment_form, form=form, \
+                           rtp=region_to_profiles, alignment=alignment)
 
 
 class AlignmentsView(BaseView):
@@ -485,8 +512,6 @@ class AlignmentsView(BaseView):
         alignment_download_form = forms.AlignmentDownloadForm()
         alignment_choices = [(aln.name, aln.name) for aln in models.AlignmentRecords.objects()]
         alignment_download_form.alignment.choices = alignment_choices
-
-
 
         if request.method == "POST" and form.submit.data:
             alignment = models.AlignmentRecords.objects().get(id=form.name.data)
@@ -546,11 +571,9 @@ class TreeView(BaseView):
             display_circular = tree_select_form.display_circular.data
             display_circular_180 = tree_select_form.display_circular_180.data
 
-
-
             colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type2b': 'gold', 'Type2a': 'green',
                            'Type3': 'purple', 'Multiple': 'red', 'unknown': 'black', 'Single': 'brown',
-                            'Type?': 'pink', 'Type5': 'pink'}
+                           'Type?': 'pink', 'Type5': 'pink'}
 
         elif request.method == "POST" and tree_download_form.download_tree.data:
             download_tree = models.TreeRecords.objects().get(name=tree_download_form.tree.data)
@@ -594,12 +617,10 @@ class TreeView(BaseView):
                                 models.RegionOrderRecords.objects()]
         alignment_choices = [(aln.name, aln.name) for aln in models.AlignmentRecords.objects()]
 
-
         # Insert a None option in case we don't want to add certain information
         profile_choices.insert(0, (None, None))
         region_order_choices.insert(0, (None, None))
         alignment_choices.insert(0, (None, None))
-
 
         tree_choices = [(tree.name, tree.name) for tree in models.TreeRecords.objects()]
 
@@ -607,7 +628,6 @@ class TreeView(BaseView):
         tree_select_form.profiles.choices = profile_choices
         tree_select_form.region_order.choices = region_order_choices
         tree_select_form.sequence_content.choices = alignment_choices
-
 
         tree_download_form.tree.choices = tree_choices
 
@@ -753,7 +773,6 @@ class DownloadMLGOView(BaseView):
 
         tree_form.tree_select_name.choices = tree_choices
 
-
         if request.method == "POST" and form.submit.data:
             if form.submit.data:
                 try:
@@ -776,18 +795,18 @@ class DownloadMLGOView(BaseView):
                     print(e)
                     flash(e, category='error')
         if request.method == "POST" and tree_form.download_mlgo_tree.data:
-
             tree = models.TreeRecords.objects.get(name=tree_form.tree_select_name.data)
 
             tree_path = "fasta_folder/" + tree.name + "_mlgo.nwk"
 
-            print (tree)
+            print(tree)
 
             getGenomes.write_mlgo_tree(tree.tree, tree_path)
 
             flash("Downloaded file to " + tree_path, category='success')
 
         return self.render('download_MLGO.html', form=form, tree_form=tree_form)
+
 
 class VisualiseMLGOView(BaseView):
     @login_required
@@ -800,12 +819,11 @@ class VisualiseMLGOView(BaseView):
 
         tree_choices = [(tree.name, tree.name) for tree in models.MLGOTreeRecords.objects()]
 
-        print (tree_choices)
+        print(tree_choices)
 
         select_form.select_name.choices = tree_choices
 
         if request.method == "POST" and upload_form.upload.data:
-
             # annotated_tree = open(upload_form.annotated_tree.data, "r+")
             # gene_order = open(upload_form.gene_order.data, "r+")
             # mlgo_tree = models.MLGOTreeRecords(upload_form.upload_name.data, annotated_tree,
@@ -813,16 +831,14 @@ class VisualiseMLGOView(BaseView):
 
             mlgo_dict = utilities.get_mlgo_dict(upload_form.gene_order.data.read().decode())
 
-
             mlgo_tree = models.MLGOTreeRecords(upload_form.upload_name.data, upload_form.annotated_tree.data,
                                                mlgo_dict)
 
             mlgo_tree.save()
 
-            flash ("Uploaded ML Gene Order tree " + upload_form.upload_name.data + " to database")
+            flash("Uploaded ML Gene Order tree " + upload_form.upload_name.data + " to database")
 
         if request.method == "POST" and select_form.select.data:
-
             tree = models.MLGOTreeRecords.objects().get(name=select_form.select_name.data)
 
             # print(tree)
@@ -834,8 +850,6 @@ class VisualiseMLGOView(BaseView):
             tree_img = "/" + tree_img + "#" + utilities.randstring(5)
 
         return self.render('visualise_MLGO.html', upload_form=upload_form, select_form=select_form, tree_img=tree_img)
-
-
 
 
 class SequenceRecordsView(ModelView):
@@ -1003,8 +1017,8 @@ class AutomaticTaggingView(BaseView):
 
         unique_tags = models.GenomeRecords.objects().distinct(field='tags')
 
-        regions_list = ['TcdA1_expanded', 'A1_expanded', 'A2_expanded', 'TcB_expanded', 'TcC_expanded', 'Chitinase_expanded']
-
+        regions_list = ['TcdA1_expanded', 'A1_expanded', 'A2_expanded', 'TcB_expanded', 'TcC_expanded',
+                        'Chitinase_expanded']
 
         # The list of tags to choose from
         update_tags_form.old_tag.choices = list(zip(unique_tags, unique_tags))
@@ -1015,8 +1029,6 @@ class AutomaticTaggingView(BaseView):
 
         unique_tags.insert(0, "Test all")
         auto_classify_test_form.limit_classify_test_tagged.choices = list(zip(unique_tags, unique_tags))
-
-
 
         if request.method == "POST" and tag_simple_form.tag_simple.data:
             include_genome = [x.strip() for x in tag_simple_form.include_genome.data.split(",")]
@@ -1056,15 +1068,13 @@ class AutomaticTaggingView(BaseView):
             for query in queries:
                 for hit in query.hits:
                     new_tags = [new_tag if x == old_tag else x for x in hit.tags]
-                    print ('new tags was ')
+                    print('new tags was ')
 
                     tags_unique = list(set(new_tags))
 
-
-                    print (new_tags)
-                    print (tags_unique)
+                    print(new_tags)
+                    print(tags_unique)
                     hit.tags = tags_unique
-
 
                 query.save()
 
@@ -1130,32 +1140,27 @@ class AutomaticTaggingView(BaseView):
             else:
                 genomes = models.GenomeRecords.objects(tags__in=include_genome, tags__nin=exclude_genome)
 
-            print ('check results here')
-            print (include_genome)
-            print (exclude_genome)
-
+            print('check results here')
+            print(include_genome)
+            print(exclude_genome)
 
             for g in genomes:
-                print (g)
+                print(g)
                 for hit in g.hits:
-                    print (hit)
-                    print (hit.region)
+                    print(hit)
+                    print(hit.region)
                     if hit.region == hide_region:
-                        print (hit.region)
-                        print (hit.tags)
+                        print(hit.region)
+                        print(hit.tags)
                         if 'hidden' not in hit.tags:
-                            print ('adding hidden')
+                            print('adding hidden')
                             hit.tags.append('hidden')
                 g.save()
-
-
-
-
 
         return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form,
                            search_for_promoters_form=search_for_promoters_form,
                            update_tags_form=update_tags_form, auto_hide_form=auto_hide_form,
-        auto_classify_form=auto_classify_form,
+                           auto_classify_form=auto_classify_form,
                            auto_classify_test_form=auto_classify_test_form)
 
 
@@ -1224,16 +1229,16 @@ class TrimRegionsView(BaseView):
 
             sections = trim_around_profile_form.trim_around_profile.data
 
-            print ("Sections was ")
-            print (sections)
+            print("Sections was ")
+            print(sections)
 
             pos1 = None
             pos2 = None
 
             if len(sections) == 3:
 
-                print ("Profile 1 is " + sections[0])
-                print ("Profile 2 is " + sections[1])
+                print("Profile 1 is " + sections[0])
+                print("Profile 2 is " + sections[1])
 
                 profile1 = models.Profile.objects().get(name=sections[0]).profile
                 profile2 = models.Profile.objects().get(name=sections[2]).profile
@@ -1242,38 +1247,37 @@ class TrimRegionsView(BaseView):
 
                 pos2 = 'end' if section2 else 'start'
 
-            elif len (sections) == 2:
+            elif len(sections) == 2:
                 if sections[0] == 'Content':
                     profile1 = None
                     profile2 = models.Profile.objects().get(name=sections[1]).profile
 
-                    print("Profile 1 is None" )
+                    print("Profile 1 is None")
                     print("Profile 2 is " + sections[1])
-                    pos2 = 'end' if section1 else 'start' # Need to check section 1
+                    pos2 = 'end' if section1 else 'start'  # Need to check section 1
 
                 elif sections[1] == 'Content':
                     profile1 = models.Profile.objects().get(name=sections[0]).profile
                     profile2 = None
 
-                    print("Profile 1 is " + sections[0] )
+                    print("Profile 1 is " + sections[0])
                     print("Profile 2 is None")
 
-                    pos1 = 'start' if section1 else 'end' # Need to check section 1
+                    pos1 = 'start' if section1 else 'end'  # Need to check section 1
 
 
 
             else:
-                flash ("Incorrect number of sections chosen")
+                flash("Incorrect number of sections chosen")
                 return self.render('trim_regions.html', trim_to_profile_form=trim_to_profile_form,
-                               trim_around_profile_form=trim_around_profile_form)
-
+                                   trim_around_profile_form=trim_around_profile_form)
 
             failed_seqs = utilities.trim_around_profile(regions, profile1, profile2, pos1, pos2, trimmed_name)
             if failed_seqs:
                 print(failed_seqs)
                 flash(
                     "The following regions did not have a match for one of the profiles and so have not been added to "
-                                                                                       "the new file - " + " ".join(
+                    "the new file - " + " ".join(
                         failed_seqs), category='error')
             flash("Regions have been trimmed and saved as " + trimmed_name, category='success')
 
@@ -1456,10 +1460,10 @@ class GenomeDetailView(BaseView):
 
         # # If we're searching directly by name, just get the genome
         if session.get('passed_from') == 'search_by_name' and genome_by_name_form.search_by_name.data:
-            print ('search')
+            print('search')
 
-            print (genome_by_name_form.data)
-            print (genome_by_name_form.genome_by_name.data)
+            print(genome_by_name_form.data)
+            print(genome_by_name_form.genome_by_name.data)
 
             session['passed_from'] = None
 
@@ -1472,12 +1476,9 @@ class GenomeDetailView(BaseView):
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
                 session['genome'] = None
 
-
                 # if genome_by_name_form.genome_by_name.data:
 
-                flash ('Genome was not found in the database', category='error')
-
-
+                flash('Genome was not found in the database', category='error')
 
             tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
                                                                       hidden_type=session[
@@ -1574,7 +1575,6 @@ class GenomeDetailView(BaseView):
             else:
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
-
             tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
                                                                       hidden_type=session[
                                                                           'hidden_type'], show_promoters=session[
@@ -1599,8 +1599,6 @@ class GenomeDetailView(BaseView):
                                show_stop_codons=session['show_stop_codons'],
                                checked_regions=session['checked_regions'],
                                genomesize=genomesize)
-
-
 
 
 class UserView(ModelView):
@@ -1811,18 +1809,16 @@ def add_tag():
 
 @app.route("/delete_all_hits", methods=['GET', 'POST'])
 def delete_all_hits():
-
     queries = models.GenomeRecords.objects().all()
 
     queries.update(hits=[])
 
-
     models.AssociatedHits.objects().delete()
 
-    flash ("Deleted hits", category='success')
-
+    flash("Deleted hits", category='success')
 
     return redirect('batch_delete')
+
 
 @app.route("/delete_all_tags", methods=['GET', 'POST'])
 def delete_all_tags():
@@ -1841,7 +1837,7 @@ def delete_all_tags():
 
     models.GenomeTags.objects().delete()
 
-    flash ("Deleted tags", category='success')
+    flash("Deleted tags", category='success')
 
     return redirect('batch_delete')
 
@@ -1943,8 +1939,6 @@ def update_hit_tags():
     hits.tags = tags
 
     hits.save()
-
-
 
     models.GenomeTags.objects().get(tag_id=formatted_hit_name).update(tags=tags)
 
@@ -2198,31 +2192,31 @@ def update_trees():
 
     return redirect('regions')
 
+
 @app.route("/automatic_tagging/clear_all_promoters", methods=['GET', 'POST'])
 def clear_all_promoters():
     utilities.clear_all_promoters()
 
     return redirect('automatic_tagging')
 
+
 @app.route("/automatic_tagging/auto_classify", methods=['GET', 'POST'])
 def auto_classify():
-
     print("Delete all existing tags")
 
     utilities.delete_all_tags()
     queries = models.GenomeRecords.objects().timeout(False)
 
-    print ("Classifying the genomes")
+    print("Classifying the genomes")
     genome_overview.classify_genomes(queries)
 
-    flash ('Automatically classified')
+    flash('Automatically classified')
 
     return redirect('automatic_tagging')
 
 
 @app.route("/automatic_tagging/auto_classify_test", methods=['GET', 'POST'])
 def auto_classify_test():
-
     limit_classify_test_tagged = request.json['limit_classify_test_tagged']
 
     if limit_classify_test_tagged == 'Test all':
@@ -2231,11 +2225,9 @@ def auto_classify_test():
     else:
         queries = models.GenomeRecords.objects(tags=limit_classify_test_tagged).timeout(False)
 
-
     utilities.test_auto_classify(queries)
 
     return redirect('automatic_tagging')
-
 
 
 @app.errorhandler(404)
@@ -2300,7 +2292,7 @@ with warnings.catch_warnings():
     admin.add_view(RegionView(name='Region Records', endpoint='regions'))
     admin.add_view(TrimRegionsView(name='Trim Regions', endpoint='trim_regions'))
 
-    # admin.add_view(RegionToProfilesView(name='Region to profiles', endpoint='region_to_profiles'))
+    admin.add_view(ProfilesView(name='View Profiles', endpoint='region_to_profiles'))
     admin.add_view(ChartView(name='Charts', endpoint='chart'))
 
     admin.add_view(AlignmentsView(name='Alignments', endpoint='alignments'))

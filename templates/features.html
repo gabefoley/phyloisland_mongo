@@ -8,42 +8,66 @@
 
 {% block body %}
 
-                <h3>08/06/2020</h3>
-        <h4> Accessibility  </h4>
+    <h3>10/06/2020</h3>
+    <h4> Profiles view </h4>
+
+    <h5>Added features to allow viewing the results of Profile searching in Regions</h5>
+    <ul>
+        <li>Users can search Regions with Profiles via the Region Records section</li>
+        <li>Previously users could only view the results of these searches by adding summaries of them to Trees</li>
+        <li>Now, users can use the new View Profiles section, to get a textual summary of particular
+            Profile searches
+        </li>
+    </ul>
+
+    <h5>Viewing Profile searches on Alignments</h5>
+    <ul>
+        <li>Users can now view the results of Profile searches directly on Alignments</li>
+        <li> The visualisation will take into automatically show the regions of the Profile search, accounting for
+            gaps added to the alignment</li>
+        <li>Currently overlap in Profiles is not supported. If a WARNING is thrown in the command line that Overlap
+            is present, contact the Developers
+        </li>
+    </ul>
+
+    <h3>08/06/2020</h3>
+    <h4> Accessibility </h4>
 
     <h5>Added features designed to make Phylo Island more usable</h5>
     <ul>
         <li>User can now download Regions, and Alignments</li>
-    <li>User can now search directly for Genomes by ID in Genome Detail</li>
-    <li>Writing of images to database is disabled (previously used function)</li>
+        <li>User can now search directly for Genomes by ID in Genome Detail</li>
+        <li>Writing of images to database is disabled (previously used function)</li>
 
     </ul>
 
 
 
-            <h3>04/06/2020</h3>
-        <h4> Automatic classification </h4>
+    <h3>04/06/2020</h3>
+    <h4> Automatic classification </h4>
 
     <h5>Automatically hide regions</h5>
     <ul>
         <li>User can now automatically hide regions from Genomes</li>
-    <li>Tags to include or exclude can be used so that regions are hidden automatically only from a subset of
-        Genomes</li>
+        <li>Tags to include or exclude can be used so that regions are hidden automatically only from a subset of
+            Genomes
+        </li>
 
     </ul>
 
-        <h5>Multiple and Single now added to automatic classification</h5>
+    <h5>Multiple and Single now added to automatic classification</h5>
     <ul>
         <li>Automatic classifier now attempts to add 'Multiple' and 'Single' tags to Genomes</li>
-    <li>This behaviour is now tested for in the automatic classifier test</li>
-    <li>It still only suggests a single classification for something tagged as Multiple. So, it recognises it as
-        having multiple islands, but doesn't attempt to classify them all.</li>
+        <li>This behaviour is now tested for in the automatic classifier test</li>
+        <li>It still only suggests a single classification for something tagged as Multiple. So, it recognises it as
+            having multiple islands, but doesn't attempt to classify them all.
+        </li>
 
     </ul>
 
 
-        <h3>02/06/2020</h3>
-        <h4> Tree visualisation </h4>
+    <h3>02/06/2020</h3>
+    <h4> Tree visualisation </h4>
 
     <h5>Added features to tree visualisation</h5>
     <ul>
@@ -56,10 +80,13 @@
 
     </ul>
 
-        <h5>Can now visualise ML Gene Order analysis</h5>
+    <h5>Can now visualise ML Gene Order analysis</h5>
     <ul>
-        <li>User can download the tree and Region order files in the neccescary formats to use <a href="http://geneorder.org"> Maximum Likelihood Gene Order </a> to predict ancestral gene orders from the Download ML Gene Order
-            section  </li>
+        <li>User can download the tree and Region order files in the neccescary formats to use <a
+                href="http://geneorder.org"> Maximum Likelihood Gene Order </a> to predict ancestral gene orders from
+            the Download ML Gene Order
+            section
+        </li>
         <li>Note that trees and region orders should contain matching data</li>
         <li>After running the ML GO analysis, the output files can be uploaded, saved, and visualised on trees in the
             Visualise ML Gene Order section.
@@ -73,7 +100,7 @@
     <ul>
         <li>Genomes can be automatically classified from Automatic Tagging section</li>
         <li>This deletes all tags from Genomes, Regions, and the GenomeTags dictionary before it runs</li>
-        <li>Classification test can now be limited to a specific taggit </li>
+        <li>Classification test can now be limited to a specific taggit</li>
 
 
     </ul>
@@ -86,9 +113,9 @@
     </ul>
 
     <h5>Added automatically classify genomes test</h5>
-        <ul>
+    <ul>
 
-    <li>Test can be run from the Automatic Tagging section</li>
+        <li>Test can be run from the Automatic Tagging section</li>
 
         <li>Added Trim to Profiles and Trim around Profiles.</li>
     </ul>
