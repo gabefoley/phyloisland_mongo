@@ -99,17 +99,24 @@ def get_ancestor_domains(regions):
 def get_leaf_tag(node, skip_tags=['Single', 'Multiple']):
     for descend in node.get_descendants():
         if descend.is_leaf():
-            descend.name
+            # descend.name
 
             long_name = descend.name.split("_joined")[0]
             short_name = descend.name.split("_information")[0]
 
+            tag = []
+
+            print (long_name)
+            print (short_name)
             if long_name in tag_dict:
                 tag = [x for x in tag_dict[long_name] if x not in skip_tags]
             elif short_name in tag_dict:
                 tag = [x for x in tag_dict[short_name] if x not in skip_tags]
 
-            return tag[0]
+            if tag:
+                return tag[0]
+            else:
+                return 'unknown'
 
 
 def continue_wo_collapse(node, skip_tags=["Single", "Multiple"]):
