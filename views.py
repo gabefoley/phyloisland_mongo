@@ -37,7 +37,8 @@ mlgo_ref_dict = {'1' : 'A1', '2' : 'A2', '3' : 'Chitinase', '4' : 'TcB', '5': 'T
 @user_logged_in.connect_via(app)
 def on_user_logged_in(sender, user):
     # Clear any existing session values
-    keys = [key for key in session.keys() if key not in ["_fresh", "_permanent", "csrf_token", "user_id", "_id"]]
+    keys = [key for key in session.keys() if key not in ["_fresh", "_permanent", "csrf_token", "user_id",
+                                                         "_user_id", "_id"]]
 
     print(keys)
 
