@@ -297,7 +297,12 @@ def process_hmmer_results(region_dict, profile_folder):
                 print(hsp.hit_id)
                 print(start)
                 print(end)
-                region_dict[hsp.hit_id.replace(".", "***")][hsp.query.id] = (start, end)
+                if hsp.query.id in region_dict[hsp.hit_id.replace(".", "***")]:
+                    region_dict[hsp.hit_id.replace(".", "***")][hsp.query.id + "_multiple_" + randstring(5)] = (start,
+                                                                                                               end)
+
+                else:
+                    region_dict[hsp.hit_id.replace(".", "***")][hsp.query.id] = (start, end)
 
                 if hsp.query.id not in domain_dict:
                     domain_dict[hsp.query.id] = []
@@ -2173,7 +2178,7 @@ def colour_alignment_by_profiles(alignment, profiles):
             prev_len = len(output[seqname])
 
             output[seqname] = output[seqname][0:pos[0] + len_offset + first_gap_offset] + '<span style = "background-color:' + \
-                          colour_dict[domain] + '">' \
+                          colour_dict[domain.split("_multiple_")[0]] + '">' \
                           + output[seqname][
                             pos[0] + len_offset + first_gap_offset: pos[1] + len_offset + second_gap_offset] + '</span>' \
                           + output[seqname][pos[1] + len_offset + second_gap_offset:]
