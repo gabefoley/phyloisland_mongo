@@ -2005,7 +2005,8 @@ def get_mlgo_dict(gene_orders):
 def colour_alignment_by_profiles(alignment, profiles):
     colour_dict = {'RBD_A': 'lightgreen', 'RBD_C': 'blue', 'RBD_B': 'orange', 'Neuraminidase': 'mediumPurple',
                    'TcA_RBD': 'grey',
-                   'TcB_BD_seed': 'lawnGreen', 'VRP1_Full' : 'sandyBrown', 'Big_1_Full' : 'lightYellow'}
+                   'TcB_BD_seed': 'lawnGreen', 'VRP1_Full' : 'sandyBrown', 'Big_1_Full' : 'lightYellow', 'Overlap' :
+                       'pink'}
 
     split = [x for x in alignment.split(">") if len(x) > 0]
 
@@ -2018,7 +2019,13 @@ def colour_alignment_by_profiles(alignment, profiles):
               for i in range(0, size, 2)}
 
 
-    print(profiles.region_dict.keys())
+    # print(profiles.region_dict.keys())
+    #
+    # print (output)
+
+    # for s,d in profiles.region_dict.items():
+    #     print (s)
+    #     print (d)
 
 
     # for seqname in output.keys():
@@ -2033,46 +2040,160 @@ def colour_alignment_by_profiles(alignment, profiles):
     #                 domain] + \
     #                               '">' + output[seqname][pos[0]: pos[1]] + '</span>' + output[seqname][pos[1]:]
 
-    for seqname, domains in output.items():
-        if seqname in profiles.region_dict:
+    # for seqname, domains in output.items():
+    #     if seqname in profiles.region_dict:
+    #
+    #         len_offset = 0
+    #         furtherst_pos = -1
+    #
+    #         orig_seq = output[seqname]
+    #
+    #         for domain, pos in sorted(profiles.region_dict[seqname].items(), key=lambda k: k[1]):
+    #             gap_offset = 0
+    #
+    #             if pos[0] < furtherst_pos:
+    #                 print("WARNING: OVERLAP")
+    #
+    #             count = 0
+    #             for aa in orig_seq:
+    #                 if aa == "-":
+    #                     gap_offset += 1
+    #                 else:
+    #                     count += 1
+    #                     if count == pos[0] + 1:
+    #                         first_gap_offset = gap_offset
+    #
+    #                     if count == pos[1]:
+    #                         second_gap_offset = gap_offset
+    #                         break
+    #
+    #             prev_len = len(output[seqname])
+    #             output[seqname] = output[seqname][
+    #                           0:pos[0] + len_offset + first_gap_offset] + '<span style = "background-color:' + \
+    #                           colour_dict[
+    #                               domain] + '">' + \
+    #                               output[seqname][pos[0] + len_offset + first_gap_offset: pos[
+    #                                                                                   1] + len_offset + second_gap_offset] + '</span>' + \
+    #                               output[seqname][pos[1] +
+    #                                    len_offset +
+    #                                    second_gap_offset:]
+    #             len_offset = len(output[seqname]) - prev_len
+    #
+    #             furtherst_pos = pos[1]
 
-            len_offset = 0
-            furtherst_pos = -1
+    for seqname, domains in profiles.region_dict.items():
+        # if seqname in profiles.region_dict:
 
-            orig_seq = output[seqname]
+        len_offset = 0
+        furtherst_pos = -1
 
-            for domain, pos in sorted(profiles.region_dict[seqname].items(), key=lambda k: k[1]):
-                gap_offset = 0
+        # newlist = sorted(list_to_be_sorted, key=lambda k: k['name'])
+        orig_seq = output[seqname]
 
-                if pos[0] < furtherst_pos:
+        sorted_list = sorted(profiles.region_dict[seqname].items(), key=lambda k: k[1])
+
+        # print(sorted_list)
+
+        list_w_overlaps = []
+
+        overlap = False
+
+        for idx, entry in enumerate(sorted_list):
+            domain = entry[0]
+            pos = entry[1]
+
+            if idx + 1 < len(sorted_list):
+
+                next_entry = sorted_list[idx + 1]
+                next_domain = next_entry[0]
+                next_pos = next_entry[1]
+
+                if pos[1] > next_pos[0]:
+
+                    overlap = True
                     print("WARNING: OVERLAP")
+                    overlap_pos_1 = next_pos[0]
+                    overlap_pos_2 = pos[1]
 
-                count = 0
-                for aa in orig_seq:
-                    if aa == "-":
-                        gap_offset += 1
-                    else:
-                        count += 1
-                        if count == pos[0] + 1:
-                            first_gap_offset = gap_offset
+                    prev_entry = (domain, [pos[0], next_pos[0] ])
+                    overlap_entry = ('Overlap', [overlap_pos_1, overlap_pos_2])
+                    sorted_list[idx + 1] = (next_domain, [overlap_pos_2, next_pos[1]])
 
-                        if count == pos[1]:
-                            second_gap_offset = gap_offset
-                            break
+                    list_w_overlaps.append(prev_entry)
+                    list_w_overlaps.append(overlap_entry)
 
-                prev_len = len(output[seqname])
-                output[seqname] = output[seqname][
-                              0:pos[0] + len_offset + first_gap_offset] + '<span style = "background-color:' + \
-                              colour_dict[
-                                  domain] + '">' + \
-                                  output[seqname][pos[0] + len_offset + first_gap_offset: pos[
-                                                                                      1] + len_offset + second_gap_offset] + '</span>' + \
-                                  output[seqname][pos[1] +
-                                       len_offset +
-                                       second_gap_offset:]
-                len_offset = len(output[seqname]) - prev_len
+                else:
+                    list_w_overlaps.append(entry)
 
-                furtherst_pos = pos[1]
+            else:
+                list_w_overlaps.append(entry)
+
+
+        if overlap:
+
+            print('list with overlaps')
+            print (seqname.replace("***", "."))
+            print (list_w_overlaps)
+
+
+        for entry in list_w_overlaps:
+
+            if entry[1][1] < entry[1][0]:
+                print("WARNING: Serious error with overlap")
+                print(seqname.replace("***", "."))
+                print(list_w_overlaps)
+
+        for domain, pos in list_w_overlaps:
+            gap_offset = 0
+
+            # if pos[0] < furtherst_pos:
+            #     print("WARNING: OVERLAP")
+
+            count = 0
+            for aa in orig_seq:
+                if aa == "-":
+                    gap_offset += 1
+                else:
+                    count += 1
+                    if count == pos[0] + 1:
+                        first_gap_offset = gap_offset
+
+                    if count == pos[1]:
+                        second_gap_offset = gap_offset
+                        break
+
+            # print ('len offset')
+            # print(len_offset)
+            # print(gap_offset)
+
+            # print(pos[0] + len_offset + first_gap_offset)
+            #
+            # print(pos[1] + len_offset + second_gap_offset)
+
+            prev_len = len(output[seqname])
+
+            output[seqname] = output[seqname][0:pos[0] + len_offset + first_gap_offset] + '<span style = "background-color:' + \
+                          colour_dict[domain] + '">' \
+                          + output[seqname][
+                            pos[0] + len_offset + first_gap_offset: pos[1] + len_offset + second_gap_offset] + '</span>' \
+                          + output[seqname][pos[1] + len_offset + second_gap_offset:]
+
+            len_offset = len(output[seqname]) - len(orig_seq)
+
+            # print ('prev len')
+            # print (prev_len)
+            #
+            # print ('len aligns seq')
+            # print (len(aligns[seq]))
+            #
+            # print ('len offset')
+            #
+            # print (len_offset)
+
+
+            # print(aligns[seq])
+
+            # furtherst_pos = pos[1]
 
 
     return output
