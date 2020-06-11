@@ -241,6 +241,12 @@
 
             <br>
 
+            {{ auto_classify_test_form.skip_tags.label }}
+
+            {{ auto_classify_test_form.skip_tags }}
+
+            <br>
+
 
             <br>
 
@@ -254,7 +260,14 @@
 
     <br>
 
+        <div id="test_results">
+
+    {{ test_results | safe }}
     </div>
+
+    </div>
+
+
 
 
 
@@ -320,32 +333,7 @@
 
         });
 
-        $('#auto_classify_test').on('click', function (e) {
 
-            e.preventDefault()
-
-            var limit_classify_test_tagged = $('#limit_classify_test_tagged').val()
-
-
-            $.ajax({
-                url: Flask.url_for("auto_classify_test"),
-                data: JSON.stringify({
-                    'limit_classify_test_tagged': limit_classify_test_tagged
-                }),
-
-                contentType: 'application/json;charset=UTF-8',
-                type: 'POST',
-                error: function (error) {
-                    console.log(error);
-                },
-                success: function (response) {
-                    window.location.reload();
-
-
-                }
-            });
-
-        });
 
         $('#hide_include_genome').selectize({
             delimiter: ',',
@@ -373,6 +361,20 @@
 
 
         });
+
+                $('#skip_tags').selectize({
+            delimiter: ',',
+            persist: false, plugins: ['remove_button'],
+            create: function (input) {
+                return {
+                    value: input,
+                    text: input
+                }
+            }
+
+
+        });
+
 
 
     </script>

@@ -1090,7 +1090,7 @@ def rename_duplicates(genome_name, old):
     return old
 
 
-def test_auto_classify(queries):
+def test_auto_classify(queries, skip_tags):
     original_classifications = {"NZ_WRXN01000057.1": ["Single", "Simple", "Type3"],
                                 "NZ_QODI01000091.1": ["Single", "Type1"], "NZ_QAIK01000198.1": ["Single", "Type2b"],
                                 "NZ_CP009451.1": ["Single", "Type2b"], "NC_015513.1": ["Single", "Type3"],
@@ -1939,9 +1939,11 @@ def test_auto_classify(queries):
 
 
 
-    skip_tags = ['Single', 'Multiple']
+    # skip_tags = ['Single', 'Multiple']
+    #
+    # skip_tags = ['Simple']
 
-    skip_tags = ['']
+    test_results = ""
 
     count = 0
     diff_count = 0
@@ -1960,12 +1962,19 @@ def test_auto_classify(queries):
 
             if check_skip:
                 diff_count += 1
-                print("Found an automatically classified genome that was different\n")
+                print("\n\nFound an automatically classified genome that was different\n")
                 print(query.name)
                 print("Original was ")
                 print([x for x in original_classifications[query.name] if x not in skip_tags])
                 print("Automatic classification was ")
                 print(new_classification.tags)
+
+                test_results += "\n\nFound an automatically classified genome that was different\n\n"
+                test_results += query.name + "\n"
+                test_results += "Original was \n"
+                test_results +=  str([x for x in original_classifications[query.name] if x not in skip_tags])
+                test_results += "\nAutomatic classification was \n"
+                test_results += str([x for x in new_classification.tags if x not in skip_tags])
 
 
 
@@ -1976,6 +1985,15 @@ def test_auto_classify(queries):
     print("Correct " + str(count - diff_count))
     print("Total " + str(count))
     print()
+
+
+    test_results = "Total " + str(count) + "\n" + test_results
+
+    test_results = "Correct " + str(count - diff_count) + "\n" + test_results
+
+    test_results = "\nWrong: " + str(diff_count) + "\n" + test_results
+
+    return test_results
 
 
 def delete_all_tags():

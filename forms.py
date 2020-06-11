@@ -284,6 +284,7 @@ class AutoClassifyForm(FlaskForm):
 
 class AutoClassifyTestForm(FlaskForm):
     limit_classify_test_tagged = SelectField('Limit classification test to genomes tagged with', choices=[])
+    skip_tags = SelectMultipleField('Skip these tags when testing the genomes', choices=[])
     auto_classify_test = SubmitField("Run automatic classification test")
 
 

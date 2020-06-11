@@ -1008,6 +1008,9 @@ class AutomaticTaggingView(BaseView):
     @login_required
     @expose("/", methods=('GET', 'POST'))
     def automatic_tagging(self):
+
+
+
         tag_simple_form = forms.TagSimpleForm()
         search_for_promoters_form = forms.SearchForPromoters()
         update_tags_form = forms.UpdateTagsForm()
@@ -1029,6 +1032,10 @@ class AutomaticTaggingView(BaseView):
 
         unique_tags.insert(0, "Test all")
         auto_classify_test_form.limit_classify_test_tagged.choices = list(zip(unique_tags, unique_tags))
+        auto_classify_test_form.skip_tags.choices = list(zip(unique_tags, unique_tags))
+
+
+        test_results = ""
 
         if request.method == "POST" and tag_simple_form.tag_simple.data:
             include_genome = [x.strip() for x in tag_simple_form.include_genome.data.split(",")]
@@ -1157,11 +1164,27 @@ class AutomaticTaggingView(BaseView):
                             hit.tags.append('hidden')
                 g.save()
 
+        if request.method == "POST" and auto_classify_test_form.auto_classify_test.data:
+            limit_classify_test_tagged = auto_classify_test_form.limit_classify_test_tagged.data
+            skip_tags = auto_classify_test_form.skip_tags.data
+
+
+            if limit_classify_test_tagged == 'Test all':
+                queries = models.GenomeRecords.objects.all().timeout(False)
+            else:
+                queries = models.GenomeRecords.objects(tags=limit_classify_test_tagged).timeout(False)
+
+            test_results = utilities.test_auto_classify(queries, skip_tags=skip_tags)
+
+            print ('**')
+            print (test_results)
+
+
         return self.render('automatic_tagging.html', tag_simple_form=tag_simple_form,
                            search_for_promoters_form=search_for_promoters_form,
                            update_tags_form=update_tags_form, auto_hide_form=auto_hide_form,
                            auto_classify_form=auto_classify_form,
-                           auto_classify_test_form=auto_classify_test_form)
+                           auto_classify_test_form=auto_classify_test_form, test_results=test_results.replace("\n", "<br />\n"))
 
 
 @app.route("/temp_assoc_fix", methods=['GET', 'POST'])
@@ -2211,21 +2234,6 @@ def auto_classify():
     genome_overview.classify_genomes(queries)
 
     flash('Automatically classified')
-
-    return redirect('automatic_tagging')
-
-
-@app.route("/automatic_tagging/auto_classify_test", methods=['GET', 'POST'])
-def auto_classify_test():
-    limit_classify_test_tagged = request.json['limit_classify_test_tagged']
-
-    if limit_classify_test_tagged == 'Test all':
-
-        queries = models.GenomeRecords.objects.all().timeout(False)
-    else:
-        queries = models.GenomeRecords.objects(tags=limit_classify_test_tagged).timeout(False)
-
-    utilities.test_auto_classify(queries)
 
     return redirect('automatic_tagging')
 

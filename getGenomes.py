@@ -498,7 +498,12 @@ def tag_as_simple(genomes, exclude_hits):
         if simple:
             print("This one is simple")
             print (genome.name)
-            genome.update(push__tags="Simple")
+            print(genome.tags)
+
+            if 'Simple' not in genome.tags:
+                print ('Updating')
+                genome.update(push__tags="Simple")
+                models.GenomeTags.objects().get(tag_id=genome.name).update(push__tags="Simple")
 
 
 def write_region_order(genomes, split_strands=True, exclude_hits =[], path="./fasta_folder/region_order.txt",
