@@ -653,7 +653,6 @@
 
         $("[id^='tag_hit_current']").on('click', function (e) {
 
-            console.log('christmas dog');
             console.log(e)
             clicked = e.target;
             hit_id = clicked.id.split("-")[1]
@@ -754,6 +753,8 @@
 //        var genome_name = "{{ genome.name |safe }}";
 
             tag2add = 'hidden';
+
+
 
 
             $.ajax({

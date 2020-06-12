@@ -219,8 +219,16 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
             if node.is_leaf():
                 node.show_leaf_name = True
 
+
                 long_name = node.name.split("_joined")[0]
                 short_name = node.name.split("_information")[0]
+
+
+                print ('raspberries')
+                print (node.name)
+                print (long_name)
+                print (short_name)
+
 
                 if long_name in tag_dict:
 
@@ -486,7 +494,7 @@ if __name__ == "__main__":
 
         display_circular = True if parser.display_circular else False
         display_circular_180 = True if parser.display_circular_180 else False
-        skip_list = ["Single", "Multiple"]  # Tags to skip when looking for tags to colour on
+        skip_list = ["Single", "Multiple", "Simple"]  # Tags to skip when looking for tags to colour on
 
         print("\nMake tree called with the following dictionaries - ")
 

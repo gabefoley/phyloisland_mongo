@@ -293,7 +293,7 @@ def classify_genomes_original(queries):
 
 def classify_genomes(queries):
     for query in queries:
-        region_names = set([hit.region for hit in query.hits if 'expanded' in hit.region])
+        region_names = set([hit.region for hit in query.hits if 'expanded' in hit.region if 'hidden' not in hit.tags])
 
 
         print (f"\nClassifying {query.description}")

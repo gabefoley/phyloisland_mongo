@@ -799,8 +799,13 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
 
                 if ((hidden_type == False) or (hidden_type == True and 'hidden' not in hit.tags)):
 
+                    # Here is a place to update FASTA ID headers
+
+
                     if hit.tags:
-                        hit_tags[str(hit.id)] = (str(hit.region) + " " + str(hit.start) + ":" + str(hit.end) + " " + \
+                        hit_tags[str(hit.id)] = (str(hit.region) + " [" + str(hit.score) + "] " + str(hit.start) +
+                                                 ":" + str(
+                            hit.end) + " " + \
                                                  hit.strand, hit.tags)
 
                     if hit.name != None:
@@ -917,10 +922,13 @@ def build_tracks(items, stop_codons, promoters):
 
         # NOTE: I'm forcing the strands all to be 1 here to visualise on the same line in the linear genome
 
+
+        # Here is a place to update FASTA ID headers
+
         for region in items[region_name]:
             region_dict = {'id': region['hit_id'], 'start': int(region['start']), 'end': int(region['end']),
                            'name': region[
-                                       'name'] + " (" + region['score'] + ")",
+                                       'name'] + " [" + region['score'] + "] ",
                            'strand': region['strand'], 'actual_strand': region['actual_strand']}
             regions.append(region_dict)
 
@@ -2003,8 +2011,13 @@ def delete_all_tags():
 
     for query in queries:
 
+        # By default we keep the tag 'hidden' as this won't get GenomeTags out of sync
+
         for hit in query.hits:
-            hit.tags = []
+            if 'hidden' in hit.tags:
+                hit.tags = ['hidden']
+            else:
+                hit.tags = []
 
         query.save()
 

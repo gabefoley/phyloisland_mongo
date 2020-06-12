@@ -391,9 +391,11 @@ def download_fasta_regions(region, filename="", include_genome=[], exclude_genom
                     sequence[0] = "M"
 
 
+                    # Here is a place to update FASTA ID headers
 
                     id_name = hit['name'] + "_information_" + genome['species'].replace(" ", "_") + '_region_' + hit[
-                        'region'] + "_" + hit['start'] + "_" + hit['end'] + "_" + hit['strand']
+                        'region'] + "_" + "[" + hit['score'] + "]_" + hit['start'] + "_" + hit['end'] + "_" + hit[
+                        'strand']
 
                     # seq_count[hit['name']].append(id_name)
 
