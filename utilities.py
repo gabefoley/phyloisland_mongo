@@ -928,7 +928,7 @@ def build_tracks(items, stop_codons, promoters):
         for region in items[region_name]:
             region_dict = {'id': region['hit_id'], 'start': int(region['start']), 'end': int(region['end']),
                            'name': region[
-                                       'name'] + " [" + region['score'] + "] ",
+                                       'name'] + " [" + region['score'] + "]",
                            'strand': region['strand'], 'actual_strand': region['actual_strand']}
             regions.append(region_dict)
 
