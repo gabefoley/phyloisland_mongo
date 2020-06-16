@@ -59,32 +59,35 @@
             </form>
         </div>
 
-        <div id="rtp-align">
+        <div id="align-container">
 
-            {% if alignment is not none %}
+            <div id="rtp-align">
 
-                <table style="width:100%">
-                <tr>
-                    <th>Name</th>
-                    <th>Sequence</th>
-                </tr>
+                {% if alignment is not none %}
+
+                    <table style="width:100%">
+                        <tr>
+                            <th>Name</th>
+                            <th>Sequence</th>
+                        </tr>
 
 
-                {% for name, seq in alignment.items() %}
-                    <tr>
-                        <td>         {{ name }}</td>
-                        <td>                    {{ seq | safe }}
-                        </td>
-                    </tr>
-                {% endfor %}
-                </table>
-            {% endif %}
+                        {% for name, seq in alignment.items() %}
+                            <tr>
+                                <td>         {{ name }}</td>
+                                <td>                    {{ seq | safe }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}
 
+            </div>
         </div>
 
-    <br>
+        <br>
 
-    <br>
+        <br>
 
         <div class="basic_profile_info_div">
             <form method="POST" enctype="multipart/form-data">
@@ -118,6 +121,8 @@
 
     <script>
 
+    var zoomed = false
+
 
         var region_dict =
         {{ rtp.region_dict | tojson }}
@@ -143,10 +148,21 @@
         $('#rtp-div').append("<ul>")
 
 
+        $("#rtp-align").click(function () {
+            if (zoomed) {
+                 $("#rtp-align").css("transform", "scale(0.2)");
+                 zoomed = false
+
+            }
+            else {
+                $("#rtp-align").css("transform", "scale(0.9)");
+                zoomed = true
+
+            }
+        });
+
+
     </script>
-
-
-
 
 
 
