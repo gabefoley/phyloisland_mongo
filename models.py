@@ -42,6 +42,7 @@ class SequenceRecords(db.DynamicDocument):
     name = db.StringField()
     species = db.StringField()
     description = db.StringField()
+    plasmid = db.BooleanField()
     sequence = db.StringField()
     references = db.ListField(db.StringField(), default=list)
 
@@ -114,9 +115,26 @@ class GenomeRecords(db.DynamicDocument):
 
     name = db.StringField()
     species = db.StringField()
-    strain = db.StringField()
     description = db.StringField()
     sequence = db.StringField()
+    assembly_name = db.StringField()
+    biosample = db.StringField()
+    bioproject = db.StringField()
+    date = db.StringField()
+    wgs_project = db.StringField()
+    genome_coverage = db.StringField()
+    organism = db.StringField()
+    taxid = db.StringField()
+    assembly_type = db.StringField()
+    release_type = db.StringField()
+    assembly_level = db.StringField()
+    genome_representation = db.StringField()
+    expected_final_version = db.StringField()
+    excluded = db.StringField()
+    genbank_accession_id = db.StringField()
+    refseq_accession_id = db.StringField()
+    r_g_identical = db.StringField()
+    plasmid = db.BooleanField()
     present = db.DictField()
     hits = db.EmbeddedDocumentListField(Hits)
     references = db.ListField(db.StringField(), default=list)
@@ -124,15 +142,16 @@ class GenomeRecords(db.DynamicDocument):
     genome_expanded_overview = db.FileField()
     tags = db.ListField(db.StringField(), default=list)
 
-    meta = {
-	'indexes': [
-	{
-	     'fields': ['+name']
-	},
-	{
-	     'fields': ['#name']
-	}]
-    }
+
+    # meta = {
+    # 'indexes': [
+    # {
+	 #     'fields': ['+name']
+    # },
+    # {
+	 #     'fields': ['#name']
+    # }]
+    # }
 
 
 

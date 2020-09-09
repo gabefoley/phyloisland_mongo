@@ -49,7 +49,8 @@ def read_genome(outpath, species_name):
             species_name = species_name[0:40]
 
     return SeqRecord(Seq(concatenated_genome), id=genome_id, name= species_name, description=description,
-                       annotations={"organism": species_name, "source": ""})
+                       annotations={"organism": species_name, "source": "", "plasmid" : True if 'plasmid' in
+                                                                                                description else False})
 
 
 def retrieve_genome(records, species_name, category, database):

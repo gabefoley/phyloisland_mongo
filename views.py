@@ -27,6 +27,7 @@ import warnings
 import math
 from ete3 import PhyloTree
 from wtforms import SelectField
+import mongoengine
 
 ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2', 'region3', 'region4']
 
@@ -885,14 +886,39 @@ class SequenceRecordsView(ModelView):
             flash(gettext(ex))
 
 
+
+
+
 class GenomeRecordsView(ModelView):
-    form_edit_rules = ('name', 'species', 'strain', 'description')
+
+    form_edit_rules = ('name', 'species', 'organism', 'taxid', 'assembly_type', 'sequence', 'hits', 'release_type',
+                       'assembly_level', 'genome_representation', 'assembly_name', 'biosample', 'bioproject', 'date', 'wgs_project',
+                       'genome_coverage',
+                       'expected_final_version', 'excluded',
+                       'genbank_accession_id', 'refseq_accession_id', 'r_g_identical', 'plasmid',
+                       'description')
 
     # column_list = (
     #     'name', 'species', 'strain', 'description', 'sequence', 'hits', 'Genome Overview', 'Expanded Genome Overview')
     #
-    column_list = (
-        'name', 'species', 'strain', 'description', 'sequence', 'hits')
+    column_list = ('name', 'species', 'organism', 'taxid', 'assembly_type', 'sequence', 'hits', 'release_type',
+                       'assembly_level', 'genome_representation', 'assembly_name', 'biosample', 'bioproject', 'date', 'wgs_project',
+                       'genome_coverage',
+                       'expected_final_version', 'excluded',
+                       'genbank_accession_id', 'refseq_accession_id', 'r_g_identical', 'plasmid',
+                       'description')
+
+    column_sortable_list = ('name', 'species', 'organism', 'taxid', 'assembly_type', 'sequence', 'hits', 'release_type',
+                       'assembly_level', 'genome_representation', 'assembly_name', 'biosample', 'bioproject', 'date', 'wgs_project',
+                       'genome_coverage',
+                       'expected_final_version', 'excluded',
+                       'genbank_accession_id', 'refseq_accession_id', 'r_g_identical', 'plasmid',
+                       'description')
+
+
+    # column_searchable_list = ('name')
+
+
 
     @login_required
     @expose("/", methods=('GET', 'POST'))
@@ -903,15 +929,19 @@ class GenomeRecordsView(ModelView):
         self.edit_modal = True
         self.can_create = False
         self.can_view_details = True
+        self.can_set_page_size = True
+        self.search_placeholder() 
+
+        self.column_searchable_list = ['species']
 
         # self.page_size = current.page_size
 
         self.page_size = session['page_size']
 
-        self.form_edit_rules = ('name', 'species', 'strain', 'description')
+        self.form_edit_rules = ('name', 'species', 'strain', 'plasmid', 'description')
 
         self.column_list = (
-            'name', 'species', 'strain', 'description', 'sequence', 'hits' 'Genome Overview')
+            'name', 'species', 'strain', 'plasmid', 'future', 'description', 'sequence', 'hits', 'Genome Overview')
 
         return super(ModelView, self).index_view()
 

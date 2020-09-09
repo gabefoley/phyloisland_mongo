@@ -83,7 +83,25 @@ def add_genome(genome_results):
         if type(current) == SeqRecord:
             name = current.id
             species = " ".join(current.annotations.get('organism').split()[0:2])
-            strain = current.annotations['source']
+            plasmid = current.annotations['plasmid']
+            organism = current.annotations['organism']
+            assembly_name = current.annotations['assembly_name']
+            biosample = current.annotations['biosample']
+            bioproject = current.annotations['bioproject']
+            date = current.annotations['date']
+            wgs_project = current.annotations['wgs_project']
+            genome_coverage = current.annotations['genome_coverage']
+
+            taxid = current.annotations['taxid']
+            assembly_type = current.annotations['assembly_type']
+            release_type = current.annotations['release_type']
+            assembly_level = current.annotations['assembly_level']
+            genome_representation = current.annotations['genome_representation']
+            expected_final_version = current.annotations['expected_final_version']
+            excluded = current.annotations['excluded']
+            genbank_accession_id = current.annotations['genbank_accession_id']
+            refseq_accession_id = current.annotations['refseq_accession_id']
+            r_g_identical = current.annotations['r_g_identical']
             sequence = str(current.seq)
             description = current.description
 
@@ -95,7 +113,25 @@ def add_genome(genome_results):
             else:
                 print("Adding the genome record - %s from species - %s to the genome database" % (name, species))
 
-                genome = models.GenomeRecords(name=name, species=species, strain=strain, description=description,
+                genome = models.GenomeRecords(name=name, species=species, organism=organism,
+
+                                              assembly_name=assembly_name,
+                                              biosample = biosample,
+                                              bioproject = bioproject,
+                                              date = date,
+                                              wgs_project = wgs_project,
+                                              genome_coverage = genome_coverage,
+                                              taxid=taxid,
+                                              assembly_type=assembly_type,
+                                              release_type=release_type,
+                                              assembly_level=assembly_level,
+                                              genome_representation=genome_representation,
+                                              expected_final_version=expected_final_version,
+                                              excluded=excluded,
+                                              genbank_accession_id=genbank_accession_id,
+                                              refseq_accession_id=refseq_accession_id,
+                                              r_g_identical=r_g_identical,
+                                              plasmid=plasmid, description=description,
                                               sequence=sequence, tags=[])
                 genome.save()
 
@@ -207,15 +243,27 @@ def set_profile_as_reference(profile_ids, region):
 
 
 def createAlignment(input, output):
-    # Version that gets called from Download FASTA
-    muscle_cline = MuscleCommandline(input=input)
-    # result = subprocess.run(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True) )
-    child = subprocess.Popen(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                             universal_newlines=True, shell=(sys.platform != "win32"))
-    child.wait()
 
-    alignment = AlignIO.read(child.stdout, "fasta")
-    AlignIO.write(alignment, output, "fasta")
+    # print (input)
+    # Version that gets called from Download FASTA
+    # muscle_cline = MuscleCommandline(input=input)
+    # # result = subprocess.run(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True) )
+    # child = subprocess.Popen(str(muscle_cline), stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+    #                          universal_newlines=True, shell=(sys.platform != "win32"))
+
+    subprocess.getoutput(f'muscle -in {input} -out {output}')
+    # child.wait()
+
+
+    # alignment = AlignIO.read(child.stdout, "fasta")
+    #
+    #
+    #
+    # print (alignment)
+    # AlignIO.write(alignment, output, "fasta")
+    #
+    # while not os.path.exists(output):
+    #     time.sleep(1)
 
 
 def search_regions_with_profiles(region_to_search, profile_ids):
@@ -334,6 +382,14 @@ def make_alignment_from_regions(aln_name, region_data, tool="MAFFT"):
 
     if os.path.isfile(aln_path):
         return aln_path
+
+def load_list(*args):
+    return_list = []
+    for x in args:
+        with open(x) as f:
+            curr = [line.strip() for line in f]
+        return_list += curr
+    return return_list
 
 
 def get_sequence_content_dict(region):
@@ -735,8 +791,11 @@ def createProfile(align_list):
 def createFasta(fasta_list, name, align):
     SeqIO.write(fasta_list, name + ".fasta", "fasta")
 
+    while not os.path.exists(name + ".fasta"):
+        time.sleep(1)
+
     if align:
-        print("And now an aln")
+        # print("And now an aln")
         createAlignment(name + ".fasta", name + ".aln")
 
 

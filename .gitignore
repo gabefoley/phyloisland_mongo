@@ -6,6 +6,8 @@
 /testing/*
 /tmp/*
 /fasta_folder/*
+./tmp/
+./tmp/*
 
 hmm_outputs_old*
 /hmm_outputs_old/*
@@ -129,3 +131,9 @@ ENV/
 # Rope project settings
 .ropeproject
 
+/tmp/TcC_profile.hmm
+/tmp/Chitinase_profile.hmm
+/tmp/A2_profile.hmm
+/tmp/TcdA1_profile.hmm
+/tmp/A1_profile.hmm
+/tmp/TcB_profile.hmm
