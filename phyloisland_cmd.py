@@ -690,18 +690,17 @@ if args.check_feature_table:
 
                             if check_interval.overlaps(genome_interval):
                                 print(x.name, x.product_accession, x.start, x.end)
-
-                            hit = models.Hits(object_id, record.name, new_reg, new_score, new_start, new_end,
-                                              expand,
-                                              strand, sequence)
-
-                            print('We are adding a refseq sequence in')
-
-                            print(hit.start)
-                            print(hit.end)
-                            curr.hits.append(hit)
-                            curr.save()
-                        i += 1
+                            #
+                            # hit = models.Hits(object_id, record.name, new_reg, new_score, new_start, new_end,
+                            #                   expand,
+                            #                   strand, sequence)
+                            #
+                            # print('We are adding a refseq sequence in')
+                            #
+                            # print(hit.start)
+                            # print(hit.end)
+                            # curr.hits.append(hit)
+                            # curr.save()
 
         feature_path = glob.glob(filepath + accession_id + "/*_feature_table.txt.gz")[0]
 
