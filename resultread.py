@@ -225,8 +225,15 @@ def HMMread(path, record=None, expand=False):
                     # If we have a genome record, it means we want to pull to the start and stop codons
                     if expand:
 
-                        start = expandStartPostion(record, start, strand)
-                        end = expandEndPosition(record, end, strand)
+                        # Don't want to expand region1 (the Ig-fold, so don't allow it to do so
+                        if path.split("/")[-1]=='region1':
+                            print ('Override region1 expanding')
+                            pass
+
+                        else:
+
+                            start = expandStartPostion(record, start, strand)
+                            end = expandEndPosition(record, end, strand)
 
 
 

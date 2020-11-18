@@ -126,6 +126,7 @@ class GenomeDiagamShowRegions(FlaskForm):
     showTcB = BooleanField("Show TcB")
     showTcC = BooleanField("Show TcC")
     showChitinase = BooleanField("Show Chitinase")
+    showregion1 = BooleanField("Show Ig-fold")
 
     show_regions = SubmitField("Update regions to show")
 

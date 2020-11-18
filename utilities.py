@@ -25,10 +25,12 @@ import genome_overview
 import getGenomes
 
 region_name_mapper = {"A1": "track1", "A2": "track2", "Chitinase": "track3", "TcdA1": "track4",
-                      "TcB": "track5", "TcC": "track6", "A1_expanded": "track1_expanded", 'A2_expanded': "track2",
+                      "TcB": "track5", "TcC": "track6", "region1" : "track3", "A1_expanded": "track1_expanded", \
+                                                                                       'A2_expanded':
+                          "track2",
                       "Chitinase_expanded": "track3_expanded", "TcdA1_expanded": "track4_expanded", "TcB_expanded":
                           "track5_expanded",
-                      "TcC_expanded": "track6_expanded"}
+                      "TcC_expanded": "track6_expanded", "region1_expanded" : "track3_expanded",}
 
 
 def read_fasta(filename):
@@ -868,6 +870,11 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
                                                  hit.strand, hit.tags)
 
                     if hit.name != None:
+
+                        print ('cheese')
+
+                        print (hit.name)
+                        print (hit.region)
                         hit_details = dict()
                         hit_details['id'] = count
                         hit_details['hit_id'] = str(hit.id)
