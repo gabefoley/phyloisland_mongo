@@ -279,6 +279,39 @@
     font: 12px arial;
 }
 
+
+/* Track 2 is also a stranded track, give it
+   a different set of colours */
+.track7_pos {
+    fill: lightgreen;
+    fill-opacity: .7;
+}
+
+/* When a linear track is zoomed to the point
+   it's text is visible an extra class is added
+   to the element we can hook in to */
+.track7_pos_zoomed {
+    stroke-width: 1px;
+    stroke: #647381;
+}
+
+.track7_neg {
+    fill: lightgreen;
+    fill-opacity: .7;
+}
+
+.track7_neg_zoomed {
+    stroke-width: 1px;
+    stroke: #007300;
+    stroke-opacity: 0.7;
+}
+
+.track7_text {
+    fill: white;
+    font-weight: bold;
+    font: 12px arial;
+}
+
 /* Definitions for first stranded track, colour, stroke */
 .track1_expanded_pos {
     fill: orange;
@@ -465,8 +498,7 @@
 
 
 
-/* Track 2 is also a stranded track, give it
-   a different set of colours */
+
 .track6_expanded_pos {
     fill: magenta;
     fill-opacity: .7;
@@ -496,6 +528,38 @@
     font-weight: bold;
     font: 12px arial;
 }
+
+.track7_expanded_pos {
+    fill: lightgreen;
+    fill-opacity: .7;
+}
+
+/* When a linear track is zoomed to the point
+   it's text is visible an extra class is added
+   to the element we can hook in to */
+.track7_expanded_pos_zoomed {
+    stroke-width: 1px;
+    stroke: #647381;
+}
+
+.track7_expanded_neg {
+    fill: lightgreen;
+    fill-opacity: .7;
+}
+
+.track7_expanded_neg_zoomed {
+    stroke-width: 1px;
+    stroke: #007300;
+    stroke-opacity: 0.7;
+}
+
+.track7_expanded_text {
+    fill: white;
+    font-weight: bold;
+    font: 12px arial;
+}
+
+
 
 
 

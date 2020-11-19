@@ -1439,7 +1439,7 @@ class GenomeDetailView(BaseView):
             session['hidden_type'] = True
 
         if session.get('checked_regions') is None:
-            session['checked_regions'] = ['A1', 'A2', 'TcdA1', 'TcB', 'TcC', 'Chitinase']
+            session['checked_regions'] = ['A1', 'A2', 'TcdA1', 'TcB', 'TcC', 'Chitinase', 'region1']
 
         if session.get('page_choice') is None:
             session['page_choice'] = 0
