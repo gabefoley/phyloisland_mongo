@@ -523,7 +523,11 @@ if args.load_genomes:
     #            "/bacteria/"
 
     # filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/genbank/bacteria/"
-    filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/refseq/bacteria/"
+    # filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/refseq/bacteria/"
+
+    # Just the YP
+    filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201028_Testing_yersinia_pseudotuberculosis" \
+               "/refseq/bacteria/"
 
 
     genome_name = [x for x in os.listdir(filepath) if x != '.DS_Store']

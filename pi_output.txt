@@ -1,0 +1,391 @@
+
+
+Yersinia pestis
+Number of strains present: 158
+13
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+11
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+12
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+11
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+13
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+12
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+9
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+16
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+13
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+11
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+10
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+15
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+0
+
+15
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+9
+TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+9
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+12
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+11
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+11
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+14
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+11
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+15
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+14
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+10
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+9
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+14
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+16
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+13
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+0
+
+15
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+10
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+13
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+14
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+16
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+15
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+13
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+0
+
+15
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+11
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+0
+
+13
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+10
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+15
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+9
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+10
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+0
+
+0
+
+13
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+10
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded A1_expanded
+0
+
+
+NZ_CP010248.1 TcC_expanded
+ Mean: 62.847047427791985
+ Std: 27.33504374533004
+
+NZ_CP010248.1 A2_expanded
+ Mean: 99.94595625509308
+ Std: 0.1985281317239679
+
+NZ_CP010248.1 TcB_expanded
+ Mean: 41.72788029938471
+ Std: 29.028540793359202
+
+NZ_CP010248.1 A1_expanded
+ Mean: 99.79830890286188
+ Std: 0.5482262920383055
+
+Proteus cibarius
+Number of strains present: 20
+7
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded
+0
+
+0
+
+5
+TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded
+0
+
+7
+TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded
+0
+
+0
+
+0
+
+8
+TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded
+0
+
+0
+
+0
+
+5
+TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded
+0
+
+2
+TcC_expanded TcB_expanded
+0
+
+10
+TcC_expanded TcC_expanded TcC_expanded TcC_expanded A2_expanded TcdA1_expanded TcB_expanded TcB_expanded TcB_expanded TcB_expanded
+0
+
+0
+
+
+NZ_CP047288.1 TcC_expanded
+ Mean: 69.80036624501273
+ Std: 30.241510487800447
+
+NZ_CP047288.1 TcdA1_expanded
+ Mean: 99.62703962703965
+ Std: 0.2440605080579456
+
+NZ_CP047288.1 TcB_expanded
+ Mean: 48.8101332136813
+ Std: 37.15522734770115

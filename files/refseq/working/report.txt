@@ -1,0 +1,14 @@
+HistoryId: NCID_1_42268780_130.14.18.97_5555_1592788564_3708370751_0MetA0_S_HStore
+QueryKey: 5
+ReleaseType: RefSeq
+FileType: GENOME_FASTA
+Flat: true
+
+Query title: Search all[filter] AND bacteria[filter] AND "complete genome"[filter]  Sort by: SORTORDER
+Search results count: 19907
+Filtered out 1929 entries that do not have the requested ReleaseType, or are suppressed.
+Entries to download: 17978
+
+GENOME_FASTA files in archive: 17978
+Total size (bytes): 21255142139
+Total time: 2 hours 32 minutes

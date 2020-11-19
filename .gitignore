@@ -12,6 +12,13 @@
 hmm_outputs_old*
 /hmm_outputs_old/*
 
+
+# Notebook loading genomes folders
+/files/load_genomes/*
+/files/load_genomes_4/*
+/files/test_genomes
+
+
 # Notebook result folders
 /RBD_Analysis/results/*
 /RBD_Analysis/profiles/*
