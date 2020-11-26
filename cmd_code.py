@@ -2,7 +2,6 @@ import utilities
 import models
 import getGenomes
 import resultread
-import cmd_code
 import timeit
 import Bio
 from Bio.SeqRecord import SeqRecord

@@ -529,6 +529,10 @@ if args.load_genomes:
     filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201028_Testing_yersinia_pseudotuberculosis" \
                "/refseq/bacteria/"
 
+    # Just the YP
+    filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201119_Testing_Feature_Tables" \
+               "/refseq/bacteria/"
+
 
     genome_name = [x for x in os.listdir(filepath) if x != '.DS_Store']
 
@@ -664,18 +668,26 @@ if args.get_accession_ids:
 if args.check_feature_table:
     genomes = models.GenomeRecords.objects(name='AP018271.1')
 
-
-
     for g in genomes:
+
+        print ('Checking this genome')
+        print (f'{g.name}  {g.species}')
 
         # Get genbank or refseq accession ID
         if not g.refseq_accession_id:
+            print ('It has a Genbank accession ID')
             accession_id = g.genbank_accession_id
             filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/genbank/bacteria/"
         else:
+            print ('It has a RefSeq accession id')
             accession_id = g.refseq_accession_id
             filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/refseq" \
                        "/bacteria/"
+
+        # Load in the feature table
+        feature_path = glob.glob(filepath + accession_id + "/*_feature_table.txt.gz")[0]
+        df = pd.read_csv(feature_path, sep='\t', compression='gzip')
+
 
         for hit in g.hits:
             if 'expanded' in hit.region:
@@ -706,12 +718,7 @@ if args.check_feature_table:
                             # curr.hits.append(hit)
                             # curr.save()
 
-        feature_path = glob.glob(filepath + accession_id + "/*_feature_table.txt.gz")[0]
 
-
-        df = pd.read_csv(feature_path, sep='\t', compression='gzip')
-
-        print(df.head(5))
 
 
 
