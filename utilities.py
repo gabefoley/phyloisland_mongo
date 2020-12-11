@@ -461,6 +461,9 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, se
     while not os.path.exists(tree_path):
         time.sleep(1)
 
+    print ('here is the tag dict')
+    print (tag_dict)
+
     pickle_dict(tag_dict, tag_dict_path)
     pickle_dict(region_dict, region_dict_path)
     pickle_dict(region_order_dict, region_order_dict_path)

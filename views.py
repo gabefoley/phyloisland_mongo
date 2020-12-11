@@ -204,6 +204,25 @@ class UploadView(BaseView):
                     #
                     #     utilities.save_profile(file)
 
+                elif seq_type == 'alignment':
+
+                    with open("static/uploads/" + filename, "rb") as aln_file:
+                        aln = models.AlignmentRecords(name=filename.split(".")[0], alignment=aln_file.read(),
+                                                      tool='UploadedAlignment')
+                        aln.save()
+
+
+                elif seq_type == 'tree':
+                    print ("Uploading a tree")
+
+                    with open("static/uploads/" + filename, "rb") as tree_file:
+
+                        tree = models.TreeRecords(name=filename.split(".")[0], alignment='UploadedTree',
+                                                  tree=tree_file.read(),
+                                                  tool='UploadedTreeToolNotSpecified')
+                        tree.save()
+
+
             except HTTPError as error:
                 flash("There was a HTTP error. Please try again", category='error')
 

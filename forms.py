@@ -22,7 +22,9 @@ class UploadForm(FlaskForm):
     #                    choices=[("protein", "FASTA (amino acids)"), ("nucleotide", "FASTA (nucleotides)"),
     #                             ("species", "Species list"), ("genome", "Genome ID list"), ("profile", "Profile")])
     type = SelectField('What type of file is this?', [validators.DataRequired()],
-                       choices=[("protein", "FASTA (amino acids)"), ("species", "Species list"),  ("profile", "Profile")])
+                       choices=[("protein", "FASTA (amino acids)"), ("species", "Species list"),  ("profile",
+                                                                                                   "Profile"),
+                                ("alignment", "Alignment"), ("tree", "Tree")])
     add_sequence = BooleanField("Add sequences to sequence database?", default="checked")
     add_genome = BooleanField("Search for genomic records?", default="checked")
     single_genome = BooleanField("Retrieve just a single record for each genome?", default="checked")
