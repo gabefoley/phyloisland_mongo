@@ -562,6 +562,7 @@ class TreeView(BaseView):
         tree = None
         tree_select_form = forms.TreeSelectForm()
         tree_download_form = forms.TreeDownloadForm()
+        species_tree_form = forms.SpeciesTreeForm()
 
         if request.method == "POST" and tree_select_form.submit.data:
             tree = models.TreeRecords.objects().get(id=tree_select_form.tree_select_name.data)
@@ -605,9 +606,36 @@ class TreeView(BaseView):
             flash(f"Wrote {download_tree.name} to {tree_path} ")
 
 
+        # We want to make a species tree and annotate our tree with species info
+        elif request.method == "POST" and species_tree_form.make_tree.data:
+            species_tree = models.TreeRecords.objects().get(name=tree_download_form.tree.data)
+
+            # Check if the tree we want to annotate actually has taxids on it
+            if '_taxid_' not in species_tree.tree.decode():
+                flash(f"{species_tree.name} does not have taxonomic IDs annotated on the newick file. Recreate the "
+                      f"Regions file you used to make this tree.", category='error')
+                tree_img = ""
+                ncbi_tree_img = ""
+
+            else:
+                tree_img = utilities.get_species_tree_image(species_tree.tree.decode(), species_tree.name)
+                tree_img = "/" + tree_img + "#" + utilities.randstring(5)
+                ncbi_tree_img = tree_img.split(".png")[0] + "_ncbi.png" + "#" + utilities.randstring(5)
+
+                print (tree_img)
+                print (ncbi_tree_img)
+
+
+
+
+
+
+
+
 
         elif request.method == "GET":
             tree = None
+            species_tree = None
             # if models.TreeRecords.objects().count() == 0:
             #     tree = None
             # else:
@@ -626,10 +654,13 @@ class TreeView(BaseView):
             tree_img = "/" + tree_img + "#" + utilities.randstring(5)
 
             print(tree_img)
+            ncbi_tree_img = ""
             # if tree_img:
             #     tree_img = tree_img.split("static/")[1]
-        else:
+        elif not species_tree:
+
             tree_img = ""
+            ncbi_tree_img = ""
 
         profile_choices = [(rtp.rtp_id, rtp.rtp_id) for rtp in models.RegionToProfileRecords.objects()]
 
@@ -651,8 +682,13 @@ class TreeView(BaseView):
 
         tree_download_form.tree.choices = tree_choices
 
+        species_tree_form.tree.choices = tree_choices
+
+
+
         return self.render('trees.html', tree_select_form=tree_select_form, tree_download_form=tree_download_form,
-                           tree_img=tree_img)
+                           species_tree_form=species_tree_form,
+                           tree_img=tree_img, ncbi_tree_img=ncbi_tree_img)
 
 
 class DownloadFastaView(BaseView):

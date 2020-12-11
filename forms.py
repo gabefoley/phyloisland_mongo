@@ -230,6 +230,9 @@ class TreeDownloadForm(FlaskForm):
     tree = SelectField('Select tree to download ', choices=[])
     download_tree = SubmitField('Download tree')
 
+class SpeciesTreeForm(FlaskForm):
+    tree = SelectField('Select tree to annotate species ', choices=[])
+    make_tree = SubmitField('Annotate species')
 
 class AlignmentDownloadForm(FlaskForm):
     alignment = SelectField('Select alignment to download ', choices=[])

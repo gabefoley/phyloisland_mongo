@@ -19,6 +19,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO, AlignIO, SearchIO
 from Bio.Align.Applications import MuscleCommandline
 import pickle
+import ete3
 import genome_overview
 # from genome_overview import models
 
@@ -490,6 +491,62 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, se
         if os.path.isfile(img_path):
             return img_path
 
+
+def highlight_taxonomy(tree):
+    ts = ete3.TreeStyle()
+    # disable default PhyloTree Layout
+    ts.layout_fn = lambda x: True
+
+    for n in tree.traverse():
+
+        if not n.is_leaf():
+            N = ete3.TextFace(n.sci_name + " (" + n.rank + ")", fsize=14, fgcolor="black")
+            n.add_face(N, 12, position="branch-top")
+
+            nstyle = ete3.NodeStyle()
+            nstyle["shape"] = "sphere"
+            nstyle["fgcolor"] = 'blue'
+            nstyle["size"] = 10
+            nstyle["hz_line_type"] = 1
+            n.set_style(nstyle)
+
+        else:
+            pass
+
+    return tree, ts
+
+
+def get_species_tree_image(tree, tree_name):
+    img_path = f"static/img/trees/{tree_name}.png"
+    ncbi_img_path = f"static/img/trees/{tree_name}_ncbi.png"
+
+    stree = ete3.PhyloTree(tree, sp_naming_function=lambda name: name.split('_taxid_')[1].split("_")[0])
+
+
+    # Create annotated species tree image
+    tax2names, tax2lineages, tax2rank = stree.annotate_ncbi_taxa()
+    tcb, ts = highlight_taxonomy(stree)
+    stree.render(img_path, tree_style=ts, dpi=300)
+
+
+
+    # Create NCBI species tree image
+    ncbi = ete3.NCBITaxa()
+    taxids = get_taxids(stree)
+    ncbi_tree = ncbi.get_topology(taxids)
+    ncbi_tree, ts = highlight_taxonomy(ncbi_tree)
+    ncbi_tree.render(ncbi_img_path, tree_style=ts, dpi=300)
+
+    if os.path.isfile(img_path):
+        return img_path
+
+
+# Get out a list of the taxonomic IDs stored in the _taxids_ annotation on a tree
+def get_taxids(tree):
+    taxids = []
+    for n in tree.traverse():
+        taxids.append(n.taxid)
+    return taxids
 
 def get_ml_go_tree_image(tree, name, ancestral_orders, ref_ml_go_dict):
     tree_path = f"./tmp/{name}_ml.nwk"
