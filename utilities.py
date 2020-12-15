@@ -31,7 +31,7 @@ region_name_mapper = {"A1": "track1", "A2": "track2", "Chitinase": "track3", "Tc
                           "track2",
                       "Chitinase_expanded": "track3_expanded", "TcdA1_expanded": "track4_expanded", "TcB_expanded":
                           "track5_expanded",
-                      "TcC_expanded": "track6_expanded", "region1_expanded" : "track7_expanded",}
+                      "TcC_expanded": "track6_expanded", "region1_expanded" : "track7_expanded", "EXISTING:": "track8"}
 
 
 def read_fasta(filename):
@@ -875,6 +875,7 @@ def check_with_profile(ids, region):
 
 
 def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False, show_stop_codons=False,
+                     show_existing_features=False,
                      checked_regions=None):
     """
     Format the items in a genome correctly for a Genome Detail view
@@ -889,6 +890,9 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
     region_list = []
     genomesize = len(genome.sequence)
 
+    # show_existing_features == bool(show_existing_features)
+
+
     # print ('CHECKED REGIONS IS ')
     # print (checked_regions)
 
@@ -902,12 +906,10 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
 
     for count, hit in enumerate(genome.hits):
 
-        # print ('count is ')
-        #
-        # print (count)
-
         if ((hits == 'all') or ((hits == 'initial') and ('expanded' not in hit.region)) or ((hits == 'expanded') and
-                                                                                                    'expanded' in hit.region)):
+                                                                                                    'expanded' in
+                                                                                                    hit.region) or
+                (show_existing_features and 'EXISTING' in hit.region)):
 
             #
             # print ('hidden type is ' + str(hidden_type))
@@ -916,7 +918,7 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
 
 
             if (checked_regions == None) or hit.region in checked_regions or hit.region.split("_expanded")[
-                0] in checked_regions:
+                0] in checked_regions or (show_existing_features and 'EXISTING' in hit.region):
 
                 if ((hidden_type == False) or (hidden_type == True and 'hidden' not in hit.tags)):
 
@@ -929,7 +931,10 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
                             hit.end) + " " + \
                                                  hit.strand, hit.tags)
 
+
                     if hit.name != None:
+
+
 
                         hit_details = dict()
                         hit_details['id'] = count
@@ -940,9 +945,11 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
                         hit_details['score'] = hit.score
                         # hit_details['strand'] = 1 if count % 2 == 0 else -1
 
+
+
                         # We set a fake strand here just to force TcC and TcdA1 to a different track
                         if hit.region == 'TcdA1' or hit.region == 'TcdA1_expanded' or hit.region == 'TcC' or \
-                                        hit.region == 'TcC_expanded':
+                                        hit.region == 'TcC_expanded' or hit.region.startswith("EXISTING:"):
                             hit_details['strand'] = -1
                         else:
                             hit_details['strand'] = 1
@@ -1027,7 +1034,7 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
 
     print('stop_codons')
     print(stop_codon_glyphs)
-    tracks = build_tracks(items, stop_codon_glyphs, promoter_glyphs)
+    tracks = build_tracks(items, stop_codon_glyphs, promoter_glyphs, show_existing_features)
 
     return tracks, hit_tags, genomesize
 
@@ -1035,7 +1042,7 @@ def get_genome_items(genome, hits='all', hidden_type=True, show_promoters=False,
 # def get_hit_tags((hits, hits='all', hidden_type=True, checked_regions=None):):
 
 
-def build_tracks(items, stop_codons, promoters):
+def build_tracks(items, stop_codons, promoters, show_existing_features):
     tracks = []
 
     for region_name in items:
@@ -1053,6 +1060,17 @@ def build_tracks(items, stop_codons, promoters):
                                        'name'] + " [" + region['score'] + "]",
                            'strand': region['strand'], 'actual_strand': region['actual_strand']}
             regions.append(region_dict)
+
+        # if show_existing_features:
+        #     print ('show features')
+        #     print (region_name)
+
+        # if show_existing_features and region_name.startswith('EXISTING'):
+        #     print('&&&')
+        #     print(region_name)
+            region_name = region_name.split(" ")[0]
+
+
 
         track = {'trackName': region_name_mapper[region_name],
                  'trackType': "stranded",

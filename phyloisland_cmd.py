@@ -7,6 +7,7 @@ import models
 import genome_overview
 from flask import Flask
 from flask_mongoengine import MongoEngine
+from bson.objectid import ObjectId
 import getGenomes
 import gzip
 import refseq_code
@@ -666,7 +667,9 @@ if args.get_accession_ids:
 
 
 if args.check_feature_table:
-    genomes = models.GenomeRecords.objects(name='AP018271.1')
+    genomes = models.GenomeRecords.objects(name='NZ_CP010029.1')
+
+    print ('Starting')
 
     for g in genomes:
 
@@ -681,35 +684,51 @@ if args.check_feature_table:
         else:
             print ('It has a RefSeq accession id')
             accession_id = g.refseq_accession_id
-            filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/refseq" \
-                       "/bacteria/"
+            filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201119_Testing_Feature_Tables/refseq/bacteria/"
+
+            # filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/refseq" \
+            #            "/bacteria/"
 
         # Load in the feature table
         feature_path = glob.glob(filepath + accession_id + "/*_feature_table.txt.gz")[0]
         df = pd.read_csv(feature_path, sep='\t', compression='gzip')
-
+        df.rename(columns={'# feature': 'feature'}, inplace=True)
 
         for hit in g.hits:
-            if 'expanded' in hit.region:
-                print (hit.region)
-                print (hit.start)
-                print (hit.end)
+            if 'expanded' in hit.region and not 'region1' in hit.region:
+                # print (hit.region)
+                # print (hit.start)
+                # print (hit.end)
 
-                genome_interval = pd.Interval(hit.start, hit.end, closed='both')
+                genome_interval = pd.Interval(int(hit.start), int(hit.end), closed='both')
 
                 filtered = df.loc[df['genomic_accession'] == g.name]
 
+                print (filtered.head(2))
+
                 for x in filtered.itertuples():
                     if x.feature == 'CDS':
-                        if not (x.start > g.end) and not (x.end < g.start):
+                        if not (x.start > int(hit.end)) and not (x.end < int(hit.start)):
                             check_interval = pd.Interval(x.start, x.end, closed='both')
+
+                            print ('checking')
 
                             if check_interval.overlaps(genome_interval):
                                 print(x.name, x.product_accession, x.start, x.end)
+                                object_id = ObjectId()
+
                             #
-                            # hit = models.Hits(object_id, record.name, new_reg, new_score, new_start, new_end,
-                            #                   expand,
-                            #                   strand, sequence)
+                                hit = models.Hits(object_id,
+                                                  g.name,
+                                                  "EXISTING:" + " " + x.name + " " + str(x.product_accession),
+                                                  '-1',
+                                                  str(x.start),
+                                                  str(x.end),
+                                                  True,
+                                                  hit.strand, '')
+
+                                g.hits.append(hit)
+                                g.save()
                             #
                             # print('We are adding a refseq sequence in')
                             #

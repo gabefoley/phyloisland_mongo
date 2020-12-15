@@ -153,6 +153,13 @@
 
             <br>
 
+            {{ select_form.show_existing_features }}
+
+
+            {{ select_form.show_existing_features.label (class_= "genome-search") }}
+
+            <br>
+
             <br>
 
             </form>
@@ -336,6 +343,20 @@
 
     {% endif %}
 
+                {% if show_existing_features == true %}
+        <script>
+            $("#show_existing_features").prop('checked', true);
+
+        </script>
+
+    {% else %}
+        <script>
+            $("#show_existing_features").prop('checked', false);
+
+        </script>
+
+    {% endif %}
+
 
     {% if untagged == true %}
         <script>
@@ -509,11 +530,12 @@
             var page_choice = $('#page').val()
             var show_promoters = $('#show_promoters').is(":checked")
             var show_stop_codons = $('#show_stop_codons').is(":checked")
+            var show_existing_features = $('#show_existing_features').is(":checked")
 
 
 
             return [genome, show_hits, hidden_hits, checkedregions, untagged, limit_genomes, genome_tagged,
-                page_choice, show_promoters, show_stop_codons]
+                page_choice, show_promoters, show_stop_codons, show_existing_features]
 
         }
 
@@ -534,6 +556,7 @@
                         show_promoters = details[8];
 
                                     show_stop_codons = details[9];
+                                    show_existing_features = details[10];
 
 
 
@@ -553,6 +576,7 @@
                     'page_choice': page_choice,
                     'show_promoters': show_promoters,
                     'show_stop_codons': show_stop_codons,
+                    'show_existing_features' : show_existing_features,
                     'passed_from': passed_from
                 }),
                 contentType: 'application/json;charset=UTF-8',
@@ -619,6 +643,12 @@
              $('#show_stop_codons').on('change', function (e) {
 
             submit_details('show_stop_codons')
+
+        });
+
+        $('#show_existing_features').on('change', function (e) {
+
+            submit_details('show_existing_features')
 
         });
 

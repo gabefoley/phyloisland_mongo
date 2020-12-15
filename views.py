@@ -29,7 +29,8 @@ from ete3 import PhyloTree
 from wtforms import SelectField
 import mongoengine
 
-ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2', 'region3', 'region4']
+ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2', 'region3', 'region4',
+             'existing_feature']
 
 ref_mlgo_dict = {'A1': '1', 'A2': '2', 'Chitinase': '3', 'TcB': '4', 'TcC': '5', 'TcdA1': '6'}
 mlgo_ref_dict = {'1': 'A1', '2': 'A2', '3': 'Chitinase', '4': 'TcB', '5': 'TcC', '6': 'TcdA1'}
@@ -1490,6 +1491,9 @@ class GenomeDetailView(BaseView):
         if session.get('show_stop_codons') is None:
             session['show_stop_codons'] = False
 
+        if session.get('show_existing_features') is None:
+            session['show_existing_features'] = False
+
         if session.get('hidden_type') is None:
             session['hidden_type'] = True
 
@@ -1538,6 +1542,11 @@ class GenomeDetailView(BaseView):
         limit_genomes = session['limit_genomes']
 
         genome_tagged = session['genome_tagged']
+
+        print ('ok and now is')
+        print (session['show_existing_features'])
+        print (session['show_stop_codons'])
+
 
         # untagged = False
 
@@ -1588,11 +1597,16 @@ class GenomeDetailView(BaseView):
 
                 flash('Genome was not found in the database', category='error')
 
+
             tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
                                                                       hidden_type=session[
                                                                           'hidden_type'], show_promoters=session[
                     'show_promoters'],
-                                                                      show_stop_codons=session['show_stop_codons'],
+                                                                      show_stop_codons=bool(session[
+                                                                                                'show_stop_codons'][0]),
+                                                                      show_existing_features=session[
+                                                                                                 'show_existing_features'][0] == 'True',
+
                                                                       checked_regions=session['checked_regions'])
 
             associated_dict = utilities.get_associated_dict(genome)
@@ -1604,6 +1618,10 @@ class GenomeDetailView(BaseView):
             # print('tags was ')
             #
             # print(tags)
+
+
+
+
 
             return self.render('genomedetail.html', select_form=select_form, genome_by_name_form=genome_by_name_form,
                                page_form=page_form,
@@ -1618,6 +1636,7 @@ class GenomeDetailView(BaseView):
                                show_promoters=
                                session['show_promoters'],
                                show_stop_codons=session['show_stop_codons'],
+                               show_existing_features = session['show_existing_features'],
                                checked_regions=session['checked_regions'],
                                genomesize=genomesize)
 
@@ -1683,11 +1702,20 @@ class GenomeDetailView(BaseView):
             else:
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
+            print ('candy')
+
+            print (session['show_existing_features'])
+            print (bool(session['show_existing_features']))
+            print (session['show_existing_features'][0] == True)
+            print (bool(session['show_existing_features'] == 'True'))
+
             tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
                                                                       hidden_type=session[
                                                                           'hidden_type'], show_promoters=session[
                     'show_promoters'],
-                                                                      show_stop_codons=session['show_stop_codons'],
+                                                                      show_stop_codons=session['show_stop_codons'][0],
+                                                                      show_existing_features=session[
+                                                                          'show_existing_features'][0],
                                                                       checked_regions=session['checked_regions'])
 
             associated_dict = utilities.get_associated_dict(genome)
@@ -1705,6 +1733,8 @@ class GenomeDetailView(BaseView):
                                show_promoters=
                                session['show_promoters'],
                                show_stop_codons=session['show_stop_codons'],
+                               show_existing_features=session['show_existing_features'],
+
                                checked_regions=session['checked_regions'],
                                genomesize=genomesize)
 
@@ -1796,7 +1826,7 @@ class ProfileView(ModelView):
         #
         # ar = form_rules()
         # #
-        # ref_names = ['region1', 'poopcity']
+        # ref_names = ['region1']
         # #
         # for name in ref_names:
         #     exec(
@@ -2214,7 +2244,8 @@ def show_hits():
     session['limit_genomes'] = request.json['limit_genomes']
     session['genome_tagged'] = [request.json['genome_tagged']]
     session['show_promoters'] = request.json['show_promoters']
-    session['show_stop_codons'] = request.json['show_stop_codons']
+    session['show_stop_codons'] = request.json['show_stop_codons'],
+    session['show_existing_features'] = request.json['show_existing_features'],
 
     session['passed_from'] = request.json['passed_from']
 

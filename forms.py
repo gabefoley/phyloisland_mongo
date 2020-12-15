@@ -94,6 +94,7 @@ class GenomeDiagramSelectForm(FlaskForm):
 
     show_promoters = BooleanField("Show promoters")
     show_stop_codons = BooleanField("Show stop codons")
+    show_existing_features = BooleanField("Show existing features")
 
 class GenomeByNameForm(FlaskForm):
     genome_by_name = StringField('Search by name', [validators.DataRequired()])

@@ -312,6 +312,37 @@
     font: 12px arial;
 }
 
+
+.track8_pos {
+    fill: grey;
+    fill-opacity: .7;
+}
+
+/* When a linear track is zoomed to the point
+   it's text is visible an extra class is added
+   to the element we can hook in to */
+.track8_pos_zoomed {
+    stroke-width: 1px;
+    stroke: #647381;
+}
+
+.track8_neg {
+    fill: grey;
+    fill-opacity: .7;
+}
+
+.track8_neg_zoomed {
+    stroke-width: 1px;
+    stroke: #007300;
+    stroke-opacity: 0.7;
+}
+
+.track8_text {
+    fill: white;
+    font-weight: bold;
+    font: 12px arial;
+}
+
 /* Definitions for first stranded track, colour, stroke */
 .track1_expanded_pos {
     fill: orange;
@@ -560,7 +591,35 @@
 }
 
 
+.track8_expanded_pos {
+    fill: grey;
+    fill-opacity: .7;
+}
 
+/* When a linear track is zoomed to the point
+   it's text is visible an extra class is added
+   to the element we can hook in to */
+.track8_expanded_pos_zoomed {
+    stroke-width: 1px;
+    stroke: #647381;
+}
+
+.track8_expanded_neg {
+    fill: grey;
+    fill-opacity: .7;
+}
+
+.track8_expanded_neg_zoomed {
+    stroke-width: 1px;
+    stroke: #007300;
+    stroke-opacity: 0.7;
+}
+
+.track8_expanded_text {
+    fill: white;
+    font-weight: bold;
+    font: 12px arial;
+}
 
 
 /* The GC Plot type track, give the stroke a colour */
