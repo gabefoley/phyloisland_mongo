@@ -1702,20 +1702,20 @@ class GenomeDetailView(BaseView):
             else:
                 genome = models.GenomeRecords.objects.get(id=session['genome'])
 
-            print ('candy')
-
-            print (session['show_existing_features'])
-            print (bool(session['show_existing_features']))
-            print (session['show_existing_features'][0] == True)
-            print (bool(session['show_existing_features'] == 'True'))
+            # print ('candy')
+            #
+            # print (session['show_existing_features'])
+            # print (bool(session['show_existing_features']))
+            # print (session['show_existing_features'][0] == True)
+            # print (bool(session['show_existing_features'] == 'True'))
 
             tracks, hit_tags, genomesize = utilities.get_genome_items(genome, hits=session['hits'],
                                                                       hidden_type=session[
                                                                           'hidden_type'], show_promoters=session[
                     'show_promoters'],
-                                                                      show_stop_codons=session['show_stop_codons'][0],
+                                                                      show_stop_codons=session['show_stop_codons'],
                                                                       show_existing_features=session[
-                                                                          'show_existing_features'][0],
+                                                                          'show_existing_features'],
                                                                       checked_regions=session['checked_regions'])
 
             associated_dict = utilities.get_associated_dict(genome)

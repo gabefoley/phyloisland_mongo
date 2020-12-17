@@ -49,9 +49,9 @@ parser.add_argument("--sc", help="run full refseq check", action="store_true")
 parser.add_argument("--create_csv", help="create csv", action="store_true")
 
 parser.add_argument("--query_db", help="query db", action="store_true")
-parser.add_argument("--load_genomes", help="load genomes", action="store_true")
+parser.add_argument("--load_genomes", help="load genomes")
 parser.add_argument("--get_accession_ids", help="get accession ids", action="store_true")
-parser.add_argument("--check_feature_table", help="check feature table", action="store_true")
+parser.add_argument("--check_feature_table", help="check feature table")
 
 # parser.add_argument("-d", "--database_name", help="database name", required=True)
 
@@ -519,7 +519,15 @@ if args.query_db:
 
 if args.load_genomes:
 
-    filepath = "./files/test_genomes/"
+    if not args.load_genomes[-1] == "/":
+        filepath = args.load_genomes + "/"
+    else:
+        filepath = args.load_genomes
+
+
+
+
+    # filepath = "./files/test_genomes/"
     # filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200817_Checking_full_9000_genomes/genbank" \
     #            "/bacteria/"
 
@@ -527,12 +535,18 @@ if args.load_genomes:
     # filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/refseq/bacteria/"
 
     # Just the YP
-    filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201028_Testing_yersinia_pseudotuberculosis" \
-               "/refseq/bacteria/"
+    # filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201028_Testing_yersinia_pseudotuberculosis" \
+    #            "/refseq/bacteria/"
+    #
+    # # Just the YP
+    # filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201119_Testing_Feature_Tables" \
+    #            "/refseq/bacteria/"
 
-    # Just the YP
-    filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201119_Testing_Feature_Tables" \
-               "/refseq/bacteria/"
+    # Octopus - eight genomes four each from genbank / refseq with different conditions for testing feature tables
+    # filepath = '/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201215_Checking_all_types_reading_features' \
+    #            '/genbank/bacteria/'
+
+
 
 
     genome_name = [x for x in os.listdir(filepath) if x != '.DS_Store']
@@ -667,8 +681,22 @@ if args.get_accession_ids:
 
 
 if args.check_feature_table:
-    genomes = models.GenomeRecords.objects(name='NZ_CP010029.1')
+    genomes = models.GenomeRecords.objects()
 
+    print (args.check_feature_table)
+
+    if not args.check_feature_table[-1] == "/":
+        path = args.check_feature_table + "/"
+    else:
+        path = args.check_feature_table
+
+    genbank_path = path + "genbank/bacteria/"
+
+    refseq_path = path + "refseq/bacteria/"
+
+    print ('Base path is ' + path)
+    print ('Genbank path is ' + genbank_path)
+    print ('Refseq path is ' + refseq_path)
     print ('Starting')
 
     for g in genomes:
@@ -680,16 +708,22 @@ if args.check_feature_table:
         if not g.refseq_accession_id:
             print ('It has a Genbank accession ID')
             accession_id = g.genbank_accession_id
-            filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/genbank/bacteria/"
+            filepath = genbank_path
         else:
             print ('It has a RefSeq accession id')
             accession_id = g.refseq_accession_id
-            filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20201119_Testing_Feature_Tables/refseq/bacteria/"
+            filepath = refseq_path
+            if not os.path.exists(filepath + accession_id):
+                print('No entry for a RefSeq id in the feature table folder')
+                accession_id = g.genbank_accession_id
+                filepath = genbank_path
+
 
             # filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/refseq" \
             #            "/bacteria/"
 
         # Load in the feature table
+        print ("Feature table path is " + filepath + accession_id)
         feature_path = glob.glob(filepath + accession_id + "/*_feature_table.txt.gz")[0]
         df = pd.read_csv(feature_path, sep='\t', compression='gzip')
         df.rename(columns={'# feature': 'feature'}, inplace=True)
