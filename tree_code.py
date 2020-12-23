@@ -215,6 +215,11 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
     # Get the colours for each extant genome
     for node in tree.iter_descendants("postorder"):
         node_style = ""
+
+        # Force internals to be black
+        if not node.is_leaf():
+            colour = 'black'
+
         if (collapse_on_genome_tags and continue_wo_collapse(node) == True) or node.is_leaf():
             if node.is_leaf():
                 node.show_leaf_name = True
@@ -323,7 +328,7 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                 colour = 'black'
 
         else:
-            #             print ('collapse')
+
             if node.name not in highlight_nodes:
 
                 if collapse_on_genome_tags:
