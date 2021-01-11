@@ -477,7 +477,8 @@ if args.create_csv:
 
     sorted_dict = sorted(species_dict.items(), key=lambda x: len(x[1]), reverse=True)
 
-    df = pd.DataFrame()
+    df = pd.DataFrame(columns=['species', 'refseq_id', 'name', 'description', 'assembly_name', 'assembly_level' ,
+                               'plasmid', 'hit_num','Complete'])
 
     for entry in sorted(species_dict.items(), key=lambda x: len(x[1]), reverse=True):
 
@@ -486,12 +487,25 @@ if args.create_csv:
         # print(entry[0], len(entry[1]))
 
         for genome in entry[1]:
+            entry_dict['plasmid'] = genome.plasmid
+
             entry_dict['species'] = genome.species
             entry_dict['name'] = genome.name
             entry_dict['description'] = genome.description
+            entry_dict['assembly_level'] = genome.assembly_level
+            entry_dict['assembly_name'] = genome.assembly_name
+            entry_dict['refseq_id'] = genome.refseq_accession_id
+
+
             expanded_hits = [x for x in genome.hits if 'expanded' in
                              x.region and
                              'TcB_BD' not in x.region]
+            TcC_hits = [x for x in genome.hits if 'TcC_expanded' in x.region]
+            TcB_hits = [x for x in genome.hits if 'TcB_expanded' in x.region]
+            TcdA1_hits = [x for x in genome.hits if 'TcdA1_expanded' in x.region]
+            A1_hits = [x for x in genome.hits if 'A1_expanded' in x.region]
+            A2_hits = [x for x in genome.hits if 'A2_expanded' in x.region]
+            complete = True if len(TcC_hits) > 0 and len(TcB_hits) > 0 and (len(TcdA1_hits) > 0 or len(A2_hits) > 0) else False
 
             # print(len(expanded_hits))
             # print(" ".join([x.region for x in expanded_hits]))
@@ -499,10 +513,18 @@ if args.create_csv:
             entry_dict['hit_num'] = len(expanded_hits)
             entry_dict['all_hits'] = " ".join([x.region for x in expanded_hits])
 
+            entry_dict['TcC_count'] = len(TcC_hits)
+            entry_dict['TcB_count'] = len(TcB_hits)
+            entry_dict['TcdA1_count'] = len(TcdA1_hits)
+            entry_dict['A1_count'] = len(A1_hits)
+            entry_dict['A2_count'] = len(A2_hits)
+            entry_dict['Complete'] = complete
+
+
             print (entry_dict)
 
             df = df.append(entry_dict, ignore_index=True)
-    df.to_csv("./pi_output_gabepulse4.csv")
+    df.to_csv("./proteus_rs.csv")
 
 
 
@@ -699,6 +721,7 @@ if args.check_feature_table:
     print ('Refseq path is ' + refseq_path)
     print ('Starting')
 
+
     for g in genomes:
 
         print ('Checking this genome')
@@ -717,6 +740,9 @@ if args.check_feature_table:
                 print('No entry for a RefSeq id in the feature table folder')
                 accession_id = g.genbank_accession_id
                 filepath = genbank_path
+                if not os.path.exists(filepath + accession_id):
+                    print ('No entry for either Refseq or Genbank in the feature table folder ')
+
 
 
             # filepath = "/Users/gabefoley/Dropbox/PhD/Projects/Phylo_Island/2020/20200831_Getting_just_matches/refseq" \
@@ -724,6 +750,7 @@ if args.check_feature_table:
 
         # Load in the feature table
         print ("Feature table path is " + filepath + accession_id)
+
         feature_path = glob.glob(filepath + accession_id + "/*_feature_table.txt.gz")[0]
         df = pd.read_csv(feature_path, sep='\t', compression='gzip')
         df.rename(columns={'# feature': 'feature'}, inplace=True)
@@ -738,14 +765,12 @@ if args.check_feature_table:
 
                 filtered = df.loc[df['genomic_accession'] == g.name]
 
-                print (filtered.head(2))
+                # print (filtered.head(2))
 
                 for x in filtered.itertuples():
                     if x.feature == 'CDS':
                         if not (x.start > int(hit.end)) and not (x.end < int(hit.start)):
                             check_interval = pd.Interval(x.start, x.end, closed='both')
-
-                            print ('checking')
 
                             if check_interval.overlaps(genome_interval):
                                 print(x.name, x.product_accession, x.start, x.end)
