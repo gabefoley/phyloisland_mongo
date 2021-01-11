@@ -524,7 +524,7 @@ if args.create_csv:
             print (entry_dict)
 
             df = df.append(entry_dict, ignore_index=True)
-    df.to_csv("./proteus_rs.csv")
+    df.to_csv("./database_dump.csv")
 
 
 

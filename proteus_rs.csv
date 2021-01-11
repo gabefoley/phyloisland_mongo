@@ -1,0 +1,434 @@
+,species,refseq_id,name,description,assembly_name,assembly_level,plasmid,hit_num,Complete,A1_count,A2_count,TcB_count,TcC_count,TcdA1_count,all_hits
+0,Proteus mirabilis,GCF_001061595.1,JVTO01,JVTO01,ASM106159v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+1,Proteus mirabilis,GCF_004570075.1,SPTN01,SPTN01,ASM457007v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+2,Proteus mirabilis,GCF_000783575.2,NZ_CP026062.1,"NZ_CP026062.1 Proteus mirabilis strain FDAARGOS_81 chromosome, complete genome",ASM78357v2,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+3,Proteus mirabilis,GCF_009907015.1,JAAATT01,JAAATT01,ASM990701v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+4,Proteus mirabilis,GCF_011383045.1,NZ_CP049942.1,"NZ_CP049942.1 Proteus mirabilis strain XH1569 chromosome, complete genome",ASM1138304v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+5,Proteus mirabilis,GCF_010590845.1,VKTS01,VKTS01,ASM1059084v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+6,Proteus mirabilis,GCF_900455195.1,UGTX01,UGTX01,40295_E02,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+7,Proteus mirabilis,GCF_001553525.1,LSGS01,LSGS01,ASM155352v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+8,Proteus mirabilis,GCF_011602825.1,JAAOMZ01,JAAOMZ01,ASM1160282v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+9,Proteus mirabilis,GCF_009718785.1,WNBF01,WNBF01,ASM971878v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+10,Proteus mirabilis,GCF_014212675.1,JACKXU01,JACKXU01,ASM1421267v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+11,Proteus mirabilis,GCF_014212535.1,JACKXM01,JACKXM01,ASM1421253v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+12,Proteus mirabilis,GCF_004569205.1,SPSR01,SPSR01,ASM456920v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+13,Proteus mirabilis,GCF_004570235.1,SPSX01,SPSX01,ASM457023v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+14,Proteus mirabilis,GCF_004570175.1,SPSY01,SPSY01,ASM457017v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+15,Proteus mirabilis,GCF_000160755.1,ACLE01,ACLE01,ASM16075v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+16,Proteus mirabilis,GCF_013256075.1,NZ_CP053898.1,"NZ_CP053898.1 Proteus mirabilis strain YPM35 chromosome, complete genome",ASM1325607v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+17,Proteus mirabilis,GCF_013256075.1,NZ_CP053899.1,"NZ_CP053899.1 Proteus mirabilis strain YPM35 plasmid pJPM35-1, complete sequence",ASM1325607v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+18,Proteus mirabilis,GCF_013256075.1,NZ_CP053900.1,"NZ_CP053900.1 Proteus mirabilis strain YPM35 plasmid pJPM35-2, complete sequence",ASM1325607v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+19,Proteus mirabilis,GCF_013256075.1,NZ_CP053901.1,"NZ_CP053901.1 Proteus mirabilis strain YPM35 plasmid pJPM35-3, complete sequence",ASM1325607v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+20,Proteus mirabilis,GCF_004570665.1,SPTG01,SPTG01,ASM457066v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+21,Proteus mirabilis,GCF_013344565.1,JABVMA01,JABVMA01,ASM1334456v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+22,Proteus mirabilis,GCF_015694005.1,NZ_CP065145.1,"NZ_CP065145.1 Proteus mirabilis strain PmBJ023 chromosome, complete genome",ASM1569400v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+23,Proteus mirabilis,GCF_008195605.1,NZ_CP043332.1,"NZ_CP043332.1 Proteus mirabilis strain CRPM10 chromosome, complete genome",ASM819560v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+24,Proteus mirabilis,GCF_008195605.1,NZ_CP043333.1,"NZ_CP043333.1 Proteus mirabilis strain CRPM10 plasmid pNDM-5, complete sequence",ASM819560v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+25,Proteus mirabilis,GCF_000972665.1,LANL01,LANL01,ASM97266v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+26,Proteus mirabilis,GCF_003856195.1,RQSG01,RQSG01,ASM385619v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+27,Proteus mirabilis,GCF_011602865.1,JAAONO01,JAAONO01,ASM1160286v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+28,Proteus mirabilis,GCF_002944495.1,NZ_CP026571.1,"NZ_CP026571.1 Proteus mirabilis strain BC11-24 chromosome, complete genome",ASM294449v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+29,Proteus mirabilis,GCF_011603015.1,JAAONJ01,JAAONJ01,ASM1160301v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+30,Proteus mirabilis,GCF_001066855.1,JUXR01,JUXR01,ASM106685v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+31,Proteus mirabilis,GCF_010590805.1,VKTR01,VKTR01,ASM1059080v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+32,Proteus mirabilis,GCF_004569245.1,SPSS01,SPSS01,ASM456924v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+33,Proteus mirabilis,GCF_003583505.1,QXIN01,QXIN01,ASM358350v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+34,Proteus mirabilis,GCF_000755485.1,JOVJ01,JOVJ01,ASM75548v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+35,Proteus mirabilis,GCF_014212635.1,JACKXR01,JACKXR01,ASM1421263v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+36,Proteus mirabilis,GCF_011067125.1,JAAMPE01,JAAMPE01,ASM1106712v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+37,Proteus mirabilis,GCF_009749175.1,RCIJ01,RCIJ01,ASM974917v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+38,Proteus mirabilis,GCF_002310875.1,NZ_CP017082.1,"NZ_CP017082.1 Proteus mirabilis strain T21 chromosome, complete genome",ASM231087v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+39,Proteus mirabilis,GCF_002310875.1,NZ_CP017083.1,"NZ_CP017083.1 Proteus mirabilis strain T21 plasmid pT211, complete sequence",ASM231087v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+40,Proteus mirabilis,GCF_002310875.1,NZ_CP017084.1,"NZ_CP017084.1 Proteus mirabilis strain T21 plasmid pT212, complete sequence",ASM231087v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+41,Proteus mirabilis,GCF_004570275.1,SPSZ01,SPSZ01,ASM457027v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+42,Proteus mirabilis,GCF_004570765.1,SPTE01,SPTE01,ASM457076v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+43,Proteus mirabilis,GCF_001060285.1,JWCS01,JWCS01,ASM106028v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+44,Proteus mirabilis,GCF_001640165.1,LWDB01,LWDB01,ASM164016v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+45,Proteus mirabilis,GCF_015560685.1,JADMSH01,JADMSH01,ASM1556068v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+46,Proteus mirabilis,GCF_015693985.1,NZ_CP065144.1,"NZ_CP065144.1 Proteus mirabilis strain PmBJ024 chromosome, complete genome",ASM1569398v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+47,Proteus mirabilis,GCF_004569255.1,SPST01,SPST01,ASM456925v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+48,Proteus mirabilis,GCF_009183705.1,WEKI01,WEKI01,ASM918370v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+49,Proteus mirabilis,GCF_014212565.1,JACKXP01,JACKXP01,ASM1421256v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+50,Proteus mirabilis,GCF_001076695.1,JVJQ01,JVJQ01,ASM107669v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+51,Proteus mirabilis,GCF_004347585.1,SLUF01,SLUF01,ASM434758v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+52,Proteus mirabilis,GCF_013184655.1,JAAQRB01,JAAQRB01,ASM1318465v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+53,Proteus mirabilis,GCF_012516515.1,NZ_CP051260.1,"NZ_CP051260.1 Proteus mirabilis strain STP3 chromosome, complete genome",ASM1251651v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+54,Proteus mirabilis,GCF_000069965.1,NC_010554.1,"NC_010554.1 Proteus mirabilis HI4320, complete sequence",ASM6996v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+55,Proteus mirabilis,GCF_000069965.1,NC_010555.1,"NC_010555.1 Proteus mirabilis HI4320 plasmid pHI4320, complete sequence",ASM6996v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+56,Proteus mirabilis,GCF_002206145.2,NJFA02,NJFA02,ASM220614v2,Contig,False,5,True,1.0,1.0,1.0,2.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+57,Proteus mirabilis,GCF_013358795.1,NZ_CP046048.1,"NZ_CP046048.1 Proteus mirabilis strain HN2p chromosome HN2p, complete sequence",ASM1335879v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+58,Proteus mirabilis,GCF_010588155.1,VKSC01,VKSC01,ASM1058815v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+59,Proteus mirabilis,GCF_004570775.1,SPTF01,SPTF01,ASM457077v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+60,Proteus mirabilis,GCF_009749225.1,RCIL01,RCIL01,ASM974922v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+61,Proteus mirabilis,GCF_009821675.1,VDJG01,VDJG01,ASM982167v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+62,Proteus mirabilis,GCF_004570065.1,SPTD01,SPTD01,ASM457006v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+63,Proteus mirabilis,GCF_007012285.1,NZ_CP041391.1,NZ_CP041391.1 Proteus mirabilis strain CLPM181223 chromosome,ASM701228v1,Chromosome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+64,Proteus mirabilis,GCF_011365085.1,SCIO01,SCIO01,ASM1136508v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+65,Proteus mirabilis,GCF_013184715.1,JAAQQY01,JAAQQY01,ASM1318471v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+66,Proteus mirabilis,GCF_010590425.1,VKTB01,VKTB01,ASM1059042v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+67,Proteus mirabilis,GCF_003175495.1,BGKW01,BGKW01,ASM317549v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+68,Proteus mirabilis,GCF_014212665.1,JACKXT01,JACKXT01,ASM1421266v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+69,Proteus mirabilis,GCF_003185705.1,QHLF01,QHLF01,ASM318570v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+70,Proteus mirabilis,GCF_001064105.1,JVOK01,JVOK01,ASM106410v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+71,Proteus mirabilis,GCF_009684595.1,NZ_CP044134.1,NZ_CP044134.1 Proteus mirabilis strain ENT1224 chromosome,ASM968459v1,Chromosome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+72,Proteus mirabilis,GCF_004570225.1,SPTL01,SPTL01,ASM457022v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+73,Proteus mirabilis,GCF_000783465.2,JTAW02,JTAW02,ASM78346v2,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+74,Proteus mirabilis,GCF_011602885.1,JAAOMY01,JAAOMY01,ASM1160288v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+75,Proteus mirabilis,GCF_003856175.1,RQSF01,RQSF01,ASM385617v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+76,Proteus mirabilis,GCF_001063205.1,JVKD01,JVKD01,ASM106320v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+77,Proteus mirabilis,GCF_007197655.1,VKHU01,VKHU01,ASM719765v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+78,Proteus mirabilis,GCF_003322945.1,PURY01,PURY01,ASM332294v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+79,Proteus mirabilis,GCF_011604105.1,JAAONC01,JAAONC01,ASM1160410v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+80,Proteus mirabilis,GCF_001060765.1,JVWE01,JVWE01,ASM106076v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+81,Proteus mirabilis,GCF_009184605.1,WEKK01,WEKK01,ASM918460v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+82,Proteus mirabilis,GCF_004570785.1,SPTM01,SPTM01,ASM457078v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+83,Proteus mirabilis,GCF_010597725.1,VKWW01,VKWW01,ASM1059772v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+84,Proteus mirabilis,GCF_003073935.1,NZ_CP029129.1,"NZ_CP029129.1 Proteus mirabilis strain AR379 plasmid unnamed1, complete sequence",ASM307393v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+85,Proteus mirabilis,GCF_003073935.1,NZ_CP029130.1,NZ_CP029130.1 Proteus mirabilis strain AR379 plasmid unnamed2,ASM307393v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+86,Proteus mirabilis,GCF_003073935.1,NZ_CP029131.1,NZ_CP029131.1 Proteus mirabilis strain AR379 plasmid unnamed3,ASM307393v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+87,Proteus mirabilis,GCF_003073935.1,NZ_CP029132.1,NZ_CP029132.1 Proteus mirabilis strain AR379 plasmid unnamed4,ASM307393v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+88,Proteus mirabilis,GCF_003073935.1,NZ_CP029133.1,"NZ_CP029133.1 Proteus mirabilis strain AR379 chromosome, complete genome",ASM307393v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+89,Proteus mirabilis,GCF_003073935.1,NZ_CP029134.1,NZ_CP029134.1 Proteus mirabilis strain AR379 plasmid unnamed5,ASM307393v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+90,Proteus mirabilis,GCF_002310895.1,NZ_CP017085.1,"NZ_CP017085.1 Proteus mirabilis strain T18 chromosome, complete genome",ASM231089v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+91,Proteus mirabilis,GCF_002310895.1,NZ_CP017086.1,"NZ_CP017086.1 Proteus mirabilis strain T18 plasmid pT18, complete sequence",ASM231089v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+92,Proteus mirabilis,GCF_009684665.1,NZ_CP044136.1,"NZ_CP044136.1 Proteus mirabilis strain ENT1157 chromosome, complete genome",ASM968466v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+93,Proteus mirabilis,GCF_011602985.1,JAAONK01,JAAONK01,ASM1160298v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+94,Proteus mirabilis,GCF_009829055.1,WURR01,WURR01,ASM982905v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+95,Proteus mirabilis,GCF_002945235.1,NZ_CP026581.1,"NZ_CP026581.1 Proteus mirabilis isolate GN2 chromosome, complete genome",ASM294523v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+96,Proteus mirabilis,GCF_011149675.1,NZ_CP049753.1,"NZ_CP049753.1 Proteus mirabilis strain PmBR607 chromosome, complete genome",ASM1114967v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+97,Proteus mirabilis,GCF_011149675.1,NZ_CP049754.1,"NZ_CP049754.1 Proteus mirabilis strain PmBR607 plasmid unnamed1, complete sequence",ASM1114967v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+98,Proteus mirabilis,GCF_011149675.1,NZ_CP049755.1,"NZ_CP049755.1 Proteus mirabilis strain PmBR607 plasmid unnamed2, complete sequence",ASM1114967v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+99,Proteus mirabilis,GCF_008705195.1,NZ_CP044028.1,"NZ_CP044028.1 Proteus mirabilis strain K817 chromosome, complete genome",ASM870519v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+100,Proteus mirabilis,GCF_014931585.1,NZ_CP047929.1,"NZ_CP047929.1 Proteus mirabilis strain ChSC1905 chromosome, complete genome",ASM1493158v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+101,Proteus mirabilis,GCF_011604145.1,JAAONF01,JAAONF01,ASM1160414v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+102,Proteus mirabilis,GCF_001617295.1,LQNN01,LQNN01,ASM161729v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+103,Proteus mirabilis,GCF_000783595.2,NZ_CP026059.1,"NZ_CP026059.1 Proteus mirabilis strain FDAARGOS_80 chromosome, complete genome",ASM78359v2,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+104,Proteus mirabilis,GCF_000783595.2,NZ_CP026060.1,"NZ_CP026060.1 Proteus mirabilis strain FDAARGOS_80 plasmid unnamed1, complete sequence",ASM78359v2,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+105,Proteus mirabilis,GCF_000783595.2,NZ_CP026061.1,"NZ_CP026061.1 Proteus mirabilis strain FDAARGOS_80 plasmid unnamed2, complete sequence",ASM78359v2,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+106,Proteus mirabilis,GCF_015666255.1,JADOZD01,JADOZD01,ASM1566625v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+107,Proteus mirabilis,GCF_011604205.1,JAAONI01,JAAONI01,ASM1160420v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+108,Proteus mirabilis,GCF_010598005.1,VKXK01,VKXK01,ASM1059800v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+109,Proteus mirabilis,GCF_900101725.1,FNAA01,FNAA01,IMG-taxon 2654588119 annotated assembly,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+110,Proteus mirabilis,GCF_003024745.1,PUXR01,PUXR01,ASM302474v1,Contig,False,5,True,2.0,1.0,1.0,1.0,2.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded TcdA1_expanded
+111,Proteus mirabilis,GCF_002265355.1,NOWA01,NOWA01,ASM226535v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+112,Proteus mirabilis,GCF_000297835.1,AMGU01,AMGU01,Prot_mira_WGLW4_V1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+113,Proteus mirabilis,GCF_001062745.1,JVTJ01,JVTJ01,ASM106274v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+114,Proteus mirabilis,GCF_004570195.1,SPTB01,SPTB01,ASM457019v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+115,Proteus mirabilis,GCF_011604045.1,JAAONB01,JAAONB01,ASM1160404v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+116,Proteus mirabilis,GCF_010590385.1,VKSZ01,VKSZ01,ASM1059038v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+117,Proteus mirabilis,GCF_003855615.1,NZ_CP034091.1,"NZ_CP034091.1 Proteus mirabilis strain PmBC1123 chromosome, complete genome",ASM385561v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+118,Proteus mirabilis,GCF_000372565.1,AORN01,AORN01,PM version 1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+119,Proteus mirabilis,GCF_004522505.1,SDUJ01,SDUJ01,ASM452250v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+120,Proteus mirabilis,GCF_011604155.1,JAAOMU01,JAAOMU01,ASM1160415v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+121,Proteus mirabilis,GCF_013357545.1,NZ_CP053684.1,"NZ_CP053684.1 Proteus mirabilis strain MPE5139 chromosome, complete genome",ASM1335754v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+122,Proteus mirabilis,GCF_001653835.1,LWUL01,LWUL01,ASM165383v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+123,Proteus mirabilis,GCF_001062655.1,JVUE01,JVUE01,ASM106265v1,Scaffold,False,5,True,1.0,1.0,1.0,2.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+124,Proteus mirabilis,GCF_001604705.1,LAGU01,LAGU01,ASM160470v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+125,Proteus mirabilis,GCF_009821695.1,VDJF01,VDJF01,ASM982169v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+126,Proteus mirabilis,GCF_004570595.1,SPOX01,SPOX01,ASM457059v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+127,Proteus mirabilis,GCF_003051845.1,NZ_CP028522.1,NZ_CP028522.1 Proteus mirabilis strain K1609 chromosome,ASM305184v1,Chromosome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+128,Proteus mirabilis,GCF_009684635.1,NZ_CP044135.1,NZ_CP044135.1 Proteus mirabilis strain ENT1301 chromosome,ASM968463v1,Chromosome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+129,Proteus mirabilis,GCF_001060325.1,JWBY01,JWBY01,ASM106032v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+130,Proteus mirabilis,GCF_013357445.1,NZ_CP053614.1,"NZ_CP053614.1 Proteus mirabilis strain MPE0108 chromosome, complete genome",ASM1335744v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+131,Proteus mirabilis,GCF_006517685.1,VHOK01,VHOK01,ASM651768v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+132,Proteus mirabilis,GCF_011604055.1,JAAONG01,JAAONG01,ASM1160405v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+133,Proteus mirabilis,GCF_012360255.1,WNEI01,WNEI01,ASM1236025v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+134,Proteus mirabilis,GCF_003194305.1,NZ_CP023273.1,NZ_CP023273.1 Proteus mirabilis strain CCUG 70746 chromosome,ASM319430v1,Chromosome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+135,Proteus mirabilis,GCF_003194305.1,NZ_CP023274.1,"NZ_CP023274.1 Proteus mirabilis strain CCUG 70746 plasmid pPmi70746_1, complete sequence",ASM319430v1,Chromosome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+136,Proteus mirabilis,GCF_003688085.1,RDWB01,RDWB01,ASM368808v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+137,Proteus mirabilis,GCF_001867325.1,MCOR01,MCOR01,ASM186732v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+138,Proteus mirabilis,GCF_003175475.1,BGKV01,BGKV01,ASM317547v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+139,Proteus mirabilis,GCF_015693865.1,NZ_CP065147.1,"NZ_CP065147.1 Proteus mirabilis strain PmBJ015 chromosome, complete genome",ASM1569386v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+140,Proteus mirabilis,GCF_003030945.1,NZ_CP028356.1,NZ_CP028356.1 Proteus mirabilis strain K670 chromosome,ASM303094v1,Chromosome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+141,Proteus mirabilis,GCF_011602895.1,JAAONN01,JAAONN01,ASM1160289v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+142,Proteus mirabilis,GCF_009718905.1,WNBC01,WNBC01,ASM971890v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+143,Proteus mirabilis,GCF_010591085.1,VKUE01,VKUE01,ASM1059108v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+144,Proteus mirabilis,GCF_009749085.1,RCIK01,RCIK01,ASM974908v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+145,Proteus mirabilis,GCF_013357505.1,NZ_CP053683.1,"NZ_CP053683.1 Proteus mirabilis strain MPE0027 chromosome, complete genome",ASM1335750v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+146,Proteus mirabilis,GCF_001448445.1,LGAY01,LGAY01,ASM144844v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+147,Proteus mirabilis,GCF_013357405.1,NZ_CP053615.1,"NZ_CP053615.1 Proteus mirabilis strain MPE0734 chromosome, complete genome",ASM1335740v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+148,Proteus mirabilis,GCF_002180235.1,NZ_CP021694.1,"NZ_CP021694.1 Proteus mirabilis strain AR_0155 chromosome, complete genome",ASM218023v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+149,Proteus mirabilis,GCF_002180235.1,NZ_CP021695.1,"NZ_CP021695.1 Proteus mirabilis strain AR_0155 plasmid tig00000123, complete sequence",ASM218023v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+150,Proteus mirabilis,GCF_007097095.1,VIYO01,VIYO01,ASM709709v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+151,Proteus mirabilis,GCF_015169015.1,NZ_CP063440.1,"NZ_CP063440.1 Proteus mirabilis strain Yak 2019 chromosome, complete genome",ASM1516901v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+152,Proteus mirabilis,GCF_009749185.1,RCII01,RCII01,ASM974918v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+153,Proteus mirabilis,GCF_902387925.1,CABMNS01,CABMNS01,UHGG_MGYG-HGUT-02514,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+154,Proteus mirabilis,GCF_900455025.1,UATP01,UATP01,52313_G01,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+155,Proteus mirabilis,GCF_011078105.1,JAALCE01,JAALCE01,ASM1107810v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+156,Proteus mirabilis,GCF_011602995.1,JAAOND01,JAAOND01,ASM1160299v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+157,Proteus mirabilis,GCF_003175435.1,BGKT01,BGKT01,ASM317543v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+158,Proteus mirabilis,GCF_003204115.1,NZ_CP029725.1,"NZ_CP029725.1 Proteus mirabilis strain AR_0029 chromosome, complete genome",ASM320411v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+159,Proteus mirabilis,GCF_003204115.1,NZ_CP029726.1,"NZ_CP029726.1 Proteus mirabilis strain AR_0029 plasmid unnamed, complete sequence",ASM320411v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+160,Proteus mirabilis,GCF_007004575.1,VJOR01,VJOR01,ASM700457v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+161,Proteus mirabilis,GCF_015693965.1,NZ_CP065148.1,"NZ_CP065148.1 Proteus mirabilis strain PmBJ012 chromosome, complete genome",ASM1569396v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+162,Proteus mirabilis,GCF_002197405.1,NZ_CP021852.1,"NZ_CP021852.1 Proteus mirabilis strain AR_0156 chromosome, complete genome",ASM219740v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+163,Proteus mirabilis,GCF_002197405.1,NZ_CP021853.1,"NZ_CP021853.1 Proteus mirabilis strain AR_0156 plasmid unitig_1, complete sequence",ASM219740v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+164,Proteus mirabilis,GCF_002197405.1,NZ_CP021854.1,"NZ_CP021854.1 Proteus mirabilis strain AR_0156 plasmid unitig_2, complete sequence",ASM219740v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+165,Proteus mirabilis,GCF_002197405.1,NZ_CP021855.1,"NZ_CP021855.1 Proteus mirabilis strain AR_0156 plasmid unitig_3, complete sequence",ASM219740v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+166,Proteus mirabilis,GCF_001076705.1,JVHX01,JVHX01,ASM107670v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+167,Proteus mirabilis,GCF_001060835.1,JVVD01,JVVD01,ASM106083v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+168,Proteus mirabilis,GCF_000297815.1,AMGT01,AMGT01,Prot_mira_WGLW6_V1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+169,Proteus mirabilis,GCF_000313255.1,ANBT01,ANBT01,Version 1 for Proteus mirabilis C05028 genome,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+170,Proteus mirabilis,GCF_001062135.1,JWAP01,JWAP01,ASM106213v1,Scaffold,False,5,True,1.0,1.0,1.0,2.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+171,Proteus mirabilis,GCF_008630655.1,NZ_CP043870.1,"NZ_CP043870.1 Proteus mirabilis strain S1959 chromosome, complete genome",ASM863065v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+172,Proteus mirabilis,GCF_001462385.1,JSUP01,JSUP01,ASM146238v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+173,Proteus mirabilis,GCF_009718745.1,WNBD01,WNBD01,ASM971874v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+174,Proteus mirabilis,GCF_009806715.1,NZ_CP047112.1,"NZ_CP047112.1 Proteus mirabilis strain SCBX1.1 chromosome, complete genome",ASM980671v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+175,Proteus mirabilis,GCF_009806715.1,NZ_CP047113.1,"NZ_CP047113.1 Proteus mirabilis strain SCBX1.1 plasmid plas1.1.1, complete sequence",ASM980671v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+176,Proteus mirabilis,GCF_009806715.1,NZ_CP047114.1,"NZ_CP047114.1 Proteus mirabilis strain SCBX1.1 plasmid plas1.1.2, complete sequence",ASM980671v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+177,Proteus mirabilis,GCF_003855635.1,NZ_CP034090.1,"NZ_CP034090.1 Proteus mirabilis strain PmSC1111 chromosome, complete genome",ASM385563v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+178,Proteus mirabilis,GCF_012030515.1,JAAUWF01,JAAUWF01,ASM1203051v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+179,Proteus mirabilis,GCF_003856215.1,RQSH01,RQSH01,ASM385621v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+180,Proteus mirabilis,GCF_002936215.2,PTIJ02,PTIJ02,ASM293621v2,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+181,Proteus mirabilis,GCF_001653845.1,LWUM01,LWUM01,ASM165384v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+182,Proteus mirabilis,GCF_011604125.1,JAAOMV01,JAAOMV01,ASM1160412v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+183,Proteus mirabilis,GCF_000444425.1,NC_022000.1,"NC_022000.1 Proteus mirabilis BB2000, complete sequence",ASM44442v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+184,Proteus mirabilis,GCF_011604025.1,JAAONE01,JAAONE01,ASM1160402v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+185,Proteus mirabilis,GCF_001063575.1,JVEH01,JVEH01,ASM106357v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+186,Proteus mirabilis,GCF_004145855.1,SEJC01,SEJC01,ASM414585v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+187,Proteus mirabilis,GCF_001060355.1,JWBG01,JWBG01,ASM106035v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+188,Proteus mirabilis,GCF_004179395.1,SELM01,SELM01,ASM417939v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+189,Proteus mirabilis,GCF_003075585.1,QDAK01,QDAK01,ASM307558v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+190,Proteus mirabilis,GCF_001077105.1,JUYT01,JUYT01,ASM107710v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+191,Proteus mirabilis,GCF_000784015.2,NZ_CP026044.1,"NZ_CP026044.1 Proteus mirabilis strain FDAARGOS_60 chromosome, complete genome",ASM78401v2,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+192,Proteus mirabilis,GCF_001858185.1,MBTY01,MBTY01,ASM185818v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+193,Proteus mirabilis,GCF_001065085.1,JVFU01,JVFU01,ASM106508v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+194,Proteus mirabilis,GCF_003687785.1,RDWH01,RDWH01,ASM368778v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+195,Proteus mirabilis,GCF_001076755.1,JVHI01,JVHI01,ASM107675v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+196,Proteus mirabilis,GCF_011602785.1,JAAOMX01,JAAOMX01,ASM1160278v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+197,Proteus mirabilis,GCF_002055685.1,NZ_CP020052.1,"NZ_CP020052.1 Proteus mirabilis strain AR_0059 chromosome, complete genome",ASM205568v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+198,Proteus mirabilis,GCF_010594665.1,JAAAYC01,JAAAYC01,ASM1059466v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+199,Proteus mirabilis,GCF_013357525.1,NZ_CP053718.1,"NZ_CP053718.1 Proteus mirabilis strain MPE4069 chromosome, complete genome",ASM1335752v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+200,Proteus mirabilis,GCF_011604135.1,JAAOMW01,JAAOMW01,ASM1160413v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+201,Proteus mirabilis,GCF_002861105.1,PKIT01,PKIT01,ASM286110v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+202,Proteus mirabilis,GCF_013357425.1,NZ_CP053616.1,"NZ_CP053616.1 Proteus mirabilis strain MPE0767 chromosome, complete genome",ASM1335742v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+203,Proteus mirabilis,GCF_900113495.1,FOPN01,FOPN01,IMG-taxon 2623620510 annotated assembly,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+204,Proteus mirabilis,GCF_003977485.1,RYXM01,RYXM01,ASM397748v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+205,Proteus mirabilis,GCF_003175415.1,BGKS01,BGKS01,ASM317541v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+206,Proteus mirabilis,GCF_013184695.1,JAAQQZ01,JAAQQZ01,ASM1318469v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+207,Proteus mirabilis,GCF_001281565.1,NZ_CP012675.1,"NZ_CP012675.1 Proteus mirabilis strain CYPV1 chromosome, complete genome",ASM128156v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+208,Proteus mirabilis,GCF_012030315.1,JAAUWO01,JAAUWO01,ASM1203031v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+209,Proteus mirabilis,GCF_001076715.1,JVHK01,JVHK01,ASM107671v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+210,Proteus mirabilis,GCF_013343255.1,NZ_CP045255.1,"NZ_CP045255.1 Proteus mirabilis strain L90-1 plasmid pL902, complete sequence",ASM1334325v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+211,Proteus mirabilis,GCF_013343255.1,NZ_CP045256.1,"NZ_CP045256.1 Proteus mirabilis strain L90-1 plasmid pL901, complete sequence",ASM1334325v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+212,Proteus mirabilis,GCF_013343255.1,NZ_CP045257.1,"NZ_CP045257.1 Proteus mirabilis strain L90-1 chromosome, complete genome",ASM1334325v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+213,Proteus mirabilis,GCF_009183685.1,WEKH01,WEKH01,ASM918368v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+214,Proteus mirabilis,GCF_013357565.1,NZ_CP053685.1,"NZ_CP053685.1 Proteus mirabilis strain MPE5203 chromosome, complete genome",ASM1335756v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+215,Proteus mirabilis,GCF_010692865.1,NZ_CP048787.1,"NZ_CP048787.1 Proteus mirabilis strain CC15031 chromosome, complete genome",ASM1069286v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+216,Proteus mirabilis,GCF_007197625.1,VKHV01,VKHV01,ASM719762v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+217,Proteus mirabilis,GCF_003171695.1,QGGA01,QGGA01,ASM317169v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+218,Proteus mirabilis,GCF_002180115.1,NZ_CP021550.1,"NZ_CP021550.1 Proteus mirabilis strain AR_0159 chromosome, complete genome",ASM218011v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+219,Proteus mirabilis,GCF_002180115.1,NZ_CP021551.1,"NZ_CP021551.1 Proteus mirabilis strain AR_0159 plasmid tig00000137, complete sequence",ASM218011v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+220,Proteus mirabilis,GCF_001640985.1,NZ_CP015347.1,"NZ_CP015347.1 Proteus mirabilis strain AOUC-001 chromosome, complete genome",ASM164098v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+221,Proteus mirabilis,GCF_001619795.1,LQQZ01,LQQZ01,ASM161979v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+222,Proteus mirabilis,GCF_001063035.1,JVPB01,JVPB01,ASM106303v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+223,Proteus mirabilis,GCF_015235315.1,JADGLF01,JADGLF01,ASM1523531v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+224,Proteus mirabilis,GCF_013357465.1,NZ_CP053681.1,"NZ_CP053681.1 Proteus mirabilis strain MPE0147 chromosome, complete genome",ASM1335746v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+225,Proteus mirabilis,GCF_003175455.1,BGKU01,BGKU01,ASM317545v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+226,Proteus mirabilis,GCF_900635965.1,NZ_LR134205.1,"NZ_LR134205.1 Proteus mirabilis strain NCTC4199 chromosome 1, complete sequence",36374_E01,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+227,Proteus mirabilis,GCF_900455045.1,UATQ01,UATQ01,58901_A01,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+228,Proteus mirabilis,GCF_004145395.1,SELN01,SELN01,ASM414539v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+229,Proteus mirabilis,GCF_004570645.1,SPTA01,SPTA01,ASM457064v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+230,Proteus mirabilis,GCF_015694025.1,NZ_CP065146.1,"NZ_CP065146.1 Proteus mirabilis strain PmBJ020 chromosome, complete genome",ASM1569402v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+231,Proteus mirabilis,GCF_001462475.1,JSUO01,JSUO01,ASM146247v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+232,Proteus mirabilis,GCF_011383025.1,NZ_CP049941.1,"NZ_CP049941.1 Proteus mirabilis strain XH1568 chromosome, complete genome",ASM1138302v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+233,Proteus mirabilis,GCF_003176495.1,BGMB01,BGMB01,ASM317649v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+234,Proteus mirabilis,GCF_009183735.1,WEKJ01,WEKJ01,ASM918373v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+235,Proteus mirabilis,GCF_014212555.1,JACKXN01,JACKXN01,ASM1421255v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+236,Proteus mirabilis,GCF_011602945.1,JAAONM01,JAAONM01,ASM1160294v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+237,Proteus mirabilis,GCF_014212615.1,JACKXQ01,JACKXQ01,ASM1421261v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+238,Proteus mirabilis,GCF_004570115.1,SPSV01,SPSV01,ASM457011v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+239,Proteus mirabilis,GCF_004570745.1,SPTJ01,SPTJ01,ASM457074v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+240,Proteus mirabilis,GCF_004570055.1,SPTC01,SPTC01,ASM457005v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+241,Proteus mirabilis,GCF_014324285.1,QDUR01,QDUR01,ASM1432428v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+242,Proteus mirabilis,GCF_011045575.1,NZ_CP042857.1,"NZ_CP042857.1 Proteus mirabilis strain 1701092 chromosome, complete genome",ASM1104557v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+243,Proteus mirabilis,GCF_010590755.1,VKTM01,VKTM01,ASM1059075v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+244,Proteus mirabilis,GCF_001064375.1,JVMQ01,JVMQ01,ASM106437v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+245,Proteus mirabilis,GCF_010591405.1,JAAAYB01,JAAAYB01,ASM1059140v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+246,Proteus mirabilis,GCF_014212655.1,JACKXS01,JACKXS01,ASM1421265v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+247,Proteus mirabilis,GCF_011602905.1,JAAONL01,JAAONL01,ASM1160290v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+248,Proteus mirabilis,GCF_009749255.1,RCIM01,RCIM01,ASM974925v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+249,Proteus mirabilis,GCF_004570215.1,SPTK01,SPTK01,ASM457021v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+250,Proteus mirabilis,GCF_004570705.1,SPTH01,SPTH01,ASM457070v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+251,Proteus mirabilis,GCF_011604085.1,JAAONA01,JAAONA01,ASM1160408v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+252,Proteus mirabilis,GCF_001062385.1,JVXV01,JVXV01,ASM106238v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+253,Proteus mirabilis,GCF_013357585.1,NZ_CP053719.1,"NZ_CP053719.1 Proteus mirabilis strain MPE0346 chromosome, complete genome",ASM1335758v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+254,Proteus mirabilis,GCF_000770765.1,JSCB01,JSCB01,ASM77076v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+255,Proteus mirabilis,GCF_001463025.1,LNHT01,LNHT01,ASM146302v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+256,Proteus mirabilis,GCF_009718885.1,WNBE01,WNBE01,ASM971888v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+257,Proteus mirabilis,GCF_014843115.1,NZ_CP062146.1,"NZ_CP062146.1 Proteus mirabilis strain S012 chromosome, complete genome",ASM1484311v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+258,Proteus mirabilis,GCF_014212505.1,JACKXL01,JACKXL01,ASM1421250v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+259,Proteus mirabilis,GCF_009749245.1,RCIN01,RCIN01,ASM974924v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+260,Proteus mirabilis,GCF_013357485.1,NZ_CP053682.1,"NZ_CP053682.1 Proteus mirabilis strain MPE0156 chromosome, complete genome",ASM1335748v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+261,Proteus mirabilis,GCF_010597885.1,VKXD01,VKXD01,ASM1059788v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+262,Proteus mirabilis,GCF_004570715.1,SPTI01,SPTI01,ASM457071v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+263,Proteus mirabilis,GCF_002265385.1,NOWB01,NOWB01,ASM226538v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+264,Proteus mirabilis,GCF_015550355.1,JADNAR01,JADNAR01,ASM1555035v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+265,Proteus mirabilis,GCF_004570145.1,SPSW01,SPSW01,ASM457014v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+266,Proteus mirabilis,GCF_014712265.1,JACXRE01,JACXRE01,ASM1471226v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+267,Proteus mirabilis,GCF_009821615.1,VDJJ01,VDJJ01,ASM982161v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+268,Proteus mirabilis,GCF_010598095.1,VKXM01,VKXM01,ASM1059809v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+269,Proteus mirabilis,GCF_009429045.2,NZ_CP045538.2,"NZ_CP045538.2 Proteus mirabilis strain CRE14IB chromosome, complete genome",ASM942904v2,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+270,Proteus mirabilis,GCF_009429045.2,NZ_CP045539.1,"NZ_CP045539.1 Proteus mirabilis strain CRE14IB plasmid pIB_COL3M, complete sequence",ASM942904v2,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+271,Proteus mirabilis,GCF_009429045.2,NZ_CP045540.1,"NZ_CP045540.1 Proteus mirabilis strain CRE14IB plasmid pIB_NDM_1, complete sequence",ASM942904v2,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+272,Proteus mirabilis,GCF_010594685.1,JAAAYD01,JAAAYD01,ASM1059468v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+273,Proteus mirabilis,GCF_010442675.1,NZ_CP048404.1,"NZ_CP048404.1 Proteus mirabilis strain N18-00201 chromosome, complete genome",ASM1044267v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+274,Proteus mirabilis,GCF_008041895.1,NZ_CP042907.1,"NZ_CP042907.1 Proteus mirabilis strain VAC chromosome, complete genome",ASM804189v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+275,Proteus mirabilis,GCF_013184265.1,JABBHE01,JABBHE01,ASM1318426v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+276,Proteus mirabilis,GCF_013184675.1,JAAQRA01,JAAQRA01,ASM1318467v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+277,Proteus mirabilis,GCF_014212545.1,JACKXO01,JACKXO01,ASM1421254v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+278,Proteus mirabilis,GCF_011602955.1,JAAONH01,JAAONH01,ASM1160295v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+279,Proteus mirabilis,GCF_011045855.1,NZ_CP047352.1,"NZ_CP047352.1 Proteus mirabilis strain ZA25 chromosome, complete genome",ASM1104585v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+280,Proteus mirabilis,GCF_011045855.1,NZ_CP047353.1,"NZ_CP047353.1 Proteus mirabilis strain ZA25 plasmid pZA25-tetX-168kb, complete sequence",ASM1104585v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+281,Proteus mirabilis,GCF_011045855.1,NZ_CP047354.1,"NZ_CP047354.1 Proteus mirabilis strain ZA25 plasmid pZA25-qnrD, complete sequence",ASM1104585v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+282,Proteus mirabilis,GCF_001065915.1,JUXK01,JUXK01,ASM106591v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+283,Proteus mirabilis,GCF_004570105.1,SPSU01,SPSU01,ASM457010v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+284,Proteus mirabilis,GCF_006508085.1,QNXA01,QNXA01,ASM650808v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+285,Proteus mirabilis,GCF_000783875.2,NZ_CP026051.1,"NZ_CP026051.1 Proteus mirabilis strain FDAARGOS_67 chromosome, complete genome",ASM78387v2,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+286,Proteus mirabilis,GCF_013255765.1,NZ_CP053894.1,"NZ_CP053894.1 Proteus mirabilis strain JPM24 chromosome, complete genome",ASM1325576v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+287,Proteus mirabilis,GCF_013255765.1,NZ_CP053895.1,"NZ_CP053895.1 Proteus mirabilis strain JPM24 plasmid pJPM24, complete sequence",ASM1325576v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+288,Proteus mirabilis,GCF_001617305.1,LQNO01,LQNO01,ASM161730v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+289,Proteus sp.,GCF_009915485.1,JAABMF01,JAABMF01,ASM991548v1,Contig,False,7,True,1.0,1.0,1.0,4.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+290,Proteus sp.,GCF_009915195.1,JAABLS01,JAABLS01,ASM991519v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+291,Proteus sp.,GCF_009915585.1,JAABMG01,JAABMG01,ASM991558v1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+292,Proteus sp.,GCF_003144435.1,PENX01,PENX01,ASM314443v1,Contig,False,4,True,0.0,1.0,1.0,2.0,0.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded
+293,Proteus sp.,GCF_016239165.1,JAEHOY01,JAEHOY01,ASM1623916v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+294,Proteus sp.,GCF_009915295.1,JAABLY01,JAABLY01,ASM991529v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+295,Proteus sp.,GCF_009915285.1,JAABLW01,JAABLW01,ASM991528v1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+296,Proteus sp.,GCF_009915695.1,JAABML01,JAABML01,ASM991569v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+297,Proteus sp.,GCF_011046025.1,NZ_CP047639.1,"NZ_CP047639.1 Proteus sp. ZN5 chromosome, complete genome",ASM1104602v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+298,Proteus sp.,GCF_011046025.1,NZ_CP047640.1,"NZ_CP047640.1 Proteus sp. ZN5 plasmid pZN5-103kb, complete sequence",ASM1104602v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+299,Proteus sp.,GCF_011046025.1,NZ_CP047641.1,"NZ_CP047641.1 Proteus sp. ZN5 plasmid pZN5-qnrD, complete sequence",ASM1104602v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+300,Proteus sp.,GCF_011046025.1,NZ_CP047642.1,"NZ_CP047642.1 Proteus sp. ZN5 plasmid pZN5-floR-8kb, complete sequence",ASM1104602v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+301,Proteus sp.,GCF_009915595.1,JAABMI01,JAABMI01,ASM991559v1,Contig,False,5,True,1.0,1.0,1.0,2.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+302,Proteus sp.,GCF_003336825.1,QPMG01,QPMG01,ASM333682v1,Contig,False,4,True,0.0,1.0,1.0,2.0,0.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded
+303,Proteus sp.,GCF_009915425.1,JAABMB01,JAABMB01,ASM991542v1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+304,Proteus sp.,GCF_009915135.1,JAABLV01,JAABLV01,ASM991513v1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+305,Proteus sp.,GCF_010287895.1,JAACIQ01,JAACIQ01,ASM1028789v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+306,Proteus sp.,GCF_009915525.1,JAABMU01,JAABMU01,ASM991552v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+307,Proteus sp.,GCF_009915665.1,JAABMK01,JAABMK01,ASM991566v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+308,Proteus sp.,GCF_009916045.1,JAABMM01,JAABMM01,ASM991604v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+309,Proteus sp.,GCF_009915175.1,JAABLR01,JAABLR01,ASM991517v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+310,Proteus sp.,GCF_009915465.1,JAABMD01,JAABMD01,ASM991546v1,Contig,False,7,True,1.0,1.0,1.0,4.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+311,Proteus sp.,GCF_009915725.1,JAABMQ01,JAABMQ01,ASM991572v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+312,Proteus sp.,GCF_009915235.1,JAABLU01,JAABLU01,ASM991523v1,Contig,False,6,True,1.0,1.0,1.0,3.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+313,Proteus sp.,GCF_009915335.1,JAABLZ01,JAABLZ01,ASM991533v1,Contig,False,7,True,1.0,1.0,1.0,4.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+314,Proteus sp.,GCF_009915625.1,JAABMJ01,JAABMJ01,ASM991562v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+315,Proteus sp.,GCF_009915565.1,JAABMH01,JAABMH01,ASM991556v1,Contig,False,5,True,1.0,1.0,1.0,2.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+316,Proteus sp.,GCF_009915475.1,JAABME01,JAABME01,ASM991547v1,Contig,False,7,True,1.0,1.0,1.0,4.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+317,Proteus sp.,GCF_009915805.1,JAABMS01,JAABMS01,ASM991580v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+318,Proteus sp.,GCF_009915225.1,JAABMW01,JAABMW01,ASM991522v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+319,Proteus sp.,GCF_009915325.1,JAABMT01,JAABMT01,ASM991532v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+320,Proteus sp.,GCF_009915635.1,JAABMZ01,JAABMZ01,ASM991563v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+321,Proteus sp.,GCF_009915775.1,JAABMR01,JAABMR01,ASM991577v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+322,Proteus sp.,GCF_009915435.1,JAABMC01,JAABMC01,ASM991543v1,Contig,False,9,True,3.0,1.0,1.0,4.0,3.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded TcdA1_expanded TcdA1_expanded
+323,Proteus sp.,GCF_009915125.1,JAABLT01,JAABLT01,ASM991512v1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+324,Proteus sp.,GCF_010287885.1,JAACIR01,JAACIR01,ASM1028788v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+325,Proteus sp.,GCF_009915535.1,JAABMX01,JAABMX01,ASM991553v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+326,Proteus sp.,GCF_009915365.1,JAABMY01,JAABMY01,ASM991536v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+327,Proteus sp.,GCF_009915835.1,JAABNC01,JAABNC01,ASM991583v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+328,Proteus sp.,GCF_001808035.1,LUAI01,LUAI01,ASM180803v1,Scaffold,False,0,False,0.0,0.0,0.0,0.0,0.0,
+329,Proteus sp.,GCF_009915935.1,JAABNG01,JAABNG01,ASM991593v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+330,Proteus sp.,GCF_009916025.1,JAABNJ01,JAABNJ01,ASM991602v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+331,Proteus sp.,GCF_009915745.1,JAABMP01,JAABMP01,ASM991574v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+332,Proteus sp.,GCF_009915875.1,JAABNA01,JAABNA01,ASM991587v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+333,Proteus sp.,GCF_009915355.1,JAABMA01,JAABMA01,ASM991535v1,Contig,False,6,True,1.0,1.0,1.0,3.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+334,Proteus sp.,GCF_009915245.1,JAABLX01,JAABLX01,ASM991524v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+335,Proteus sp.,GCF_009915865.1,JAABNB01,JAABNB01,ASM991586v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+336,Proteus sp.,GCF_009915965.1,JAABNK01,JAABNK01,ASM991596v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+337,Proteus sp.,GCF_009915345.1,JAABMV01,JAABMV01,ASM991534v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+338,Proteus sp.,GCF_009915825.1,JAABND01,JAABND01,ASM991582v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+339,Proteus sp.,GCF_009916035.1,JAABMN01,JAABMN01,ASM991603v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+340,Proteus sp.,GCF_009915925.1,JAABNF01,JAABNF01,ASM991592v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+341,Proteus sp.,GCF_016238545.1,JAEHQE01,JAEHQE01,ASM1623854v1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+342,Proteus sp.,GCF_014897315.1,JABUYL01,JABUYL01,ASM1489731v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+343,Proteus sp.,GCF_009916085.1,JAABMO01,JAABMO01,ASM991608v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+344,Proteus sp.,GCF_009915995.1,JAABNI01,JAABNI01,ASM991599v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+345,Proteus sp.,GCF_015475555.1,NZ_CP034105.1,"NZ_CP034105.1 Proteus sp. GOKU chromosome, complete genome",ASM1547555v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+346,Proteus sp.,GCF_016238105.1,JAEHQU01,JAEHQU01,ASM1623810v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+347,Proteus sp.,GCF_009915885.1,JAABNE01,JAABNE01,ASM991588v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+348,Proteus sp.,GCF_009915985.1,JAABNH01,JAABNH01,ASM991598v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+349,Proteus sp.,GCF_003144445.1,PENY01,PENY01,ASM314444v1,Scaffold,False,6,True,1.0,1.0,1.0,3.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+350,Proteus cibarius,GCF_009828885.1,WURL01,WURL01,ASM982888v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+351,Proteus cibarius,GCF_013122195.1,NZ_CP053371.1,"NZ_CP053371.1 Proteus cibarius strain G32 chromosome, complete genome",ASM1312219v1,Complete Genome,False,6,True,1.0,1.0,1.0,3.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+352,Proteus cibarius,GCF_013122195.1,NZ_CP053372.1,"NZ_CP053372.1 Proteus cibarius strain G32 plasmid pG32-177, complete sequence",ASM1312219v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+353,Proteus cibarius,GCF_013122195.1,NZ_CP053373.1,"NZ_CP053373.1 Proteus cibarius strain G32 plasmid pG32-51, complete sequence",ASM1312219v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+354,Proteus cibarius,GCF_013171305.1,NZ_CP053042.1,"NZ_CP053042.1 Proteus cibarius strain HNCF44W chromosome, complete genome",ASM1317130v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+355,Proteus cibarius,GCF_013171305.1,NZ_CP053043.1,"NZ_CP053043.1 Proteus cibarius strain HNCF44W plasmid pHNCF44W_NDM-1, complete sequence",ASM1317130v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+356,Proteus cibarius,GCF_011045835.1,NZ_CP047349.1,"NZ_CP047349.1 Proteus cibarius strain ZN2 chromosome, complete genome",ASM1104583v1,Complete Genome,False,0,False,0.0,0.0,0.0,0.0,0.0,
+357,Proteus cibarius,GCF_011045835.1,NZ_CP047350.1,"NZ_CP047350.1 Proteus cibarius strain ZN2 plasmid pZN2-tetX-171kb, complete sequence",ASM1104583v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+358,Proteus cibarius,GCF_011045835.1,NZ_CP047351.1,"NZ_CP047351.1 Proteus cibarius strain ZN2 plasmid pZN2-qnrD, complete sequence",ASM1104583v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+359,Proteus cibarius,GCF_009828895.1,WURM01,WURM01,ASM982889v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+360,Proteus cibarius,GCF_003144495.1,PGWT01,PGWT01,ASM314449v1,Contig,False,7,True,1.0,1.0,1.0,4.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+361,Proteus cibarius,GCF_015722865.1,JADSJR01,JADSJR01,ASM1572286v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+362,Proteus cibarius,GCF_009828975.1,WURN01,WURN01,ASM982897v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+363,Proteus cibarius,GCF_015722545.1,JADSJO01,JADSJO01,ASM1572254v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+364,Proteus cibarius,GCF_009740265.1,NZ_CP045008.1,"NZ_CP045008.1 Proteus cibarius strain ZF2 chromosome, complete genome",ASM974026v1,Complete Genome,False,6,True,1.0,1.0,1.0,3.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+365,Proteus cibarius,GCF_009740265.1,NZ_CP045009.1,"NZ_CP045009.1 Proteus cibarius strain ZF2 plasmid pZF2-cfr, complete sequence",ASM974026v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+366,Proteus cibarius,GCF_009740265.1,NZ_CP045010.1,"NZ_CP045010.1 Proteus cibarius strain ZF2 plasmid pZF2-7kb, complete sequence",ASM974026v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+367,Proteus cibarius,GCF_009740265.1,NZ_CP045011.1,"NZ_CP045011.1 Proteus cibarius strain ZF2 plasmid pZF2-qnrD, complete sequence",ASM974026v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+368,Proteus cibarius,GCF_009856995.1,NZ_CP047286.1,"NZ_CP047286.1 Proteus cibarius strain G11 chromosome, complete genome",ASM985699v1,Complete Genome,False,7,True,1.0,1.0,1.0,4.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+369,Proteus cibarius,GCF_009856995.1,NZ_CP047287.1,"NZ_CP047287.1 Proteus cibarius strain G11 plasmid p52, complete sequence",ASM985699v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+370,Proteus cibarius,GCF_009856995.1,NZ_CP047288.1,"NZ_CP047288.1 Proteus cibarius strain G11 plasmid p152, complete sequence",ASM985699v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+371,Proteus cibarius,GCF_011045795.1,NZ_CP047340.1,"NZ_CP047340.1 Proteus cibarius strain ZF1 chromosome, complete genome",ASM1104579v1,Complete Genome,False,6,True,1.0,1.0,1.0,3.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+372,Proteus cibarius,GCF_011045795.1,NZ_CP047341.1,"NZ_CP047341.1 Proteus cibarius strain ZF1 plasmid pZF1-cfr, complete sequence",ASM1104579v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+373,Proteus cibarius,GCF_011045795.1,NZ_CP047342.1,"NZ_CP047342.1 Proteus cibarius strain ZF1 plasmid pZF1-7kb, complete sequence",ASM1104579v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+374,Proteus cibarius,GCF_011045795.1,NZ_CP047343.1,"NZ_CP047343.1 Proteus cibarius strain ZF1 plasmid pZF1-qnrD, complete sequence",ASM1104579v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+375,Proteus cibarius,GCF_015740205.1,JADSUM01,JADSUM01,ASM1574020v1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+376,Proteus cibarius,GCF_015722565.1,JADRYN01,JADRYN01,ASM1572256v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+377,Proteus cibarius,GCF_013171285.1,NZ_CP053044.1,"NZ_CP053044.1 Proteus cibarius strain HNCF43W chromosome, complete genome",ASM1317128v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+378,Proteus cibarius,GCF_015723795.1,JADSAH01,JADSAH01,ASM1572379v1,Contig,False,7,True,1.0,1.0,1.0,4.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+379,Proteus vulgaris,GCF_016237345.1,JAEHSF01,JAEHSF01,ASM1623734v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+380,Proteus vulgaris,GCF_013283955.1,NZ_CP054157.1,"NZ_CP054157.1 Proteus vulgaris strain Biosolid 26 chromosome, complete genome",ASM1328395v1,Complete Genome,False,7,True,1.0,1.0,2.0,3.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+381,Proteus vulgaris,GCF_016239325.1,JAEHOP01,JAEHOP01,ASM1623932v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+382,Proteus vulgaris,GCF_001049975.1,CVRZ01,CVRZ01,PRJEB9439_assembly_1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+383,Proteus vulgaris,GCF_010591025.1,VKUA01,VKUA01,ASM1059102v1,Scaffold,False,5,True,2.0,1.0,1.0,1.0,2.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded TcdA1_expanded
+384,Proteus vulgaris,GCF_900455275.1,UGTW01,UGTW01,53421_C01,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+385,Proteus vulgaris,GCF_900455035.1,UGTU01,UGTU01,52313_F01,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+386,Proteus vulgaris,GCF_002749905.1,NBUT01,NBUT01,ASM274990v1,Contig,False,6,True,1.0,1.0,1.0,3.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+387,Proteus vulgaris,GCF_002894405.1,PHNN01,PHNN01,ASM289440v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+388,Proteus vulgaris,GCF_015739765.1,JADSTS01,JADSTS01,ASM1573976v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+389,Proteus vulgaris,GCF_902387915.1,CABMNT01,CABMNT01,UHGG_MGYG-HGUT-02516,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+390,Proteus vulgaris,GCF_002591155.1,NZ_CP023965.1,"NZ_CP023965.1 Proteus vulgaris strain FDAARGOS_366 chromosome, complete genome",ASM259115v1,Complete Genome,False,5,True,1.0,1.0,1.0,2.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+391,Proteus vulgaris,GCF_015739905.1,JADSTZ01,JADSTZ01,ASM1573990v1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+392,Proteus vulgaris,GCF_009931275.1,NZ_CP034667.1,"NZ_CP034667.1 Proteus vulgaris strain PvSC3 plasmid pPvSC3, complete sequence",ASM993127v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+393,Proteus vulgaris,GCF_009931275.1,NZ_CP034668.1,"NZ_CP034668.1 Proteus vulgaris strain PvSC3 chromosome, complete genome",ASM993127v1,Complete Genome,False,7,True,3.0,1.0,1.0,2.0,3.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded TcdA1_expanded TcdA1_expanded
+394,Proteus vulgaris,GCF_015841135.1,NZ_CP063314.1,"NZ_CP063314.1 Proteus vulgaris strain LC-693 chromosome, complete genome",ASM1584113v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+395,Proteus vulgaris,GCF_015841135.1,NZ_CP063315.1,"NZ_CP063315.1 Proteus vulgaris strain LC-693 plasmid pLC-693_1, complete sequence",ASM1584113v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+396,Proteus vulgaris,GCF_015841135.1,NZ_CP063316.1,"NZ_CP063316.1 Proteus vulgaris strain LC-693 plasmid pLC-693_2, complete sequence",ASM1584113v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+397,Proteus vulgaris,GCF_015841135.1,NZ_CP063317.1,"NZ_CP063317.1 Proteus vulgaris strain LC-693 plasmid pLC-693_3, complete sequence",ASM1584113v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+398,Proteus vulgaris,GCF_016239305.1,JAEHOQ01,JAEHOQ01,ASM1623930v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+399,Proteus vulgaris,GCF_000754995.1,JPIX01,JPIX01,PVA,Scaffold,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+400,Proteus vulgaris,GCF_011045815.1,NZ_CP047344.1,"NZ_CP047344.1 Proteus vulgaris strain ZN3 chromosome, complete genome",ASM1104581v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+401,Proteus vulgaris,GCF_011045815.1,NZ_CP047345.1,"NZ_CP047345.1 Proteus vulgaris strain ZN3 plasmid pZN3-tetX-171kb, complete sequence",ASM1104581v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+402,Proteus vulgaris,GCF_011045815.1,NZ_CP047346.1,"NZ_CP047346.1 Proteus vulgaris strain ZN3 plasmid pZN3-cfr-121kb, complete sequence",ASM1104581v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+403,Proteus vulgaris,GCF_011045815.1,NZ_CP047347.1,"NZ_CP047347.1 Proteus vulgaris strain ZN3 plasmid pZN3-6kb, complete sequence",ASM1104581v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+404,Proteus vulgaris,GCF_011045815.1,NZ_CP047348.1,"NZ_CP047348.1 Proteus vulgaris strain ZN3 plasmid pZN3-qnrD, complete sequence",ASM1104581v1,Complete Genome,True,0,False,0.0,0.0,0.0,0.0,0.0,
+405,Proteus vulgaris,GCF_003812525.1,NZ_CP033736.1,"NZ_CP033736.1 Proteus vulgaris strain FDAARGOS_556 chromosome, complete genome",ASM381252v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+406,Proteus vulgaris,GCF_014250535.1,NZ_CP060211.1,"NZ_CP060211.1 Proteus vulgaris strain P3M chromosome, complete genome",ASM1425053v1,Complete Genome,False,7,True,3.0,1.0,1.0,2.0,3.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded TcdA1_expanded TcdA1_expanded
+407,Proteus penneri,GCF_003144535.1,PHFJ01,PHFJ01,ASM314453v1,Contig,False,7,True,1.0,1.0,3.0,2.0,1.0,TcB_expanded TcB_expanded TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+408,Proteus penneri,GCF_016405815.1,JAEKCB01,JAEKCB01,ASM1640581v1,Contig,False,5,True,1.0,1.0,1.0,2.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+409,Proteus penneri,GCF_015556805.1,JADNNB01,JADNNB01,ASM1555680v1,Scaffold,False,6,True,1.0,1.0,1.0,3.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+410,Proteus penneri,GCF_016028675.1,NZ_CP065722.1,"NZ_CP065722.1 Proteus penneri strain FDAARGOS_874 chromosome, complete genome",ASM1602867v1,Complete Genome,False,7,True,1.0,1.0,3.0,2.0,1.0,TcB_expanded TcB_expanded TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+411,Proteus penneri,GCF_900455015.1,UGTQ01,UGTQ01,28265_E01,Contig,False,8,True,1.0,1.0,2.0,4.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+412,Proteus penneri,GCF_001049955.1,CVRY01,CVRY01,PRJEB9438_assembly_1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+413,Proteus hauseri,GCF_003144475.1,PGWU01,PGWU01,ASM314447v1,Contig,False,3,True,0.0,1.0,1.0,1.0,0.0,TcB_expanded A2_expanded TcC_expanded
+414,Proteus hauseri,GCF_001654965.1,LXEV01,LXEV01,Pha700826_DRAFTv1,Contig,False,3,True,0.0,1.0,1.0,1.0,0.0,TcB_expanded A2_expanded TcC_expanded
+415,Proteus hauseri,GCF_015740105.1,JADSUF01,JADSUF01,ASM1574010v1,Contig,False,5,True,1.0,1.0,2.0,1.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+416,Proteus hauseri,GCF_000497855.1,AWXP01,AWXP01,version 3 of Proteus hauseri genome,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+417,Proteus hauseri,GCF_004116975.1,NZ_CP026364.1,"NZ_CP026364.1 Proteus hauseri strain 15H5D-4a chromosome, complete genome",ASM411697v1,Complete Genome,False,6,True,1.0,1.0,1.0,3.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+418,Proteus terrae,GCF_016405845.1,JAEKCC01,JAEKCC01,ASM1640584v1,Contig,False,5,True,1.0,1.0,1.0,2.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+419,Proteus terrae,GCF_016405805.1,JAEKCD01,JAEKCD01,ASM1640580v1,Contig,False,5,True,1.0,1.0,1.0,2.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcdA1_expanded
+420,Proteus terrae,GCF_003144325.1,PENS01,PENS01,ASM314432v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+421,Proteus terrae,GCF_015739625.1,JADSTK01,JADSTK01,ASM1573962v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+422,Proteus alimentorum,GCF_002607735.1,NBVR01,NBVR01,ASM260773v1,Scaffold,False,11,True,1.0,1.0,2.0,7.0,1.0,TcB_expanded TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+423,Proteus alimentorum,GCF_015722765.1,JADSJP01,JADSJP01,ASM1572276v1,Contig,False,3,False,1.0,1.0,1.0,0.0,1.0,TcB_expanded A2_expanded TcdA1_expanded
+424,Proteus alimentorum,GCF_015722795.1,JADRYY01,JADRYY01,ASM1572279v1,Contig,False,8,True,1.0,1.0,1.0,5.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+425,Proteus genomosp.,GCF_003144335.1,PENU01,PENU01,ASM314433v1,Contig,False,0,False,0.0,0.0,0.0,0.0,0.0,
+426,Proteus genomosp.,GCF_003144375.1,PENV01,PENV01,ASM314437v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+427,Proteus genomosp.,GCF_003144505.1,PENT01,PENT01,ASM314450v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+428,Proteus columbae,GCF_002777965.1,NGVR01,NGVR01,ASM277796v1,Scaffold,False,7,True,1.0,1.0,1.0,4.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
+429,Proteus columbae,GCF_009914335.1,NZ_CP043925.1,"NZ_CP043925.1 Proteus columbae strain T60 chromosome, complete genome",ASM991433v1,Complete Genome,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+430,Proteus faecis,GCF_003144395.1,PENZ01,PENZ01,ASM314439v1,Scaffold,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+431,Proteus faecis,GCF_003144555.1,QEXA01,QEXA01,ASM314455v1,Contig,False,4,True,1.0,1.0,1.0,1.0,1.0,TcB_expanded A2_expanded TcC_expanded TcdA1_expanded
+432,Proteus cibi,GCF_003144405.1,PENW01,PENW01,ASM314440v1,Contig,False,7,True,1.0,1.0,1.0,4.0,1.0,TcB_expanded A2_expanded TcC_expanded TcC_expanded TcC_expanded TcC_expanded TcdA1_expanded
