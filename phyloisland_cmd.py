@@ -48,6 +48,10 @@ parser.add_argument("--count", help="run full refseq check", action="store_true"
 parser.add_argument("--sc", help="run full refseq check", action="store_true")
 parser.add_argument("--create_csv", help="create csv", action="store_true")
 
+# Check the assembly just to check I didn't add back in things we don't need
+parser.add_argument("--check_assembly", help="create csv", action="store_true")
+
+
 parser.add_argument("--query_db", help="query db", action="store_true")
 parser.add_argument("--load_genomes", help="load genomes")
 parser.add_argument("--get_accession_ids", help="get accession ids", action="store_true")
@@ -526,7 +530,26 @@ if args.create_csv:
             df = df.append(entry_dict, ignore_index=True)
     df.to_csv("./database_dump.csv")
 
+if args.check_assembly:
+    genomes = models.GenomeRecords.objects(genbank_accession_id='GCA_900323885.1')
+    for g in genomes:
+        print (g)
+        print (g.name)
+        print (g.excluded)
+        print (g.genbank_accession_id)
+        print (g.refseq_accession_id)
+        for hit in g.hits:
+            print (hit)
 
+    genomes = models.GenomeRecords.objects(genbank_accession_id='GCA_011110255.1')
+    for g in genomes:
+        print (g)
+        print (g.name)
+        print (g.excluded)
+        print (g.genbank_accession_id)
+        print (g.refseq_accession_id)
+        for hit in g.hits:
+            print (hit)
 
 if args.query_db:
     genomes = models.GenomeRecords.objects(species='Halomicronema hongdechloris')
