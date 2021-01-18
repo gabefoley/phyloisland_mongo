@@ -612,7 +612,10 @@ if args.load_genomes:
 
             print ("NEW GENOME")
 
+            print (filepath)
             print (genome)
+
+
 
             genome_path = glob.glob(filepath + genome + "/*_genomic.fna.gz")[0]
 
