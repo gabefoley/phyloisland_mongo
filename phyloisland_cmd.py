@@ -482,7 +482,7 @@ if args.create_csv:
     sorted_dict = sorted(species_dict.items(), key=lambda x: len(x[1]), reverse=True)
 
     df = pd.DataFrame(columns=['species', 'refseq_id', 'name', 'description', 'assembly_name', 'assembly_level' ,
-                               'plasmid', 'hit_num','Complete'])
+                               'plasmid', 'hit_num','Full'])
 
     for entry in sorted(species_dict.items(), key=lambda x: len(x[1]), reverse=True):
 
