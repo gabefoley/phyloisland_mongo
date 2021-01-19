@@ -509,7 +509,12 @@ if args.create_csv:
             TcdA1_hits = [x for x in genome.hits if 'TcdA1_expanded' in x.region]
             A1_hits = [x for x in genome.hits if 'A1_expanded' in x.region]
             A2_hits = [x for x in genome.hits if 'A2_expanded' in x.region]
-            complete = True if len(TcC_hits) > 0 and len(TcB_hits) > 0 and (len(TcdA1_hits) > 0 or len(A2_hits) > 0) else False
+            A2_hits = [x for x in genome.hits if 'A2_expanded' in x.region]
+            Chitinase_hits = [x for x in genome.hits if 'Chitinase_expanded' in x.region]
+
+            full = True if len(TcC_hits) > 0 and len(TcB_hits) > 0 and (len(TcdA1_hits) > 0 or len(A2_hits) > 0 or
+                                                                        len(A1_hits) > 0) else \
+                False
 
             # print(len(expanded_hits))
             # print(" ".join([x.region for x in expanded_hits]))
@@ -522,7 +527,8 @@ if args.create_csv:
             entry_dict['TcdA1_count'] = len(TcdA1_hits)
             entry_dict['A1_count'] = len(A1_hits)
             entry_dict['A2_count'] = len(A2_hits)
-            entry_dict['Complete'] = complete
+            entry_dict['Chitinase_count'] = len(Chitinase_hits)
+            entry_dict['Full'] = full
 
 
             print (entry_dict)
