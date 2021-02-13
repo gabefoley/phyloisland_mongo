@@ -394,9 +394,12 @@ def download_fasta_regions(region, filename="", include_genome=[], exclude_genom
 
                     # Here is a place to update FASTA ID headers
 
+                    plasmid_status = 'true' if genome['plasmid'] else 'false'
+
 
                     id_name = hit['name'] + "_information_" + genome['species'].replace(" ", "_") + '_taxid_' +genome[
-                        'taxid'] +'_region_' + hit['region'] + "_" + "[" + hit['score'] + "]_" + hit['start'] + "_" + hit['end'] + "_" + hit['strand']
+                        'taxid'] +'_region_' + hit['region'] + "_" + "[" + hit['score'] + "]_" + hit['start'] + "_" +\
+                              hit['end'] + "_" + hit['strand'] + "_plasmid=" + plasmid_status
 
                     # seq_count[hit['name']].append(id_name)
 
@@ -592,11 +595,16 @@ def write_mlgo_order(genomes, ref_mlgo_dict, split_strands=True, path="./fasta_f
                        genome.hits if 'expanded' in
                        hit.region])
 
-        regions = [x[1] for x in hits]
+        # regions = [x[1] for x in hits]
 
-        print ('here come the regions')
+        # for hit in hits:
+        #
+        #
+        # print ('here come the regions')
+        #
+        # print (hits)
 
-        print(regions)
+        # print(regions)
 
 
         # If we've already seen this region in another genome, give it that number, otherwise create new number
@@ -609,6 +617,40 @@ def write_mlgo_order(genomes, ref_mlgo_dict, split_strands=True, path="./fasta_f
         #     else:
         #         seen_dict[region.split("_strand=")[0]] = str(region_id_count)
         #         region_id_count += 1
+
+        regions = {}
+        curr_pos = 0
+
+        for hit in hits:
+            print ('hit zero')
+            print(hit[0])
+            print(hit[1])
+            if hit[0] == curr_pos:
+                if ('A2' in hit[1] or 'A1' in hit[1] or 'TcdA1' in hit[1]) \
+                        and ('A2' in regions[hit[0]] or 'A1' in regions[hit[0]] or 'TcdA1' in regions[
+                    hit[0]]):
+                    print('was an A2')
+                    regions[hit[0]] = 'A2_expanded_strand=' + hit[1].split('_strand=')[1]
+
+                elif ('TcB' in hit[1] or 'TcC' in hit[1]) \
+                        and ('TcB' in regions[hit[0]] or 'TcC' in regions[hit[0]]):
+                    print('was a fused BC')
+                    print (hit[1])
+                    print (hit[1].split('_strand='))
+                    regions[hit[0]] = 'Fused_TcB_TcC_expanded_strand=' + hit[1].split('_strand=')[1]
+
+            else:
+                regions[hit[0]] = hit[1]
+
+            curr_pos = hit[0]
+
+        print ('done')
+
+        print (regions)
+
+
+        # Override writing out Chitinases
+        regions = [x for x in regions.values() if 'Chitinase' not in x]
 
 
 
@@ -625,6 +667,7 @@ def write_mlgo_order(genomes, ref_mlgo_dict, split_strands=True, path="./fasta_f
         with open(path, "a") as genome_order:
             if renamed_regions:
                 genome_order.write(">" + genome.name.replace(".", "_") + "\n")
+
                 genome_order.write(" ".join(x for x in renamed_regions) + " $\n")
 
 def write_mlgo_tree(tree, tree_path):
@@ -645,7 +688,8 @@ def write_mlgo_tree(tree, tree_path):
             if "_infor" in y:
                 rebuilt_tree += y.replace(".", "_").replace("_infor", ":")
             else:
-                rebuilt_tree += "".join(y.split("ward:")[1:]) + ","
+                rebuilt_tree += "".join(y.split("e:")[1:]) + ","
+                print (rebuilt_tree)
     rebuilt_tree = rebuilt_tree[0: -1]
 
     with open(tree_path, "a") as mlgo_tree:

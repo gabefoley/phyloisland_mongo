@@ -32,7 +32,8 @@ def get_region_domains(regions):
     region_domains = []
 
     region_colour_dict = {"TcdA1": 'purple', 'A1': 'orange', 'A2': 'red', 'TcB': 'dodgerblue', 'TcC': 'pink',
-                          'Chi': 'green', 'Chi/Chi': 'green', 'TcB/TcC': 'yellow', 'A2/TcdA1': 'red'}
+                          'Chi': 'green', 'Chi/Chi': 'green', 'TcB/TcC': 'yellow', 'A2/TcdA1': 'red',
+                          'A1/A2/TcdA1' : 'red', 'A1/TcdA1' : 'orange'}
 
     start = 20
     for region in regions:
@@ -41,17 +42,30 @@ def get_region_domains(regions):
         region = region.replace("Chitinase", "Chi")
         region_split = region.split("_joined_")
 
-        region_short = "/".join([region.split("_")[0] for region in region_split])
+        region_short = "/".join([region.split("_")[0] for region in region_split]).strip()
+
+
         if region_short == 'Chitinase':
             region_name = 'Chi'
         else:
             region_name = region_short
+
+            # Override the naming of multiple hits for A region here
+            if region_short in ['A2/TcdA1', 'A1/A2/TcdA1', 'A1/A2']:
+                region_name = 'A2'
+                region_short = 'A2'
+
+            if region_name in ['A1/TcdA1']:
+                region_name = 'A1'
+                region_short = 'A1'
 
             if region_short in region_colour_dict:
                 region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
                                  "rgradient:" + region_colour_dict[region_short], "arial|40|black|" + region_name]
             else:
                 print("WARNING: Got a value for region colour dict that wasn't in there - " + region_short)
+                print (region_colour_dict.keys())
+                print (region_colour_dict[region_short])
                 region_domain = [start, start + 120, ">" if 'forward' in region else "<", None, 40, "black",
                                  "rgradient:black", "arial|40|black|" + region_name]
 
@@ -64,8 +78,8 @@ def get_ancestor_domains(regions):
     ancestor_domains = []
 
     region_colour_dict = {"TcdA1": 'purple', 'A1': 'orange', 'A2': 'red', 'TcB': 'dodgerblue', 'TcC': 'pink',
-                          'Chi': 'green', 'Chi/Chi': 'green', 'TcB/TcC': 'yellow', 'A2/TcdA1': \
-        'red'}
+                          'Chi': 'green', 'Chi/Chi': 'green', 'TcB/TcC': 'yellow',
+                          'A2/TcdA1': 'red', 'A1/A2/TcdA1' : 'red', 'A1/TcdA1' : 'orange'}
 
     start = 20
     for region in regions:
@@ -96,7 +110,7 @@ def get_ancestor_domains(regions):
     return ancestor_domains
 
 
-def get_leaf_tag(node, skip_tags=['Single', 'Multiple']):
+def get_leaf_tag(node, skip_tags=['Single', 'Multiple', 'Simple']):
     for descend in node.get_descendants():
         if descend.is_leaf():
             # descend.name
@@ -119,7 +133,7 @@ def get_leaf_tag(node, skip_tags=['Single', 'Multiple']):
                 return 'unknown'
 
 
-def continue_wo_collapse(node, skip_tags=["Single", "Multiple"]):
+def continue_wo_collapse(node, skip_tags=["Single", "Multiple", "Simple"]):
     """
     If there is still a node in highlight nodes that is a descendant of current node, we want to keep going
     """
@@ -246,6 +260,7 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                         # print(tag_dict[long_name][0] + " wasn't there")
 
 
+
                 elif short_name in tag_dict:
 
                     tags = [x for x in tag_dict[short_name] if x not in skip_list]
@@ -275,15 +290,32 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                 else:
                     spaced_name = " ".join(node.name.split("_")[3:5])
 
-                nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor='black')
-                node.add_face(nameFace, column=0)
+                plasmid_colour = 'red' if 'plasmid=true' in node.name else 'black'
+
+                nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor=plasmid_colour)
+                # node.add_face(nameFace, column=0)
 
                 region_names = []
 
-                cleaned_name = node.name.replace(".", "***")
+                cleaned_name = node.name.replace(".", "***").replace("__", "_[",1).replace("__", "]_", 1)
+
+
+
+                # print (cleaned_name)
+                # print (region_dict.keys())
+                # break
+
+                if cleaned_name.startswith("LVTS"):
+                    print ('work mork')
+                    print (cleaned_name)
+                    print (node.name)
+                # print (region_dict.keys())
 
                 if cleaned_name in region_dict:
                     # region_names = [x for x in region_dict[cleaned_name].keys()]
+
+                    print ("HOGGLES MC BOGGLES")
+                    print (cleaned_name)
                     region_names = [x[0] for x in sorted(region_dict[cleaned_name].items(), key=lambda k: k[1])]
 
 
@@ -304,10 +336,26 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
 
                 elif region_order_dict:
 
+
+                    # Override QGTQ01 here
+                    if node.name.split("_information_")[0] == 'QGTQ01':
+                        if 'QGTQ01' in region_order_dict:
+                            print ('chocolate bear')
+                            print(region_order_dict['QGTQ01'])
+
+                            region_order_dict['QGTQ01'] = 'TcB_expanded_forward_joined_TcC_expanded_forward, ' \
+                                                          'A2_expanded_forward_joined_TcdA1_expanded_forward'
+
+                            print(region_order_dict['QGTQ01'])
+
                     region_order_name = node.name.split("_information_")[0].replace(".", "***")
 
                     if region_order_name in region_order_dict:
                         regions = region_order_dict[region_order_name].split(",")
+
+                        print ('regions')
+                        print (region_order_name)
+                        print (regions)
 
                         region_domains = get_region_domains(regions)
 
@@ -387,6 +435,8 @@ def get_ancestor_tree(tree, ancestral_order_dict, ref_ml_go_dict,
     ts.layout_fn = lambda x: None
     #
 
+    region_domains = False
+    ancestral_orders = False
 
     # Get the colours for each extant genome
     for node in tree.iter_descendants("postorder"):
@@ -394,10 +444,16 @@ def get_ancestor_tree(tree, ancestral_order_dict, ref_ml_go_dict,
             # node_style = ""
             print (node.name)
             print (ancestral_order_dict)
-            ancestral_orders = [ref_ml_go_dict[x.replace("-", "")] for x in ancestral_order_dict[node.name]]
+
+            if node.name:
+
+                ancestral_orders = [ref_ml_go_dict[x.replace("-", "")] for x in ancestral_order_dict[node.name] if x !=
+                                '' and not x.startswith(">")]
             print (ancestral_orders)
 
-            region_domains = get_ancestor_domains(ancestral_orders)
+            if ancestral_orders:
+
+                region_domains = get_ancestor_domains(ancestral_orders)
 
 
             if region_domains:
@@ -439,7 +495,7 @@ def display_ancestors(tree, ancestral_order_dict, ref_ml_go_dict, outpath):
                                  outpath=outpath,
                                  )
 
-    tree.render(outpath, dpi=30, tree_style=ts, w=1600)
+    tree.render(outpath, dpi=3000, tree_style=ts, w=16000)
 
 
 def parse_args(args):
@@ -521,6 +577,18 @@ if __name__ == "__main__":
         print(colour_dict)
         print('skip list')
         print(skip_list)
+
+
+        # Override the tag dict so that Type3_A2 collapses with Type3 and Type1_A2 collapses with Type1
+        for name, tags in tag_dict.items():
+            if 'Type3_A2' in tags:
+                tag_dict[name] = [x.replace('Type3_A2', 'Type3') for x in tags]
+
+            if 'Type1_A2' in tags:
+                tag_dict[name] = [x.replace('Type1_A2', 'Type1') for x in tags]
+
+            if 'Type2a_force' in tags:
+                tag_dict[name] = [x.replace('Type2a_force', 'Type2a') for x in tags]
 
         colour_tips(loaded_tree, tag_dict, colour_dict, region_dict, region_order_dict, sequence_content_dict, skip_list, \
                     display_circular,

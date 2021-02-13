@@ -32,8 +32,8 @@ import mongoengine
 ref_names = ['A1', 'A2', 'Chitinase', 'TcB', 'TcC', 'TcdA1', 'region1', 'region2', 'region3', 'region4',
              'existing_feature']
 
-ref_mlgo_dict = {'A1': '1', 'A2': '2', 'Chitinase': '3', 'TcB': '4', 'TcC': '5', 'TcdA1': '6'}
-mlgo_ref_dict = {'1': 'A1', '2': 'A2', '3': 'Chitinase', '4': 'TcB', '5': 'TcC', '6': 'TcdA1'}
+ref_mlgo_dict = {'A1': '1', 'A2': '2', 'Chitinase': '3', 'TcB': '4', 'TcC': '5', 'TcdA1': '6', 'Fused_TcB_TcC' : '7'}
+mlgo_ref_dict = {'1': 'A1', '2': 'A2', '3': 'Chitinase', '4': 'TcB', '5': 'TcC', '6': 'TcdA1', '7' : 'Fused_TcB_TcC'}
 
 
 @user_logged_in.connect_via(app)
@@ -593,8 +593,11 @@ class TreeView(BaseView):
             display_circular = tree_select_form.display_circular.data
             display_circular_180 = tree_select_form.display_circular_180.data
 
-            colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type2b': 'gold', 'Type2a': 'green',
-                           'Type3': 'purple', 'Multiple': 'red', 'unknown': 'black', 'Single': 'brown',
+            colour_dict = {'Type1': 'dodgerblue', 'type1': 'dodgerblue', 'Type1_A2' : 'white',
+                           'Type2b': 'gold',
+                           'Type2a': 'green', 'Type2a_force' : 'green',
+                           'Type3': 'purple', 'Type3_A2' : 'purple',
+                           'Multiple': 'red', 'unknown': 'black', 'Single': 'brown',
                            'Type?': 'pink', 'Type5': 'pink'}
 
         elif request.method == "POST" and tree_download_form.download_tree.data:
@@ -625,11 +628,6 @@ class TreeView(BaseView):
 
                 print (tree_img)
                 print (ncbi_tree_img)
-
-
-
-
-
 
 
 
@@ -1128,6 +1126,16 @@ class AutomaticTaggingView(BaseView):
             exclude_hits = [x.strip() for x in tag_simple_form.exclude_hits.data.split(",")]
 
             if include_genome == [""]:
+                # specific_queries = ['JPPA01', 'CABPSQ01', 'FNJL01', 'NITZ01', 'RCWL01', 'NC_013216.1', 'VUOC01',
+                #                     'FQYP01', 'VSRQ01',
+                #                     'NZ_CP010897.2', 'FNKR01', 'CABPSP01', 'BCQP01', 'QGTQ01', 'RCZD01', 'MVGR01',
+                #                     'NZ_CP020080.1', 'QHJL01', 'NZ_CP013047.2', 'FMVH01', 'BILZ01', 'MQZX01',
+                #                     'CAAJVF01', 'PIQI01', 'NC_009253.1', 'NZ_CP013461.1', 'NZ_CM001559.1', 'SMDG01',
+                #                     'JAAQYP01', 'LVTS01', 'SLVP01', 'SSNZ01', 'LYRP01', 'NZ_CP054613.1',
+                #                     'NZ_CP038255.1', 'LMXH01', 'SAXA01', 'BJMH01', 'NZ_CP024085.1', 'PQMB01', 'SMSL01',
+                #                     'AEDD01', 'RKHU01']
+                # genomes = models.GenomeRecords.objects(name__in=specific_queries)
+
                 genomes = models.GenomeRecords.objects()
 
             else:
@@ -1258,7 +1266,18 @@ class AutomaticTaggingView(BaseView):
             if limit_classify_test_tagged == 'Test all':
                 queries = models.GenomeRecords.objects.all().timeout(False)
             else:
+                # specific_queries = ['JPPA01', 'CABPSQ01', 'FNJL01', 'NITZ01', 'RCWL01', 'NC_013216.1', 'VUOC01',
+                #                     'FQYP01', 'VSRQ01',
+                #                     'NZ_CP010897.2', 'FNKR01', 'CABPSP01', 'BCQP01', 'QGTQ01', 'RCZD01', 'MVGR01',
+                #                     'NZ_CP020080.1', 'QHJL01', 'NZ_CP013047.2', 'FMVH01', 'BILZ01', 'MQZX01',
+                #                     'CAAJVF01', 'PIQI01', 'NC_009253.1', 'NZ_CP013461.1', 'NZ_CM001559.1', 'SMDG01',
+                #                     'JAAQYP01', 'LVTS01', 'SLVP01', 'SSNZ01', 'LYRP01', 'NZ_CP054613.1',
+                #                     'NZ_CP038255.1', 'LMXH01', 'SAXA01', 'BJMH01', 'NZ_CP024085.1', 'PQMB01', 'SMSL01',
+                #                     'AEDD01', 'RKHU01']
+                # queries = models.GenomeRecords.objects(name__in=specific_queries, tags=limit_classify_test_tagged).timeout(False)
                 queries = models.GenomeRecords.objects(tags=limit_classify_test_tagged).timeout(False)
+
+
 
             test_results = utilities.test_auto_classify(queries, skip_tags=skip_tags)
 
@@ -2338,7 +2357,46 @@ def clear_all_promoters():
 
     return redirect('automatic_tagging')
 
+# Auto classify used temporarily to classify the 43 incorrectly tagged Simples.
+# @app.route("/automatic_tagging/auto_classify", methods=['GET', 'POST'])
+# def auto_classify():
+#     print("Delete all existing tags")
+#
+#     specific_queries = ['JPPA01', 'CABPSQ01', 'FNJL01', 'NITZ01', 'RCWL01', 'NC_013216.1', 'VUOC01', 'FQYP01', 'VSRQ01',
+#                         'NZ_CP010897.2', 'FNKR01', 'CABPSP01', 'BCQP01', 'QGTQ01', 'RCZD01', 'MVGR01', 'NZ_CP020080.1',
+#                         'QHJL01', 'NZ_CP013047.2', 'FMVH01', 'BILZ01', 'MQZX01', 'CAAJVF01', 'PIQI01', 'NC_009253.1',
+#                         'NZ_CP013461.1', 'NZ_CM001559.1', 'SMDG01', 'JAAQYP01', 'LVTS01', 'SLVP01', 'SSNZ01', 'LYRP01',
+#                         'NZ_CP054613.1', 'NZ_CP038255.1', 'LMXH01', 'SAXA01', 'BJMH01', 'NZ_CP024085.1', 'PQMB01',
+#                         'SMSL01', 'AEDD01', 'RKHU01']
+#
+#     queries = models.GenomeRecords.objects(name__in=specific_queries).timeout(False)
+#
+#     queries.update(tags=[])
+#
+#     for query in queries:
+#
+#         # By default we keep the tag 'hidden' as this won't get GenomeTags out of sync
+#
+#         for hit in query.hits:
+#             if 'hidden' in hit.tags:
+#                 hit.tags = ['hidden']
+#             else:
+#                 hit.tags = []
+#
+#         query.save()
+#
+#     models.GenomeTags.objects().all().delete()
+#
+#
+#     print("Classifying the genomes")
+#     genome_overview.classify_genomes(queries)
+#
+#     flash('Automatically classified')
+#
+#     return redirect('automatic_tagging')
 
+
+# Actual auto classify
 @app.route("/automatic_tagging/auto_classify", methods=['GET', 'POST'])
 def auto_classify():
     print("Delete all existing tags")

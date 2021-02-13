@@ -13,6 +13,7 @@ import os
 import time
 import subprocess
 import glob
+import numpy
 
 
 
@@ -51,14 +52,27 @@ def update_genomes():
     # Check the genomes with the profiles
     queries = models.GenomeRecords.objects.all().timeout(False)
 
+    genomes = [x.id for x in queries]
 
-    profiles = models.Profile.objects.all()
-
-    for profile in profiles:
-        get_feature_location_with_profile_cmd(queries, "hmm_outputs", profile.name, "", "", profile.name)
-
-    del profiles
     del queries
+
+    chunk = numpy.array_split(numpy.array(genomes), 100)
+
+    print ('chunk')
+
+    print (chunk)
+
+    for genomes in chunk:
+        queries = models.GenomeRecords.objects.all().timeout(False)
+
+        profiles = models.Profile.objects.all()
+
+        for profile in profiles:
+            get_feature_location_with_profile_cmd(queries, "hmm_outputs", profile.name, "", "", profile.name)
+
+        del profiles
+        del queries
+
 
 
 def delete_profiles(args):

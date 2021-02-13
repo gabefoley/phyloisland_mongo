@@ -57,7 +57,17 @@ parser.add_argument("--load_genomes", help="load genomes")
 parser.add_argument("--get_accession_ids", help="get accession ids", action="store_true")
 parser.add_argument("--check_feature_table", help="check feature table")
 
-# parser.add_argument("-d", "--database_name", help="database name", required=True)
+# This is a specific one
+parser.add_argument("--update_tags_for_list", help="temporary to change the tags in A2 only Type1s and Type3s",
+                    action="store_true")
+
+# This is the general one (but not fully realised)
+parser.add_argument("--update_tags_via_list", action="store_true")
+
+parser.add_argument("--delete_all_profiles", action="store_true")
+
+parser.add_argument
+
 
 
 args = parser.parse_args()
@@ -106,6 +116,9 @@ if args.update_genomes:
 
     print ("Updating genomes")
     # Update the genomes
+
+
+
     cmd_code.update_genomes()
 
 if args.overview:
@@ -466,6 +479,11 @@ if args.create_csv:
 
     species_dict = defaultdict(list)
 
+    tag_dict = getGenomes.get_tags()
+
+    for x, k in tag_dict.items():
+        print (x, k)
+
     # genomes = models.GenomeRecords.objects(species='Proteus vulgaris')
     # genomes = models.GenomeRecords.objects(species='Photorhabdus laumondii')
     # genomes = models.GenomeRecords.objects(species=species_name)
@@ -483,6 +501,8 @@ if args.create_csv:
 
     df = pd.DataFrame(columns=['species', 'refseq_id', 'name', 'description', 'assembly_name', 'assembly_level' ,
                                'plasmid', 'hit_num','Full'])
+
+
 
     for entry in sorted(species_dict.items(), key=lambda x: len(x[1]), reverse=True):
 
@@ -529,6 +549,9 @@ if args.create_csv:
             entry_dict['A2_count'] = len(A2_hits)
             entry_dict['Chitinase_count'] = len(Chitinase_hits)
             entry_dict['Full'] = full
+            entry_dict['Classification'] = tag_dict[genome.name]
+
+
 
 
             print (entry_dict)
@@ -831,7 +854,57 @@ if args.check_feature_table:
 
 
 
+if args.update_tags_for_list:
+    select_genomes = ['NZ_CP048835.1', 'JOGP01', 'NZ_CP031066.1', 'NZ_CP031063.1', 'FXWM01', 'NZ_CP038254.1', 'NZ_CP041668.1', 'FMVH01', 'NZ_CP036313.1', 'MKMC01', 'VWSH01', 'AGJN02', 'MTAX01', 'RCWL01', 'VZZK01', 'AJLJ01', 'NVPT01', 'ARBP01', 'NZ_CP033932.1', 'FPLG01', 'NC_010830.1', 'BBLT01', 'JXRA01', 'VEGT01', 'AUAX01', 'MSSW01', 'LNCD01', 'ASJB01', 'PYBJ01', 'VLPL01', 'CZQA01', 'NZ_CP014226.1', 'QOIO01', 'AWXZ01', 'FODH01', 'QNVV01', 'PVZG01', 'QLLL01', 'LIPN01']
+    genomes = models.GenomeTags.objects(tag_id__in=select_genomes)
+    for x in genomes:
+        print (x)
+        print (x.tags)
+        for idx, tag in enumerate(x.tags):
+            if tag == 'Type3':
+                x.tags.pop(idx)
+                x.tags.append('Type3_A2')
+            if tag == 'Type1':
+                x.tags.pop(idx)
+                x.tags.append('Type1_A2')
+        print (x.tags)
+        x.save()
+
+if args.update_tags_via_list:
+    # OD_Skip
+    # select_genomes = ['FUXU01', 'SMOD01', 'SODV01', 'VJWF01', 'NZ_CP013949.1', 'NZ_CP031070.1', 'NZ_CP036313.1', 'VZZK01', 'NZ_CP011129.1', 'OGTP01', 'NZ_CP048835.1', 'NC_020453.1', 'VZZZ01', 'AUAX01', 'FCNY02', 'ASJB01', 'PYBJ01', 'VLPL01', 'NZ_CP014226.1', 'FAOZ01', 'LIPN01', 'NZ_CP024923.1', 'NZ_CP031066.1', 'NZ_CP031063.1', 'VEGT01', 'AGJN02', 'NZ_CP036313.1', 'VZZK01', 'OGTP01', 'NZ_CP048835.1', 'MKMC01', 'BJMN01', 'VZZZ01', 'AUAX01', 'JOGP01', 'ASJB01', 'PYBJ01', 'VLPL01', 'CZQA01', 'NZ_CP014226.1', 'QOIO01', 'PVZG01', 'LIPN01', 'CABPSQ01']
+    #
+    # #OD_Skip ver 4
+    # select_genomes = ['FXWM01', 'MTBD01','VUOC01', 'NC_015559.1' ]
+    #
+    # #OD_Skip ver 4_2 (A1 / TcdA1 alignment)
+    # select_genomes = ['ALVN01', 'SMKK01', 'PJBP01' ]
+    #
+    # # OD_Skip ver 4_3 (From Cropped edges alignment)
+    # select_genoems = ['QJUG01', 'VDCQ01', 'FNVU01']
+
+    # All the 219 genomes used in the final ABC trees
+    select_genomes = ['AP018271.1','LIVZ01','MDEO01','NZ_AP018449.1','ONZJ01','WWHE01','FNJL01','ATXB01','NCXP01','QJUG01','LWBP01','FQUQ01','NZ_CP038254.1','MTAX01','LVYD01','RCFQ01','NZ_CP041668.1','FXYF01','RCWL01','MCHY01','NC_013216.1','NZ_CP029064.1','AJLJ01','QAAE01','SJSL01','NZ_CP029196.1','NVPT01','QTPO01','SNXZ01','NZ_CP013341.1','FNKR01','NZ_CP044218.1','NZ_LT629732.1','VZRB01','LKPJ01','FOUX01','VIWA01','QREK01','VSFF01','ARBP01','BJNF01','VOQD01','NZ_CP013426.1','AJUL01','QKLR01','FSRS01','NZ_CP027738.1','NZ_CP033932.1','QGTQ01','MVGR01','JOGE01','NETK01','NZ_CP004078.1','UPHP01','OIFR01','BIFQ01','NC_010830.1','RQJP01','NZ_CP009288.1','NZ_CP039288.1','LAIJ01','WWJN01','QGTG01','AYLO01','MRCJ01','NZ_CP022121.1','AZAN01','VDCQ01','BBLT01','FMCR01','QGSY01','FOUB01','MUXN01','NZ_AP017313.1','FMVH01','BILZ01','MWPQ01','NZ_LS999839.1','SMKX01','JXRA01','RQPI01','NZ_CP023695.1','SMJU01','FZPH01','NC_009253.1','NZ_CP013461.1','NZ_CM001559.1','VHKL01','RCSU01','NZ_CP042382.1','NZ_CP007699.2','QAOQ01','AQRJ01','AWZT01','JAAQYP01','AUEZ01','FMDM01','FNAD01','NKQZ01','VSFG01','SHKK01','WBKQ01','OAOQ01','MSSW01','JOGR01','QVNU01','BFCB01','NZ_CP010407.1','AUKP01','QGSZ01','RXLQ01','FNGF01','QVNQ01','SHKZ01','SLVP01','NZ_CP029235.1','LNCD01','QEOK01','NZ_CP029618.1','SNYE01','QAJI01','NZ_CP041692.1','QPIJ01','FMYF01','BDBY01','ASTJ01','OUNR01','SNZP01','NZ_CP034783.1','JNYY01','NZ_CP029710.1','QXQA01','AXBA01','JACCAY01','AKXV01','NZ_CP054613.1','WIAO01','NZ_CP038255.1','VCNA01','VXLC01','MUNY01','ALBT01','RPND01','LMXH01','NC_015510.1','BJMH01','AWXZ01','FODH01','FOIG01','ARBJ01','NZ_CP029843.1','FOLC01','QNVV01','VIVV01','CABLBP01','NZ_CP026106.1','MQWC01','MKCS01','JPOH01','VWSH01','FNON01','NC_013131.1','FOOS01','SMSL01','QLLL01','NZ_CP029197.1','AEDD01','ABXF01','QKWJ01','FNVU01','RAVX01','SLZA01','PCQL01','PHHE01','NZ_CP031450.1','NITZ01','NEHI01','NZ_CP010897.2','CVRZ01','PENV01','AOCZ01','NZ_CP039371.1','CABPSP01','PYLU01','FPLG01','NZ_CP020080.1','NZ_CP050291.1','NZ_CP025263.1','NZ_CP013047.2','LKBR01','PENZ01','PKNM01','PIQI01','NZ_CP029983.1','JFHN01','PKND01','VUAZ01','NZ_CP022960.1','LVTS01','NZ_CP045767.1','NZ_CP011807.3','ABCQ01','LYRP01','JYLN01','NZ_CP024646.1','NZ_CP031146.1','LACH01','PPRY01','NZ_CP015225.1','PQMB01','CQAW01','PENT01','NZ_CP053682.1','NC_020209.1','FNTT01','JAABNH01','NJAK01','NZ_CP010029.1','CPYD01']
+
+    # Missing NMD
+    missing_nmd = ['QJUG01', 'MTAX01', 'FNVU01', 'VDCQ01', 'AJLJ01', 'AWXZ01', 'NZ_CP038254.1', 'NZ_CP041668.1',
+                 'FMVH01', 'QTPO01', 'LKPJ01', 'NZ_CP013426.1', 'FOLC01', 'VIVV01', 'BIFQ01', 'SNZP01', 'MKCS01', 'VSFF01', 'VSFG01', 'QVNQ01', 'VOQD01', 'NZ_CP007699.2', 'JOGE01', 'MUXN01', 'JNYY01', 'WWJN01', 'AQRJ01', 'NZ_CP023695.1', 'BJNF01', 'MWPQ01', 'NZ_CP039288.1', 'RXLQ01', 'SLZA01', 'NC_013131.1', 'FSRS01']
+
+    select_genomes = [ x for x in select_genomes if x not in missing_nmd]
 
 
+    # Missing NMD to add missing NMD to the tags
+    select_genomes = ['QJUG01', 'MTAX01', 'FNVU01', 'VDCQ01', 'AJLJ01', 'AWXZ01', 'NZ_CP038254.1', 'NZ_CP041668.1',
+                 'FMVH01', 'QTPO01', 'LKPJ01', 'NZ_CP013426.1', 'FOLC01', 'VIVV01', 'BIFQ01', 'SNZP01', 'MKCS01', 'VSFF01', 'VSFG01', 'QVNQ01', 'VOQD01', 'NZ_CP007699.2', 'JOGE01', 'MUXN01', 'JNYY01', 'WWJN01', 'AQRJ01', 'NZ_CP023695.1', 'BJNF01', 'MWPQ01', 'NZ_CP039288.1', 'RXLQ01', 'SLZA01', 'NC_013131.1', 'FSRS01']
 
 
+    genomes = models.GenomeRecords.objects(name__in=select_genomes)
+
+    for x in genomes:
+        x.tags.append('Missing_NMD')
+        x.save()
+
+if args.delete_all_profiles:
+    # Delete the profiles from the database (so we can easily update them with new ones if need be)
+    profiles_to_delete = models.Profile.objects()
+    profiles_to_delete.delete()

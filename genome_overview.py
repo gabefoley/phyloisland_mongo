@@ -292,6 +292,8 @@ def classify_genomes_original(queries):
             update_tag(query, "Auto_Incomplete")
 
 def classify_genomes(queries):
+
+
     for query in queries:
         region_names = set([hit.region for hit in query.hits if 'expanded' in hit.region if 'hidden' not in hit.tags])
 
@@ -311,9 +313,77 @@ def classify_genomes(queries):
         else:
             count_check = 'Single'
 
+        # Count the number of chitinases
+        chitinase_count = 0
+        for hit in query.hits:
+            if hit.region == 'Chitinase_expanded':
+                chitinase_count +=1
+
+        # Check if there is at least one A1 and A2 that don't overlap
+
+        a1_starts = []
+        a1_ends = []
+        a2_starts = []
+        a2_ends = []
+
+        if set(["A1_expanded", "A2_expanded"]).issubset(region_names):
+            for hit in query.hits:
+                if hit.region == 'A1_expanded':
+                    a1_starts.append(hit.start)
+                    a1_ends.append(hit.end)
+
+                if hit.region == 'A2_expanded':
+                    a2_starts.append(hit.start)
+                    a2_ends.append(hit.end)
+
+
+
+            print ("Here are the A1 start positions ")
+            print (a1_starts)
+
+            print ("Here are the A1 end positions")
+            print (a1_ends)
+
+            print("Here are the A2 start positions ")
+            print(a2_starts)
+
+            print("Here are the A2 end positions")
+            print(a2_ends)
+
+            start_unique = False
+            end_unique = False
+
+            for a1_start in a1_starts:
+                if a1_start not in a2_starts:
+                    start_unique = True
+
+            for a2_start in a2_starts:
+                if a2_start not in a1_starts:
+                    start_unique = True
+
+
+            for a1_end in a1_ends:
+                if a1_end not in a2_ends:
+                    end_unique = True
+
+            for a2_end in a2_ends:
+                if a2_end not in a1_ends:
+                    end_unique = True
+
+            if start_unique and end_unique:
+                print ("There is a non-overlapping A1 and A2 region")
+
+
+
+
+
         if set(["TcB_expanded", "TcC_expanded"]).issubset(region_names):
-            if set(["A1_expanded", "A2_expanded"]).issubset(region_names):
-                if set(["Chitinase_expanded"]).issubset(region_names):
+            if set(["A1_expanded", "A2_expanded"]).issubset(region_names) and start_unique and end_unique:
+
+
+
+                # Needs to have more than one chitinase
+                if set(["Chitinase_expanded"]).issubset(region_names) and chitinase_count > 1:
                     print ("It had A1 / A2 and chitinases, so we're tagging it as Type 2A")
                     update_tag(query, count_check,  "Type2a")
 

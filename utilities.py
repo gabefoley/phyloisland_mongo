@@ -465,10 +465,22 @@ def get_tree_image(tree, tree_name, tag_dict, region_dict, region_order_dict, se
     print ('here is the tag dict')
     print (tag_dict)
 
+    # print (region_order_dict.keys())
+    #
+    # print (region_order_dict['QGTQ01'])
+    # return
+
+    # Override QGTQ01 here
+
+
+
     pickle_dict(tag_dict, tag_dict_path)
     pickle_dict(region_dict, region_dict_path)
     pickle_dict(region_order_dict, region_order_dict_path)
     pickle_dict(sequence_content_dict, sequence_content_dict_path)
+
+    print ('here is the colour dict')
+    print (colour_dict)
 
     pickle_dict(colour_dict, colour_dict_path)
 
@@ -1239,698 +1251,1193 @@ def rename_duplicates(genome_name, old):
 
 
 def test_auto_classify(queries, skip_tags):
-    original_classifications = {"NZ_WRXN01000057.1": ["Single", "Simple", "Type3"],
-                                "NZ_QODI01000091.1": ["Single", "Type1"], "NZ_QAIK01000198.1": ["Single", "Type2b"],
-                                "NZ_CP009451.1": ["Single", "Type2b"], "NC_015513.1": ["Single", "Type3"],
-                                "NC_013216.1": ["Single", "Type3"], "NC_022663.1": ["Single", "Type3"],
-                                "NZ_CP004078.1": ["Single", "Type3", "Simple"], "NZ_CP011809.2": ["Single", "Type2b"],
-                                "NZ_VITD01000034.1": ["Single", "Type3"], "NZ_WSEM01000042.1": ["Single", "Type3"],
-                                "NZ_SOEK01000059.1": ["Single", "Type2b"],
-                                "NZ_MQWC01000010.1": ["Single", "Type3", "Simple"],
-                                "NZ_PVZA01000046.1": ["Single", "Type2b"], "NZ_BIFQ01000002.1": ["Single", "Type3"],
-                                "NZ_SSMR01000050.1": ["Multiple", "Type3"], "NZ_QEOF01000027.1": ["Single", "Type2b"],
-                                "NZ_CP041186.1": ["Multiple", "Type3", ],
-                                "NZ_NJAK01000005.1": ["Single", "Type2a"], "NZ_FPBP01000034.1": ["Single", "Type3"],
-                                "NZ_BBMZ01000055.1": ["Single", "Type2b"], "NZ_KI632511.1": ["Single", "Type3"],
-                                "NZ_CP027760.1": ["Single", "Type2b"], "NZ_CP024793.1": ["Single", "Type3"],
-                                "NC_005126.1": ["Multiple", "Type2b", "Type1"],
-                                "NZ_AYSJ01000017.1": ["Multiple", "Type2b", "Type2a", "Type1"],
-                                "NZ_FPJC01000063.1": ["Single", "Type2b"], "NZ_CP027734.1": ["Single", "Type2b"],
-                                "NZ_SAXA01000055.1": ["Single", "Type3"],
-                                "NZ_CP024901.1": ["Multiple", "Type1", "Type2b", "Type2a"],
-                                "NZ_NMRE01000216.1": ["Single", "Type2b"], "NZ_CP041692.1": ["Single", "Type3"],
-                                "NC_008271.1": ["Single", "Type3"], "NZ_VCNA01000026.1": ["Single", "Type3"],
-                                "NZ_NBVR01000044.1": ["Single", "Type1"], "NZ_QVIG01000004.1": ["Single", "Type1"],
-                                "NZ_BILZ01000167.1": ["Single", "Type3"], "NZ_FONE01000126.1": ["Single", "Type3"],
-                                "NZ_WIVQ01000359.1": ["Single", "Type2b"], "NZ_UGTQ01000009.1": ["Single", "Type1"],
-                                "NZ_LN681228.1": ["Multiple", "Type1", "Type2b", "Type2a"],
-                                "NZ_FOLC01000061.1": ["Single", "Type1"], "NZ_SJOP01000106.1": ["Single", "Type1"],
-                                "NZ_PHHS01000064.1": ["Multiple", "Type2b"], "JAAHIE010001451.1": ["Single", "Type3"],
-                                "NZ_KL647038.1": ["Single", "Type3"],
-                                "NZ_FQUS01000064.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_WIBD01000081.1": ["Single", "Type2b"], "NZ_MWTQ01000158.1": ["Single", "Type2b"],
-                                "NC_015379.1": ["Multiple", "Type2b"], "NZ_PHSU01000082.1": ["Single", "Type2b"],
-                                "NZ_FUXU01000241.1": ["Single", "Type1"], "NZ_AKJE01000126.1": ["Multiple", "Type2b"],
-                                "NZ_LT629762.1": ["Type2b", "Single"], "NZ_SMSC01000216.1": ["Single", "Type1"],
-                                "NZ_CP013429.1": ["Single", "Type1"], "NZ_AYLO01000184.1": ["Single", "Type3"],
-                                "NZ_KB905728.1": ["Single", "Type3"], "NZNV01000041.1": ["Single", "Type3"],
-                                "NZ_POEF01000127.1": ["Single", "Type3"], "NZ_NVPT01000374.1": ["Single", "Type3"],
-                                "NZ_KN173624.1": ["Single", "Type3"], "NZ_QTUF01000034.1": ["Single", "Type2b"],
-                                "NZ_KN266223.1": ["Single", "Type3"], "NZ_PENW01000035.1": ["Single", "Type1"],
-                                "NZ_CBLI010000886.1": [""], "NZ_QAOO01000085.1": ["Single", "Type3"],
-                                "NZ_LT707062.1": ["Single", "Type2b"], "NZ_SMKX01000348.1": ["Single", "Type3"],
-                                "NZ_LT855380.1": ["Single", "Type1"], "NZ_RQJP01000018.1": ["Single", "Type3"],
-                                "NZ_JNYY01000082.1": ["Single", "Type3"], "NZ_CZQA01000015.1": ["Single", "Type3"],
-                                "NZ_AKJS01000210.1": ["Single", "Type2b"], "NZ_LOYJ01000133.1": ["Single", "Type2b"],
-                                "NZ_BBCC01000558.1": ["Single", "Type1"],
-                                "QHVH01000106.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_OAOQ01000062.1": ["Single", "Type3"], "MUGG01000223.1": ["Single", "Type3"],
-                                "NZ_CP014226.1": ["Single", "Type3"], "NZ_RZUM01000202.1": ["Single", "Type3"],
-                                "NZ_CP027727.1": ["Single", "Type2b"], "NZ_NHML01000109.1": ["Single", "Type3"],
-                                "NZ_VCSG01000349.1": ["Single", "Type3"], "NZ_AFWT01000141.1": ["Single", "Type3"],
-                                "NC_010830.1": ["Single", "Type3"], "RHGL01000187.1": ["Single", "Type3"],
-                                "NC_013892.1": ["Multiple", "Type2a", "Type1"],
-                                "NZ_QUMQ01000001.1": ["Single", "Type1"], "NZ_VOBI01000057.1": ["Single", "Type2b"],
-                                "NZ_FNTY01000002.1": ["Single", "Type2b"], "NZ_SSMQ01000201.1": ["Multiple", "Type3"],
-                                "NZ_JYLF01000032.1": ["Single", "Type2b"], "NZ_CP029843.1": ["Single", "Type3"],
-                                "NZ_LT629732.1": ["Single", "Type3"], "NZ_CP017687.1": ["Single", "Type2b"],
-                                "NZ_ONZJ01000003.1": ["Single", "Type3"], "NZ_AKJH01000183.1": ["Single", "Type2b"],
-                                "NZ_SMKT01000421.1": ["Single", "Type3"],
-                                "NZ_QUOK01000045.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_RCOE01000307.1": ["Single", "Type2b"], "NZ_RCOD01000106.1": ["Single", "Type2b"],
-                                "NZ_SSWO01000061.1": ["Single", "Type1"], "NZ_CP033700.1": ["Single", "Type2b"],
-                                "NZ_CP015381.1": ["Single", "Type3"], "NZ_WIAO01000088.1": ["Single", "Type3"],
-                                "NZ_QARE02000057.1": ["Single", "Type2b"], "NZ_MASS01000135.1": ["Single", "Type3"],
-                                "NC_020453.1": ["Single", "Type1"], "NC_021084.1": ["Single", "Type3"],
-                                "NC_020418.1": ["Multiple", "Type2b", "Type1"],
-                                "NZ_WTCR01000039.1": ["Single", "Type3"],
-                                "NZ_PGEO01000001.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_CP029710.1": ["Single", "Type3"], "NZ_CP011521.2": ["Single", "Type2b"],
-                                "NZ_KI519434.1": ["Single", "Type3"], "NZ_VHKL01000033.1": ["Single", "Type3"],
-                                "NZ_SNYU01000018.1": ["Single", "Type2b"], "LKCF01003901.1": ["Single", "Type2b"],
-                                "NZ_JH941054.1": ["Single", "Type3"], "NZ_AALD02000179.1": ["Single", "Type1"],
-                                "NZ_KB903530.1": ["Single", "Type3"], "NZ_FNNQ01000042.1": ["Single", "Type3"],
-                                "NZ_WIVR01000272.1": ["Single", "Type2b"], "NZ_LIUV01000061.1": ["Single", "Type2b"],
-                                "NZ_CQAZ01000234.1": ["Multiple", "Type3", "Type1"],
-                                "NZ_VOBM01000105.1": ["Multiple", "Type2b"], "NZ_AP020337.1": ["Single", "Type2b"],
-                                "NZ_KE386823.1": ["Single", "Type3"], "NZ_RAVY01000454.1": ["Single", "Type3"],
-                                "NZ_RAVX01000101.1": ["Single", "Type3"], "NZ_CAEB01000078.1": ["Single", "Type1"],
-                                "NZ_MJMK01000061.1": ["Single", "Type2b"], "NZ_BAXG01000116.1": ["Single", "Type1"],
-                                "NZ_RXLQ01000081.1": ["Single", "Type3"], "NZ_QFXK01000092.1": ["Single", "Type3"],
-                                "NZ_FNPW01000042.1": ["Multiple", "Type1", "Type3"],
-                                "MNDS01000223.1": ["Single", "Type3"], "NZ_LECZ01000027.1": ["Single", "Type1"],
-                                "NZ_CP024866.1": ["Single", "Type2b"], "NZ_RCNX01000105.1": ["Single", "Type2b"],
-                                "NZ_FNBR01000014.1": ["Single", "Type2b"], "DLUT01000591.1": ["Single", "Type1"],
-                                "NZ_QAIL01000624.1": ["Single", "Type3"], "NZ_AKJU01000280.1": ["Single", "Type3"],
-                                "NZ_KQ058904.1": ["Single", "Type3"], "LADO01000066.1": ["Single", "Type3"],
-                                "NZ_RHHV01000044.1": ["Single", "Type3"], "NZ_JAABNE010000136.1": ["Single", "Type1"],
-                                "NZ_AKJT01000140.1": ["Multiple", "Type2b"], "NZ_MKMC01000100.1": ["Single", "Type3"],
-                                "NZ_CP017600.1": ["Multiple", "Type3"], "NZ_NJAJ01000180.1": ["Single", "Type2b"],
-                                "NZ_FZPH01000044.1": ["Single", "Type3"], "NZ_PPRY01000171.1": ["Single", "Type2b"],
-                                "NZ_CP022411.1": ["Single", "Type2b"], "NZ_AMZY02000039.1": ["Single", "Type3"],
-                                "NZ_KK211074.1": ["Single", "Type2b"], "NZ_RPSA01000026.1": ["Multiple", "Type3"],
-                                "NZ_VEJO01000043.1": ["Single", "Type2b"], "NZ_CP018049.1": ["Single", "Type2b"],
-                                "NZ_LGRC01000069.1": ["Single", "Type3"], "NZ_FMCR01000011.1": ["Single", "Type3"],
-                                "DPJM01000861.1": ["Single", "Type3"], "NC_008027.1": ["Single", "Type2b"],
-                                "NC_017448.1": ["Single", "Type3"], "NZ_AZNV01000101.1": ["Single", "Type3"],
-                                "NZ_CP028042.1": ["Single", "Type2b"],
-                                "NZ_NSCD01000185.1": ["Multiple", "Type1", "Type2b", "Type2a"],
-                                "NZ_AP017313.1": ["Single", "Type3"], "NZ_QUMR01000030.1": ["Single", "Type2b"],
-                                "NZ_FODL01000038.1": ["Single", "Type2b"], "QJPH01000597.1": ["Single", "Type3"],
-                                "NZ_FORG01000094.1": ["Single", "Type2b"], "NZ_CP007231.1": ["Single", "Type2b"],
-                                "NZ_NEVM01000005.1": ["Single", "Type1"], "NZ_KB235915.1": ["Multiple", "Type3"],
-                                "NZ_CP009289.1": ["Single", "Type3"], "NZ_VDFY01000321.1": ["Single", "Type3"],
-                                "NZ_BJMN01000147.1": ["Single", "Type3"],
-                                "NZ_LOIC01000105.1": ["Multiple", "Type2a", "Type2b", "Type1"],
-                                "NZ_NIBS01000173.1": ["Single", "Type2a"], "JMHR01000441.1": ["Single", "Type3"],
-                                "JAABOU010001898.1": ["Single", "Type3"], "MSXM01000117.1": ["Multiple", "Type3"],
-                                "NZ_VIUK01000070.1": ["Single", "Type1"], "JAAHFV010000687.1": ["Single", "Type3"],
-                                "NZ_PVZG01000092.1": ["Single", "Type3"], "NZ_KI911557.1": ["Single", "Type3"],
-                                "NZ_JOIX01000228.1": ["Single", "Type3"], "JEMY01000085.1": ["Single", "Type3"],
-                                "NZ_CP011104.1": ["Multiple", "Type1", "Type2b"], "NZ_KI421497.1": ["Single", "Type3"],
-                                "NZ_CP045011.1": ["Single", "Type1"], "NZ_SSNI01000125.1": ["Single", "Type3"],
-                                "NZ_SZWE01000003.1": ["Single", "Type3"], "NZ_CDSC02000515.1": ["Single", "Type3"],
-                                "NZ_FMYF01000036.1": ["Single", "Type3"], "NZ_RCWL01000032.1": ["Single", "Type3"],
-                                "NZ_PHHE01000001.1": ["Single", "Type2b"], "NZ_LKBY01000178.1": ["Single", "Type3"],
-                                "NZ_AP018150.1": ["Single", "Type2b"], "NZ_SSBS01000012.1": ["Multiple", "Type2b"],
-                                "NZ_FMXV01000075.1": ["Single", "Type2b"], "NZ_KB897775.1": ["Single", "Type3"],
-                                "NZ_PENZ01000052.1": ["Single", "Type1"], "NZ_NIRH01000051.1": ["Single", "Type1"],
-                                "NZ_PENX01000027.1": ["Single", "Type3"], "NZ_CP047651.1": ["Single", "Type2b"],
-                                "NZ_SNXZ01000022.1": ["Single", "Type3"], "NC_017565.1": ["Single", "Type1"],
-                                "NZ_SOBU01000009.1": ["Multiple", "Type2a", "Type2b", "Type1"],
-                                "NZ_FPIZ01000088.1": ["Multiple", "Type3"], "NZ_AP018449.1": ["Single", "Type3"],
-                                "NZ_MSSW01000136.1": ["Single", "Type3"], "NZ_LR134373.1": ["Single", "Type2b"],
-                                "NZ_CP038274.1": ["Single", "Type3"], "NZ_ASSC01000896.1": ["Single", "Type3"],
-                                "NZ_FOSU01000047.1": ["Single", "Type3"], "NZ_LAIJ01000019.1": ["Single", "Type3"],
-                                "NZ_FUYT01000034.1": ["Single", "Type2b"], "NZ_MBLO01000280.1": ["Single", "Type3"],
-                                "NZ_KE384514.1": ["Single", "Type3"], "NZ_CP009747.1": ["Single", "Type2b"],
-                                "NZ_QGSY01000345.1": ["Single", "Type3"], "NZ_QGSZ01000408.1": ["Single", "Type3"],
-                                "NZ_JH725405.1": ["Single", "Type3"], "NZ_OUNR01000022.1": ["Single", "Type3"],
-                                "NZ_CP005927.1": ["Single", "Type1"], "NZ_CP043925.1": ["Single", "Type1"],
-                                "NZ_ASRX01000182.1": ["Single", "Type1"], "NZ_BAHC01000261.1": ["Single", "Type3"],
-                                "NZ_PVTJ01000022.1": ["Single", "Type3"], "NZ_LR590468.1": ["Single", "Type3"],
-                                "NZ_CABIVL010000085.1": ["Multiple", "Type2b", "Type1"],
-                                "NZ_LLWH01000241.1": ["Single", "Type2b"], "NC_017447.1": ["Single", "Type1"],
-                                "NZ_CP014262.1": ["Multiple", "Type2b"], "NZ_MWPQ01000095.1": ["Single", "Type3"],
-                                "NZ_RHQN01000027.1": ["Single", "Type2b"], "NZ_CP009533.1": ["Multiple", "Type2b"],
-                                "NZ_VRLV01000055.1": ["Multiple", "Type3"], "NZ_QAOQ01000022.1": ["Single", "Type3"],
-                                "NZ_VUAZ01000259.1": ["Single", "Type2b"], "NZ_CP033931.1": ["Single", "Type3"],
-                                "NZ_CP014947.1": ["Multiple", "Type2b"], "NZ_LS999839.1": ["Single", "Type3"],
-                                "NZ_RAZO01000515.1": ["Multiple", "Type2b"], "NZ_KI421431.1": ["Single", "Type3"],
-                                "NZ_CP017141.1": ["Multiple", "Type3"], "NZ_CP027759.1": ["Single", "Type2b"],
-                                "NZ_QTUH01000043.1": ["Single", "Type2b"], "NZ_PYGD01000024.1": ["Multiple", "Type3"],
-                                "NZ_BCBA01000109.1": ["Single", "Type2b"], "NC_015559.1": ["Single", "Type3"],
-                                "NZ_AKJQ01000091.1": ["Single", "Type2b"],
-                                "NZ_AKJR01000399.1": ["Multiple", "Type1", "Type2b"],
-                                "NZ_QTPO01000204.1": ["Single", "Type3"], "NZ_PDUD01000143.1": ["Single", "Type3"],
-                                "JAAAKW010000055.1": ["Single", "Type2b"], "NZ_AMBZ01000025.1": ["Multiple", "Type3"],
-                                "NZ_WSTC01000100.1": ["Single", "Type3"], "NZ_SOCG01000010.1": ["Single", "Type2b"],
-                                "NZ_QTPW01000119.1": ["Single", "Type3"],
-                                "NZ_NMQR01000210.1": ["Multiple", "Type2a", "Type1", "Type2b"],
-                                "NZ_JAABMA010000050.1": ["Single", "Type1"], "NZ_LT629778.1": ["Single", "Type2b"],
-                                "NZ_PJBP01000186.1": ["Single", "Type3"], "NZ_QFRW01000331.1": ["Single", "Type3"],
-                                "NZ_KV791721.1": ["Multiple", "Type1"], "NZ_MKQR01000032.1": ["Single", "Type3"],
-                                "NZ_CP046054.1": ["Single", "Type3"], "NZ_KL543992.1": ["Multiple", "Type1", "Type2a"],
-                                "NZ_JXSK01000016.1": ["Multiple", "Type2a", "Type1", "Type2b"],
-                                "NZ_UPHT01000230.1": ["Single", "Type3", "Single", "Type3"],
-                                "NZ_MCHY01000013.1": ["Single", "Type3"], "NZ_MUNY01000094.1": ["Single", "Type3"],
-                                "NZ_NSCM01000192.1": ["Multiple", "Type2a", "Type1", "Type2b"],
-                                "NZ_RAWG01000802.1": ["Single", "Type3"], "NZ_JYLO01000042.1": ["Single", "Type2b"],
-                                "NZ_WSQA01000032.1": ["Single", "Type3"], "NZ_CP028923.1": ["Single", "Type3"],
-                                "NZ_MUBJ01000149.1": ["Single", "Type2a"], "NZ_JXRA01000201.1": ["Single", "Type2b"],
-                                "NZ_JYLD01000037.1": ["Single", "Type3"], "NZ_BDBY01000492.1": ["Single", "Type3"],
-                                "NZ_LIPP01000561.1": ["Single", "Type3"], "NZ_AHAM01000375.1": ["Single", "Type3"],
-                                "NZ_BILY01000094.1": ["Single", "Type3"],
-                                "NZ_VKDC01000148.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_FPBA01000069.1": ["Multiple", "Type3"], "NZ_BCBN01000125.1": ["Multiple", "Type2b"],
-                                "NZ_SODV01000004.1": ["Single", "Type3"], "NZ_PPRZ01000380.1": ["Multiple", "Type2b"],
-                                "NZ_FYEA01000033.1": ["Single", "Type2b"], "NZ_WMBA01000144.1": ["Single", "Type3"],
-                                "NZ_FNCO01000054.1": ["Single", "Type2b"], "NZ_FMUL01000047.1": ["Single", "Type2b"],
-                                "NZ_FCON02000657.1": ["Single", "Type3"], "NZ_CP023969.1": ["Single", "Type2b"],
-                                "NZ_JJML01000118.1": ["Single", "Type3"], "NZ_JAABLV010000025.1": ["Single", "Type1"],
-                                "NZ_FQWR01000065.1": ["Multiple", "Type3"], "NZ_JAABLU010000039.1": ["Single", "Type1"],
-                                "NZ_BCBO01000195.1": ["Multiple", "Type1", "Type2b"],
-                                "NZ_FORB01000034.1": ["Single", "Type3"], "NZ_JYLH01000043.1": ["Single", "Type2b"],
-                                "NZ_PGGO01000087.1": ["Single", "Type3"], "NZ_LMGQ01000029.1": ["Single", "Type2b"],
-                                "NZ_JAABNK010000025.1": ["Single", "Type1"], "NZ_KZ679081.1": ["Single", "Type3"],
-                                "NKIG01000124.1": ["Single", "Type3"], "NZ_LMGK01000026.1": ["Single", "Type2b"],
-                                "WASQ01000153.1": ["Single", "Type3"], "NZ_BAOS01000047.1": ["Single", "Type3"],
-                                "NZ_BCQP01000133.1": ["Single", "Type3"], "NZ_CP010898.2": ["Single", "Type2b"],
-                                "NC_021184.1": ["Single", "Type3"], "NZ_FOZR01000085.1": ["Single", "Type3"],
-                                "NC_009253.1": ["Single", "Type3"], "NZ_QKLY01000024.1": ["Single", "Type2b"],
-                                "NZ_LVYD01000134.1": ["Single", "Type3"], "NZ_VFIO01000040.1": ["Single", "Type2b"],
-                                "QQTZ01000066.1": ["Single", "Type3"], "NC_013947.1": ["Multiple", "Type3"],
-                                "NZ_VZZS01000049.1": ["Multiple", "Type2b", "Type1"],
-                                "NZ_FNJL01000093.1": ["Single", "Type3"], "NZ_MVHE01000525.1": ["Single", "Type3"],
-                                "NZ_FMWY01000062.1": ["Single", "Type3"], "NZ_CP010408.1": ["Single", "Type3"],
-                                "NZ_LT605205.1": ["Single", "Type3"], "LKBL01002861.1": ["Single", "Type1"],
-                                "NZ_KB944506.1": ["Single", "Type3"], "NZ_CP029618.1": ["Single", "Type3"],
-                                "NZ_FPBO01000103.1": ["Single", "Type3"], "NZ_QJUG01000493.1": ["Single", "Type3"],
-                                "NZ_QAJM01000070.1": ["Single", "Type2b"], "LGGF01000107.1": ["Single", "Type3"],
-                                "NZ_WUNA01000095.1": ["Single", "Type3"], "NZ_MKCS01000005.1": ["Single", "Type3"],
-                                "NZ_VCNG01000086.1": ["Multiple", "Type2b"],
-                                "NZ_ABCS01000237.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_CM002331.1": ["Single", "Type2b"], "NZ_CP023695.1": ["Single", "Type3"],
-                                "NZ_SMFY01000011.1": ["Single", "Type3"], "NZ_QSNX01000060.1": ["Single", "Type2b"],
-                                "NZ_LMXH01000018.1": ["Single", "Type3"], "NZ_CP014135.1": ["Single", "Type2b"],
-                                "NZ_JXDG01000126.1": ["Single", "Type2b"], "NZ_PIQI01000031.1": ["Single", "Type1"],
-                                "NZ_JYLB01000026.1": ["Multiple", "Type2b"], "NZ_QKTW01000033.1": ["Single", "Type3"],
-                                "NZ_LOWA01000060.1": ["Single", "Type2b"],
-                                "JAAHFU010000658.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_CP042382.1": ["Single", "Type3"], "NZ_CP013461.1": ["Single", "Type3"],
-                                "NZ_LWBP01000264.1": ["Single", "Type3"], "NZ_LYRP01000050.1": ["Single", "Type1"],
-                                "NZ_SEIT01000119.1": ["Single", "Type2b"], "NZ_JYLN01000037.1": ["Single", "Type2b"],
-                                "NZ_QTTH01000050.1": ["Single", "Type2b"], "NZ_NITZ01000138.1": ["Single", "Type1"],
-                                "NZ_RJKE01000001.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_VOLC01000068.1": ["Single", "Type3"], "NZ_LFCV01000266.1": ["Single", "Type1"],
-                                "NZ_MVIF01000387.1": ["Single", "Type3"], "NZ_VRLS01000101.1": ["Single", "Type3"],
-                                "NZ_MULM01000185.1": ["Single", "Type3"], "JAABLX010000056.1": ["Single", "Type1"],
-                                "NC_014723.1": ["Multiple", "Type2b", "Type3"], "NC_016905.1": ["Single", "Type1"],
-                                "NZ_SOZA01000107.1": ["Single", "Type2b"], "NZ_MJML01000057.1": ["Single", "Type2b"],
-                                "NZ_WTYM01000063.1": ["Single", "Type3"], "NZ_QOIO01000184.1": ["Single", "Type3"],
-                                "NZ_FQUQ01000022.1": ["Single", "Type3"], "NZ_FAOZ01000083.1": ["Single", "Type3"],
-                                "NZ_JNZS01000088.1": ["Single", "Type3"], "NZ_KQ257877.1": ["Single", "Type3"],
-                                "NZ_KB892704.1": ["Single", "Type3"], "NZ_MUIN01000073.1": ["Multiple", "Type2b"],
-                                "AP018273.1": ["Single", "Type3"], "NZ_LT985385.1": ["Single", "Type3"],
-                                "NZ_PYAC01000043.1": ["Single", "Type3"],
-                                "JAAHGQ010001185.1": ["Multiple", "Type1", "Type3"],
-                                "NZ_FOBB01000023.1": ["Single", "Type3"], "NC_010162.1": ["Multiple", "Type3"],
-                                "NZ_JPMW01000007.1": ["Single", "Type3"], "NZ_CPYD01000045.1": ["Single", "Type2a"],
-                                "NZ_CP021135.1": ["Single", "Type2b"], "MNDA01000671.1": ["Single", "Type3"],
-                                "NZ_QXQA01000045.1": ["Single", "Type3"], "NZ_OCSV01000008.1": ["Single", "Type3"],
-                                "NZ_FXWP01000029.1": ["Single", "Type1"], "NZ_AWXZ01000044.1": ["Single", "Type3"],
-                                "NZ_UYJA01000022.1": ["Single", "Type2b"], "NZ_LNTU01000041.1": ["Single", "Type3"],
-                                "NZ_QNVV01000061.1": ["Single", "Type3"], "NZ_CP022121.1": ["Single", "Type3"],
-                                "NZ_SAIQ01000015.1": ["Single", "Type3"], "NZ_VCRA01000094.1": ["Single", "Type3"],
-                                "NZ_CP029197.1": ["Single", "Type3"], "NZ_PODL01000171.1": ["Single", "Type2b"],
-                                "NZ_FOAF01000023.1": ["Single", "Type3"], "NZ_QKWJ01000248.1": ["Single", "Type3"],
-                                "NZ_CP029608.1": ["Single", "Type2b"], "NZ_JFHN01000075.1": ["Single", "Type1"],
-                                "NZ_FXBM01000005.1": ["Single", "Type3"], "NZ_CP048209.1": ["Single", "Type3"],
-                                "NZ_VJZE01000939.1": ["Single", "Type3"], "NC_013131.1": ["Single", "Type3"],
-                                "NZ_JH651384.1": ["Single", "Type3"], "NZ_PYAW01000034.1": ["Single", "Type3"],
-                                "NZ_WMJZ01000174.1": ["Single", "Type1"], "NZ_SNZP01000034.1": ["Single", "Type3"],
-                                "NZ_CP010896.1": ["Single", "Type2b"], "NZ_SMJU01000044.1": ["Single", "Type3"],
-                                "NZ_FAOS01000004.1": ["Single", "Type3"], "NZ_RHLK01000044.1": ["Single", "Type3"],
-                                "NZ_VSFF01000027.1": ["Single", "Type3"], "NZ_RQPI01000039.1": ["Single", "Type3"],
-                                "NC_012962.1": ["Multiple", "Type1", "Type2a"],
-                                "NZ_FSRS01000002.1": ["Single", "Type3"],
-                                "NZ_CBXF010000164.1": ["Multiple", "Type2a", "Type1"],
-                                "NZ_QLTF01000036.1": ["Single", "Type2b"],
-                                "NZ_CACSJQ010000143.1": ["Multiple", "Type2b"],
-                                "NZ_FNKR01000003.1": ["Single", "Type3"], "NZ_SMSL01000028.1": ["Single", "Type3"],
-                                "NZ_VZZK01000111.1": ["Single", "Type3"],
-                                "NZ_LRSO01000023.1": ["Multiple", "Type1", "Type2b"],
-                                "NZ_CP028272.1": ["Single", "Type1"], "NZ_WJIE01000061.1": ["Multiple", "Type3"],
-                                "NZ_VDCQ01000167.1": ["Single", "Type3"], "NZ_OGTP01000072.1": ["Single", "Type3"],
-                                "NZ_MPIN01000042.1": ["Single", "Type3"], "NZ_CDPK01000072.1": ["Single", "Type1"],
-                                "NZ_CP026364.1": ["Single", "Type1"], "NZ_LXEN01000293.1": ["Single", "Type3"],
-                                "NZ_CABPSP010000048.1": ["Single", "Type2b"], "NZ_CP019686.1": ["Single", "Type1"],
-                                "NZ_SJSL01000015.1": ["Single", "Type3"], "CABPSQ010000036.1": ["Single", "Type2b"],
-                                "JAAHFO010001461.1": ["Single", "Type3"], "NZ_SOCQ01000042.1": ["Single", "Type2b"],
-                                "MNJJ01000259.1": ["Single", "Type3"], "NZ_CP012159.1": ["Single", "Type3"],
-                                "NZ_QLTJ01000050.1": ["Single", "Type2b"], "NZ_JNWO01000211.1": ["Single", "Type3"],
-                                "NZ_CP013341.1": ["Single", "Type3"], "NC_017807.1": ["Single", "Type2b"],
-                                "NZ_PYBV01000203.1": ["Single", "Type3"], "NZ_KE332397.1": ["Single", "Type3"],
-                                "NZ_RCSU01000043.1": ["Single", "Type3"],
-                                "NZ_FNQB01000011.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_QLLL01000025.1": ["Single", "Type3"], "NZ_QTUB01000001.1": ["Single", "Type2a"],
-                                "NZ_NSCE01000184.1": ["Multiple", "Type1", "Type2b", "Type2a"],
-                                "NZ_JAAGLX010000268.1": ["Single", "Type3"], "NZ_VOQB01000043.1": ["Multiple", "Type1"],
-                                "NZ_FODH01000041.1": ["Single", "Type3"], "NZ_FNVU01000044.1": ["Single", "Type3"],
-                                "NZ_FXAS01000142.1": ["Single", "Type1"], "NZ_CP038255.1": ["Single", "Type3"],
-                                "NZ_QVNU01000027.1": ["Single", "Type3"], "NZ_VOIW01000021.1": ["Single", "Type2b"],
-                                "NZ_LT629795.1": ["Single", "Type1"], "NZ_CP026110.1": ["Single", "Type3"],
-                                "NZ_AEDD01000040.1": ["Single", "Type3"], "NZ_FNAD01000036.1": ["Single", "Type3"],
-                                "NZ_PVZV01000026.1": ["Single", "Type3"], "NZ_PVNL01000192.1": ["Single", "Type3"],
-                                "NZ_LXYR01000213.1": ["Single", "Type3"], "NZ_LN623556.1": ["Single", "Type2b"],
-                                "NZ_FNGF01000016.1": ["Single", "Type3"], "NZ_CP022961.1": ["Single", "Type3"],
-                                "NZ_CXPG01000027.1": ["Single", "Type3"], "NZ_CP017236.1": ["Single", "Type1"],
-                                "NZ_CP012332.1": ["Single", "Type3"],
-                                "NZ_FTPM01000002.1": ["Multiple", "Type2b", "Type1"],
-                                "NZ_BLAD01000170.1": ["Multiple", "Type3", "Type3"],
-                                "NZ_FTPJ01000003.1": ["Multiple", "Type1", "Type2b"],
-                                "NZ_NIRS01000013.1": ["Single", "Type2b"], "NZ_FMDM01000037.1": ["Single", "Type3"],
-                                "NZ_PTJB01000052.1": ["Single", "Type3"], "NZ_JAAFZB010000096.1": ["Single", "Type3"],
-                                "NZ_CP016211.1": ["Single", "Type3"], "NZ_PQKR01000051.1": ["Single", "Type2b"],
-                                "NZ_SOAB01000040.1": ["Multiple", "Type3"], "NZ_NCXP01000142.1": ["Single", "Type3"],
-                                "NZ_ANMG01000154.1": ["Single", "Type3"], "NC_020209.1": ["Single", "Type2b"],
-                                "NZ_JZSQ01000140.1": ["Single", "Type3"], "NZ_LT629705.1": ["Single", "Type2b"],
-                                "NZ_PYAL01000013.1": ["Single", "Type2b"], "JAAHIG010000776.1": ["Multiple", "Type3"],
-                                "MKSF01000039.1": ["Single", "Type3"], "LAQJ01000315.1": ["Single", "Type3"],
-                                "NZ_SMKU01000805.1": ["Single", "Type3"], "NZ_LT828648.1": ["Single", "Type3"],
-                                "NZ_CP007215.2": ["Single", "Type3"], "NZ_WNKZ01000359.1": ["Single", "Type3"],
-                                "NZ_LR590482.1": ["Single", "Type2b"], "NZ_LT907981.1": ["Single", "Type3"],
-                                "NZ_QAIP01000588.1": ["Single", "Type1"], "NZ_LNCD01000152.1": ["Single", "Type3"],
-                                "NZ_KE384562.1": ["Single", "Type3"], "NZ_LJCS01000262.1": ["Multiple", "Type1"],
-                                "NZ_ATXB01000005.1": ["Single", "Type3"], "NZ_SMKK01000563.1": ["Single", "Type3"],
-                                "NC_019762.1": ["Single", "Type3"], "NZ_FNTZ01000002.1": ["Multiple", "Type2b"],
-                                "NZ_QFZQ01000023.1": ["Multiple", "Type3"], "NZ_JOGP01000180.1": ["Single", "Type3"],
-                                "KZ266893.1": ["Single", "Type3"], "NZ_FNON01000025.1": ["Single", "Type3"],
-                                "NZ_SHKK01000001.1": ["Single", "Type3"], "NZ_FNUD01000002.1": ["Single", "Type1"],
-                                "NZ_FQYP01000028.1": ["Single", "Type3"], "NZ_QGTQ01000078.1": ["Single", "Type1"],
-                                "NZ_JFJW01000247.1": ["Single", "Type1"], "NZ_FOVS01000095.1": ["Single", "Type2b"],
-                                "NZ_CP012540.1": ["Single", "Type3"], "NZ_JUHO01000001.1": ["Single", "Type2b"],
-                                "NZ_CP007039.1": ["Multiple", "Type2b"], "DNUG01000139.1": ["Single", "Type3"],
-                                "NZ_CP038630.1": ["Single", "Type3"], "NC_013954.1": ["Single", "Type1"],
-                                "NZ_VCKW01000623.1": ["Multiple", "Type3"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_A1_expanded_930570_933549_forward": [
-                                    "Type2b"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_A2_expanded_933600_938013_forward": [
-                                    "Type2b"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1144367_1151012_backward": [
-                                    "Type1"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1136560_1144054_backward": [
-                                    "Type1"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1119871_1127122_backward": [
-                                    "Type1"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1107514_1115125_backward": [
-                                    "Type1"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_A2_expanded_2891462_2895557_backward": [
-                                    "Type2a"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_A1_expanded_2895543_2899062_backward": [
-                                    "Type2a"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_A2_expanded_4869364_4874056_backward": [
-                                    "Type2b"],
-                                "NC_005126.1_information_Photorhabdus_laumondii_region_A1_expanded_4874153_4877051_backward": [
-                                    "Type2b"],
-                                "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_A2_expanded_1807955_1812674_backward": [
-                                    "Type2b"],
-                                "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_A1_expanded_1812775_1815703_backward": [
-                                    "Type2b"],
-                                "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_TcdA1_expanded_1746224_1753757_backward": [
-                                    "Type1"],
-                                "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_A1_expanded_2879332_2882866_forward": [
-                                    "Type2a"],
-                                "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_A2_expanded_2882852_2886944_forward": [
-                                    "Type2a"],
-                                "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_TcdA1_expanded_4632407_4639025_backward": [
-                                    "Type1"],
-                                "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_TcdA1_expanded_4624260_4631886_backward": [
-                                    "Type1"],
-                                "NZ_NJAK01000005.1_information_Xenorhabdus_ishibashii_region_A2_expanded_700848_705030_forward": [
-                                    "Type2a"],
-                                "NZ_NJAK01000005.1_information_Xenorhabdus_ishibashii_region_A1_expanded_697368_700839_forward": [
-                                    "Type2a"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A1_expanded_930569_933548_forward": [
-                                    "Type2b"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A2_expanded_933599_938012_forward": [
-                                    "Type2b"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1144366_1151011_backward": [
-                                    "Type1"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1136559_1144053_backward": [
-                                    "Type1"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1119870_1127121_backward": [
-                                    "Type1"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1107513_1115124_backward": [
-                                    "Type1"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A2_expanded_4868065_4872757_backward": [
-                                    "Type2b"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A1_expanded_4872854_4875752_backward": [
-                                    "Type2b"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A2_expanded_2891462_2895557_backward": [
-                                    "Type2a"],
-                                "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A1_expanded_2895543_2899062_backward": [
-                                    "Type2a"],
-                                "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_TcdA1_expanded_2110775_2118188_backward": [
-                                    "Type1"],
-                                "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_TcdA1_expanded_2546301_2553873_backward": [
-                                    "Type1"],
-                                "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_TcdA1_expanded_2530974_2538543_forward": [
-                                    "Type1"],
-                                "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_A1_expanded_2518328_2521799_forward": [
-                                    "Type2a"],
-                                "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_A2_expanded_2521808_2525981_forward": [
-                                    "Type2a"],
-                                "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_A1_expanded_2272553_2275616_forward": [
-                                    "Type2b"],
-                                "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_A2_expanded_2275690_2280313_forward": [
-                                    "Type2b"],
-                                "NC_013892.1_information_Xenorhabdus_bovienii_region_A2_expanded_576007_580111_backward": [
-                                    "Type2a"],
-                                "NC_013892.1_information_Xenorhabdus_bovienii_region_A1_expanded_580106_583658_backward": [
-                                    "Type2a"],
-                                "NC_013892.1_information_Xenorhabdus_bovienii_region_TcdA1_expanded_1524550_1532101_forward": [
-                                    "Type1"],
-                                "NZ_QUOK01000045.1_information_Rhodohalobacter_sp._region_TcdA1_expanded_2159005_2169691_forward": [
-                                    "Type3"],
-                                "NZ_QUOK01000045.1_information_Rhodohalobacter_sp._region_A2_expanded_2141911_2145157_forward": [
-                                    "Type?"],
-                                "NC_020418.1_information_Morganella_morganii_region_TcdA1_expanded_1872868_1880275_backward": [
-                                    "Type1"],
-                                "NC_020418.1_information_Morganella_morganii_region_A1_expanded_1374832_1378387_forward": [
-                                    "Type2b"],
-                                "NC_020418.1_information_Morganella_morganii_region_A2_expanded_1382402_1385276_forward": [
-                                    "Type2b"],
-                                "NC_020418.1_information_Morganella_morganii_region_TcdA1_expanded_2005504_2009848_backward": [
-                                    "Type1"],
-                                "NZ_PGEO01000001.1_information_Streptomyces_sp._region_A2_expanded_8169184_8172529_backward": [
-                                    "Type?"],
-                                "NZ_PGEO01000001.1_information_Streptomyces_sp._region_TcdA1_expanded_375542_385436_forward": [
-                                    "Type3"],
-                                "NZ_CQAZ01000234.1_information_Yersinia_pekkanenii_region_TcdA1_expanded_2059147_2062405_forward": [
-                                    "Type1"],
-                                "NZ_CQAZ01000234.1_information_Yersinia_pekkanenii_region_TcdA1_expanded_2064365_2070638_forward": [
-                                    "Type3"],
-                                "NZ_FNPW01000042.1_information_Pseudomonas_sp._region_TcdA1_expanded_6614186_6621635_backward": [
-                                    "Type1"],
-                                "NZ_FNPW01000042.1_information_Pseudomonas_sp._region_TcdA1_expanded_6628816_6636343_forward": [
-                                    "Type3"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_TcdA1_expanded_843495_850140_backward": [
-                                    "Type1"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_TcdA1_expanded_835688_843182_backward": [
-                                    "Type1"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_TcdA1_expanded_818999_826250_backward": [
-                                    "Type1"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_TcdA1_expanded_806642_814253_backward": [
-                                    "Type1"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A2_expanded_1481951_1486364_forward": [
-                                    "Type2b"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A1_expanded_1478921_1481900_forward": [
-                                    "Type2b"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A1_expanded_3354173_3357071_forward": [
-                                    "Type2b"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A2_expanded_3357168_3361860_forward": [
-                                    "Type2b"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A1_expanded_3627693_3631212_backward": [
-                                    "Type2a"],
-                                "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A2_expanded_3623612_3627707_backward": [
-                                    "Type2a"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_36104_43622_forward": [
-                                    "Type1"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_2349716_2356853_forward": [
-                                    "Type1"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3626745_3634320_backward": [
-                                    "Type1"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3617993_3624551_backward": [
-                                    "Type1"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3610392_3617688_backward": [
-                                    "Type1"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3588748_3595918_backward": [
-                                    "Type1"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3576411_3583962_backward": [
-                                    "Type1"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_4750346_4757417_forward": [
-                                    "Type1"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_1746473_1750022_backward": [
-                                    "Type2a"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_1742386_1746487_backward": [
-                                    "Type2a"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_2814033_2818173_forward": [
-                                    "Type2a"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_2810554_2814010_forward": [
-                                    "Type2a"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_2099000_2101886_forward": [
-                                    "Type2b"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_2101936_2106331_forward": [
-                                    "Type2b"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_4202590_4205512_forward": [
-                                    "Type2b"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_4205609_4210301_forward": [
-                                    "Type2b"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_4742654_4746626_forward": [
-                                    "Type2b"],
-                                "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_4746784_4749883_forward": [
-                                    "Type2b"],
-                                "NZ_CP011104.1_information_Photorhabdus_thracensis_region_TcdA1_expanded_2899156_2906767_backward": [
-                                    "Type1"],
-                                "NZ_CP011104.1_information_Photorhabdus_thracensis_region_A1_expanded_3227753_3231725_forward": [
-                                    "Type2b"],
-                                "NZ_CP011104.1_information_Photorhabdus_thracensis_region_A2_expanded_3231822_3236538_forward": [
-                                    "Type2b"],
-                                "NZ_CP011104.1_information_Photorhabdus_thracensis_region_TcdA1_expanded_3191309_3197951_forward": [
-                                    "Type1"],
-                                "NZ_CP011104.1_information_Photorhabdus_thracensis_region_TcdA1_expanded_3183237_3190896_forward": [
-                                    "Type1"],
-                                "NZ_CP011104.1_information_Photorhabdus_thracensis_region_TcdA1_expanded_3173661_3181236_forward": [
-                                    "Type1"],
-                                "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_A1_expanded_582667_586192_forward": [
-                                    "Type2a"],
-                                "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_A2_expanded_587016_590268_forward": [
-                                    "Type2a"],
-                                "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_A1_expanded_953038_955966_forward": [
-                                    "Type2b"],
-                                "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_A2_expanded_956061_960756_forward": [
-                                    "Type2b"],
-                                "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_TcdA1_expanded_1464525_1471155_backward": [
-                                    "Type1"],
-                                "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_TcdA1_expanded_1456693_1464112_backward": [
-                                    "Type1"],
-                                "NZ_CABIVL010000085.1_information_Pseudomonas_carnis_region_A1_expanded_2592488_2594525_forward": [
-                                    "Type2b"],
-                                "NZ_CABIVL010000085.1_information_Pseudomonas_carnis_region_A2_expanded_2594556_2599239_forward": [
-                                    "Type2b"],
-                                "NZ_CABIVL010000085.1_information_Pseudomonas_carnis_region_TcdA1_expanded_3215854_3218848_forward": [
-                                    "Type1"],
-                                "NZ_RHQN01000027.1_information_Pseudomonas_sp._region_A1_expanded_2865132_2868165_backward": [
-                                    "Type2b"],
-                                "NZ_RHQN01000027.1_information_Pseudomonas_sp._region_A2_expanded_2860228_2865118_backward": [
-                                    "Type2b"],
-                                "NZ_AKJR01000399.1_information_Pseudomonas_sp._region_TcdA1_expanded_267894_271566_forward": [
-                                    "Type1"],
-                                "NZ_AKJR01000399.1_information_Pseudomonas_sp._region_A1_expanded_857988_861717_forward": [
-                                    "Type2b"],
-                                "NZ_AKJR01000399.1_information_Pseudomonas_sp._region_A2_expanded_861716_865820_forward": [
-                                    "Type2b"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A1_expanded_90073_93523_forward": [
-                                    "Type2a"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A2_expanded_93547_97681_forward": [
-                                    "Type2a"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A1_expanded_2232559_2236093_forward": [
-                                    "Type2a"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A2_expanded_2236079_2240180_forward": [
-                                    "Type2a"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1581866_1589459_forward": [
-                                    "Type1"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1569951_1577154_forward": [
-                                    "Type1"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1553426_1560176_forward": [
-                                    "Type1"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1546321_1552942_forward": [
-                                    "Type1"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1538340_1545900_forward": [
-                                    "Type1"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_4121789_4132319_backward": [
-                                    "Type1"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A2_expanded_2026472_2031185_backward": [
-                                    "Type2b"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A1_expanded_2031288_2034213_backward": [
-                                    "Type2b"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A1_expanded_2787806_2790692_forward": [
-                                    "Type2b"],
-                                "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A2_expanded_2790743_2795159_forward": [
-                                    "Type2b"],
-                                "NZ_KL543992.1_information_Photorhabdus_australis_region_A2_expanded_129145_133240_backward": [
-                                    "Type2a"],
-                                "NZ_KL543992.1_information_Photorhabdus_australis_region_A1_expanded_133229_136754_backward": [
-                                    "Type2a"],
-                                "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_672137_679775_forward": [
-                                    "type1"],
-                                "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_1950214_1957753_backward": [
-                                    "type1"],
-                                "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_1943255_1949780_backward": [
-                                    "type1"],
-                                "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_1935583_1942777_backward": [
-                                    "type1"],
-                                "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_3899266_3905800_backward": [
-                                    "type1"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A1_expanded_432044_435578_forward": [
-                                    "Type2a"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A2_expanded_435564_439665_forward": [
-                                    "Type2a"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_TcdA1_expanded_557184_564402_backward": [
-                                    "Type1"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_TcdA1_expanded_2390999_2398565_forward": [
-                                    "Type1"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_TcdA1_expanded_2369647_2377138_forward": [
-                                    "Type1"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_TcdA1_expanded_2362258_2369164_forward": [
-                                    "Type1"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A2_expanded_2524015_2528428_backward": [
-                                    "Type2b"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A1_expanded_2528479_2531365_backward": [
-                                    "Type2b"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A2_expanded_3937610_3942299_backward": [
-                                    "Type2b"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A1_expanded_3942402_3945327_backward": [
-                                    "Type2b"],
-                                "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A2_expanded_4049378_4052948_forward": [
-                                    "Type1"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A2_expanded_191734_195832_backward": [
-                                    "Type2a"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A1_expanded_195818_199337_backward": [
-                                    "Type2a"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_TcdA1_expanded_2764973_2771600_backward": [
-                                    "Type1"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_TcdA1_expanded_2757244_2764660_backward": [
-                                    "Type1"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_TcdA1_expanded_2734525_2741752_backward": [
-                                    "Type1"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_TcdA1_expanded_2722185_2729760_backward": [
-                                    "Type1"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A2_expanded_3540851_3545546_backward": [
-                                    "Type2b"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A1_expanded_3545643_3548565_backward": [
-                                    "Type2b"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A1_expanded_3817262_3820166_forward": [
-                                    "Type2b"],
-                                "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A2_expanded_3820341_3824757_forward": [
-                                    "Type2b"],
-                                "NZ_VKDC01000148.1_information_Fulvivirga_sp._region_A2_expanded_7833204_7836423_backward": [
-                                    "Type?", "Type3"],
-                                "NZ_VKDC01000148.1_information_Fulvivirga_sp._region_TcdA1_expanded_2351126_2360498_forward": [
-                                    "Type3"],
-                                "NZ_VKDC01000148.1_information_Fulvivirga_sp._region_TcdA1_expanded_4853485_4862983_forward": [
-                                    "Type3"],
-                                "NZ_FPBA01000069.1_information_Geodermatophilus_amargosae_region_A2_expanded_4821940_4825159_backward": [
-                                    "Type?"],
-                                "NZ_FPBA01000069.1_information_Geodermatophilus_amargosae_region_A2_expanded_5630192_5640827_backward": [
-                                    "Type3"],
-                                "NZ_BCBO01000195.1_information_Pseudomonas_sp._region_A1_expanded_1940890_1943362_forward": [
-                                    "Type2b"],
-                                "NZ_BCBO01000195.1_information_Pseudomonas_sp._region_A2_expanded_1943554_1948237_forward": [
-                                    "Type2b"],
-                                "NZ_BCBO01000195.1_information_Pseudomonas_sp._region_TcdA1_expanded_6024212_6028535_forward": [
-                                    "Type1"],
-                                "NZ_VZZS01000049.1_information_Pseudomonas_sp._region_A1_expanded_1401257_1405886_forward": [
-                                    "Type2b"],
-                                "NZ_VZZS01000049.1_information_Pseudomonas_sp._region_A2_expanded_1405931_1410509_forward": [
-                                    "Type2b"],
-                                "NZ_VZZS01000049.1_information_Pseudomonas_sp._region_TcdA1_expanded_1382544_1391286_backward": [
-                                    "Type1"],
-                                "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_TcdA1_expanded_263892_267498_forward": [
-                                    "Type1"],
-                                "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_A2_expanded_279466_283009_forward": [
-                                    "Type2b"],
-                                "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_A1_expanded_275920_279082_forward": [
-                                    "Type2b"],
-                                "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_A2_expanded_2388313_2390908_backward": [
-                                    "Type2b"],
-                                "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_A1_expanded_2393199_2397900_backward": [
-                                    "Type2b"],
-                                "JAAHGQ010001185.1_information_Symploca_sp._region_TcdA1_expanded_1614659_1629566_backward": [
-                                    "Type1"],
-                                "JAAHGQ010001185.1_information_Symploca_sp._region_TcdA1_expanded_2763629_2771996_backward": [
-                                    "Type1"],
-                                "JAAHGQ010001185.1_information_Symploca_sp._region_A2_expanded_622115_630707_forward": [
-                                    "Type3", "Type3"],
-                                "NC_012962.1_information_Photorhabdus_asymbiotica_region_TcdA1_expanded_1054728_1061256_backward": [
-                                    "Type1"],
-                                "NC_012962.1_information_Photorhabdus_asymbiotica_region_TcdA1_expanded_1045698_1052889_backward": [
-                                    "Type1"],
-                                "NC_012962.1_information_Photorhabdus_asymbiotica_region_A2_expanded_2339002_2343097_forward": [
-                                    "Type2a"],
-                                "NC_012962.1_information_Photorhabdus_asymbiotica_region_A1_expanded_2335464_2339013_forward": [
-                                    "Type2a"],
-                                "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_TcdA1_expanded_3670905_3678513_backward": [
-                                    "Type1"],
-                                "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_TcdA1_expanded_3655617_3663132_forward": [
-                                    "Type1"],
-                                "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_TcdA1_expanded_3599091_3606933_forward": [
-                                    "Type1"],
-                                "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_A1_expanded_3645585_3649056_forward": [
-                                    "Type2a"],
-                                "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_A2_expanded_3649065_3653265_forward": [
-                                    "Type2a"], "NZ_FXYF01000056.1": ["Single", "Type3"],
-                                "NZ_VCKW01000623.1_information_Actinomadura_sp._region_A2_expanded_747005_750221_forward": [
-                                    "Type?"],
-                                "NZ_VCKW01000623.1_information_Actinomadura_sp._region_A2_expanded_6267139_6277399_backward": [
-                                    "Type3"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_TcdA1_expanded_556407_563052_backward": [
-                                    "Type1"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_TcdA1_expanded_548600_556094_backward": [
-                                    "Type1"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_TcdA1_expanded_531911_539162_backward": [
-                                    "Type1"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_TcdA1_expanded_519554_527165_backward": [
-                                    "Type1"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A2_expanded_1184450_1188863_forward": [
-                                    "Type2b"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A1_expanded_1181420_1184399_forward": [
-                                    "Type2b"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A2_expanded_3344032_3348724_forward": [
-                                    "Type2b"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A1_expanded_3341037_3343935_forward": [
-                                    "Type2b"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A1_expanded_3676266_3679785_backward": [
-                                    "Type2a"],
-                                "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A2_expanded_3672185_3676280_backward": [
-                                    "Type2a"],
-                                "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A1_expanded_577789_581314_backward": [
-                                    "Type2b"],
-                                "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A2_expanded_572951_575870_backward": [
-                                    "Type2b"],
-                                "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A2_expanded_2487802_2491402_forward": [
-                                    "Type2b", "Type3"],
-                                "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A2_expanded_2470787_2475539_forward": [
-                                    "Type2b"],
-                                "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A1_expanded_2467223_2470688_forward": [
-                                    "Type2b"],
-                                "NZ_FTPM01000002.1_information_Burkholderia_sp._region_TcdA1_expanded_3110262_3117861_backward": [
-                                    "Type1"],
-                                "NZ_FTPJ01000003.1_information_Burkholderia_sp._region_TcdA1_expanded_21233_28058_forward": [
-                                    "Type1"],
-                                "NZ_FTPJ01000003.1_information_Burkholderia_sp._region_A1_expanded_1746754_1750222_backward": [
-                                    "Type2b"],
-                                "NZ_FTPJ01000003.1_information_Burkholderia_sp._region_A2_expanded_1741903_1746655_backward": [
-                                    "Type2b"],
-                                "NZ_CP041186.1_information_Bradymonas_sp._region_A2_expanded_4319135_4327433_backward": [
-                                    "Type3"],
-                                "NZ_ABCS01000237.1_information_Plesiocystis_pacifica_region_A2_expanded_2871032_2875556_forward": [
-                                    "Type3"],
-                                "JAAHFU010000658.1_information_Leptolyngbya_sp._region_A2_expanded_7706383_7715437_backward": [
-                                    "Type3"],
-                                "JAAHFU010000658.1_information_Leptolyngbya_sp._region_TcdA1_expanded_5813429_5827880_backward": [
-                                    "Type3"],
-                                "NZ_RJKE01000001.1_information_Actinocorallia_herbida_region_A2_expanded_4657113_4660347_forward": [
-                                    "Type3"],
-                                "NZ_LRSO01000023.1_information_Pseudomonas_thivervalensis_region_A2_expanded_2622756_2627292_backward": [
-                                    "Type2b"],
-                                "NZ_LRSO01000023.1_information_Pseudomonas_thivervalensis_region_A1_expanded_2627328_2629860_backward": [
-                                    "Type2b"],
-                                "NZ_BLAD01000170.1_information_Acrocarpospora_corrugata_region_A2_expanded_2785887_2789091_backward": [
-                                    "Type3"],
-                                "NZ_CP004078.1_information_Paenibacillus_sabinae_region_TcB_expanded_2796003_2803788_backward": [
-                                    "hit_tag", "more"]}
+    original_classifications = {"AP018269.1": ["Incomplete"], "AP018270.1": ["Incomplete"],
+                                "AP018271.1": ["Simple", "Type3"], "AP018272.1": ["Incomplete"],
+                                "AP018273.1": ["Incomplete"], "CP034538.1": ["Incomplete"],
+                                "DAATWL01": ["Single", "Type2b"], "OOHJ01": ["Incomplete"],
+                                "NZ_CP022961.1": ["Multiple", "Type1", "Type3"], "JPPA01": ["Simple", "Type3"],
+                                "NUCS01": ["Incomplete"], "LIVZ01": ["Simple", "Type3"],
+                                "FTPJ01": ["Multiple", "Type1", "Type2b"], "LAVL01": ["Incomplete"],
+                                "NC_013892.1": ["Multiple", "Type1", "Type2a"], "PCQL01": ["Simple", "Type2b"],
+                                "JAAMRA01": ["Multiple", "Type2b"], "MDEO01": ["Simple", "Type3"],
+                                "WIVP01": ["Simple", "Type2b"], "VHLG01": ["Incomplete"],
+                                "MIFU01": ["Simple", "Type2b"], "NZ_AP018449.1": ["Simple", "Type3"],
+                                "CABPSQ01": ["Simple", "Type2b"], "CP034537.1": ["Incomplete"],
+                                "PHFJ01": ["Single", "Type1"], "JAABMF01": ["Simple", "Type1"],
+                                "RBQC01": ["Single", "Type2b"], "AGJN02": ["Simple", "Type3"],
+                                "ONZJ01": ["Simple", "Type3"], "WWHE01": ["Simple", "Type3"],
+                                "FMXW01": ["Multiple", "Type2b"], "NGVR01": ["Simple", "Type1"],
+                                "NZ_CP020038.1": ["Incomplete"], "NZ_CP021745.1": ["Incomplete"],
+                                "NZ_CP021746.1": ["Incomplete"], "NZ_CP021747.1": ["Incomplete"],
+                                "QGAC01": ["Incomplete"], "NZ_CP024081.1": ["Simple", "Type2b"],
+                                "NZ_CP015613.1": ["Simple", "Type1"], "VIWL01": ["Single", "Type2b"],
+                                "NJAK01": ["Simple", "Type2a"], "UUIW01": ["Single", "Type2b"],
+                                "NZ_CP012672.1": ["Multiple", "Type1", "Type3"], "NZ_CP047267.1": ["Single", "Type2b"],
+                                "PCQC01": ["Single", "Type2b"], "NHML01": ["Incomplete"], "FNJL01": ["Simple", "Type3"],
+                                "NZ_CP012533.1": ["Single", "Type3"], "NZ_CP012534.1": ["Incomplete"],
+                                "NZ_CP012535.1": ["Incomplete"], "NZ_CP012536.1": ["Incomplete"],
+                                "NZ_CP012537.1": ["Incomplete"], "NZ_CP012538.1": ["Incomplete"],
+                                "NZ_CP012539.1": ["Incomplete"], "NZ_CP012540.1": ["Incomplete"],
+                                "RBSM01": ["Single", "Type2b"], "NZ_CP010029.1": ["Single", "Type2a"],
+                                "PHHE01": ["Simple", "Type2b"], "NEJT01": ["Single", "Type2b"],
+                                "NZ_CP031450.1": ["Simple", "Type2b"], "NZ_CP017708.1": ["Incomplete"],
+                                "NZ_CP017709.1": ["Incomplete"], "NZ_CP017710.1": ["Incomplete"],
+                                "FYEE01": ["Multiple", "Type2b"], "ATXB01": ["Simple", "Type3"],
+                                "APLI01": ["Incomplete"], "AWQP01": ["Single", "Type2b"], "LMTZ01": ["Incomplete"],
+                                "NCXP01": ["Simple", "Type3"], "NZ_CP045799.1": ["Single", "Type2b"],
+                                "NZ_CP045800.1": ["Incomplete"], "NZ_CP045801.1": ["Incomplete"],
+                                "AJXJ01": ["Single", "Type2b"], "NZ_CP047073.1": ["Single", "Type2b"],
+                                "NVXX01": ["Single", "Type2b"], "MUIN01": ["Multiple", "Type2b"],
+                                "VDNE01": ["Incomplete"], "LXYR01": ["Incomplete"],
+                                "NZ_CP022411.1": ["Single", "Type2b"], "WIVR01": ["Multiple", "Type2b"],
+                                "WIWH01": ["Single", "Type2b"], "FONE01": ["Incomplete"], "MKZS01": ["Incomplete"],
+                                "QJUG01": ["Simple", "Type3"], "LWBP01": ["Simple", "Type3"],
+                                "QUOK01": ["Multiple", "Type3"], "FQUQ01": ["Simple", "Type3"],
+                                "VIWO01": ["Multiple", "Type3"], "NITZ01": ["Simple", "Type1"],
+                                "CBLV01": ["Multiple", "Type2b"], "MASH01": ["Incomplete"], "LQOW01": ["Incomplete"],
+                                "NEHI01": ["Simple", "Type2b"], "NZ_CP038254.1": ["Simple", "Type3"],
+                                "JTBY01": ["Incomplete"], "FNTY01": ["Single", "Type2b"],
+                                "NZ_CP028826.1": ["Single", "Type2b"], "NIRH01": ["Simple", "Type1"],
+                                "LVYD01": ["Simple", "Type3"], "NZ_CP025800.1": ["Simple", "Type1"],
+                                "NZ_CP025801.1": ["Incomplete"], "NZ_CP025802.1": ["Incomplete"],
+                                "QLKY01": ["Incomplete"], "RCFQ01": ["Simple", "Type3"], "SMCH01": ["Simple", "Type2b"],
+                                "NZ_CP015381.1": ["Incomplete"], "NMRE01": ["Single", "Type2b"],
+                                "QSNX01": ["Single", "Type2b"], "NZ_CM001558.1": ["Simple", "Type2b"],
+                                "FNNQ01": ["Incomplete"], "FQUS01": ["Multiple", "Type3"],
+                                "NZ_LT629762.1": ["Single", "Type2b"], "NZ_CP031065.1": ["Incomplete"],
+                                "NZ_CP031066.1": ["Simple", "Type3"], "NZ_CP031067.1": ["Incomplete"],
+                                "VSJH01": ["Simple", "Type2b"], "FNYO01": ["Incomplete"],
+                                "NZ_CP036313.1": ["Simple", "Type3"], "NZ_CP036314.1": ["Incomplete"],
+                                "NZ_CP036315.1": ["Incomplete"], "NZ_CP041668.1": ["Simple", "Type3"],
+                                "NZ_CP041669.1": ["Incomplete"], "FXYF01": ["Simple", "Type3"],
+                                "NIRS01": ["Single", "Type2b"], "FNCO01": ["Single", "Type2b"],
+                                "RHQN01": ["Multiple", "Type1", "Type2b"], "NZ_CP021983.2": ["Incomplete"],
+                                "RCWL01": ["Simple", "Type3"], "QUMQ01": ["Incomplete"], "QAJM01": ["Single", "Type2b"],
+                                "NBRZ01": ["Single", "Type2b"], "BJLR01": ["Incomplete"],
+                                "NZ_CP039291.1": ["Incomplete"], "NC_013947.1": ["Multiple", "Type3"],
+                                "JMCC02": ["Simple", "Type3"], "NBVR01": ["Single", "Type1"],
+                                "QAIL01": ["Simple", "Type3"], "QWFB01": ["Single", "Type2b"],
+                                "NZ_CP031648.1": ["Simple", "Type2b"], "MCHY01": ["Simple", "Type3"],
+                                "NZ_CP041186.1": ["Multiple", "Type3"], "NC_013216.1": ["Simple", "Type3"],
+                                "JYHW01": ["Single", "Type2b"], "WIVY01": ["Multiple", "Type1", "Type2b"],
+                                "FYDX01": ["Single", "Type2b"], "MUGY01": ["Incomplete"], "FNYJ01": ["Incomplete"],
+                                "JJML01": ["Simple", "Type3"], "FNTZ01": ["Multiple", "Type2b"],
+                                "NZ_CP029064.1": ["Simple", "Type3"], "LRUN01": ["Single", "Type2b"],
+                                "VIUF01": ["Simple", "Type2b"], "VZZK01": ["Simple", "Type3"],
+                                "AJLJ01": ["Simple", "Type3"], "CAADIW01": ["Single", "Type1"],
+                                "AXVJ01": ["Incomplete"], "VIUC01": ["Multiple", "Type2b"],
+                                "AMBZ01": ["Multiple", "Type2b"], "QGGJ01": ["Incomplete"],
+                                "VUOC01": ["Simple", "Type3"], "QAAE01": ["Simple", "Type3"], "NCWQ01": ["Incomplete"],
+                                "PVTU01": ["Incomplete"], "BBMZ01": ["Single", "Type2b"],
+                                "NZ_CP054043.1": ["Simple", "Type1"], "SJSL01": ["Simple", "Type3"],
+                                "FQYP01": ["Simple", "Incomplete"], "NZ_CP011129.1": ["Simple", "Type3"],
+                                "NC_012961.1": ["Incomplete"], "NC_012962.1": ["Multiple", "Type1", "Type2b"],
+                                "BBXD01": ["Incomplete"], "NZ_CP029196.1": ["Simple", "Type3"],
+                                "AKJT01": ["Multiple", "Type2b"], "NVPT01": ["Simple", "Type3"],
+                                "BBXG01": ["Incomplete"], "ALVN01": ["Simple", "Type3"], "NJFA02": ["Single", "Type1"],
+                                "NC_019738.1": ["Incomplete"], "NC_019739.1": ["Incomplete"],
+                                "NC_019740.1": ["Incomplete"], "NC_019741.1": ["Incomplete"],
+                                "NC_019742.1": ["Incomplete"], "NC_019743.1": ["Incomplete"],
+                                "NC_019760.1": ["Incomplete"], "NC_019761.1": ["Incomplete"],
+                                "NC_019762.1": ["Incomplete"], "QPCD01": ["Incomplete"], "QTPO01": ["Simple", "Type3"],
+                                "FOEO01": ["Single", "Type2b"], "QWLL01": ["Incomplete"],
+                                "QOVA01": ["Single", "Type2b"], "NZ_CP014262.1": ["Multiple", "Type2b"],
+                                "FNDJ01": ["Incomplete"], "NZ_AP017422.1": ["Incomplete"],
+                                "SNXZ01": ["Simple", "Type3"], "FXWP01": ["Single", "Type1"],
+                                "UTBZ01": ["Multiple", "Type2b"], "BCBA01": ["Single", "Type2b"],
+                                "VSRQ01": ["Incomplete"], "LFWB01": ["Incomplete"], "QTUB01": ["Simple", "Type2a"],
+                                "NZ_CP053584.1": ["Single", "Type2b"], "NZ_CP010897.2": ["Simple", "Type2b"],
+                                "NZ_CP010898.2": ["Incomplete"], "WIVZ01": ["Multiple", "Type1", "Type2b"],
+                                "NZ_CP013341.1": ["Simple", "Type3"], "JACAQG01": ["Simple", "Type2b"],
+                                "FNKR01": ["Simple", "Type3"], "NZ_CP027723.1": ["Single", "Type2b"],
+                                "MDEN01": ["Incomplete"], "CVRZ01": ["Simple", "Type1"],
+                                "NZ_CP038033.1": ["Incomplete"], "NZ_CP044217.1": ["Incomplete"],
+                                "NZ_CP044218.1": ["Simple", "Type3"], "PENV01": ["Simple", "Type1"],
+                                "NRQY01": ["Simple", "Type1"], "SISB01": ["Multiple", "Type2b"],
+                                "NZ_LT629732.1": ["Simple", "Type3"], "AOCZ01": ["Simple", "Type1"],
+                                "NZ_CP039371.1": ["Simple", "Type1"], "NZ_CP039372.1": ["Incomplete"],
+                                "JAFA01": ["Incomplete"], "FNOY01": ["Incomplete"], "CABPSP01": ["Simple", "Type2b"],
+                                "LGSI01": ["Single", "Type2b"], "VZRB01": ["Simple", "Type3"],
+                                "MKWS01": ["Multiple", "Type2b"], "VIUI01": ["Multiple", "Type2b"],
+                                "RXOM01": ["Incomplete"], "BCQP01": ["Incomplete"], "SMTE01": ["Simple", "Type1"],
+                                "QMEY01": ["Incomplete"], "MBDT01": ["Simple", "Type2b"], "LKPJ01": ["Simple", "Type3"],
+                                "OGTP01": ["Simple", "Type3"], "QKTW01": ["Simple", "Type3"],
+                                "NC_005773.3": ["Multiple", "Type1", "Type2b"], "NC_007274.1": ["Incomplete"],
+                                "NC_007275.1": ["Incomplete"], "NZ_CP048835.1": ["Simple", "Type3"],
+                                "NC_010162.1": ["Multiple", "Type3"], "NEVM01": ["Single", "Type1"],
+                                "FOUX01": ["Simple", "Type3"], "NZ_CP023526.1": ["Incomplete"],
+                                "NZ_CP054422.1": ["Single", "Type2b"], "VOIX01": ["Single", "Type2b"],
+                                "VIWA01": ["Simple", "Type3"], "VEBC01": ["Incomplete"],
+                                "WIWK01": ["Multiple", "Type1", "Type2b"], "QREK01": ["Simple", "Type3"],
+                                "NZ_CM002330.1": ["Single", "Type2b"], "NZ_CM002331.1": ["Incomplete"],
+                                "BAHC01": ["Incomplete"], "NZ_CP042968.1": ["Incomplete"],
+                                "NZ_CP018049.1": ["Single", "Type2b"], "VZPM01": ["Simple", "Type2b"],
+                                "QLIN01": ["Single", "Type2b"], "AUYR01": ["Incomplete"], "NTYK01": ["Incomplete"],
+                                "VSFF01": ["Simple", "Type3"], "LRTK01": ["Incomplete"], "ARBP01": ["Simple", "Type3"],
+                                "ABCS01": ["Multiple", "Type3"], "BJNF01": ["Simple", "Type3"],
+                                "VOQD01": ["Simple", "Type3"], "VIUL01": ["Multiple", "Type2b"],
+                                "WHJD01": ["Multiple", "Type1", "Type2b"], "MLFS01": ["Simple", "Type1"],
+                                "NZ_CP024900.1": ["Multiple", "Type1", "Type2a", "Type2b"],
+                                "NZ_CP009555.1": ["Incomplete"], "NZ_CP009556.1": ["Incomplete"],
+                                "NZ_CP013426.1": ["Simple", "Type3"], "NZ_CP013427.1": ["Incomplete"],
+                                "NZ_CP013428.1": ["Incomplete"], "NZ_CP013429.1": ["Incomplete"],
+                                "POUA01": ["Incomplete"], "AJUL01": ["Simple", "Type3"], "PCOS01": ["Simple", "Type2b"],
+                                "QKZA01": ["Simple", "Type1"], "FNQW01": ["Incomplete"], "JADL01": ["Incomplete"],
+                                "CABHXE01": ["Simple", "Type1"], "VIKS01": ["Incomplete"],
+                                "MOBX01": ["Single", "Type2b"], "QKLR01": ["Simple", "Type3"],
+                                "JCLE01": ["Simple", "Type1"], "FSRS01": ["Simple", "Type3"],
+                                "NZ_LR134159.1": ["Multiple", "Type2b"], "VCKW01": ["Multiple", "Type3"],
+                                "WTCR01": ["Simple", "Type3"], "LLWH01": ["Single", "Type2b"],
+                                "NZ_CP027738.1": ["Simple", "Type3"], "QKVL01": ["Single", "Type2b"],
+                                "NZ_CP033932.1": ["Simple", "Type3"], "NZ_CM001441.1": ["Incomplete"],
+                                "QGTQ01": ["Simple", "Type3"], "RCZD01": ["Simple", "Type1"],
+                                "PYLU01": ["Simple", "Type1"], "NZ_CP011288.1": ["Single", "Type2b"],
+                                "FPLG01": ["Simple", "Type1"], "NZ_CP012371.1": ["Incomplete"],
+                                "NZ_CP022478.1": ["Incomplete"], "NMQR01": ["Multiple", "Type1", "Type2a", "Type2b"],
+                                "CTIO01": ["Simple", "Type1"], "VCNG01": ["Multiple", "Type2b"],
+                                "NZ_CP007410.1": ["Multiple", "Type2b"], "NKHL01": ["Incomplete"],
+                                "MVGR01": ["Simple", "Type3"], "NZ_CP056779.1": ["Incomplete"],
+                                "NZ_CP056780.1": ["Multiple", "Type1"], "NZ_CP056781.1": ["Incomplete"],
+                                "NZ_CP056782.1": ["Single", "Type2b"], "NQKQ01": ["Single", "Type2b"],
+                                "JOGE01": ["Simple", "Type3"], "NZ_CP009533.1": ["Multiple", "Type2b"],
+                                "NQKJ01": ["Multiple", "Type1", "Type2b"], "NETK01": ["Simple", "Type3"],
+                                "NZ_CP031062.1": ["Incomplete"], "NZ_CP031063.1": ["Simple", "Type3"],
+                                "NZ_CP031064.1": ["Incomplete"], "NZ_CP004078.1": ["Simple", "Type3"],
+                                "PJZH01": ["Incomplete"], "FNPW01": ["Multiple", "Type1"],
+                                "SEUB01": ["Multiple", "Type2b"], "UPHP01": ["Simple", "Type3"],
+                                "JNGI01": ["Simple", "Type1"], "UUFD01": ["Incomplete"], "AAWS01": ["Incomplete"],
+                                "NZ_CP021659.1": ["Multiple", "Type1"], "NZ_CP021660.1": ["Incomplete"],
+                                "NZ_CP021661.1": ["Incomplete"], "NZ_CP021662.1": ["Incomplete"],
+                                "MOBP01": ["Single", "Type2b"], "OIFR01": ["Simple", "Type3"],
+                                "JSAL01": ["Multiple", "Type2b"], "NZ_CP011104.1": ["Multiple", "Type1", "Type2b"],
+                                "MOBI01": ["Simple", "Type2b"], "PUJU01": ["Multiple", "Type1", "Type2a", "Type2b"],
+                                "BIFQ01": ["Simple", "Type3"], "NZ_CP025035.2": ["Incomplete"],
+                                "LIUV01": ["Single", "Type2b"], "NC_010830.1": ["Simple", "Type3"],
+                                "CABPSR01": ["Single", "Type2b"], "CVTM01": ["Single", "Type2b"],
+                                "RQJP01": ["Simple", "Type3"], "NZ_CP009288.1": ["Simple", "Type3"],
+                                "NZ_CM001025.1": ["Simple", "Type2b"], "MOBT01": ["Single", "Type2b"],
+                                "NZ_LR134318.1": ["Multiple", "Type2b"], "ABBN01": ["Incomplete"],
+                                "NZ_CP039287.1": ["Incomplete"], "NZ_CP039288.1": ["Simple", "Type3"],
+                                "NZ_CP039289.1": ["Incomplete"], "LAIJ01": ["Simple", "Type3"],
+                                "LFCV01": ["Simple", "Type3"], "WWJN01": ["Simple", "Type3"], "VZPQ01": ["Incomplete"],
+                                "VOBN01": ["Single", "Type2b"], "QGTG01": ["Simple", "Type3"],
+                                "AYLO01": ["Simple", "Type3"], "NZ_LT707064.1": ["Single", "Type2b"],
+                                "NZ_CP020076.1": ["Incomplete"], "NZ_CP020077.1": ["Incomplete"],
+                                "NZ_CP020078.1": ["Incomplete"], "NZ_CP020079.1": ["Incomplete"],
+                                "NZ_CP020080.1": ["Simple", "Type1"], "NZ_CP020081.1": ["Incomplete"],
+                                "AMRI01": ["Incomplete"], "NZ_LT629705.1": ["Incomplete"],
+                                "NRST01": ["Single", "Type2b"], "NZ_CP050291.1": ["Simple", "Type1"],
+                                "NZ_CP025263.1": ["Simple", "Type2b"], "FXWM01": ["Simple", "Type3"],
+                                "NZ_CP034725.1": ["Multiple", "Type2b"], "MKQR01": ["Incomplete"],
+                                "FOCT01": ["Incomplete"], "NUVY01": ["Incomplete"], "MRCJ01": ["Simple", "Type3"],
+                                "JUQG01": ["Simple", "Type1"], "LECZ01": ["Single", "Type1"],
+                                "MTHI01": ["Single", "Type2b"], "NZ_CP022121.1": ["Simple", "Type3"],
+                                "NZ_CM001561.1": ["Single", "Type2b"], "NZ_CP017141.1": ["Multiple", "Type3"],
+                                "AZAN01": ["Simple", "Type3"], "AGFX01": ["Incomplete"], "VDCQ01": ["Simple", "Type3"],
+                                "QHJL01": ["Simple", "Type3"], "QWEX01": ["Multiple", "Type3"],
+                                "LMCT01": ["Incomplete"], "NTTM01": ["Incomplete"],
+                                "VZZS01": ["Multiple", "Type1", "Type2b"], "SMFW01": ["Multiple", "Type2b"],
+                                "UEXE01": ["Single", "Type1"], "NZ_CP013046.2": ["Incomplete"],
+                                "NZ_CP013047.2": ["Simple", "Type1"], "FRBZ01": ["Single", "Type2b"],
+                                "AKJH01": ["Single", "Type2b"], "BBLT01": ["Simple", "Type3"], "NBWC01": ["Incomplete"],
+                                "NZ_CP007039.1": ["Multiple", "Type2b"], "FMCR01": ["Simple", "Type3"],
+                                "VIUK01": ["Single", "Type2b"], "MVHE01": ["Incomplete"],
+                                "RCOE01": ["Single", "Type2b"], "QGSY01": ["Simple", "Type3"], "AXWS01": ["Incomplete"],
+                                "AYMJ01": ["Single", "Type2b"], "VOBI01": ["Single", "Type2b"],
+                                "AKJK01": ["Single", "Type2b"], "FNUD01": ["Single", "Type2b"],
+                                "MOBJ01": ["Multiple", "Type2b"], "CAAKGZ01": ["Single", "Type2b"],
+                                "FOUB01": ["Simple", "Type3"], "MUXN01": ["Simple", "Type3"],
+                                "LKBR01": ["Simple", "Type2b"], "UTVB01": ["Multiple", "Type1", "Type2b"],
+                                "PENZ01": ["Simple", "Type1"], "NZ_CP009451.1": ["Single", "Type2b"],
+                                "NZ_CP034148.1": ["Incomplete"], "NZ_CP034149.1": ["Incomplete"],
+                                "NZ_CP034150.1": ["Incomplete"], "NZ_CP034151.1": ["Simple", "Type1"],
+                                "NZ_AP017313.1": ["Simple", "Type3"], "FAOS01": ["Incomplete"],
+                                "NZ_CP027727.1": ["Single", "Type2b"], "NZ_CP035319.1": ["Incomplete"],
+                                "QAIP01": ["Simple", "Type2b"], "FNBR01": ["Multiple", "Type3"],
+                                "AXDH01": ["Single", "Type2b"], "FMVH01": ["Simple", "Type3"],
+                                "NZ_CP036488.1": ["Incomplete"], "NZ_CP036489.1": ["Incomplete"],
+                                "NZ_CP036490.1": ["Single", "Type2b"], "CAQM01": ["Incomplete"],
+                                "LOWA01": ["Simple", "Type2b"], "NZ_CP049044.1": ["Single", "Type2b"],
+                                "NZ_CP010896.1": ["Single", "Type2b"], "NC_017168.1": ["Single", "Type1"],
+                                "NC_017169.1": ["Incomplete"], "NC_017170.1": ["Incomplete"],
+                                "NZ_CP031641.1": ["Single", "Type2b"], "VKDC01": ["Multiple", "Type3"],
+                                "JOAG01": ["Incomplete"], "MWQG01": ["Incomplete"], "VDFY01": ["Simple", "Type3"],
+                                "ALVK01": ["Multiple", "Type3"], "QFRW01": ["Simple", "Type3"],
+                                "BILZ01": ["Simple", "Type3"], "BAXG01": ["Multiple", "Type1"],
+                                "MWPQ01": ["Simple", "Type3"], "WIWM01": ["Single", "Type2b"],
+                                "FOCU01": ["Single", "Type2b"], "MQZX01": ["Simple", "Type1"],
+                                "RKHS01": ["Single", "Type1"], "QHHZ01": ["Incomplete"],
+                                "MYFJ01": ["Multiple", "Type1", "Type3", "Type2a", "Type2b"],
+                                "NC_016901.1": ["Single", "Type1"], "NC_016905.1": ["Incomplete"],
+                                "PEIB01": ["Incomplete"], "MOBQ01": ["Single", "Type2b"],
+                                "NXNJ01": ["Single", "Type2b"], "NZ_CP044407.1": ["Incomplete"],
+                                "PYBV01": ["Incomplete"], "JABTYG01": ["Multiple", "Type2b"],
+                                "NZ_CP042468.1": ["Multiple", "Type1", "Type3"], "NZ_CP014135.1": ["Simple", "Type2b"],
+                                "NC_016818.1": ["Multiple", "Type2b"], "NC_016819.1": ["Incomplete"],
+                                "NC_016835.1": ["Incomplete"], "NC_017092.1": ["Incomplete"],
+                                "MTAX01": ["Simple", "Type3"], "NC_015559.1": ["Simple", "Type3"],
+                                "LQRT01": ["Incomplete"], "NZ_LS999839.1": ["Simple", "Type3"],
+                                "SOCV01": ["Single", "Type2b"], "ASRX01": ["Single", "Type3"],
+                                "NZ_CP044064.1": ["Simple", "Type2b"], "AKJM01": ["Single", "Type2b"],
+                                "SMKX01": ["Simple", "Type3"], "CAAJVF01": ["Simple", "Type3"],
+                                "VIUJ01": ["Simple", "Type2b"], "LGTC01": ["Incomplete"],
+                                "NZ_CP033893.1": ["Incomplete"], "NZ_CP033894.1": ["Single", "Type1"],
+                                "NZ_CP033895.1": ["Incomplete"], "JXRA01": ["Simple", "Type3"],
+                                "RQPI01": ["Simple", "Type3"], "NZ_CP023695.1": ["Simple", "Type3"],
+                                "NZ_LR134335.1": ["Single", "Type1"], "SMJU01": ["Simple", "Type3"],
+                                "LMCV01": ["Single", "Type2b"], "PKNM01": ["Simple", "Type1"],
+                                "PIQI01": ["Simple", "Type1"], "FZPH01": ["Simple", "Type3"],
+                                "WIWB01": ["Single", "Type2b"], "NC_009253.1": ["Simple", "Type3"],
+                                "SOZA01": ["Single", "Type2b"], "NZ_LT855380.1": ["Incomplete"],
+                                "NZ_CP014947.1": ["Multiple", "Type2b"], "ALVJ01": ["Incomplete"],
+                                "NZ_CP013459.1": ["Incomplete"], "NZ_CP013460.1": ["Incomplete"],
+                                "NZ_CP013461.1": ["Simple", "Type3"], "NZ_CP048408.1": ["Multiple", "Type2b"],
+                                "NZ_CP003181.2": ["Simple", "Type2b"], "VFIO01": ["Single", "Type2b"],
+                                "MASS01": ["Incomplete"], "NC_020453.1": ["Simple", "Type3"],
+                                "PYUC01": ["Simple", "Type1"], "VEGT01": ["Simple", "Type3"],
+                                "MKZO01": ["Single", "Type2b"], "WIWE01": ["Single", "Type2b"],
+                                "FMWY01": ["Simple", "Type3"], "MWQL01": ["Incomplete"], "FMVD01": ["Incomplete"],
+                                "NZ_CP023969.1": ["Single", "Type2b"], "NZ_CP029608.1": ["Single", "Type2b"],
+                                "SMKU01": ["Incomplete"], "FUKJ01": ["Single", "Type3"],
+                                "JONO01": ["Multiple", "Type1", "Type2a"], "RAVW01": ["Incomplete"],
+                                "PDUD01": ["Incomplete"], "MKMC01": ["Simple", "Type3"],
+                                "NC_017448.1": ["Single", "Type3"], "PVZV01": ["Incomplete"],
+                                "NZ_CP031069.1": ["Incomplete"], "NZ_CP031070.1": ["Simple", "Type2b"],
+                                "NZ_CP023269.1": ["Multiple", "Type2b"], "VLLP01": ["Incomplete"],
+                                "NZ_CM001559.1": ["Simple", "Type3"], "NZ_CP029983.1": ["Simple", "Type2b"],
+                                "VHKL01": ["Simple", "Type3"], "NZ_CP027218.1": ["Single", "Type2b"],
+                                "JPPZ01": ["Simple", "Type3"], "AKJD01": ["Incomplete"],
+                                "VCNJ01": ["Multiple", "Type2b"], "NZ_CP013423.1": ["Incomplete"],
+                                "NZ_CP013424.1": ["Incomplete"], "NZ_CP013425.1": ["Incomplete"],
+                                "SMKK01": ["Simple", "Type3"], "SODH01": ["Incomplete"],
+                                "AZSS01": ["Multiple", "Type3"], "JFHN01": ["Simple", "Type1"],
+                                "MUNM01": ["Single", "Type2b"], "NC_021492.1": ["Incomplete"],
+                                "NC_021500.1": ["Single", "Type1"], "RCSU01": ["Simple", "Type3"],
+                                "SMOD01": ["Simple", "Type3"], "NZ_CP042382.1": ["Simple", "Type3"],
+                                "NC_008268.1": ["Incomplete"], "NC_008269.1": ["Incomplete"],
+                                "NC_008270.1": ["Incomplete"], "NC_008271.1": ["Incomplete"],
+                                "JYLE01": ["Multiple", "Type1", "Type2b"], "PYMM01": ["Single", "Type1"],
+                                "NZ_CP007699.2": ["Simple", "Type3"], "QAOU01": ["Incomplete"],
+                                "WBOI01": ["Multiple", "Type1", "Type2b"], "CAACVJ01": ["Incomplete"],
+                                "BJMN01": ["Simple", "Type3"], "SMDG01": ["Simple", "Type1"],
+                                "CABIWI01": ["Multiple", "Type1", "Type2b"],
+                                "WHZZ01": ["Multiple", "Type1", "Type2a", "Type2b"], "QAOQ01": ["Simple", "Type3"],
+                                "RCBZ01": ["Incomplete"], "NZ_CP022303.1": ["Incomplete"],
+                                "NZ_CP022304.1": ["Incomplete"], "NZ_CP022305.1": ["Incomplete"],
+                                "NZ_CP022306.1": ["Incomplete"], "AQRJ01": ["Simple", "Type3"],
+                                "FNGP01": ["Incomplete"], "RJKM01": ["Incomplete"], "PKND01": ["Simple", "Type1"],
+                                "FOSU01": ["Incomplete"], "AWZT01": ["Simple", "Type3"],
+                                "NZ_CP009458.1": ["Single", "Type1"], "WEGH01": ["Incomplete"],
+                                "VZZZ01": ["Simple", "Type3"], "NZ_CP043060.1": ["Multiple", "Type2b"],
+                                "VZZR01": ["Incomplete"], "JAAQYP01": ["Simple", "Type3"],
+                                "MTBD01": ["Simple", "Type1"], "NZ_CP019686.1": ["Single", "Type1"],
+                                "VUAZ01": ["Simple", "Type2b"], "AZXK01": ["Incomplete"],
+                                "BBIR01": ["Multiple", "Type2b"], "MWLO01": ["Incomplete"],
+                                "QYZD01": ["Simple", "Type2b"], "MOBZ01": ["Single", "Type2b"],
+                                "FOBB01": ["Simple", "Type3"], "FMDM01": ["Simple", "Type3"],
+                                "NZ_CP019888.1": ["Simple", "Type1"], "AUAX01": ["Simple", "Type3"],
+                                "AVEF02": ["Simple", "Type1"], "FNAD01": ["Simple", "Type3"],
+                                "BBCC01": ["Simple", "Type1"], "QAOV01": ["Single", "Type2b"], "BAZX01": ["Incomplete"],
+                                "NKQZ01": ["Simple", "Type3"], "NZ_CP022960.1": ["Simple", "Type2b"],
+                                "SHKK01": ["Simple", "Type3"], "NZ_CP012673.1": ["Multiple", "Type1", "Type3"],
+                                "WBKQ01": ["Simple", "Type3"], "LQAL01": ["SImple", "Type2b"],
+                                "FCNY02": ["Simple", "Type3"], "VFEU01": ["Simple", "Type2b"], "SHKT01": ["Incomplete"],
+                                "BAVR01": ["Incomplete"], "OAOQ01": ["Simple", "Type3"], "MSSW01": ["Simple", "Type3"],
+                                "JOGR01": ["Simple", "Type3"], "NZ_CP034337.1": ["Incomplete"],
+                                "CAACUY01": ["Incomplete"], "QVNU01": ["Simple", "Type3"],
+                                "ASSC01": ["Simple", "Type3"], "NZ_CP028035.1": ["Single", "Type2b"],
+                                "NZ_CP028036.1": ["Incomplete"], "NZ_CP028037.1": ["Incomplete"],
+                                "NZ_CP028038.1": ["Incomplete"], "NZ_CP028039.1": ["Incomplete"],
+                                "NZ_CP028040.1": ["Incomplete"], "NZ_CP028041.1": ["Incomplete"],
+                                "NZ_CP028042.1": ["Incomplete"], "NZ_CP057330.1": ["Simple", "Type2b"],
+                                "NZ_CP057331.1": ["Incomplete"], "NZ_CP057332.1": ["Incomplete"],
+                                "NZ_CP057333.1": ["Incomplete"], "NZ_CP046052.1": ["Incomplete"],
+                                "NZ_CP046053.1": ["Incomplete"], "NZ_CP046054.1": ["Incomplete"],
+                                "BFCB01": ["Simple", "Type3"], "NZ_CM001489.1": ["Incomplete"],
+                                "RBOV01": ["Single", "Type2b"], "NZ_CP030750.1": ["Multiple", "Type1", "Type2b"],
+                                "SODV01": ["Simple", "Type3"], "QEKL01": ["Multiple", "Type2b"],
+                                "QJRT01": ["Single", "Type2b"], "NZ_LT629778.1": ["Single", "Type2b"],
+                                "NZ_CP024634.1": ["Incomplete"], "LVTS01": ["Simple", "Type1"],
+                                "NZ_AP018150.1": ["Single", "Type2b"], "CPYD01": ["Single", "Type2a"],
+                                "RIAR02": ["Multiple", "Type3"], "NZ_CP010407.1": ["Simple", "Type3"],
+                                "NZ_CP010408.1": ["Incomplete"], "AUKP01": ["Simple", "Type3"],
+                                "MTSA01": ["Single", "Type2b"], "MOBL01": ["Single", "Type2b"],
+                                "NZ_CP028158.1": ["Incomplete"], "MOBY01": ["Multiple", "Type2b"],
+                                "NIBV01": ["Multiple", "Type1", "Type2a"], "SJOP01": ["Incomplete"],
+                                "VEJO01": ["Single", "Type2b"], "FWXB01": ["Incomplete"], "SMKT01": ["Single", "Type3"],
+                                "FPBO01": ["Incomplete"], "NZ_CP012831.1": ["Multiple", "Type2b"],
+                                "JAAQYX01": ["Multiple", "Type2b"], "QGSZ01": ["Simple", "Type3"],
+                                "QARA01": ["Single", "Type2b"], "RXLQ01": ["Simple", "Type3"],
+                                "ANOR01": ["Single", "Type2b"], "PJBP01": ["Simple", "Type3"],
+                                "NQKI01": ["Single", "Type2b"], "CBSW01": ["Multiple", "Type1", "Type2a", "Type2b"],
+                                "VCKX01": ["Incomplete"], "FNGF01": ["Simple", "Type3"],
+                                "NZ_CP010310.2": ["Incomplete"], "WJIE01": ["Multiple", "Type1"],
+                                "VAUR01": ["Multiple", "Type2b"], "NC_017956.1": ["Incomplete"],
+                                "NC_017957.2": ["Incomplete"], "NC_017958.1": ["Incomplete"],
+                                "NC_017959.1": ["Incomplete"], "NC_017966.1": ["Incomplete"],
+                                "NZ_CP013368.1": ["Incomplete"], "NZ_CP013369.1": ["Single", "Type2b"],
+                                "NZ_CP013370.1": ["Incomplete"], "NZ_CP013371.1": ["Incomplete"],
+                                "VFVY01": ["Incomplete"], "NZ_CP023567.1": ["Single", "Type2b"],
+                                "NZ_CP023568.1": ["Incomplete"], "RJKL01": ["Incomplete"],
+                                "NZ_CP045767.1": ["Simple", "Type2b"], "JOGP01": ["Simple", "Type3"],
+                                "CABHPT01": ["Simple", "Type1"], "UWFA01": ["Incomplete"],
+                                "QVNQ01": ["Simple", "Type3"], "PJBC01": ["Simple", "Type2b"],
+                                "SHKZ01": ["Simple", "Type3"], "JQFM01": ["Incomplete"], "SLVP01": ["Simple", "Type3"],
+                                "NZ_CP005969.1": ["Multiple", "Type1", "Type2b"], "NZ_CP021106.3": ["Incomplete"],
+                                "JYLH01": ["Single", "Type2b"], "LJCS01": ["Multiple", "Type1"],
+                                "NZ_CP017606.1": ["Incomplete"], "NZ_CP017607.1": ["Single", "Type1"],
+                                "NZ_CP017608.1": ["Incomplete"], "NZ_CP017609.1": ["Incomplete"],
+                                "SOAB01": ["Multiple", "Type3"], "QKLY01": ["Simple", "Type2b"],
+                                "JAAQWH01": ["Single", "Type2b"], "AKJS01": ["Single", "Type2b"],
+                                "QPDS01": ["Multiple", "Type2b"], "NZ_CP023965.1": ["Single", "Type1"],
+                                "NZ_CP029231.1": ["Incomplete"], "NZ_CP029232.1": ["Incomplete"],
+                                "NZ_CP029233.1": ["Incomplete"], "NZ_CP029234.1": ["Incomplete"],
+                                "NZ_CP029235.1": ["Simple", "Type3"], "LNCD01": ["Simple", "Type3"],
+                                "NVDM01": ["Single", "Type1"], "NZ_CP011020.1": ["Multiple", "Type2b"],
+                                "PZZQ01": ["Multiple", "Type1"], "NZ_CP011807.3": ["Simple", "Type2b"],
+                                "NZ_CP011808.2": ["Incomplete"], "NZ_CP011809.2": ["Incomplete"],
+                                "ALJC01": ["Single", "Type2b"], "QJRQ01": ["Incomplete"], "QEOK01": ["Simple", "Type3"],
+                                "NZ_CP029618.1": ["Simple", "Type3"], "NZ_CP010016.1": ["Incomplete"],
+                                "NZ_CP010017.1": ["Incomplete"], "NZ_CP010018.1": ["Incomplete"],
+                                "SOCQ01": ["Single", "Type2b"], "RJKE01": ["Multiple", "Type3"],
+                                "QAOO01": ["Incomplete"], "JMCL01": ["Multiple", "Type2b"], "QBKC01": ["Incomplete"],
+                                "NZ_CP034335.1": ["Incomplete"], "VDLX02": ["Incomplete"],
+                                "SSMR01": ["Multiple", "Type3"], "NSCM01": ["Multiple", "Type1", "Type2a", "Type2b"],
+                                "VMSG01": ["Multiple", "Type2b"], "ABCQ01": ["Simple", "Type1"],
+                                "OUND01": ["Incomplete"], "QAJI01": ["Simple", "Type3"],
+                                "NZ_CP045761.1": ["Single", "Type2b"], "SUNB01": ["Incomplete"],
+                                "LJSD01": ["Incomplete"], "NZ_CP041692.1": ["Simple", "Type3"],
+                                "PZZR01": ["Incomplete"], "JPMW01": ["Incomplete"], "QPIJ01": ["Simple", "Type3"],
+                                "LYUY01": ["Incomplete"], "SMJX01": ["Incomplete"], "VATL01": ["Single", "Type1"],
+                                "FMYF01": ["Simple", "Type3"],
+                                "PUWV01": ["Multiple", "Type1", "Type2a", "Type2b", "Type3"], "FQYM01": ["Incomplete"],
+                                "PJRP01": ["Incomplete"], "QRBE01": ["Incomplete"], "FOVJ01": ["Multiple", "Type3"],
+                                "SOCT01": ["Incomplete"], "CABMLW01": ["Multiple", "Type1"],
+                                "BDBY01": ["Simple", "Type3"], "PYGV01": ["Incomplete"], "VRLS01": ["Single", "Type1"],
+                                "ASTJ01": ["Simple", "Type3"], "LVEJ01": ["Single", "Type2b"],
+                                "OUNR01": ["Simple", "Type3"], "FPBP01": ["Single", "Type3"],
+                                "FSRU01": ["Simple", "Type2b"], "SMKN01": ["Incomplete"], "ASJB01": ["Simple", "Type3"],
+                                "VIYH01": ["Single", "Type2b"], "SNZP01": ["Simple", "Type3"],
+                                "NZ_CP014847.1": ["Incomplete"], "NZ_CP014848.1": ["Incomplete"],
+                                "NZ_CP014849.1": ["Incomplete"], "NZ_CP014850.1": ["Incomplete"],
+                                "NZ_CP014851.1": ["Incomplete"], "NZ_CP014852.1": ["Incomplete"],
+                                "NZ_CP014853.1": ["Simple", "Type2b"], "NZ_CP034780.1": ["Incomplete"],
+                                "NZ_CP034781.1": ["Incomplete"], "NZ_CP034782.1": ["Incomplete"],
+                                "NZ_CP034783.1": ["Simple", "Type3"], "PYBJ01": ["Simple", "Type3"],
+                                "PTJB01": ["Incomplete"], "NZ_CP024159.1": ["Incomplete"],
+                                "JNYY01": ["Simple", "Type3"], "NZ_CP027756.1": ["Simple", "Type2b"],
+                                "SSNZ01": ["Simple", "Incomplete"], "NZ_CP046874.1": ["Multiple", "Type2b"],
+                                "WIBD01": ["Single", "Type2b"], "NZ_CP029710.1": ["Simple", "Type3"],
+                                "RBRE01": ["Multiple", "Type1", "Type2b"], "NZ_CP024866.1": ["Single", "Type2b"],
+                                "JAAAGD01": ["Single", "Type2b"], "JAAEFD01": ["Simple", "Type1"],
+                                "RBUY01": ["Incomplete"], "QXQA01": ["Single", "Type3"], "QJRP01": ["Incomplete"],
+                                "AXBA01": ["Simple", "Type3"], "OMPE01": ["Incomplete"],
+                                "NZ_LT629790.1": ["Multiple", "Type2b"], "LLWI01": ["Multiple", "Type1", "Type2b"],
+                                "NZ_LT629746.1": ["Multiple", "Type2b"], "BAOS01": ["Simple", "Type3"],
+                                "VLPL01": ["Simple", "Type3"], "LYRP01": ["Simple", "Type1"],
+                                "JXDG01": ["Multiple", "Type2b"], "LIPP01": ["Simple", "Type3"],
+                                "JAAQWI01": ["Multiple", "Type2b"], "NZ_LT629795.1": ["Single", "Type2b"],
+                                "LXEN01": ["Simple", "Type1"], "NZ_CM001514.1": ["Multiple", "Type2b"],
+                                "NC_015731.1": ["Simple", "Type3"], "NZ_CP041754.1": ["Multiple", "Type1", "Type2b"],
+                                "NZ_CP041755.1": ["Incomplete"], "NZ_CP041756.1": ["Incomplete"],
+                                "NZ_CP045572.1": ["Incomplete"], "FOVO01": ["Incomplete"], "JMKF01": ["Incomplete"],
+                                "JACCAY01": ["Simple", "Type3"], "MAID01": ["Incomplete"],
+                                "NZ_CP009727.1": ["Incomplete"], "NZ_CP009728.1": ["Incomplete"],
+                                "AKXV01": ["Simple", "Type3"], "CZQA01": ["Simple", "Type3"],
+                                "NZ_CP054609.1": ["Incomplete"], "NZ_CP054610.1": ["Incomplete"],
+                                "NZ_CP054611.1": ["Incomplete"], "NZ_CP054612.1": ["Incomplete"],
+                                "NZ_CP054613.1": ["Simple", "Type3"], "NZ_CP014226.1": ["Simple", "Type3"],
+                                "CABIVM01": ["Single", "Type2b"], "CDPK01": ["Single", "Type1"],
+                                "WIAO01": ["Simple", "Type3"], "WSFG01": ["Multiple", "Type1", "Type2a", "Type2b"],
+                                "WIVV01": ["Multiple", "Type1", "Type2b"], "NQKN01": ["Single", "Type2b"],
+                                "FUWU01": ["Incomplete"], "UTLV01": ["Single", "Type2b"], "QOIO01": ["Simple", "Type3"],
+                                "QGLF01": ["Incomplete"], "VSRO01": ["Multiple", "Type2b"],
+                                "WIVQ01": ["Single", "Type2b"], "OBDY01": ["Incomplete"], "SJZK02": ["Single", "Type1"],
+                                "NZ_CP029482.1": ["Single", "Type2b"], "LHVN01": ["Single", "Type2b"],
+                                "UEXF01": ["Single", "Type1"], "VIUR01": ["Multiple", "Type2b"],
+                                "QBJA02": ["Multiple", "Type1", "Type2b"], "LZEX01": ["Multiple", "Type1", "Type2b"],
+                                "JYLN01": ["Simple", "Type2b"], "NZ_CP022504.1": ["Single", "Type1"],
+                                "LFQK01": ["Single", "Type2b"], "NZ_CP038255.1": ["Simple", "Type3"],
+                                "NZ_CP024646.1": ["Simple", "Type2b"], "CVJX01": ["Single", "Type1"],
+                                "NZ_CP031146.1": ["Simple", "Type1"], "LACH01": ["Simple", "Type2b"],
+                                "NZ_CP011253.3": ["Single", "Type2b"], "NZ_CP011518.2": ["Incomplete"],
+                                "NZ_CP011519.2": ["Incomplete"], "VJZE01": ["Incomplete"], "QKYK01": ["Incomplete"],
+                                "NZ_CP023525.1": ["Single", "Type1"], "AZUB01": ["Simple", "Type2b"],
+                                "JRYA01": ["Multiple", "Type1", "Type2b"], "AUEZ01": ["Simple", "Type3"],
+                                "VSFG01": ["Simple", "Type3"], "QOIL01": ["Incomplete"], "SJZD01": ["Incomplete"],
+                                "VJWF01": ["Simple", "Type3"], "FNSJ01": ["Multiple", "Type3"],
+                                "AWNH01": ["Incomplete"], "NZ_CP016211.1": ["Incomplete"], "SMKO01": ["Incomplete"],
+                                "VXLC01": ["Simple", "Type3"], "JFCA01": ["Simple", "Type2b"],
+                                "PPRY01": ["Simple", "Type2b"], "NZ_LT629708.1": ["Simple", "Type2b"],
+                                "NZ_CP026364.1": ["Single", "Type1"], "NZ_CP015225.1": ["Simple", "Type2b"],
+                                "MUNY01": ["Simple", "Type3"], "MBLO01": ["Multiple", "Type3"],
+                                "NZ_CP012159.1": ["Single", "Type3"], "ALBT01": ["Simple", "Type3"],
+                                "RPND01": ["Simple", "Type3"], "LMXH01": ["Simple", "Type3"],
+                                "CPZI01": ["Simple", "Type2b"], "SAXA01": ["Simple", "Incomplete"],
+                                "QPAO01": ["Single", "Type1"], "SSMQ01": ["Multiple", "Type3"],
+                                "PQKR01": ["Single", "Type2b"], "NC_015510.1": ["Simple", "Type3"],
+                                "CWJL01": ["Single", "Type1"], "BJMH01": ["Simple", "Type3"],
+                                "JABWHT01": ["Simple", "Type1"], "NZ_CP024085.1": ["Simple", "Type3"],
+                                "SMFY01": ["Incomplete"], "NZ_CP027732.1": ["Single", "Type2b"],
+                                "NQKV01": ["Multiple", "Type2b"], "PYGG01": ["Incomplete"],
+                                "AWXZ01": ["Simple", "Type3"],
+                                "NZ_LN681227.1": ["Multiple", "Type1", "Type2a", "Type2b"],
+                                "PQMB01": ["Simple", "Type1"], "FODH01": ["Simple", "Type3"],
+                                "FOIG01": ["Simple", "Type3"], "ARBJ01": ["Simple", "Type3"],
+                                "NZ_CP029843.1": ["Simple", "Type3"], "FOLC01": ["Simple", "Type3"],
+                                "NZ_LT629691.1": ["Multiple", "Type1", "Type2b"], "FORG01": ["Multiple", "Type1"],
+                                "WIWO01": ["Single", "Type2b"], "MUBJ01": ["Multiple", "Type2a", "Type2b"],
+                                "QPIP01": ["Simple", "Type1"], "QNVV01": ["Simple", "Type3"],
+                                "LHVM01": ["Single", "Type2b"], "PVZG01": ["Simple", "Type3"],
+                                "NZ_CP017687.1": ["Single", "Type2b"], "FNQB01": ["Multiple", "Type3"],
+                                "NQYG01": ["Single", "Type2b"], "JQNB01": ["Incomplete"], "FNVO01": ["Incomplete"],
+                                "VIVV01": ["Simple", "Type3"], "CABLBP01": ["Simple", "Type3"],
+                                "NZ_CP043422.1": ["Simple", "Type1"], "QEOF01": ["Simple", "Type2b"],
+                                "PVNL01": ["Single", "Type3"], "CQAW01": ["Simple", "Type1"], "AUAF01": ["Incomplete"],
+                                "SZQA01": ["Incomplete"], "NC_015379.1": ["Multiple", "Type2b"],
+                                "NZ_CP026106.1": ["Simple", "Type3"], "VIUG01": ["Multiple", "Type2b"],
+                                "SMSC01": ["Simple", "Type1"], "MQWC01": ["Simple", "Type3"],
+                                "NZ_CP042804.1": ["Incomplete"], "PENT01": ["Simple", "Type1"],
+                                "NC_014718.1": ["Multiple", "Type2b"], "NC_014722.1": ["Incomplete"],
+                                "PENW01": ["Simple", "Type1"], "QRAV01": ["Single", "Type2b"],
+                                "QEQQ01": ["Single", "Type2b"], "MKCS01": ["Simple", "Type3"],
+                                "JPIX01": ["Single", "Type1"], "NJAH01": ["Incomplete"], "JPLA01": ["Incomplete"],
+                                "VFPP01": ["Incomplete"], "BBXC01": ["Incomplete"], "JPOH01": ["Simple", "Type3"],
+                                "VWSH01": ["Simple", "Type3"], "FNON01": ["Simple", "Type3"],
+                                "FAOZ01": ["Simple", "Type3"], "NC_013131.1": ["Simple", "Type3"],
+                                "FOOS01": ["Simple", "Type3"], "NZ_CP053682.1": ["Simple", "Type1"],
+                                "NZ_CP013949.1": ["Simple", "Type3"], "VZPJ01": ["Multiple", "Type2b"],
+                                "MIIW01": ["Single", "Type1"], "JXDI01": ["Single", "Type2b"],
+                                "NZ_LT629704.1": ["Single", "Type2b"], "NZ_CP016634.1": ["Multiple", "Type1", "Type2b"],
+                                "SLYK01": ["Incomplete"], "NZ_AP020337.1": ["Multiple", "Type1", "Type2b"],
+                                "PYAL01": ["Single", "Type2b"], "FYDV01": ["Simple", "Type2b"],
+                                "VCBA01": ["Incomplete"], "QFZQ01": ["Single", "Type3"], "SMSL01": ["Simple", "Type3"],
+                                "FODZ01": ["Simple", "Type3"], "PYGD01": ["Multiple", "Type3"],
+                                "LHVL01": ["Multiple", "Type2b"], "QAIK01": ["Single", "Type2b"],
+                                "FODL01": ["Single", "Type2b"], "NZ_LT828648.1": ["Simple", "Type3"],
+                                "FUXU01": ["Simple", "Type1"], "VZII01": ["Single", "Type2b"],
+                                "QLLL01": ["Simple", "Type3"], "NZ_CP016176.1": ["Incomplete"],
+                                "FQWR01": ["Multiple", "Type3"], "NZ_CP029197.1": ["Simple", "Type3"],
+                                "VIUE01": ["Multiple", "Type2b"], "VIVC01": ["Single", "Type2b"],
+                                "NEJJ01": ["Single", "Type2b"], "VOQB01": ["Multiple", "Type1"],
+                                "NC_007954.1": ["Incomplete"], "AEDD01": ["Simple", "Type3"],
+                                "NC_020209.1": ["Simple", "Type2b"], "LKBT01": ["Single", "Type2b"],
+                                "NZ_LT629801.1": ["Simple", "Type2b"], "JHVK01": ["Single", "Type2b"],
+                                "PVNG01": ["Incomplete"], "RBIS01": ["Incomplete"], "FNTT01": ["Simple", "Type2b"],
+                                "VCRA01": ["Incomplete"], "ABXF01": ["Simple", "Type3"], "PJCP01": ["Single", "Type2b"],
+                                "NZ_CP045158.1": ["Single", "Type1"], "BBXE01": ["Incomplete"],
+                                "RKHU01": ["Simple", "Incomplete"], "LIPN01": ["Simple", "Type3"],
+                                "NZ_LT629788.1": ["Single", "Type2b"], "NIBS01": ["Simple", "Type2a"],
+                                "JAABNH01": ["Simple", "Type1"], "NZ_CP017599.1": ["Multiple", "Type3"],
+                                "QKWJ01": ["Simple", "Type3"], "FNVU01": ["Simple", "Type3"],
+                                "RAVX01": ["Simple", "Type3"], "NZ_CP024923.1": ["Simple", "Type3"],
+                                "NKFP01": ["Incomplete"], "AEDB02": ["Incomplete"], "NZ_CP038613.1": ["Incomplete"],
+                                "NZ_CP018319.1": ["Multiple", "Type2b"], "SLZA01": ["Simple", "Type3"],
+                                "WIWL01": ["Single", "Type2b"],
+                                "SMFY01_information_Ancylobacter_aquaticus_region_TcB_expanded_[640.9]_4636162_4644109_backward": [
+                                    ""],
+                                "SMFY01_information_Ancylobacter_aquaticus_region_A2_expanded_[100.2]_4628824_4636126_backward": [
+                                    ""],
+                                "SMFY01_information_Ancylobacter_aquaticus_region_TcC_expanded_[251.6]_4636162_4644109_backward": [
+                                    ""], "QTSW01": ["Single", "Type2b"], "VIVY01": ["Incomplete"],
+                                "MOBO01": ["Multiple", "Type2b"], "NZ_CP013997.1": ["Incomplete", "Simple"],
+                                "RBIO01": ["Incomplete"], "SNYE01": ["Simple", "Type3"],
+                                "NZ_CP038438.1": ["Single", "Type2b"], "SMAS01": ["Single", "Type1"],
+                                "VCNA01": ["Simple", "Type3"]}
+
+    # original_classifications = {"AP018269.1": ["Incomplete"], "AP018270.1": ["Incomplete"], "AP018271.1": ["Simple", "Type3"], "AP018272.1": ["Incomplete"], "AP018273.1": ["Incomplete"], "CP034538.1": ["Incomplete"], "DAATWL01": ["Single", "Type2b"], "OOHJ01": ["Incomplete"], "NZ_CP022961.1": ["Multiple", "Type1", "Type3"], "JPPA01": ["Simple", "Type3"], "NUCS01": ["Incomplete"], "LIVZ01": ["Simple", "Type3"], "FTPJ01": ["Multiple", "Type1", "Type2b"], "LAVL01": ["Incomplete"], "NC_013892.1": ["Multiple", "Type1", "Type2a"], "PCQL01": ["Simple", "Type2b"], "JAAMRA01": ["Multiple", "Type2b"], "MDEO01": ["Simple", "Type3"], "WIVP01": ["Simple", "Type2b"], "VHLG01": ["Incomplete"], "MIFU01": ["Simple", "Type2b"], "NZ_AP018449.1": ["Simple", "Type3"], "CABPSQ01": ["Simple", "Type2b"], "CP034537.1": ["Incomplete"], "PHFJ01": ["Single", "Type1"], "JAABMF01": ["Simple", "Type1"], "RBQC01": ["Single", "Type2b"], "AGJN02": ["Simple", "Type3"], "ONZJ01": ["Simple", "Type3"], "WWHE01": ["Simple", "Type3"], "FMXW01": ["Multiple", "Type2b"], "NGVR01": ["Simple", "Type1"], "NZ_CP020038.1": ["Incomplete"], "NZ_CP021745.1": ["Incomplete"], "NZ_CP021746.1": ["Incomplete"], "NZ_CP021747.1": ["Incomplete"], "QGAC01": ["Incomplete"], "NZ_CP024081.1": ["Simple", "Type2b"], "NZ_CP015613.1": ["Simple", "Type1"], "VIWL01": ["Single", "Type2b"], "NJAK01": ["Simple", "Type2a"], "UUIW01": ["Single", "Type2b"], "NZ_CP012672.1": ["Multiple", "Type1", "Type3"], "NZ_CP047267.1": ["Single", "Type2b"], "PCQC01": ["Single", "Type2b"], "NHML01": ["Incomplete"], "FNJL01": ["Simple", "Type3"], "NZ_CP012533.1": ["Single", "Type3"], "NZ_CP012534.1": ["Incomplete"], "NZ_CP012535.1": ["Incomplete"], "NZ_CP012536.1": ["Incomplete"], "NZ_CP012537.1": ["Incomplete"], "NZ_CP012538.1": ["Incomplete"], "NZ_CP012539.1": ["Incomplete"], "NZ_CP012540.1": ["Incomplete"], "RBSM01": ["Single", "Type2b"], "NZ_CP010029.1": ["Single", "Type2a"], "PHHE01": ["Simple", "Type2b"], "NEJT01": ["Single", "Type2b"], "NZ_CP031450.1": ["Simple", "Type2b"], "NZ_CP017708.1": ["Incomplete"], "NZ_CP017709.1": ["Incomplete"], "NZ_CP017710.1": ["Incomplete"], "FYEE01": ["Multiple", "Type2b"], "ATXB01": ["Simple", "Type3"], "APLI01": ["Incomplete"], "AWQP01": ["Single", "Type2b"], "LMTZ01": ["Incomplete"], "NCXP01": ["Simple", "Type3"], "NZ_CP045799.1": ["Single", "Type2b"], "NZ_CP045800.1": ["Incomplete"], "NZ_CP045801.1": ["Incomplete"], "AJXJ01": ["Single", "Type2b"], "NZ_CP047073.1": ["Single", "Type2b"], "NVXX01": ["Single", "Type2b"], "MUIN01": ["Multiple", "Type2b"], "VDNE01": ["Incomplete"], "LXYR01": ["Incomplete"], "NZ_CP022411.1": ["Single", "Type2b"], "WIVR01": ["Multiple", "Type2b"], "WIWH01": ["Single", "Type2b"], "FONE01": ["Incomplete"], "MKZS01": ["Incomplete"], "QJUG01": ["Simple", "Type3"], "LWBP01": ["Simple", "Type3"], "QUOK01": ["Multiple", "Type3"], "FQUQ01": ["Simple", "Type3"], "VIWO01": ["Multiple", "Type3"], "NITZ01": ["Simple", "Type1"], "CBLV01": ["Multiple", "Type2b"], "MASH01": ["Incomplete"], "LQOW01": ["Incomplete"], "NEHI01": ["Simple", "Type2b"], "NZ_CP038254.1": ["Simple", "Type3"], "JTBY01": ["Incomplete"], "FNTY01": ["Single", "Type2b"], "NZ_CP028826.1": ["Single", "Type2b"], "NIRH01": ["Simple", "Type1"], "LVYD01": ["Simple", "Type3"], "NZ_CP025800.1": ["Simple", "Type1"], "NZ_CP025801.1": ["Incomplete"], "NZ_CP025802.1": ["Incomplete"], "QLKY01": ["Incomplete"], "RCFQ01": ["Simple", "Type3"], "SMCH01": ["Simple", "Type2b"], "NZ_CP015381.1": ["Incomplete"], "NMRE01": ["Single", "Type2b"], "QSNX01": ["Single", "Type2b"], "NZ_CM001558.1": ["Simple", "Type2b"], "FNNQ01": ["Incomplete"], "FQUS01": ["Multiple", "Type3"], "NZ_LT629762.1": ["Single", "Type2b"], "NZ_CP031065.1": ["Incomplete"], "NZ_CP031066.1": ["Simple", "Type3"], "NZ_CP031067.1": ["Incomplete"], "VSJH01": ["Simple", "Type2b"], "FNYO01": ["Incomplete"], "NZ_CP036313.1": ["Simple", "Type3"], "NZ_CP036314.1": ["Incomplete"], "NZ_CP036315.1": ["Incomplete"], "NZ_CP041668.1": ["Simple", "Type3"], "NZ_CP041669.1": ["Incomplete"], "FXYF01": ["Simple", "Type3"], "NIRS01": ["Single", "Type2b"], "FNCO01": ["Single", "Type2b"], "RHQN01": ["Multiple", "Type1", "Type2b"], "NZ_CP021983.2": ["Incomplete"], "RCWL01": ["Simple", "Type3"], "QUMQ01": ["Incomplete"], "QAJM01": ["Single", "Type2b"], "NBRZ01": ["Single", "Type2b"], "BJLR01": ["Incomplete"], "NZ_CP039291.1": ["Incomplete"], "NC_013947.1": ["Multiple", "Type3"], "JMCC02": ["Simple", "Type3"], "NBVR01": ["Single", "Type1"], "QAIL01": ["Simple", "Type3"], "QWFB01": ["Single", "Type2b"], "NZ_CP031648.1": ["Simple", "Type2b"], "MCHY01": ["Simple", "Type3"], "NZ_CP041186.1": ["Multiple", "Type3"], "NC_013216.1": ["Simple", "Type3"], "JYHW01": ["Single", "Type2b"], "WIVY01": ["Multiple", "Type1", "Type2b"], "FYDX01": ["Single", "Type2b"], "MUGY01": ["Incomplete"], "FNYJ01": ["Incomplete"], "JJML01": ["Simple", "Type3"], "FNTZ01": ["Multiple", "Type2b"], "NZ_CP029064.1": ["Simple", "Type3"], "LRUN01": ["Single", "Type2b"], "VIUF01": ["Simple", "Type2b"], "VZZK01": ["Simple", "Type3"], "AJLJ01": ["Simple", "Type3"], "CAADIW01": ["Single", "Type1"], "AXVJ01": ["Incomplete"], "VIUC01": ["Multiple", "Type2b"], "AMBZ01": ["Multiple", "Type2b"], "QGGJ01": ["Incomplete"], "VUOC01": ["Simple", "Type3"], "QAAE01": ["Simple", "Type3"], "NCWQ01": ["Incomplete"], "PVTU01": ["Incomplete"], "BBMZ01": ["Single", "Type2b"], "NZ_CP054043.1": ["Simple", "Type1"], "SJSL01": ["Simple", "Type3"], "FQYP01": ["Simple", "Type3"], "NZ_CP011129.1": ["Simple", "Type3"], "NC_012961.1": ["Incomplete"], "NC_012962.1": ["Multiple", "Type1", "Type2b"], "BBXD01": ["Incomplete"], "NZ_CP029196.1": ["Simple", "Type3"], "AKJT01": ["Multiple", "Type2b"], "NVPT01": ["Simple", "Type3"], "BBXG01": ["Incomplete"], "ALVN01": ["Simple", "Type3"], "NJFA02": ["Single", "Type1"], "NC_019738.1": ["Incomplete"], "NC_019739.1": ["Incomplete"], "NC_019740.1": ["Incomplete"], "NC_019741.1": ["Incomplete"], "NC_019742.1": ["Incomplete"], "NC_019743.1": ["Incomplete"], "NC_019760.1": ["Incomplete"], "NC_019761.1": ["Incomplete"], "NC_019762.1": ["Incomplete"], "QPCD01": ["Incomplete"], "QTPO01": ["Simple", "Type3"], "FOEO01": ["Single", "Type2b"], "QWLL01": ["Incomplete"], "QOVA01": ["Single", "Type2b"], "NZ_CP014262.1": ["Multiple", "Type2b"], "FNDJ01": ["Incomplete"], "NZ_AP017422.1": ["Incomplete"], "SNXZ01": ["Simple", "Type3"], "FXWP01": ["Single", "Type1"], "UTBZ01": ["Multiple", "Type2b"], "BCBA01": ["Single", "Type2b"], "VSRQ01": ["Incomplete"], "LFWB01": ["Incomplete"], "QTUB01": ["Simple", "Type2a"], "NZ_CP053584.1": ["Single", "Type2b"], "NZ_CP010897.2": ["Simple", "Type2b"], "NZ_CP010898.2": ["Incomplete"], "WIVZ01": ["Multiple", "Type1", "Type2b"], "NZ_CP013341.1": ["Simple", "Type3"], "JACAQG01": ["Simple", "Type2b"], "FNKR01": ["Simple", "Type3"], "NZ_CP027723.1": ["Single", "Type2b"], "MDEN01": ["Incomplete"], "CVRZ01": ["Simple", "Type1"], "NZ_CP038033.1": ["Incomplete"], "NZ_CP044217.1": ["Incomplete"], "NZ_CP044218.1": ["Simple", "Type3"], "PENV01": ["Simple", "Type1"], "NRQY01": ["Simple", "Type1"], "SISB01": ["Multiple", "Type2b"], "NZ_LT629732.1": ["Simple", "Type3"], "AOCZ01": ["Simple", "Type1"], "NZ_CP039371.1": ["Simple", "Type1"], "NZ_CP039372.1": ["Incomplete"], "JAFA01": ["Incomplete"], "FNOY01": ["Incomplete"], "CABPSP01": ["Simple", "Type2b"], "LGSI01": ["Single", "Type2b"], "VZRB01": ["Simple", "Type3"], "MKWS01": ["Multiple", "Type2b"], "VIUI01": ["Multiple", "Type2b"], "RXOM01": ["Incomplete"], "BCQP01": ["Incomplete"], "SMTE01": ["Simple", "Type1"], "QMEY01": ["Incomplete"], "MBDT01": ["Simple", "Type2b"], "LKPJ01": ["Simple", "Type3"], "OGTP01": ["Simple", "Type3"], "QKTW01": ["Simple", "Type3"], "NC_005773.3": ["Multiple", "Type1", "Type2b"], "NC_007274.1": ["Incomplete"], "NC_007275.1": ["Incomplete"], "NZ_CP048835.1": ["Simple", "Type3"], "NC_010162.1": ["Multiple", "Type3"], "NEVM01": ["Single", "Type1"], "FOUX01": ["Simple", "Type3"], "NZ_CP023526.1": ["Incomplete"], "NZ_CP054422.1": ["Single", "Type2b"], "VOIX01": ["Single", "Type2b"], "VIWA01": ["Simple", "Type3"], "VEBC01": ["Incomplete"], "WIWK01": ["Multiple", "Type1", "Type2b"], "QREK01": ["Simple", "Type3"], "NZ_CM002330.1": ["Single", "Type2b"], "NZ_CM002331.1": ["Incomplete"], "BAHC01": ["Incomplete"], "NZ_CP042968.1": ["Incomplete"], "NZ_CP018049.1": ["Single", "Type2b"], "VZPM01": ["Simple", "Type2b"], "QLIN01": ["Single", "Type2b"], "AUYR01": ["Incomplete"], "NTYK01": ["Incomplete"], "VSFF01": ["Simple", "Type3"], "LRTK01": ["Incomplete"], "ARBP01": ["Simple", "Type3"], "ABCS01": ["Multiple", "Type3"], "BJNF01": ["Simple", "Type3"], "VOQD01": ["Simple", "Type3"], "VIUL01": ["Multiple", "Type2b"], "WHJD01": ["Multiple", "Type1", "Type2b"], "MLFS01": ["Simple", "Type1"], "NZ_CP024900.1": ["Multiple", "Type1", "Type2a", "Type2b"], "NZ_CP009555.1": ["Incomplete"], "NZ_CP009556.1": ["Incomplete"], "NZ_CP013426.1": ["Simple", "Type3"], "NZ_CP013427.1": ["Incomplete"], "NZ_CP013428.1": ["Incomplete"], "NZ_CP013429.1": ["Incomplete"], "POUA01": ["Incomplete"], "AJUL01": ["Simple", "Type3"], "PCOS01": ["Simple", "Type2b"], "QKZA01": ["Simple", "Type1"], "FNQW01": ["Incomplete"], "JADL01": ["Incomplete"], "CABHXE01": ["Simple", "Type1"], "VIKS01": ["Incomplete"], "MOBX01": ["Single", "Type2b"], "QKLR01": ["Simple", "Type3"], "JCLE01": ["Simple", "Type1"], "FSRS01": ["Simple", "Type3"], "NZ_LR134159.1": ["Multiple", "Type2b"], "VCKW01": ["Multiple", "Type3"], "WTCR01": ["Simple", "Type3"], "LLWH01": ["Single", "Type2b"], "NZ_CP027738.1": ["Simple", "Type3"], "QKVL01": ["Single", "Type2b"], "NZ_CP033932.1": ["Simple", "Type3"], "NZ_CM001441.1": ["Incomplete"], "QGTQ01": ["Simple", "Type3"], "RCZD01": ["Simple", "Type1"], "PYLU01": ["Simple", "Type1"], "NZ_CP011288.1": ["Single", "Type2b"], "FPLG01": ["Simple", "Type1"], "NZ_CP012371.1": ["Incomplete"], "NZ_CP022478.1": ["Incomplete"], "NMQR01": ["Multiple", "Type1", "Type2a", "Type2b"], "CTIO01": ["Simple", "Type1"], "VCNG01": ["Multiple", "Type2b"], "NZ_CP007410.1": ["Multiple", "Type2b"], "NKHL01": ["Incomplete"], "MVGR01": ["Simple", "Type3"], "NZ_CP056779.1": ["Incomplete"], "NZ_CP056780.1": ["Multiple", "Type1"], "NZ_CP056781.1": ["Incomplete"], "NZ_CP056782.1": ["Single", "Type2b"], "NQKQ01": ["Single", "Type2b"], "JOGE01": ["Simple", "Type3"], "NZ_CP009533.1": ["Multiple", "Type2b"], "NQKJ01": ["Multiple", "Type1", "Type2b"], "NETK01": ["Simple", "Type3"], "NZ_CP031062.1": ["Incomplete"], "NZ_CP031063.1": ["Simple", "Type3"], "NZ_CP031064.1": ["Incomplete"], "NZ_CP004078.1": ["Simple", "Type3"], "PJZH01": ["Incomplete"], "FNPW01": ["Multiple", "Type1"], "SEUB01": ["Multiple", "Type2b"], "UPHP01": ["Simple", "Type3"], "JNGI01": ["Simple", "Type1"], "UUFD01": ["Incomplete"], "AAWS01": ["Incomplete"], "NZ_CP021659.1": ["Multiple", "Type1"], "NZ_CP021660.1": ["Incomplete"], "NZ_CP021661.1": ["Incomplete"], "NZ_CP021662.1": ["Incomplete"], "MOBP01": ["Single", "Type2b"], "OIFR01": ["Simple", "Type3"], "JSAL01": ["Multiple", "Type2b"], "NZ_CP011104.1": ["Multiple", "Type1", "Type2b"], "MOBI01": ["Simple", "Type2b"], "PUJU01": ["Multiple", "Type1", "Type2a", "Type2b"], "BIFQ01": ["Simple", "Type3"], "NZ_CP025035.2": ["Incomplete"], "LIUV01": ["Single", "Type2b"], "NC_010830.1": ["Simple", "Type3"], "CABPSR01": ["Single", "Type2b"], "CVTM01": ["Single", "Type2b"], "RQJP01": ["Simple", "Type3"], "NZ_CP009288.1": ["Simple", "Type3"], "NZ_CM001025.1": ["Simple", "Type2b"], "MOBT01": ["Single", "Type2b"], "NZ_LR134318.1": ["Multiple", "Type2b"], "ABBN01": ["Incomplete"], "NZ_CP039287.1": ["Incomplete"], "NZ_CP039288.1": ["Simple", "Type3"], "NZ_CP039289.1": ["Incomplete"], "LAIJ01": ["Simple", "Type3"], "LFCV01": ["Simple", "Type3"], "WWJN01": ["Simple", "Type3"], "VZPQ01": ["Incomplete"], "VOBN01": ["Single", "Type2b"], "QGTG01": ["Simple", "Type3"], "AYLO01": ["Simple", "Type3"], "NZ_LT707064.1": ["Single", "Type2b"], "NZ_CP020076.1": ["Incomplete"], "NZ_CP020077.1": ["Incomplete"], "NZ_CP020078.1": ["Incomplete"], "NZ_CP020079.1": ["Incomplete"], "NZ_CP020080.1": ["Simple", "Type1"], "NZ_CP020081.1": ["Incomplete"], "AMRI01": ["Incomplete"], "NZ_LT629705.1": ["Incomplete"], "NRST01": ["Single", "Type2b"], "NZ_CP050291.1": ["Simple", "Type1"], "NZ_CP025263.1": ["Simple", "Type2b"], "FXWM01": ["Simple", "Type3"], "NZ_CP034725.1": ["Multiple", "Type2b"], "MKQR01": ["Incomplete"], "FOCT01": ["Incomplete"], "NUVY01": ["Incomplete"], "MRCJ01": ["Simple", "Type3"], "JUQG01": ["Simple", "Type1"], "LECZ01": ["Single", "Type1"], "MTHI01": ["Single", "Type2b"], "NZ_CP022121.1": ["Simple", "Type3"], "NZ_CM001561.1": ["Single", "Type2b"], "NZ_CP017141.1": ["Multiple", "Type3"], "AZAN01": ["Simple", "Type3"], "AGFX01": ["Incomplete"], "VDCQ01": ["Simple", "Type3"], "QHJL01": ["Simple", "Type3"], "QWEX01": ["Multiple", "Type3"], "LMCT01": ["Incomplete"], "NTTM01": ["Incomplete"], "VZZS01": ["Multiple", "Type1", "Type2b"], "SMFW01": ["Multiple", "Type2b"], "UEXE01": ["Single", "Type1"], "NZ_CP013046.2": ["Incomplete"], "NZ_CP013047.2": ["Simple", "Type1"], "FRBZ01": ["Single", "Type2b"], "AKJH01": ["Single", "Type2b"], "BBLT01": ["Simple", "Type3"], "NBWC01": ["Incomplete"], "NZ_CP007039.1": ["Multiple", "Type2b"], "FMCR01": ["Simple", "Type3"], "VIUK01": ["Single", "Type2b"], "MVHE01": ["Incomplete"], "RCOE01": ["Single", "Type2b"], "QGSY01": ["Simple", "Type3"], "AXWS01": ["Incomplete"], "AYMJ01": ["Single", "Type2b"], "VOBI01": ["Single", "Type2b"], "AKJK01": ["Single", "Type2b"], "FNUD01": ["Single", "Type2b"], "MOBJ01": ["Multiple", "Type2b"], "CAAKGZ01": ["Single", "Type2b"], "FOUB01": ["Simple", "Type3"], "MUXN01": ["Simple", "Type3"], "LKBR01": ["Simple", "Type2b"], "UTVB01": ["Multiple", "Type1", "Type2b"], "PENZ01": ["Simple", "Type1"], "NZ_CP009451.1": ["Single", "Type2b"], "NZ_CP034148.1": ["Incomplete"], "NZ_CP034149.1": ["Incomplete"], "NZ_CP034150.1": ["Incomplete"], "NZ_CP034151.1": ["Simple", "Type1"], "NZ_AP017313.1": ["Simple", "Type3"], "FAOS01": ["Incomplete"], "NZ_CP027727.1": ["Single", "Type2b"], "NZ_CP035319.1": ["Incomplete"], "QAIP01": ["Simple", "Type2b"], "FNBR01": ["Multiple", "Type3"], "AXDH01": ["Single", "Type2b"], "FMVH01": ["Simple", "Type1"], "NZ_CP036488.1": ["Incomplete"], "NZ_CP036489.1": ["Incomplete"], "NZ_CP036490.1": ["Single", "Type2b"], "CAQM01": ["Incomplete"], "LOWA01": ["Simple", "Type2b"], "NZ_CP049044.1": ["Single", "Type2b"], "NZ_CP010896.1": ["Single", "Type2b"], "NC_017168.1": ["Single", "Type1"], "NC_017169.1": ["Incomplete"], "NC_017170.1": ["Incomplete"], "NZ_CP031641.1": ["Single", "Type2b"], "VKDC01": ["Multiple", "Type3"], "JOAG01": ["Incomplete"], "MWQG01": ["Incomplete"], "VDFY01": ["Simple", "Type3"], "ALVK01": ["Multiple", "Type3"], "QFRW01": ["Simple", "Type3"], "BILZ01": ["Simple", "Type3"], "BAXG01": ["Multiple", "Type1"], "MWPQ01": ["Simple", "Type3"], "WIWM01": ["Single", "Type2b"], "FOCU01": ["Single", "Type2b"], "MQZX01": ["Simple", "Type1"], "RKHS01": ["Single", "Type1"], "QHHZ01": ["Incomplete"], "MYFJ01": ["Multiple", "Type1", "Type3", "Type2a", "Type2b"], "NC_016901.1": ["Single", "Type1"], "NC_016905.1": ["Incomplete"], "PEIB01": ["Incomplete"], "MOBQ01": ["Single", "Type2b"], "NXNJ01": ["Single", "Type2b"], "NZ_CP044407.1": ["Incomplete"], "PYBV01": ["Incomplete"], "JABTYG01": ["Multiple", "Type2b"], "NZ_CP042468.1": ["Multiple", "Type1", "Type3"], "NZ_CP014135.1": ["Simple", "Type2b"], "NC_016818.1": ["Multiple", "Type2b"], "NC_016819.1": ["Incomplete"], "NC_016835.1": ["Incomplete"], "NC_017092.1": ["Incomplete"], "MTAX01": ["Simple", "Type3"], "NC_015559.1": ["Simple", "Type3"], "LQRT01": ["Incomplete"], "NZ_LS999839.1": ["Simple", "Type3"], "SOCV01": ["Single", "Type2b"], "ASRX01": ["Single", "Type3"], "NZ_CP044064.1": ["Simple", "Type2b"], "AKJM01": ["Single", "Type2b"], "SMKX01": ["Simple", "Type3"], "CAAJVF01": ["Simple", "Type3"], "VIUJ01": ["Simple", "Type2b"], "LGTC01": ["Incomplete"], "NZ_CP033893.1": ["Incomplete"], "NZ_CP033894.1": ["Single", "Type1"], "NZ_CP033895.1": ["Incomplete"], "JXRA01": ["Simple", "Type3"], "RQPI01": ["Simple", "Type3"], "NZ_CP023695.1": ["Simple", "Type3"], "NZ_LR134335.1": ["Single", "Type1"], "SMJU01": ["Simple", "Type3"], "LMCV01": ["Single", "Type2b"], "PKNM01": ["Simple", "Type1"], "PIQI01": ["Simple", "Type1"], "FZPH01": ["Simple", "Type3"], "WIWB01": ["Single", "Type2b"], "NC_009253.1": ["Simple", "Type3"], "SOZA01": ["Single", "Type2b"], "NZ_LT855380.1": ["Incomplete"], "NZ_CP014947.1": ["Multiple", "Type2b"], "ALVJ01": ["Incomplete"], "NZ_CP013459.1": ["Incomplete"], "NZ_CP013460.1": ["Incomplete"], "NZ_CP013461.1": ["Simple", "Type3"], "NZ_CP048408.1": ["Multiple", "Type2b"], "NZ_CP003181.2": ["Simple", "Type2b"], "VFIO01": ["Single", "Type2b"], "MASS01": ["Incomplete"], "NC_020453.1": ["Simple", "Type3"], "PYUC01": ["Simple", "Type1"], "VEGT01": ["Simple", "Type3"], "MKZO01": ["Single", "Type2b"], "WIWE01": ["Single", "Type2b"], "FMWY01": ["Simple", "Type3"], "MWQL01": ["Incomplete"], "FMVD01": ["Incomplete"], "NZ_CP023969.1": ["Single", "Type2b"], "NZ_CP029608.1": ["Single", "Type2b"], "SMKU01": ["Incomplete"], "FUKJ01": ["Single", "Type3"], "JONO01": ["Multiple", "Type1", "Type2a"], "RAVW01": ["Incomplete"], "PDUD01": ["Incomplete"], "MKMC01": ["Simple", "Type3"], "NC_017448.1": ["Single", "Type3"], "PVZV01": ["Incomplete"], "NZ_CP031069.1": ["Incomplete"], "NZ_CP031070.1": ["Simple", "Type2b"], "NZ_CP023269.1": ["Multiple", "Type2b"], "VLLP01": ["Incomplete"], "NZ_CM001559.1": ["Simple", "Type3"], "NZ_CP029983.1": ["Simple", "Type2b"], "VHKL01": ["Simple", "Type3"], "NZ_CP027218.1": ["Single", "Type2b"], "JPPZ01": ["Simple", "Type3"], "AKJD01": ["Incomplete"], "VCNJ01": ["Multiple", "Type2b"], "NZ_CP013423.1": ["Incomplete"], "NZ_CP013424.1": ["Incomplete"], "NZ_CP013425.1": ["Incomplete"], "SMKK01": ["Simple", "Type3"], "SODH01": ["Incomplete"], "AZSS01": ["Multiple", "Type3"], "JFHN01": ["Simple", "Type1"], "MUNM01": ["Single", "Type2b"], "NC_021492.1": ["Incomplete"], "NC_021500.1": ["Single", "Type1"], "RCSU01": ["Simple", "Type3"], "SMOD01": ["Simple", "Type3"], "NZ_CP042382.1": ["Simple", "Type3"], "NC_008268.1": ["Incomplete"], "NC_008269.1": ["Incomplete"], "NC_008270.1": ["Incomplete"], "NC_008271.1": ["Incomplete"], "JYLE01": ["Multiple", "Type1", "Type2b"], "PYMM01": ["Single", "Type1"], "NZ_CP007699.2": ["Simple", "Type3"], "QAOU01": ["Incomplete"], "WBOI01": ["Multiple", "Type1", "Type2b"], "CAACVJ01": ["Incomplete"], "BJMN01": ["Simple", "Type3"], "SMDG01": ["Simple", "Type1"], "CABIWI01": ["Multiple", "Type1", "Type2b"], "WHZZ01": ["Multiple", "Type1", "Type2a", "Type2b"], "QAOQ01": ["Simple", "Type3"], "RCBZ01": ["Incomplete"], "NZ_CP022303.1": ["Incomplete"], "NZ_CP022304.1": ["Incomplete"], "NZ_CP022305.1": ["Incomplete"], "NZ_CP022306.1": ["Incomplete"], "AQRJ01": ["Simple", "Type3"], "FNGP01": ["Incomplete"], "RJKM01": ["Incomplete"], "PKND01": ["Simple", "Type1"], "FOSU01": ["Incomplete"], "AWZT01": ["Simple", "Type3"], "NZ_CP009458.1": ["Single", "Type1"], "WEGH01": ["Incomplete"], "VZZZ01": ["Simple", "Type3"], "NZ_CP043060.1": ["Multiple", "Type2b"], "VZZR01": ["Incomplete"], "JAAQYP01": ["Simple", "Type3"], "MTBD01": ["Simple", "Type1"], "NZ_CP019686.1": ["Single", "Type1"], "VUAZ01": ["Simple", "Type2b"], "AZXK01": ["Incomplete"], "BBIR01": ["Multiple", "Type2b"], "MWLO01": ["Incomplete"], "QYZD01": ["Simple", "Type2b"], "MOBZ01": ["Single", "Type2b"], "FOBB01": ["Simple", "Type3"], "FMDM01": ["Simple", "Type3"], "NZ_CP019888.1": ["Simple", "Type1"], "AUAX01": ["Simple", "Type3"], "AVEF02": ["Simple", "Type1"], "FNAD01": ["Simple", "Type3"], "BBCC01": ["Simple", "Type1"], "QAOV01": ["Single", "Type2b"], "BAZX01": ["Incomplete"], "NKQZ01": ["Simple", "Type3"], "NZ_CP022960.1": ["Simple", "Type2b"], "SHKK01": ["Simple", "Type3"], "NZ_CP012673.1": ["Multiple", "Type1", "Type3"], "WBKQ01": ["Simple", "Type3"], "LQAL01": ["SImple", "Type2b"], "FCNY02": ["Simple", "Type3"], "VFEU01": ["Simple", "Type2b"], "SHKT01": ["Incomplete"], "BAVR01": ["Incomplete"], "OAOQ01": ["Simple", "Type3"], "MSSW01": ["Simple", "Type3"], "JOGR01": ["Simple", "Type3"], "NZ_CP034337.1": ["Incomplete"], "CAACUY01": ["Incomplete"], "QVNU01": ["Simple", "Type3"], "ASSC01": ["Simple", "Type3"], "NZ_CP028035.1": ["Single", "Type2b"], "NZ_CP028036.1": ["Incomplete"], "NZ_CP028037.1": ["Incomplete"], "NZ_CP028038.1": ["Incomplete"], "NZ_CP028039.1": ["Incomplete"], "NZ_CP028040.1": ["Incomplete"], "NZ_CP028041.1": ["Incomplete"], "NZ_CP028042.1": ["Incomplete"], "NZ_CP057330.1": ["Simple", "Type2b"], "NZ_CP057331.1": ["Incomplete"], "NZ_CP057332.1": ["Incomplete"], "NZ_CP057333.1": ["Incomplete"], "NZ_CP046052.1": ["Incomplete"], "NZ_CP046053.1": ["Incomplete"], "NZ_CP046054.1": ["Incomplete"], "BFCB01": ["Simple", "Type3"], "NZ_CM001489.1": ["Incomplete"], "RBOV01": ["Single", "Type2b"], "NZ_CP030750.1": ["Multiple", "Type1", "Type2b"], "SODV01": ["Simple", "Type3"], "QEKL01": ["Multiple", "Type2b"], "QJRT01": ["Single", "Type2b"], "NZ_LT629778.1": ["Single", "Type2b"], "NZ_CP024634.1": ["Incomplete"], "LVTS01": ["Simple", "Type1"], "NZ_AP018150.1": ["Single", "Type2b"], "CPYD01": ["Single", "Type2a"], "RIAR02": ["Multiple", "Type3"], "NZ_CP010407.1": ["Simple", "Type3"], "NZ_CP010408.1": ["Incomplete"], "AUKP01": ["Simple", "Type3"], "MTSA01": ["Single", "Type2b"], "MOBL01": ["Single", "Type2b"], "NZ_CP028158.1": ["Incomplete"], "MOBY01": ["Multiple", "Type2b"], "NIBV01": ["Multiple", "Type1", "Type2a"], "SJOP01": ["Incomplete"], "VEJO01": ["Single", "Type2b"], "FWXB01": ["Incomplete"], "SMKT01": ["Single", "Type3"], "FPBO01": ["Incomplete"], "NZ_CP012831.1": ["Multiple", "Type2b"], "JAAQYX01": ["Multiple", "Type2b"], "QGSZ01": ["Simple", "Type3"], "QARA01": ["Single", "Type2b"], "RXLQ01": ["Simple", "Type3"], "ANOR01": ["Single", "Type2b"], "PJBP01": ["Simple", "Type3"], "NQKI01": ["Single", "Type2b"], "CBSW01": ["Multiple", "Type1", "Type2a", "Type2b"], "VCKX01": ["Incomplete"], "FNGF01": ["Simple", "Type3"], "NZ_CP010310.2": ["Incomplete"], "WJIE01": ["Multiple", "Type1"], "VAUR01": ["Multiple", "Type2b"], "NC_017956.1": ["Incomplete"], "NC_017957.2": ["Incomplete"], "NC_017958.1": ["Incomplete"], "NC_017959.1": ["Incomplete"], "NC_017966.1": ["Incomplete"], "NZ_CP013368.1": ["Incomplete"], "NZ_CP013369.1": ["Single", "Type2b"], "NZ_CP013370.1": ["Incomplete"], "NZ_CP013371.1": ["Incomplete"], "VFVY01": ["Incomplete"], "NZ_CP023567.1": ["Single", "Type2b"], "NZ_CP023568.1": ["Incomplete"], "RJKL01": ["Incomplete"], "NZ_CP045767.1": ["Simple", "Type2b"], "JOGP01": ["Simple", "Type3"], "CABHPT01": ["Simple", "Type1"], "UWFA01": ["Incomplete"], "QVNQ01": ["Simple", "Type3"], "PJBC01": ["Simple", "Type2b"], "SHKZ01": ["Simple", "Type3"], "JQFM01": ["Incomplete"], "SLVP01": ["Simple", "Type3"], "NZ_CP005969.1": ["Multiple", "Type1", "Type2b"], "NZ_CP021106.3": ["Incomplete"], "JYLH01": ["Single", "Type2b"], "LJCS01": ["Multiple", "Type1"], "NZ_CP017606.1": ["Incomplete"], "NZ_CP017607.1": ["Single", "Type1"], "NZ_CP017608.1": ["Incomplete"], "NZ_CP017609.1": ["Incomplete"], "SOAB01": ["Multiple", "Type3"], "QKLY01": ["Simple", "Type2b"], "JAAQWH01": ["Single", "Type2b"], "AKJS01": ["Single", "Type2b"], "QPDS01": ["Multiple", "Type2b"], "NZ_CP023965.1": ["Single", "Type1"], "NZ_CP029231.1": ["Incomplete"], "NZ_CP029232.1": ["Incomplete"], "NZ_CP029233.1": ["Incomplete"], "NZ_CP029234.1": ["Incomplete"], "NZ_CP029235.1": ["Simple", "Type3"], "LNCD01": ["Simple", "Type3"], "NVDM01": ["Single", "Type1"], "NZ_CP011020.1": ["Multiple", "Type2b"], "PZZQ01": ["Multiple", "Type1"], "NZ_CP011807.3": ["Simple", "Type2b"], "NZ_CP011808.2": ["Incomplete"], "NZ_CP011809.2": ["Incomplete"], "ALJC01": ["Single", "Type2b"], "QJRQ01": ["Incomplete"], "QEOK01": ["Simple", "Type3"], "NZ_CP029618.1": ["Simple", "Type3"], "NZ_CP010016.1": ["Incomplete"], "NZ_CP010017.1": ["Incomplete"], "NZ_CP010018.1": ["Incomplete"], "SOCQ01": ["Single", "Type2b"], "RJKE01": ["Multiple", "Type3"], "QAOO01": ["Incomplete"], "JMCL01": ["Multiple", "Type2b"], "QBKC01": ["Incomplete"], "NZ_CP034335.1": ["Incomplete"], "VDLX02": ["Incomplete"], "SSMR01": ["Multiple", "Type3"], "NSCM01": ["Multiple", "Type1", "Type2a", "Type2b"], "VMSG01": ["Multiple", "Type2b"], "ABCQ01": ["Simple", "Type1"], "OUND01": ["Incomplete"], "QAJI01": ["Simple", "Type3"], "NZ_CP045761.1": ["Single", "Type2b"], "SUNB01": ["Incomplete"], "LJSD01": ["Incomplete"], "NZ_CP041692.1": ["Simple", "Type3"], "PZZR01": ["Incomplete"], "JPMW01": ["Incomplete"], "QPIJ01": ["Simple", "Type3"], "LYUY01": ["Incomplete"], "SMJX01": ["Incomplete"], "VATL01": ["Single", "Type1"], "FMYF01": ["Simple", "Type3"], "PUWV01": ["Multiple", "Type1", "Type2a", "Type2b", "Type3"], "FQYM01": ["Incomplete"], "PJRP01": ["Incomplete"], "QRBE01": ["Incomplete"], "FOVJ01": ["Multiple", "Type3"], "SOCT01": ["Incomplete"], "CABMLW01": ["Multiple", "Type1"], "BDBY01": ["Simple", "Type3"], "PYGV01": ["Incomplete"], "VRLS01": ["Single", "Type1"], "ASTJ01": ["Simple", "Type3"], "LVEJ01": ["Single", "Type2b"], "OUNR01": ["Simple", "Type3"], "FPBP01": ["Single", "Type3"], "FSRU01": ["Simple", "Type2b"], "SMKN01": ["Incomplete"], "ASJB01": ["Simple", "Type3"], "VIYH01": ["Single", "Type2b"], "SNZP01": ["Simple", "Type3"], "NZ_CP014847.1": ["Incomplete"], "NZ_CP014848.1": ["Incomplete"], "NZ_CP014849.1": ["Incomplete"], "NZ_CP014850.1": ["Incomplete"], "NZ_CP014851.1": ["Incomplete"], "NZ_CP014852.1": ["Incomplete"], "NZ_CP014853.1": ["Simple", "Type2b"], "NZ_CP034780.1": ["Incomplete"], "NZ_CP034781.1": ["Incomplete"], "NZ_CP034782.1": ["Incomplete"], "NZ_CP034783.1": ["Simple", "Type3"], "PYBJ01": ["Simple", "Type3"], "PTJB01": ["Incomplete"], "NZ_CP024159.1": ["Incomplete"], "JNYY01": ["Simple", "Type3"], "NZ_CP027756.1": ["Simple", "Type2b"], "SSNZ01": ["Simple", "Type3"], "NZ_CP046874.1": ["Multiple", "Type2b"], "WIBD01": ["Single", "Type2b"], "NZ_CP029710.1": ["Simple", "Type3"], "RBRE01": ["Multiple", "Type1", "Type2b"], "NZ_CP024866.1": ["Single", "Type2b"], "JAAAGD01": ["Single", "Type2b"], "JAAEFD01": ["Simple", "Type1"], "RBUY01": ["Incomplete"], "QXQA01": ["Single", "Type3"], "QJRP01": ["Incomplete"], "AXBA01": ["Simple", "Type3"], "OMPE01": ["Incomplete"], "NZ_LT629790.1": ["Multiple", "Type2b"], "LLWI01": ["Multiple", "Type1", "Type2b"], "NZ_LT629746.1": ["Multiple", "Type2b"], "BAOS01": ["Simple", "Type3"], "VLPL01": ["Simple", "Type3"], "LYRP01": ["Simple", "Type1"], "JXDG01": ["Multiple", "Type2b"], "LIPP01": ["Simple", "Type3"], "JAAQWI01": ["Multiple", "Type2b"], "NZ_LT629795.1": ["Single", "Type2b"], "LXEN01": ["Simple", "Type1"], "NZ_CM001514.1": ["Multiple", "Type2b"], "NC_015731.1": ["Simple", "Type3"], "NZ_CP041754.1": ["Multiple", "Type1", "Type2b"], "NZ_CP041755.1": ["Incomplete"], "NZ_CP041756.1": ["Incomplete"], "NZ_CP045572.1": ["Incomplete"], "FOVO01": ["Incomplete"], "JMKF01": ["Incomplete"], "JACCAY01": ["Simple", "Type3"], "MAID01": ["Incomplete"], "NZ_CP009727.1": ["Incomplete"], "NZ_CP009728.1": ["Incomplete"], "AKXV01": ["Simple", "Type3"], "CZQA01": ["Simple", "Type3"], "NZ_CP054609.1": ["Incomplete"], "NZ_CP054610.1": ["Incomplete"], "NZ_CP054611.1": ["Incomplete"], "NZ_CP054612.1": ["Incomplete"], "NZ_CP054613.1": ["Simple", "Type3"], "NZ_CP014226.1": ["Simple", "Type3"], "CABIVM01": ["Single", "Type2b"], "CDPK01": ["Single", "Type1"], "WIAO01": ["Simple", "Type3"], "WSFG01": ["Multiple", "Type1", "Type2a", "Type2b"], "WIVV01": ["Multiple", "Type1", "Type2b"], "NQKN01": ["Single", "Type2b"], "FUWU01": ["Incomplete"], "UTLV01": ["Single", "Type2b"], "QOIO01": ["Simple", "Type3"], "QGLF01": ["Incomplete"], "VSRO01": ["Multiple", "Type2b"], "WIVQ01": ["Single", "Type2b"], "OBDY01": ["Incomplete"], "SJZK02": ["Single", "Type1"], "NZ_CP029482.1": ["Single", "Type2b"], "LHVN01": ["Single", "Type2b"], "UEXF01": ["Single", "Type1"], "VIUR01": ["Multiple", "Type2b"], "QBJA02": ["Multiple", "Type1", "Type2b"], "LZEX01": ["Multiple", "Type1", "Type2b"], "JYLN01": ["Simple", "Type2b"], "NZ_CP022504.1": ["Single", "Type1"], "LFQK01": ["Single", "Type2b"], "NZ_CP038255.1": ["Simple", "Type3"], "NZ_CP024646.1": ["Simple", "Type2b"], "CVJX01": ["Single", "Type1"], "NZ_CP031146.1": ["Simple", "Type1"], "LACH01": ["Simple", "Type2b"], "NZ_CP011253.3": ["Single", "Type2b"], "NZ_CP011518.2": ["Incomplete"], "NZ_CP011519.2": ["Incomplete"], "VJZE01": ["Incomplete"], "QKYK01": ["Incomplete"], "NZ_CP023525.1": ["Single", "Type1"], "AZUB01": ["Simple", "Type2b"], "JRYA01": ["Multiple", "Type1", "Type2b"], "AUEZ01": ["Simple", "Type3"], "VSFG01": ["Simple", "Type3"], "QOIL01": ["Incomplete"], "SJZD01": ["Incomplete"], "VJWF01": ["Simple", "Type3"], "FNSJ01": ["Multiple", "Type3"], "AWNH01": ["Incomplete"], "NZ_CP016211.1": ["Incomplete"], "SMKO01": ["Incomplete"], "VXLC01": ["Simple", "Type3"], "JFCA01": ["Simple", "Type2b"], "PPRY01": ["Simple", "Type2b"], "NZ_LT629708.1": ["Simple", "Type2b"], "NZ_CP026364.1": ["Single", "Type1"], "NZ_CP015225.1": ["Simple", "Type2b"], "MUNY01": ["Simple", "Type3"], "MBLO01": ["Multiple", "Type3"], "NZ_CP012159.1": ["Single", "Type3"], "ALBT01": ["Simple", "Type3"], "RPND01": ["Simple", "Type3"], "LMXH01": ["Simple", "Type3"], "CPZI01": ["Simple", "Type2b"], "SAXA01": ["Simple", "Type3"], "QPAO01": ["Single", "Type1"], "SSMQ01": ["Multiple", "Type3"], "PQKR01": ["Single", "Type2b"], "NC_015510.1": ["Simple", "Type3"], "CWJL01": ["Single", "Type1"], "BJMH01": ["Simple", "Type3"], "JABWHT01": ["Simple", "Type1"], "NZ_CP024085.1": ["Simple", "Type3"], "SMFY01": ["Incomplete"], "NZ_CP027732.1": ["Single", "Type2b"], "NQKV01": ["Multiple", "Type2b"], "PYGG01": ["Incomplete"], "AWXZ01": ["Simple", "Type3"], "NZ_LN681227.1": ["Multiple", "Type1", "Type2a", "Type2b"], "PQMB01": ["Simple", "Type1"], "FODH01": ["Simple", "Type3"], "FOIG01": ["Simple", "Type3"], "ARBJ01": ["Simple", "Type3"], "NZ_CP029843.1": ["Simple", "Type3"], "FOLC01": ["Simple", "Type3"], "NZ_LT629691.1": ["Multiple", "Type1", "Type2b"], "FORG01": ["Multiple", "Type1"], "WIWO01": ["Single", "Type2b"], "MUBJ01": ["Multiple", "Type2a", "Type2b"], "QPIP01": ["Simple", "Type1"], "QNVV01": ["Simple", "Type3"], "LHVM01": ["Single", "Type2b"], "PVZG01": ["Simple", "Type3"], "NZ_CP017687.1": ["Single", "Type2b"], "FNQB01": ["Multiple", "Type3"], "NQYG01": ["Single", "Type2b"], "JQNB01": ["Incomplete"], "FNVO01": ["Incomplete"], "VIVV01": ["Simple", "Type3"], "CABLBP01": ["Simple", "Type3"], "NZ_CP043422.1": ["Simple", "Type1"], "QEOF01": ["Simple", "Type2b"], "PVNL01": ["Single", "Type3"], "CQAW01": ["Simple", "Type1"], "AUAF01": ["Incomplete"], "SZQA01": ["Incomplete"], "NC_015379.1": ["Multiple", "Type2b"], "NZ_CP026106.1": ["Simple", "Type3"], "VIUG01": ["Multiple", "Type2b"], "SMSC01": ["Simple", "Type1"], "MQWC01": ["Simple", "Type3"], "NZ_CP042804.1": ["Incomplete"], "PENT01": ["Simple", "Type1"], "NC_014718.1": ["Multiple", "Type2b"], "NC_014722.1": ["Incomplete"], "PENW01": ["Simple", "Type1"], "QRAV01": ["Single", "Type2b"], "QEQQ01": ["Single", "Type2b"], "MKCS01": ["Simple", "Type3"], "JPIX01": ["Single", "Type1"], "NJAH01": ["Incomplete"], "JPLA01": ["Incomplete"], "VFPP01": ["Incomplete"], "BBXC01": ["Incomplete"], "JPOH01": ["Simple", "Type3"], "VWSH01": ["Simple", "Type3"], "FNON01": ["Simple", "Type3"], "FAOZ01": ["Simple", "Type3"], "NC_013131.1": ["Simple", "Type3"], "FOOS01": ["Simple", "Type3"], "NZ_CP053682.1": ["Simple", "Type1"], "NZ_CP013949.1": ["Simple", "Type3"], "VZPJ01": ["Multiple", "Type2b"], "MIIW01": ["Single", "Type1"], "JXDI01": ["Single", "Type2b"], "NZ_LT629704.1": ["Single", "Type2b"], "NZ_CP016634.1": ["Multiple", "Type1", "Type2b"], "SLYK01": ["Incomplete"], "NZ_AP020337.1": ["Multiple", "Type1", "Type2b"], "PYAL01": ["Single", "Type2b"], "FYDV01": ["Simple", "Type2b"], "VCBA01": ["Incomplete"], "QFZQ01": ["Single", "Type3"], "SMSL01": ["Simple", "Type3"], "FODZ01": ["Simple", "Type3"], "PYGD01": ["Multiple", "Type3"], "LHVL01": ["Multiple", "Type2b"], "QAIK01": ["Single", "Type2b"], "FODL01": ["Single", "Type2b"], "NZ_LT828648.1": ["Simple", "Type3"], "FUXU01": ["Simple", "Type1"], "VZII01": ["Single", "Type2b"], "QLLL01": ["Simple", "Type3"], "NZ_CP016176.1": ["Incomplete"], "FQWR01": ["Multiple", "Type3"], "NZ_CP029197.1": ["Simple", "Type3"], "VIUE01": ["Multiple", "Type2b"], "VIVC01": ["Single", "Type2b"], "NEJJ01": ["Single", "Type2b"], "VOQB01": ["Multiple", "Type1"], "NC_007954.1": ["Incomplete"], "AEDD01": ["Simple", "Type3"], "NC_020209.1": ["Simple", "Type2b"], "LKBT01": ["Single", "Type2b"], "NZ_LT629801.1": ["Simple", "Type2b"], "JHVK01": ["Single", "Type2b"], "PVNG01": ["Incomplete"], "RBIS01": ["Incomplete"], "FNTT01": ["Simple", "Type2b"], "VCRA01": ["Incomplete"], "ABXF01": ["Simple", "Type3"], "PJCP01": ["Single", "Type2b"], "NZ_CP045158.1": ["Single", "Type1"], "BBXE01": ["Incomplete"], "RKHU01": ["Simple", "Type3"], "LIPN01": ["Simple", "Type3"], "NZ_LT629788.1": ["Single", "Type2b"], "NIBS01": ["Simple", "Type2a"], "JAABNH01": ["Simple", "Type1"], "NZ_CP017599.1": ["Multiple", "Type3"], "QKWJ01": ["Simple", "Type3"], "FNVU01": ["Simple", "Type3"], "RAVX01": ["Simple", "Type3"], "NZ_CP024923.1": ["Simple", "Type3"], "NKFP01": ["Incomplete"], "AEDB02": ["Incomplete"], "NZ_CP038613.1": ["Incomplete"], "NZ_CP018319.1": ["Multiple", "Type2b"], "SLZA01": ["Simple", "Type3"], "WIWL01": ["Single", "Type2b"], "SMFY01_information_Ancylobacter_aquaticus_region_TcB_expanded_[640.9]_4636162_4644109_backward": [""], "SMFY01_information_Ancylobacter_aquaticus_region_A2_expanded_[100.2]_4628824_4636126_backward": [""], "SMFY01_information_Ancylobacter_aquaticus_region_TcC_expanded_[251.6]_4636162_4644109_backward": [""], "QTSW01": ["Single", "Type2b"], "VIVY01": ["Incomplete"], "MOBO01": ["Multiple", "Type2b"], "NZ_CP013997.1": ["Incomplete", "Simple"], "RBIO01": ["Incomplete"], "SNYE01": ["Simple", "Type3"], "NZ_CP038438.1": ["Single", "Type2b"], "SMAS01": ["Single", "Type1"], "VCNA01": ["Simple", "Type3"]}
+    # original_classifications = {"NZ_WRXN01000057.1": ["Single", "Simple", "Type3"],
+    #                             "NZ_QODI01000091.1": ["Single", "Type1"], "NZ_QAIK01000198.1": ["Single", "Type2b"],
+    #                             "NZ_CP009451.1": ["Single", "Type2b"], "NC_015513.1": ["Single", "Type3"],
+    #                             "NC_013216.1": ["Single", "Type3"], "NC_022663.1": ["Single", "Type3"],
+    #                             "NZ_CP004078.1": ["Single", "Type3", "Simple"], "NZ_CP011809.2": ["Single", "Type2b"],
+    #                             "NZ_VITD01000034.1": ["Single", "Type3"], "NZ_WSEM01000042.1": ["Single", "Type3"],
+    #                             "NZ_SOEK01000059.1": ["Single", "Type2b"],
+    #                             "NZ_MQWC01000010.1": ["Single", "Type3", "Simple"],
+    #                             "NZ_PVZA01000046.1": ["Single", "Type2b"], "NZ_BIFQ01000002.1": ["Single", "Type3"],
+    #                             "NZ_SSMR01000050.1": ["Multiple", "Type3"], "NZ_QEOF01000027.1": ["Single", "Type2b"],
+    #                             "NZ_CP041186.1": ["Multiple", "Type3", ],
+    #                             "NZ_NJAK01000005.1": ["Single", "Type2a"], "NZ_FPBP01000034.1": ["Single", "Type3"],
+    #                             "NZ_BBMZ01000055.1": ["Single", "Type2b"], "NZ_KI632511.1": ["Single", "Type3"],
+    #                             "NZ_CP027760.1": ["Single", "Type2b"], "NZ_CP024793.1": ["Single", "Type3"],
+    #                             "NC_005126.1": ["Multiple", "Type2b", "Type1"],
+    #                             "NZ_AYSJ01000017.1": ["Multiple", "Type2b", "Type2a", "Type1"],
+    #                             "NZ_FPJC01000063.1": ["Single", "Type2b"], "NZ_CP027734.1": ["Single", "Type2b"],
+    #                             "NZ_SAXA01000055.1": ["Single", "Type3"],
+    #                             "NZ_CP024901.1": ["Multiple", "Type1", "Type2b", "Type2a"],
+    #                             "NZ_NMRE01000216.1": ["Single", "Type2b"], "NZ_CP041692.1": ["Single", "Type3"],
+    #                             "NC_008271.1": ["Single", "Type3"], "NZ_VCNA01000026.1": ["Single", "Type3"],
+    #                             "NZ_NBVR01000044.1": ["Single", "Type1"], "NZ_QVIG01000004.1": ["Single", "Type1"],
+    #                             "NZ_BILZ01000167.1": ["Single", "Type3"], "NZ_FONE01000126.1": ["Single", "Type3"],
+    #                             "NZ_WIVQ01000359.1": ["Single", "Type2b"], "NZ_UGTQ01000009.1": ["Single", "Type1"],
+    #                             "NZ_LN681228.1": ["Multiple", "Type1", "Type2b", "Type2a"],
+    #                             "NZ_FOLC01000061.1": ["Single", "Type1"], "NZ_SJOP01000106.1": ["Single", "Type1"],
+    #                             "NZ_PHHS01000064.1": ["Multiple", "Type2b"], "JAAHIE010001451.1": ["Single", "Type3"],
+    #                             "NZ_KL647038.1": ["Single", "Type3"],
+    #                             "NZ_FQUS01000064.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_WIBD01000081.1": ["Single", "Type2b"], "NZ_MWTQ01000158.1": ["Single", "Type2b"],
+    #                             "NC_015379.1": ["Multiple", "Type2b"], "NZ_PHSU01000082.1": ["Single", "Type2b"],
+    #                             "NZ_FUXU01000241.1": ["Single", "Type1"], "NZ_AKJE01000126.1": ["Multiple", "Type2b"],
+    #                             "NZ_LT629762.1": ["Type2b", "Single"], "NZ_SMSC01000216.1": ["Single", "Type1"],
+    #                             "NZ_CP013429.1": ["Single", "Type1"], "NZ_AYLO01000184.1": ["Single", "Type3"],
+    #                             "NZ_KB905728.1": ["Single", "Type3"], "NZNV01000041.1": ["Single", "Type3"],
+    #                             "NZ_POEF01000127.1": ["Single", "Type3"], "NZ_NVPT01000374.1": ["Single", "Type3"],
+    #                             "NZ_KN173624.1": ["Single", "Type3"], "NZ_QTUF01000034.1": ["Single", "Type2b"],
+    #                             "NZ_KN266223.1": ["Single", "Type3"], "NZ_PENW01000035.1": ["Single", "Type1"],
+    #                             "NZ_CBLI010000886.1": [""], "NZ_QAOO01000085.1": ["Single", "Type3"],
+    #                             "NZ_LT707062.1": ["Single", "Type2b"], "NZ_SMKX01000348.1": ["Single", "Type3"],
+    #                             "NZ_LT855380.1": ["Single", "Type1"], "NZ_RQJP01000018.1": ["Single", "Type3"],
+    #                             "NZ_JNYY01000082.1": ["Single", "Type3"], "NZ_CZQA01000015.1": ["Single", "Type3"],
+    #                             "NZ_AKJS01000210.1": ["Single", "Type2b"], "NZ_LOYJ01000133.1": ["Single", "Type2b"],
+    #                             "NZ_BBCC01000558.1": ["Single", "Type1"],
+    #                             "QHVH01000106.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_OAOQ01000062.1": ["Single", "Type3"], "MUGG01000223.1": ["Single", "Type3"],
+    #                             "NZ_CP014226.1": ["Single", "Type3"], "NZ_RZUM01000202.1": ["Single", "Type3"],
+    #                             "NZ_CP027727.1": ["Single", "Type2b"], "NZ_NHML01000109.1": ["Single", "Type3"],
+    #                             "NZ_VCSG01000349.1": ["Single", "Type3"], "NZ_AFWT01000141.1": ["Single", "Type3"],
+    #                             "NC_010830.1": ["Single", "Type3"], "RHGL01000187.1": ["Single", "Type3"],
+    #                             "NC_013892.1": ["Multiple", "Type2a", "Type1"],
+    #                             "NZ_QUMQ01000001.1": ["Single", "Type1"], "NZ_VOBI01000057.1": ["Single", "Type2b"],
+    #                             "NZ_FNTY01000002.1": ["Single", "Type2b"], "NZ_SSMQ01000201.1": ["Multiple", "Type3"],
+    #                             "NZ_JYLF01000032.1": ["Single", "Type2b"], "NZ_CP029843.1": ["Single", "Type3"],
+    #                             "NZ_LT629732.1": ["Single", "Type3"], "NZ_CP017687.1": ["Single", "Type2b"],
+    #                             "NZ_ONZJ01000003.1": ["Single", "Type3"], "NZ_AKJH01000183.1": ["Single", "Type2b"],
+    #                             "NZ_SMKT01000421.1": ["Single", "Type3"],
+    #                             "NZ_QUOK01000045.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_RCOE01000307.1": ["Single", "Type2b"], "NZ_RCOD01000106.1": ["Single", "Type2b"],
+    #                             "NZ_SSWO01000061.1": ["Single", "Type1"], "NZ_CP033700.1": ["Single", "Type2b"],
+    #                             "NZ_CP015381.1": ["Single", "Type3"], "NZ_WIAO01000088.1": ["Single", "Type3"],
+    #                             "NZ_QARE02000057.1": ["Single", "Type2b"], "NZ_MASS01000135.1": ["Single", "Type3"],
+    #                             "NC_020453.1": ["Single", "Type1"], "NC_021084.1": ["Single", "Type3"],
+    #                             "NC_020418.1": ["Multiple", "Type2b", "Type1"],
+    #                             "NZ_WTCR01000039.1": ["Single", "Type3"],
+    #                             "NZ_PGEO01000001.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_CP029710.1": ["Single", "Type3"], "NZ_CP011521.2": ["Single", "Type2b"],
+    #                             "NZ_KI519434.1": ["Single", "Type3"], "NZ_VHKL01000033.1": ["Single", "Type3"],
+    #                             "NZ_SNYU01000018.1": ["Single", "Type2b"], "LKCF01003901.1": ["Single", "Type2b"],
+    #                             "NZ_JH941054.1": ["Single", "Type3"], "NZ_AALD02000179.1": ["Single", "Type1"],
+    #                             "NZ_KB903530.1": ["Single", "Type3"], "NZ_FNNQ01000042.1": ["Single", "Type3"],
+    #                             "NZ_WIVR01000272.1": ["Single", "Type2b"], "NZ_LIUV01000061.1": ["Single", "Type2b"],
+    #                             "NZ_CQAZ01000234.1": ["Multiple", "Type3", "Type1"],
+    #                             "NZ_VOBM01000105.1": ["Multiple", "Type2b"], "NZ_AP020337.1": ["Single", "Type2b"],
+    #                             "NZ_KE386823.1": ["Single", "Type3"], "NZ_RAVY01000454.1": ["Single", "Type3"],
+    #                             "NZ_RAVX01000101.1": ["Single", "Type3"], "NZ_CAEB01000078.1": ["Single", "Type1"],
+    #                             "NZ_MJMK01000061.1": ["Single", "Type2b"], "NZ_BAXG01000116.1": ["Single", "Type1"],
+    #                             "NZ_RXLQ01000081.1": ["Single", "Type3"], "NZ_QFXK01000092.1": ["Single", "Type3"],
+    #                             "NZ_FNPW01000042.1": ["Multiple", "Type1", "Type3"],
+    #                             "MNDS01000223.1": ["Single", "Type3"], "NZ_LECZ01000027.1": ["Single", "Type1"],
+    #                             "NZ_CP024866.1": ["Single", "Type2b"], "NZ_RCNX01000105.1": ["Single", "Type2b"],
+    #                             "NZ_FNBR01000014.1": ["Single", "Type2b"], "DLUT01000591.1": ["Single", "Type1"],
+    #                             "NZ_QAIL01000624.1": ["Single", "Type3"], "NZ_AKJU01000280.1": ["Single", "Type3"],
+    #                             "NZ_KQ058904.1": ["Single", "Type3"], "LADO01000066.1": ["Single", "Type3"],
+    #                             "NZ_RHHV01000044.1": ["Single", "Type3"], "NZ_JAABNE010000136.1": ["Single", "Type1"],
+    #                             "NZ_AKJT01000140.1": ["Multiple", "Type2b"], "NZ_MKMC01000100.1": ["Single", "Type3"],
+    #                             "NZ_CP017600.1": ["Multiple", "Type3"], "NZ_NJAJ01000180.1": ["Single", "Type2b"],
+    #                             "NZ_FZPH01000044.1": ["Single", "Type3"], "NZ_PPRY01000171.1": ["Single", "Type2b"],
+    #                             "NZ_CP022411.1": ["Single", "Type2b"], "NZ_AMZY02000039.1": ["Single", "Type3"],
+    #                             "NZ_KK211074.1": ["Single", "Type2b"], "NZ_RPSA01000026.1": ["Multiple", "Type3"],
+    #                             "NZ_VEJO01000043.1": ["Single", "Type2b"], "NZ_CP018049.1": ["Single", "Type2b"],
+    #                             "NZ_LGRC01000069.1": ["Single", "Type3"], "NZ_FMCR01000011.1": ["Single", "Type3"],
+    #                             "DPJM01000861.1": ["Single", "Type3"], "NC_008027.1": ["Single", "Type2b"],
+    #                             "NC_017448.1": ["Single", "Type3"], "NZ_AZNV01000101.1": ["Single", "Type3"],
+    #                             "NZ_CP028042.1": ["Single", "Type2b"],
+    #                             "NZ_NSCD01000185.1": ["Multiple", "Type1", "Type2b", "Type2a"],
+    #                             "NZ_AP017313.1": ["Single", "Type3"], "NZ_QUMR01000030.1": ["Single", "Type2b"],
+    #                             "NZ_FODL01000038.1": ["Single", "Type2b"], "QJPH01000597.1": ["Single", "Type3"],
+    #                             "NZ_FORG01000094.1": ["Single", "Type2b"], "NZ_CP007231.1": ["Single", "Type2b"],
+    #                             "NZ_NEVM01000005.1": ["Single", "Type1"], "NZ_KB235915.1": ["Multiple", "Type3"],
+    #                             "NZ_CP009289.1": ["Single", "Type3"], "NZ_VDFY01000321.1": ["Single", "Type3"],
+    #                             "NZ_BJMN01000147.1": ["Single", "Type3"],
+    #                             "NZ_LOIC01000105.1": ["Multiple", "Type2a", "Type2b", "Type1"],
+    #                             "NZ_NIBS01000173.1": ["Single", "Type2a"], "JMHR01000441.1": ["Single", "Type3"],
+    #                             "JAABOU010001898.1": ["Single", "Type3"], "MSXM01000117.1": ["Multiple", "Type3"],
+    #                             "NZ_VIUK01000070.1": ["Single", "Type1"], "JAAHFV010000687.1": ["Single", "Type3"],
+    #                             "NZ_PVZG01000092.1": ["Single", "Type3"], "NZ_KI911557.1": ["Single", "Type3"],
+    #                             "NZ_JOIX01000228.1": ["Single", "Type3"], "JEMY01000085.1": ["Single", "Type3"],
+    #                             "NZ_CP011104.1": ["Multiple", "Type1", "Type2b"], "NZ_KI421497.1": ["Single", "Type3"],
+    #                             "NZ_CP045011.1": ["Single", "Type1"], "NZ_SSNI01000125.1": ["Single", "Type3"],
+    #                             "NZ_SZWE01000003.1": ["Single", "Type3"], "NZ_CDSC02000515.1": ["Single", "Type3"],
+    #                             "NZ_FMYF01000036.1": ["Single", "Type3"], "NZ_RCWL01000032.1": ["Single", "Type3"],
+    #                             "NZ_PHHE01000001.1": ["Single", "Type2b"], "NZ_LKBY01000178.1": ["Single", "Type3"],
+    #                             "NZ_AP018150.1": ["Single", "Type2b"], "NZ_SSBS01000012.1": ["Multiple", "Type2b"],
+    #                             "NZ_FMXV01000075.1": ["Single", "Type2b"], "NZ_KB897775.1": ["Single", "Type3"],
+    #                             "NZ_PENZ01000052.1": ["Single", "Type1"], "NZ_NIRH01000051.1": ["Single", "Type1"],
+    #                             "NZ_PENX01000027.1": ["Single", "Type3"], "NZ_CP047651.1": ["Single", "Type2b"],
+    #                             "NZ_SNXZ01000022.1": ["Single", "Type3"], "NC_017565.1": ["Single", "Type1"],
+    #                             "NZ_SOBU01000009.1": ["Multiple", "Type2a", "Type2b", "Type1"],
+    #                             "NZ_FPIZ01000088.1": ["Multiple", "Type3"], "NZ_AP018449.1": ["Single", "Type3"],
+    #                             "NZ_MSSW01000136.1": ["Single", "Type3"], "NZ_LR134373.1": ["Single", "Type2b"],
+    #                             "NZ_CP038274.1": ["Single", "Type3"], "NZ_ASSC01000896.1": ["Single", "Type3"],
+    #                             "NZ_FOSU01000047.1": ["Single", "Type3"], "NZ_LAIJ01000019.1": ["Single", "Type3"],
+    #                             "NZ_FUYT01000034.1": ["Single", "Type2b"], "NZ_MBLO01000280.1": ["Single", "Type3"],
+    #                             "NZ_KE384514.1": ["Single", "Type3"], "NZ_CP009747.1": ["Single", "Type2b"],
+    #                             "NZ_QGSY01000345.1": ["Single", "Type3"], "NZ_QGSZ01000408.1": ["Single", "Type3"],
+    #                             "NZ_JH725405.1": ["Single", "Type3"], "NZ_OUNR01000022.1": ["Single", "Type3"],
+    #                             "NZ_CP005927.1": ["Single", "Type1"], "NZ_CP043925.1": ["Single", "Type1"],
+    #                             "NZ_ASRX01000182.1": ["Single", "Type1"], "NZ_BAHC01000261.1": ["Single", "Type3"],
+    #                             "NZ_PVTJ01000022.1": ["Single", "Type3"], "NZ_LR590468.1": ["Single", "Type3"],
+    #                             "NZ_CABIVL010000085.1": ["Multiple", "Type2b", "Type1"],
+    #                             "NZ_LLWH01000241.1": ["Single", "Type2b"], "NC_017447.1": ["Single", "Type1"],
+    #                             "NZ_CP014262.1": ["Multiple", "Type2b"], "NZ_MWPQ01000095.1": ["Single", "Type3"],
+    #                             "NZ_RHQN01000027.1": ["Single", "Type2b"], "NZ_CP009533.1": ["Multiple", "Type2b"],
+    #                             "NZ_VRLV01000055.1": ["Multiple", "Type3"], "NZ_QAOQ01000022.1": ["Single", "Type3"],
+    #                             "NZ_VUAZ01000259.1": ["Single", "Type2b"], "NZ_CP033931.1": ["Single", "Type3"],
+    #                             "NZ_CP014947.1": ["Multiple", "Type2b"], "NZ_LS999839.1": ["Single", "Type3"],
+    #                             "NZ_RAZO01000515.1": ["Multiple", "Type2b"], "NZ_KI421431.1": ["Single", "Type3"],
+    #                             "NZ_CP017141.1": ["Multiple", "Type3"], "NZ_CP027759.1": ["Single", "Type2b"],
+    #                             "NZ_QTUH01000043.1": ["Single", "Type2b"], "NZ_PYGD01000024.1": ["Multiple", "Type3"],
+    #                             "NZ_BCBA01000109.1": ["Single", "Type2b"], "NC_015559.1": ["Single", "Type3"],
+    #                             "NZ_AKJQ01000091.1": ["Single", "Type2b"],
+    #                             "NZ_AKJR01000399.1": ["Multiple", "Type1", "Type2b"],
+    #                             "NZ_QTPO01000204.1": ["Single", "Type3"], "NZ_PDUD01000143.1": ["Single", "Type3"],
+    #                             "JAAAKW010000055.1": ["Single", "Type2b"], "NZ_AMBZ01000025.1": ["Multiple", "Type3"],
+    #                             "NZ_WSTC01000100.1": ["Single", "Type3"], "NZ_SOCG01000010.1": ["Single", "Type2b"],
+    #                             "NZ_QTPW01000119.1": ["Single", "Type3"],
+    #                             "NZ_NMQR01000210.1": ["Multiple", "Type2a", "Type1", "Type2b"],
+    #                             "NZ_JAABMA010000050.1": ["Single", "Type1"], "NZ_LT629778.1": ["Single", "Type2b"],
+    #                             "NZ_PJBP01000186.1": ["Single", "Type3"], "NZ_QFRW01000331.1": ["Single", "Type3"],
+    #                             "NZ_KV791721.1": ["Multiple", "Type1"], "NZ_MKQR01000032.1": ["Single", "Type3"],
+    #                             "NZ_CP046054.1": ["Single", "Type3"], "NZ_KL543992.1": ["Multiple", "Type1", "Type2a"],
+    #                             "NZ_JXSK01000016.1": ["Multiple", "Type2a", "Type1", "Type2b"],
+    #                             "NZ_UPHT01000230.1": ["Single", "Type3", "Single", "Type3"],
+    #                             "NZ_MCHY01000013.1": ["Single", "Type3"], "NZ_MUNY01000094.1": ["Single", "Type3"],
+    #                             "NZ_NSCM01000192.1": ["Multiple", "Type2a", "Type1", "Type2b"],
+    #                             "NZ_RAWG01000802.1": ["Single", "Type3"], "NZ_JYLO01000042.1": ["Single", "Type2b"],
+    #                             "NZ_WSQA01000032.1": ["Single", "Type3"], "NZ_CP028923.1": ["Single", "Type3"],
+    #                             "NZ_MUBJ01000149.1": ["Single", "Type2a"], "NZ_JXRA01000201.1": ["Single", "Type2b"],
+    #                             "NZ_JYLD01000037.1": ["Single", "Type3"], "NZ_BDBY01000492.1": ["Single", "Type3"],
+    #                             "NZ_LIPP01000561.1": ["Single", "Type3"], "NZ_AHAM01000375.1": ["Single", "Type3"],
+    #                             "NZ_BILY01000094.1": ["Single", "Type3"],
+    #                             "NZ_VKDC01000148.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_FPBA01000069.1": ["Multiple", "Type3"], "NZ_BCBN01000125.1": ["Multiple", "Type2b"],
+    #                             "NZ_SODV01000004.1": ["Single", "Type3"], "NZ_PPRZ01000380.1": ["Multiple", "Type2b"],
+    #                             "NZ_FYEA01000033.1": ["Single", "Type2b"], "NZ_WMBA01000144.1": ["Single", "Type3"],
+    #                             "NZ_FNCO01000054.1": ["Single", "Type2b"], "NZ_FMUL01000047.1": ["Single", "Type2b"],
+    #                             "NZ_FCON02000657.1": ["Single", "Type3"], "NZ_CP023969.1": ["Single", "Type2b"],
+    #                             "NZ_JJML01000118.1": ["Single", "Type3"], "NZ_JAABLV010000025.1": ["Single", "Type1"],
+    #                             "NZ_FQWR01000065.1": ["Multiple", "Type3"], "NZ_JAABLU010000039.1": ["Single", "Type1"],
+    #                             "NZ_BCBO01000195.1": ["Multiple", "Type1", "Type2b"],
+    #                             "NZ_FORB01000034.1": ["Single", "Type3"], "NZ_JYLH01000043.1": ["Single", "Type2b"],
+    #                             "NZ_PGGO01000087.1": ["Single", "Type3"], "NZ_LMGQ01000029.1": ["Single", "Type2b"],
+    #                             "NZ_JAABNK010000025.1": ["Single", "Type1"], "NZ_KZ679081.1": ["Single", "Type3"],
+    #                             "NKIG01000124.1": ["Single", "Type3"], "NZ_LMGK01000026.1": ["Single", "Type2b"],
+    #                             "WASQ01000153.1": ["Single", "Type3"], "NZ_BAOS01000047.1": ["Single", "Type3"],
+    #                             "NZ_BCQP01000133.1": ["Single", "Type3"], "NZ_CP010898.2": ["Single", "Type2b"],
+    #                             "NC_021184.1": ["Single", "Type3"], "NZ_FOZR01000085.1": ["Single", "Type3"],
+    #                             "NC_009253.1": ["Single", "Type3"], "NZ_QKLY01000024.1": ["Single", "Type2b"],
+    #                             "NZ_LVYD01000134.1": ["Single", "Type3"], "NZ_VFIO01000040.1": ["Single", "Type2b"],
+    #                             "QQTZ01000066.1": ["Single", "Type3"], "NC_013947.1": ["Multiple", "Type3"],
+    #                             "NZ_VZZS01000049.1": ["Multiple", "Type2b", "Type1"],
+    #                             "NZ_FNJL01000093.1": ["Single", "Type3"], "NZ_MVHE01000525.1": ["Single", "Type3"],
+    #                             "NZ_FMWY01000062.1": ["Single", "Type3"], "NZ_CP010408.1": ["Single", "Type3"],
+    #                             "NZ_LT605205.1": ["Single", "Type3"], "LKBL01002861.1": ["Single", "Type1"],
+    #                             "NZ_KB944506.1": ["Single", "Type3"], "NZ_CP029618.1": ["Single", "Type3"],
+    #                             "NZ_FPBO01000103.1": ["Single", "Type3"], "NZ_QJUG01000493.1": ["Single", "Type3"],
+    #                             "NZ_QAJM01000070.1": ["Single", "Type2b"], "LGGF01000107.1": ["Single", "Type3"],
+    #                             "NZ_WUNA01000095.1": ["Single", "Type3"], "NZ_MKCS01000005.1": ["Single", "Type3"],
+    #                             "NZ_VCNG01000086.1": ["Multiple", "Type2b"],
+    #                             "NZ_ABCS01000237.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_CM002331.1": ["Single", "Type2b"], "NZ_CP023695.1": ["Single", "Type3"],
+    #                             "NZ_SMFY01000011.1": ["Single", "Type3"], "NZ_QSNX01000060.1": ["Single", "Type2b"],
+    #                             "NZ_LMXH01000018.1": ["Single", "Type3"], "NZ_CP014135.1": ["Single", "Type2b"],
+    #                             "NZ_JXDG01000126.1": ["Single", "Type2b"], "NZ_PIQI01000031.1": ["Single", "Type1"],
+    #                             "NZ_JYLB01000026.1": ["Multiple", "Type2b"], "NZ_QKTW01000033.1": ["Single", "Type3"],
+    #                             "NZ_LOWA01000060.1": ["Single", "Type2b"],
+    #                             "JAAHFU010000658.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_CP042382.1": ["Single", "Type3"], "NZ_CP013461.1": ["Single", "Type3"],
+    #                             "NZ_LWBP01000264.1": ["Single", "Type3"], "NZ_LYRP01000050.1": ["Single", "Type1"],
+    #                             "NZ_SEIT01000119.1": ["Single", "Type2b"], "NZ_JYLN01000037.1": ["Single", "Type2b"],
+    #                             "NZ_QTTH01000050.1": ["Single", "Type2b"], "NZ_NITZ01000138.1": ["Single", "Type1"],
+    #                             "NZ_RJKE01000001.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_VOLC01000068.1": ["Single", "Type3"], "NZ_LFCV01000266.1": ["Single", "Type1"],
+    #                             "NZ_MVIF01000387.1": ["Single", "Type3"], "NZ_VRLS01000101.1": ["Single", "Type3"],
+    #                             "NZ_MULM01000185.1": ["Single", "Type3"], "JAABLX010000056.1": ["Single", "Type1"],
+    #                             "NC_014723.1": ["Multiple", "Type2b", "Type3"], "NC_016905.1": ["Single", "Type1"],
+    #                             "NZ_SOZA01000107.1": ["Single", "Type2b"], "NZ_MJML01000057.1": ["Single", "Type2b"],
+    #                             "NZ_WTYM01000063.1": ["Single", "Type3"], "NZ_QOIO01000184.1": ["Single", "Type3"],
+    #                             "NZ_FQUQ01000022.1": ["Single", "Type3"], "NZ_FAOZ01000083.1": ["Single", "Type3"],
+    #                             "NZ_JNZS01000088.1": ["Single", "Type3"], "NZ_KQ257877.1": ["Single", "Type3"],
+    #                             "NZ_KB892704.1": ["Single", "Type3"], "NZ_MUIN01000073.1": ["Multiple", "Type2b"],
+    #                             "AP018273.1": ["Single", "Type3"], "NZ_LT985385.1": ["Single", "Type3"],
+    #                             "NZ_PYAC01000043.1": ["Single", "Type3"],
+    #                             "JAAHGQ010001185.1": ["Multiple", "Type1", "Type3"],
+    #                             "NZ_FOBB01000023.1": ["Single", "Type3"], "NC_010162.1": ["Multiple", "Type3"],
+    #                             "NZ_JPMW01000007.1": ["Single", "Type3"], "NZ_CPYD01000045.1": ["Single", "Type2a"],
+    #                             "NZ_CP021135.1": ["Single", "Type2b"], "MNDA01000671.1": ["Single", "Type3"],
+    #                             "NZ_QXQA01000045.1": ["Single", "Type3"], "NZ_OCSV01000008.1": ["Single", "Type3"],
+    #                             "NZ_FXWP01000029.1": ["Single", "Type1"], "NZ_AWXZ01000044.1": ["Single", "Type3"],
+    #                             "NZ_UYJA01000022.1": ["Single", "Type2b"], "NZ_LNTU01000041.1": ["Single", "Type3"],
+    #                             "NZ_QNVV01000061.1": ["Single", "Type3"], "NZ_CP022121.1": ["Single", "Type3"],
+    #                             "NZ_SAIQ01000015.1": ["Single", "Type3"], "NZ_VCRA01000094.1": ["Single", "Type3"],
+    #                             "NZ_CP029197.1": ["Single", "Type3"], "NZ_PODL01000171.1": ["Single", "Type2b"],
+    #                             "NZ_FOAF01000023.1": ["Single", "Type3"], "NZ_QKWJ01000248.1": ["Single", "Type3"],
+    #                             "NZ_CP029608.1": ["Single", "Type2b"], "NZ_JFHN01000075.1": ["Single", "Type1"],
+    #                             "NZ_FXBM01000005.1": ["Single", "Type3"], "NZ_CP048209.1": ["Single", "Type3"],
+    #                             "NZ_VJZE01000939.1": ["Single", "Type3"], "NC_013131.1": ["Single", "Type3"],
+    #                             "NZ_JH651384.1": ["Single", "Type3"], "NZ_PYAW01000034.1": ["Single", "Type3"],
+    #                             "NZ_WMJZ01000174.1": ["Single", "Type1"], "NZ_SNZP01000034.1": ["Single", "Type3"],
+    #                             "NZ_CP010896.1": ["Single", "Type2b"], "NZ_SMJU01000044.1": ["Single", "Type3"],
+    #                             "NZ_FAOS01000004.1": ["Single", "Type3"], "NZ_RHLK01000044.1": ["Single", "Type3"],
+    #                             "NZ_VSFF01000027.1": ["Single", "Type3"], "NZ_RQPI01000039.1": ["Single", "Type3"],
+    #                             "NC_012962.1": ["Multiple", "Type1", "Type2a"],
+    #                             "NZ_FSRS01000002.1": ["Single", "Type3"],
+    #                             "NZ_CBXF010000164.1": ["Multiple", "Type2a", "Type1"],
+    #                             "NZ_QLTF01000036.1": ["Single", "Type2b"],
+    #                             "NZ_CACSJQ010000143.1": ["Multiple", "Type2b"],
+    #                             "NZ_FNKR01000003.1": ["Single", "Type3"], "NZ_SMSL01000028.1": ["Single", "Type3"],
+    #                             "NZ_VZZK01000111.1": ["Single", "Type3"],
+    #                             "NZ_LRSO01000023.1": ["Multiple", "Type1", "Type2b"],
+    #                             "NZ_CP028272.1": ["Single", "Type1"], "NZ_WJIE01000061.1": ["Multiple", "Type3"],
+    #                             "NZ_VDCQ01000167.1": ["Single", "Type3"], "NZ_OGTP01000072.1": ["Single", "Type3"],
+    #                             "NZ_MPIN01000042.1": ["Single", "Type3"], "NZ_CDPK01000072.1": ["Single", "Type1"],
+    #                             "NZ_CP026364.1": ["Single", "Type1"], "NZ_LXEN01000293.1": ["Single", "Type3"],
+    #                             "NZ_CABPSP010000048.1": ["Single", "Type2b"], "NZ_CP019686.1": ["Single", "Type1"],
+    #                             "NZ_SJSL01000015.1": ["Single", "Type3"], "CABPSQ010000036.1": ["Single", "Type2b"],
+    #                             "JAAHFO010001461.1": ["Single", "Type3"], "NZ_SOCQ01000042.1": ["Single", "Type2b"],
+    #                             "MNJJ01000259.1": ["Single", "Type3"], "NZ_CP012159.1": ["Single", "Type3"],
+    #                             "NZ_QLTJ01000050.1": ["Single", "Type2b"], "NZ_JNWO01000211.1": ["Single", "Type3"],
+    #                             "NZ_CP013341.1": ["Single", "Type3"], "NC_017807.1": ["Single", "Type2b"],
+    #                             "NZ_PYBV01000203.1": ["Single", "Type3"], "NZ_KE332397.1": ["Single", "Type3"],
+    #                             "NZ_RCSU01000043.1": ["Single", "Type3"],
+    #                             "NZ_FNQB01000011.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_QLLL01000025.1": ["Single", "Type3"], "NZ_QTUB01000001.1": ["Single", "Type2a"],
+    #                             "NZ_NSCE01000184.1": ["Multiple", "Type1", "Type2b", "Type2a"],
+    #                             "NZ_JAAGLX010000268.1": ["Single", "Type3"], "NZ_VOQB01000043.1": ["Multiple", "Type1"],
+    #                             "NZ_FODH01000041.1": ["Single", "Type3"], "NZ_FNVU01000044.1": ["Single", "Type3"],
+    #                             "NZ_FXAS01000142.1": ["Single", "Type1"], "NZ_CP038255.1": ["Single", "Type3"],
+    #                             "NZ_QVNU01000027.1": ["Single", "Type3"], "NZ_VOIW01000021.1": ["Single", "Type2b"],
+    #                             "NZ_LT629795.1": ["Single", "Type1"], "NZ_CP026110.1": ["Single", "Type3"],
+    #                             "NZ_AEDD01000040.1": ["Single", "Type3"], "NZ_FNAD01000036.1": ["Single", "Type3"],
+    #                             "NZ_PVZV01000026.1": ["Single", "Type3"], "NZ_PVNL01000192.1": ["Single", "Type3"],
+    #                             "NZ_LXYR01000213.1": ["Single", "Type3"], "NZ_LN623556.1": ["Single", "Type2b"],
+    #                             "NZ_FNGF01000016.1": ["Single", "Type3"], "NZ_CP022961.1": ["Single", "Type3"],
+    #                             "NZ_CXPG01000027.1": ["Single", "Type3"], "NZ_CP017236.1": ["Single", "Type1"],
+    #                             "NZ_CP012332.1": ["Single", "Type3"],
+    #                             "NZ_FTPM01000002.1": ["Multiple", "Type2b", "Type1"],
+    #                             "NZ_BLAD01000170.1": ["Multiple", "Type3", "Type3"],
+    #                             "NZ_FTPJ01000003.1": ["Multiple", "Type1", "Type2b"],
+    #                             "NZ_NIRS01000013.1": ["Single", "Type2b"], "NZ_FMDM01000037.1": ["Single", "Type3"],
+    #                             "NZ_PTJB01000052.1": ["Single", "Type3"], "NZ_JAAFZB010000096.1": ["Single", "Type3"],
+    #                             "NZ_CP016211.1": ["Single", "Type3"], "NZ_PQKR01000051.1": ["Single", "Type2b"],
+    #                             "NZ_SOAB01000040.1": ["Multiple", "Type3"], "NZ_NCXP01000142.1": ["Single", "Type3"],
+    #                             "NZ_ANMG01000154.1": ["Single", "Type3"], "NC_020209.1": ["Single", "Type2b"],
+    #                             "NZ_JZSQ01000140.1": ["Single", "Type3"], "NZ_LT629705.1": ["Single", "Type2b"],
+    #                             "NZ_PYAL01000013.1": ["Single", "Type2b"], "JAAHIG010000776.1": ["Multiple", "Type3"],
+    #                             "MKSF01000039.1": ["Single", "Type3"], "LAQJ01000315.1": ["Single", "Type3"],
+    #                             "NZ_SMKU01000805.1": ["Single", "Type3"], "NZ_LT828648.1": ["Single", "Type3"],
+    #                             "NZ_CP007215.2": ["Single", "Type3"], "NZ_WNKZ01000359.1": ["Single", "Type3"],
+    #                             "NZ_LR590482.1": ["Single", "Type2b"], "NZ_LT907981.1": ["Single", "Type3"],
+    #                             "NZ_QAIP01000588.1": ["Single", "Type1"], "NZ_LNCD01000152.1": ["Single", "Type3"],
+    #                             "NZ_KE384562.1": ["Single", "Type3"], "NZ_LJCS01000262.1": ["Multiple", "Type1"],
+    #                             "NZ_ATXB01000005.1": ["Single", "Type3"], "NZ_SMKK01000563.1": ["Single", "Type3"],
+    #                             "NC_019762.1": ["Single", "Type3"], "NZ_FNTZ01000002.1": ["Multiple", "Type2b"],
+    #                             "NZ_QFZQ01000023.1": ["Multiple", "Type3"], "NZ_JOGP01000180.1": ["Single", "Type3"],
+    #                             "KZ266893.1": ["Single", "Type3"], "NZ_FNON01000025.1": ["Single", "Type3"],
+    #                             "NZ_SHKK01000001.1": ["Single", "Type3"], "NZ_FNUD01000002.1": ["Single", "Type1"],
+    #                             "NZ_FQYP01000028.1": ["Single", "Type3"], "NZ_QGTQ01000078.1": ["Single", "Type1"],
+    #                             "NZ_JFJW01000247.1": ["Single", "Type1"], "NZ_FOVS01000095.1": ["Single", "Type2b"],
+    #                             "NZ_CP012540.1": ["Single", "Type3"], "NZ_JUHO01000001.1": ["Single", "Type2b"],
+    #                             "NZ_CP007039.1": ["Multiple", "Type2b"], "DNUG01000139.1": ["Single", "Type3"],
+    #                             "NZ_CP038630.1": ["Single", "Type3"], "NC_013954.1": ["Single", "Type1"],
+    #                             "NZ_VCKW01000623.1": ["Multiple", "Type3"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_A1_expanded_930570_933549_forward": [
+    #                                 "Type2b"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_A2_expanded_933600_938013_forward": [
+    #                                 "Type2b"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1144367_1151012_backward": [
+    #                                 "Type1"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1136560_1144054_backward": [
+    #                                 "Type1"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1119871_1127122_backward": [
+    #                                 "Type1"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1107514_1115125_backward": [
+    #                                 "Type1"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_A2_expanded_2891462_2895557_backward": [
+    #                                 "Type2a"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_A1_expanded_2895543_2899062_backward": [
+    #                                 "Type2a"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_A2_expanded_4869364_4874056_backward": [
+    #                                 "Type2b"],
+    #                             "NC_005126.1_information_Photorhabdus_laumondii_region_A1_expanded_4874153_4877051_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_A2_expanded_1807955_1812674_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_A1_expanded_1812775_1815703_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_TcdA1_expanded_1746224_1753757_backward": [
+    #                                 "Type1"],
+    #                             "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_A1_expanded_2879332_2882866_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_A2_expanded_2882852_2886944_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_TcdA1_expanded_4632407_4639025_backward": [
+    #                                 "Type1"],
+    #                             "NZ_AYSJ01000017.1_information_Photorhabdus_khanii_region_TcdA1_expanded_4624260_4631886_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NJAK01000005.1_information_Xenorhabdus_ishibashii_region_A2_expanded_700848_705030_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_NJAK01000005.1_information_Xenorhabdus_ishibashii_region_A1_expanded_697368_700839_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A1_expanded_930569_933548_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A2_expanded_933599_938012_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1144366_1151011_backward": [
+    #                                 "Type1"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1136559_1144053_backward": [
+    #                                 "Type1"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1119870_1127121_backward": [
+    #                                 "Type1"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_TcdA1_expanded_1107513_1115124_backward": [
+    #                                 "Type1"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A2_expanded_4868065_4872757_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A1_expanded_4872854_4875752_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A2_expanded_2891462_2895557_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_CP024901.1_information_Photorhabdus_laumondii_region_A1_expanded_2895543_2899062_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_TcdA1_expanded_2110775_2118188_backward": [
+    #                                 "Type1"],
+    #                             "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_TcdA1_expanded_2546301_2553873_backward": [
+    #                                 "Type1"],
+    #                             "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_TcdA1_expanded_2530974_2538543_forward": [
+    #                                 "Type1"],
+    #                             "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_A1_expanded_2518328_2521799_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_A2_expanded_2521808_2525981_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_A1_expanded_2272553_2275616_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_LN681228.1_information_Xenorhabdus_nematophila_region_A2_expanded_2275690_2280313_forward": [
+    #                                 "Type2b"],
+    #                             "NC_013892.1_information_Xenorhabdus_bovienii_region_A2_expanded_576007_580111_backward": [
+    #                                 "Type2a"],
+    #                             "NC_013892.1_information_Xenorhabdus_bovienii_region_A1_expanded_580106_583658_backward": [
+    #                                 "Type2a"],
+    #                             "NC_013892.1_information_Xenorhabdus_bovienii_region_TcdA1_expanded_1524550_1532101_forward": [
+    #                                 "Type1"],
+    #                             "NZ_QUOK01000045.1_information_Rhodohalobacter_sp._region_TcdA1_expanded_2159005_2169691_forward": [
+    #                                 "Type3"],
+    #                             "NZ_QUOK01000045.1_information_Rhodohalobacter_sp._region_A2_expanded_2141911_2145157_forward": [
+    #                                 "Type?"],
+    #                             "NC_020418.1_information_Morganella_morganii_region_TcdA1_expanded_1872868_1880275_backward": [
+    #                                 "Type1"],
+    #                             "NC_020418.1_information_Morganella_morganii_region_A1_expanded_1374832_1378387_forward": [
+    #                                 "Type2b"],
+    #                             "NC_020418.1_information_Morganella_morganii_region_A2_expanded_1382402_1385276_forward": [
+    #                                 "Type2b"],
+    #                             "NC_020418.1_information_Morganella_morganii_region_TcdA1_expanded_2005504_2009848_backward": [
+    #                                 "Type1"],
+    #                             "NZ_PGEO01000001.1_information_Streptomyces_sp._region_A2_expanded_8169184_8172529_backward": [
+    #                                 "Type?"],
+    #                             "NZ_PGEO01000001.1_information_Streptomyces_sp._region_TcdA1_expanded_375542_385436_forward": [
+    #                                 "Type3"],
+    #                             "NZ_CQAZ01000234.1_information_Yersinia_pekkanenii_region_TcdA1_expanded_2059147_2062405_forward": [
+    #                                 "Type1"],
+    #                             "NZ_CQAZ01000234.1_information_Yersinia_pekkanenii_region_TcdA1_expanded_2064365_2070638_forward": [
+    #                                 "Type3"],
+    #                             "NZ_FNPW01000042.1_information_Pseudomonas_sp._region_TcdA1_expanded_6614186_6621635_backward": [
+    #                                 "Type1"],
+    #                             "NZ_FNPW01000042.1_information_Pseudomonas_sp._region_TcdA1_expanded_6628816_6636343_forward": [
+    #                                 "Type3"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_TcdA1_expanded_843495_850140_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_TcdA1_expanded_835688_843182_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_TcdA1_expanded_818999_826250_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_TcdA1_expanded_806642_814253_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A2_expanded_1481951_1486364_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A1_expanded_1478921_1481900_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A1_expanded_3354173_3357071_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A2_expanded_3357168_3361860_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A1_expanded_3627693_3631212_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_NSCD01000185.1_information_Photorhabdus_sp._region_A2_expanded_3623612_3627707_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_36104_43622_forward": [
+    #                                 "Type1"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_2349716_2356853_forward": [
+    #                                 "Type1"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3626745_3634320_backward": [
+    #                                 "Type1"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3617993_3624551_backward": [
+    #                                 "Type1"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3610392_3617688_backward": [
+    #                                 "Type1"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3588748_3595918_backward": [
+    #                                 "Type1"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_3576411_3583962_backward": [
+    #                                 "Type1"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_TcdA1_expanded_4750346_4757417_forward": [
+    #                                 "Type1"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_1746473_1750022_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_1742386_1746487_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_2814033_2818173_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_2810554_2814010_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_2099000_2101886_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_2101936_2106331_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_4202590_4205512_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_4205609_4210301_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A1_expanded_4742654_4746626_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_LOIC01000105.1_information_Photorhabdus_namnaonensis_region_A2_expanded_4746784_4749883_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_CP011104.1_information_Photorhabdus_thracensis_region_TcdA1_expanded_2899156_2906767_backward": [
+    #                                 "Type1"],
+    #                             "NZ_CP011104.1_information_Photorhabdus_thracensis_region_A1_expanded_3227753_3231725_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_CP011104.1_information_Photorhabdus_thracensis_region_A2_expanded_3231822_3236538_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_CP011104.1_information_Photorhabdus_thracensis_region_TcdA1_expanded_3191309_3197951_forward": [
+    #                                 "Type1"],
+    #                             "NZ_CP011104.1_information_Photorhabdus_thracensis_region_TcdA1_expanded_3183237_3190896_forward": [
+    #                                 "Type1"],
+    #                             "NZ_CP011104.1_information_Photorhabdus_thracensis_region_TcdA1_expanded_3173661_3181236_forward": [
+    #                                 "Type1"],
+    #                             "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_A1_expanded_582667_586192_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_A2_expanded_587016_590268_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_A1_expanded_953038_955966_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_A2_expanded_956061_960756_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_TcdA1_expanded_1464525_1471155_backward": [
+    #                                 "Type1"],
+    #                             "NZ_SOBU01000009.1_information_Photorhabdus_temperata_region_TcdA1_expanded_1456693_1464112_backward": [
+    #                                 "Type1"],
+    #                             "NZ_CABIVL010000085.1_information_Pseudomonas_carnis_region_A1_expanded_2592488_2594525_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_CABIVL010000085.1_information_Pseudomonas_carnis_region_A2_expanded_2594556_2599239_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_CABIVL010000085.1_information_Pseudomonas_carnis_region_TcdA1_expanded_3215854_3218848_forward": [
+    #                                 "Type1"],
+    #                             "NZ_RHQN01000027.1_information_Pseudomonas_sp._region_A1_expanded_2865132_2868165_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_RHQN01000027.1_information_Pseudomonas_sp._region_A2_expanded_2860228_2865118_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_AKJR01000399.1_information_Pseudomonas_sp._region_TcdA1_expanded_267894_271566_forward": [
+    #                                 "Type1"],
+    #                             "NZ_AKJR01000399.1_information_Pseudomonas_sp._region_A1_expanded_857988_861717_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_AKJR01000399.1_information_Pseudomonas_sp._region_A2_expanded_861716_865820_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A1_expanded_90073_93523_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A2_expanded_93547_97681_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A1_expanded_2232559_2236093_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A2_expanded_2236079_2240180_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1581866_1589459_forward": [
+    #                                 "Type1"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1569951_1577154_forward": [
+    #                                 "Type1"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1553426_1560176_forward": [
+    #                                 "Type1"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1546321_1552942_forward": [
+    #                                 "Type1"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_1538340_1545900_forward": [
+    #                                 "Type1"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_TcdA1_expanded_4121789_4132319_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A2_expanded_2026472_2031185_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A1_expanded_2031288_2034213_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A1_expanded_2787806_2790692_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NMQR01000210.1_information_Photorhabdus_sp._region_A2_expanded_2790743_2795159_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_KL543992.1_information_Photorhabdus_australis_region_A2_expanded_129145_133240_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_KL543992.1_information_Photorhabdus_australis_region_A1_expanded_133229_136754_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_672137_679775_forward": [
+    #                                 "type1"],
+    #                             "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_1950214_1957753_backward": [
+    #                                 "type1"],
+    #                             "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_1943255_1949780_backward": [
+    #                                 "type1"],
+    #                             "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_1935583_1942777_backward": [
+    #                                 "type1"],
+    #                             "NZ_KL543992.1_information_Photorhabdus_australis_region_TcdA1_expanded_3899266_3905800_backward": [
+    #                                 "type1"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A1_expanded_432044_435578_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A2_expanded_435564_439665_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_TcdA1_expanded_557184_564402_backward": [
+    #                                 "Type1"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_TcdA1_expanded_2390999_2398565_forward": [
+    #                                 "Type1"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_TcdA1_expanded_2369647_2377138_forward": [
+    #                                 "Type1"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_TcdA1_expanded_2362258_2369164_forward": [
+    #                                 "Type1"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A2_expanded_2524015_2528428_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A1_expanded_2528479_2531365_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A2_expanded_3937610_3942299_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A1_expanded_3942402_3945327_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_JXSK01000016.1_information_Photorhabdus_luminescens_region_A2_expanded_4049378_4052948_forward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A2_expanded_191734_195832_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A1_expanded_195818_199337_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_TcdA1_expanded_2764973_2771600_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_TcdA1_expanded_2757244_2764660_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_TcdA1_expanded_2734525_2741752_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_TcdA1_expanded_2722185_2729760_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A2_expanded_3540851_3545546_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A1_expanded_3545643_3548565_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A1_expanded_3817262_3820166_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCM01000192.1_information_Photorhabdus_bodei_region_A2_expanded_3820341_3824757_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_VKDC01000148.1_information_Fulvivirga_sp._region_A2_expanded_7833204_7836423_backward": [
+    #                                 "Type?", "Type3"],
+    #                             "NZ_VKDC01000148.1_information_Fulvivirga_sp._region_TcdA1_expanded_2351126_2360498_forward": [
+    #                                 "Type3"],
+    #                             "NZ_VKDC01000148.1_information_Fulvivirga_sp._region_TcdA1_expanded_4853485_4862983_forward": [
+    #                                 "Type3"],
+    #                             "NZ_FPBA01000069.1_information_Geodermatophilus_amargosae_region_A2_expanded_4821940_4825159_backward": [
+    #                                 "Type?"],
+    #                             "NZ_FPBA01000069.1_information_Geodermatophilus_amargosae_region_A2_expanded_5630192_5640827_backward": [
+    #                                 "Type3"],
+    #                             "NZ_BCBO01000195.1_information_Pseudomonas_sp._region_A1_expanded_1940890_1943362_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_BCBO01000195.1_information_Pseudomonas_sp._region_A2_expanded_1943554_1948237_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_BCBO01000195.1_information_Pseudomonas_sp._region_TcdA1_expanded_6024212_6028535_forward": [
+    #                                 "Type1"],
+    #                             "NZ_VZZS01000049.1_information_Pseudomonas_sp._region_A1_expanded_1401257_1405886_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_VZZS01000049.1_information_Pseudomonas_sp._region_A2_expanded_1405931_1410509_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_VZZS01000049.1_information_Pseudomonas_sp._region_TcdA1_expanded_1382544_1391286_backward": [
+    #                                 "Type1"],
+    #                             "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_TcdA1_expanded_263892_267498_forward": [
+    #                                 "Type1"],
+    #                             "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_A2_expanded_279466_283009_forward": [
+    #                                 "Type2b"],
+    #                             "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_A1_expanded_275920_279082_forward": [
+    #                                 "Type2b"],
+    #                             "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_A2_expanded_2388313_2390908_backward": [
+    #                                 "Type2b"],
+    #                             "NC_014723.1_information_Paraburkholderia_rhizoxinica_region_A1_expanded_2393199_2397900_backward": [
+    #                                 "Type2b"],
+    #                             "JAAHGQ010001185.1_information_Symploca_sp._region_TcdA1_expanded_1614659_1629566_backward": [
+    #                                 "Type1"],
+    #                             "JAAHGQ010001185.1_information_Symploca_sp._region_TcdA1_expanded_2763629_2771996_backward": [
+    #                                 "Type1"],
+    #                             "JAAHGQ010001185.1_information_Symploca_sp._region_A2_expanded_622115_630707_forward": [
+    #                                 "Type3", "Type3"],
+    #                             "NC_012962.1_information_Photorhabdus_asymbiotica_region_TcdA1_expanded_1054728_1061256_backward": [
+    #                                 "Type1"],
+    #                             "NC_012962.1_information_Photorhabdus_asymbiotica_region_TcdA1_expanded_1045698_1052889_backward": [
+    #                                 "Type1"],
+    #                             "NC_012962.1_information_Photorhabdus_asymbiotica_region_A2_expanded_2339002_2343097_forward": [
+    #                                 "Type2a"],
+    #                             "NC_012962.1_information_Photorhabdus_asymbiotica_region_A1_expanded_2335464_2339013_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_TcdA1_expanded_3670905_3678513_backward": [
+    #                                 "Type1"],
+    #                             "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_TcdA1_expanded_3655617_3663132_forward": [
+    #                                 "Type1"],
+    #                             "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_TcdA1_expanded_3599091_3606933_forward": [
+    #                                 "Type1"],
+    #                             "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_A1_expanded_3645585_3649056_forward": [
+    #                                 "Type2a"],
+    #                             "NZ_CBXF010000164.1_information_Xenorhabdus_szentirmaii_region_A2_expanded_3649065_3653265_forward": [
+    #                                 "Type2a"], "NZ_FXYF01000056.1": ["Single", "Type3"],
+    #                             "NZ_VCKW01000623.1_information_Actinomadura_sp._region_A2_expanded_747005_750221_forward": [
+    #                                 "Type?"],
+    #                             "NZ_VCKW01000623.1_information_Actinomadura_sp._region_A2_expanded_6267139_6277399_backward": [
+    #                                 "Type3"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_TcdA1_expanded_556407_563052_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_TcdA1_expanded_548600_556094_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_TcdA1_expanded_531911_539162_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_TcdA1_expanded_519554_527165_backward": [
+    #                                 "Type1"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A2_expanded_1184450_1188863_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A1_expanded_1181420_1184399_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A2_expanded_3344032_3348724_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A1_expanded_3341037_3343935_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A1_expanded_3676266_3679785_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_NSCE01000184.1_information_Photorhabdus_sp._region_A2_expanded_3672185_3676280_backward": [
+    #                                 "Type2a"],
+    #                             "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A1_expanded_577789_581314_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A2_expanded_572951_575870_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A2_expanded_2487802_2491402_forward": [
+    #                                 "Type2b", "Type3"],
+    #                             "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A2_expanded_2470787_2475539_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_FTPM01000002.1_information_Burkholderia_sp._region_A1_expanded_2467223_2470688_forward": [
+    #                                 "Type2b"],
+    #                             "NZ_FTPM01000002.1_information_Burkholderia_sp._region_TcdA1_expanded_3110262_3117861_backward": [
+    #                                 "Type1"],
+    #                             "NZ_FTPJ01000003.1_information_Burkholderia_sp._region_TcdA1_expanded_21233_28058_forward": [
+    #                                 "Type1"],
+    #                             "NZ_FTPJ01000003.1_information_Burkholderia_sp._region_A1_expanded_1746754_1750222_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_FTPJ01000003.1_information_Burkholderia_sp._region_A2_expanded_1741903_1746655_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_CP041186.1_information_Bradymonas_sp._region_A2_expanded_4319135_4327433_backward": [
+    #                                 "Type3"],
+    #                             "NZ_ABCS01000237.1_information_Plesiocystis_pacifica_region_A2_expanded_2871032_2875556_forward": [
+    #                                 "Type3"],
+    #                             "JAAHFU010000658.1_information_Leptolyngbya_sp._region_A2_expanded_7706383_7715437_backward": [
+    #                                 "Type3"],
+    #                             "JAAHFU010000658.1_information_Leptolyngbya_sp._region_TcdA1_expanded_5813429_5827880_backward": [
+    #                                 "Type3"],
+    #                             "NZ_RJKE01000001.1_information_Actinocorallia_herbida_region_A2_expanded_4657113_4660347_forward": [
+    #                                 "Type3"],
+    #                             "NZ_LRSO01000023.1_information_Pseudomonas_thivervalensis_region_A2_expanded_2622756_2627292_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_LRSO01000023.1_information_Pseudomonas_thivervalensis_region_A1_expanded_2627328_2629860_backward": [
+    #                                 "Type2b"],
+    #                             "NZ_BLAD01000170.1_information_Acrocarpospora_corrugata_region_A2_expanded_2785887_2789091_backward": [
+    #                                 "Type3"],
+    #                             "NZ_CP004078.1_information_Paenibacillus_sabinae_region_TcB_expanded_2796003_2803788_backward": [
+    #                                 "hit_tag", "more"]}
 
     # original_classifications = {"NZ_WRXN01000057.1": "Type3", "NZ_QODI01000091.1": "Type1", "NZ_QAIK01000198.1":
     #     "Type2b",
@@ -2145,6 +2652,7 @@ def test_auto_classify(queries, skip_tags):
 
 
 def delete_all_tags():
+
     queries = models.GenomeRecords.objects().all()
 
     queries.update(tags=[])
@@ -2179,12 +2687,25 @@ def get_mlgo_dict(gene_orders):
 
 
 def colour_alignment_by_profiles(alignment, profiles):
-    colour_dict = {'RBD_A': 'lightgreen', 'RBD_C': 'blue', 'RBD_B': 'orange', 'Neuraminidase': 'mediumPurple',
+    colour_dict = {'RBD_A': 'lightgreen',
+                   'RBDA' : 'lightgreen',
+
+                   'RBD_C': 'blue', 'RBD_B': 'orange', 'Neuraminidase': 'mediumPurple',
                    'TcA_RBD': 'grey',
-                   'TcB_BD_seed': 'lawnGreen', 'VRP1_Full' : 'sandyBrown', 'Big_1_Full' : 'lightYellow', 'Overlap' :
-                       'pink'}
+                   'TcB_BD_seed': 'lawnGreen',
+                   'PF18276_ncbi' : 'lawnGreen',
+                   'VRP1_Full' : 'sandyBrown',
+                   'Big_1_Full' : 'lightYellow',
+                   'TcB_BLAST_500' : 'orange',
+                   'TcC_BLAST_500': 'blue',
+                   'Rhs_repeat' : 'green',
+
+                   'Overlap' : 'pink'}
 
     split = [x for x in alignment.split(">") if len(x) > 0]
+
+    print (split[0:5])
+
 
     size = len(split)
 
@@ -2258,118 +2779,134 @@ def colour_alignment_by_profiles(alignment, profiles):
     #             furtherst_pos = pos[1]
 
     for seqname, domains in profiles.region_dict.items():
+
+        print (seqname)
+        print (output.keys())
+
+        if seqname not in output:
+            print ('wowzers')
         # if seqname in profiles.region_dict:
 
         len_offset = 0
         furtherst_pos = -1
 
+
         # newlist = sorted(list_to_be_sorted, key=lambda k: k['name'])
-        orig_seq = output[seqname]
 
-        sorted_list = sorted(profiles.region_dict[seqname].items(), key=lambda k: k[1])
+        if seqname in output:
+            orig_seq = output[seqname]
 
-        # print(sorted_list)
+            sorted_list = sorted(profiles.region_dict[seqname].items(), key=lambda k: k[1])
 
-        list_w_overlaps = []
+            # print(sorted_list)
 
-        overlap = False
+            list_w_overlaps = []
 
-        for idx, entry in enumerate(sorted_list):
-            domain = entry[0]
-            pos = entry[1]
+            overlap = False
 
-            if idx + 1 < len(sorted_list):
+            for idx, entry in enumerate(sorted_list):
+                domain = entry[0]
+                pos = entry[1]
 
-                next_entry = sorted_list[idx + 1]
-                next_domain = next_entry[0]
-                next_pos = next_entry[1]
+                if idx + 1 < len(sorted_list):
 
-                if pos[1] > next_pos[0]:
+                    next_entry = sorted_list[idx + 1]
+                    next_domain = next_entry[0]
+                    next_pos = next_entry[1]
 
-                    overlap = True
-                    print("WARNING: OVERLAP")
-                    overlap_pos_1 = next_pos[0]
-                    overlap_pos_2 = pos[1]
+                    if pos[1] > next_pos[0]:
 
-                    prev_entry = (domain, [pos[0], next_pos[0] ])
-                    overlap_entry = ('Overlap', [overlap_pos_1, overlap_pos_2])
-                    sorted_list[idx + 1] = (next_domain, [overlap_pos_2, next_pos[1]])
+                        overlap = True
+                        print("WARNING: OVERLAP")
+                        overlap_pos_1 = next_pos[0]
+                        overlap_pos_2 = pos[1]
 
-                    list_w_overlaps.append(prev_entry)
-                    list_w_overlaps.append(overlap_entry)
+                        prev_entry = (domain, [pos[0], next_pos[0] ])
+                        overlap_entry = ('Overlap', [overlap_pos_1, overlap_pos_2])
+                        sorted_list[idx + 1] = (next_domain, [overlap_pos_2, next_pos[1]])
+
+                        list_w_overlaps.append(prev_entry)
+                        list_w_overlaps.append(overlap_entry)
+
+                    else:
+                        list_w_overlaps.append(entry)
 
                 else:
                     list_w_overlaps.append(entry)
 
-            else:
-                list_w_overlaps.append(entry)
+
+            if overlap:
+
+                print('list with overlaps')
+                print (seqname.replace("***", "."))
+                print (list_w_overlaps)
 
 
-        if overlap:
+            for entry in list_w_overlaps:
 
-            print('list with overlaps')
-            print (seqname.replace("***", "."))
-            print (list_w_overlaps)
+                if entry[1][1] < entry[1][0]:
+                    print("WARNING: Serious error with overlap")
+                    print(seqname.replace("***", "."))
+                    print(list_w_overlaps)
 
-
-        for entry in list_w_overlaps:
-
-            if entry[1][1] < entry[1][0]:
-                print("WARNING: Serious error with overlap")
-                print(seqname.replace("***", "."))
-                print(list_w_overlaps)
-
-        for domain, pos in list_w_overlaps:
-            gap_offset = 0
-
-            # if pos[0] < furtherst_pos:
-            #     print("WARNING: OVERLAP")
-
-            count = 0
-            for aa in orig_seq:
-                if aa == "-":
-                    gap_offset += 1
-                else:
-                    count += 1
-                    if count == pos[0] + 1:
-                        first_gap_offset = gap_offset
-
-                    if count == pos[1]:
-                        second_gap_offset = gap_offset
-                        break
-
-            # print ('len offset')
-            # print(len_offset)
-            # print(gap_offset)
-
-            # print(pos[0] + len_offset + first_gap_offset)
-            #
-            # print(pos[1] + len_offset + second_gap_offset)
-
-            prev_len = len(output[seqname])
-
-            output[seqname] = output[seqname][0:pos[0] + len_offset + first_gap_offset] + '<span style = "background-color:' + \
-                          colour_dict[domain.split("_multiple_")[0]] + '">' \
-                          + output[seqname][
-                            pos[0] + len_offset + first_gap_offset: pos[1] + len_offset + second_gap_offset] + '</span>' \
-                          + output[seqname][pos[1] + len_offset + second_gap_offset:]
-
-            len_offset = len(output[seqname]) - len(orig_seq)
-
-            # print ('prev len')
-            # print (prev_len)
-            #
-            # print ('len aligns seq')
-            # print (len(aligns[seq]))
-            #
-            # print ('len offset')
-            #
-            # print (len_offset)
+            for domain, pos in list_w_overlaps:
+                gap_offset = 0
+                first_gap_offset = 0
+                second_gap_offset = 0
 
 
-            # print(aligns[seq])
+                # if pos[0] < furtherst_pos:
+                #     print("WARNING: OVERLAP")
 
-            # furtherst_pos = pos[1]
+                count = 0
+                for aa in orig_seq:
+                    if aa == "-":
+                        gap_offset += 1
+                    else:
+                        count += 1
+                        if count == pos[0] + 1:
+                            first_gap_offset = gap_offset
+
+                        if count == pos[1]:
+                            second_gap_offset = gap_offset
+                            break
+                        else:
+                            print ('count was ' + str(count))
+
+                # print ('len offset')
+                # print(len_offset)
+                # print(gap_offset)
+
+                # print(pos[0] + len_offset + first_gap_offset)
+                #
+                # print(pos[1] + len_offset + second_gap_offset)
+
+                prev_len = len(output[seqname])
+
+                output[seqname] = output[seqname][0:pos[0] + len_offset + first_gap_offset] + '<span style = "background-color:' + \
+                              colour_dict[domain.split("_multiple_")[0]] + '">' \
+                              + output[seqname][
+                                pos[0] + len_offset + first_gap_offset: pos[1] + len_offset + second_gap_offset] + '</span>' \
+                              + output[seqname][pos[1] + len_offset + second_gap_offset:]
+
+                len_offset = len(output[seqname]) - len(orig_seq)
+
+                # print ('prev len')
+                # print (prev_len)
+                #
+                # print ('len aligns seq')
+                # print (len(aligns[seq]))
+                #
+                # print ('len offset')
+                #
+                # print (len_offset)
+
+
+                # print(aligns[seq])
+
+                # furtherst_pos = pos[1]
+                # print ('charlie')
+                # print (output)
 
 
     return output
