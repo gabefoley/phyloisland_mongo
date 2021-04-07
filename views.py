@@ -561,6 +561,7 @@ class TreeView(BaseView):
     @expose("/", methods=('GET', 'POST'))
     def tree(self):
         tree = None
+        species_tree = None
         tree_select_form = forms.TreeSelectForm()
         tree_download_form = forms.TreeDownloadForm()
         species_tree_form = forms.SpeciesTreeForm()

@@ -524,14 +524,33 @@ def write_region_order(genomes, split_strands=True, exclude_hits =[], path="./fa
         print ('genome')
         print (genome.name)
 
+        # Uncomment out the following if you want to remove chitinases in the region order dicts in everything except
+        # type2a (yay)
+
+        # if 'Type2a_force'  in  genome.tags:
+        #     hits = sorted([(int(hit.start), hit.region + "_" + hit.strand if split_strands else hit.region) for hit in
+        #                    genome.hits if 'expanded' in
+        #                    hit.region and not bool(set(hit['tags']).intersection(set(exclude_hits)))])
+        #
+        # else:
+
+
+            # hits = sorted([(int(hit.start), hit.region + "_" + hit.strand if split_strands else hit.region) for hit in
+            #                genome.hits if 'expanded' in
+            #                hit.region and not bool(set(hit['tags']).intersection(set(exclude_hits))) and ('Chitinase' not
+            #               in hit.region)])
+
         hits = sorted([(int(hit.start), hit.region + "_" + hit.strand if split_strands else hit.region) for hit in
                        genome.hits if 'expanded' in
-                       hit.region and not bool(set(hit['tags']).intersection(
-                    set(exclude_hits)))])
+                       hit.region and not bool(set(hit['tags']).intersection(set(exclude_hits)))])
+
 
         print ('hits')
 
         print (hits)
+
+        print ('wallop')
+        print (genome.tags)
 
         # regions = [x[1] for x in hits]
 
