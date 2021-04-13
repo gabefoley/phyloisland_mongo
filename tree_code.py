@@ -244,6 +244,7 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
 
 
                 print ('raspberries')
+                print (tag_dict)
                 print (node.name)
                 print (long_name)
                 print (short_name)
@@ -290,10 +291,10 @@ def get_example_tree(tree, tag_dict, colour_dict, region_dict, region_order_dict
                 else:
                     spaced_name = " ".join(node.name.split("_")[3:5])
 
-                plasmid_colour = 'red' if 'plasmid=true' in node.name else 'black'
+                plasmid_colour = 'red' if 'plasmid_true' in node.name else 'black'
 
                 nameFace = TextFace("  " + spaced_name, fsize=15, fgcolor=plasmid_colour)
-                # node.add_face(nameFace, column=0)
+                node.add_face(nameFace, column=0)
 
                 region_names = []
 
